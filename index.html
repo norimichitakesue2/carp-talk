@@ -7,27 +7,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{--bg:#0c0e11;--carp:#c8102e;--text:#eef0f4;--muted:#7a8090;--surface:#13161b;--surface2:#1a1e25;--green:#3ecf8e;--accent:#f0c040;--blue:#4a9eff;--red:#f46060;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--faint:#2e3340;--radius:12px;--radius-sm:8px;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
-.loading{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:1rem;}
-.loading h1{font-family:'Noto Sans JP',sans-serif;color:var(--carp);font-size:22px;}
-.loading p{color:var(--muted);font-size:14px;}
-</style>
 </head>
 <body>
-<div class="loading">
-  <h1>本日のカープトーク</h1>
-  <p>読み込み中... リダイレクトします</p>
-</div>
+<p style="font-family:sans-serif;color:#c8102e;padding:2rem;font-size:18px">⚾ 本日のカープトーク - 読み込み中...</p>
 <script>
-// Full app loaded via Supabase
-(async()=>{
-  const SUPABASE_URL='https://dzsznmpuxuftprcqywex.supabase.co';
-  const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
-  document.body.innerHTML='<p style="color:white;padding:2rem">接続テスト成功！本番ファイルに差し替えます</p>';
-})();
+// 本番アプリは別途デプロイ
+window.location.href = window.location.href;
 </script>
 </body>
 </html>
