@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>本日のカープトーク</title>
+<title>æ¬æ¥ã®ã«ã¼ããã¼ã¯</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <script>
 (function(){
-  var cdns=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js','https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'];
+  var cdns=['https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js','https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js'];
   var idx=0;
   function load(){
     if(idx>=cdns.length){return;}
@@ -33,14 +33,14 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .container{max-width:740px;margin:0 auto;padding:0 1rem 5rem}
 
-/* 日付ナビ */
+/* æ¥ä»ãã */
 .date-nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;margin:0.5rem 0}
 .date-nav-btn{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .date-nav-btn:hover{color:var(--text)}
 .date-nav-btn:disabled{opacity:0.3;cursor:default}
 .date-nav-label{font-size:14px;font-weight:500;color:var(--text)}
 
-/* オフ日 */
+/* ãªãæ¥ */
 .no-game{text-align:center;padding:4rem 2rem}
 .no-game-icon{font-size:48px;margin-bottom:1rem}
 .no-game-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--muted);margin-bottom:0.5rem}
@@ -175,24 +175,24 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 </head>
 <body>
 <header>
-  <div><div class="site-title">本日のカープトーク</div><div class="site-sub">広島東洋カープ ファン議論</div></div>
+  <div><div class="site-title">æ¬æ¥ã®ã«ã¼ããã¼ã¯</div><div class="site-sub">åºå³¶æ±æ´ã«ã¼ã ãã¡ã³è­°è«</div></div>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="online-dot"></div>
     <button class="x-connect-btn" id="x-btn" onclick="handleXConnect()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      <span id="x-btn-label">X連携</span>
+      <span id="x-btn-label">Xé£æº</span>
     </button>
   </div>
 </header>
 <div class="container">
-  <!-- 日付ナビ -->
+  <!-- æ¥ä»ãã -->
   <div class="date-nav">
-    <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">← 前日</button>
-    <span class="date-nav-label" id="date-nav-label">読み込み中...</span>
-    <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">翌日 →</button>
+    <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">â åæ¥</button>
+    <span class="date-nav-label" id="date-nav-label">èª­ã¿è¾¼ã¿ä¸­...</span>
+    <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">ç¿æ¥ â</button>
   </div>
 
-  <!-- コンテンツ（動的に入れ替え） -->
+  <!-- ã³ã³ãã³ãï¼åçã«å¥ãæ¿ãï¼ -->
   <div id="main-content">
     <div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>
   </div>
@@ -204,23 +204,23 @@ var GAME_ID='';
 var GAME={};
 var MOMENTS=[];
 var PLAYERS=[];
-var TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
+var TYPE_LABEL={score:'å¾ç¹ã·ã¼ã³',pitcher:'ææå¥½æ',crisis:'ãã³ãè±åº',hr:'æ¬å¡æ'};
 var TYPE_BADGE={score:'type-score-badge',pitcher:'type-pitcher-badge',crisis:'type-crisis-badge',hr:'type-hr-badge'};
 var BAR_CLS={score:'bar-score',pitcher:'bar-pitcher',crisis:'bar-crisis',hr:'bar-hr'};
 var TAG_CLS={score:'tag-score',pitcher:'tag-pitcher',crisis:'tag-crisis',hr:'tag-hr'};
-var RATING_LABEL={mvp:'🏆 今日のMVP',great:'👏 頑張った',ganbatte:'💪 次も頑張れ',nigun:'💦 2軍で出直し？'};
+var RATING_LABEL={mvp:'ð ä»æ¥ã®MVP',great:'ð é å¼µã£ã',ganbatte:'ðª æ¬¡ãé å¼µã',nigun:'ð¦ 2è»ã§åºç´ãï¼'};
 var RATING_ACTIVE={mvp:'active-mvp',great:'active-great',ganbatte:'active-ganbatte',nigun:'active-nigun'};
 var AVATAR_PAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
 var APP_URL='https://carp-talk.vercel.app';
-var HASHTAGS='#広島カープ #カープトーク #分岐点議論';
+var HASHTAGS='#åºå³¶ã«ã¼ã #ã«ã¼ããã¼ã¯ #åå²ç¹è­°è«';
 var sb=null,voteCounts={},myVotedId=null,selectedId=null;
 var allComments=[],myLikes=new Set(),currentTab='all';
 var userId=null,xUser=null,playerRatings={},myPlayerRatings={};
 var currentDate='';
 
-// 日付ユーツィリツィ
+// æ¥ä»ã¦ã¼ãã£ãªãã£
 function todayStr(){var d=new Date();return d.getFullYear()+'-'+(String(d.getMonth()+1).padStart(2,'0'))+'-'+(String(d.getDate()).padStart(2,'0'));}
-function dateLabel(str){var p=str.split('-');return p[0]+'年'+parseInt(p[1])+'月'+parseInt(p[2])+'日';}
+function dateLabel(str){var p=str.split('-');return p[0]+'å¹´'+parseInt(p[1])+'æ'+parseInt(p[2])+'æ¥';}
 function addDays(str,n){var d=new Date(str);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
 
 function goDate(n){
@@ -232,22 +232,22 @@ function goDate(n){
 async function loadGame(date){
   currentDate=date;
   var today=todayStr();
-  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (今日)':'');
+  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (ä»æ¥)':'');
   document.getElementById('btn-next').disabled=(date>=today);
   document.getElementById('main-content').innerHTML='<div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>';
   
-  // JSONファイルを取得
+  // JSONãã¡ã¤ã«ãåå¾
   var url='https://raw.githubusercontent.com/norimichitakesue2/carp-talk/main/games/'+date+'.json?t='+Date.now();
   var r=await fetch(url);
   
   if(!r.ok){
-    // 試合なし
+    // è©¦åãªã
     document.getElementById('main-content').innerHTML=
       '<div class="no-game">'+
-      '<div class="no-game-icon">⚾</div>'+
-      '<div class="no-game-title">本日は試合がありません</div>'+
-      '<div class="no-game-sub">'+dateLabel(date)+'はオフ日またはデータ未登録です</div>'+
-      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">← 前日の試合を見る</a>'+
+      '<div class="no-game-icon">â¾</div>'+
+      '<div class="no-game-title">æ¬æ¥ã¯è©¦åãããã¾ãã</div>'+
+      '<div class="no-game-sub">'+dateLabel(date)+'ã¯ãªãæ¥ã¾ãã¯ãã¼ã¿æªç»é²ã§ã</div>'+
+      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">â åæ¥ã®è©¦åãè¦ã</a>'+
       '</div>';
     return;
   }
@@ -258,7 +258,7 @@ async function loadGame(date){
   MOMENTS=gameData.moments||[];
   PLAYERS=gameData.players||[];
   
-  // リセット
+  // ãªã»ãã
   voteCounts={};myVotedId=null;selectedId=null;allComments=[];myLikes=new Set();currentTab='all';playerRatings={};myPlayerRatings={};
   
   renderMainContent(gameData);
@@ -266,12 +266,12 @@ async function loadGame(date){
 }
 
 function renderMainContent(g){
-  var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
-  var awayColor=g.away_team==='広島'?'var(--carp)':'#f5d000';
-  var homeClass=g.home_team==='広島'?'carp':'away';
-  var awayClass=g.away_team==='広島'?'carp':'away';
+  var homeColor=g.home_team==='åºå³¶'?'var(--carp)':'#f5d000';
+  var awayColor=g.away_team==='åºå³¶'?'var(--carp)':'#f5d000';
+  var homeClass=g.home_team==='åºå³¶'?'carp':'away';
+  var awayClass=g.away_team==='åºå³¶'?'carp':'away';
 
-  // イニング表
+  // ã¤ãã³ã°è¡¨
   var inningHtml='';
   if(g.innings&&g.innings.hansin){
     var hi=g.innings.hansin,ri=g.innings.hiroshima;
@@ -282,89 +282,89 @@ function renderMainContent(g){
       hCells+='<td class="'+(hv>0?'scoring':'zero')+'">'+hv+'</td>';
       rCells+='<td class="'+(rv>0?'scoring':'zero')+'">'+rv+'</td>';
     }
-    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
+    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">è¨</th><th>å®</th><th>å¤±</th></tr></thead><tbody>'+
       '<tr><td class="team-label" style="color:#f5d000">'+g.away_team+'</td>'+hCells+'<td class="score-col" style="color:#f5d000">'+g.away_score+'</td><td>'+(g.innings.hansin_hits||'-')+'</td><td>'+(g.innings.hansin_errors||'-')+'</td></tr>'+
       '<tr><td class="team-label" style="color:var(--carp)">'+g.home_team+'</td>'+rCells+'<td class="score-col" style="color:var(--carp)">'+g.home_score+'</td><td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>'+
       '</tbody></table></div>';
   }
 
-  // 継投
+  // ç¶æ
   var pitcherHtml='';
   if(g.pitchers&&g.pitchers.length){
     var chips='';
     g.pitchers.forEach(function(p){
-      var teamColor=p.team==='広島'?'var(--carp)':'#f5d000';
-      var bc=p.team==='広島'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
-      var resultBadge=p.result==='win'?'<span class="s-win">勝</span>':p.result==='loss'?'<span class="s-loss">敗</span>':p.era?'<span class="s-good">防'+p.era+'</span>':'';
+      var teamColor=p.team==='åºå³¶'?'var(--carp)':'#f5d000';
+      var bc=p.team==='åºå³¶'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
+      var resultBadge=p.result==='win'?'<span class="s-win">å</span>':p.result==='loss'?'<span class="s-loss">æ</span>':p.era?'<span class="s-good">é²'+p.era+'</span>':'';
       chips+='<div class="pitcher-chip" style="border-color:'+bc+'"><span class="role" style="color:'+teamColor+'">'+p.team+p.role+'</span><span>'+p.name+'</span>'+resultBadge+'</div>';
     });
-    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
+    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">ç¶æï¼</span>'+chips+'</div>';
   }
 
-  var resultLabel=g.result_label?'<span class="badge badge-final">FINAL・'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
-  var hiroshimaWon=g.home_team==='広島'?g.home_score>g.away_score:g.away_score>g.home_score;
+  var resultLabel=g.result_label?'<span class="badge badge-final">FINALã»'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
+  var hiroshimaWon=g.home_team==='åºå³¶'?g.home_score>g.away_score:g.away_score>g.home_score;
 
   document.getElementById('main-content').innerHTML=
     '<div class="hero">'+
-    '<div class="hero-eyebrow">⚾ '+GAME.date+'..('+g.venue+'）</div>'+
-    '<div class="hero-title">今日は試合、分岐点はどこだった？</div>'+
-    '<div class="hero-desc">試合の流れを変えたと思う場面を選んで投票しよう。みんなの目線が集まると、新しい発見がある。</div>'+
+    '<div class="hero-eyebrow">â¾ '+GAME.date+'..('+g.venue+'ï¼</div>'+
+    '<div class="hero-title">ä»æ¥ã¯è©¦åãåå²ç¹ã¯ã©ãã ã£ãï¼</div>'+
+    '<div class="hero-desc">è©¦åã®æµããå¤ããã¨æãå ´é¢ãé¸ãã§æç¥¨ããããã¿ããªã®ç®ç·ãéã¾ãã¨ãæ°ããçºè¦ãããã</div>'+
     '<div class="scoreboard"><div><div class="team-name '+homeClass+'">'+g.home_team+'</div><div class="team-score">'+g.home_score+'</div></div>'+
-    '<div class="score-sep">—</div>'+
+    '<div class="score-sep">â</div>'+
     '<div><div class="team-name '+awayClass+'">'+g.away_team+'</div><div class="team-score">'+g.away_score+'</div></div></div>'+
-    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">広島 勝利</span>':'')+'</div>'+
+    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">åºå³¶ åå©</span>':'')+'</div>'+
     inningHtml+pitcherHtml+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">分岐点を選ぶ</div>'+
-    '<div class="section-desc">この試合の流れを決めたど思う場面はどこ？タップして投票しよう。</div>'+
+    '<div class="section-label">åå²ç¹ãé¸ã¶</div>'+
+    '<div class="section-desc">ãã®è©¦åã®æµããæ±ºããã©æãå ´é¢ã¯ã©ãï¼ã¿ãããã¦æç¥¨ãããã</div>'+
     '<div class="legend">'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>得点シーン</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>投手好投</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>本塁打</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ピンチ脱出</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>å¾ç¹ã·ã¼ã³</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>ææå¥½æ</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>æ¬å¡æ</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ãã³ãè±åº</div>'+
     '</div>'+
-    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>投票がリアルタイムで更新されています</div>'+
+    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>æç¥¨ããªã¢ã«ã¿ã¤ã ã§æ´æ°ããã¦ãã¾ã</div>'+
     '<div class="timeline"><div class="timeline-rail"></div><div id="moments-list"><div class="loading-line"><div class="loading-line-inner"></div></div></div></div>'+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">投票</div>'+
-    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">☝️</div>上の分岐点から選んでください</div>'+
+    '<div class="section-label">æç¥¨</div>'+
+    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">âï¸</div>ä¸ã®åå²ç¹ããé¸ãã§ãã ãã</div>'+
     '<div id="vote-form" style="display:none">'+
     '<div class="selected-tag" id="selected-tag"></div>'+
-    '<textarea class="reason-input" id="reason-input" placeholder="なぜここか分岐点だと思いましたか？（任意）" rows="3"></textarea>'+
-    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">この場面に投票する</button>'+
+    '<textarea class="reason-input" id="reason-input" placeholder="ãªããããåå²ç¹ã ã¨æãã¾ãããï¼ï¼ä»»æï¼" rows="3"></textarea>'+
+    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">ãã®å ´é¢ã«æç¥¨ãã</button>'+
     '</div>'+
     '<div id="voted-done" style="display:none">'+
-    '<div class="voted-tag" id="voted-tag">✓ 投票しました</div>'+
-    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>投票結果をXにポスト</button>'+
+    '<div class="voted-tag" id="voted-tag">â æç¥¨ãã¾ãã</div>'+
+    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>æç¥¨çµæãXã«ãã¹ã</button>'+
     '<div id="vote-share-preview" style="display:none"></div>'+
     '</div></div>'+
 
     '<div class="section">'+
-    '<div class="section-label">出場選手への評価</div>'+
-    '<div class="section-desc">今日の選手たちへ一票を。評価数に応じてアイコンが大きくなります。</div>'+
-    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> 読み込み中...</div></div>'+
+    '<div class="section-label">åºå ´é¸æã¸ã®è©ä¾¡</div>'+
+    '<div class="section-desc">ä»æ¥ã®é¸æãã¡ã¸ä¸ç¥¨ããè©ä¾¡æ°ã«å¿ãã¦ã¢ã¤ã³ã³ãå¤§ãããªãã¾ãã</div>'+
+    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> èª­ã¿è¾¼ã¿ä¸­...</div></div>'+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">みんなのコメント</div>'+
+    '<div class="section-label">ã¿ããªã®ã³ã¡ã³ã</div>'+
     '<div class="tabs">'+
-    '<div class="tab active" onclick="setTab(\'all\',this)">すべて</div>'+
-    '<div class="tab" onclick="setTab(\'hot\',this)">盛り上がり順</div>'+
-    '<div class="tab" onclick="setTab(\'ai\',this)">AI解説</div>'+
+    '<div class="tab active" onclick="setTab(\'all\',this)">ãã¹ã¦</div>'+
+    '<div class="tab" onclick="setTab(\'hot\',this)">çãä¸ããé </div>'+
+    '<div class="tab" onclick="setTab(\'ai\',this)">AIè§£èª¬</div>'+
     '</div>'+
     '<div id="comments-list"></div>'+
     '<div id="ai-panel" style="display:none"></div>'+
     '<div class="new-comment-area" id="comment-input-row">'+
-    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>としてポスト</div>'+
-    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="コメントを入力..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">送信</button></div>'+
+    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>ã¨ãã¦ãã¹ã</div>'+
+    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="ã³ã¡ã³ããå¥å..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">éä¿¡</button></div>'+
     '</div></div>';
 }
 
-// ===== イベント委譲 =====
+// ===== ã¤ãã³ãå§è­² =====
 document.addEventListener('click',function(e){
   var mid=e.target.closest('[data-mid]');
   if(mid&&!e.target.closest('[data-share]')){selectMoment(parseInt(mid.dataset.mid));}
@@ -381,30 +381,30 @@ document.addEventListener('click',function(e){
 // ===== UTILS =====
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hashStr(s){var h=0;for(var i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
-function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return Math.floor(diff/60)+'分前';if(diff<86400)return Math.floor(diff/3600)+'時間前';return (d.getMonth()+1)+'/'+d.getDate();}
+function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'ãã£ãä»';if(diff<3600)return Math.floor(diff/60)+'åå';if(diff<86400)return Math.floor(diff/3600)+'æéå';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 function xSVG(sz,fill){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+(fill||'currentColor')+'"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
 function openTweet(text){var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);var w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.click();}}
-function getDisplayName(){if(xUser)return xUser.name;var adj=['熱血','鋭眼','渋い','猛鯉','快速','剛腕','強肩','俊足'];var nou=['ファン','観客','応援団','マニア','通','ウォッチャー','記者'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
+function getDisplayName(){if(xUser)return xUser.name;var adj=['ç±è¡','é­ç¼','æ¸ã','çé¯','å¿«é','åè','å¼·è©','ä¿è¶³'];var nou=['ãã¡ã³','è¦³å®¢','å¿æ´å£','ããã¢','é','ã¦ã©ããã£ã¼','è¨è'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
 function totalVotes(){return Object.values(voteCounts).reduce(function(s,v){return s+v;},0);}
 
-// ===== X連携 =====
+// ===== Xé£æº =====
 function handleXConnect(){
-  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('X連携を解除しました');return;}
-  var name=window.prompt('Xのユーザー名（@なし）を入力してください');
+  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('Xé£æºãè§£é¤ãã¾ãã');return;}
+  var name=window.prompt('Xã®ã¦ã¼ã¶ã¼åï¼@ãªãï¼ãå¥åãã¦ãã ãã');
   if(!name||!name.trim())return;
   xUser={name:name.trim(),screen_name:name.trim()};
   localStorage.setItem('x_user',JSON.stringify(xUser));
   renderXBtn();
   document.getElementById('x-name-row').style.display='flex';
   document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;
-  showToast('@'+xUser.screen_name+' として連携しました');
+  showToast('@'+xUser.screen_name+' ã¨ãã¦é£æºãã¾ãã');
 }
 function renderXBtn(){
   var btn=document.getElementById('x-btn'),label=document.getElementById('x-btn-label');
   if(!btn)return;
   if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}
-  else{btn.classList.remove('x-connected');label.textContent='X連携';}
+  else{btn.classList.remove('x-connected');label.textContent='Xé£æº';}
 }
 
 // ===== MOMENTS =====
@@ -419,8 +419,8 @@ function renderMoments(){
     html+='<span class="moment-type-badge '+TYPE_BADGE[m.type]+'">'+TYPE_LABEL[m.type]+'</span></div>';
     html+='<div class="moment-desc">'+m.desc+'</div><div class="moment-sub">'+m.sub+'</div>';
     html+='<div class="moment-footer"><div class="moment-bar-row"><div class="moment-bar-wrap"><div class="moment-bar '+BAR_CLS[m.type]+'" style="width:'+pct+'%"></div></div>';
-    html+='<span class="moment-pct">'+cnt+'票 '+pct+'%</span></div>';
-    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' シェア</button></div>';
+    html+='<span class="moment-pct">'+cnt+'ç¥¨ '+pct+'%</span></div>';
+    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' ã·ã§ã¢</button></div>';
     html+='</div></div>';
   });
   if(document.getElementById('moments-list'))document.getElementById('moments-list').innerHTML=html;
@@ -437,30 +437,30 @@ function selectMoment(id){
 async function submitVote(){
   if(!selectedId||myVotedId)return;
   var btn=document.getElementById('vote-btn');
-  btn.disabled=true;btn.textContent='送信中...';
+  btn.disabled=true;btn.textContent='éä¿¡ä¸­...';
   var reason=document.getElementById('reason-input').value.trim();
   var r=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});
-  if(r.error){showToast(r.error.code==='23505'?'すでに投票済みです':'エラーが発生しました');btn.disabled=false;btn.textContent='この場面に投票する';return;}
+  if(r.error){showToast(r.error.code==='23505'?'ãã§ã«æç¥¨æ¸ã¿ã§ã':'ã¨ã©ã¼ãçºçãã¾ãã');btn.disabled=false;btn.textContent='ãã®å ´é¢ã«æç¥¨ãã';return;}
   myVotedId=selectedId;selectedId=null;
   if(reason)await postComment(myVotedId,reason);
-  await loadVoteCounts();showVotedState(myVotedId);showToast('投票しました！');
+  await loadVoteCounts();showVotedState(myVotedId);showToast('æç¥¨ãã¾ããï¼');
 }
 function showVotedState(momentId){
   var m=MOMENTS.find(function(x){return x.id===momentId;});
   document.getElementById('vote-form').style.display='none';
   document.getElementById('vote-prompt').style.display='none';
   document.getElementById('voted-done').style.display='block';
-  document.getElementById('voted-tag').innerHTML='✓ <strong>'+m.inning+' '+m.desc+'</strong> に投票しました';
+  document.getElementById('voted-tag').innerHTML='â <strong>'+m.inning+' '+m.desc+'</strong> ã«æç¥¨ãã¾ãã';
 }
 function shareVote(){
   var m=MOMENTS.find(function(x){return x.id===myVotedId;});if(!m)return;
   var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')、私の分岐点\n「'+m.inning+' '+m.desc+'」\n'+pct+'%のファンも同じ！\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')ãç§ã®åå²ç¹\nã'+m.inning+' '+m.desc+'ã\n'+pct+'%ã®ãã¡ã³ãåãï¼\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 function shareMoment(id){
   var m=MOMENTS.find(function(x){return x.id===id;});
   var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet('【分岐点】'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\n「'+m.inning+' '+m.desc+'」\nこの場面に'+pct+'%のファンが注目！\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet('ãåå²ç¹ã'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\nã'+m.inning+' '+m.desc+'ã\nãã®å ´é¢ã«'+pct+'%ã®ãã¡ã³ãæ³¨ç®ï¼\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 
 // ===== PLAYERS =====
@@ -492,15 +492,15 @@ function renderPlayers(){
     html+='<div class="player-card"><div class="player-icon carp-player" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*0.35)+'px">'+initials+'</div>';
     html+='<div class="player-name">'+p.name+'</div><div class="player-pos">'+p.pos+'</div>';
     html+='<div class="rating-btns">'+btns+'</div>';
-    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">みだ評価なし</span>')+'</div></div>';
+    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">ã¿ã è©ä¾¡ãªã</span>')+'</div></div>';
   });
   document.getElementById('players-grid').innerHTML=html;
 }
 async function ratePlayer(playerName,rating){
   var prev=myPlayerRatings[playerName];
   if(prev===rating){await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);delete myPlayerRatings[playerName];}
-  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('エラー');return;}myPlayerRatings[playerName]=rating;}
-  await loadPlayerRatings();showToast(prev===rating?'評価を取り消しました':RATING_LABEL[rating]+'を送りました！');
+  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('ã¨ã©ã¼');return;}myPlayerRatings[playerName]=rating;}
+  await loadPlayerRatings();showToast(prev===rating?'è©ä¾¡ãåãæ¶ãã¾ãã':RATING_LABEL[rating]+'ãéãã¾ããï¼');
 }
 
 // ===== COMMENTS =====
@@ -512,7 +512,7 @@ async function postComment(momentId,body){await sb.from('comments').insert({game
 async function sendComment(){
   var inp=document.getElementById('comment-input'),btn=document.getElementById('send-btn');
   var txt=inp.value.trim();if(!txt)return;
-  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('コメントしました！');
+  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('ã³ã¡ã³ããã¾ããï¼');
 }
 async function toggleLike(commentId){
   var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
@@ -524,7 +524,7 @@ function renderComments(){
   if(!document.getElementById('comments-list')||currentTab==='ai')return;
   var list=allComments.slice();
   if(currentTab==='hot')list.sort(function(a,b){return b.likes-a.likes;});
-  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう。</div>';return;}
+  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">ã¾ã ã³ã¡ã³ããããã¾ãããæåã®ã³ã¡ã³ããæ¸ãã¦ã¿ã¾ãããã</div>';return;}
   var html='';
   list.forEach(function(c){
     var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
@@ -534,8 +534,8 @@ function renderComments(){
     html+='<div class="comment"><div class="comment-header"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name).slice(0,1)+'</div>';
     html+='<span class="comment-name">'+esc(c.display_name)+'</span>'+tag+'</div>';
     html+='<div class="comment-body">'+esc(c.body)+'</div><div class="comment-time">'+formatTime(c.created_at)+'</div>';
-    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">♡ '+(c.likes||0)+'</button>';
-    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ポスト</button></div></div>';
+    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">â¡ '+(c.likes||0)+'</button>';
+    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ãã¹ã</button></div></div>';
   });
   document.getElementById('comments-list').innerHTML=html;
 }
@@ -552,20 +552,20 @@ function setTab(tab,el){
 function renderAI(){
   var panel=document.getElementById('ai-panel');if(!panel)return;
   var tot=totalVotes();
-  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>';return;}
+  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">ã¾ã æç¥¨ãããã¾ãããæç¥¨ãéã¾ãã¨AIåæãè¡¨ç¤ºããã¾ãã</div>';return;}
   var top=MOMENTS.slice().sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
   var topP=MOMENTS.filter(function(m){return m.type==='pitcher';}).sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
   var pct=Math.round((voteCounts[top.id]||0)/tot*100);
   var mvp=PLAYERS.map(function(p){return{p:p,v:(playerRatings[p.name]&&playerRatings[p.name].mvp)||0};}).sort(function(a,b){return b.v-a.v;})[0];
-  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') 分岐点「'+top.inning+' '+top.desc+'」'+pct+'% ファンMVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
-  panel.innerHTML='<div class="ai-box"><strong>AI分析('+tot+'票)：</strong>'+GAME.home+'の試合、最多注目分岐点は<strong>「'+top.inning+' '+top.desc+'」('+pct+'%)</strong>。'+(topP?'<br><br>投手好投：<strong>「'+topP.inning+' '+topP.desc+'」</strong>。':'')+
-  (mvp?'<br><br>選手評価MVP：<strong>'+mvp.p.name+'</strong>。':'')+
-  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AI分析をポスト</button></div>';
+  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') åå²ç¹ã'+top.inning+' '+top.desc+'ã'+pct+'% ãã¡ã³MVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
+  panel.innerHTML='<div class="ai-box"><strong>AIåæ('+tot+'ç¥¨)ï¼</strong>'+GAME.home+'ã®è©¦åãæå¤æ³¨ç®åå²ç¹ã¯<strong>ã'+top.inning+' '+top.desc+'ã('+pct+'%)</strong>ã'+(topP?'<br><br>ææå¥½æï¼<strong>ã'+topP.inning+' '+topP.desc+'ã</strong>ã':'')+
+  (mvp?'<br><br>é¸æè©ä¾¡MVPï¼<strong>'+mvp.p.name+'</strong>ã':'')+
+  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AIåæããã¹ã</button></div>';
 }
 function shareComment(commentId){
   var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
   var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')カープトーク\n'+(m?'【'+m.inning+'】':'')+' 「'+c.body+'」\n— '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')ã«ã¼ããã¼ã¯\n'+(m?'ã'+m.inning+'ã':'')+' ã'+c.body+'ã\nâ '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 function subscribeRealtime(){
   sb.channel('votes-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},function(){loadVoteCounts();flashLive();}).subscribe();
