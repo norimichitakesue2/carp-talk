@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>æ¬æ¥ã®ã«ã¼ããã¼ã¯</title>
+<title>Ã¦ÂÂ¬Ã¦ÂÂ¥Ã£ÂÂ®Ã£ÂÂ«Ã£ÂÂ¼Ã£ÂÂÃ£ÂÂÃ£ÂÂ¼Ã£ÂÂ¯</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <script>
 (function(){
@@ -33,14 +33,14 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .container{max-width:740px;margin:0 auto;padding:0 1rem 5rem}
 
-/* æ¥ä»ãã */
+/* Ã¦ÂÂ¥Ã¤Â»ÂÃ£ÂÂÃ£ÂÂ */
 .date-nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;margin:0.5rem 0}
 .date-nav-btn{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .date-nav-btn:hover{color:var(--text)}
 .date-nav-btn:disabled{opacity:0.3;cursor:default}
 .date-nav-label{font-size:14px;font-weight:500;color:var(--text)}
 
-/* ãªãæ¥ */
+/* Ã£ÂÂªÃ£ÂÂÃ¦ÂÂ¥ */
 .no-game{text-align:center;padding:4rem 2rem}
 .no-game-icon{font-size:48px;margin-bottom:1rem}
 .no-game-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--muted);margin-bottom:0.5rem}
@@ -175,24 +175,24 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 </head>
 <body>
 <header>
-  <div><div class="site-title">æ¬æ¥ã®ã«ã¼ããã¼ã¯</div><div class="site-sub">åºå³¶æ±æ´ã«ã¼ã ãã¡ã³è­°è«</div></div>
+  <div><div class="site-title">Ã¦ÂÂ¬Ã¦ÂÂ¥Ã£ÂÂ®Ã£ÂÂ«Ã£ÂÂ¼Ã£ÂÂÃ£ÂÂÃ£ÂÂ¼Ã£ÂÂ¯</div><div class="site-sub">Ã¥ÂºÂÃ¥Â³Â¶Ã¦ÂÂ±Ã¦Â´ÂÃ£ÂÂ«Ã£ÂÂ¼Ã£ÂÂ Ã£ÂÂÃ£ÂÂ¡Ã£ÂÂ³Ã¨Â­Â°Ã¨Â«Â</div></div>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="online-dot"></div>
     <button class="x-connect-btn" id="x-btn" onclick="handleXConnect()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      <span id="x-btn-label">Xé£æº</span>
+      <span id="x-btn-label">XÃ©ÂÂ£Ã¦ÂÂº</span>
     </button>
   </div>
 </header>
 <div class="container">
-  <!-- æ¥ä»ãã -->
+  <!-- Ã¦ÂÂ¥Ã¤Â»ÂÃ£ÂÂÃ£ÂÂ -->
   <div class="date-nav">
-    <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">â åæ¥</button>
-    <span class="date-nav-label" id="date-nav-label">èª­ã¿è¾¼ã¿ä¸­...</span>
-    <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">ç¿æ¥ â</button>
+    <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">Ã¢ÂÂ Ã¥ÂÂÃ¦ÂÂ¥</button>
+    <span class="date-nav-label" id="date-nav-label">Ã¨ÂªÂ­Ã£ÂÂ¿Ã¨Â¾Â¼Ã£ÂÂ¿Ã¤Â¸Â­...</span>
+    <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">Ã§Â¿ÂÃ¦ÂÂ¥ Ã¢ÂÂ</button>
   </div>
 
-  <!-- ã³ã³ãã³ãï¼åçã«å¥ãæ¿ãï¼ -->
+  <!-- Ã£ÂÂ³Ã£ÂÂ³Ã£ÂÂÃ£ÂÂ³Ã£ÂÂÃ¯Â¼ÂÃ¥ÂÂÃ§ÂÂÃ£ÂÂ«Ã¥ÂÂ¥Ã£ÂÂÃ¦ÂÂ¿Ã£ÂÂÃ¯Â¼Â -->
   <div id="main-content">
     <div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>
   </div>
@@ -204,23 +204,23 @@ var GAME_ID='';
 var GAME={};
 var MOMENTS=[];
 var PLAYERS=[];
-var TYPE_LABEL={score:'å¾ç¹ã·ã¼ã³',pitcher:'ææå¥½æ',crisis:'ãã³ãè±åº',hr:'æ¬å¡æ'};
+var TYPE_LABEL={score:'Ã¥Â¾ÂÃ§ÂÂ¹Ã£ÂÂ·Ã£ÂÂ¼Ã£ÂÂ³',pitcher:'Ã¦ÂÂÃ¦ÂÂÃ¥Â¥Â½Ã¦ÂÂ',crisis:'Ã£ÂÂÃ£ÂÂ³Ã£ÂÂÃ¨ÂÂ±Ã¥ÂÂº',hr:'Ã¦ÂÂ¬Ã¥Â¡ÂÃ¦ÂÂ'};
 var TYPE_BADGE={score:'type-score-badge',pitcher:'type-pitcher-badge',crisis:'type-crisis-badge',hr:'type-hr-badge'};
 var BAR_CLS={score:'bar-score',pitcher:'bar-pitcher',crisis:'bar-crisis',hr:'bar-hr'};
 var TAG_CLS={score:'tag-score',pitcher:'tag-pitcher',crisis:'tag-crisis',hr:'tag-hr'};
-var RATING_LABEL={mvp:'ð ä»æ¥ã®MVP',great:'ð é å¼µã£ã',ganbatte:'ðª æ¬¡ãé å¼µã',nigun:'ð¦ 2è»ã§åºç´ãï¼'};
+var RATING_LABEL={mvp:'Ã°ÂÂÂ Ã¤Â»ÂÃ¦ÂÂ¥Ã£ÂÂ®MVP',great:'Ã°ÂÂÂ Ã©Â ÂÃ¥Â¼ÂµÃ£ÂÂ£Ã£ÂÂ',ganbatte:'Ã°ÂÂÂª Ã¦Â¬Â¡Ã£ÂÂÃ©Â ÂÃ¥Â¼ÂµÃ£ÂÂ',nigun:'Ã°ÂÂÂ¦ 2Ã¨Â»ÂÃ£ÂÂ§Ã¥ÂÂºÃ§ÂÂ´Ã£ÂÂÃ¯Â¼Â'};
 var RATING_ACTIVE={mvp:'active-mvp',great:'active-great',ganbatte:'active-ganbatte',nigun:'active-nigun'};
 var AVATAR_PAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
 var APP_URL='https://carp-talk.vercel.app';
-var HASHTAGS='#åºå³¶ã«ã¼ã #ã«ã¼ããã¼ã¯ #åå²ç¹è­°è«';
+var HASHTAGS='#Ã¥ÂºÂÃ¥Â³Â¶Ã£ÂÂ«Ã£ÂÂ¼Ã£ÂÂ #Ã£ÂÂ«Ã£ÂÂ¼Ã£ÂÂÃ£ÂÂÃ£ÂÂ¼Ã£ÂÂ¯ #Ã¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã¨Â­Â°Ã¨Â«Â';
 var sb=null,voteCounts={},myVotedId=null,selectedId=null;
 var allComments=[],myLikes=new Set(),currentTab='all';
 var userId=null,xUser=null,playerRatings={},myPlayerRatings={};
 var currentDate='';
 
-// æ¥ä»ã¦ã¼ãã£ãªãã£
+// Ã¦ÂÂ¥Ã¤Â»ÂÃ£ÂÂ¦Ã£ÂÂ¼Ã£ÂÂÃ£ÂÂ£Ã£ÂÂªÃ£ÂÂÃ£ÂÂ£
 function todayStr(){var d=new Date();return d.getFullYear()+'-'+(String(d.getMonth()+1).padStart(2,'0'))+'-'+(String(d.getDate()).padStart(2,'0'));}
-function dateLabel(str){var p=str.split('-');return p[0]+'å¹´'+parseInt(p[1])+'æ'+parseInt(p[2])+'æ¥';}
+function dateLabel(str){var p=str.split('-');return p[0]+'Ã¥Â¹Â´'+parseInt(p[1])+'Ã¦ÂÂ'+parseInt(p[2])+'Ã¦ÂÂ¥';}
 function addDays(str,n){var d=new Date(str);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
 
 function goDate(n){
@@ -232,22 +232,22 @@ function goDate(n){
 async function loadGame(date){
   currentDate=date;
   var today=todayStr();
-  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (ä»æ¥)':'');
+  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (Ã¤Â»ÂÃ¦ÂÂ¥)':'');
   document.getElementById('btn-next').disabled=(date>=today);
   document.getElementById('main-content').innerHTML='<div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>';
   
-  // JSONãã¡ã¤ã«ãåå¾
+  // JSONÃ£ÂÂÃ£ÂÂ¡Ã£ÂÂ¤Ã£ÂÂ«Ã£ÂÂÃ¥ÂÂÃ¥Â¾Â
   var url='https://raw.githubusercontent.com/norimichitakesue2/carp-talk/main/games/'+date+'.json?t='+Date.now();
   var r=await fetch(url);
   
   if(!r.ok){
-    // è©¦åãªã
+    // Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂªÃ£ÂÂ
     document.getElementById('main-content').innerHTML=
       '<div class="no-game">'+
-      '<div class="no-game-icon">â¾</div>'+
-      '<div class="no-game-title">æ¬æ¥ã¯è©¦åãããã¾ãã</div>'+
-      '<div class="no-game-sub">'+dateLabel(date)+'ã¯ãªãæ¥ã¾ãã¯ãã¼ã¿æªç»é²ã§ã</div>'+
-      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">â åæ¥ã®è©¦åãè¦ã</a>'+
+      '<div class="no-game-icon">Ã¢ÂÂ¾</div>'+
+      '<div class="no-game-title">Ã¦ÂÂ¬Ã¦ÂÂ¥Ã£ÂÂ¯Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ</div>'+
+      '<div class="no-game-sub">'+dateLabel(date)+'Ã£ÂÂ¯Ã£ÂÂªÃ£ÂÂÃ¦ÂÂ¥Ã£ÂÂ¾Ã£ÂÂÃ£ÂÂ¯Ã£ÂÂÃ£ÂÂ¼Ã£ÂÂ¿Ã¦ÂÂªÃ§ÂÂ»Ã©ÂÂ²Ã£ÂÂ§Ã£ÂÂ</div>'+
+      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">Ã¢ÂÂ Ã¥ÂÂÃ¦ÂÂ¥Ã£ÂÂ®Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂÃ¨Â¦ÂÃ£ÂÂ</a>'+
       '</div>';
     return;
   }
@@ -258,7 +258,7 @@ async function loadGame(date){
   MOMENTS=gameData.moments||[];
   PLAYERS=gameData.players||[];
   
-  // ãªã»ãã
+  // Ã£ÂÂªÃ£ÂÂ»Ã£ÂÂÃ£ÂÂ
   voteCounts={};myVotedId=null;selectedId=null;allComments=[];myLikes=new Set();currentTab='all';playerRatings={};myPlayerRatings={};
   
   renderMainContent(gameData);
@@ -266,12 +266,12 @@ async function loadGame(date){
 }
 
 function renderMainContent(g){
-  var homeColor=g.home_team==='åºå³¶'?'var(--carp)':'#f5d000';
-  var awayColor=g.away_team==='åºå³¶'?'var(--carp)':'#f5d000';
-  var homeClass=g.home_team==='åºå³¶'?'carp':'away';
-  var awayClass=g.away_team==='åºå³¶'?'carp':'away';
+  var homeColor=g.home_team==='Ã¥ÂºÂÃ¥Â³Â¶'?'var(--carp)':'#f5d000';
+  var awayColor=g.away_team==='Ã¥ÂºÂÃ¥Â³Â¶'?'var(--carp)':'#f5d000';
+  var homeClass=g.home_team==='Ã¥ÂºÂÃ¥Â³Â¶'?'carp':'away';
+  var awayClass=g.away_team==='Ã¥ÂºÂÃ¥Â³Â¶'?'carp':'away';
 
-  // ã¤ãã³ã°è¡¨
+  // Ã£ÂÂ¤Ã£ÂÂÃ£ÂÂ³Ã£ÂÂ°Ã¨Â¡Â¨
   var inningHtml='';
   if(g.innings&&g.innings.hansin){
     var hi=g.innings.hansin,ri=g.innings.hiroshima;
@@ -282,89 +282,89 @@ function renderMainContent(g){
       hCells+='<td class="'+(hv>0?'scoring':'zero')+'">'+hv+'</td>';
       rCells+='<td class="'+(rv>0?'scoring':'zero')+'">'+rv+'</td>';
     }
-    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">è¨</th><th>å®</th><th>å¤±</th></tr></thead><tbody>'+
+    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">Ã¨Â¨Â</th><th>Ã¥Â®Â</th><th>Ã¥Â¤Â±</th></tr></thead><tbody>'+
       '<tr><td class="team-label" style="color:#f5d000">'+g.away_team+'</td>'+hCells+'<td class="score-col" style="color:#f5d000">'+g.away_score+'</td><td>'+(g.innings.hansin_hits||'-')+'</td><td>'+(g.innings.hansin_errors||'-')+'</td></tr>'+
       '<tr><td class="team-label" style="color:var(--carp)">'+g.home_team+'</td>'+rCells+'<td class="score-col" style="color:var(--carp)">'+g.home_score+'</td><td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>'+
       '</tbody></table></div>';
   }
 
-  // ç¶æ
+  // Ã§Â¶ÂÃ¦ÂÂ
   var pitcherHtml='';
   if(g.pitchers&&g.pitchers.length){
     var chips='';
     g.pitchers.forEach(function(p){
-      var teamColor=p.team==='åºå³¶'?'var(--carp)':'#f5d000';
-      var bc=p.team==='åºå³¶'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
-      var resultBadge=p.result==='win'?'<span class="s-win">å</span>':p.result==='loss'?'<span class="s-loss">æ</span>':p.era?'<span class="s-good">é²'+p.era+'</span>':'';
+      var teamColor=p.team==='Ã¥ÂºÂÃ¥Â³Â¶'?'var(--carp)':'#f5d000';
+      var bc=p.team==='Ã¥ÂºÂÃ¥Â³Â¶'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
+      var resultBadge=p.result==='win'?'<span class="s-win">Ã¥ÂÂ</span>':p.result==='loss'?'<span class="s-loss">Ã¦ÂÂ</span>':p.era?'<span class="s-good">Ã©ÂÂ²'+p.era+'</span>':'';
       chips+='<div class="pitcher-chip" style="border-color:'+bc+'"><span class="role" style="color:'+teamColor+'">'+p.team+p.role+'</span><span>'+p.name+'</span>'+resultBadge+'</div>';
     });
-    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">ç¶æï¼</span>'+chips+'</div>';
+    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">Ã§Â¶ÂÃ¦ÂÂÃ¯Â¼Â</span>'+chips+'</div>';
   }
 
-  var resultLabel=g.result_label?'<span class="badge badge-final">FINALã»'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
-  var hiroshimaWon=g.home_team==='åºå³¶'?g.home_score>g.away_score:g.away_score>g.home_score;
+  var resultLabel=g.result_label?'<span class="badge badge-final">FINALÃ£ÂÂ»'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
+  var hiroshimaWon=g.home_team==='Ã¥ÂºÂÃ¥Â³Â¶'?g.home_score>g.away_score:g.away_score>g.home_score;
 
   document.getElementById('main-content').innerHTML=
     '<div class="hero">'+
-    '<div class="hero-eyebrow">â¾ '+GAME.date+'..('+g.venue+'ï¼</div>'+
-    '<div class="hero-title">ä»æ¥ã¯è©¦åãåå²ç¹ã¯ã©ãã ã£ãï¼</div>'+
-    '<div class="hero-desc">è©¦åã®æµããå¤ããã¨æãå ´é¢ãé¸ãã§æç¥¨ããããã¿ããªã®ç®ç·ãéã¾ãã¨ãæ°ããçºè¦ãããã</div>'+
+    '<div class="hero-eyebrow">Ã¢ÂÂ¾ '+GAME.date+'..('+g.venue+'Ã¯Â¼Â</div>'+
+    '<div class="hero-title">Ã¤Â»ÂÃ¦ÂÂ¥Ã£ÂÂ¯Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂÃ¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂ¯Ã£ÂÂ©Ã£ÂÂÃ£ÂÂ Ã£ÂÂ£Ã£ÂÂÃ¯Â¼Â</div>'+
+    '<div class="hero-desc">Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂ®Ã¦ÂµÂÃ£ÂÂÃ£ÂÂÃ¥Â¤ÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¨Ã¦ÂÂÃ£ÂÂÃ¥Â Â´Ã©ÂÂ¢Ã£ÂÂÃ©ÂÂ¸Ã£ÂÂÃ£ÂÂ§Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¿Ã£ÂÂÃ£ÂÂªÃ£ÂÂ®Ã§ÂÂ®Ã§Â·ÂÃ£ÂÂÃ©ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ¨Ã£ÂÂÃ¦ÂÂ°Ã£ÂÂÃ£ÂÂÃ§ÂÂºÃ¨Â¦ÂÃ£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ</div>'+
     '<div class="scoreboard"><div><div class="team-name '+homeClass+'">'+g.home_team+'</div><div class="team-score">'+g.home_score+'</div></div>'+
-    '<div class="score-sep">â</div>'+
+    '<div class="score-sep">Ã¢ÂÂ</div>'+
     '<div><div class="team-name '+awayClass+'">'+g.away_team+'</div><div class="team-score">'+g.away_score+'</div></div></div>'+
-    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">åºå³¶ åå©</span>':'')+'</div>'+
+    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">Ã¥ÂºÂÃ¥Â³Â¶ Ã¥ÂÂÃ¥ÂÂ©</span>':'')+'</div>'+
     inningHtml+pitcherHtml+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">åå²ç¹ãé¸ã¶</div>'+
-    '<div class="section-desc">ãã®è©¦åã®æµããæ±ºããã©æãå ´é¢ã¯ã©ãï¼ã¿ãããã¦æç¥¨ãããã</div>'+
+    '<div class="section-label">Ã¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂÃ©ÂÂ¸Ã£ÂÂ¶</div>'+
+    '<div class="section-desc">Ã£ÂÂÃ£ÂÂ®Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂ®Ã¦ÂµÂÃ£ÂÂÃ£ÂÂÃ¦Â±ÂºÃ£ÂÂÃ£ÂÂÃ£ÂÂ©Ã¦ÂÂÃ£ÂÂÃ¥Â Â´Ã©ÂÂ¢Ã£ÂÂ¯Ã£ÂÂ©Ã£ÂÂÃ¯Â¼ÂÃ£ÂÂ¿Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¦Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ</div>'+
     '<div class="legend">'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>å¾ç¹ã·ã¼ã³</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>ææå¥½æ</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>æ¬å¡æ</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ãã³ãè±åº</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Ã¥Â¾ÂÃ§ÂÂ¹Ã£ÂÂ·Ã£ÂÂ¼Ã£ÂÂ³</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Ã¦ÂÂÃ¦ÂÂÃ¥Â¥Â½Ã¦ÂÂ</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Ã¦ÂÂ¬Ã¥Â¡ÂÃ¦ÂÂ</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>Ã£ÂÂÃ£ÂÂ³Ã£ÂÂÃ¨ÂÂ±Ã¥ÂÂº</div>'+
     '</div>'+
-    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>æç¥¨ããªã¢ã«ã¿ã¤ã ã§æ´æ°ããã¦ãã¾ã</div>'+
+    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂªÃ£ÂÂ¢Ã£ÂÂ«Ã£ÂÂ¿Ã£ÂÂ¤Ã£ÂÂ Ã£ÂÂ§Ã¦ÂÂ´Ã¦ÂÂ°Ã£ÂÂÃ£ÂÂÃ£ÂÂ¦Ã£ÂÂÃ£ÂÂ¾Ã£ÂÂ</div>'+
     '<div class="timeline"><div class="timeline-rail"></div><div id="moments-list"><div class="loading-line"><div class="loading-line-inner"></div></div></div></div>'+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">æç¥¨</div>'+
-    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">âï¸</div>ä¸ã®åå²ç¹ããé¸ãã§ãã ãã</div>'+
+    '<div class="section-label">Ã¦ÂÂÃ§Â¥Â¨</div>'+
+    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">Ã¢ÂÂÃ¯Â¸Â</div>Ã¤Â¸ÂÃ£ÂÂ®Ã¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂÃ£ÂÂÃ©ÂÂ¸Ã£ÂÂÃ£ÂÂ§Ã£ÂÂÃ£ÂÂ Ã£ÂÂÃ£ÂÂ</div>'+
     '<div id="vote-form" style="display:none">'+
     '<div class="selected-tag" id="selected-tag"></div>'+
-    '<textarea class="reason-input" id="reason-input" placeholder="ãªããããåå²ç¹ã ã¨æãã¾ãããï¼ï¼ä»»æï¼" rows="3"></textarea>'+
-    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">ãã®å ´é¢ã«æç¥¨ãã</button>'+
+    '<textarea class="reason-input" id="reason-input" placeholder="Ã£ÂÂªÃ£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂÃ¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂ Ã£ÂÂ¨Ã¦ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ¯Â¼ÂÃ¯Â¼ÂÃ¤Â»Â»Ã¦ÂÂÃ¯Â¼Â" rows="3"></textarea>'+
+    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">Ã£ÂÂÃ£ÂÂ®Ã¥Â Â´Ã©ÂÂ¢Ã£ÂÂ«Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂ</button>'+
     '</div>'+
     '<div id="voted-done" style="display:none">'+
-    '<div class="voted-tag" id="voted-tag">â æç¥¨ãã¾ãã</div>'+
-    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>æç¥¨çµæãXã«ãã¹ã</button>'+
+    '<div class="voted-tag" id="voted-tag">Ã¢ÂÂ Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ</div>'+
+    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Ã¦ÂÂÃ§Â¥Â¨Ã§ÂµÂÃ¦ÂÂÃ£ÂÂXÃ£ÂÂ«Ã£ÂÂÃ£ÂÂ¹Ã£ÂÂ</button>'+
     '<div id="vote-share-preview" style="display:none"></div>'+
     '</div></div>'+
 
     '<div class="section">'+
-    '<div class="section-label">åºå ´é¸æã¸ã®è©ä¾¡</div>'+
-    '<div class="section-desc">ä»æ¥ã®é¸æãã¡ã¸ä¸ç¥¨ããè©ä¾¡æ°ã«å¿ãã¦ã¢ã¤ã³ã³ãå¤§ãããªãã¾ãã</div>'+
-    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> èª­ã¿è¾¼ã¿ä¸­...</div></div>'+
+    '<div class="section-label">Ã¥ÂÂºÃ¥Â Â´Ã©ÂÂ¸Ã¦ÂÂÃ£ÂÂ¸Ã£ÂÂ®Ã¨Â©ÂÃ¤Â¾Â¡</div>'+
+    '<div class="section-desc">Ã¤Â»ÂÃ¦ÂÂ¥Ã£ÂÂ®Ã©ÂÂ¸Ã¦ÂÂÃ£ÂÂÃ£ÂÂ¡Ã£ÂÂ¸Ã¤Â¸ÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂÃ¨Â©ÂÃ¤Â¾Â¡Ã¦ÂÂ°Ã£ÂÂ«Ã¥Â¿ÂÃ£ÂÂÃ£ÂÂ¦Ã£ÂÂ¢Ã£ÂÂ¤Ã£ÂÂ³Ã£ÂÂ³Ã£ÂÂÃ¥Â¤Â§Ã£ÂÂÃ£ÂÂÃ£ÂÂªÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ</div>'+
+    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> Ã¨ÂªÂ­Ã£ÂÂ¿Ã¨Â¾Â¼Ã£ÂÂ¿Ã¤Â¸Â­...</div></div>'+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">ã¿ããªã®ã³ã¡ã³ã</div>'+
+    '<div class="section-label">Ã£ÂÂ¿Ã£ÂÂÃ£ÂÂªÃ£ÂÂ®Ã£ÂÂ³Ã£ÂÂ¡Ã£ÂÂ³Ã£ÂÂ</div>'+
     '<div class="tabs">'+
-    '<div class="tab active" onclick="setTab(\'all\',this)">ãã¹ã¦</div>'+
-    '<div class="tab" onclick="setTab(\'hot\',this)">çãä¸ããé </div>'+
-    '<div class="tab" onclick="setTab(\'ai\',this)">AIè§£èª¬</div>'+
+    '<div class="tab active" onclick="setTab(\'all\',this)">Ã£ÂÂÃ£ÂÂ¹Ã£ÂÂ¦</div>'+
+    '<div class="tab" onclick="setTab(\'hot\',this)">Ã§ÂÂÃ£ÂÂÃ¤Â¸ÂÃ£ÂÂÃ£ÂÂÃ©Â Â</div>'+
+    '<div class="tab" onclick="setTab(\'ai\',this)">AIÃ¨Â§Â£Ã¨ÂªÂ¬</div>'+
     '</div>'+
     '<div id="comments-list"></div>'+
     '<div id="ai-panel" style="display:none"></div>'+
     '<div class="new-comment-area" id="comment-input-row">'+
-    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>ã¨ãã¦ãã¹ã</div>'+
-    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="ã³ã¡ã³ããå¥å..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">éä¿¡</button></div>'+
+    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>Ã£ÂÂ¨Ã£ÂÂÃ£ÂÂ¦Ã£ÂÂÃ£ÂÂ¹Ã£ÂÂ</div>'+
+    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="Ã£ÂÂ³Ã£ÂÂ¡Ã£ÂÂ³Ã£ÂÂÃ£ÂÂÃ¥ÂÂ¥Ã¥ÂÂ..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">Ã©ÂÂÃ¤Â¿Â¡</button></div>'+
     '</div></div>';
 }
 
-// ===== ã¤ãã³ãå§è­² =====
+// ===== Ã£ÂÂ¤Ã£ÂÂÃ£ÂÂ³Ã£ÂÂÃ¥Â§ÂÃ¨Â­Â² =====
 document.addEventListener('click',function(e){
   var mid=e.target.closest('[data-mid]');
   if(mid&&!e.target.closest('[data-share]')){selectMoment(parseInt(mid.dataset.mid));}
@@ -381,30 +381,30 @@ document.addEventListener('click',function(e){
 // ===== UTILS =====
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hashStr(s){var h=0;for(var i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
-function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'ãã£ãä»';if(diff<3600)return Math.floor(diff/60)+'åå';if(diff<86400)return Math.floor(diff/3600)+'æéå';return (d.getMonth()+1)+'/'+d.getDate();}
+function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'Ã£ÂÂÃ£ÂÂ£Ã£ÂÂÃ¤Â»Â';if(diff<3600)return Math.floor(diff/60)+'Ã¥ÂÂÃ¥ÂÂ';if(diff<86400)return Math.floor(diff/3600)+'Ã¦ÂÂÃ©ÂÂÃ¥ÂÂ';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 function xSVG(sz,fill){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+(fill||'currentColor')+'"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
 function openTweet(text){var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);var w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.click();}}
-function getDisplayName(){if(xUser)return xUser.name;var adj=['ç±è¡','é­ç¼','æ¸ã','çé¯','å¿«é','åè','å¼·è©','ä¿è¶³'];var nou=['ãã¡ã³','è¦³å®¢','å¿æ´å£','ããã¢','é','ã¦ã©ããã£ã¼','è¨è'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
+function getDisplayName(){if(xUser)return xUser.name;var adj=['Ã§ÂÂ±Ã¨Â¡Â','Ã©ÂÂ­Ã§ÂÂ¼','Ã¦Â¸ÂÃ£ÂÂ','Ã§ÂÂÃ©Â¯Â','Ã¥Â¿Â«Ã©ÂÂ','Ã¥ÂÂÃ¨ÂÂ','Ã¥Â¼Â·Ã¨ÂÂ©','Ã¤Â¿ÂÃ¨Â¶Â³'];var nou=['Ã£ÂÂÃ£ÂÂ¡Ã£ÂÂ³','Ã¨Â¦Â³Ã¥Â®Â¢','Ã¥Â¿ÂÃ¦ÂÂ´Ã¥ÂÂ£','Ã£ÂÂÃ£ÂÂÃ£ÂÂ¢','Ã©ÂÂ','Ã£ÂÂ¦Ã£ÂÂ©Ã£ÂÂÃ£ÂÂÃ£ÂÂ£Ã£ÂÂ¼','Ã¨Â¨ÂÃ¨ÂÂ'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
 function totalVotes(){return Object.values(voteCounts).reduce(function(s,v){return s+v;},0);}
 
-// ===== Xé£æº =====
+// ===== XÃ©ÂÂ£Ã¦ÂÂº =====
 function handleXConnect(){
-  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('Xé£æºãè§£é¤ãã¾ãã');return;}
-  var name=window.prompt('Xã®ã¦ã¼ã¶ã¼åï¼@ãªãï¼ãå¥åãã¦ãã ãã');
+  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('XÃ©ÂÂ£Ã¦ÂÂºÃ£ÂÂÃ¨Â§Â£Ã©ÂÂ¤Ã£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ');return;}
+  var name=window.prompt('XÃ£ÂÂ®Ã£ÂÂ¦Ã£ÂÂ¼Ã£ÂÂ¶Ã£ÂÂ¼Ã¥ÂÂÃ¯Â¼Â@Ã£ÂÂªÃ£ÂÂÃ¯Â¼ÂÃ£ÂÂÃ¥ÂÂ¥Ã¥ÂÂÃ£ÂÂÃ£ÂÂ¦Ã£ÂÂÃ£ÂÂ Ã£ÂÂÃ£ÂÂ');
   if(!name||!name.trim())return;
   xUser={name:name.trim(),screen_name:name.trim()};
   localStorage.setItem('x_user',JSON.stringify(xUser));
   renderXBtn();
   document.getElementById('x-name-row').style.display='flex';
   document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;
-  showToast('@'+xUser.screen_name+' ã¨ãã¦é£æºãã¾ãã');
+  showToast('@'+xUser.screen_name+' Ã£ÂÂ¨Ã£ÂÂÃ£ÂÂ¦Ã©ÂÂ£Ã¦ÂÂºÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ');
 }
 function renderXBtn(){
   var btn=document.getElementById('x-btn'),label=document.getElementById('x-btn-label');
   if(!btn)return;
   if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}
-  else{btn.classList.remove('x-connected');label.textContent='Xé£æº';}
+  else{btn.classList.remove('x-connected');label.textContent='XÃ©ÂÂ£Ã¦ÂÂº';}
 }
 
 // ===== MOMENTS =====
@@ -419,8 +419,8 @@ function renderMoments(){
     html+='<span class="moment-type-badge '+TYPE_BADGE[m.type]+'">'+TYPE_LABEL[m.type]+'</span></div>';
     html+='<div class="moment-desc">'+m.desc+'</div><div class="moment-sub">'+m.sub+'</div>';
     html+='<div class="moment-footer"><div class="moment-bar-row"><div class="moment-bar-wrap"><div class="moment-bar '+BAR_CLS[m.type]+'" style="width:'+pct+'%"></div></div>';
-    html+='<span class="moment-pct">'+cnt+'ç¥¨ '+pct+'%</span></div>';
-    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' ã·ã§ã¢</button></div>';
+    html+='<span class="moment-pct">'+cnt+'Ã§Â¥Â¨ '+pct+'%</span></div>';
+    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' Ã£ÂÂ·Ã£ÂÂ§Ã£ÂÂ¢</button></div>';
     html+='</div></div>';
   });
   if(document.getElementById('moments-list'))document.getElementById('moments-list').innerHTML=html;
@@ -437,30 +437,30 @@ function selectMoment(id){
 async function submitVote(){
   if(!selectedId||myVotedId)return;
   var btn=document.getElementById('vote-btn');
-  btn.disabled=true;btn.textContent='éä¿¡ä¸­...';
+  btn.disabled=true;btn.textContent='Ã©ÂÂÃ¤Â¿Â¡Ã¤Â¸Â­...';
   var reason=document.getElementById('reason-input').value.trim();
   var r=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});
-  if(r.error){showToast(r.error.code==='23505'?'ãã§ã«æç¥¨æ¸ã¿ã§ã':'ã¨ã©ã¼ãçºçãã¾ãã');btn.disabled=false;btn.textContent='ãã®å ´é¢ã«æç¥¨ãã';return;}
+  if(r.error){showToast(r.error.code==='23505'?'Ã£ÂÂÃ£ÂÂ§Ã£ÂÂ«Ã¦ÂÂÃ§Â¥Â¨Ã¦Â¸ÂÃ£ÂÂ¿Ã£ÂÂ§Ã£ÂÂ':'Ã£ÂÂ¨Ã£ÂÂ©Ã£ÂÂ¼Ã£ÂÂÃ§ÂÂºÃ§ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ');btn.disabled=false;btn.textContent='Ã£ÂÂÃ£ÂÂ®Ã¥Â Â´Ã©ÂÂ¢Ã£ÂÂ«Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂ';return;}
   myVotedId=selectedId;selectedId=null;
   if(reason)await postComment(myVotedId,reason);
-  await loadVoteCounts();showVotedState(myVotedId);showToast('æç¥¨ãã¾ããï¼');
+  await loadVoteCounts();showVotedState(myVotedId);showToast('Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ¯Â¼Â');
 }
 function showVotedState(momentId){
   var m=MOMENTS.find(function(x){return x.id===momentId;});
   document.getElementById('vote-form').style.display='none';
   document.getElementById('vote-prompt').style.display='none';
   document.getElementById('voted-done').style.display='block';
-  document.getElementById('voted-tag').innerHTML='â <strong>'+m.inning+' '+m.desc+'</strong> ã«æç¥¨ãã¾ãã';
+  document.getElementById('voted-tag').innerHTML='Ã¢ÂÂ <strong>'+m.inning+' '+m.desc+'</strong> Ã£ÂÂ«Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ';
 }
 function shareVote(){
   var m=MOMENTS.find(function(x){return x.id===myVotedId;});if(!m)return;
   var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')ãç§ã®åå²ç¹\nã'+m.inning+' '+m.desc+'ã\n'+pct+'%ã®ãã¡ã³ãåãï¼\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')Ã£ÂÂÃ§Â§ÂÃ£ÂÂ®Ã¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹\nÃ£ÂÂ'+m.inning+' '+m.desc+'Ã£ÂÂ\n'+pct+'%Ã£ÂÂ®Ã£ÂÂÃ£ÂÂ¡Ã£ÂÂ³Ã£ÂÂÃ¥ÂÂÃ£ÂÂÃ¯Â¼Â\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 function shareMoment(id){
   var m=MOMENTS.find(function(x){return x.id===id;});
   var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet('ãåå²ç¹ã'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\nã'+m.inning+' '+m.desc+'ã\nãã®å ´é¢ã«'+pct+'%ã®ãã¡ã³ãæ³¨ç®ï¼\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet('Ã£ÂÂÃ¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂ'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\nÃ£ÂÂ'+m.inning+' '+m.desc+'Ã£ÂÂ\nÃ£ÂÂÃ£ÂÂ®Ã¥Â Â´Ã©ÂÂ¢Ã£ÂÂ«'+pct+'%Ã£ÂÂ®Ã£ÂÂÃ£ÂÂ¡Ã£ÂÂ³Ã£ÂÂÃ¦Â³Â¨Ã§ÂÂ®Ã¯Â¼Â\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 
 // ===== PLAYERS =====
@@ -492,15 +492,15 @@ function renderPlayers(){
     html+='<div class="player-card"><div class="player-icon carp-player" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*0.35)+'px">'+initials+'</div>';
     html+='<div class="player-name">'+p.name+'</div><div class="player-pos">'+p.pos+'</div>';
     html+='<div class="rating-btns">'+btns+'</div>';
-    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">ã¿ã è©ä¾¡ãªã</span>')+'</div></div>';
+    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">Ã£ÂÂ¿Ã£ÂÂ Ã¨Â©ÂÃ¤Â¾Â¡Ã£ÂÂªÃ£ÂÂ</span>')+'</div></div>';
   });
   document.getElementById('players-grid').innerHTML=html;
 }
 async function ratePlayer(playerName,rating){
   var prev=myPlayerRatings[playerName];
   if(prev===rating){await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);delete myPlayerRatings[playerName];}
-  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('ã¨ã©ã¼');return;}myPlayerRatings[playerName]=rating;}
-  await loadPlayerRatings();showToast(prev===rating?'è©ä¾¡ãåãæ¶ãã¾ãã':RATING_LABEL[rating]+'ãéãã¾ããï¼');
+  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('Ã£ÂÂ¨Ã£ÂÂ©Ã£ÂÂ¼');return;}myPlayerRatings[playerName]=rating;}
+  await loadPlayerRatings();showToast(prev===rating?'Ã¨Â©ÂÃ¤Â¾Â¡Ã£ÂÂÃ¥ÂÂÃ£ÂÂÃ¦Â¶ÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ':RATING_LABEL[rating]+'Ã£ÂÂÃ©ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ¯Â¼Â');
 }
 
 // ===== COMMENTS =====
@@ -512,7 +512,7 @@ async function postComment(momentId,body){await sb.from('comments').insert({game
 async function sendComment(){
   var inp=document.getElementById('comment-input'),btn=document.getElementById('send-btn');
   var txt=inp.value.trim();if(!txt)return;
-  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('ã³ã¡ã³ããã¾ããï¼');
+  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('Ã£ÂÂ³Ã£ÂÂ¡Ã£ÂÂ³Ã£ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ¯Â¼Â');
 }
 async function toggleLike(commentId){
   var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
@@ -524,7 +524,7 @@ function renderComments(){
   if(!document.getElementById('comments-list')||currentTab==='ai')return;
   var list=allComments.slice();
   if(currentTab==='hot')list.sort(function(a,b){return b.likes-a.likes;});
-  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">ã¾ã ã³ã¡ã³ããããã¾ãããæåã®ã³ã¡ã³ããæ¸ãã¦ã¿ã¾ãããã</div>';return;}
+  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">Ã£ÂÂ¾Ã£ÂÂ Ã£ÂÂ³Ã£ÂÂ¡Ã£ÂÂ³Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ¦ÂÂÃ¥ÂÂÃ£ÂÂ®Ã£ÂÂ³Ã£ÂÂ¡Ã£ÂÂ³Ã£ÂÂÃ£ÂÂÃ¦ÂÂ¸Ã£ÂÂÃ£ÂÂ¦Ã£ÂÂ¿Ã£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ</div>';return;}
   var html='';
   list.forEach(function(c){
     var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
@@ -534,8 +534,8 @@ function renderComments(){
     html+='<div class="comment"><div class="comment-header"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name).slice(0,1)+'</div>';
     html+='<span class="comment-name">'+esc(c.display_name)+'</span>'+tag+'</div>';
     html+='<div class="comment-body">'+esc(c.body)+'</div><div class="comment-time">'+formatTime(c.created_at)+'</div>';
-    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">â¡ '+(c.likes||0)+'</button>';
-    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ãã¹ã</button></div></div>';
+    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">Ã¢ÂÂ¡ '+(c.likes||0)+'</button>';
+    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' Ã£ÂÂÃ£ÂÂ¹Ã£ÂÂ</button></div></div>';
   });
   document.getElementById('comments-list').innerHTML=html;
 }
@@ -552,20 +552,20 @@ function setTab(tab,el){
 function renderAI(){
   var panel=document.getElementById('ai-panel');if(!panel)return;
   var tot=totalVotes();
-  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">ã¾ã æç¥¨ãããã¾ãããæç¥¨ãéã¾ãã¨AIåæãè¡¨ç¤ºããã¾ãã</div>';return;}
+  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">Ã£ÂÂ¾Ã£ÂÂ Ã¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂÃ£ÂÂÃ¦ÂÂÃ§Â¥Â¨Ã£ÂÂÃ©ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ¨AIÃ¥ÂÂÃ¦ÂÂÃ£ÂÂÃ¨Â¡Â¨Ã§Â¤ÂºÃ£ÂÂÃ£ÂÂÃ£ÂÂ¾Ã£ÂÂÃ£ÂÂ</div>';return;}
   var top=MOMENTS.slice().sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
   var topP=MOMENTS.filter(function(m){return m.type==='pitcher';}).sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
   var pct=Math.round((voteCounts[top.id]||0)/tot*100);
   var mvp=PLAYERS.map(function(p){return{p:p,v:(playerRatings[p.name]&&playerRatings[p.name].mvp)||0};}).sort(function(a,b){return b.v-a.v;})[0];
-  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') åå²ç¹ã'+top.inning+' '+top.desc+'ã'+pct+'% ãã¡ã³MVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
-  panel.innerHTML='<div class="ai-box"><strong>AIåæ('+tot+'ç¥¨)ï¼</strong>'+GAME.home+'ã®è©¦åãæå¤æ³¨ç®åå²ç¹ã¯<strong>ã'+top.inning+' '+top.desc+'ã('+pct+'%)</strong>ã'+(topP?'<br><br>ææå¥½æï¼<strong>ã'+topP.inning+' '+topP.desc+'ã</strong>ã':'')+
-  (mvp?'<br><br>é¸æè©ä¾¡MVPï¼<strong>'+mvp.p.name+'</strong>ã':'')+
-  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AIåæããã¹ã</button></div>';
+  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') Ã¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂ'+top.inning+' '+top.desc+'Ã£ÂÂ'+pct+'% Ã£ÂÂÃ£ÂÂ¡Ã£ÂÂ³MVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
+  panel.innerHTML='<div class="ai-box"><strong>AIÃ¥ÂÂÃ¦ÂÂ('+tot+'Ã§Â¥Â¨)Ã¯Â¼Â</strong>'+GAME.home+'Ã£ÂÂ®Ã¨Â©Â¦Ã¥ÂÂÃ£ÂÂÃ¦ÂÂÃ¥Â¤ÂÃ¦Â³Â¨Ã§ÂÂ®Ã¥ÂÂÃ¥Â²ÂÃ§ÂÂ¹Ã£ÂÂ¯<strong>Ã£ÂÂ'+top.inning+' '+top.desc+'Ã£ÂÂ('+pct+'%)</strong>Ã£ÂÂ'+(topP?'<br><br>Ã¦ÂÂÃ¦ÂÂÃ¥Â¥Â½Ã¦ÂÂÃ¯Â¼Â<strong>Ã£ÂÂ'+topP.inning+' '+topP.desc+'Ã£ÂÂ</strong>Ã£ÂÂ':'')+
+  (mvp?'<br><br>Ã©ÂÂ¸Ã¦ÂÂÃ¨Â©ÂÃ¤Â¾Â¡MVPÃ¯Â¼Â<strong>'+mvp.p.name+'</strong>Ã£ÂÂ':'')+
+  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AIÃ¥ÂÂÃ¦ÂÂÃ£ÂÂÃ£ÂÂÃ£ÂÂ¹Ã£ÂÂ</button></div>';
 }
 function shareComment(commentId){
   var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
   var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')ã«ã¼ããã¼ã¯\n'+(m?'ã'+m.inning+'ã':'')+' ã'+c.body+'ã\nâ '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')Ã£ÂÂ«Ã£ÂÂ¼Ã£ÂÂÃ£ÂÂÃ£ÂÂ¼Ã£ÂÂ¯\n'+(m?'Ã£ÂÂ'+m.inning+'Ã£ÂÂ':'')+' Ã£ÂÂ'+c.body+'Ã£ÂÂ\nÃ¢ÂÂ '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 function subscribeRealtime(){
   sb.channel('votes-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},function(){loadVoteCounts();flashLive();}).subscribe();
@@ -574,7 +574,7 @@ function subscribeRealtime(){
 }
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
 
-as5.gfunction initApp(){
+async function initApp(){
   userId=localStorage.getItem('carp_talk_uid');
   if(!userId){userId='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('carp_talk_uid',userId);}
   var savedX=localStorage.getItem('x_user');
