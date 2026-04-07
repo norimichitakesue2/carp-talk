@@ -5,7 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>本日のカープトーク</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var cdns=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js','https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'];
+  var idx=0;
+  function load(){
+    if(idx>=cdns.length){return;}
+    var s=document.createElement('script');
+    s.src=cdns[idx++];
+    s.onerror=load;
+    s.onload=function(){document.dispatchEvent(new Event('supabase-ready'));};
+    document.head.appendChild(s);
+  }
+  load();
+})();
+</script>
 <style>
 :root{--bg:#0c0e11;--surface:#13161b;--surface2:#1a1e25;--surface3:#20252f;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#eef0f4;--muted:#7a8090;--faint:#2e3340;--accent:#f0c040;--blue:#4a9eff;--green:#3ecf8e;--red:#f46060;--orange:#f07840;--carp:#c8102e;--radius:12px;--radius-sm:8px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -576,14 +590,16 @@ as5.gfunction initApp(){
 }
 
 // ===== BOOT =====
-window.addEventListener('DOMContentLoaded',function(){
+window.__bootDone=false;function bootApp(){if(window.__bootDone)return;window.__bootDone=true;
   var URL_='https://dzsznmpuxuftprcqywex.supabase.co';
   var KEY_='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
   sb=supabase.createClient(URL_,KEY_);
   var params=new URLSearchParams(location.search);
   var date=params.get('date')||todayStr();
   loadGame(date);
-});
+};
+window.addEventListener('DOMContentLoaded',bootApp);
+document.addEventListener('supabase-ready',bootApp);
 </script>
 </body>
 </html>
