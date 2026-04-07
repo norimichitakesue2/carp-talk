@@ -1,0 +1,44 @@
+{
+  "id": "npb_20260407",
+  "game_date": "2026-04-07",
+  "home_team": "広島",
+  "away_team": "巨人",
+  "home_score": 5,
+  "away_score": 2,
+  "venue": "マツダスタジアム",
+  "status": "final",
+  "result_label": "広島勝利",
+  "innings": {
+    "giants": [0, 0, 0, 0, 0, 0, 2, 0, 0],
+    "hiroshima": [0, 0, 0, 2, 2, 1, 0, 0, "X"],
+    "giants_hits": 7, "giants_errors": 3,
+    "hiroshima_hits": 5, "hiroshima_errors": 0
+  },
+  "pitchers": [
+    {"team": "広島", "role": "先発", "name": "森下 暢仁", "result": "win"},
+    {"team": "広島", "role": "中継ぎ", "name": "ハーン", "result": "win"},
+    {"team": "広島", "role": "中継ぎ", "name": "森浦 大輔", "result": "win"},
+    {"team": "広島", "role": "抑え", "name": "中﨑 翔太", "result": "save"},
+    {"team": "巨人", "role": "先発", "name": "ウィットリー", "result": "loss"},
+    {"team": "巨人", "role": "中継ぎ", "name": "田和 廉", "result": "loss"},
+    {"team": "巨人", "role": "中継ぎ", "name": "船迫 大雅", "result": "loss"}
+  ],
+  "moments": [
+    {"id": 1, "inning": "4回裏", "type": "hr", "desc": "ファビアン、待望の来日1号2ランホームラン！先制に成功", "sub": "広島 2-0 巨人。ウィットリーから右中間へ叩き込む豪快な当たり"},
+    {"id": 2, "inning": "5回裏", "type": "hr", "desc": "大盛穂、プロ初本塁打！1番打者が連続2ランで突き放す", "sub": "広島 4-0 巨人。今季絶好調の大盛がダメ押し弾でチームを鼓舞"},
+    {"id": 3, "inning": "6回裏", "type": "score", "desc": "6回にも1点を追加、森下が7回2失点の好投で試合を作る", "sub": "広島 5-0 巨人。先発森下が粘り強いピッチングで7回マウンドを降りる"},
+    {"id": 4, "inning": "7回表", "type": "crisis", "desc": "巨人が7回に2点を返しリリーフ陣が緊張の場面に", "sub": "広島 5-2 巨人。ハーン→森浦→中﨑の継投でリードを守りきる"},
+    {"id": 5, "inning": "9回表", "type": "pitcher", "desc": "中﨑、今季初セーブで試合を締める。完璧な中継ぎリレー完成", "sub": "森下(7回2失点)→ハーン→森浦→中﨑の4投手継投で完封リレー"}
+  ],
+  "players": [
+    {"name": "大盛 穂", "pos": "中"},
+    {"name": "中村 奨成", "pos": "右"},
+    {"name": "小園 海斗", "pos": "遊"},
+    {"name": "佐々木 泰", "pos": "三"},
+    {"name": "ファビアン", "pos": "左"},
+    {"name": "坂倉 将吾", "pos": "捕"},
+    {"name": "モンテロ", "pos": "一"},
+    {"name": "勝田 成", "pos": "二"},
+    {"name": "森下 暢仁", "pos": "投"}
+  ]
+}
