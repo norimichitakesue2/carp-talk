@@ -4,270 +4,163 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>本日のカープトーク</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-:root {
-  --bg: #0c0e11;
-  --surface: #13161b;
-  --surface2: #1a1e25;
-  --surface3: #20252f;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.13);
-  --text: #eef0f4;
-  --muted: #7a8090;
-  --faint: #2e3340;
-  --accent: #f0c040;
-  --blue: #4a9eff;
-  --green: #3ecf8e;
-  --red: #f46060;
-  --orange: #f07840;
-  --purple: #a78bfa;
-  --carp: #c8102e;
-  --radius: 12px;
-  --radius-sm: 8px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
-
-/* ── SETUP OVERLAY ── */
-#setup-overlay {
-  position: fixed; inset: 0; background: rgba(12,14,17,0.97);
-  z-index: 999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
-}
-.setup-box { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius); padding: 2rem; max-width: 460px; width: 100%; }
-.setup-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.1em; color: var(--carp); margin-bottom: 0.25rem; }
-.setup-desc { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
-.setup-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; margin-top: 1rem; }
-.setup-input { width: 100%; background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-size: 13px; font-family: 'Noto Sans JP', sans-serif; color: var(--text); }
-.setup-input::placeholder { color: var(--faint); }
-.setup-input:focus { outline: none; border-color: var(--carp); }
-.setup-btn { margin-top: 1.25rem; width: 100%; padding: 0.75rem; background: var(--carp); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
-.setup-btn:hover { opacity: 0.88; }
-.setup-error { margin-top: 0.75rem; font-size: 12px; color: var(--red); }
-.setup-sql { margin-top: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 10px; font-family: monospace; color: #9da8b8; overflow-x: auto; white-space: pre; max-height: 180px; overflow-y: auto; }
-
-/* ── HEADER ── */
-header {
-  border-bottom: 1px solid var(--border); padding: 0 1.25rem; height: 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; background: rgba(12,14,17,0.95);
-  backdrop-filter: blur(14px); z-index: 100;
-}
-.header-left { display: flex; flex-direction: column; gap: 0; }
-.site-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.1em; color: var(--carp); line-height: 1; }
-.site-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
-.header-right { display: flex; align-items: center; gap: 8px; }
-.online-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-.x-connect-btn {
-  display: flex; align-items: center; gap: 5px;
-  background: #000; color: #fff; border: 1px solid #333;
-  border-radius: 6px; padding: 5px 10px; font-size: 12px; font-weight: 500;
-  cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: opacity 0.14s;
-  text-decoration: none;
-}
-.x-connect-btn:hover { opacity: 0.8; }
-.x-connected { background: #111; border-color: #1d9bf0; color: #1d9bf0; }
-.x-avatar { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
-
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-/* ── LAYOUT ── */
-.container { max-width: 740px; margin: 0 auto; padding: 0 1rem 5rem; }
-
-/* ── HERO SECTION ── */
-.hero {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem 1.5rem 1.25rem;
-  margin: 1.25rem 0;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--carp) 0%, #ff4060 50%, var(--accent) 100%);
-}
-.hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--carp); text-transform: uppercase; margin-bottom: 0.4rem; }
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--text); margin-bottom: 0.4rem; }
-.hero-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
-.scoreboard { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
-.team-block { text-align: center; }
-.team-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; }
-.team-name.carp { color: var(--carp); }
-.team-name.away { color: #f5d000; }
-.team-score { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; }
-.score-sep { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--faint); padding-top: 0.75rem; }
-.game-meta { display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-size: 12px; color: var(--muted); flex-wrap: wrap; }
-.badge { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 4px; }
-.badge-final { background: var(--faint); color: var(--muted); }
-.badge-win { background: rgba(200,16,46,0.2); color: #ff7090; border: 1px solid rgba(200,16,46,0.3); }
-.inning-table-wrap { margin-top: 1rem; overflow-x: auto; }
-.inning-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.inning-table th, .inning-table td { text-align: center; padding: 4px 6px; border: 1px solid var(--border); min-width: 26px; }
-.inning-table th { color: var(--muted); background: var(--surface2); font-weight: 500; }
-.inning-table td.team-label { text-align: left; font-weight: 500; padding-left: 10px; min-width: 48px; }
-.inning-table td.score-col { color: var(--text); font-weight: 700; font-size: 13px; border-left: 1px solid var(--border2); }
-.inning-table td.zero { color: var(--faint); }
-.inning-table td.scoring { color: var(--accent); font-weight: 700; }
-.pitcher-bar { margin-top: 1rem; display: flex; gap: 6px; flex-wrap: wrap; }
-.pitcher-chip { display: flex; align-items: center; gap: 5px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px; padding: 3px 9px; font-size: 12px; }
-.pitcher-chip .role { font-size: 10px; color: var(--muted); }
-.s-win { font-size: 10px; padding: 1px 5px; border-radius: 3px; background: rgba(62,207,142,0.2); color: var(--green); }
-.s-loss { font-size: 10px; padding: 1px 5px; border-radius: 3px; background: rgba(244,96,96,0.2); color: var(--red); }
-.s-good { font-size: 10px; padding: 1px 5px; border-radius: 3px; background: rgba(74,158,255,0.15); color: var(--blue); }color: var(--muted); line-height: 1.5; margin-bottom: 6px; font-style: italic; }
-.moment-footer { display: flex; align-items: center; justify-content: space-between; }
-.moment-bar-row { display: flex; align-items: center; gap: 8px; flex: 1; }
-.moment-bar-wrap { flex: 1; height: 3px; background: var(--faint); border-radius: 2px; overflow: hidden; }
-.moment-bar { height: 3px; border-radius: 2px; transition: width 0.5s ease; }
-.bar-score { background: var(--accent); } .bar-pitcher { background: var(--blue); }
-.bar-crisis { background: var(--orange); } .bar-hr { background: var(--red); }
-.moment-pct { font-size: 11px; color: var(--muted); min-width: 54px; text-align: right; }
-.moment-share-btn { background: transparent; border: 1px solid var(--border2); border-radius: 5px; padding: 3px 8px; font-size: 11px; color: var(--muted); cursor: pointer; display: flex; align-items: center; gap: 3px; transition: all 0.14s; flex-shrink: 0; margin-left: 8px; font-family: 'Noto Sans JP', sans-serif; }
-.moment-share-btn:hover { background: #000; color: #fff; border-color: #555; }
-.live-update { font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 5px; padding: 0.4rem 0; }
-.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 1.5s infinite; }
-
-/* ── VOTE ── */
-.vote-prompt { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: 14px; }
-.vote-prompt-icon { font-size: 28px; margin-bottom: 6px; }
-.selected-tag { background: rgba(240,192,64,0.08); border: 1px solid rgba(240,192,64,0.25); border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-size: 13px; color: var(--accent); margin-bottom: 0.75rem; }
-.reason-input { width: 100%; background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 0.7rem 0.9rem; font-size: 14px; font-family: 'Noto Sans JP', sans-serif; color: var(--text); resize: none; min-height: 80px; }
-.reason-input::placeholder { color: var(--faint); }
-.reason-input:focus { outline: none; border-color: var(--accent); }
-.btn-vote { margin-top: 0.75rem; width: 100%; padding: 0.75rem; background: var(--carp); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: opacity 0.14s; }
-.btn-vote:hover { opacity: 0.85; }
-.btn-vote:disabled { opacity: 0.5; cursor: not-allowed; }
-.voted-tag { background: rgba(62,207,142,0.08); border: 1px solid rgba(62,207,142,0.25); border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-size: 13px; color: var(--green); margin-bottom: 0.75rem; }
-.btn-x-post { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; padding: 0.65rem; background: #000; color: #fff; border: 1px solid #333; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: opacity 0.14s; }
-.btn-x-post:hover { background: #111; }
-.share-preview-box { background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 0.9rem 1rem; margin-top: 0.75rem; }
-.share-preview-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-.share-preview-text { font-size: 13px; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
-.share-preview-actions { display: flex; gap: 6px; margin-top: 0.75rem; }
-.btn-confirm { display: flex; align-items: center; gap: 5px; padding: 0.45rem 1rem; background: #000; color: #fff; border: 1px solid #444; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
-.btn-confirm:hover { background: #111; }
-.btn-cancel { padding: 0.45rem 0.9rem; background: transparent; color: var(--muted); border: 1px solid var(--border2); border-radius: 6px; font-size: 13px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
-
-/* ── PLAYER RATINGS ── */
-.players-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-.player-card {
-  background: var(--surface2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 0.9rem 0.75rem;
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  transition: border-color 0.15s;
-}
-.player-card:hover { border-color: var(--border2); }
-.player-icon-wrap { position: relative; }
-.player-icon {
-  border-radius: 50%; background: var(--surface3);
-  border: 2px solid var(--faint);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 700; color: var(--muted);
-  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  flex-shrink: 0;
-  width: 52px; height: 52px;
-}
-.player-icon.carp-player { border-color: var(--carp); color: var(--carp); background: rgba(200,16,46,0.1); }
-.player-name { font-size: 13px; font-weight: 500; color: var(--text); text-align: center; }
-.player-pos { font-size: 10px; color: var(--muted); }
-.rating-btns { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
-.rating-btn {
-  font-size: 10px; padding: 3px 7px; border-radius: 4px;
-  border: 1px solid var(--border2); background: transparent;
-  color: var(--muted); cursor: pointer; transition: all 0.14s;
-  font-family: 'Noto Sans JP', sans-serif; white-space: nowrap;
-}
-.rating-btn:hover { background: var(--surface3); }
-.rating-btn.active-mvp { background: rgba(240,192,64,0.2); border-color: var(--accent); color: var(--accent); }
-.rating-btn.active-great { background: rgba(62,207,142,0.2); border-color: var(--green); color: var(--green); }
-.rating-btn.active-ganbatte { background: rgba(74,158,255,0.2); border-color: var(--blue); color: var(--blue); }
-.rating-btn.active-nigun { background: rgba(244,96,96,0.15); border-color: var(--red); color: var(--red); }
-.player-votes { font-size: 10px; color: var(--muted); display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-.vote-pill { padding: 1px 5px; border-radius: 3px; font-size: 10px; }
-.pill-mvp { background: rgba(240,192,64,0.15); color: var(--accent); }
-.pill-great { background: rgba(62,207,142,0.15); color: var(--green); }
-.pill-ganbatte { background: rgba(74,158,255,0.15); color: var(--blue); }
-.pill-nigun { background: rgba(244,96,96,0.12); color: var(--red); }
-
-/* ── COMMENTS ── */
-.tabs { display: flex; gap: 4px; margin-bottom: 1rem; }
-.tab { flex: 1; text-align: center; padding: 0.45rem 0.5rem; font-size: 13px; cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--muted); transition: all 0.14s; font-family: 'Noto Sans JP', sans-serif; }
-.tab.active { background: var(--surface2); color: var(--text); font-weight: 500; border-color: var(--border2); }
-.comment { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
-.comment:last-child { border-bottom: none; }
-.comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; overflow: hidden; }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-.comment-name { font-size: 13px; font-weight: 500; }
-.x-badge { font-size: 10px; color: #1d9bf0; margin-left: 2px; }
-.moment-tag-sm { font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-left: 4px; font-weight: 500; }
-.tag-score { background: rgba(240,192,64,0.15); color: var(--accent); }
-.tag-pitcher { background: rgba(74,158,255,0.15); color: var(--blue); }
-.tag-crisis { background: rgba(240,120,64,0.15); color: var(--orange); }
-.tag-hr { background: rgba(244,96,96,0.15); color: var(--red); }
-.comment-body { font-size: 14px; color: var(--text); line-height: 1.65; padding-left: 38px; }
-.comment-time { font-size: 11px; color: var(--muted); padding-left: 38px; margin-top: 2px; }
-.comment-actions { display: flex; align-items: center; justify-content: space-between; padding-left: 38px; margin-top: 5px; }
-.like-btn { font-size: 12px; color: var(--muted); cursor: pointer; padding: 2px 8px; border-radius: 4px; border: 1px solid transparent; transition: all 0.12s; font-family: 'Noto Sans JP', sans-serif; background: transparent; }
-.like-btn:hover { background: var(--surface2); border-color: var(--border); }
-.like-btn.liked { color: var(--red); }
-.comment-share-btn { font-size: 11px; color: var(--muted); background: transparent; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; transition: all 0.12s; font-family: 'Noto Sans JP', sans-serif; }
-.comment-share-btn:hover { background: #000; color: #fff; }
-.new-comment-area { margin-top: 0.75rem; }
-.x-name-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
-.new-comment-row { display: flex; gap: 8px; }
-.new-comment-input { flex: 1; background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 0.55rem 0.9rem; font-size: 13px; font-family: 'Noto Sans JP', sans-serif; color: var(--text); }
-.new-comment-input::placeholder { color: var(--faint); }
-.new-comment-input:focus { outline: none; border-color: var(--blue); }
-.send-btn { padding: 0.55rem 1.1rem; background: var(--blue); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; white-space: nowrap; transition: opacity 0.12s; }
-.send-btn:hover { opacity: 0.85; }
-.send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.empty-state { text-align: center; padding: 2rem; color: var(--muted); font-size: 14px; }
-.loading-line { height: 3px; background: var(--faint); border-radius: 2px; overflow: hidden; }
-.loading-line-inner { height: 3px; width: 40%; background: var(--blue); border-radius: 2px; animation: loadSlide 1s ease-in-out infinite alternate; }
-from{transform:translateX(-100%)} to{transform:translateX(250%)} }
-.spin { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--faint); border-top-color: var(--blue); border-radius: 50%; animation: spinAnim 0.7s linear infinite; }
-@keyframes spinAnim { to { transform: rotate(360deg); } }
-
-/* ── AI ── */
-.ai-box { background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.2); border-radius: var(--radius-sm); padding: 1rem 1.1rem; font-size: 14px; color: #c4b5fd; line-height: 1.75; }
-.ai-box strong { color: var(--text); font-weight: 500; }
-.ai-share-btn { display: inline-flex; align-items: center; gap: 5px; margin-top: 0.75rem; padding: 0.4rem 0.9rem; background: #000; color: #fff; border: 1px solid #444; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
-.ai-share-btn:hover { background: #111; }
-
-/* ── TOAST ── */
-.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(12px); background: var(--green); color: #061a10; font-size: 13px; font-weight: 700; padding: 0.5rem 1.4rem; border-radius: 99px; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; z-index: 999; }
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-@media(max-width:480px){ .team-score{font-size:40px} .players-grid{grid-template-columns:repeat(2,1fr)} }
+:root{--bg:#0c0e11;--surface:#13161b;--surface2:#1a1e25;--surface3:#20252f;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#eef0f4;--muted:#7a8090;--faint:#2e3340;--accent:#f0c040;--blue:#4a9eff;--green:#3ecf8e;--red:#f46060;--orange:#f07840;--carp:#c8102e;--radius:12px;--radius-sm:8px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
+header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(12,14,17,0.95);backdrop-filter:blur(14px);z-index:100}
+.site-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.1em;color:var(--carp)}
+.site-sub{font-size:10px;color:var(--muted)}
+.online-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.x-connect-btn{display:flex;align-items:center;gap:5px;background:#000;color:#fff;border:1px solid #333;border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.x-connected{border-color:#1d9bf0;color:#1d9bf0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.container{max-width:740px;margin:0 auto;padding:0 1rem 5rem}
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin:1.25rem 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--carp),#ff4060,var(--accent))}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--carp);text-transform:uppercase;margin-bottom:0.4rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text);margin-bottom:0.4rem}
+.hero-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:1.25rem}
+.scoreboard{display:flex;align-items:center;justify-content:center;gap:2rem;margin-bottom:1rem}
+.team-name{font-family:'Bebas Neue',sans-serif;font-size:24px;text-align:center}
+.team-name.carp{color:var(--carp)}.team-name.away{color:#f5d000}
+.team-score{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;text-align:center}
+.score-sep{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--faint);padding-top:0.75rem}
+.game-meta{display:flex;align-items:center;justify-content:center;gap:0.6rem;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
+.badge-final{background:var(--faint);color:var(--muted)}
+.badge-win{background:rgba(200,16,46,0.2);color:#ff7090;border:1px solid rgba(200,16,46,0.3)}
+.inning-table-wrap{margin-top:1rem;overflow-x:auto}
+.inning-table{width:100%;border-collapse:collapse;font-size:12px}
+.inning-table th,.inning-table td{text-align:center;padding:4px 6px;border:1px solid var(--border);min-width:26px}
+.inning-table th{color:var(--muted);background:var(--surface2)}
+.inning-table td.team-label{text-align:left;font-weight:500;padding-left:10px;min-width:48px}
+.inning-table td.score-col{color:var(--text);font-weight:700;font-size:13px;border-left:1px solid var(--border2)}
+.inning-table td.zero{color:var(--faint)}.inning-table td.scoring{color:var(--accent);font-weight:700}
+.pitcher-bar{margin-top:1rem;display:flex;gap:6px;flex-wrap:wrap}
+.pitcher-chip{display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:3px 9px;font-size:12px}
+.pitcher-chip .role{font-size:10px;color:var(--muted)}
+.s-win{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(62,207,142,0.2);color:var(--green)}
+.s-loss{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(244,96,96,0.2);color:var(--red)}
+.s-good{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(74,158,255,0.15);color:var(--blue)}
+.section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.25rem}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;margin-bottom:1rem}
+.section-desc{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+.live-update{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;padding:0.4rem 0}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
+.timeline{position:relative;padding-left:1.75rem}
+.timeline-rail{position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border2)}
+.moment{position:relative;margin-bottom:0.65rem;cursor:pointer}
+.moment:last-child{margin-bottom:0}
+.moment-dot{position:absolute;left:-1.45rem;top:16px;width:13px;height:13px;border-radius:50%;border:2px solid var(--faint);background:var(--surface2);transition:all 0.2s}
+.moment.selected .moment-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 8px rgba(240,192,64,0.5)}
+.moment.voted .moment-dot{background:var(--green);border-color:var(--green)}
+.type-score .moment-dot{border-color:var(--accent)}.type-pitcher .moment-dot{border-color:var(--blue)}
+.type-crisis .moment-dot{border-color:var(--orange)}.type-hr .moment-dot{border-color:var(--red)}
+.moment-inner{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.7rem 0.9rem;transition:border-color 0.15s,background 0.15s}
+.moment:hover .moment-inner{border-color:var(--border2);background:var(--surface3)}
+.moment.selected .moment-inner{border-color:var(--accent);background:rgba(240,192,64,0.05)}
+.moment.voted .moment-inner{border-color:var(--green)}
+.moment-header{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.moment-inning{font-size:11px;color:var(--muted);white-space:nowrap;font-weight:500}
+.moment-type-badge{font-size:10px;padding:1px 6px;border-radius:3px;white-space:nowrap;font-weight:700}
+.type-score-badge{background:rgba(240,192,64,0.15);color:var(--accent)}
+.type-pitcher-badge{background:rgba(74,158,255,0.15);color:var(--blue)}
+.type-crisis-badge{background:rgba(240,120,64,0.15);color:var(--orange)}
+.type-hr-badge{background:rgba(244,96,96,0.15);color:var(--red)}
+.moment-desc{font-size:14px;color:var(--text);line-height:1.5;margin-bottom:4px}
+.moment-sub{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:6px;font-style:italic}
+.moment-footer{display:flex;align-items:center;justify-content:space-between}
+.moment-bar-row{display:flex;align-items:center;gap:8px;flex:1}
+.moment-bar-wrap{flex:1;height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
+.moment-bar{height:3px;border-radius:2px;transition:width 0.5s ease}
+.bar-score{background:var(--accent)}.bar-pitcher{background:var(--blue)}.bar-crisis{background:var(--orange)}.bar-hr{background:var(--red)}
+.moment-pct{font-size:11px;color:var(--muted);min-width:54px;text-align:right}
+.moment-share-btn{background:transparent;border:1px solid var(--border2);border-radius:5px;padding:3px 8px;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:3px;transition:all 0.14s;flex-shrink:0;margin-left:8px;font-family:'Noto Sans JP',sans-serif}
+.moment-share-btn:hover{background:#000;color:#fff;border-color:#555}
+.loading-line{height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
+.loading-line-inner{height:3px;width:40%;background:var(--blue);border-radius:2px;animation:loadSlide 1s ease-in-out infinite alternate}
+@keyframes loadSlide{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+.vote-prompt{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:14px}
+.vote-prompt-icon{font-size:28px;margin-bottom:6px}
+.selected-tag{background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.25);border-radius:var(--radius-sm);padding:0.65rem 0.9rem;font-size:13px;color:var(--accent);margin-bottom:0.75rem}
+.reason-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:0.7rem 0.9rem;font-size:14px;font-family:'Noto Sans JP',sans-serif;color:var(--text);resize:none;min-height:80px}
+.reason-input::placeholder{color:var(--faint)}.reason-input:focus{outline:none;border-color:var(--accent)}
+.btn-vote{margin-top:0.75rem;width:100%;padding:0.75rem;background:var(--carp);color:#fff;border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:opacity 0.14s}
+.btn-vote:hover{opacity:0.85}.btn-vote:disabled{opacity:0.5;cursor:not-allowed}
+.voted-tag{background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.25);border-radius:var(--radius-sm);padding:0.65rem 0.9rem;font-size:13px;color:var(--green);margin-bottom:0.75rem}
+.btn-x-post{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:0.65rem;background:#000;color:#fff;border:1px solid #333;border-radius:var(--radius-sm);font-size:14px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.share-preview-box{background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin-top:0.75rem}
+.share-preview-label{font-size:11px;color:var(--muted);margin-bottom:6px}
+.share-preview-text{font-size:13px;color:var(--text);line-height:1.7;white-space:pre-wrap}
+.share-preview-actions{display:flex;gap:6px;margin-top:0.75rem}
+.btn-confirm{display:flex;align-items:center;gap:5px;padding:0.45rem 1rem;background:#000;color:#fff;border:1px solid #444;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.btn-cancel{padding:0.45rem 0.9rem;background:transparent;color:var(--muted);border:1px solid var(--border2);border-radius:6px;font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.player-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem 0.75rem;display:flex;flex-direction:column;align-items:center;gap:6px;transition:border-color 0.15s}
+.player-card:hover{border-color:var(--border2)}
+.player-icon{border-radius:50%;background:var(--surface3);border:2px solid var(--faint);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--muted);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);width:52px;height:52px}
+.player-icon.carp-player{border-color:var(--carp);color:var(--carp);background:rgba(200,16,46,0.1)}
+.player-name{font-size:13px;font-weight:500;color:var(--text);text-align:center}
+.player-pos{font-size:10px;color:var(--muted)}
+.rating-btns{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.rating-btn{font-size:10px;padding:3px 7px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
+.rating-btn.active-mvp{background:rgba(240,192,64,0.2);border-color:var(--accent);color:var(--accent)}
+.rating-btn.active-great{background:rgba(62,207,142,0.2);border-color:var(--green);color:var(--green)}
+.rating-btn.active-ganbatte{background:rgba(74,158,255,0.2);border-color:var(--blue);color:var(--blue)}
+.rating-btn.active-nigun{background:rgba(244,96,96,0.15);border-color:var(--red);color:var(--red)}
+.player-votes{font-size:10px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.vote-pill{padding:1px 5px;border-radius:3px;font-size:10px}
+.pill-mvp{background:rgba(240,192,64,0.15);color:var(--accent)}.pill-great{background:rgba(62,207,142,0.15);color:var(--green)}
+.pill-ganbatte{background:rgba(74,158,255,0.15);color:var(--blue)}.pill-nigun{background:rgba(244,96,96,0.12);color:var(--red)}
+.tabs{display:flex;gap:4px;margin-bottom:1rem}
+.tab{flex:1;text-align:center;padding:0.45rem 0.5rem;font-size:13px;cursor:pointer;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--muted);font-family:'Noto Sans JP',sans-serif}
+.tab.active{background:var(--surface2);color:var(--text);font-weight:500;border-color:var(--border2)}
+.comment{padding:0.75rem 0;border-bottom:1px solid var(--border)}
+.comment:last-child{border-bottom:none}
+.comment-header{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.comment-name{font-size:13px;font-weight:500}
+.moment-tag-sm{font-size:10px;padding:1px 6px;border-radius:3px;margin-left:4px;font-weight:500}
+.tag-score{background:rgba(240,192,64,0.15);color:var(--accent)}.tag-pitcher{background:rgba(74,158,255,0.15);color:var(--blue)}
+.tag-crisis{background:rgba(240,120,64,0.15);color:var(--orange)}.tag-hr{background:rgba(244,96,96,0.15);color:var(--red)}
+.comment-body{font-size:14px;color:var(--text);line-height:1.65;padding-left:38px}
+.comment-time{font-size:11px;color:var(--muted);padding-left:38px;margin-top:2px}
+.comment-actions{display:flex;align-items:center;justify-content:space-between;padding-left:38px;margin-top:5px}
+.like-btn{font-size:12px;color:var(--muted);cursor:pointer;padding:2px 8px;border-radius:4px;border:1px solid transparent;font-family:'Noto Sans JP',sans-serif;background:transparent}
+.like-btn.liked{color:var(--red)}
+.comment-share-btn{font-size:11px;color:var(--muted);background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;padding:2px 6px;border-radius:4px;font-family:'Noto Sans JP',sans-serif}
+.comment-share-btn:hover{background:#000;color:#fff}
+.new-comment-area{margin-top:0.75rem}
+.x-name-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;color:var(--muted)}
+.new-comment-row{display:flex;gap:8px}
+.new-comment-input{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:0.55rem 0.9rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text)}
+.new-comment-input::placeholder{color:var(--faint)}.new-comment-input:focus{outline:none;border-color:var(--blue)}
+.send-btn{padding:0.55rem 1.1rem;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
+.send-btn:disabled{opacity:0.5;cursor:not-allowed}
+.empty-state{text-align:center;padding:2rem;color:var(--muted);font-size:14px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--faint);border-top-color:var(--blue);border-radius:50%;animation:spinAnim 0.7s linear infinite}
+@keyframes spinAnim{to{transform:rotate(360deg)}}
+.ai-box{background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.2);border-radius:var(--radius-sm);padding:1rem 1.1rem;font-size:14px;color:#c4b5fd;line-height:1.75}
+.ai-box strong{color:var(--text);font-weight:500}
+.ai-share-btn{display:inline-flex;align-items:center;gap:5px;margin-top:0.75rem;padding:0.4rem 0.9rem;background:#000;color:#fff;border:1px solid #444;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(12px);background:var(--green);color:#061a10;font-size:13px;font-weight:700;padding:0.5rem 1.4rem;border-radius:99px;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:480px){.team-score{font-size:40px}.players-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-
-<!-- SETUP OVERLAY -->
-<div id="setup-overlay">
-  <div class="setup-box">
-    <div class="setup-logo">本日のカープトーク</div>
-    <p class="setup-desc">Supabase の接続情報を入力してください。</p>
-    <div class="setup-label">Supabase Project URL</div>
-    <input class="setup-input" id="sb-url" type="text" placeholder="https://xxxx.supabase.co">
-    <div class="setup-label">Supabase Anon Key</div>
-    <input class="setup-input" id="sb-key" type="text" placeholder="eyJhbGci...">
-    <button class="setup-btn" onclick="connectSupabase()">接続して開始</button>
-    <div class="setup-error" id="setup-error"></div>
-  </div>
-</div>
-
-<!-- HEADER -->
 <header>
-  <div class="header-left">
+  <div>
     <div class="site-title">本日のカープトーク</div>
     <div class="site-sub">広島東洋カープ ファン議論</div>
   </div>
-  <div class="header-right">
+  <div style="display:flex;align-items:center;gap:8px">
     <div class="online-dot"></div>
     <button class="x-connect-btn" id="x-btn" onclick="handleXConnect()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -275,29 +168,17 @@ from{transform:translateX(-100%)} to{transform:translateX(250%)} }
     </button>
   </div>
 </header>
-
 <div class="container">
-
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-eyebrow">⚾ 2026年4月5日（日）マツダスタジアム</div>
     <div class="hero-title">今日の試合、分岐点はどこだった？</div>
     <div class="hero-desc">試合の流れを変えたと思う場面を選んで投票しよう。みんなの目線が集まると、新しい発見がある。</div>
     <div class="scoreboard">
-      <div class="team-block">
-        <div class="team-name carp">広島</div>
-        <div class="team-score">2</div>
-      </div>
+      <div><div class="team-name carp">広島</div><div class="team-score">2</div></div>
       <div class="score-sep">—</div>
-      <div class="team-block">
-        <div class="team-name away">阪神</div>
-        <div class="team-score">1</div>
-      </div>
+      <div><div class="team-name away">阪神</div><div class="team-score">1</div></div>
     </div>
-    <div class="game-meta">
-      <span class="badge badge-final">FINAL・サヨナラ</span>
-      <span class="badge badge-win">広島 1勝2敗</span>
-    </div>
+    <div class="game-meta"><span class="badge badge-final">FINAL・サヨナラ</span><span class="badge badge-win">広島 1勝2敗</span></div>
     <div class="inning-table-wrap">
       <table class="inning-table">
         <thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="score-col">計</th><th>安</th><th>失</th></tr></thead>
@@ -315,8 +196,6 @@ from{transform:translateX(-100%)} to{transform:translateX(250%)} }
       <div class="pitcher-chip" style="border-color:rgba(245,208,0,0.3)"><span class="role" style="color:#f5d000">阪神</span><span>早川→モレッタ→桐敷</span><span class="s-loss">敗</span></div>
     </div>
   </div>
-
-  <!-- TIMELINE -->
   <div class="section">
     <div class="section-label">分岐点を選ぶ</div>
     <div class="section-desc">この試合の流れを決めたと思う場面はどこ？タップして投票しよう。</div>
@@ -327,41 +206,27 @@ from{transform:translateX(-100%)} to{transform:translateX(250%)} }
       <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ピンチ脱出</div>
     </div>
     <div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>投票がリアルタイムで更新されています</div>
-    <div class="timeline">
-      <div class="timeline-rail"></div>
-      <div id="moments-list"><div class="loading-line"><div class="loading-line-inner"></div></div></div>
-    </div>
+    <div class="timeline"><div class="timeline-rail"></div><div id="moments-list"><div class="loading-line"><div class="loading-line-inner"></div></div></div></div>
   </div>
-
-  <!-- VOTE -->
   <div class="section">
     <div class="section-label">投票</div>
     <div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">☝️</div>上の分岐点から選んでください</div>
     <div id="vote-form" style="display:none">
       <div class="selected-tag" id="selected-tag"></div>
-      <textarea class="reason-input" id="reason-input" placeholder="なぜここが分岐点だと思いましたか？（任意・コメント欄にも投稿されます）" rows="3"></textarea>
+      <textarea class="reason-input" id="reason-input" placeholder="なぜここが分岐点だと思いましたか？（任意）" rows="3"></textarea>
       <button class="btn-vote" id="vote-btn" onclick="submitVote()">この場面に投票する</button>
     </div>
     <div id="voted-done" style="display:none">
       <div class="voted-tag" id="voted-tag">✓ 投票しました</div>
-      <button class="btn-x-post" onclick="shareVote()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        投票結果をXにポスト
-      </button>
+      <button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>投票結果をXにポスト</button>
       <div id="vote-share-preview" style="display:none"></div>
     </div>
   </div>
-
-  <!-- PLAYER RATINGS -->
   <div class="section">
     <div class="section-label">出場選手への評価</div>
     <div class="section-desc">今日の選手たちへ一票を。評価数に応じてアイコンが大きくなります。</div>
-    <div class="players-grid" id="players-grid">
-      <div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> 読み込み中...</div>
-    </div>
+    <div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> 読み込み中...</div></div>
   </div>
-
-  <!-- COMMENTS -->
   <div class="section">
     <div class="section-label">みんなのコメント</div>
     <div class="tabs">
@@ -382,638 +247,81 @@ from{transform:translateX(-100%)} to{transform:translateX(250%)} }
       </div>
     </div>
   </div>
-
 </div>
 <div class="toast" id="toast"></div>
-
 <script>
-/* ════ GAME DATA ════ */
-const GAME_ID = 'npb_2021038672';
-const GAME = { home:'広島', away:'阪神', homeScore:2, awayScore:1, date:'2026年4月5日', venue:'マツダスタジアム' };
-const APP_URL = 'https://turning-point.baseball';
-const HASHTAGS = '#広島カープ #カープトーク #分岐点議論';
-
-const MOMENTS = [
-  { id:1, inning:'1回裏', type:'score', desc:'佐々木泰、二死二塁から先制タイムリー', sub:'広島が最初の好機を確実に生かす。広 1-0 神' },
-  { id:2, inning:'2〜3回', type:'pitcher', desc:'栗林・髙橋、両先発が無失点で抑える', sub:'広島・栗林（防0.00）、阪神・髙橋（防0.00）がともに好投。1点リードのまま膠着状態へ。' },
-  { id:3, inning:'4〜5回', type:'pitcher', desc:'髙橋遥人、広島中軸を完全封殺', sub:'モンテロ（.385/好調）、坂倉（.278/好調）をゼロに封じ続ける。' },
-  { id:4, inning:'6〜7回', type:'pitcher', desc:'栗林、7回まで阪神を無失点に封じる', sub:'木浪（打率.579/絶好調）、森下（.387/絶好調）を抑え込む好投。' },
-  { id:5, inning:'8回表', type:'score', desc:'近本光司、一死一三塁から犠牲フライ（同点）', sub:'阪神・近本（.290/好調）が同点に追いつく。広 1-1 神' },
-  { id:6, inning:'8回裏', type:'crisis', desc:'広島、同点後も無得点で9回へ', sub:'桐敷が広島の反撃を断ち切る。勝負は9回へ持ち越し。' },
-  { id:7, inning:'9回裏', type:'hr', desc:'モンテロ、2-2からサヨナラ本塁打！', sub:'広島7番・モンテロ（.385/好調）が桐敷の球をレフトスタンドへ。連敗ストップ！' },
+const GAME_ID='npb_2021038672';
+const GAME={home:'広島',away:'阪神',homeScore:2,awayScore:1,date:'2026年4月5日',venue:'マツダスタジアム'};
+const APP_URL='https://carp-talk.vercel.app';
+const HASHTAGS='#広島カープ #カープトーク #分岐点議論';
+const MOMENTS=[
+  {id:1,inning:'1回裏',type:'score',desc:'佐々木泰、二死二塁から先制タイムリー',sub:'広島が最初の好機を確実に生かす。広 1-0 神'},
+  {id:2,inning:'2〜3回',type:'pitcher',desc:'栗林・髙橋、両先発が無失点で抑える',sub:'広島・栗林（防0.00）、阪神・髙橋（防0.00）がともに好投。'},
+  {id:3,inning:'4〜5回',type:'pitcher',desc:'髙橋遥人、広島中軸を完全封殺',sub:'モンテロ（.385/好調）、坂倉（.278/好調）をゼロに封じ続ける。'},
+  {id:4,inning:'6〜7回',type:'pitcher',desc:'栗林、7回まで阪神を無失点に封じる',sub:'木浪（打率.579/絶好調）、森下（.387/絶好調）を抑え込む好投。'},
+  {id:5,inning:'8回表',type:'score',desc:'近本光司、一死一三塁から犠牲フライ（同点）',sub:'阪神・近本（.290/好調）が同点に追いつく。広 1-1 神'},
+  {id:6,inning:'8回裏',type:'crisis',desc:'広島、同点後も無得点で9回へ',sub:'桐敷が広島の反撃を断ち切る。勝負は9回へ持ち越し。'},
+  {id:7,inning:'9回裏',type:'hr',desc:'モンテロ、2-2からサヨナラ本塁打！',sub:'広島7番・モンテロ（.385/好調）が桐敷の球をレフトスタンドへ。連敗ストップ！'},
 ];
-
-/* 今日の出場選手 */
-const PLAYERS = [
-  { name:'大盛 穂', pos:'中', num:'1' },
-  { name:'小園 海斗', pos:'遊', num:'2' },
-  { name:'佐々木 泰', pos:'三', num:'3' },
-  { name:'ファビアン', pos:'左', num:'4' },
-  { name:'坂倉 将吾', pos:'捕', num:'5' },
-  { name:'モンテロ', pos:'一', num:'6' },
-  { name:'勝田 成', pos:'二', num:'7' },
-  { name:'栗林 良吏', pos:'投', num:'8' },
-  { name:'中﨑 翔太', pos:'投', num:'9' },
+const PLAYERS=[
+  {name:'大盛 穂',pos:'中'},{name:'小園 海斗',pos:'遊'},{name:'佐々木 泰',pos:'三'},
+  {name:'ファビアン',pos:'左'},{name:'坂倉 将吾',pos:'捕'},{name:'モンテロ',pos:'一'},
+  {name:'勝田 成',pos:'二'},{name:'栗林 良吏',pos:'投'},{name:'中﨑 翔太',pos:'投'},
 ];
-島7番・モンテロ（.385/好調）が桐敷の球をレフトスタンドへ。連敗ストップ！' },
-];
-
-const TYPE_LABEL = { score:'得点シーン', pitcher:'投手好投', crisis:'ピンチ脱出', hr:'本塁打' };
-const TYPE_BADGE = { score:'type-score-badge', pitcher:'type-pitcher-badge', crisis:'type-crisis-badge', hr:'type-hr-badge' };
-const BAR_CLS = { score:'bar-score', pitcher:'bar-pitcher', crisis:'bar-crisis', hr:'bar-hr' };
-const TAG_CLS = { score:'tag-score', pitcher:'tag-pitcher', crisis:'tag-crisis', hr:'tag-hr' };
-const RATING_LABEL = { mvp:'🏆 今日のMVP', great:'👏 頑張った', ganbatte:'💪 次も頑張れ', nigun:'💦 2軍で出直し？' };
-const RATING_ACTIVE = { mvp:'active-mvp', great:'active-great', ganbatte:'active-ganbatte', nigun:'active-nigun' };
-
-const AVATAR_PAL = [
-  {bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},
-  {bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'},
-];
-
-/* ════ STATE ════ */
-let sb = null;
-let voteCounts = {};
-let myVotedId = null;
-let selectedId = null;
-let allComments = [];
-let myLikes = new Set();
-let currentTab = 'all';
-let userId = null;
-let xUser = null;
-let playerRatings = {};
-let myPlayerRatings = {};
-
-function getOrCreateUserId() {
-  let id = localStorage.getItem('carp_talk_uid');
-  if (!id) { id = 'u_' + Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('carp_talk_uid', id); }
-  return id;
-}
-
-function getDisplayName() {
-  if (xUser) return xUser.name;
-  const adj = ['熱血','鋭眼','渋い','猛鯉','鯉のぼり','快速','剛腕','強肩','俊足','情熱'];
-  const nou = ['ファン','観客','応援団','評論家','マニア','通','ウォッチャー','記者','解説者'];
-  const s = userId.charCodeAt(2) + userId.charCodeAt(3);
-  return adj[s % adj.length] + nou[(s >> 2) % nou.length];
-}
-
-function handleXConnect() {
-  if (xUser) {
-    xUser = null;
-    localStorage.removeItem('x_user');
-    renderXBtn();
-    document.getElementById('x-name-row').style.display = 'none';
-    showToast('X連携を解除しました');
-    return;
-  }
-  const name = window.prompt('Xのユーザー名（@なし）を入力してください\n※連携認証はサーバーが必要なため、今は自己入力で代替します');
-  if (!name || !name.trim()) return;
-  xUser = { name: name.trim(), screen_name: name.trim() };
-  localStorage.setItem('x_user', JSON.stringify(xUser));
-  renderXBtn();
-  const row = document.getElementById('x-name-row');
-  row.style.display = 'flex';
-  document.getElementById('x-posting-as').textContent = '@' + xUser.screen_name;
-  showToast(`@${xUser.screen_name} として連携しました`);
-}
-
-function renderXBtn() {
-  const btn = document.getElementById('x-btn');
-  const label = document.getElementById('x-btn-label');
-  if (xUser) {
-    btn.classList.add('x-connected');
-    label.textContent = '@' + xUser.screen_name;
-  } else {
-    btn.classList.remove('x-connected');
-    label.textContent = 'X連携';
-  }
-}
-
-async function connectSupabase() {
-  const url = document.getElementById('sb-url').value.trim();
-  const key = document.getElementById('sb-key').value.trim();
-  const err = document.getElementById('setup-error');
-  if (!url || !key) { err.textContent = 'URLとKeyを入力してください'; return; }
-  err.textContent = '接続確認中...';
-  try {
-    sb = supabase.createClient(url, key);
-    const { error } = await sb.from('votes').select('id').limit(1);
-    if (error) throw error;
-    localStorage.setItem('sb_url', url); localStorage.setItem('sb_key', key);
-    await initApp();
-    document.getElementById('setup-overlay').style.display = 'none';
-  } catch(e) {
-    document.getElementById('setup-error').textContent = `エラー: ${e.message}`;
-  }
-}
-
-async function tryAutoConnect() {
-  const url = localStorage.getItem('sb_url');
-  const key = localStorage.getItem('sb_key');
-  if (!url || !key) return;
-  try {
-    sb = supabase.createClient(url, key);
-    const { error } = await sb.from('votes').select('id').limit(1);
-    if (error) throw error;
-    await initApp();
-    document.getElementById('setup-overlay').style.display = 'none';
-  } catch(e) { localStorage.removeItem('sb_url'); localStorage.removeItem('sb_key'); }
-}
-
-async function initApp() {
-  userId = getOrCreateUserId();
-  const savedX = localStorage.getItem('x_user');
-  if (savedX) {
-    xUser = JSON.parse(savedX);
-    renderXBtn();
-    const row = document.getElementById('x-name-row');
-    row.style.display = 'flex';
-    document.getElementById('x-posting-as').textContent = '@' + xUser.screen_name;
-  }
-  const { data: myVote } = await sb.from('votes').select('moment_id').eq('game_id', GAME_ID).eq('user_id', userId).maybeSingle();
-  if (myVote) { myVotedId = myVote.moment_id; showVotedState(myVotedId); }
-  const { data: myLikeData } = await sb.from('comment_likes').select('comment_id').eq('user_id', userId);
-  if (myLikeData) myLikeData.forEach(l => myLikes.add(l.comment_id));
-  const { data: myRatings } = await sb.from('player_ratings').select('player_name,rating').eq('game_id', GAME_ID).eq('user_id', userId);
-  if (myRatings) myRatings.forEach(r => myPlayerRatings[r.player_name] = r.rating);
-  await Promise.all([loadVoteCounts(), loadComments(), loadPlayerRatings()]);
-  subscribeRealtime();
-}
-
-async function loadVoteCounts() {
-  const { data } = await sb.from('votes').select('moment_id').eq('game_id', GAME_ID);
-  voteCounts = {};
-  MOMENTS.forEach(m => voteCounts[m.id] = 0);
-  if (data) data.forEach(v => { voteCounts[v.moment_id] = (voteCounts[v.moment_id]||0) + 1; });
-  renderMoments();
-}
-
-function totalVotes() { return Object.values(voteCounts).reduce((s,v) => s+v, 0); }
-
-function renderMoments() {
-  const tot = totalVotes();
-  document.getElementById('moments-list').innerHTML = MOMENTS.map(m => {
-    const cnt = voteCounts[m.id]||0;
-    const pct = tot > 0 ? Math.round(cnt/tot*100) : 0;
-    const sel = m.id===selectedId ? 'selected' : (m.id===myVotedId ? 'voted' : '');
-    return `<div class="moment ${sel} type-${m.type}" onclick="selectMoment(${m.id})">
-      <div class="moment-dot"></div>
-      <div class="moment-inner">
-        <div class="moment-header">
-          <span class="moment-inning">${m.inning}</span>
-          <span class="moment-type-badge ${TYPE_BADGE[m.type]}">${TYPE_LABEL[m.type]}</span>
-        </div>
-        <div class="moment-desc">${m.desc}</div>
-        <div class="moment-sub">${m.sub}</div>
-        <div class="moment-footer">
-          <div class="moment-bar-row">
-            <div class="moment-bar-wrap"><div class="moment-bar ${BAR_CLS[m.type]}" style="width:${pct}%"></div></div>
-            <span class="moment-pct">${cnt}票 ${pct}%</span>
-          </div>
-          <button class="moment-share-btn" onclick="event.stopPropagation();shareMoment(${m.id})">${xSVG(10)} シェア</button>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function selectMoment(id) {
-  if (myVotedId) return;
-  selectedId = id;
-  const m = MOMENTS.find(x => x.id===id);
-  document.getElementById('vote-prompt').style.display = 'none';
-  document.getElementById('vote-form').style.display = 'block';
-  document.getElementById('selected-tag').innerHTML = `<strong>${m.inning}</strong>　${m.desc}`;
-  renderMoments();
-}
-
-async function submitVote() {
-  if (!selectedId || myVotedId) return;
-  const btn = document.getElementById('vote-btn');
-  btn.disabled = true; btn.textContent = '送信中...';
-  const reason = document.getElementById('reason-input').value.trim();
-  const { error } = await sb.from('votes').insert({ game_id:GAME_ID, moment_id:selectedId, user_id:userId, reason:reason||null });
-  if (error) {
-    showToast(error.code==='23505' ? 'すでに投票済みです' : 'エラーが発生しました');
-    btn.disabled = false; btn.textContent = 'この場面に投票する'; return;
-  }
-  myVotedId = selectedId; selectedId = null;
-  if (reason) await postComment(myVotedId, reason);
-  await loadVoteCounts();
-  showVotedState(myVotedId);
-  showToast('投票しました！');
-}
-
-function showVotedState(momentId) {
-  const m = MOMENTS.find(x => x.id===momentId);
-  document.getElementById('vote-form').style.display = 'none';
-  document.getElementById('vote-prompt').style.display = 'none';
-  document.getElementById('voted-done').style.display = 'block';
-  document.getElementById('voted-tag').innerHTML = `✓ <strong>${m.inning} ${m.desc}</strong> に投票しました`;
-}
-
-async function loadPlayerRatings() {
-  const { data } = await sb.from('player_ratings').select('player_name,rating').eq('game_id', GAME_ID);
-  playerRatings = {};
-  PLAYERS.forEach(p => { playerRatings[p.name] = { mvp:0, great:0, ganbatte:0, nigun:0 }; });
-  if (data) data.forEach(r => {
-    if (playerRatings[r.player_name]) playerRatings[r.player_name][r.rating]++;
-  });
-  renderPlayers();
-}
-
-function playerTotalVotes(name) {
-  const r = playerRatings[name]||{};
-  return (r.mvp||0)+(r.great||0)+(r.ganbatte||0)+(r.nigun||0);
-}
-
-function iconSize(name) {
-  const tot = playerTotalVotes(name);
-  const allTotals = PLAYERS.map(p => playerTotalVotes(p.name));
-  const max = Math.max(...allTotals, 1);
-  return Math.round(52 + (tot / max) * 44);
-}
-
-function renderPlayers() {
-  document.getElementById('players-grid').innerHTML = PLAYERS.map(p => {
-    const r = playerRatings[p.name]||{mvp:0,great:0,ganbatte:0,nigun:0};
-    const myR = myPlayerRatings[p.name];
-    const sz = iconSize(p.name);
-    const initials = p.name.replace(' ','').slice(0,2);
-    const pills = ['mvp','great','ganbatte','nigun'].filter(k=>r[k]>0)
-      .map(k=>`<span class="vote-pill pill-${k}">${RATING_LABEL[k].split(' ')[0]} ${r[k]}</span>`).join('');
-    return `<div class="player-card">
-      <div class="player-icon-wrap">
-        <div class="player-icon carp-player" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*0.35)}px">${initials}</div>
-      </div>
-      <div class="player-name">${p.name}</div>
-      <div class="player-pos">${p.pos}</div>
-      <div class="rating-btns">
-        ${Object.keys(RATING_LABEL).map(k=>`<button class="rating-btn ${myR===k?RATING_ACTIVE[k]:''}" onclick="ratePlayer('${p.name}','${k}')">${RATING_LABEL[k]}</button>`).join('')}
-      </div>
-      <div class="player-votes">${pills||'<span style="color:var(--faint)">まだ評価なし</span>'}</div>
-    </div>`;
-  }).join('');
-}
-
-async function ratePlayer(playerName, rating) {
-  const prev = myPlayerRatings[playerName];
-  if (prev === rating) {
-    await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);
-    delete myPlayerRatings[playerName];
-  } else {
-    if (prev) await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);
-    const { error } = await sb.from('player_ratings').insert({ game_id:GAME_ID, player_name:playerName, user_id:userId, rating });
-    if (error && error.code!=='23505') { showToast('エラーが発生しました'); return; }
-    myPlayerRatings[playerName] = rating;
-  }
-  await loadPlayerRatings();
-  showToast(prev===rating ? '評価を取り消しました' : `${RATING_LABEL[rating]}を送りました！`);
-}
-
-async function loadComments() {
-  const { data } = await sb.from('comments').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false});
-  allComments = data||[];
-  renderComments();
-}
-
-async function postComment(momentId, body) {
-  const name = getDisplayName();
-  await sb.from('comments').insert({ game_id:GAME_ID, moment_id:momentId||null, user_id:userId, display_name:name, body });
-}
-
-async function sendComment() {
-  const inp = document.getElementById('comment-input');
-  const btn = document.getElementById('send-btn');
-  const txt = inp.value.trim();
-  if (!txt) return;
-  btn.disabled = true;
-  await postComment(myVotedId||null, txt);
-  inp.value = ''; btn.disabled = false;
-  showToast('コメントしました！');
-}
-
-async function toggleLike(commentId) {
-  const c = allComments.find(x=>x.id===commentId);
-  if (!c) return;
-  if (myLikes.has(commentId)) {
-    await sb.from('comment_likes').delete().eq('comment_id',commentId).eq('user_id',userId);
-    await sb.from('comments').update({likes:(c.likes||1)-1}).eq('id',commentId);
-    myLikes.delete(commentId);
-  } else {
-    await sb.from('comment_likes').insert({comment_id:commentId,user_id:userId});
-    await sb.from('comments').update({likes:(c.likes||0)+1}).eq('id',commentId);
-    myLikes.add(commentId);
-  }
-  await loadComments();
-}
-
-function renderComments() {
-  if (currentTab==='ai') return;
-  let list = [...allComments];
-  if (currentTab==='hot') list.sort((a,b)=>b.likes-a.likes);
-  if (!list.length) { document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>'; return; }
-  document.getElementById('comments-list').innerHTML = list.map(c => {
-    const m = c.moment_id ? MOMENTS.find(x=>x.id===c.moment_id) : null;
-    const ac = AVATAR_PAL[Math.abs(hashStr(c.user_id)) % AVATAR_PAL.length];
-    const tag = m ? `<span class="moment-tag-sm ${TAG_CLS[m.type]}">${m.inning}</span>` : '';
-    const liked = myLikes.has(c.id);
-    const initials = c.display_name.slice(0,1);
-    return `<div class="comment">
-      <div class="comment-header">
-        <div class="avatar" style="background:${ac.bg};color:${ac.c}">${initials}</div>
-        <span class="comment-name">${escHtml(c.display_name)}</span>${tag}
-      </div>
-      <div class="comment-body">${escHtml(c.body)}</div>
-      <div class="comment-time">${formatTime(c.created_at)}</div>
-      <div class="comment-actions">
-        <button class="like-btn ${liked?'liked':''}" onclick="toggleLike('${c.id}')">\u2661 ${c.likes||0}</button>
-        <button class="comment-share-btn" onclick="shareComment('${c.id}')">${xSVG(10)} ポスト</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function setTab(tab, el) {
-  currentTab = tab;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  const isAI = tab==='ai';
-  document.getElementById('comment-input-row').style.display = isAI ? 'none' : 'block';
-  document.getElementById('comments-list').style.display = isAI ? 'none' : 'block';
-  document.getElementById('ai-panel').style.display = isAI ? 'block' : 'none';
-  isAI ? renderAI() : renderComments();
-}
-
-function renderAI() {
-  const panel = document.getElementById('ai-panel');
-  const tot = totalVotes();
-  if (tot===0) { panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>'; return; }
-  const top = [...MOMENTS].sort((a,b)=>(voteCounts[b.id]||0)-(voteCounts[a.id]||0))[0];
-  const topPitcher = [...MOMENTS].filter(m=>m.type==='pitcher').sort((a,b)=>(voteCounts[b.id]||0)-(voteCounts[a.id]||0))[0];
-  const topPct = Math.round((voteCounts[top.id]||0)/tot*100);
-  const mvpPlayer = PLAYERS.map(p=>({p,v:playerRatings[p.name]?.mvp||0})).sort((a,b)=>b.v-a.v)[0];
-  const shareText = `【カープトーク分析】${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）\n分岐点1位：「${top.inning} ${top.desc}」${topPct}%\nファンMVP：${mvpPlayer.p.name}\n${HASHTAGS}\n${APP_URL}`;
-  panel.innerHTML = `<div class="ai-box">
-    <strong>AI分析（${tot}票集計）：</strong> 広島サヨナラ勝ちのこの試合、ファンが最も注目した分岐点は<strong>「${top.inning} ${top.desc}」（${topPct}%）</strong>です。<br><br>
-    投手好投では<strong>「${topPitcher.inning} ${topPitcher.desc}」</strong>が最多票を獲得。無得点が続いた中盤の投手戦こそ、この試合の本質的な分岐点とファンは見ています。<br><br>
-    選手評価では<strong>${mvpPlayer.p.name}</strong>がMVP票を最多獲得。${mvpPlayer.v}票のファンが今日の活躍を称えました。
-    <br><button class="ai-share-btn" onclick="openTweet(${JSON.stringify(shareText)})">${xSVG(12,'#fff')} AI分析をポスト</button>
-  </div>`;
-}
-
-function subscribeRealtime() {
-  sb.channel('votes-rt').on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:`game_id=eq.${GAME_ID}`},async()=>{
-    await loadVoteCounts(); flashLive();
-  }).subscribe();
-  sb.channel('comments-rt').on('postgres_changes',{event:'*',schema:'public',table:'comments',filter:`game_id=eq.${GAME_ID}`},async()=>{
-    await loadComments();
-  }).subscribe();
-  sb.channel('ratings-rt').on('postgres_changes',{event:'*',schema:'public',table:'player_ratings',filter:`game_id=eq.${GAME_ID}`},async()=>{
-    await loadPlayerRatings();
-  }).subscribe();
-}
-
-function flashLive() {
-  const el = document.getElementById('live-update');
-  el.style.display = 'flex'; clearTimeout(el._t);
-  el._t = setTimeout(()=>el.style.display='none', 3000);
-}
-
-function shareMoment(id) {
-  const m = MOMENTS.find(x=>x.id===id);
-  const pct = totalVotes()>0 ? Math.round((voteCounts[m.id]||0)/totalVotes()*100) : 0;
-  openTweet(`【分岐点】${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）\n\n「${m.inning} ${m.desc}」\n\nこの場面に${pct}%のファンが注目！\n${HASHTAGS}\n${APP_URL}`);
-}
-
-function shareVote() {
-  const m = MOMENTS.find(x=>x.id===myVotedId);
-  if (!m) return;
-  const pct = totalVotes()>0 ? Math.round((voteCounts[m.id]||0)/totalVotes()*100) : 0;
-  const text = `${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）、私が選んだ分岐点\ud83d\udc47\n\n「${m.inning} ${m.desc}」\n\n${pct}%のファンも同じ場面！あなたはどこ？\n${HASHTAGS}\n${APP_URL}`;
-  const prev = document.getElementById('vote-share-preview');
-  if (prev.style.display!=='none') { prev.style.display='none'; return; }
-  prev.style.display = 'block';
-  prev.innerHTML = `<div class="share-preview-box">
-    <div class="share-preview-label">ポストのプレビュー</div>
-    <div class="share-preview-text">${escHtml(text)}</div>
-    <div class="share-preview-actions">
-      <button class="btn-confirm" onclick="openTweet(${JSON.stringify(text)})">${xSVG(12,'#fff')} Xにポスト</button>
-      <button class="btn-cancel" onclick="document.getElementById('vote-share-preview').style.display='none'">閉じる</button>
-    </div>
-  </div>`;
-}
-
-function shareComment(commentId) {
-  const c = allComments.find(x=>x.id===commentId);
-  if (!c) return;
-  const m = c.moment_id ? MOMENTS.find(x=>x.id===c.moment_id) : null;
-  const tag = m ? `【${m.inning}】` : '';
-  openTweet(`${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）カープトークより\n\n${tag}「${c.body}」\n\n— ${c.display_name}\n${HASHTAGS}\n${APP_URL}`);
-}
-
-function openTweet(text) {
-  const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
-  const w = window.open(url, '_blank', 'width=550,height=420,noopener,noreferrer');
-  if (!w) {
-    const a = document.createElement('a');
-    a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-    a.click();
-  }
-}
-
-function xSVG(size=11,fill='currentColor'){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${fill}" style="flex-shrink:0;vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;}
+const TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
+const TYPE_BADGE={score:'type-score-badge',pitcher:'type-pitcher-badge',crisis:'type-crisis-badge',hr:'type-hr-badge'};
+const BAR_CLS={score:'bar-score',pitcher:'bar-pitcher',crisis:'bar-crisis',hr:'bar-hr'};
+const TAG_CLS={score:'tag-score',pitcher:'tag-pitcher',crisis:'tag-crisis',hr:'tag-hr'};
+const RATING_LABEL={mvp:'🏆 今日のMVP',great:'👏 頑張った',ganbatte:'💪 次も頑張れ',nigun:'💦 2軍で出直し？'};
+const RATING_ACTIVE={mvp:'active-mvp',great:'active-great',ganbatte:'active-ganbatte',nigun:'active-nigun'};
+const AVATAR_PAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
+let sb=null,voteCounts={},myVotedId=null,selectedId=null,allComments=[],myLikes=new Set(),currentTab='all',userId=null,xUser=null,playerRatings={},myPlayerRatings={};
+function getOrCreateUserId(){let id=localStorage.getItem('carp_talk_uid');if(!id){id='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('carp_talk_uid',id);}return id;}
+function getDisplayName(){if(xUser)return xUser.name;const adj=['熱血','鋭眼','渋い','猛鯉','鯉のぼり','快速','剛腕','強肩','俊足','情熱'];const nou=['ファン','観客','応援団','評論家','マニア','通','ウォッチャー','記者','解説者'];const s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
+function handleXConnect(){if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('X連携を解除しました');return;}const name=window.prompt('Xのユーザー名（@なし）を入力してください');if(!name||!name.trim())return;xUser={name:name.trim(),screen_name:name.trim()};localStorage.setItem('x_user',JSON.stringify(xUser));renderXBtn();document.getElementById('x-name-row').style.display='flex';document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;showToast('@'+xUser.screen_name+' として連携しました');}
+function renderXBtn(){const btn=document.getElementById('x-btn');const label=document.getElementById('x-btn-label');if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}else{btn.classList.remove('x-connected');label.textContent='X連携';}}
+async function initApp(){userId=getOrCreateUserId();const savedX=localStorage.getItem('x_user');if(savedX){xUser=JSON.parse(savedX);renderXBtn();document.getElementById('x-name-row').style.display='flex';document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;}const{data:myVote}=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();if(myVote){myVotedId=myVote.moment_id;showVotedState(myVotedId);}const{data:myLikeData}=await sb.from('comment_likes').select('comment_id').eq('user_id',userId);if(myLikeData)myLikeData.forEach(l=>myLikes.add(l.comment_id));const{data:myRatings}=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);if(myRatings)myRatings.forEach(r=>myPlayerRatings[r.player_name]=r.rating);await Promise.all([loadVoteCounts(),loadComments(),loadPlayerRatings()]);subscribeRealtime();}
+async function loadVoteCounts(){const{data}=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID);voteCounts={};MOMENTS.forEach(m=>voteCounts[m.id]=0);if(data)data.forEach(v=>{voteCounts[v.moment_id]=(voteCounts[v.moment_id]||0)+1;});renderMoments();}
+function totalVotes(){return Object.values(voteCounts).reduce((s,v)=>s+v,0);}
+function renderMoments(){const tot=totalVotes();document.getElementById('moments-list').innerHTML=MOMENTS.map(m=>{const cnt=voteCounts[m.id]||0;const pct=tot>0?Math.round(cnt/tot*100):0;const sel=m.id===selectedId?'selected':(m.id===myVotedId?'voted':'');return `<div class="moment ${sel} type-${m.type}" onclick="selectMoment(${m.id})"><div class="moment-dot"></div><div class="moment-inner"><div class="moment-header"><span class="moment-inning">${m.inning}</span><span class="moment-type-badge ${TYPE_BADGE[m.type]}">${TYPE_LABEL[m.type]}</span></div><div class="moment-desc">${m.desc}</div><div class="moment-sub">${m.sub}</div><div class="moment-footer"><div class="moment-bar-row"><div class="moment-bar-wrap"><div class="moment-bar ${BAR_CLS[m.type]}" style="width:${pct}%"></div></div><span class="moment-pct">${cnt}票 ${pct}%</span></div><button class="moment-share-btn" onclick="event.stopPropagation();shareMoment(${m.id})">${xSVG(10)} シェア</button></div></div></div>`;}).join('');}
+function selectMoment(id){if(myVotedId)return;selectedId=id;const m=MOMENTS.find(x=>x.id===id);document.getElementById('vote-prompt').style.display='none';document.getElementById('vote-form').style.display='block';document.getElementById('selected-tag').innerHTML='<strong>'+m.inning+'</strong>　'+m.desc;renderMoments();}
+async function submitVote(){if(!selectedId||myVotedId)return;const btn=document.getElementById('vote-btn');btn.disabled=true;btn.textContent='送信中...';const reason=document.getElementById('reason-input').value.trim();const{error}=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});if(error){showToast(error.code==='23505'?'すでに投票済みです':'エラーが発生しました');btn.disabled=false;btn.textContent='この場面に投票する';return;}myVotedId=selectedId;selectedId=null;if(reason)await postComment(myVotedId,reason);await loadVoteCounts();showVotedState(myVotedId);showToast('投票しました！');}
+function showVotedState(momentId){const m=MOMENTS.find(x=>x.id===momentId);document.getElementById('vote-form').style.display='none';document.getElementById('vote-prompt').style.display='none';document.getElementById('voted-done').style.display='block';document.getElementById('voted-tag').innerHTML='✓ <strong>'+m.inning+' '+m.desc+'</strong> に投票しました';}
+async function loadPlayerRatings(){const{data}=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID);playerRatings={};PLAYERS.forEach(p=>{playerRatings[p.name]={mvp:0,great:0,ganbatte:0,nigun:0};});if(data)data.forEach(r=>{if(playerRatings[r.player_name])playerRatings[r.player_name][r.rating]++;});renderPlayers();}
+function playerTotalVotes(name){const r=playerRatings[name]||{};return(r.mvp||0)+(r.great||0)+(r.ganbatte||0)+(r.nigun||0);}
+function iconSize(name){const tot=playerTotalVotes(name);const max=Math.max(...PLAYERS.map(p=>playerTotalVotes(p.name)),1);return Math.round(52+(tot/max)*44);}
+function renderPlayers(){document.getElementById('players-grid').innerHTML=PLAYERS.map(p=>{const r=playerRatings[p.name]||{mvp:0,great:0,ganbatte:0,nigun:0};const myR=myPlayerRatings[p.name];const sz=iconSize(p.name);const initials=p.name.replace(' ','').slice(0,2);const pills=['mvp','great','ganbatte','nigun'].filter(k=>r[k]>0).map(k=>`<span class="vote-pill pill-${k}">${RATING_LABEL[k].split(' ')[0]} ${r[k]}</span>`).join('');return `<div class="player-card"><div class="player-icon carp-player" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*0.35)}px">${initials}</div><div class="player-name">${p.name}</div><div class="player-pos">${p.pos}</div><div class="rating-btns">${Object.keys(RATING_LABEL).map(k=>`<button class="rating-btn ${myR===k?RATING_ACTIVE[k]:''}" onclick="ratePlayer('${p.name}','${k}')">${RATING_LABEL[k]}</button>`).join('')}</div><div class="player-votes">${pills||'<span style="color:var(--faint)">まだ評価なし</span>'}</div></div>`;}).join('');}
+async function ratePlayer(playerName,rating){const prev=myPlayerRatings[playerName];if(prev===rating){await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);delete myPlayerRatings[playerName];}else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);const{error}=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating});if(error&&error.code!=='23505'){showToast('エラーが発生しました');return;}myPlayerRatings[playerName]=rating;}await loadPlayerRatings();showToast(prev===rating?'評価を取り消しました':RATING_LABEL[rating]+'を送りました！');}
+async function loadComments(){const{data}=await sb.from('comments').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false});allComments=data||[];renderComments();}
+async function postComment(momentId,body){await sb.from('comments').insert({game_id:GAME_ID,moment_id:momentId||null,user_id:userId,display_name:getDisplayName(),body});}
+async function sendComment(){const inp=document.getElementById('comment-input');const btn=document.getElementById('send-btn');const txt=inp.value.trim();if(!txt)return;btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('コメントしました！');}
+async function toggleLike(commentId){const c=allComments.find(x=>x.id===commentId);if(!c)return;if(myLikes.has(commentId)){await sb.from('comment_likes').delete().eq('comment_id',commentId).eq('user_id',userId);await sb.from('comments').update({likes:(c.likes||1)-1}).eq('id',commentId);myLikes.delete(commentId);}else{await sb.from('comment_likes').insert({comment_id:commentId,user_id:userId});await sb.from('comments').update({likes:(c.likes||0)+1}).eq('id',commentId);myLikes.add(commentId);}await loadComments();}
+function renderComments(){if(currentTab==='ai')return;let list=[...allComments];if(currentTab==='hot')list.sort((a,b)=>b.likes-a.likes);if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>';return;}document.getElementById('comments-list').innerHTML=list.map(c=>{const m=c.moment_id?MOMENTS.find(x=>x.id===c.moment_id):null;const ac=AVATAR_PAL[Math.abs(hashStr(c.user_id))%AVATAR_PAL.length];const tag=m?`<span class="moment-tag-sm ${TAG_CLS[m.type]}">${m.inning}</span>`:'';const liked=myLikes.has(c.id);return `<div class="comment"><div class="comment-header"><div class="avatar" style="background:${ac.bg};color:${ac.c}">${c.display_name.slice(0,1)}</div><span class="comment-name">${escHtml(c.display_name)}</span>${tag}</div><div class="comment-body">${escHtml(c.body)}</div><div class="comment-time">${formatTime(c.created_at)}</div><div class="comment-actions"><button class="like-btn ${liked?'liked':''}" onclick="toggleLike('${c.id}')">♡ ${c.likes||0}</button><button class="comment-share-btn" onclick="shareComment('${c.id}')">${xSVG(10)} ポスト</button></div></div>`;}).join('');}
+function setTab(tab,el){currentTab=tab;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');const isAI=tab==='ai';document.getElementById('comment-input-row').style.display=isAI?'none':'block';document.getElementById('comments-list').style.display=isAI?'none':'block';document.getElementById('ai-panel').style.display=isAI?'block':'none';isAI?renderAI():renderComments();}
+function renderAI(){const panel=document.getElementById('ai-panel');const tot=totalVotes();if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>';return;}const top=[...MOMENTS].sort((a,b)=>(voteCounts[b.id]||0)-(voteCounts[a.id]||0))[0];const topP=[...MOMENTS].filter(m=>m.type==='pitcher').sort((a,b)=>(voteCounts[b.id]||0)-(voteCounts[a.id]||0))[0];const pct=Math.round((voteCounts[top.id]||0)/tot*100);const mvp=PLAYERS.map(p=>({p,v:playerRatings[p.name]?.mvp||0})).sort((a,b)=>b.v-a.v)[0];const shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'（'+GAME.date+'）分析\n分岐点1位：「'+top.inning+' '+top.desc+'」'+pct+'%\nファンMVP：'+mvp.p.name+'\n'+HASHTAGS+'\n'+APP_URL;panel.innerHTML='<div class="ai-box"><strong>AI分析（'+tot+'票集計）：</strong> 広島サヨナラ勝ちのこの試合、最多注目は<strong>「'+top.inning+' '+top.desc+'」（'+pct+'%）</strong>です。<br><br>投手好投では<strong>「'+topP.inning+' '+topP.desc+'」</strong>が最多票。<br><br>選手評価では<strong>'+mvp.p.name+'</strong>がMVP票最多。<br><button class="ai-share-btn" onclick="openTweet('+JSON.stringify(shareText)+')">'+xSVG(12,'#fff')+' AI分析をポスト</button></div>';}
+function subscribeRealtime(){sb.channel('votes-rt').on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},async()=>{await loadVoteCounts();flashLive();}).subscribe();sb.channel('comments-rt').on('postgres_changes',{event:'*',schema:'public',table:'comments',filter:'game_id=eq.'+GAME_ID},async()=>{await loadComments();}).subscribe();sb.channel('ratings-rt').on('postgres_changes',{event:'*',schema:'public',table:'player_ratings',filter:'game_id=eq.'+GAME_ID},async()=>{await loadPlayerRatings();}).subscribe();}
+function flashLive(){const el=document.getElementById('live-update');el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(()=>el.style.display='none',3000);}
+function shareMoment(id){const m=MOMENTS.find(x=>x.id===id);const pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;openTweet('【分岐点】'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'（'+GAME.date+'）\n\n「'+m.inning+' '+m.desc+'」\n\nこの場面に'+pct+'%のファンが注目！\n'+HASHTAGS+'\n'+APP_URL);}
+function shareVote(){const m=MOMENTS.find(x=>x.id===myVotedId);if(!m)return;const pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;const text=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'（'+GAME.date+'）、私が選んだ分岐点👇\n\n「'+m.inning+' '+m.desc+'」\n\n'+pct+'%のファンも同じ場面！あなたは？\n'+HASHTAGS+'\n'+APP_URL;const prev=document.getElementById('vote-share-preview');if(prev.style.display!=='none'){prev.style.display='none';return;}prev.style.display='block';prev.innerHTML='<div class="share-preview-box"><div class="share-preview-label">ポストのプレビュー</div><div class="share-preview-text">'+escHtml(text)+'</div><div class="share-preview-actions"><button class="btn-confirm" onclick="openTweet('+JSON.stringify(text)+')">'+xSVG(12,'#fff')+' Xにポスト</button><button class="btn-cancel" onclick="document.getElementById('vote-share-preview').style.display='none'">閉じる</button></div></div>';}
+function shareComment(commentId){const c=allComments.find(x=>x.id===commentId);if(!c)return;const m=c.moment_id?MOMENTS.find(x=>x.id===c.moment_id):null;openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'（'+GAME.date+'）カープトークより\n'+(m?'【'+m.inning+'】':'')+'「'+c.body+'」\n— '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL);}
+function openTweet(text){const url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);const w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.click();}}
+function xSVG(size,fill){fill=fill||'currentColor';return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="'+fill+'" style="flex-shrink:0;vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
-function formatTime(iso){const d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return `${Math.floor(diff/60)}分前`;if(diff<86400)return `${Math.floor(diff/3600)}時間前`;return `${d.getMonth()+1}/${d.getDate()}`;}
+function formatTime(iso){const d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return Math.floor(diff/60)+'分前';if(diff<86400)return Math.floor(diff/3600)+'時間前';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
-s="vote-pill pill-${k}">${RATING_LABEL[k].split(' ')[0]} ${r[k]}</span>`).join('');
-    return `<div class="player-card">
-      <div class="player-icon-wrap">
-        <div class="player-icon carp-player" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*0.35)}px">${initials}</div>
-      </div>
-      <div class="player-name">${p.name}</div>
-      <div class="player-pos">${p.pos}</div>
-      <div class="rating-btns">
-        ${Object.keys(RATING_LABEL).map(k=>`<button class="rating-btn ${myR===k?RATING_ACTIVE[k]:''}" onclick="ratePlayer('${p.name}','${k}')">${RATING_LABEL[k]}</button>`).join('')}
-      </div>
-      <div class="player-votes">${pills||'<span style="color:var(--faint)">まだ評価なし</span>'}</div>
-    </div>`;
-  }).join('');
-}
-
-async function ratePlayer(playerName, rating) {
-  const prev = myPlayerRatings[playerName];
-  if (prev === rating) {
-    await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);
-    delete myPlayerRatings[playerName];
-  } else {
-    if (prev) await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);
-    const { error } = await sb.from('player_ratings').insert({ game_id:GAME_ID, player_name:playerName, user_id:userId, rating });
-    if (error && error.code!=='23505') { showToast('エラーが発生しました'); return; }
-    myPlayerRatings[playerName] = rating;
-  }
-  await loadPlayerRatings();
-  showToast(prev===rating ? '評価を取り消しました' : `${RATING_LABEL[rating]}を送りました！`);
-}
-
-async function loadComments() {
-  const { data } = await sb.from('comments').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false});
-  allComments = data||[];
-  renderComments();
-}
-
-async function postComment(momentId, body) {
-  const name = getDisplayName();
-  await sb.from('comments').insert({ game_id:GAME_ID, moment_id:momentId||null, user_id:userId, display_name:name, body });
-}
-
-async function sendComment() {
-  const inp = document.getElementById('comment-input');
-  const btn = document.getElementById('send-btn');
-  const txt = inp.value.trim();
-  if (!txt) return;
-  btn.disabled = true;
-  await postComment(myVotedId||null, txt);
-  inp.value = ''; btn.disabled = false;
-  showToast('コメントしました！');
-}
-
-async function toggleLike(commentId) {
-  const c = allComments.find(x=>x.id===commentId);
-  if (!c) return;
-  if (myLikes.has(commentId)) {
-    await sb.from('comment_likes').delete().eq('comment_id',commentId).eq('user_id',userId);
-    await sb.from('comments').update({likes:(c.likes||1)-1}).eq('id',commentId);
-    myLikes.delete(commentId);
-  } else {
-    await sb.from('comment_likes').insert({comment_id:commentId,user_id:userId});
-    await sb.from('comments').update({likes:(c.likes||0)+1}).eq('id',commentId);
-    myLikes.add(commentId);
-  }
-  await loadComments();
-}
-
-function renderComments() {
-  if (currentTab==='ai') return;
-  let list = [...allComments];
-  if (currentTab==='hot') list.sort((a,b)=>b.likes-a.likes);
-  if (!list.length) { document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>'; return; }
-  document.getElementById('comments-list').innerHTML = list.map(c => {
-    const m = c.moment_id ? MOMENTS.find(x=>x.id===c.moment_id) : null;
-    const ac = AVATAR_PAL[Math.abs(hashStr(c.user_id)) % AVATAR_PAL.length];
-    const tag = m ? `<span class="moment-tag-sm ${TAG_CLS[m.type]}">${m.inning}</span>` : '';
-    const liked = myLikes.has(c.id);
-    const initials = c.display_name.slice(0,1);
-    return `<div class="comment">
-      <div class="comment-header">
-        <div class="avatar" style="background:${ac.bg};color:${ac.c}">${initials}</div>
-        <span class="comment-name">${escHtml(c.display_name)}</span>${tag}
-      </div>
-      <div class="comment-body">${escHtml(c.body)}</div>
-      <div class="comment-time">${formatTime(c.created_at)}</div>
-      <div class="comment-actions">
-        <button class="like-btn ${liked?'liked':''}" onclick="toggleLike('${c.id}')">\u2661 ${c.likes||0}</button>
-        <button class="comment-share-btn" onclick="shareComment('${c.id}')">${xSVG(10)} ポスト</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function setTab(tab, el) {
-  currentTab = tab;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  const isAI = tab==='ai';
-  document.getElementById('comment-input-row').style.display = isAI ? 'none' : 'block';
-  document.getElementById('comments-list').style.display = isAI ? 'none' : 'block';
-  document.getElementById('ai-panel').style.display = isAI ? 'block' : 'none';
-  isAI ? renderAI() : renderComments();
-}
-
-function renderAI() {
-  const panel = document.getElementById('ai-panel');
-  const tot = totalVotes();
-  if (tot===0) { panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>'; return; }
-  const top = [...MOMENTS].sort((a,b)=>(voteCounts[b.id]||0)-(voteCounts[a.id]||0))[0];
-  const topPitcher = [...MOMENTS].filter(m=>m.type==='pitcher').sort((a,b)=>(voteCounts[b.id]||0)-(voteCounts[a.id]||0))[0];
-  const topPct = Math.round((voteCounts[top.id]||0)/tot*100);
-  const mvpPlayer = PLAYERS.map(p=>({p,v:playerRatings[p.name]?.mvp||0})).sort((a,b)=>b.v-a.v)[0];
-  const shareText = `【カープトーク分析】${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）\n分岐点1位：「${top.inning} ${top.desc}」${topPct}%\nファンMVP：${mvpPlayer.p.name}\n${HASHTAGS}\n${APP_URL}`;
-  panel.innerHTML = `<div class="ai-box">
-    <strong>AI分析（${tot}票集計）：</strong> 広島サヨナラ勝ちのこの試合、ファンが最も注目した分岐点は<strong>「${top.inning} ${top.desc}」（${topPct}%）</strong>です。<br><br>
-    投手好投では<strong>「${topPitcher.inning} ${topPitcher.desc}」</strong>が最多票を獲得。<br><br>
-    選手評価では<strong>${mvpPlayer.p.name}</strong>がMVP票最多。
-    <br><button class="ai-share-btn" onclick="openTweet(${JSON.stringify(shareText)})">${xSVG(12,'#fff')} AI分析をポスト</button>
-  </div>`;
-}
-
-function subscribeRealtime() {
-  sb.channel('votes-rt').on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:`game_id=eq.${GAME_ID}`},async()=>{
-    await loadVoteCounts(); flashLive();
-  }).subscribe();
-  sb.channel('comments-rt').on('postgres_changes',{event:'*',schema:'public',table:'comments',filter:`game_id=eq.${GAME_ID}`},async()=>{
-    await loadComments();
-  }).subscribe();
-  sb.channel('ratings-rt').on('postgres_changes',{event:'*',schema:'public',table:'player_ratings',filter:`game_id=eq.${GAME_ID}`},async()=>{
-    await loadPlayerRatings();
-  }).subscribe();
-}
-
-function flashLive() {
-  const el = document.getElementById('live-update');
-  el.style.display = 'flex'; clearTimeout(el._t);
-  el._t = setTimeout(()=>el.style.display='none', 3000);
-}
-
-function shareMoment(id) {
-  const m = MOMENTS.find(x=>x.id===id);
-  const pct = totalVotes()>0 ? Math.round((voteCounts[m.id]||0)/totalVotes()*100) : 0;
-  openTweet(`【分岐点】${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）\n\n「${m.inning} ${m.desc}」\n\nこの場面に${pct}%のファンが注目！\n${HASHTAGS}\n${APP_URL}`);
-}
-
-function shareVote() {
-  const m = MOMENTS.find(x=>x.id===myVotedId);
-  if (!m) return;
-  const pct = totalVotes()>0 ? Math.round((voteCounts[m.id]||0)/totalVotes()*100) : 0;
-  const text = `${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）、私が選んだ分岐点\n「${m.inning} ${m.desc}」\n${pct}%のファンも同じ場面！\n${HASHTAGS}\n${APP_URL}`;
-  const prev = document.getElementById('vote-share-preview');
-  if (prev.style.display!=='none') { prev.style.display='none'; return; }
-  prev.style.display = 'block';
-  prev.innerHTML = `<div class="share-preview-box"><div class="share-preview-label">ポストのプレビュー</div><div class="share-preview-text">${escHtml(text)}</div><div class="share-preview-actions"><button class="btn-confirm" onclick="openTweet(${JSON.stringify(text)})">${xSVG(12,'#fff')} Xにポスト</button><button class="btn-cancel" onclick="document.getElementById('vote-share-preview').style.display='none'">閉じる</button></div></div>`;
-}
-
-function shareComment(commentId) {
-  const c = allComments.find(x=>x.id===commentId);
-  if (!c) return;
-  const m = c.moment_id ? MOMENTS.find(x=>x.id===c.moment_id) : null;
-  openTweet(`${GAME.home}${GAME.homeScore}-${GAME.awayScore}${GAME.away}（${GAME.date}）カープトーク\n${m?'【'+m.inning+'】':''}「${c.body}」\n— ${c.display_name}\n${HASHTAGS}\n${APP_URL}`);
-}
-
-function openTweet(text) {
-  const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
-  const w = window.open(url, '_blank', 'width=550,height=420,noopener,noreferrer');
-  if (!w) { const a = document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener noreferrer'; a.click(); }
-}
-
-function xSVG(size=11,fill='currentColor'){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${fill}" style="flex-shrink:0;vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;}
-function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
-function formatTime(iso){const d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return `${Math.floor(diff/60)}分前`;if(diff<86400)return `${Math.floor(diff/3600)}時間前`;return `${d.getMonth()+1}/${d.getDate()}`;}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
-/* ════ BOOT ════ */
-(async () => {
-  const SUPABASE_URL = 'https://dzsznmpuxuftprcqywex.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
-  try {
-    sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    const { error } = await sb.from('votes').select('id').limit(1);
-    if (error) throw error;
+// BOOT - Supabase直接接続
+(async()=>{
+  const SUPABASE_URL='https://dzsznmpuxuftprcqywex.supabase.co';
+  const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
+  try{
+    sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+    const{error}=await sb.from('votes').select('id').limit(1);
+    if(error)throw error;
     await initApp();
-    document.getElementById('setup-overlay').style.display = 'none';
-  } catch(e) {
-    console.error('自動接続失敗、手動入力へ:', e);
-    tryAutoConnect();
+  }catch(e){
+    console.error('接続エラー:',e);
+    showToast('Supabase接続エラー: '+e.message);
   }
 })();
 </script>
