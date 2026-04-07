@@ -80,8 +80,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .moment-bar{height:3px;border-radius:2px;transition:width 0.5s ease}
 .bar-score{background:var(--accent)}.bar-pitcher{background:var(--blue)}.bar-crisis{background:var(--orange)}.bar-hr{background:var(--red)}
 .moment-pct{font-size:11px;color:var(--muted);min-width:54px;text-align:right}
-.moment-share-btn{background:transparent;border:1px solid var(--border2);border-radius:5px;padding:3px 8px;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:3px;transition:all 0.14s;flex-shrink:0;margin-left:8px;font-family:'Noto Sans JP',sans-serif}
-.moment-share-btn:hover{background:#000;color:#fff;border-color:#555}
+.moment-share-btn{background:transparent;border:1px solid var(--border2);border-radius:5px;padding:3px 8px;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:3px;flex-shrink:0;margin-left:8px;font-family:'Noto Sans JP',sans-serif}
 .loading-line{height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
 .loading-line-inner{height:3px;width:40%;background:var(--blue);border-radius:2px;animation:loadSlide 1s ease-in-out infinite alternate}
 @keyframes loadSlide{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
@@ -93,16 +92,10 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .btn-vote{margin-top:0.75rem;width:100%;padding:0.75rem;background:var(--carp);color:#fff;border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .btn-vote:disabled{opacity:0.5;cursor:not-allowed}
 .voted-tag{background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.25);border-radius:var(--radius-sm);padding:0.65rem 0.9rem;font-size:13px;color:var(--green);margin-bottom:0.75rem}
-.btn-x-post{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:0.65rem;background:#000;color:#fff;border:1px solid #333;border-radius:var(--radius-sm);font-size:14px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.share-preview-box{background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin-top:0.75rem}
-.share-preview-label{font-size:11px;color:var(--muted);margin-bottom:6px}
-.share-preview-text{font-size:13px;color:var(--text);line-height:1.7;white-space:pre-wrap}
-.share-preview-actions{display:flex;gap:6px;margin-top:0.75rem}
-.btn-confirm{display:flex;align-items:center;gap:5px;padding:0.45rem 1rem;background:#000;color:#fff;border:1px solid #444;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.btn-cancel{padding:0.45rem 0.9rem;background:transparent;color:var(--muted);border:1px solid var(--border2);border-radius:6px;font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.btn-x-post{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:0.65rem;background:#000;color:#fff;border:1px solid #333;border-radius:var(--radius-sm);font-size:14px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
 .player-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem 0.75rem;display:flex;flex-direction:column;align-items:center;gap:6px}
-.player-icon{border-radius:50%;background:var(--surface3);border:2px solid var(--faint);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--muted);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);width:52px;height:52px}
+.player-icon{border-radius:50%;background:var(--surface3);border:2px solid var(--faint);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--muted);transition:all 0.35s;width:52px;height:52px}
 .player-icon.carp-player{border-color:var(--carp);color:var(--carp);background:rgba(200,16,46,0.1)}
 .player-name{font-size:13px;font-weight:500;color:var(--text);text-align:center}
 .player-pos{font-size:10px;color:var(--muted)}
@@ -132,8 +125,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .comment-actions{display:flex;align-items:center;justify-content:space-between;padding-left:38px;margin-top:5px}
 .like-btn{font-size:12px;color:var(--muted);cursor:pointer;padding:2px 8px;border-radius:4px;border:1px solid transparent;font-family:'Noto Sans JP',sans-serif;background:transparent}
 .like-btn.liked{color:var(--red)}
-.comment-share-btn{font-size:11px;color:var(--muted);background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;padding:2px 6px;border-radius:4px;font-family:'Noto Sans JP',sans-serif}
-.comment-share-btn:hover{background:#000;color:#fff}
+.comment-share-btn{font-size:11px;color:var(--muted);background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;padding:2px 6px;font-family:'Noto Sans JP',sans-serif}
 .new-comment-area{margin-top:0.75rem}
 .x-name-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;color:var(--muted)}
 .new-comment-row{display:flex;gap:8px}
@@ -186,7 +178,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
     <div class="pitcher-bar">
       <span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>
       <div class="pitcher-chip" style="border-color:rgba(200,16,46,0.3)"><span class="role" style="color:var(--carp)">広島先</span><span>栗林 良吏</span><span class="s-good">防0.00</span></div>
-      <div class="pitcher-chip" style="border-color:rgba(200,16,46,0.3)"><span class="role" style="color:var(--carp)">広島</span><span>中嵎 翔太</span><span class="s-win">勝</span></div>
+      <div class="pitcher-chip" style="border-color:rgba(200,16,46,0.3)"><span class="role" style="color:var(--carp)">広島</span><span>中﨑 翔太</span><span class="s-win">勝</span></div>
       <div class="pitcher-chip" style="border-color:rgba(245,208,0,0.3)"><span class="role" style="color:#f5d000">阪神先</span><span>髙橋 遥人</span><span class="s-good">防0.00</span></div>
       <div class="pitcher-chip" style="border-color:rgba(245,208,0,0.3)"><span class="role" style="color:#f5d000">阪神</span><span>早川→モレッタ→桐敷</span><span class="s-loss">敗</span></div>
     </div>
@@ -213,7 +205,10 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
     </div>
     <div id="voted-done" style="display:none">
       <div class="voted-tag" id="voted-tag">✓ 投票しました</div>
-      <button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>投票結果をXにポスト</button>
+      <button class="btn-x-post" onclick="shareVote()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        投票結果をXにポスト
+      </button>
       <div id="vote-share-preview" style="display:none"></div>
     </div>
   </div>
@@ -229,7 +224,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
       <div class="tab" onclick="setTab('hot',this)">盛り上がり順</div>
       <div class="tab" onclick="setTab('ai',this)">AI解説</div>
     </div>
-    <div id="comments-list"><div style="display:flex;align-items:center;gap:8px;padding:1rem 0;color:var(--muted);font-size:13px"><span class="spin"></span>読み込み中...</div></div>
+    <div id="comments-list"></div>
     <div id="ai-panel" style="display:none"></div>
     <div class="new-comment-area" id="comment-input-row">
       <div class="x-name-row" id="x-name-row" style="display:none">
@@ -246,22 +241,22 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 <div class="toast" id="toast"></div>
 <script>
 var GAME_ID='npb_2021038672';
-var GAME={home:'広島',away:'阪神',homeScore:2,awayScore:1,date:'2026年4月5日',venue:'マツダスタジアム'};
 var APP_URL='https://carp-talk.vercel.app';
 var HASHTAGS='#広島カープ #カープトーク #分岐点議論';
+var GAME={home:'広島',away:'阪神',homeScore:2,awayScore:1,date:'2026年4月5日'};
 var MOMENTS=[
   {id:1,inning:'1回裏',type:'score',desc:'佐々木泰、二死二塁から先制タイムリー',sub:'広島が最初の好機を確実に生かす。広 1-0 神'},
-  {id:2,inning:'2～3回',type:'pitcher',desc:'栗林・髙橋、両先発が無失点で抑える',sub:'広島・栗林（防0.00）、阪神・髙橋（防0.00）がともに好投。'},
-  {id:3,inning:'4～5回',type:'pitcher',desc:'髙橋遥人、広島中軸を完全封殺',sub:'モンテロ・坂倉をゼロに封じ続ける。'},
-  {id:4,inning:'6～7回',type:'pitcher',desc:'栗林、7回まで阪神を無失点に封じる',sub:'木浪・森下を抑え込む好投。'},
+  {id:2,inning:'2〜3回',type:'pitcher',desc:'栗林・髙橋、両先発が無失点で抑える',sub:'広島・栗林（防0.00）、阪神・髙橋（防0.00）がともに好投。'},
+  {id:3,inning:'4〜5回',type:'pitcher',desc:'髙橋遥人、広島中軸を完全封殺',sub:'モンテロ・坂倉をゼロに封じ続ける。'},
+  {id:4,inning:'6〜7回',type:'pitcher',desc:'栗林、7回まで阪神を無失点に封じる',sub:'木浪・森下を抑え込む好投。'},
   {id:5,inning:'8回表',type:'score',desc:'近本光司、一死一三塁から犠牲フライ（同点）',sub:'阪神・近本が同点に追いつく。広 1-1 神'},
   {id:6,inning:'8回裏',type:'crisis',desc:'広島、同点後も無得点で9回へ',sub:'桐敷が広島の反撃を断ち切る。'},
-  {id:7,inning:'9回裏',type:'hr',desc:'モンテロ、2-2からサヨナラ本塁打！',sub:'広島7番・モンテロが桐敷の球をレフトスタンドへ。連敗ストップ！'},
+  {id:7,inning:'9回裏',type:'hr',desc:'モンテロ、2-2からサヨナラ本塁打！',sub:'広島7番・モンテロが桐敷の球をレフトスタンドへ。連敗ストップ！'}
 ];
 var PLAYERS=[
   {name:'大盛 穂',pos:'中'},{name:'小園 海斗',pos:'遊'},{name:'佐々木 泰',pos:'三'},
   {name:'ファビアン',pos:'左'},{name:'坂倉 将吾',pos:'捕'},{name:'モンテロ',pos:'一'},
-  {name:'勝田 成',pos:'二'},{name:'栗林 良吏',pos:'投'},{name:'中嵎 翔太',pos:'投'},
+  {name:'勝田 成',pos:'二'},{name:'栗林 良吏',pos:'投'},{name:'中﨑 翔太',pos:'投'}
 ];
 var TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
 var TYPE_BADGE={score:'type-score-badge',pitcher:'type-pitcher-badge',crisis:'type-crisis-badge',hr:'type-hr-badge'};
@@ -270,66 +265,259 @@ var TAG_CLS={score:'tag-score',pitcher:'tag-pitcher',crisis:'tag-crisis',hr:'tag
 var RATING_LABEL={mvp:'🏆 今日のMVP',great:'👏 頑張った',ganbatte:'💪 次も頑張れ',nigun:'💦 2軍で出直し？'};
 var RATING_ACTIVE={mvp:'active-mvp',great:'active-great',ganbatte:'active-ganbatte',nigun:'active-nigun'};
 var AVATAR_PAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
-var sb=null,voteCounts={},myVotedId=null,selectedId=null,allComments=[],myLikes=new Set(),currentTab='all',userId=null,xUser=null,playerRatings={},myPlayerRatings={};
-function getOrCreateUserId(){var id=localStorage.getItem('carp_talk_uid');if(!id){id='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('carp_talk_uid',id);}return id;}
-function getDisplayName(){if(xUser)return xUser.name;var adj=['熱血','鋭眼','渋い','猛鯉','快速','剛腕','強肩','俊足','情熱'];var nou=['ファン','観客','応援団','マニア','通','ウォッチャー','記者','解説者'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
-function handleXConnect(){if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('X連携を解除しました');return;}var name=window.prompt('Xのユーザー名（@なし）を入力してください');if(!name||!name.trim())return;xUser={name:name.trim(),screen_name:name.trim()};localStorage.setItem('x_user',JSON.stringify(xUser));renderXBtn();document.getElementById('x-name-row').style.display='flex';document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;showToast('@'+xUser.screen_name+' として連携しました');}
-function renderXBtn(){var btn=document.getElementById('x-btn');var label=document.getElementById('x-btn-label');if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}else{btn.classList.remove('x-connected');label.textContent='X連携';}}
-async function initApp(){userId=getOrCreateUserId();var savedX=localStorage.getItem('x_user');if(savedX){xUser=JSON.parse(savedX);renderXBtn();document.getElementById('x-name-row').style.display='flex';document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;}var r1=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();if(r1.data){myVotedId=r1.data.moment_id;showVotedState(myVotedId);}var r2=await sb.from('comment_likes').select('comment_id').eq('user_id',userId);if(r2.data)r2.data.forEach(function(l){myLikes.add(l.comment_id);});var r3=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);if(r3.data)r3.data.forEach(function(r){myPlayerRatings[r.player_name]=r.rating;});await Promise.all([loadVoteCounts(),loadComments(),loadPlayerRatings()]);subscribeRealtime();}
-async function loadVoteCounts(){var r=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID);voteCounts={};MOMENTS.forEach(function(m){voteCounts[m.id]=0;});if(r.data)r.data.forEach(function(v){voteCounts[v.moment_id]=(voteCounts[v.moment_id]||0)+1;});renderMoments();}
-function totalVotes(){return Object.values(voteCounts).reduce(function(s,v){return s+v;},0);}
-function xSVG(size,fill){fill=fill||'currentColor';return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="'+fill+'" style="flex-shrink:0;vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
-function renderMoments(){var tot=totalVotes();var html='';MOMENTS.forEach(function(m){var cnt=voteCounts[m.id]||0;var pct=tot>0?Math.round(cnt/tot*100):0;var sel=m.id===selectedId?'selected':(m.id===myVotedId?'voted':'');html+='<div class="moment '+sel+' type-'+m.type+'" onclick="selectMoment('+m.id+')">';html+='<div class="moment-dot"></div>';html+='<div class="moment-inner">';html+='<div class="moment-header"><span class="moment-inning">'+m.inning+'</span><span class="moment-type-badge '+TYPE_BADGE[m.type]+'">'+TYPE_LABEL[m.type]+'</span></div>';html+='<div class="moment-desc">'+m.desc+'</div>';html+='<div class="moment-sub">'+m.sub+'</div>';html+='<div class="moment-footer"><div class="moment-bar-row"><div class="moment-bar-wrap"><div class="moment-bar '+BAR_CLS[m.type]+'" style="width:'+pct+'%"></div></div><span class="moment-pct">'+cnt+'票 '+pct+'%</span></div>';html+='<button class="moment-share-btn" onclick="event.stopPropagation();shareMoment('+m.id+')">'+xSVG(10)+' シェア</button></div>';html+='</div></div>';});document.getElementById('moments-list').innerHTML=html;}
-function selectMoment(id){if(myVotedId)return;selectedId=id;var m=MOMENTS.find(function(x){return x.id===id;});document.getElementById('vote-prompt').style.display='none';document.getElementById('vote-form').style.display='block';document.getElementById('selected-tag').innerHTML='<strong>'+m.inning+'</strong>　'+m.desc;renderMoments();}
-async function submitVote(){if(!selectedId||myVotedId)return;var btn=document.getElementById('vote-btn');btn.disabled=true;btn.textContent='送信中...';var reason=document.getElementById('reason-input').value.trim();var r=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});if(r.error){showToast(r.error.code==='23505'?'すでに投票済みです':'エラーが発生しました');btn.disabled=false;btn.textContent='この場面に投票する';return;}myVotedId=selectedId;selectedId=null;if(reason)await postComment(myVotedId,reason);await loadVoteCounts();showVotedState(myVotedId);showToast('投票しました！');}
-function showVotedState(momentId){var m=MOMENTS.find(function(x){return x.id===momentId;});document.getElementById('vote-form').style.display='none';document.getElementById('vote-prompt').style.display='none';document.getElementById('voted-done').style.display='block';document.getElementById('voted-tag').innerHTML='✓ <strong>'+m.inning+' '+m.desc+'</strong> に投票しました';}
-async function loadPlayerRatings(){var r=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID);playerRatings={};PLAYERS.forEach(function(p){playerRatings[p.name]={mvp:0,great:0,ganbatte:0,nigun:0};});if(r.data)r.data.forEach(function(v){if(playerRatings[v.player_name])playerRatings[v.player_name][v.rating]++;});renderPlayers();}
-function playerTotalVotes(name){var r=playerRatings[name]||{};return(r.mvp||0)+(r.great||0)+(r.ganbatte||0)+(r.nigun||0);}
-function iconSize(name){var tot=playerTotalVotes(name);var max=Math.max.apply(null,PLAYERS.map(function(p){return playerTotalVotes(p.name);}).concat([1]));return Math.round(52+(tot/max)*44);}
-function renderPlayers(){var html='';PLAYERS.forEach(function(p){var r=playerRatings[p.name]||{mvp:0,great:0,ganbatte:0,nigun:0};var myR=myPlayerRatings[p.name];var sz=iconSize(p.name);var initials=p.name.replace(' ','').slice(0,2);var pills='';['mvp','great','ganbatte','nigun'].forEach(function(k){if(r[k]>0)pills+='<span class="vote-pill pill-'+k+'">'+RATING_LABEL[k].split(' ')[0]+' '+r[k]+'</span>';});var btns='';Object.keys(RATING_LABEL).forEach(function(k){btns+='<button class="rating-btn '+(myR===k?RATING_ACTIVE[k]:'')+'" onclick="ratePlayer(''+p.name+'',''+k+'')">'+RATING_LABEL[k]+'</button>';});html+='<div class="player-card">';html+='<div class="player-icon carp-player" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*0.35)+'px">'+initials+'</div>';html+='<div class="player-name">'+p.name+'</div><div class="player-pos">'+p.pos+'</div>';html+='<div class="rating-btns">'+btns+'</div>';html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">まだ評価なし</span>')+'</div>';html+='</div>';});document.getElementById('players-grid').innerHTML=html;}
-async function ratePlayer(playerName,rating){var prev=myPlayerRatings[playerName];if(prev===rating){await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);delete myPlayerRatings[playerName];}else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('エラーが発生しました');return;}myPlayerRatings[playerName]=rating;}await loadPlayerRatings();showToast(prev===rating?'評価を取り消しました':RATING_LABEL[rating]+'を送りました！');}
-async function loadComments(){var r=await sb.from('comments').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false});allComments=r.data||[];renderComments();}
-async function postComment(momentId,body){await sb.from('comments').insert({game_id:GAME_ID,moment_id:momentId||null,user_id:userId,display_name:getDisplayName(),body:body});}
-async function sendComment(){var inp=document.getElementById('comment-input');var btn=document.getElementById('send-btn');var txt=inp.value.trim();if(!txt)return;btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('コメントしました！');}
-async function toggleLike(commentId){var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;if(myLikes.has(commentId)){await sb.from('comment_likes').delete().eq('comment_id',commentId).eq('user_id',userId);await sb.from('comments').update({likes:(c.likes||1)-1}).eq('id',commentId);myLikes.delete(commentId);}else{await sb.from('comment_likes').insert({comment_id:commentId,user_id:userId});await sb.from('comments').update({likes:(c.likes||0)+1}).eq('id',commentId);myLikes.add(commentId);}await loadComments();}
-function renderComments(){if(currentTab==='ai')return;var list=allComments.slice();if(currentTab==='hot')list.sort(function(a,b){return b.likes-a.likes;});if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>';return;}var html='';list.forEach(function(c){var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;var ac=AVATAR_PAL[Math.abs(hashStr(c.user_id))%AVATAR_PAL.length];var tag=m?'<span class="moment-tag-sm '+TAG_CLS[m.type]+'">'+m.inning+'</span>':'';var liked=myLikes.has(c.id);html+='<div class="comment">';html+='<div class="comment-header"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+c.display_name.slice(0,1)+'</div>';html+='<span class="comment-name">'+escHtml(c.display_name)+'</span>'+tag+'</div>';html+='<div class="comment-body">'+escHtml(c.body)+'</div>';html+='<div class="comment-time">'+formatTime(c.created_at)+'</div>';html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" onclick="toggleLike(''+c.id+'')">♡ '+(c.likes||0)+'</button>';html+='<button class="comment-share-btn" onclick="shareComment(''+c.id+'')">'+xSVG(10)+' ポスト</button></div>';html+='</div>';});document.getElementById('comments-list').innerHTML=html;}
-function setTab(tab,el){currentTab=tab;document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});el.classList.add('active');var isAI=tab==='ai';document.getElementById('comment-input-row').style.display=isAI?'none':'block';document.getElementById('comments-list').style.display=isAI?'none':'block';document.getElementById('ai-panel').style.display=isAI?'block':'none';if(isAI)renderAI();else renderComments();}
-function renderAI(){var panel=document.getElementById('ai-panel');var tot=totalVotes();if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>';return;}var top=MOMENTS.slice().sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];var topP=MOMENTS.filter(function(m){return m.type==='pitcher';}).sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];var pct=Math.round((voteCounts[top.id]||0)/tot*100);var mvp=PLAYERS.map(function(p){return{p:p,v:playerRatings[p.name]?playerRatings[p.name].mvp||0:0};}).sort(function(a,b){return b.v-a.v;})[0];var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') 分岐点
-「'+top.inning+' '+top.desc+'」'+pct+'%
-ファンMVP:'+mvp.p.name+'
-'+HASHTAGS+'
-'+APP_URL;panel.innerHTML='<div class="ai-box"><strong>AI分析('+tot+'票)：</strong>広島サヨナラ勝ち、最多注目分岐点は<strong>「'+top.inning+' '+top.desc+'」('+pct+'%)</strong>。<br><br>投手好投最多票：<strong>「'+topP.inning+' '+topP.desc+'」</strong>。<br><br>選手評価MVP：<strong>'+mvp.p.name+'</strong>。<br><button class="ai-share-btn" onclick="openTweet('+JSON.stringify(shareText)+')">'+xSVG(12,'#fff')+' AI分析をポスト</button></div>';}
-function subscribeRealtime(){sb.channel('votes-rt').on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},function(){loadVoteCounts();flashLive();}).subscribe();sb.channel('comments-rt').on('postgres_changes',{event:'*',schema:'public',table:'comments',filter:'game_id=eq.'+GAME_ID},function(){loadComments();}).subscribe();sb.channel('ratings-rt').on('postgres_changes',{event:'*',schema:'public',table:'player_ratings',filter:'game_id=eq.'+GAME_ID},function(){loadPlayerRatings();}).subscribe();}
-function flashLive(){var el=document.getElementById('live-update');el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
-function shareMoment(id){var m=MOMENTS.find(function(x){return x.id===id;});var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;openTweet('【分岐点】'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')
+var sb=null,voteCounts={},myVotedId=null,selectedId=null;
+var allComments=[],myLikes=new Set(),currentTab='all';
+var userId=null,xUser=null,playerRatings={},myPlayerRatings={};
 
-「'+m.inning+' '+m.desc+'」
-
-この場面に'+pct+'%のファンが注目！
-'+HASHTAGS+'
-'+APP_URL);}
-function shareVote(){var m=MOMENTS.find(function(x){return x.id===myVotedId;});if(!m)return;var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;var text=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')、私の分岐点
-「'+m.inning+' '+m.desc+'」
-'+pct+'%のファンも同じ！
-'+HASHTAGS+'
-'+APP_URL;var prev=document.getElementById('vote-share-preview');if(prev.style.display!=='none'){prev.style.display='none';return;}prev.style.display='block';prev.innerHTML='<div class="share-preview-box"><div class="share-preview-label">ポストのプレビュー</div><div class="share-preview-text">'+escHtml(text)+'</div><div class="share-preview-actions"><button class="btn-confirm" onclick="openTweet('+JSON.stringify(text)+')">'+xSVG(12,'#fff')+' Xにポスト</button><button class="btn-cancel" onclick="document.getElementById('vote-share-preview').style.display='none'">閉じる</button></div></div>';}
-function shareComment(commentId){var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')カープトーク
-'+(m?'【'+m.inning+'】':'')+'「'+c.body+'」
-— '+c.display_name+'
-'+HASHTAGS+'
-'+APP_URL);}
-function openTweet(text){var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);var w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.click();}}
-function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hashStr(s){var h=0;for(var i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
 function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return Math.floor(diff/60)+'分前';if(diff<86400)return Math.floor(diff/3600)+'時間前';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
-// BOOT
-(function(){
-  var SUPABASE_URL='https://dzsznmpuxuftprcqywex.supabase.co';
-  var SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
-  sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-  initApp().catch(function(e){showToast('Supabaseエラー: '+e.message);});
-})();
+function xSVG(sz,fill){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+(fill||'currentColor')+'"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
+function openTweet(text){var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);var w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.click();}}
+function getDisplayName(){if(xUser)return xUser.name;var adj=['熱血','鋭眼','渋い','猛鯉','快速','剛腕','強肩','俊足'];var nou=['ファン','観客','応援団','マニア','通','ウォッチャー','記者'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
+function totalVotes(){return Object.values(voteCounts).reduce(function(s,v){return s+v;},0);}
+
+function handleXConnect(){
+  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('X連携を解除しました');return;}
+  var name=window.prompt('Xのユーザー名（@なし）を入力してください');
+  if(!name||!name.trim())return;
+  xUser={name:name.trim(),screen_name:name.trim()};
+  localStorage.setItem('x_user',JSON.stringify(xUser));
+  renderXBtn();
+  document.getElementById('x-name-row').style.display='flex';
+  document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;
+  showToast('@'+xUser.screen_name+' として連携しました');
+}
+function renderXBtn(){
+  var btn=document.getElementById('x-btn'),label=document.getElementById('x-btn-label');
+  if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}
+  else{btn.classList.remove('x-connected');label.textContent='X連携';}
+}
+
+// イベント委譲（onclick属性なし）
+document.addEventListener('click',function(e){
+  var mid=e.target.closest('[data-mid]');
+  if(mid&&!e.target.closest('[data-share]')){selectMoment(parseInt(mid.dataset.mid));}
+  var share=e.target.closest('[data-share]');
+  if(share){e.stopPropagation();shareMoment(parseInt(share.dataset.share));}
+  var rate=e.target.closest('[data-rate]');
+  if(rate){ratePlayer(rate.dataset.player,rate.dataset.rate);}
+  var like=e.target.closest('[data-like]');
+  if(like){toggleLike(like.dataset.like);}
+  var cshr=e.target.closest('[data-cshr]');
+  if(cshr){shareComment(cshr.dataset.cshr);}
+});
+
+function renderMoments(){
+  var tot=totalVotes(),html='';
+  MOMENTS.forEach(function(m){
+    var cnt=voteCounts[m.id]||0,pct=tot>0?Math.round(cnt/tot*100):0;
+    var sel=m.id===selectedId?'selected':(m.id===myVotedId?'voted':'');
+    html+='<div class="moment '+sel+' type-'+m.type+'" data-mid="'+m.id+'">';
+    html+='<div class="moment-dot"></div><div class="moment-inner">';
+    html+='<div class="moment-header"><span class="moment-inning">'+m.inning+'</span>';
+    html+='<span class="moment-type-badge '+TYPE_BADGE[m.type]+'">'+TYPE_LABEL[m.type]+'</span></div>';
+    html+='<div class="moment-desc">'+m.desc+'</div><div class="moment-sub">'+m.sub+'</div>';
+    html+='<div class="moment-footer"><div class="moment-bar-row">';
+    html+='<div class="moment-bar-wrap"><div class="moment-bar '+BAR_CLS[m.type]+'" style="width:'+pct+'%"></div></div>';
+    html+='<span class="moment-pct">'+cnt+'票 '+pct+'%</span></div>';
+    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' シェア</button></div>';
+    html+='</div></div>';
+  });
+  document.getElementById('moments-list').innerHTML=html;
+}
+function selectMoment(id){
+  if(myVotedId)return;
+  selectedId=id;
+  var m=MOMENTS.find(function(x){return x.id===id;});
+  document.getElementById('vote-prompt').style.display='none';
+  document.getElementById('vote-form').style.display='block';
+  document.getElementById('selected-tag').innerHTML='<strong>'+m.inning+'</strong> '+m.desc;
+  renderMoments();
+}
+async function submitVote(){
+  if(!selectedId||myVotedId)return;
+  var btn=document.getElementById('vote-btn');
+  btn.disabled=true;btn.textContent='送信中...';
+  var reason=document.getElementById('reason-input').value.trim();
+  var r=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});
+  if(r.error){showToast(r.error.code==='23505'?'すでに投票済みです':'エラーが発生しました');btn.disabled=false;btn.textContent='この場面に投票する';return;}
+  myVotedId=selectedId;selectedId=null;
+  if(reason)await postComment(myVotedId,reason);
+  await loadVoteCounts();showVotedState(myVotedId);showToast('投票しました！');
+}
+function showVotedState(momentId){
+  var m=MOMENTS.find(function(x){return x.id===momentId;});
+  document.getElementById('vote-form').style.display='none';
+  document.getElementById('vote-prompt').style.display='none';
+  document.getElementById('voted-done').style.display='block';
+  document.getElementById('voted-tag').innerHTML='✓ <strong>'+m.inning+' '+m.desc+'</strong> に投票しました';
+}
+function shareVote(){
+  var m=MOMENTS.find(function(x){return x.id===myVotedId;});if(!m)return;
+  var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')、私の分岐点\n「'+m.inning+' '+m.desc+'」\n'+pct+'%のファンも同じ！\n'+HASHTAGS+'\n'+APP_URL);
+}
+function shareMoment(id){
+  var m=MOMENTS.find(function(x){return x.id===id;});
+  var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
+  openTweet('【分岐点】'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\n「'+m.inning+' '+m.desc+'」\nこの場面に'+pct+'%のファンが注目！\n'+HASHTAGS+'\n'+APP_URL);
+}
+
+async function loadVoteCounts(){
+  var r=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID);
+  voteCounts={};MOMENTS.forEach(function(m){voteCounts[m.id]=0;});
+  if(r.data)r.data.forEach(function(v){voteCounts[v.moment_id]=(voteCounts[v.moment_id]||0)+1;});
+  renderMoments();
+}
+async function loadPlayerRatings(){
+  var r=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID);
+  playerRatings={};
+  PLAYERS.forEach(function(p){playerRatings[p.name]={mvp:0,great:0,ganbatte:0,nigun:0};});
+  if(r.data)r.data.forEach(function(v){if(playerRatings[v.player_name])playerRatings[v.player_name][v.rating]++;});
+  renderPlayers();
+}
+function playerTotal(name){var r=playerRatings[name]||{};return(r.mvp||0)+(r.great||0)+(r.ganbatte||0)+(r.nigun||0);}
+function iconSize(name){var tot=playerTotal(name);var max=Math.max.apply(null,PLAYERS.map(function(p){return playerTotal(p.name);}).concat([1]));return Math.round(52+(tot/max)*44);}
+function renderPlayers(){
+  var html='';
+  PLAYERS.forEach(function(p){
+    var r=playerRatings[p.name]||{mvp:0,great:0,ganbatte:0,nigun:0};
+    var myR=myPlayerRatings[p.name];
+    var sz=iconSize(p.name);
+    var initials=p.name.replace(' ','').slice(0,2);
+    var pills='';
+    ['mvp','great','ganbatte','nigun'].forEach(function(k){
+      if(r[k]>0)pills+='<span class="vote-pill pill-'+k+'">'+RATING_LABEL[k].split(' ')[0]+' '+r[k]+'</span>';
+    });
+    var btns='';
+    Object.keys(RATING_LABEL).forEach(function(k){
+      btns+='<button class="rating-btn '+(myR===k?RATING_ACTIVE[k]:'')+'" data-rate="'+k+'" data-player="'+esc(p.name)+'">'+RATING_LABEL[k]+'</button>';
+    });
+    html+='<div class="player-card">';
+    html+='<div class="player-icon carp-player" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*0.35)+'px">'+initials+'</div>';
+    html+='<div class="player-name">'+p.name+'</div><div class="player-pos">'+p.pos+'</div>';
+    html+='<div class="rating-btns">'+btns+'</div>';
+    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">まだ評価なし</span>')+'</div></div>';
+  });
+  document.getElementById('players-grid').innerHTML=html;
+}
+async function ratePlayer(playerName,rating){
+  var prev=myPlayerRatings[playerName];
+  if(prev===rating){
+    await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);
+    delete myPlayerRatings[playerName];
+  }else{
+    if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);
+    var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});
+    if(r.error&&r.error.code!=='23505'){showToast('エラーが発生しました');return;}
+    myPlayerRatings[playerName]=rating;
+  }
+  await loadPlayerRatings();
+  showToast(prev===rating?'評価を取り消しました':RATING_LABEL[rating]+'を送りました！');
+}
+async function loadComments(){
+  var r=await sb.from('comments').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false});
+  allComments=r.data||[];renderComments();
+}
+async function postComment(momentId,body){
+  await sb.from('comments').insert({game_id:GAME_ID,moment_id:momentId||null,user_id:userId,display_name:getDisplayName(),body:body});
+}
+async function sendComment(){
+  var inp=document.getElementById('comment-input'),btn=document.getElementById('send-btn');
+  var txt=inp.value.trim();if(!txt)return;
+  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('コメントしました！');
+}
+async function toggleLike(commentId){
+  var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
+  if(myLikes.has(commentId)){
+    await sb.from('comment_likes').delete().eq('comment_id',commentId).eq('user_id',userId);
+    await sb.from('comments').update({likes:(c.likes||1)-1}).eq('id',commentId);
+    myLikes.delete(commentId);
+  }else{
+    await sb.from('comment_likes').insert({comment_id:commentId,user_id:userId});
+    await sb.from('comments').update({likes:(c.likes||0)+1}).eq('id',commentId);
+    myLikes.add(commentId);
+  }
+  await loadComments();
+}
+function renderComments(){
+  if(currentTab==='ai')return;
+  var list=allComments.slice();
+  if(currentTab==='hot')list.sort(function(a,b){return b.likes-a.likes;});
+  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>';return;}
+  var html='';
+  list.forEach(function(c){
+    var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
+    var ac=AVATAR_PAL[Math.abs(hashStr(c.user_id))%AVATAR_PAL.length];
+    var tag=m?'<span class="moment-tag-sm '+TAG_CLS[m.type]+'">'+m.inning+'</span>':'';
+    var liked=myLikes.has(c.id);
+    html+='<div class="comment">';
+    html+='<div class="comment-header"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name).slice(0,1)+'</div>';
+    html+='<span class="comment-name">'+esc(c.display_name)+'</span>'+tag+'</div>';
+    html+='<div class="comment-body">'+esc(c.body)+'</div>';
+    html+='<div class="comment-time">'+formatTime(c.created_at)+'</div>';
+    html+='<div class="comment-actions">';
+    html+='<button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">♡ '+(c.likes||0)+'</button>';
+    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ポスト</button>';
+    html+='</div></div>';
+  });
+  document.getElementById('comments-list').innerHTML=html;
+}
+function setTab(tab,el){
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  var isAI=tab==='ai';
+  document.getElementById('comment-input-row').style.display=isAI?'none':'block';
+  document.getElementById('comments-list').style.display=isAI?'none':'block';
+  document.getElementById('ai-panel').style.display=isAI?'block':'none';
+  if(isAI)renderAI();else renderComments();
+}
+function renderAI(){
+  var panel=document.getElementById('ai-panel'),tot=totalVotes();
+  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>';return;}
+  var top=MOMENTS.slice().sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
+  var topP=MOMENTS.filter(function(m){return m.type==='pitcher';}).sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
+  var pct=Math.round((voteCounts[top.id]||0)/tot*100);
+  var mvp=PLAYERS.map(function(p){return{p:p,v:(playerRatings[p.name]&&playerRatings[p.name].mvp)||0};}).sort(function(a,b){return b.v-a.v;})[0];
+  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') 分岐点「'+top.inning+' '+top.desc+'」'+pct+'% ファンMVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL;
+  panel.innerHTML='<div class="ai-box"><strong>AI分析('+tot+'票)：</strong>広島サヨナラ勝ち、最多注目分岐点は<strong>「'+top.inning+' '+top.desc+'」('+pct+'%)</strong>。<br><br>投手好投最多票：<strong>「'+topP.inning+' '+topP.desc+'」</strong>。<br><br>選手評価MVP：<strong>'+mvp.p.name+'</strong>。<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AI分析をポスト</button></div>';
+}
+function shareComment(commentId){
+  var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
+  var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')カープトーク\n'+(m?'【'+m.inning+'】':'')+' 「'+c.body+'」\n— '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL);
+}
+function subscribeRealtime(){
+  sb.channel('votes-rt').on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},function(){loadVoteCounts();flashLive();}).subscribe();
+  sb.channel('comments-rt').on('postgres_changes',{event:'*',schema:'public',table:'comments',filter:'game_id=eq.'+GAME_ID},function(){loadComments();}).subscribe();
+  sb.channel('ratings-rt').on('postgres_changes',{event:'*',schema:'public',table:'player_ratings',filter:'game_id=eq.'+GAME_ID},function(){loadPlayerRatings();}).subscribe();
+}
+function flashLive(){var el=document.getElementById('live-update');el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
+
+async function initApp(){
+  userId=localStorage.getItem('carp_talk_uid');
+  if(!userId){userId='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('carp_talk_uid',userId);}
+  var savedX=localStorage.getItem('x_user');
+  if(savedX){xUser=JSON.parse(savedX);renderXBtn();document.getElementById('x-name-row').style.display='flex';document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;}
+  var r1=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+  if(r1.data){myVotedId=r1.data.moment_id;showVotedState(myVotedId);}
+  var r2=await sb.from('comment_likes').select('comment_id').eq('user_id',userId);
+  if(r2.data)r2.data.forEach(function(l){myLikes.add(l.comment_id);});
+  var r3=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);
+  if(r3.data)r3.data.forEach(function(r){myPlayerRatings[r.player_name]=r.rating;});
+  await Promise.all([loadVoteCounts(),loadComments(),loadPlayerRatings()]);
+  subscribeRealtime();
+}
+
+window.addEventListener('DOMContentLoaded',function(){
+  var URL_='https://dzsznmpuxuftprcqywex.supabase.co';
+  var KEY_='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
+  sb=supabase.createClient(URL_,KEY_);
+  initApp().catch(function(e){showToast('エラー: '+e.message);console.error(e);});
+});
 </script>
 </body>
 </html>
