@@ -6,349 +6,143 @@
 <title>カープトーク 管理画面</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0c0e11;color:#eef0f4;font-family:'Noto Sans JP',sans-serif;font-size:14px;padding:2rem}
-h1{font-size:20px;color:#c8102e;margin-bottom:1.5rem}
-h2{font-size:14px;font-weight:700;letter-spacing:.1em;color:#7a8090;text-transform:uppercase;margin-bottom:1rem}
-.card{background:#13161b;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;max-width:900px}
-label{display:block;font-size:12px;color:#7a8090;margin-bottom:4px;margin-top:12px}
-label:first-child{margin-top:0}
-input,select,textarea{width:100%;background:#0c0e11;border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:8px 12px;color:#eef0f4;font-size:14px;font-family:inherit}
+body{background:#0c0e11;color:#eef0f4;font-family:'Hiragino Sans','Noto Sans JP',sans-serif;font-size:14px;min-height:100vh}
+header{background:#13161b;border-bottom:1px solid rgba(255,255,255,0.1);padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:700;color:#c8102e}
+.logo span{color:#eef0f4;font-weight:400;font-size:13px;margin-left:8px}
+.container{max-width:800px;margin:0 auto;padding:2rem 1rem}
+.card{background:#13161b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.card-title{font-size:12px;font-weight:700;letter-spacing:0.12em;color:#7a8090;text-transform:uppercase;margin-bottom:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-row.single{grid-template-columns:1fr}
+.form-row.triple{grid-template-columns:1fr 1fr 1fr}
+label{font-size:12px;color:#7a8090;margin-bottom:4px;display:block}
+input,select,textarea{width:100%;background:#0c0e11;border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 12px;font-size:14px;color:#eef0f4;font-family:inherit}
 input:focus,select:focus,textarea:focus{outline:none;border-color:#4a9eff}
-textarea{resize:vertical;min-height:80px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-.btn{padding:10px 24px;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+textarea{resize:vertical;min-height:120px;font-size:12px;font-family:'Menlo','Monaco',monospace}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.15s}
 .btn-primary{background:#c8102e;color:#fff}
-.btn-secondary{background:#1a1e25;color:#eef0f4;border:1px solid rgba(255,255,255,.13)}
-.btn-add{background:transparent;color:#4a9eff;border:1px dashed #4a9eff;border-radius:8px;padding:6px 16px;font-size:12px;cursor:pointer;font-family:inherit;margin-top:8px}
-.btn-del{background:transparent;color:#f46060;border:none;cursor:pointer;font-size:18px;line-height:1;padding:0 6px}
-.moment-row{background:#1a1e25;border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:12px;margin-bottom:8px;position:relative}
+.btn-secondary{background:#1a1e25;color:#eef0f4;border:1px solid rgba(255,255,255,0.12)}
+.btn:hover{opacity:0.85}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.btn-row{display:flex;gap:8px;margin-top:1rem}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(12px);background:#3ecf8e;color:#061a10;font-size:13px;font-weight:700;padding:0.5rem 1.4rem;border-radius:99px;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{background:#f46060;color:#fff}
+.game-list{display:flex;flex-direction:column;gap:8px}
+.game-item{background:#1a1e25;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color 0.15s}
+.game-item:hover{border-color:rgba(255,255,255,0.2)}
+.game-item-date{font-size:13px;font-weight:600}
+.game-item-actions{display:flex;gap:6px}
+.btn-sm{padding:4px 10px;font-size:12px;border-radius:6px}
+.token-input-row{display:flex;gap:8px}
+.token-input-row input{flex:1}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px}
+.status-ok{background:#3ecf8e}
+.status-ng{background:#f46060}
+.help-text{font-size:11px;color:#7a8090;margin-top:4px}
+.tabs{display:flex;gap:4px;margin-bottom:1.25rem}
+.tab{padding:6px 16px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid rgba(255,255,255,0.08);color:#7a8090;background:transparent;font-family:inherit}
+.tab.active{background:#1a1e25;color:#eef0f4;border-color:rgba(255,255,255,0.15)}
+.moment-item{background:#1a1e25;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:12px;margin-bottom:8px}
 .moment-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.player-row{background:#1a1e25;border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px 12px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
-.player-row input{flex:1}
-.player-row select{width:80px;flex-shrink:0}
-.token-section{background:#1a2a40;border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:12px;margin-bottom:1.5rem}
-.token-section label{color:#4a9eff}
-.status{padding:10px 16px;border-radius:8px;margin-top:12px;font-size:13px;display:none}
-.status.ok{background:rgba(62,207,142,.1);color:#3ecf8e;border:1px solid rgba(62,207,142,.3)}
-.status.err{background:rgba(244,96,96,.1);color:#f46060;border:1px solid rgba(244,96,96,.3)}
-.badge{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700}
-.badge-score{background:rgba(240,192,64,.15);color:#f0c040}
-.badge-pitcher{background:rgba(74,158,255,.15);color:#4a9eff}
-.badge-crisis{background:rgba(240,120,64,.15);color:#f07840}
-.badge-hr{background:rgba(244,96,96,.15);color:#f46060}
-.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;max-width:900px}
-.tabs{display:flex;gap:4px;margin-bottom:1.5rem;max-width:900px}
-.tab{flex:1;text-align:center;padding:8px;font-size:13px;cursor:pointer;border:1px solid rgba(255,255,255,.07);border-radius:8px;color:#7a8090}
-.tab.active{background:#1a1e25;color:#eef0f4;border-color:rgba(255,255,255,.13)}
-.game-list-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#1a1e25;border:1px solid rgba(255,255,255,.07);border-radius:8px;margin-bottom:8px;cursor:pointer}
-.game-list-item:hover{border-color:rgba(255,255,255,.2)}
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#4a9eff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
-@keyframes spin{to{transform:rotate(360deg)}}
+.moment-header input{flex:1}
+.add-moment-btn{width:100%;padding:8px;background:transparent;border:1px dashed rgba(255,255,255,0.15);border-radius:8px;color:#7a8090;cursor:pointer;font-family:inherit;font-size:13px;margin-top:4px}
+.add-moment-btn:hover{border-color:rgba(255,255,255,0.3);color:#eef0f4}
+.player-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.player-item{display:flex;gap:6px}
+.player-item input:first-child{flex:2}
+.player-item input:last-child{flex:1;min-width:40px}
+.add-player-btn{margin-top:8px;padding:6px;background:transparent;border:1px dashed rgba(255,255,255,0.15);border-radius:6px;color:#7a8090;cursor:pointer;font-family:inherit;font-size:12px;width:100%}
 </style>
 </head>
 <body>
-<div class="top-bar">
-  <h1>⚾ カープトーク 管理画面</h1>
-  <a href="/" style="color:#7a8090;font-size:13px;text-decoration:none">← サイトへ戻る</a>
-</div>
-
-<div class="token-section">
-  <label>GitHub Personal Access Token（repo権限必要）</label>
-  <input type="password" id="token" placeholder="ghp_..." oninput="saveToken(this.value)">
-  <div style="font-size:11px;color:#4a9eff;margin-top:4px">トークンはブラウザのlocalStorageに保存されます</div>
-</div>
-
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('edit',this)">✏️ 試合を登録・編集</div>
-  <div class="tab" onclick="switchTab('list',this)">📋 登録済み一覧</div>
-</div>
-
-<!-- 編集タブ -->
-<div id="tab-edit">
-<div class="card">
-  <h2>基本情報</h2>
-  <div class="row">
-    <div><label>試合日 *</label><input type="date" id="game_date" value="2026-04-07"></div>
-    <div><label>会場</label><input type="text" id="venue" value="マツダスタジアム"></div>
+<header>
+  <div class="logo">カープトーク <span>管理画面</span></div>
+  <div id="token-status" style="font-size:12px;color:#7a8090">未設定</div>
+</header>
+<div class="container">
+  <div class="card">
+    <div class="card-title">GitHub 設定</div>
+    <div class="token-input-row">
+      <input type="password" id="gh-token" placeholder="GitHub Personal Access Token (repo権限)">
+      <button class="btn btn-secondary" onclick="saveToken()">保存</button>
+    </div>
+    <div class="help-text">トークンはlocalStorageに保存されます（リポジトリ: norimichitakesue2/carp-talk）</div>
   </div>
-  <div class="row3" style="margin-top:12px">
-    <div><label>ホーム</label><input type="text" id="home_team" value="広島"></div>
-    <div><label>スコア（ホーム）</label><input type="number" id="home_score" min="0" value="0"></div>
-    <div style="display:flex;align-items:end;gap:6px">
-      <div style="flex:1"><label>スコア（ビジター）</label><input type="number" id="away_score" min="0" value="0"></div>
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('edit',this)">試合データ登録・編集</button>
+    <button class="tab" onclick="showTab('list',this)">登録済み試合一覧</button>
+  </div>
+  <div id="tab-edit">
+    <div class="card">
+      <div class="card-title">試合基本情報</div>
+      <div class="form-row">
+        <div><label>試合日</label><input type="date" id="f-date"></div>
+        <div><label>会場</label><input type="text" id="f-venue" value="マツダスタジアム"></div>
+      </div>
+      <div class="form-row">
+        <div><label>ホーム</label><input type="text" id="f-home" value="広島"></div>
+        <div><label>アウェイ</label><input type="text" id="f-away" placeholder="例: 阪神"></div>
+      </div>
+      <div class="form-row triple">
+        <div><label>広島得点</label><input type="number" id="f-home-score" min="0" value="0"></div>
+        <div><label>相手得点</label><input type="number" id="f-away-score" min="0" value="0"></div>
+        <div><label>結果ラベル</label><input type="text" id="f-result" placeholder="例: サヨナラ、延長10回"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">分岐点シーン</div>
+      <div id="moments-list"></div>
+      <button class="add-moment-btn" onclick="addMoment()">＋ シーンを追加</button>
+    </div>
+    <div class="card">
+      <div class="card-title">出場選手</div>
+      <div id="players-list" class="player-grid"></div>
+      <button class="add-player-btn" onclick="addPlayer()">＋ 選手を追加</button>
+    </div>
+    <div class="card">
+      <div class="card-title">継投情報（JSON）</div>
+      <textarea id="f-pitchers" placeholder='[{"team":"広島","role":"先発","name":"栗林 良吏","era":"0.00","result":"win"},{"team":"阪神","role":"先発","name":"大竹 耕太郎","result":"loss"}]'></textarea>
+      <div class="help-text">result: "win"/"loss"/"save"、era: 防御率（任意）</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="saveGame()">GitHubに保存してデプロイ</button>
+      <button class="btn btn-secondary" onclick="previewJSON()">JSON確認</button>
+      <button class="btn btn-secondary" onclick="clearForm()">クリア</button>
     </div>
   </div>
-  <div class="row" style="margin-top:12px">
-    <div><label>ビジター</label><input type="text" id="away_team" placeholder="阪神"></div>
-    <div><label>結果ラベル</label><input type="text" id="status_label" placeholder="FINAL・サヨナラ"></div>
-  </div>
-  <div style="margin-top:12px">
-    <label>補足ラベル（例: 広島 1勝2敗）</label>
-    <input type="text" id="result_label" placeholder="広島 1勝0敗">
+  <div id="tab-list" style="display:none">
+    <div class="card">
+      <div class="card-title">登録済み試合</div>
+      <div id="game-list-container"><div style="color:#7a8090;font-size:13px">読み込み中...</div></div>
+    </div>
   </div>
 </div>
-
-<div class="card">
-  <h2>イニング別スコア</h2>
-  <div style="margin-bottom:8px;font-size:12px;color:#7a8090">カンマ区切りで1〜9回を入力（例: 1,0,0,0,0,0,0,0,1X）</div>
-  <div class="row">
-    <div><label>ビジター</label><input type="text" id="innings_away" placeholder="0,0,0,0,0,0,0,1,0"></div>
-    <div><label>ホーム</label><input type="text" id="innings_home" placeholder="1,0,0,0,0,0,0,0,1X"></div>
-  </div>
-  <div class="row" style="margin-top:8px">
-    <div><label>ビジター安打/失策</label><div style="display:flex;gap:6px"><input type="number" id="away_hits" value="0" min="0"><input type="number" id="away_errors" value="0" min="0"></div></div>
-    <div><label>ホーム安打/失策</label><div style="display:flex;gap:6px"><input type="number" id="home_hits" value="0" min="0"><input type="number" id="home_errors" value="0" min="0"></div></div>
-  </div>
-</div>
-
-<div class="card">
-  <h2>継投情報</h2>
-  <div id="pitchers-list"></div>
-  <button class="btn-add" onclick="addPitcher()">+ 投手を追加</button>
-</div>
-
-<div class="card">
-  <h2>分岐点</h2>
-  <div id="moments-list"></div>
-  <button class="btn-add" onclick="addMoment()">+ 分岐点を追加</button>
-</div>
-
-<div class="card">
-  <h2>出場選手</h2>
-  <div id="players-list"></div>
-  <button class="btn-add" onclick="addPlayer()">+ 選手を追加</button>
-</div>
-
-<div style="max-width:900px;display:flex;gap:10px;margin-top:8px">
-  <button class="btn btn-primary" onclick="saveGame()">💾 GitHubに保存してデプロイ</button>
-  <button class="btn btn-secondary" onclick="previewJson()">👁️ JSONプレビュー</button>
-</div>
-<div class="status" id="save-status"></div>
-</div>
-
-<!-- 一覧タブ -->
-<div id="tab-list" style="display:none">
-<div class="card">
-  <h2>登録済み試合一覧</h2>
-  <div id="game-list"><div style="color:#7a8090;font-size:13px">読み込み中...</div></div>
-  <div id="list-status" class="status"></div>
-</div>
-</div>
-
+<div class="toast" id="toast"></div>
 <script>
-var REPO = 'norimichitakesue2/carp-talk';
-var APP_URL = 'https://carp-talk.vercel.app';
-
-function getToken(){return localStorage.getItem('ct_token')||'';}
-function saveToken(v){localStorage.setItem('ct_token',v);}
-function headers(){return{'Authorization':'token '+getToken(),'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};}
-
-// トークン初期化
-document.getElementById('token').value = getToken();
-
-// タブ切り替え
-function switchTab(name, el) {
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('tab-edit').style.display = name==='edit'?'block':'none';
-  document.getElementById('tab-list').style.display = name==='list'?'block':'none';
-  if(name==='list') loadGameList();
-}
-
-// 投手追加
-function addPitcher(p) {
-  p = p||{team:'広島',role:'先',name:'',stat:'',result:''};
-  var d = document.createElement('div');
-  d.className = 'moment-row';
-  d.innerHTML = '<div class="moment-header">' +
-    '<select style="width:80px"><option'+(p.team==='広島'?' selected':'')+'>広島</option><option'+(p.team!=='広島'?' selected':'')+'>ビジター</option></select>' +
-    '<input type="text" placeholder="役割（先・中・抑）" value="'+esc(p.role)+'" style="width:80px">' +
-    '<input type="text" placeholder="名前" value="'+esc(p.name)+'" style="flex:1">' +
-    '<input type="text" placeholder="成績（防0.00）" value="'+esc(p.stat)+'" style="width:100px">' +
-    '<select style="width:80px"><option value="">-</option><option'+(p.result==='勝'?' selected':'')+' value="勝">勝</option><option'+(p.result==='敗'?' selected':'')+' value="敗">敗</option><option'+(p.result==='S'?' selected':'')+' value="S">S</option></select>' +
-    '<button class="btn-del" onclick="this.parentElement.parentElement.remove()">×</button></div>';
-  document.getElementById('pitchers-list').appendChild(d);
-}
-
-// 分岐点追加
-var momentId = 1;
-function addMoment(m) {
-  m = m||{id:momentId++,inning:'',type:'score',desc:'',sub:''};
-  var d = document.createElement('div');
-  d.className = 'moment-row';
-  d.setAttribute('data-mid', m.id);
-  d.innerHTML = '<div class="moment-header">' +
-    '<input type="text" placeholder="イニング（例: 1回裏）" value="'+esc(m.inning)+'" style="width:120px">' +
-    '<select style="width:120px"><option value="score"'+(m.type==='score'?' selected':'')+'>得点シーン</option><option value="pitcher"'+(m.type==='pitcher'?' selected':'')+'>投手好投</option><option value="crisis"'+(m.type==='crisis'?' selected':'')+'>ピンチ脱出</option><option value="hr"'+(m.type==='hr'?' selected':'')+'>本塁打</option></select>' +
-    '<button class="btn-del" onclick="this.parentElement.parentElement.remove()">×</button></div>' +
-    '<input type="text" placeholder="見出し（例: 佐々木泰、先制タイムリー）" value="'+esc(m.desc)+'" style="margin-bottom:6px">' +
-    '<input type="text" placeholder="補足テキスト" value="'+esc(m.sub)+'">';
-  document.getElementById('moments-list').appendChild(d);
-}
-
-// 選手追加
-var POS = ['投','捕','一','二','三','遊','左','中','右','DH'];
-function addPlayer(p) {
-  p = p||{name:'',pos:'中'};
-  var d = document.createElement('div');
-  d.className = 'player-row';
-  var posOpts = POS.map(pos=>'<option'+(pos===p.pos?' selected':'')+'>'+pos+'</option>').join('');
-  d.innerHTML = '<input type="text" placeholder="選手名" value="'+esc(p.name)+'">' +
-    '<select>'+posOpts+'</select>' +
-    '<button class="btn-del" onclick="this.parentElement.remove()">×</button>';
-  document.getElementById('players-list').appendChild(d);
-}
-
-function esc(s){return String(s||'').replace(/"/g,'&quot;');}
-
-// ゲームデータ収集
-function collectData() {
-  var date = document.getElementById('game_date').value;
-  var pitchers = Array.from(document.querySelectorAll('#pitchers-list .moment-row')).map(r=>{
-    var inputs = r.querySelectorAll('input,select');
-    return {team:inputs[0].value==='広島'?'広島':document.getElementById('away_team').value,
-      role:inputs[1].value,name:inputs[2].value,stat:inputs[3].value,result:inputs[4].value};
-  });
-  var moments = Array.from(document.querySelectorAll('#moments-list .moment-row')).map((r,i)=>{
-    var inputs = r.querySelectorAll('input');
-    var sel = r.querySelector('select');
-    return {id:i+1,inning:inputs[0].value,type:sel.value,desc:inputs[1].value,sub:inputs[2].value};
-  });
-  var players = Array.from(document.querySelectorAll('#players-list .player-row')).map(r=>{
-    var inputs = r.querySelectorAll('input,select');
-    return {name:inputs[0].value,pos:inputs[1].value};
-  });
-  var awayInn = document.getElementById('innings_away').value.split(',').map(v=>isNaN(v.trim())?v.trim():Number(v.trim()));
-  var homeInn = document.getElementById('innings_home').value.split(',').map(v=>isNaN(v.trim())?v.trim():Number(v.trim()));
-  return {
-    id:'npb_'+date.replace(/-/g,''),
-    game_date:date,
-    home_team:document.getElementById('home_team').value,
-    away_team:document.getElementById('away_team').value,
-    home_score:Number(document.getElementById('home_score').value),
-    away_score:Number(document.getElementById('away_score').value),
-    venue:document.getElementById('venue').value,
-    status:'final',
-    status_label:document.getElementById('status_label').value,
-    result_label:document.getElementById('result_label').value,
-    innings:{
-      away:awayInn,home:homeInn,
-      away_hits:Number(document.getElementById('away_hits').value),
-      away_errors:Number(document.getElementById('away_errors').value),
-      home_hits:Number(document.getElementById('home_hits').value),
-      home_errors:Number(document.getElementById('home_errors').value)
-    },
-    pitchers:pitchers,
-    moments:moments,
-    players:players
-  };
-}
-
-function previewJson() {
-  var data = collectData();
-  alert(JSON.stringify(data,null,2));
-}
-
-async function saveGame() {
-  var token = getToken();
-  if(!token){alert('GitHubトークンを入力してください');return;}
-  var data = collectData();
-  if(!data.game_date){alert('試合日を入力してください');return;}
-  if(!data.away_team){alert('対戦相手を入力してください');return;}
-
-  var st = document.getElementById('save-status');
-  st.className='status';st.style.display='block';
-  st.innerHTML='<span class="spinner"></span>GitHubに保存中...';
-
-  try {
-    var path = 'games/'+data.game_date+'.json';
-    var content = JSON.stringify(data,null,2);
-    var H = headers();
-    var apiBase = 'https://api.github.com/repos/'+REPO;
-
-    // 既存ファイルのSHA取得（更新の場合）
-    var existing = await fetch(apiBase+'/contents/'+path,{headers:H});
-    var sha = null;
-    if(existing.ok){var e=await existing.json();sha=e.sha;}
-
-    // ファイルを作成or更新
-    var body = {message:'試合データ登録: '+data.game_date+' '+data.home_team+'vs'+data.away_team,
-      content:btoa(unescape(encodeURIComponent(content)))};
-    if(sha)body.sha=sha;
-
-    var r = await fetch(apiBase+'/contents/'+path,{method:'PUT',headers:H,body:JSON.stringify(body)});
-    var res = await r.json();
-    if(!res.content)throw new Error(res.message||'保存失敗');
-
-    st.className='status ok';
-    st.innerHTML='✅ 保存完了！<a href="'+APP_URL+'?date='+data.game_date+'" target="_blank" style="color:#3ecf8e;margin-left:8px">'+APP_URL+'?date='+data.game_date+'</a> でプレビュー（Vercelデプロイ後）';
-  } catch(e) {
-    st.className='status err';
-    st.innerHTML='❌ エラー: '+e.message;
-  }
-}
-
-// 一覧読み込み
-async function loadGameList() {
-  var st = document.getElementById('list-status');
-  var list = document.getElementById('game-list');
-  list.innerHTML='<div style="color:#7a8090;font-size:13px"><span class="spinner"></span>読み込み中...</div>';
-  try {
-    var H = headers();
-    var r = await fetch('https://api.github.com/repos/'+REPO+'/contents/games',{headers:H});
-    if(r.status===404){list.innerHTML='<div style="color:#7a8090;font-size:13px">まだ試合データがありません</div>';return;}
-    var files = await r.json();
-    if(!files.length){list.innerHTML='<div style="color:#7a8090;font-size:13px">まだ試合データがありません</div>';return;}
-    list.innerHTML = files.filter(f=>f.name.endsWith('.json')).sort((a,b)=>b.name.localeCompare(a.name)).map(f=>{
-      var date = f.name.replace('.json','');
-      return '<div class="game-list-item" onclick="loadGameForEdit(''+date+'')">' +
-        '<span>📅 '+date+'</span>' +
-        '<div style="display:flex;gap:8px">' +
-        '<a href="'+APP_URL+'?date='+date+'" target="_blank" style="color:#4a9eff;font-size:12px" onclick="event.stopPropagation()">表示</a>' +
-        '<span style="color:#7a8090;font-size:12px">編集 →</span></div></div>';
-    }).join('');
-  } catch(e) {
-    list.innerHTML='<div style="color:#f46060;font-size:13px">'+e.message+'</div>';
-  }
-}
-
-async function loadGameForEdit(date) {
-  var H = headers();
-  var r = await fetch('https://raw.githubusercontent.com/'+REPO+'/main/games/'+date+'.json?'+Date.now());
-  if(!r.ok){alert('読み込みに失敗しました');return;}
-  var g = await r.json();
-  // フォームに値をセット
-  document.getElementById('game_date').value=g.game_date;
-  document.getElementById('home_team').value=g.home_team;
-  document.getElementById('away_team').value=g.away_team;
-  document.getElementById('home_score').value=g.home_score;
-  document.getElementById('away_score').value=g.away_score;
-  document.getElementById('venue').value=g.venue;
-  document.getElementById('status_label').value=g.status_label||'';
-  document.getElementById('result_label').value=g.result_label||'';
-  if(g.innings){
-    document.getElementById('innings_away').value=g.innings.away.join(',');
-    document.getElementById('innings_home').value=g.innings.home.join(',');
-    document.getElementById('away_hits').value=g.innings.away_hits||0;
-    document.getElementById('away_errors').value=g.innings.away_errors||0;
-    document.getElementById('home_hits').value=g.innings.home_hits||0;
-    document.getElementById('home_errors').value=g.innings.home_errors||0;
-  }
-  document.getElementById('pitchers-list').innerHTML='';
-  (g.pitchers||[]).forEach(addPitcher);
-  document.getElementById('moments-list').innerHTML='';
-  momentId=1;(g.moments||[]).forEach(addMoment);
-  document.getElementById('players-list').innerHTML='';
-  (g.players||[]).forEach(addPlayer);
-  switchTab('edit',document.querySelectorAll('.tab')[0]);
-  window.scrollTo(0,0);
-}
-
-// 初期サンプルデータ
-addPitcher({team:'広島',role:'先',name:'',stat:'',result:''});
-addMoment();
-addPlayer({name:'',pos:'中'});
+var REPO='norimichitakesue2/carp-talk';
+function getToken(){return localStorage.getItem('ct_gh_token')||'';}
+function saveToken(){var t=document.getElementById('gh-token').value.trim();if(!t)return;localStorage.setItem('ct_gh_token',t);updateTokenStatus();showToast('トークンを保存しました');}
+function updateTokenStatus(){var t=getToken(),el=document.getElementById('token-status');el.innerHTML=t?'<span class="status-dot status-ok"></span>設定済み':'<span class="status-dot status-ng"></span>未設定';}
+function showToast(msg,isErr){var t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(isErr?' error':'');setTimeout(function(){t.className='toast';},3000);}
+function showTab(tab,el){document.getElementById('tab-edit').style.display=tab==='edit'?'block':'none';document.getElementById('tab-list').style.display=tab==='list'?'block':'none';document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});el.classList.add('active');if(tab==='list')loadGameList();}
+var momentCount=0;
+function addMoment(data){momentCount++;var id=momentCount;var div=document.createElement('div');div.className='moment-item';div.id='moment-'+id;div.innerHTML='<div class="moment-header"><input type="text" placeholder="例: 1回裏" style="width:90px;flex:none" id="m-inning-'+id+'" value="'+(data?esc(data.inning):'')+'"><select id="m-type-'+id+'" style="width:100px;flex:none"><option value="score"'+(data&&data.type==='score'?' selected':'')+'>得点</option><option value="pitcher"'+(data&&data.type==='pitcher'?' selected':'')+'>投手好投</option><option value="hr"'+(data&&data.type==='hr'?' selected':'')+'>本塁打</option><option value="crisis"'+(data&&data.type==='crisis'?' selected':'')+'>ピンチ脱出</option></select><button onclick="document.getElementById('moment-'+id+'').remove()" style="background:transparent;border:none;color:#7a8090;cursor:pointer;font-size:16px;padding:0 4px">×</button></div><input type="text" placeholder="シーンの説明" id="m-desc-'+id+'" value="'+(data?esc(data.desc||''):'')+'"><input type="text" placeholder="補足" id="m-sub-'+id+'" value="'+(data?esc(data.sub||''):'')+'" style="margin-top:6px">';document.getElementById('moments-list').appendChild(div);}
+function getMoments(){var r=[];document.querySelectorAll('.moment-item').forEach(function(item,i){var id=item.id.replace('moment-','');r.push({id:i+1,inning:document.getElementById('m-inning-'+id).value,type:document.getElementById('m-type-'+id).value,desc:document.getElementById('m-desc-'+id).value,sub:document.getElementById('m-sub-'+id).value});});return r;}
+var playerCount=0;
+function addPlayer(data){playerCount++;var id=playerCount;var div=document.createElement('div');div.className='player-item';div.id='player-'+id;div.innerHTML='<input type="text" placeholder="選手名" id="p-name-'+id+'" value="'+(data?esc(data.name||''):'')+'"><input type="text" placeholder="守" id="p-pos-'+id+'" value="'+(data?esc(data.pos||''):'')+'" style="width:50px"><button onclick="document.getElementById('player-'+id+'').remove()" style="background:transparent;border:none;color:#7a8090;cursor:pointer;padding:0 4px;flex:none">×</button>';document.getElementById('players-list').appendChild(div);}
+function getPlayers(){var r=[];document.querySelectorAll('.player-item').forEach(function(item){var id=item.id.replace('player-','');var n=document.getElementById('p-name-'+id).value.trim();if(n)r.push({name:n,pos:document.getElementById('p-pos-'+id).value.trim()});});return r;}
+function esc(s){return String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function clearForm(){document.getElementById('moments-list').innerHTML='';momentCount=0;document.getElementById('players-list').innerHTML='';playerCount=0;document.getElementById('f-away').value='';document.getElementById('f-home-score').value=0;document.getElementById('f-away-score').value=0;document.getElementById('f-result').value='';document.getElementById('f-pitchers').value='';}
+function buildGameData(){var date=document.getElementById('f-date').value;var pitRaw=document.getElementById('f-pitchers').value.trim();var pit=[];if(pitRaw){try{pit=JSON.parse(pitRaw);}catch(e){showToast('継投JSONが無効です',true);return null;}}return{id:'npb_'+date.replace(/-/g,''),game_date:date,home_team:document.getElementById('f-home').value,away_team:document.getElementById('f-away').value,home_score:parseInt(document.getElementById('f-home-score').value)||0,away_score:parseInt(document.getElementById('f-away-score').value)||0,venue:document.getElementById('f-venue').value,status:'final',result_label:document.getElementById('f-result').value,pitchers:pit,moments:getMoments(),players:getPlayers()};}
+function previewJSON(){var d=buildGameData();if(!d)return;alert(JSON.stringify(d,null,2));}
+async function saveGame(){var token=getToken();if(!token){showToast('GitHubトークンを設定してください',true);return;}var data=buildGameData();if(!data)return;if(!data.away_team){showToast('相手チームを入力してください',true);return;}if(!data.moments.length){showToast('分岐点シーンを追加してください',true);return;}var btn=document.querySelector('.btn-primary');btn.disabled=true;btn.textContent='保存中...';try{var path='games/'+data.game_date+'.json';var H={'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};var api='https://api.github.com/repos/'+REPO;var content=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));var existing=await fetch(api+'/contents/'+path,{headers:H});var sha=existing.ok?(await existing.json()).sha:null;var body={message:'試合データ: '+data.game_date+' 広島vs'+data.away_team,content:content};if(sha)body.sha=sha;var res=await fetch(api+'/contents/'+path,{method:'PUT',headers:H,body:JSON.stringify(body)});var result=await res.json();if(result.content){showToast('✅ 保存完了！Vercelが自動デプロイします');}else{showToast('エラー: '+JSON.stringify(result).slice(0,60),true);}}catch(e){showToast('エラー: '+e.message,true);}finally{btn.disabled=false;btn.textContent='GitHubに保存してデプロイ';}}
+async function loadGameList(){var token=getToken();if(!token){document.getElementById('game-list-container').innerHTML='<div style="color:#7a8090;font-size:13px">トークンを設定してください</div>';return;}var H={'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'};try{var r=await fetch('https://api.github.com/repos/'+REPO+'/contents/games',{headers:H});if(!r.ok){document.getElementById('game-list-container').innerHTML='<div style="color:#7a8090;font-size:13px">gamesフォルダがまだありません</div>';return;}var files=await r.json();if(!files.length){document.getElementById('game-list-container').innerHTML='<div style="color:#7a8090;font-size:13px">試合データがまだありません</div>';return;}var html='<div class="game-list">';files.sort(function(a,b){return b.name.localeCompare(a.name);}).forEach(function(f){var date=f.name.replace('.json','');html+='<div class="game-item"><span class="game-item-date">'+date+'</span><div class="game-item-actions"><a href="/?date='+date+'" target="_blank" class="btn btn-secondary btn-sm">表示</a><button class="btn btn-secondary btn-sm" onclick="loadGameToEdit(''+date+'')">編集</button></div></div>';});html+='</div>';document.getElementById('game-list-container').innerHTML=html;}catch(e){document.getElementById('game-list-container').innerHTML='<div style="color:#f46060;font-size:13px">'+e.message+'</div>';}}
+async function loadGameToEdit(date){var token=getToken();var H={'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'};try{var r=await fetch('https://api.github.com/repos/'+REPO+'/contents/games/'+date+'.json',{headers:H});var file=await r.json();var data=JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/
+/g,'')))));fillForm(data);showTab('edit',document.querySelectorAll('.tab')[0]);showToast(date+' のデータを読み込みました');}catch(e){showToast('読み込みエラー: '+e.message,true);}}
+function fillForm(data){document.getElementById('f-date').value=data.game_date||'';document.getElementById('f-home').value=data.home_team||'広島';document.getElementById('f-away').value=data.away_team||'';document.getElementById('f-home-score').value=data.home_score||0;document.getElementById('f-away-score').value=data.away_score||0;document.getElementById('f-venue').value=data.venue||'マツダスタジアム';document.getElementById('f-result').value=data.result_label||'';document.getElementById('f-pitchers').value=data.pitchers?JSON.stringify(data.pitchers,null,2):'';document.getElementById('moments-list').innerHTML='';momentCount=0;(data.moments||[]).forEach(function(m){addMoment(m);});document.getElementById('players-list').innerHTML='';playerCount=0;(data.players||[]).forEach(function(p){addPlayer(p);});}
+window.addEventListener('DOMContentLoaded',function(){var saved=localStorage.getItem('ct_gh_token');if(saved)document.getElementById('gh-token').value='●'.repeat(20);updateTokenStatus();var today=new Date().toISOString().slice(0,10);document.getElementById('f-date').value=today;});
 </script>
 </body>
 </html>
