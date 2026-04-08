@@ -523,9 +523,20 @@ function drawWave(){
   var el=document.getElementById('wave-svg');if(!el)return;
   var flows=[];
   for(var i=1;i<=9;i++){
-    var evt=MOMENTS.find(function(m){return m.inning&&parseInt(m.inning)===i;});
+    var evts=MOMENTS.filter(function(m){return m.inning&&parseInt(m.inning)===i;});
     var base=45;
-    if(evt){if(evt.type==='hr')base=15;else if(evt.type==='score')base=20;else if(evt.type==='crisis')base=35;}
+    evts.forEach(function(evt){
+      if(evt.type==='hr'){
+        // 広島のHR(inning裏)か相手のHR(inning表)かで判定
+        var isUra=evt.inning&&evt.inning.includes('裏');
+        base=isUra?15:72;// 裏=広島の攻撃=上昇、表=相手のHR=大幅下降
+      } else if(evt.type==='score'){
+        var isUra=evt.inning&&evt.inning.includes('裏');
+        base=isUra?20:65;
+      } else if(evt.type==='crisis'){
+        base=55;// チャンス逃し＝やや下
+      }
+    });
     flows.push({x:ptX(i-1),y:base});
   }
   var d='M'+flows[0].x+','+flows[0].y;
