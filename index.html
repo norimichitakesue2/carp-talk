@@ -924,7 +924,7 @@ function renderPopupPlayers(){
     html+='<div class="rating-row">';
     ['mvp','good','cheer'].forEach(function(rv){
       var labels={mvp:'MVP',good:'よかった',cheer:'応援'};
-      html+='<button class="rating-btn '+rv+(r===rv?' sel':'')+'" onclick="ratePlayerPopup(''+p.name+'',''+rv+'',this)">'+labels[rv]+'</button>';
+      html+='<button class="rating-btn '+rv+(r===rv?' sel':'')+'" onclick="ratePlayerPopup(this)" data-name="'+p.name+'" data-rv="'+rv+'">'+labels[rv]+'</button>';
     });
     html+='</div></div>';
   });
@@ -933,7 +933,8 @@ function renderPopupPlayers(){
 }
 
 var playerRatings={};
-function ratePlayerPopup(name,rating,btn){
+function ratePlayerPopup(btn){
+  var name=btn.dataset.name,rating=btn.dataset.rv;
   playerRatings[name]=(playerRatings[name]===rating)?null:rating;
   renderPopupPlayers();
   renderPlayerGrid();
@@ -980,7 +981,7 @@ function renderPlayerGrid(){
     html+='<span class="player-pos">'+esc(p.pos)+'</span>';
     html+='<div class="rating-row">';
     [{v:'mvp',l:'MVP'},{v:'good',l:'よかった'},{v:'cheer',l:'応援'}].forEach(function(rb){
-      html+='<button class="rating-btn '+rb.v+(r===rb.v?' sel':'')+'" onclick="ratePlayerGrid(''+p.name+'',''+rb.v+'')">'+rb.l+'</button>';
+      html+='<button class="rating-btn '+rb.v+(r===rb.v?' sel':'')+'" onclick="ratePlayerGrid(this)" data-name="'+p.name+'" data-rv="'+rb.v+'">'+rb.l+'</button>';
     });
     html+='</div></div>';
   });
