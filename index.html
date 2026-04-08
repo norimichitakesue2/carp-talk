@@ -1284,7 +1284,8 @@ async function initEvalBar(g){
     return '<button class="sp-opt" onclick="epPick1(this)" data-v="'+esc(t)+'">'+esc(t)+'</button>';
   }).join('');
   // 既存の投稿があれば復元して完了状態に
-  var existing=await sb.from('eval_posts').select('*').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+  var existingR=await sb.from('eval_posts').select('*').eq('game_id',GAME_ID).eq('user_id',userId).order('created_at',{ascending:false}).limit(1);
+  var existing={data:existingR.data&&existingR.data[0]||null};
   if(existing.data){
     var ep=existing.data;
     EP.v1=ep.title||''; EP.v2=ep.bunki_text||''; EP.v3=ep.choice||''; EP.bunki=ep.bunki_id||null;
@@ -1583,14 +1584,14 @@ async function epPost(){
   var t=turnings.find(function(x){
     return (EP.bunki&&x.id===EP.bunki)||(x.description&&EP.v2.includes(x.description.slice(0,10)));
   });
-  var r=await sb.from('eval_posts').insert({
+  var r=await sb.from('eval_posts').upsert({
     game_id:GAME_ID, user_id:userId,
     title:EP.v1,
     bunki_id:t?t.id:null,
     bunki_text:EP.v2,
     choice:EP.v3
-  });
-  if(r.error){showToast('投稿に失敗しました');return;}
+  },{onConflict:'game_id,user_id'});
+  if(r.error){showToast('投稿に失敗しました：'+r.error.message);return;}
   evalPostDone=true;
   showToast('評価を投稿しました！');
   epShowShareSilent();
