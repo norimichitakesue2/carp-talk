@@ -283,6 +283,8 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .choice-bar{flex:1;height:5px;background:var(--faint);border-radius:3px;overflow:hidden}
 .choice-bar-fill{height:5px;border-radius:3px;background:var(--blue)}
 .choice-pct{font-size:10px;color:var(--muted);width:28px;text-align:right}
+.tp-choice-opt{width:100%;padding:6px 10px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-align:left;transition:all .15s}
+.tp-choice-opt:hover{background:var(--surface2);border-color:var(--carp)}
 .tp-choice-opt{width:100%;padding:7px 10px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-align:left;transition:all .15s}
 .tp-choice-opt:hover{background:var(--surface2);border-color:var(--carp)}
 .tp-add-wrap{margin-top:.75rem;border-top:1px solid var(--border);padding-top:.75rem}
@@ -1568,6 +1570,10 @@ function epShowShareSilent(){
 
 async function epPost(){
   if(evalPostDone){showToast('投稿済みです');return;}
+  // ep-sv1/sv2/sv3からもフォールバック取得
+  if(!EP.v1){var e=document.getElementById('ep-sv1');if(e)EP.v1=e.textContent.trim();}
+  if(!EP.v2){var e=document.getElementById('ep-sv2');if(e)EP.v2=e.textContent.trim();}
+  if(!EP.v3){var e=document.getElementById('ep-sv3');if(e)EP.v3=e.textContent.trim();}
   if(!EP.v1||!EP.v2||!EP.v3){showToast('全ての項目を選択してください');return;}
   var t=turnings.find(function(x){
     return (EP.bunki&&x.id===EP.bunki)||(x.description&&EP.v2.includes(x.description.slice(0,10)));
@@ -1651,15 +1657,16 @@ async function loadTpChoicesAll(){
   });
 }
 async function loadAllTpChoices(){
-  // 全分岐点のvoteを一括取得
-  var r=await sb.from('turning_votes').select('turning_id,choice').eq('game_id',GAME_ID);
+  // 全分岐点のvoteを一括取得（自分の回答も含む）
+  var r=await sb.from('turning_votes').select('turning_id,choice,user_id').eq('game_id',GAME_ID);
   if(!r.data)return;
-  // turning_idごとに集計
-  var map={};
+  // turning_idごとに集計 & 自分の回答チェック
+  var map={}, myAnswers={};
   r.data.forEach(function(v){
     if(!v.choice)return;
     if(!map[v.turning_id])map[v.turning_id]={};
     map[v.turning_id][v.choice]=(map[v.turning_id][v.choice]||0)+1;
+    if(v.user_id===userId) myAnswers[v.turning_id]=v.choice;
   });
   // 各bodyに描画
   turnings.forEach(function(t){
@@ -1668,22 +1675,34 @@ async function loadAllTpChoices(){
     var counts=map[t.id]||{};
     var total=Object.values(counts).reduce(function(s,v){return s+v;},0);
     var choices=(t.choices)||[];
-    if(total===0&&choices.length===0){
-      body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.25rem 0">まだ回答なし</div>';
-      return;
-    }
-    // choicesがある場合は全選択肢を表示（0%も含む）
-    var allChoices=choices.length>0?choices:Object.keys(counts);
-    var html=allChoices.map(function(c){
-      var cnt=counts[c]||0;
-      var pct=total>0?Math.round(cnt/total*100):0;
-      return '<div class="choice-bar-row">'+
-        '<span class="choice-lbl">'+esc(c)+'</span>'+
-        '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%"></div></div>'+
-        '<span class="choice-pct">'+pct+'%</span>'+
+    var myAnswer=myAnswers[t.id]||null;
+
+    if(!myAnswer){
+      // 未回答：選択肢ボタンを表示
+      if(choices.length===0){
+        body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.25rem 0">選択肢なし</div>';
+        return;
+      }
+      body.innerHTML='<div style="display:flex;flex-direction:column;gap:5px;padding-bottom:4px">'+
+        choices.map(function(c){
+          return '<button class="tp-choice-opt" onclick="voteTpChoice(this)" data-v="'+esc(c)+'" data-tid="'+t.id+'">'+esc(c)+'</button>';
+        }).join('')+
         '</div>';
-    }).join('');
-    body.innerHTML=html;
+    } else {
+      // 回答済み：投票率バーを表示（自分の選択をハイライト）
+      var allChoices=choices.length>0?choices:Object.keys(counts);
+      body.innerHTML=allChoices.map(function(c){
+        var cnt=counts[c]||0;
+        var pct=total>0?Math.round(cnt/total*100):0;
+        var isMe=c===myAnswer;
+        return '<div class="choice-bar-row" style="'+(isMe?'opacity:1':'opacity:.7')+'">'+
+          '<span class="choice-lbl" style="'+(isMe?'font-weight:700;color:var(--text)':'')+'">'+
+          (isMe?'✓ ':'')+esc(c)+'</span>'+
+          '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%;background:'+(isMe?'var(--carp)':'var(--blue)')+'"></div></div>'+
+          '<span class="choice-pct">'+pct+'%</span>'+
+          '</div>';
+      }).join('');
+    }
   });
 }
 async function toggleTpChoice(btn, turningId){
@@ -1743,6 +1762,8 @@ async function renderTpChoiceBody(turningId, body){
 
 async function voteTpChoice(btn){
   var turningId=btn.dataset.tid, choice=btn.dataset.v;
+  // 楽観的UI更新：選択を表示
+  btn.style.background='rgba(200,16,46,.1)';btn.style.borderColor='var(--carp)';btn.style.color='var(--carp)';
   // optimistic UI: 即座にバー表示
   var body=document.getElementById('tpcb-'+turningId);
   if(body){body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.4rem 0">保存中...</div>';}
