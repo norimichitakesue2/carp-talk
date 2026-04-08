@@ -769,9 +769,7 @@ function subscribeRealtime(){
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
 
 // ===== フェードイン =====
-function initFI(){}});},{threshold:0,rootMargin:'0px 0px -10px 0px'});
-  document.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});
-}
+function initFI(){}
 
 // ===== 起動 =====
 window.addEventListener('DOMContentLoaded',function(){
