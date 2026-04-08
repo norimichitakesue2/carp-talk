@@ -739,7 +739,7 @@ function renderTpCards(){
   track.innerHTML=html;
   // 分岐点のchoice集計を表示
   setTimeout(loadTpChoicesAll, 100);
-  setTimeout(loadAllTpChoices,100);
+  setTimeout(loadAllTpChoices,500);
   if(SEL_INN!==null){
     var idx=turnings.findIndex(function(t){return parseInt(t.inning)===SEL_INN;});
     if(idx>=0){var el=document.getElementById('tpc-'+idx);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},50);}
@@ -1060,6 +1060,8 @@ async function initApp(g){
   // turnings読み込み後にSTEP2も更新
   renderEpStep2();
   loadMinnaEval();
+  // 少し遅延してchoice表示を確実に初期化
+  setTimeout(loadAllTpChoices,800);
   // 投稿済みかチェック
   checkEvalPostDone();
 
