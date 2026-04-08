@@ -8,12 +8,44 @@
   "venue": "マツダスタジアム",
   "status": "final",
   "result_label": "広島勝利",
+
+  "title_candidates": [
+    "二本のアーチで全て決まった",
+    "森下7回、完璧な仕事",
+    "大盛のプロ初弾が試合を終わらせた",
+    "継投リレーの美学"
+  ],
+
+  "turning_suggestions": [
+    {
+      "inning": "4回裏",
+      "description": "ファビアンの2ランで流れが完全に広島に",
+      "reason": "0-0の膠着がここで一気に崩れた。ウィットリーの表情が変わった瞬間",
+      "intensity": "strong"
+    },
+    {
+      "inning": "5回裏",
+      "description": "大盛のプロ初本塁打で試合を決定づけた",
+      "reason": "連続2ランで巨人ベンチが諦めた。精神的に4-0は重かった",
+      "intensity": "strong"
+    },
+    {
+      "inning": "7回表",
+      "description": "巨人に2点返され、一瞬ヒヤッとした",
+      "reason": "点は入ったけど継投陣が踏ん張った。ここが耐えどころだった",
+      "intensity": "weak"
+    }
+  ],
+
   "innings": {
     "giants": [0, 0, 0, 0, 0, 0, 2, 0, 0],
     "hiroshima": [0, 0, 0, 2, 2, 1, 0, 0, "X"],
-    "giants_hits": 7, "giants_errors": 3,
-    "hiroshima_hits": 5, "hiroshima_errors": 0
+    "giants_hits": 7,
+    "giants_errors": 3,
+    "hiroshima_hits": 5,
+    "hiroshima_errors": 0
   },
+
   "pitchers": [
     {"team": "広島", "role": "先発", "name": "森下 暢仁", "result": "win"},
     {"team": "広島", "role": "中継ぎ", "name": "ハーン", "result": "win"},
@@ -23,6 +55,7 @@
     {"team": "巨人", "role": "中継ぎ", "name": "田和 廉", "result": "loss"},
     {"team": "巨人", "role": "中継ぎ", "name": "船迫 大雅", "result": "loss"}
   ],
+
   "moments": [
     {"id": 1, "inning": "4回裏", "type": "hr", "desc": "ファビアン、待望の来日1号2ランホームラン！先制に成功", "sub": "広島 2-0 巨人。ウィットリーから右中間へ叩き込む豪快な当たり"},
     {"id": 2, "inning": "5回裏", "type": "hr", "desc": "大盛穂、プロ初本塁打！1番打者が連続2ランで突き放す", "sub": "広島 4-0 巨人。今季絶好調の大盛がダメ押し弾でチームを鼓舞"},
@@ -30,6 +63,7 @@
     {"id": 4, "inning": "7回表", "type": "crisis", "desc": "巨人が7回に2点を返しリリーフ陣が緊張の場面に", "sub": "広島 5-2 巨人。ハーン→森浦→中﨑の継投でリードを守りきる"},
     {"id": 5, "inning": "9回表", "type": "pitcher", "desc": "中﨑、今季初セーブで試合を締める。完璧な中継ぎリレー完成", "sub": "森下(7回2失点)→ハーン→森浦→中﨑の4投手継投で完封リレー"}
   ],
+
   "players": [
     {"name": "大盛 穂", "pos": "中"},
     {"name": "中村 奨成", "pos": "右"},
