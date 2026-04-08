@@ -1570,10 +1570,15 @@ function epShowShareSilent(){
 
 async function epPost(){
   if(evalPostDone){showToast('投稿済みです');return;}
-  // ep-sv1/sv2/sv3からもフォールバック取得
-  if(!EP.v1){var e=document.getElementById('ep-sv1');if(e)EP.v1=e.textContent.trim();}
-  if(!EP.v2){var e=document.getElementById('ep-sv2');if(e)EP.v2=e.textContent.trim();}
-  if(!EP.v3){var e=document.getElementById('ep-sv3');if(e)EP.v3=e.textContent.trim();}
+  // sel-barからフォールバック取得（EP変数が空の場合）
+  if(!EP.v1){var e=document.getElementById('ep-sv1-bar');if(e&&e.textContent.trim())EP.v1=e.textContent.trim();}
+  if(!EP.v2){var e=document.getElementById('ep-sv2-bar');if(e&&e.textContent.trim())EP.v2=e.textContent.trim();}
+  if(!EP.v3){var e=document.getElementById('ep-sv3-bar');if(e&&e.textContent.trim())EP.v3=e.textContent.trim();}
+  // summaryからもフォールバック
+  if(!EP.v1){var e=document.getElementById('ep-sv1');if(e&&e.textContent.trim())EP.v1=e.textContent.trim();}
+  if(!EP.v2){var e=document.getElementById('ep-sv2');if(e&&e.textContent.trim())EP.v2=e.textContent.trim();}
+  if(!EP.v3){var e=document.getElementById('ep-sv3');if(e&&e.textContent.trim())EP.v3=e.textContent.trim();}
+  console.log('[epPost] v1='+EP.v1+' v2='+EP.v2+' v3='+EP.v3);
   if(!EP.v1||!EP.v2||!EP.v3){showToast('全ての項目を選択してください');return;}
   var t=turnings.find(function(x){
     return (EP.bunki&&x.id===EP.bunki)||(x.description&&EP.v2.includes(x.description.slice(0,10)));
