@@ -190,8 +190,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .live-update{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;padding:.4rem 0}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
-.fi{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
-.fi.vis{opacity:1;transform:translateY(0)}
+.fi{opacity:1;transform:none}
 @media(max-width:480px){.ts{font-size:40px}.intensity-row{flex-wrap:wrap}}
 </style>
 </head>
@@ -380,6 +379,7 @@ function renderMain(g){
     '</div></div>';
 
   initFI();
+  setTimeout(initFI, 100);
   renderStory();
 }
 
@@ -769,8 +769,7 @@ function subscribeRealtime(){
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
 
 // ===== フェードイン =====
-function initFI(){
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.08});
+function initFI(){}});},{threshold:0,rootMargin:'0px 0px -10px 0px'});
   document.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});
 }
 
