@@ -1324,14 +1324,78 @@ function epShowShare(){
 
 function epShare(){
   var score=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away;
-  var text='【カープトーク】'+GAME.date+' '+score+'\n'+
-    '一言：「'+EP.v1+'」\n'+
-    '分岐点：'+EP.v2+'\n'+
-    '自分なら：'+EP.v3+'\n'+
-    '#広島カープ #カープトーク';
-  var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+
-    '&url='+encodeURIComponent('https://carp-talk.vercel.app/?date='+currentDate);
-  window.open(url,'_blank','noopener,noreferrer');
+  // Canvas でシェアカードを生成
+  try{
+    var cv=document.createElement('canvas');
+    cv.width=800;cv.height=420;
+    var ctx=cv.getContext('2d');
+    // 背景
+    ctx.fillStyle='#0a0c10';
+    ctx.fillRect(0,0,800,420);
+    // 上部カープカラーライン
+    var grad=ctx.createLinearGradient(0,0,800,0);
+    grad.addColorStop(0,'#c8102e');grad.addColorStop(.5,'#ff4060');grad.addColorStop(1,'#f0c040');
+    ctx.fillStyle=grad;ctx.fillRect(0,0,800,4);
+    // 日付・スコア
+    ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='14px sans-serif';
+    ctx.fillText(GAME.date+'  '+score,40,40);
+    // 区切り線
+    ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1;
+    // STEP1: 一言
+    ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='11px sans-serif';
+    ctx.fillText('この試合を一言で言うと',40,80);
+    ctx.fillStyle='#f0c040';ctx.font='bold 22px sans-serif';
+    ctx.fillText('「'+EP.v1+'」',40,112);
+    // 横線
+    ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.beginPath();ctx.moveTo(40,135);ctx.lineTo(760,135);ctx.stroke();
+    // STEP2: 分岐点
+    ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='11px sans-serif';
+    ctx.fillText('ここが分岐点だと思った',40,162);
+    ctx.fillStyle='#ffffff';ctx.font='bold 18px sans-serif';
+    // 長いテキストを折り返す
+    var btext=EP.v2;
+    if(ctx.measureText(btext).width>680){btext=btext.slice(0,28)+'...';}
+    ctx.fillText(btext,40,190);
+    // 横線
+    ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.beginPath();ctx.moveTo(40,215);ctx.lineTo(760,215);ctx.stroke();
+    // STEP3: 自分ならこうする
+    ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='11px sans-serif';
+    ctx.fillText('自分ならこうしてた',40,242);
+    ctx.fillStyle='#4adf9a';ctx.font='bold 18px sans-serif';
+    var ctext=EP.v3;
+    if(ctx.measureText(ctext).width>680){ctext=ctext.slice(0,28)+'...';}
+    ctx.fillText(ctext,40,270);
+    // 横線
+    ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.beginPath();ctx.moveTo(40,295);ctx.lineTo(760,295);ctx.stroke();
+    // フッター
+    ctx.fillStyle='rgba(255,255,255,0.25)';ctx.font='13px sans-serif';
+    ctx.fillText('#広島カープ #カープトーク',40,330);
+    ctx.fillStyle='rgba(255,255,255,0.2)';ctx.font='12px sans-serif';
+    ctx.textAlign='right';
+    ctx.fillText('carp-talk.vercel.app',760,330);
+    ctx.textAlign='left';
+    // サイト名
+    ctx.fillStyle='#c8102e';ctx.font='bold 13px sans-serif';
+    ctx.fillText('本日のカープトーク',40,370);
+    ctx.fillStyle='rgba(255,255,255,0.15)';ctx.font='11px sans-serif';
+    ctx.fillText('あなたの分岐点を、シェアしよう。',40,390);
+    // ダウンロード
+    var a=document.createElement('a');
+    a.download='carp-talk-'+currentDate+'.png';
+    a.href=cv.toDataURL('image/png');
+    a.click();
+  }catch(e){console.error('Canvas error:',e);}
+  // X投稿画面を開く
+  setTimeout(function(){
+    var text='【カープトーク】'+GAME.date+' '+score+'\n'+
+      '一言：「'+EP.v1+'」\n'+
+      '分岐点：'+EP.v2+'\n'+
+      '自分なら：'+EP.v3+'\n'+
+      '#広島カープ #カープトーク';
+    var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+
+      '&url='+encodeURIComponent('https://carp-talk.vercel.app/?date='+currentDate);
+    window.open(url,'_blank','noopener,noreferrer');
+  },600);
 }
 
 function epReset(){
