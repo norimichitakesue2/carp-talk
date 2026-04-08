@@ -136,7 +136,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .eb-pitcher{background:rgba(74,158,255,.15);color:var(--blue)}
 .evt-desc{font-size:14px;color:var(--text);line-height:1.5}
 .evt-sub{font-size:12px;color:var(--muted);margin-top:2px;font-style:italic}
-/* 転換点 */
+/* 分岐点 */
 .turning-section{margin:.5rem 0 1rem}
 .turning-hd{display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
 .turning-hd-title{font-size:13px;font-weight:700;color:var(--text)}
@@ -227,6 +227,35 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .x-share-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-decoration:none}
 .x-share-btn:hover{background:#000;color:#fff;border-color:#000}
 .x-share-wrap{display:flex;justify-content:flex-end;margin-top:8px}
+.eval-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1rem}
+.eb-header{display:flex;align-items:center;justify-content:space-between;padding:10px 1.25rem;border-bottom:1px solid var(--border)}
+.eb-title{font-size:13px;font-weight:700;color:var(--text)}
+.eb-progress{display:flex;gap:3px;align-items:center}
+.ep-dot{width:6px;height:6px;border-radius:50%;background:var(--faint);transition:all .2s}
+.ep-dot.done{background:var(--carp)}
+.ep-dot.active{background:var(--carp);width:16px;border-radius:3px}
+.step-panel{padding:10px 1.25rem;display:none}
+.step-panel.active{display:block}
+.sp-label{font-size:11px;color:var(--muted);margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.sp-num{width:16px;height:16px;border-radius:50%;background:var(--carp);color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.sp-opts{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.sp-opt{font-size:11px;padding:5px 10px;border-radius:99px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;white-space:nowrap}
+.sp-opt:hover{background:var(--surface2)}
+.sp-opt.s1{background:rgba(200,16,46,.12);border-color:var(--carp);color:#ff7090;font-weight:500}
+.sp-opt.s2{background:rgba(74,158,255,.12);border-color:var(--blue);color:var(--blue);font-weight:500}
+.sp-opt.s3{background:rgba(62,207,142,.12);border-color:var(--green);color:var(--green);font-weight:500}
+.sp-inp{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:var(--rs);padding:.45rem .9rem;font-size:12px;font-family:'Noto Sans JP',sans-serif;color:var(--text);margin-top:4px}
+.sp-inp:focus{outline:none;border-color:var(--green)}
+.sp-inp.used{border-color:var(--green);background:rgba(62,207,142,.05)}
+.ep-summary{padding:10px 1.25rem;background:var(--surface2);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.ep-sum-row{display:flex;align-items:baseline;gap:6px}
+.ep-sum-lbl{font-size:10px;color:var(--muted);white-space:nowrap}
+.ep-sum-val{font-size:13px;font-weight:500;color:var(--text)}
+.ep-nav{display:flex;gap:6px;padding:10px 1.25rem;border-top:1px solid var(--border)}
+.ep-back{flex:1;padding:7px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.ep-next{flex:2;padding:7px;border-radius:var(--rs);border:none;background:var(--carp);color:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;opacity:.5;transition:opacity .2s}
+.ep-next.on{opacity:1}
+.ep-share{flex:2;padding:7px;border-radius:var(--rs);border:none;background:#000;color:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px}
 .tp-add-wrap{margin-top:.75rem;border-top:1px solid var(--border);padding-top:.75rem}
 .tp-add-toggle{width:100%;padding:.6rem;background:transparent;border:1px dashed var(--border2);border-radius:var(--rs);color:var(--muted);font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
 .tp-add-toggle:hover{border-color:var(--green);color:var(--green)}
@@ -288,7 +317,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 <div class="popup-overlay" id="popup-overlay" style="display:none" onclick="closePopupOverlay(event)">
   <div class="popup-sheet" id="popup-sheet">
     <div class="popup-handle"></div>
-    <div class="popup-title" id="popup-title">✓ <span id="popup-title-text">転換点に投票しました</span></div>
+    <div class="popup-title" id="popup-title">✓ <span id="popup-title-text">分岐点に投票しました</span></div>
     <div class="popup-sub" id="popup-sub">一言コメントや選手評価を追加しますか？</div>
     <div class="popup-tabs">
       <button class="ptab active" id="ptab-cmt" onclick="switchPopupTab('cmt')">💬 コメント</button>
@@ -426,6 +455,36 @@ function renderMain(g){
     innHtml+pitHtml+
     '</div>'+
 
+    // この試合の評価バー（3ステップ）
+    '<div class="eval-bar fi" id="eval-bar">'+
+    '<div class="eb-header">'+
+    '<span class="eb-title">この試合の評価</span>'+
+    '<div class="eb-progress"><div class="ep-dot active" id="ep1"></div><div class="ep-dot" id="ep2"></div><div class="ep-dot" id="ep3"></div></div>'+
+    '</div>'+
+    '<div class="step-panel active" id="ep-p1">'+
+    '<div class="sp-label"><span class="sp-num">1</span>この試合を一言で言うと？</div>'+
+    '<div class="sp-opts" id="ep-opts1"></div>'+
+    '</div>'+
+    '<div class="step-panel" id="ep-p2">'+
+    '<div class="sp-label"><span class="sp-num">2</span>分岐点はどこ？</div>'+
+    '<div class="sp-opts" id="ep-opts2"></div>'+
+    '</div>'+
+    '<div class="step-panel" id="ep-p3">'+
+    '<div class="sp-label"><span class="sp-num">3</span>この場面ならどうする？</div>'+
+    '<div class="sp-opts" id="ep-opts3"></div>'+
+    '<input class="sp-inp" id="ep-free" placeholder="または自分の言葉で入力...">'+
+    '</div>'+
+    '<div class="ep-summary" id="ep-summary" style="display:none">'+
+    '<div class="ep-sum-row"><span class="ep-sum-lbl">一言：</span><span class="ep-sum-val" id="ep-sv1"></span></div>'+
+    '<div class="ep-sum-row"><span class="ep-sum-lbl">分岐点：</span><span class="ep-sum-val" id="ep-sv2"></span></div>'+
+    '<div class="ep-sum-row"><span class="ep-sum-lbl">自分なら：</span><span class="ep-sum-val" id="ep-sv3"></span></div>'+
+    '</div>'+
+    '<div class="ep-nav" id="ep-nav">'+
+    '<button class="ep-back" id="ep-btn-back" style="display:none" onclick="epBack()">← 戻る</button>'+
+    '<button class="ep-next" id="ep-btn-next" onclick="epNext()">次へ →</button>'+
+    '</div>'+
+    '</div>'+
+
     // タイトル投票
     '<div class="section fi" id="title-section">'+
     '<div class="slabel">この試合、一言で言うなら？</div>'+
@@ -436,7 +495,7 @@ function renderMain(g){
     '<button class="add-btn" onclick="addTitle()">提案</button>'+
     '</div></div>'+
 
-    // 波形グラフ + 転換点横スクロール
+    // 波形グラフ + 分岐点横スクロール
     '<div class="wave-box fi">'+
     '<div class="slabel">試合の流れ</div>'+
     '<svg class="wave-svg" id="wave-svg" viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:90px">'+
@@ -451,9 +510,9 @@ function renderMain(g){
     '<div class="tp-scroll-section fi">'+
     '<div id="tp-sel-label" class="tp-sel-inn" style="display:none"></div>'+
     '<div class="tp-track-wrap"><div class="tp-track" id="tp-track"></div></div>'+
-    '<div id="tp-hint" class="tp-hint">転換点のあるイニング（赤いドット）をタップ</div>'+
+    '<div id="tp-hint" class="tp-hint">分岐点のあるイニング（赤いドット）をタップ</div>'+
     '<div class="tp-add-wrap">'+
-    '<button class="tp-add-toggle" id="tp-add-toggle" onclick="togglePostForm()">＋ 自分の転換点を追加する</button>'+
+    '<button class="tp-add-toggle" id="tp-add-toggle" onclick="togglePostForm()">＋ 自分の分岐点を追加する</button>'+
     '<div class="tp-post-form" id="tp-post-form" style="display:none">'+
     '<div class="form-row"><label class="form-label">対象回</label>'+
     '<select class="form-select" id="pf-inn">'+
@@ -467,7 +526,7 @@ function renderMain(g){
     '<option value="8回表">8回表</option><option value="8回裏">8回裏</option>'+
     '<option value="9回表">9回表</option><option value="9回裏">9回裏</option>'+
     '</select></div>'+
-    '<div class="form-row"><label class="form-label">どこで流れが変わったと感じた？</label>'+
+    '<div class="form-row"><label class="form-label">どこが分岐点だと思った？</label>'+
     '<input class="form-input" id="pf-desc" placeholder="例：ここで完全に空気が変わった" maxlength="60"></div>'+
     '<div class="form-row"><label class="form-label">理由（任意）</label>'+
     '<textarea class="form-textarea" id="pf-reason" placeholder="点は入ってないけど…でもOK" rows="2"></textarea></div>'+
@@ -477,7 +536,7 @@ function renderMain(g){
     '<button class="int-btn" id="pf-int-m" onclick="setPfInt(this.dataset.v)" data-v="mid">🟡 流れが変わった</button>'+
     '<button class="int-btn" id="pf-int-w" onclick="setPfInt(this.dataset.v)" data-v="weak">🔵 ヒヤッとした</button>'+
     '</div></div>'+
-    '<button class="form-submit" onclick="postTurning()">この転換点を投稿する</button>'+
+    '<button class="form-submit" onclick="postTurning()">この分岐点を投稿する</button>'+
     '</div>'+
     '</div>'+
     '</div>'+
@@ -515,7 +574,7 @@ function renderMain(g){
   renderStory();
 }
 
-// ===== 波形 + 転換点横スクロール =====
+// ===== 波形 + 分岐点横スクロール =====
 var SEL_INN=null;
 function ptX(i){return (i/8)*540+10;}
 
@@ -621,17 +680,17 @@ function renderTpCards(){
     html+='<p class="tp-desc">'+esc(t.description)+'</p>';
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
-    html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(this.dataset.tid)" data-tid="'+t.id+'">'+(voted?'✓ 投票済み':'ここが転換点')+'</button>';
+    html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(this.dataset.tid)" data-tid="'+t.id+'">'+(voted?'✓ 投票済み':'ここが分岐点')+'</button>';
     html+='<div class="x-share-wrap" style="margin-top:6px"><button class="x-share-btn" onclick="event.stopPropagation();shareToX(getTurningShareText(this.dataset.tid))" data-tid="'+t.id+'">'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>シェア</button></div>';
     html+='</div>';
   });
-  if(!html)html='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">転換点を読み込み中...</div>';
+  if(!html)html='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">分岐点を読み込み中...</div>';
   track.innerHTML=html;
   if(SEL_INN!==null){
     var idx=turnings.findIndex(function(t){return parseInt(t.inning)===SEL_INN;});
     if(idx>=0){var el=document.getElementById('tpc-'+idx);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},50);}
     if(hint)hint.style.display='none';
-    if(label){label.style.display='block';label.textContent=SEL_INN+'回の転換点';}
+    if(label){label.style.display='block';label.textContent=SEL_INN+'回の分岐点';}
   } else {
     if(hint)hint.style.display='block';
     if(label)label.style.display='none';
@@ -757,7 +816,7 @@ function togglePostForm(){
   var open=form.style.display==='none';
   form.style.display=open?'block':'none';
   btn.className='tp-add-toggle'+(open?' open':'');
-  btn.textContent=open?'✕ 閉じる':'＋ 自分の転換点を追加する';
+  btn.textContent=open?'✕ 閉じる':'＋ 自分の分岐点を追加する';
 }
 function setInt(inn,val){
   formIntensity[inn]=val;
@@ -790,7 +849,7 @@ async function postTurning(){
   setPfInt('strong');
   togglePostForm();
   drawWave();
-  setTimeout(function(){openPopup(t.id,'転換点を投稿しました');},300);
+  setTimeout(function(){openPopup(t.id,'分岐点を投稿しました');},300);
 }
 
 async function voteTurning(id){
@@ -811,7 +870,7 @@ async function voteTurning(id){
     t.vote_count=(t.vote_count||0)+1;myTurning=id;
     renderStory();drawWave();
     // 投票後にポップアップを表示
-    setTimeout(function(){openPopup(id,t.inning+'の転換点に投票しました');},300);
+    setTimeout(function(){openPopup(id,t.inning+'の分岐点に投票しました');},300);
   }
 }
 
@@ -883,7 +942,7 @@ async function loadTurnings(g){
       }
     }
   }
-  // ② DBから全転換点を取得
+  // ② DBから全分岐点を取得
   var r=await sb.from('turnings').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:true});
   turnings=r.data||[];
   // ③ 投票数を別クエリで取得（より確実）
@@ -891,6 +950,13 @@ async function loadTurnings(g){
   var counts={};
   if(rv.data)rv.data.forEach(function(v){counts[v.turning_id]=(counts[v.turning_id]||0)+1;});
   turnings.forEach(function(t){t.vote_count=counts[t.id]||0;});
+  // JSONのchoicesをDBのturningsにマージ
+  if(g&&g.turning_suggestions){
+    g.turning_suggestions.forEach(function(s){
+      var found=turnings.find(function(t){return t.description===s.description;});
+      if(found&&s.choices)found.choices=s.choices;
+    });
+  }
 }
 
 // ===== 初期化 =====
@@ -916,6 +982,9 @@ async function initApp(g){
   if(r2.data)myTurning=r2.data.turning_id;
 
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
+  initEvalBar(g);
+  // turnings読み込み後にSTEP2も更新
+  renderEpStep2();
 
   // リアルタイム購読
   subscribeRealtime();
@@ -942,7 +1011,7 @@ var popupTurningId=null,popupTab='cmt';
 function openPopup(turningId,titleText){
   popupTurningId=turningId;
   popupTab='cmt';
-  document.getElementById('popup-title-text').textContent=titleText||'転換点に関連付けて投稿';
+  document.getElementById('popup-title-text').textContent=titleText||'分岐点に関連付けて投稿';
   document.getElementById('popup-overlay').style.display='flex';
   // Xシェアボタン表示
   var xBtn=document.getElementById('popup-x-share');
@@ -976,7 +1045,7 @@ function switchPopupTab(tab){
       '<button id="pct-f" class="ctype-btn" onclick="setPopupCType(this.dataset.t)" data-t="f">💬 感情</button>'+
       '<button id="pct-n" class="ctype-btn" onclick="setPopupCType(this.dataset.t)" data-t="n">😂 ネタ</button>'+
       '</div>'+
-      '<textarea class="form-textarea" id="popup-cmt-inp" placeholder="この転換点について一言..." rows="3" style="width:100%"></textarea>';
+      '<textarea class="form-textarea" id="popup-cmt-inp" placeholder="この分岐点について一言..." rows="3" style="width:100%"></textarea>';
     submitBtn.textContent='コメントして閉じる';
     submitBtn.style.display='block';
   } else if(tab==='rate'){
@@ -1123,6 +1192,164 @@ async function loadPlayerRatings(){
   renderPlayerGrid();
 }
 
+// ===== この試合の評価バー =====
+var EP={step:1, v1:'', v2:'', v3:'', bunki:null};
+
+function initEvalBar(g){
+  EP={step:1,v1:'',v2:'',v3:'',bunki:null};
+  // STEP1: タイトル候補
+  var opts1=document.getElementById('ep-opts1');
+  if(!opts1)return;
+  opts1.innerHTML=(g.title_candidates||[]).map(function(t){
+    return '<button class="sp-opt" onclick="epPick1(this)" data-v="'+esc(t)+'">'+esc(t)+'</button>';
+  }).join('');
+  // STEP2: 分岐点候補（turningsから生成、後でrenderTpCards後に更新）
+  renderEpStep(1);
+}
+
+function renderEpStep2(){
+  var opts2=document.getElementById('ep-opts2');
+  if(!opts2)return;
+  var shown={};
+  opts2.innerHTML=turnings.slice(0,6).map(function(t){
+    if(shown[t.description])return '';
+    shown[t.description]=true;
+    return '<button class="sp-opt" onclick="epPick2(this)" data-id="'+t.id+'" data-v="'+esc(t.inning+'「'+t.description.slice(0,18)+'」')+'">'+esc(t.inning)+' '+esc(t.description.slice(0,16))+'...</button>';
+  }).join('');
+}
+
+function epPick1(btn){
+  document.querySelectorAll('#ep-opts1 .sp-opt').forEach(function(b){b.classList.remove('s1');});
+  btn.classList.add('s1'); EP.v1=btn.dataset.v;
+  document.getElementById('ep-sv1').textContent=EP.v1;
+  document.getElementById('ep-btn-next').classList.add('on');
+}
+function epPick2(btn){
+  document.querySelectorAll('#ep-opts2 .sp-opt').forEach(function(b){b.classList.remove('s2');});
+  btn.classList.add('s2'); EP.v2=btn.dataset.v; EP.bunki=btn.dataset.id;
+  document.getElementById('ep-sv2').textContent=EP.v2;
+  document.getElementById('ep-btn-next').classList.add('on');
+  // STEP3の選択肢を分岐点に応じて更新
+  var t=turnings.find(function(x){return x.id===EP.bunki;});
+  renderEpStep3Choices(t);
+}
+function renderEpStep3Choices(t){
+  var opts3=document.getElementById('ep-opts3');
+  if(!opts3)return;
+  // JSONのchoicesがあればそれを使う、なければデフォルト
+  var choices=(t&&t.choices)||['続投させる','早めに交代','別の選択をする','仕方なかった'];
+  opts3.innerHTML=choices.map(function(c){
+    return '<button class="sp-opt" onclick="epPick3(this)" data-v="'+esc(c)+'">'+esc(c)+'</button>';
+  }).join('');
+}
+function epPick3(btn){
+  document.querySelectorAll('#ep-opts3 .sp-opt').forEach(function(b){b.classList.remove('s3');});
+  btn.classList.add('s3'); EP.v3=btn.dataset.v;
+  document.getElementById('ep-free').value='';
+  document.getElementById('ep-free').classList.remove('used');
+  document.getElementById('ep-sv3').textContent=EP.v3;
+  document.getElementById('ep-btn-next').classList.add('on');
+}
+
+// free input
+document.addEventListener('input', function(e){
+  if(e.target.id!=='ep-free')return;
+  var val=e.target.value.trim();
+  if(val){
+    document.querySelectorAll('#ep-opts3 .sp-opt').forEach(function(b){b.classList.remove('s3');});
+    e.target.classList.add('used'); EP.v3=val;
+    document.getElementById('ep-sv3').textContent=val;
+    document.getElementById('ep-btn-next').classList.add('on');
+  } else {
+    e.target.classList.remove('used');
+    if(!document.querySelector('#ep-opts3 .sp-opt.s3')){
+      EP.v3=''; document.getElementById('ep-btn-next').classList.remove('on');
+    }
+  }
+});
+
+function renderEpStep(n){
+  EP.step=n;
+  [1,2,3].forEach(function(i){
+    var p=document.getElementById('ep-p'+i);
+    if(p)p.classList.toggle('active',i===n);
+    var d=document.getElementById('ep'+i);
+    if(d){d.classList.toggle('done',i<n);d.classList.toggle('active',i===n);}
+  });
+  var back=document.getElementById('ep-btn-back');
+  var next=document.getElementById('ep-btn-next');
+  if(back)back.style.display=n>1?'':'none';
+  if(next){
+    next.textContent=n===3?'Xでシェアする →':'次へ →';
+    var hasVal=(n===1&&EP.v1)||(n===2&&EP.v2)||(n===3&&EP.v3);
+    next.classList.toggle('on',!!hasVal);
+  }
+  var sum=document.getElementById('ep-summary');
+  if(sum)sum.style.display='none';
+}
+
+function epNext(){
+  if(EP.step===1&&!EP.v1)return;
+  if(EP.step===2&&!EP.v2)return;
+  if(EP.step===3){
+    if(!EP.v3)return;
+    epShowShare();
+    return;
+  }
+  if(EP.step===2)renderEpStep3Choices(turnings.find(function(t){return t.id===EP.bunki;}));
+  EP.step++;
+  renderEpStep(EP.step);
+  if(EP.step===2)renderEpStep2();
+}
+
+function epBack(){
+  if(EP.step>1){EP.step--;renderEpStep(EP.step);}
+}
+
+function epShowShare(){
+  [1,2,3].forEach(function(i){
+    var p=document.getElementById('ep-p'+i);if(p)p.classList.remove('active');
+    var d=document.getElementById('ep'+i);if(d){d.classList.add('done');d.classList.remove('active');}
+  });
+  var sum=document.getElementById('ep-summary');
+  if(sum)sum.style.display='flex';
+  var nav=document.getElementById('ep-nav');
+  if(nav){
+    nav.innerHTML='<button class="ep-back" onclick="epReset()">やり直す</button>'+
+      '<button class="ep-share" onclick="epShare()">'+
+      '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'+
+      'Xでシェアする</button>';
+  }
+}
+
+function epShare(){
+  var score=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away;
+  var text='【カープトーク】'+GAME.date+' '+score+'\n'+
+    '一言：「'+EP.v1+'」\n'+
+    '分岐点：'+EP.v2+'\n'+
+    '自分なら：'+EP.v3+'\n'+
+    '#広島カープ #カープトーク';
+  var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+
+    '&url='+encodeURIComponent('https://carp-talk.vercel.app/?date='+currentDate);
+  window.open(url,'_blank','noopener,noreferrer');
+}
+
+function epReset(){
+  EP={step:1,v1:'',v2:'',v3:'',bunki:null};
+  document.querySelectorAll('.sp-opt').forEach(function(b){b.classList.remove('s1','s2','s3');});
+  var fi=document.getElementById('ep-free');
+  if(fi){fi.value='';fi.classList.remove('used');}
+  ['ep-sv1','ep-sv2','ep-sv3'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.textContent='';
+  });
+  var nav=document.getElementById('ep-nav');
+  if(nav){
+    nav.innerHTML='<button class="ep-back" id="ep-btn-back" style="display:none" onclick="epBack()">← 戻る</button>'+
+      '<button class="ep-next" id="ep-btn-next" onclick="epNext()">次へ →</button>';
+  }
+  renderEpStep(1);
+}
+
 // ===== Xシェア =====
 function shareToX(text){
   var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent('https://carp-talk.vercel.app/?date='+currentDate);
@@ -1134,7 +1361,7 @@ function getTurningShareText(turningId){
   if(!t)return '';
   var score=GAME.home+''+GAME.homeScore+'-'+GAME.awayScore+GAME.away;
   return '【カープトーク】'+GAME.date+' '+score+'\n'+
-    t.inning+'「'+t.description+'」が転換点だと思う。\nあなたはどこが転換点でしたか？\n#広島カープ #カープトーク';
+    t.inning+'「'+t.description+'」が分岐点だと思う。\nあなたはどこが分岐点でしたか？\n#広島カープ #カープトーク';
 }
 
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
