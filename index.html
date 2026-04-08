@@ -514,7 +514,7 @@ function renderTpCards(){
     html+='<p class="tp-desc">'+esc(t.description)+'</p>';
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
-    html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(''+t.id+'')">'+(voted?'✓ 投票済み':'ここが転換点')+'</button>';
+    html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(this.dataset.tid)" data-tid="'+t.id+'">'+(voted?'✓ 投票済み':'ここが転換点')+'</button>';
     html+='</div>';
   });
   if(!html)html='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">転換点を読み込み中...</div>';
