@@ -1603,13 +1603,14 @@ async function renderTpChoiceBody(turningId, body){
     body.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:6px">この場面ならどうした？</div>'+
       '<div style="display:flex;flex-direction:column;gap:5px">'+
       choices.map(function(c){
-        return '<button class="tp-choice-opt" onclick="voteTpChoice(this,''+turningId+'',''+c.replace(/'/g,'\'')+'')" data-v="'+esc(c)+'" data-tid="'+turningId+'">'+esc(c)+'</button>';
+        return '<button class="tp-choice-opt" onclick="voteTpChoice(this)" data-v="'+esc(c)+'" data-tid="'+turningId+'">'+esc(c)+'</button>';
       }).join('')+
       '</div>';
   }
 }
 
-async function voteTpChoice(btn, turningId, choice){
+async function voteTpChoice(btn){
+  var turningId=btn.dataset.tid, choice=btn.dataset.v;
   // optimistic UI: 即座にバー表示
   var body=document.getElementById('tpcb-'+turningId);
   if(body){body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.4rem 0">保存中...</div>';}
