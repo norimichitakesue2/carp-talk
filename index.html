@@ -707,7 +707,14 @@ function renderTpCards(){
   if(!track)return;
   var total=turnings.reduce(function(s,t){return s+(t.vote_count||0);},0);
   var html='';
-  turnings.forEach(function(t,i){
+  // イニングでソート（表→裏の順）
+  var sorted=turnings.slice().sort(function(a,b){
+    var pa=parseInt(a.inning)||0, pb=parseInt(b.inning)||0;
+    if(pa!==pb)return pa-pb;
+    var ua=a.inning.includes('表')?0:1, ub=b.inning.includes('表')?0:1;
+    return ua-ub;
+  });
+  sorted.forEach(function(t,i){
     var inn=parseInt(t.inning);
     var isFocus=(SEL_INN!==null&&SEL_INN===inn);
     var isDimmed=(SEL_INN!==null&&!isFocus);
@@ -1684,12 +1691,13 @@ async function loadAllTpChoices(){
     var myAnswer=myAnswers[t.id]||null;
 
     if(!myAnswer){
-      // 未回答：選択肢ボタンを表示
+      // 未回答：選択肢ボタンを表示（他の人が回答していても関係なし）
       if(choices.length===0){
         body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.25rem 0">選択肢なし</div>';
         return;
       }
-      body.innerHTML='<div style="display:flex;flex-direction:column;gap:5px;padding-bottom:4px">'+
+      body.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:6px">この場面ならどうした？</div>'+
+        '<div style="display:flex;flex-direction:column;gap:5px">'+
         choices.map(function(c){
           return '<button class="tp-choice-opt" onclick="voteTpChoice(this)" data-v="'+esc(c)+'" data-tid="'+t.id+'">'+esc(c)+'</button>';
         }).join('')+
@@ -1697,17 +1705,19 @@ async function loadAllTpChoices(){
     } else {
       // 回答済み：投票率バーを表示（自分の選択をハイライト）
       var allChoices=choices.length>0?choices:Object.keys(counts);
-      body.innerHTML=allChoices.map(function(c){
-        var cnt=counts[c]||0;
-        var pct=total>0?Math.round(cnt/total*100):0;
-        var isMe=c===myAnswer;
-        return '<div class="choice-bar-row" style="'+(isMe?'opacity:1':'opacity:.7')+'">'+
-          '<span class="choice-lbl" style="'+(isMe?'font-weight:700;color:var(--text)':'')+'">'+
-          (isMe?'✓ ':'')+esc(c)+'</span>'+
-          '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%;background:'+(isMe?'var(--carp)':'var(--blue)')+'"></div></div>'+
-          '<span class="choice-pct">'+pct+'%</span>'+
-          '</div>';
-      }).join('');
+      var totForBar=Object.values(counts).reduce(function(s,v){return s+v;},0);
+      body.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:5px">'+totForBar+'人が回答</div>'+
+        allChoices.map(function(c){
+          var cnt=counts[c]||0;
+          var pct=totForBar>0?Math.round(cnt/totForBar*100):0;
+          var isMe=c===myAnswer;
+          return '<div class="choice-bar-row" style="'+(isMe?'opacity:1':'opacity:.7')+'">'+
+            '<span class="choice-lbl" style="'+(isMe?'font-weight:700;color:var(--text)':'')+'">'+
+            (isMe?'✓ ':'')+esc(c)+'</span>'+
+            '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%;background:'+(isMe?'var(--carp)':'var(--blue)')+'"></div></div>'+
+            '<span class="choice-pct">'+pct+'%</span>'+
+            '</div>';
+        }).join('');
     }
   });
 }
@@ -1742,7 +1752,7 @@ async function renderTpChoiceBody(turningId, body){
     return;
   }
   // 投票済み or 未投票で表示を切り替え（Xのアンケート方式）
-  if(myChoice||total>0){
+  if(myChoice){
     // 投票率バー表示
     body.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:5px">'+total+'人が回答</div>'+
       choices.map(function(c){
