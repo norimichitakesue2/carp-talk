@@ -275,8 +275,8 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .minna-time{font-size:10px;color:var(--faint)}
 .tp-choice-hdr{display:flex;align-items:center;justify-content:space-between;padding:.6rem .75rem 0}
 .tp-choice-lbl{font-size:11px;color:var(--muted)}
-.tp-choice-toggle{width:22px;height:22px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;line-height:1}
-.tp-choice-body{padding:0 .75rem .75rem;display:none}
+.tp-choice-toggle{display:none}
+.tp-choice-body{padding:0 .75rem .75rem;display:block}
 .tp-choice-body.open{display:block}
 .choice-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
 .choice-lbl{font-size:10px;color:var(--muted);width:90px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -722,12 +722,15 @@ function renderTpCards(){
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
     html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(this.dataset.tid)" data-tid="'+t.id+'">'+(voted?'✓ 投票済み':'ここが分岐点')+'</button>';
     html+='<div class="x-share-wrap" style="margin-top:6px"><button class="x-share-btn" onclick="event.stopPropagation();shareToX(getTurningShareText(this.dataset.tid))" data-tid="'+t.id+'">'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>シェア</button></div>';
-    html+='<div class="tp-choice-hdr"><span class="tp-choice-lbl">この場面、みんならどうした？</span><button class="tp-choice-toggle" onclick="event.stopPropagation();toggleTpChoice(this,\''+t.id+'\')">＋</button></div>';
-    html+='<div class="tp-choice-body" id="tpcb-'+t.id+'"></div>';
+    html+='<div class="tp-choice-hdr"><span class="tp-choice-lbl">この場面、みんならどうした？</span></div>';
+    html+='<div class="tp-choice-body open" id="tpcb-'+t.id+'"><div style="font-size:11px;color:var(--muted);padding:.25rem 0">読み込み中...</div></div>';
     html+='</div>';
   });
   if(!html)html='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">分岐点を読み込み中...</div>';
   track.innerHTML=html;
+  // 分岐点のchoice集計を表示
+  setTimeout(loadTpChoicesAll, 100);
+  setTimeout(loadAllTpChoices,100);
   if(SEL_INN!==null){
     var idx=turnings.findIndex(function(t){return parseInt(t.inning)===SEL_INN;});
     if(idx>=0){var el=document.getElementById('tpc-'+idx);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},50);}
@@ -1048,6 +1051,8 @@ async function initApp(g){
   // turnings読み込み後にSTEP2も更新
   renderEpStep2();
   loadMinnaEval();
+  // 投稿済みかチェック
+  checkEvalPostDone();
 
   // リアルタイム購読
   subscribeRealtime();
@@ -1268,7 +1273,7 @@ async function loadPlayerRatings(){
 // ===== この試合の評価バー =====
 var EP={step:1, v1:'', v2:'', v3:'', bunki:null};
 
-function initEvalBar(g){
+async function initEvalBar(g){
   EP={step:1,v1:'',v2:'',v3:'',bunki:null};
   // STEP1: タイトル候補
   var opts1=document.getElementById('ep-opts1');
@@ -1276,7 +1281,22 @@ function initEvalBar(g){
   opts1.innerHTML=(g.title_candidates||[]).map(function(t){
     return '<button class="sp-opt" onclick="epPick1(this)" data-v="'+esc(t)+'">'+esc(t)+'</button>';
   }).join('');
-  // STEP2: 分岐点候補（turningsから生成、後でrenderTpCards後に更新）
+  // 既存の投稿があれば復元して完了状態に
+  var existing=await sb.from('eval_posts').select('*').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+  if(existing.data){
+    var ep=existing.data;
+    EP.v1=ep.title||''; EP.v2=ep.bunki_text||''; EP.v3=ep.choice||''; EP.bunki=ep.bunki_id||null;
+    document.getElementById('ep-sv1').textContent=EP.v1;
+    document.getElementById('ep-sv2').textContent=EP.v2;
+    document.getElementById('ep-sv3').textContent=EP.v3;
+    evalPostDone=true;
+    updateEpSelBar();
+    epShowShare();
+    // 決定済みラベルを表示
+    var btn=document.querySelector('.ep-btn-post');
+    if(btn){btn.textContent='✓ 投稿済み';btn.style.color='var(--green)';btn.style.borderColor='var(--green)';}
+    return;
+  }
   renderEpStep(1);
 }
 
@@ -1513,6 +1533,39 @@ function epReset(){
 
 // ===== eval post =====
 var evalPostDone=false;
+
+async function checkEvalPostDone(){
+  var r=await sb.from('eval_posts').select('id,title,bunki_text,choice').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+  if(r.data){
+    evalPostDone=true;
+    EP.v1=r.data.title||'';EP.v2=r.data.bunki_text||'';EP.v3=r.data.choice||'';
+    // サマリー表示状態に復元
+    epShowShareSilent();
+  }
+}
+
+// 投稿済み状態を静かに表示（toastなし）
+function epShowShareSilent(){
+  [1,2,3].forEach(function(i){
+    var p=document.getElementById('ep-p'+i);if(p)p.classList.remove('active');
+    var d=document.getElementById('ep'+i);if(d){d.classList.add('done');d.classList.remove('active');}
+  });
+  var sv1=document.getElementById('ep-sv1');if(sv1)sv1.textContent=EP.v1;
+  var sv2=document.getElementById('ep-sv2');if(sv2)sv2.textContent=EP.v2;
+  var sv3=document.getElementById('ep-sv3');if(sv3)sv3.textContent=EP.v3;
+  updateEpSelBar();
+  var sum=document.getElementById('ep-summary');
+  if(sum)sum.style.display='flex';
+  var nav=document.getElementById('ep-nav');
+  if(nav){
+    nav.innerHTML='<button class="ep-back" onclick="epReset()" style="opacity:.5;font-size:11px">やり直す</button>'+
+      '<button class="ep-btn-post" style="color:var(--green);border-color:var(--green);cursor:default">✓ 投稿済み</button>'+
+      '<button class="ep-btn-share" onclick="epShare()">'+
+      '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'+
+      'シェア</button>';
+  }
+}
+
 async function epPost(){
   if(evalPostDone){showToast('投稿済みです');return;}
   if(!EP.v1||!EP.v2||!EP.v3){showToast('全ての項目を選択してください');return;}
@@ -1529,8 +1582,7 @@ async function epPost(){
   if(r.error){showToast('投稿に失敗しました');return;}
   evalPostDone=true;
   showToast('評価を投稿しました！');
-  var btn=document.querySelector('.ep-btn-post');
-  if(btn){btn.textContent='✓ 投稿済み';btn.style.color='var(--green)';btn.style.borderColor='var(--green)';}
+  epShowShareSilent();
   await loadMinnaEval();
 }
 
@@ -1554,6 +1606,86 @@ async function loadMinnaEval(){
 }
 
 // ===== 分岐点choice表示 =====
+async function loadTpChoicesAll(){
+  if(!turnings||!turnings.length)return;
+  // 全分岐点のchoice集計を一括取得
+  var r=await sb.from('turning_votes').select('turning_id,choice').eq('game_id',GAME_ID);
+  if(!r.data)return;
+  // turning_idごとに集計
+  var map={};
+  r.data.forEach(function(v){
+    if(!v.choice)return;
+    if(!map[v.turning_id])map[v.turning_id]={};
+    map[v.turning_id][v.choice]=(map[v.turning_id][v.choice]||0)+1;
+  });
+  // 各分岐点のbodyに表示
+  turnings.forEach(function(t){
+    var body=document.getElementById('tpcb-'+t.id);
+    if(!body)return;
+    var counts=map[t.id]||{};
+    var total=Object.values(counts).reduce(function(s,v){return s+v;},0);
+    var choices=(t.choices)||[];
+    if(total===0){
+      if(choices.length){
+        body.innerHTML=choices.map(function(c){
+          return '<div class="choice-bar-row">'+
+            '<span class="choice-lbl">'+esc(c)+'</span>'+
+            '<div class="choice-bar"><div class="choice-bar-fill" style="width:0%"></div></div>'+
+            '<span class="choice-pct">0%</span></div>';
+        }).join('');
+      } else {
+        body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.25rem 0">まだ回答がありません</div>';
+      }
+      return;
+    }
+    // 得票順にソート
+    var allChoices=choices.length?choices:Object.keys(counts);
+    var sorted=allChoices.map(function(c){return{c:c,n:counts[c]||0};}).sort(function(a,b){return b.n-a.n;});
+    body.innerHTML=sorted.map(function(e){
+      var pct=Math.round(e.n/total*100);
+      return '<div class="choice-bar-row">'+
+        '<span class="choice-lbl">'+esc(e.c)+'</span>'+
+        '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%"></div></div>'+
+        '<span class="choice-pct">'+pct+'%</span></div>';
+    }).join('');
+  });
+}
+async function loadAllTpChoices(){
+  // 全分岐点のvoteを一括取得
+  var r=await sb.from('turning_votes').select('turning_id,choice').eq('game_id',GAME_ID);
+  if(!r.data)return;
+  // turning_idごとに集計
+  var map={};
+  r.data.forEach(function(v){
+    if(!v.choice)return;
+    if(!map[v.turning_id])map[v.turning_id]={};
+    map[v.turning_id][v.choice]=(map[v.turning_id][v.choice]||0)+1;
+  });
+  // 各bodyに描画
+  turnings.forEach(function(t){
+    var body=document.getElementById('tpcb-'+t.id);
+    if(!body)return;
+    var counts=map[t.id]||{};
+    var total=Object.values(counts).reduce(function(s,v){return s+v;},0);
+    var choices=(t.choices)||[];
+    if(total===0&&choices.length===0){
+      body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.25rem 0">まだ回答なし</div>';
+      return;
+    }
+    // choicesがある場合は全選択肢を表示（0%も含む）
+    var allChoices=choices.length>0?choices:Object.keys(counts);
+    var html=allChoices.map(function(c){
+      var cnt=counts[c]||0;
+      var pct=total>0?Math.round(cnt/total*100):0;
+      return '<div class="choice-bar-row">'+
+        '<span class="choice-lbl">'+esc(c)+'</span>'+
+        '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%"></div></div>'+
+        '<span class="choice-pct">'+pct+'%</span>'+
+        '</div>';
+    }).join('');
+    body.innerHTML=html;
+  });
+}
 async function toggleTpChoice(btn, turningId){
   var body=document.getElementById('tpcb-'+turningId);
   if(!body)return;
