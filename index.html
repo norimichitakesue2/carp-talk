@@ -1069,12 +1069,10 @@ function getTurningShareText(turningId){
   var t=turnings.find(function(x){return x.id===turningId;});
   if(!t)return '';
   var score=GAME.home+''+GAME.homeScore+'-'+GAME.awayScore+GAME.away;
-  return '【カープトーク】'+GAME.date+' '+score+'
-'+
-    t.inning+'「'+t.description+'」が転換点だと思う。
-あなたはどこが転換点でしたか？
-#広島カープ #カープトーク';
+  return '【カープトーク】'+GAME.date+' '+score+'\n'+
+    t.inning+'「'+t.description+'」が転換点だと思う。\nあなたはどこが転換点でしたか？\n#広島カープ #カープトーク';
 }
+#広島カープ #カープトーク';
 
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
 
