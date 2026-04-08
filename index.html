@@ -67,10 +67,42 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .add-inp:focus{outline:none;border-color:var(--accent)}
 .add-btn{padding:.5rem 1rem;background:var(--accent);color:#000;border:none;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
 /* 波形グラフ */
-.wave-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem}
-.wave-svg{width:100%;display:block}
-.wave-inn-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px;padding:0 4px}
-.wave-legend{display:flex;gap:12px;margin-top:8px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+.wave-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.25rem 0;margin-bottom:0;border-bottom:none;border-radius:var(--r) var(--r) 0 0}
+.wave-svg{width:100%;display:block;overflow:visible}
+.wave-inn-labels{display:flex;padding:0 4px 12px;margin-top:2px}
+.wave-inn-btn{flex:1;font-size:11px;color:var(--muted);text-align:center;cursor:pointer;padding:4px 2px;border-radius:4px;border:none;background:transparent;font-family:'Noto Sans JP',sans-serif;position:relative;transition:color .15s}
+.wave-inn-btn.has-tp{color:var(--text)}
+.wave-inn-btn.sel{color:var(--carp);font-weight:500}
+.wave-inn-dot{position:absolute;top:2px;right:3px;width:4px;height:4px;border-radius:50%;background:var(--carp)}
+.wave-legend{display:flex;gap:12px;margin-top:6px;font-size:11px;color:var(--muted);flex-wrap:wrap;padding-bottom:2px}
+.conn-area{background:var(--surface);border-left:1px solid var(--border);border-right:1px solid var(--border);padding:0 1.25rem;height:24px;position:relative}
+.conn-svg{width:100%;height:24px;display:block;overflow:visible}
+.tp-scroll-section{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);padding:0 1.25rem 1rem;margin-bottom:1rem}
+.tp-track-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tp-track-wrap::-webkit-scrollbar{display:none}
+.tp-track{display:flex;gap:10px;padding:4px 2px 2px;transition:none}
+.tp-card{flex-shrink:0;width:240px;background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--rs);padding:12px;transition:opacity .3s,transform .3s;cursor:pointer}
+.tp-card.focused{border-color:var(--carp);border-width:1.5px;background:rgba(200,16,46,.04)}
+.tp-card.focused.mid{border-color:var(--orange);background:rgba(240,120,64,.04)}
+.tp-card.dimmed{opacity:.35;transform:scale(.95)}
+.tp-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.tp-badge-s{font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(200,16,46,.15);color:#ff7090;font-weight:500}
+.tp-badge-m{font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(240,120,64,.15);color:var(--orange);font-weight:500}
+.tp-inn-lbl{font-size:11px;color:var(--muted)}
+.tp-desc{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;line-height:1.4}
+.tp-reason{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.45;font-style:italic}
+.tp-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.tp-bar-bg{flex:1;height:4px;background:var(--faint);border-radius:2px;overflow:hidden}
+.tp-bar-fill{height:4px;border-radius:2px;transition:width .5s ease}
+.tp-stat{font-size:11px;color:var(--muted);white-space:nowrap}
+.tp-vote-btn{width:100%;padding:6px;border-radius:var(--rs);border:1px solid var(--carp);background:transparent;color:var(--carp);font-size:12px;font-weight:500;cursor:pointer;transition:background .15s;font-family:'Noto Sans JP',sans-serif}
+.tp-vote-btn:hover{background:rgba(200,16,46,.1)}
+.tp-vote-btn.voted{background:var(--carp);color:#fff}
+.tp-vote-btn.mid-btn{border-color:var(--orange);color:var(--orange)}
+.tp-vote-btn.mid-btn:hover{background:rgba(240,120,64,.1)}
+.tp-vote-btn.mid-btn.voted{background:var(--orange);color:#fff}
+.tp-hint{font-size:11px;color:var(--muted);text-align:center;padding:12px 0 4px}
+.tp-sel-inn{font-size:13px;color:var(--muted);padding:10px 0 6px;font-weight:500}
 /* ストーリー */
 .story{margin-bottom:1rem}
 .inning-head{display:flex;align-items:center;gap:8px;padding:1.25rem 0 .4rem}
@@ -343,17 +375,22 @@ function renderMain(g){
     '<button class="add-btn" onclick="addTitle()">提案</button>'+
     '</div></div>'+
 
-    // 波形グラフ
+    // 波形グラフ + 転換点横スクロール
     '<div class="wave-box fi">'+
-    '<div class="slabel">試合の流れ（みんなの解釈）</div>'+
-    '<svg class="wave-svg" id="wave-svg" viewBox="0 0 660 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:90px">'+
-    '<defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8102e" stop-opacity=".4"/><stop offset="100%" stop-color="#c8102e" stop-opacity="0"/></linearGradient></defs>'+
-    '<line x1="0" y1="45" x2="660" y2="45" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>'+
+    '<div class="slabel">試合の流れ</div>'+
+    '<svg class="wave-svg" id="wave-svg" viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:90px">'+
+    '<defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8102e" stop-opacity=".3"/><stop offset="100%" stop-color="#c8102e" stop-opacity="0"/></linearGradient></defs>'+
+    '<line x1="0" y1="45" x2="560" y2="45" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>'+
     '<path id="wave-fill" fill="url(#wg)"/><path id="wave-line" fill="none" stroke="#c8102e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
     '<g id="wave-markers"></g>'+
     '</svg>'+
-    '<div class="wave-inn-labels"><span>1回</span><span>2回</span><span>3回</span><span>4回</span><span>5回</span><span>6回</span><span>7回</span><span>8回</span><span>9回</span></div>'+
-    '<div class="wave-legend"><span>🔴 転換点（多数決）</span><span style="color:rgba(200,16,46,.6)">■ 広島優勢</span><span style="color:rgba(74,158,255,.5)">■ 拮抗</span></div>'+
+    '<div class="wave-inn-labels" id="wave-inn-labels"></div>'+
+    '</div>'+
+    '<div class="conn-area"><svg class="conn-svg" id="conn-svg" viewBox="0 0 560 24" preserveAspectRatio="none"><g id="conn-lines"></g></svg></div>'+
+    '<div class="tp-scroll-section fi">'+
+    '<div id="tp-sel-label" class="tp-sel-inn" style="display:none"></div>'+
+    '<div class="tp-track-wrap"><div class="tp-track" id="tp-track"></div></div>'+
+    '<div id="tp-hint" class="tp-hint">転換点のあるイニング（赤いドット）をタップ</div>'+
     '</div>'+
 
     // ストーリー
@@ -383,50 +420,114 @@ function renderMain(g){
   renderStory();
 }
 
-// ===== 波形 =====
-function getFlowVal(inn,turning_data){
-  // ターニングポイントの投票数からフロー値を計算
-  var strong=turning_data.filter(function(t){return t.inning.startsWith(String(inn))&&t.intensity==='strong';});
-  var mid=turning_data.filter(function(t){return t.inning.startsWith(String(inn))&&t.intensity==='mid';});
-  var weak=turning_data.filter(function(t){return t.inning.startsWith(String(inn))&&t.intensity==='weak';});
-  // モーメントのタイプから基本フロー
-  var evt=MOMENTS.find(function(m){return m.inning&&m.inning.startsWith(String(inn)+'回');});
-  var base=45;
-  if(evt){if(evt.type==='hr'||evt.type==='score')base=20;else if(evt.type==='crisis')base=35;}
-  return base;
-}
+// ===== 波形 + 転換点横スクロール =====
+var SEL_INN=null;
+function ptX(i){return (i/8)*540+10;}
 
 function drawWave(){
   var el=document.getElementById('wave-svg');if(!el)return;
-  // ターニングポイントの投票から各イニングのフロー値を推定
   var flows=[];
   for(var i=1;i<=9;i++){
-    var myT=turnings.filter(function(t){return parseInt(t.inning)===i;});
-    var strongV=myT.filter(function(t){return t.intensity==='strong';}).reduce(function(s,t){return s+(t.vote_count||0);},0);
-    var evt=MOMENTS.find(function(m){return m.inning&&m.inning.startsWith(String(i)+'回');});
+    var evt=MOMENTS.find(function(m){return m.inning&&parseInt(m.inning)===i;});
     var base=45;
     if(evt){if(evt.type==='hr')base=15;else if(evt.type==='score')base=20;else if(evt.type==='crisis')base=35;}
-    if(strongV>5)base=Math.max(base-10,10);
-    flows.push({x:(i-1)/8*640+10,y:base});
+    flows.push({x:ptX(i-1),y:base});
   }
   var d='M'+flows[0].x+','+flows[0].y;
   for(var i=1;i<flows.length;i++){
-    var p=flows[i-1],c=flows[i];
-    var cx=(p.x+c.x)/2;
+    var p=flows[i-1],c=flows[i],cx=(p.x+c.x)/2;
     d+=' C'+cx+','+p.y+' '+cx+','+c.y+' '+c.x+','+c.y;
   }
   document.getElementById('wave-line').setAttribute('d',d);
-  document.getElementById('wave-fill').setAttribute('d',d+' L'+flows[flows.length-1].x+',90 L10,90 Z');
-  // 転換点マーカー（strong優先）
+  document.getElementById('wave-fill').setAttribute('d',d+' L'+flows[8].x+',90 L10,90 Z');
+  var tpInns={};
+  turnings.forEach(function(t){var n=parseInt(t.inning);if(!isNaN(n)&&n>=1&&n<=9)tpInns[n]=true;});
   var markers='';
-  turnings.filter(function(t){return t.intensity==='strong'&&(t.vote_count||0)>0;}).forEach(function(t){
-    var n=parseInt(t.inning)-1;
-    if(isNaN(n)||n<0||n>8)return;
+  Object.keys(tpInns).forEach(function(inn){
+    var n=parseInt(inn)-1;
     var p=flows[n];
-    markers+='<circle cx="'+p.x+'" cy="'+p.y+'" r="5" fill="#ff2040" opacity=".9"/>';
-    markers+='<circle cx="'+p.x+'" cy="'+p.y+'" r="9" fill="none" stroke="#ff2040" stroke-width="1.5" opacity=".4"/>';
+    var isSel=(SEL_INN===parseInt(inn));
+    var r=isSel?9:6;
+    markers+='<circle cx="'+p.x+'" cy="'+p.y+'" r="'+r+'" fill="#c8102e" stroke="var(--surface)" stroke-width="2" style="cursor:pointer;transition:r .2s" onclick="tapInn('+inn+')"/>';
+    if(isSel)markers+='<circle cx="'+p.x+'" cy="'+p.y+'" r="14" fill="none" stroke="#c8102e" stroke-width="1.5" opacity=".3"/>';
   });
   document.getElementById('wave-markers').innerHTML=markers;
+  renderInnLabels(tpInns);
+  renderConnector(flows);
+  renderTpCards();
+}
+
+function renderInnLabels(tpInns){
+  var el=document.getElementById('wave-inn-labels');if(!el)return;
+  var html='';
+  for(var i=1;i<=9;i++){
+    var hasTp=!!tpInns[i];
+    var isSel=(SEL_INN===i);
+    html+='<button class="wave-inn-btn'+(hasTp?' has-tp':'')+(isSel?' sel':'')+'" onclick="tapInn('+i+')">';
+    html+=i+'回';
+    if(hasTp)html+='<span class="wave-inn-dot"></span>';
+    html+='</button>';
+  }
+  el.innerHTML=html;
+}
+
+function renderConnector(flows){
+  var g=document.getElementById('conn-lines');if(!g)return;
+  if(SEL_INN===null){g.innerHTML='';return;}
+  var x=ptX(SEL_INN-1);
+  var xpct=(x/560*100).toFixed(1)+'%';
+  g.innerHTML='<line x1="'+xpct+'" y1="0" x2="'+xpct+'" y2="18" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="3 2"/>'+
+    '<circle cx="'+xpct+'" cy="21" r="3" fill="#c8102e"/>';
+}
+
+function tapInn(inn){
+  var n=parseInt(inn);
+  var tpInns={};
+  turnings.forEach(function(t){var x=parseInt(t.inning);if(!isNaN(x))tpInns[x]=true;});
+  SEL_INN=(tpInns[n]&&SEL_INN!==n)?n:null;
+  drawWave();
+}
+
+function tapCard(inn){
+  SEL_INN=(SEL_INN===parseInt(inn))?null:parseInt(inn);
+  drawWave();
+}
+
+function renderTpCards(){
+  var track=document.getElementById('tp-track');
+  var hint=document.getElementById('tp-hint');
+  var label=document.getElementById('tp-sel-label');
+  if(!track)return;
+  var total=turnings.reduce(function(s,t){return s+(t.vote_count||0);},0);
+  var html='';
+  turnings.forEach(function(t,i){
+    var inn=parseInt(t.inning);
+    var isFocus=(SEL_INN!==null&&SEL_INN===inn);
+    var isDimmed=(SEL_INN!==null&&!isFocus);
+    var isS=t.intensity==='strong';
+    var col=isS?'#c8102e':'#f07840';
+    var cnt=t.vote_count||0;
+    var pct=total>0?Math.round(cnt/total*100):0;
+    var voted=(myTurning===t.id);
+    html+='<div class="tp-card'+(isFocus?' focused'+(isS?'':' mid'):'')+(isDimmed?' dimmed':'')+'" onclick="tapCard('+inn+')" id="tpc-'+i+'">';
+    html+='<div class="tp-card-head"><span class="tp-badge-'+(isS?'s':'m')+'">'+(isS?'流れを持ってきた':'流れが変わった')+'</span><span class="tp-inn-lbl">'+esc(t.inning)+'</span></div>';
+    html+='<p class="tp-desc">'+esc(t.description)+'</p>';
+    if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
+    html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
+    html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(''+t.id+'')">'+(voted?'✓ 投票済み':'ここが転換点')+'</button>';
+    html+='</div>';
+  });
+  if(!html)html='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">転換点を読み込み中...</div>';
+  track.innerHTML=html;
+  if(SEL_INN!==null){
+    var idx=turnings.findIndex(function(t){return parseInt(t.inning)===SEL_INN;});
+    if(idx>=0){var el=document.getElementById('tpc-'+idx);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},50);}
+    if(hint)hint.style.display='none';
+    if(label){label.style.display='block';label.textContent=SEL_INN+'回の転換点';}
+  } else {
+    if(hint)hint.style.display='block';
+    if(label)label.style.display='none';
+  }
 }
 
 // ===== タイトル投票 =====
@@ -527,72 +628,6 @@ function renderStory(){
         (e.sub?'<div class="evt-sub">'+esc(e.sub)+'</div>':'')+
         '</div>';
     });
-
-    // 転換点
-    if(myT.length){
-      html+='<div class="turning-section">'+
-        '<div class="turning-hd"><span style="font-size:18px">🔀</span>'+
-        '<div><div class="turning-hd-title">転換点の候補</div>'+
-        '<div class="turning-hd-sub">正解はない。あなたはどう感じた？</div></div></div>';
-
-      var totalTV=turnings.reduce(function(s,t){return s+(t.vote_count||0);},0);
-      var maxV=Math.max.apply(null,myT.map(function(t){return t.vote_count||0;}));
-
-      myT.forEach(function(t){
-        var cnt=t.vote_count||0;
-        var pct=totalTV>0?Math.round(cnt/totalTV*100):0;
-        var voted=myTurning===t.id;
-        var topV=(cnt===maxV&&cnt>0);
-        var intTag={strong:'🔴 流れを持ってきた',mid:'🟡 流れが変わった',weak:'🔵 ヒヤッとした'}[t.intensity]||'';
-        var intCls={strong:'tag-strong',mid:'tag-mid',weak:'tag-weak'}[t.intensity]||'tag-mid';
-        html+='<div class="tc'+(topV?' top-voted':'')+(t.source==='user'?' user-post':'')+'" id="tc-'+t.id+'">'+
-          '<div class="tc-head"><span class="tc-inn">'+esc(t.inning)+'</span>'+
-          '<div class="tc-body"><div class="tc-desc">'+esc(t.description)+'</div>'+
-          (t.reason?'<div class="tc-reason">「'+esc(t.reason)+'」</div>':'')+
-          '</div></div>'+
-          '<div class="tc-tags"><span class="tc-tag '+intCls+'">'+intTag+'</span>'+
-          '<span class="tc-tag '+(t.source==='user'?'tag-user':'tag-sys')+'">'+(t.source==='user'?'ユーザー投稿':'候補')+'</span></div>'+
-          '<div class="tc-foot">'+
-          '<div class="tc-vote-row"><div class="tc-bar-wrap"><div class="tc-bar" style="width:'+pct+'%"></div></div>'+
-          '<span class="tc-stat">'+cnt+'票 '+pct+'%</span></div>'+
-          '<button class="tc-vbtn'+(voted?' active':'')+'" onclick="voteTurning(\''+t.id+'\')">'+
-          (voted?'✓ 投票済':'ここが転換点')+'</button></div>';
-
-        // コメント表示
-        var tcComments=allComments.filter(function(c){return c.turning_id===t.id;});
-        if(tcComments.length){
-          html+='<div class="tc-comments-wrap">';
-          tcComments.slice(0,3).forEach(function(c){
-            html+='<div class="tc-cmt"><div class="tc-cmt-dot"></div><div>'+esc(c.body)+' <span style="font-size:10px;color:var(--faint)">— '+esc(c.display_name)+'</span></div></div>';
-          });
-          html+='</div>';
-        }
-        html+='</div>';
-      });
-
-      // 投稿フォーム
-      html+='<div class="post-form">'+
-        '<div class="post-form-title">➕ 別の転換点を追加する</div>'+
-        '<div class="form-row"><label class="form-label">対象回</label>'+
-        '<select class="form-select" id="pf-inn-'+inn+'">'+
-        '<option value="'+inn+'回表">'+inn+'回表</option>'+
-        '<option value="'+inn+'回裏">'+inn+'回裏</option>'+
-        '</select></div>'+
-        '<div class="form-row"><label class="form-label">どこで流れが変わったと感じたか</label>'+
-        '<input class="form-input" id="pf-desc-'+inn+'" placeholder="例：ここで完全に空気が変わった" maxlength="60"></div>'+
-        '<div class="form-row"><label class="form-label">理由（任意）</label>'+
-        '<textarea class="form-textarea" id="pf-reason-'+inn+'" placeholder="点は入ってないけど…でもOK" rows="2"></textarea></div>'+
-        '<div class="form-row"><label class="form-label">強度</label>'+
-        '<div class="intensity-row">'+
-        '<button class="int-btn sel-s" id="pf-int-'+inn+'-s" onclick="setInt('+inn+',\'strong\')">🔴 流れを持ってきた</button>'+
-        '<button class="int-btn" id="pf-int-'+inn+'-m" onclick="setInt('+inn+',\'mid\')">🟡 流れが変わった</button>'+
-        '<button class="int-btn" id="pf-int-'+inn+'-w" onclick="setInt('+inn+',\'weak\')">🔵 ヒヤッとした</button>'+
-        '</div></div>'+
-        '<button class="form-submit" onclick="postTurning('+inn+')">この転換点を投稿する</button>'+
-        '</div>';
-
-      html+='</div>';// turning-section
-    }
 
     html+='</div>';// fi
   }
