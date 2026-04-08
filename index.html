@@ -155,6 +155,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .tag-strong{background:rgba(200,16,46,.15);color:#ff7090}
 .tag-mid{background:rgba(240,192,64,.12);color:var(--accent)}
 .tag-weak{background:rgba(74,158,255,.12);color:var(--blue)}
+.tp-badge-w{font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(74,158,255,.12);color:var(--blue);font-weight:500}
 .tag-sys{background:var(--faint);color:var(--muted);border:1px solid var(--border2)}
 .tag-user{background:rgba(62,207,142,.12);color:var(--green)}
 .tc-foot{display:flex;align-items:center;gap:8px;margin-top:8px}
@@ -599,12 +600,13 @@ function renderTpCards(){
     var isFocus=(SEL_INN!==null&&SEL_INN===inn);
     var isDimmed=(SEL_INN!==null&&!isFocus);
     var isS=t.intensity==='strong';
-    var col=isS?'#c8102e':'#f07840';
+    var isW=t.intensity==='weak';
+    var col=isS?'#c8102e':isW?'#4a9eff':'#f07840';
     var cnt=t.vote_count||0;
     var pct=total>0?Math.round(cnt/total*100):0;
     var voted=(myTurning===t.id);
-    html+='<div class="tp-card'+(isFocus?' focused'+(isS?'':' mid'):'')+(isDimmed?' dimmed':'')+'" onclick="tapCard('+inn+')" id="tpc-'+i+'">';
-    html+='<div class="tp-card-head"><span class="tp-badge-'+(isS?'s':'m')+'">'+(isS?'流れを持ってきた':'流れが変わった')+'</span><span class="tp-inn-lbl">'+esc(t.inning)+'</span></div>';
+    html+='<div class="tp-card'+(isFocus?' focused'+(isS?'':isW?' weak':' mid'):'')+(isDimmed?' dimmed':'')+'" onclick="tapCard('+inn+')" id="tpc-'+i+'">';
+    html+='<div class="tp-card-head"><span class="tp-badge-'+(isS?'s':isW?'w':'m')+'">'+(isS?'流れを持ってきた':isW?'ヒヤッとした':'流れが変わった')+'</span><span class="tp-inn-lbl">'+esc(t.inning)+'</span></div>';
     html+='<p class="tp-desc">'+esc(t.description)+'</p>';
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
