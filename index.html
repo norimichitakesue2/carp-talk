@@ -223,6 +223,9 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .live-update{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;padding:.4rem 0}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
 .fi{opacity:1;transform:none}
+.x-share-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-decoration:none}
+.x-share-btn:hover{background:#000;color:#fff;border-color:#000}
+.x-share-wrap{display:flex;justify-content:flex-end;margin-top:8px}
 .popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding-bottom:0}
 .popup-sheet{background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:680px;padding:1.25rem 1.25rem 2rem;border-top:1px solid var(--border2)}
 .popup-handle{width:36px;height:4px;background:var(--faint);border-radius:2px;margin:0 auto 1.25rem}
@@ -287,6 +290,12 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
       <button class="ptab" id="ptab-skip" onclick="closePopup()">スキップ</button>
     </div>
     <div class="popup-tab-content" id="popup-tab-content"></div>
+    <div class="x-share-wrap" id="popup-x-share" style="display:none">
+      <button class="x-share-btn" onclick="shareToX(getTurningShareText(popupTurningId))">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Xでシェア
+      </button>
+    </div>
     <div class="popup-footer">
       <button class="popup-skip" onclick="closePopup()">スキップ</button>
       <button class="popup-submit" id="popup-submit-btn" onclick="submitPopup()">投稿して閉じる</button>
@@ -567,6 +576,7 @@ function renderTpCards(){
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
     html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(this.dataset.tid)" data-tid="'+t.id+'">'+(voted?'✓ 投票済み':'ここが転換点')+'</button>';
+    html+='<div class="x-share-wrap" style="margin-top:6px"><button class="x-share-btn" onclick="event.stopPropagation();shareToX(getTurningShareText(this.dataset.tid))" data-tid="'+t.id+'">'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>シェア</button></div>';
     html+='</div>';
   });
   if(!html)html='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">転換点を読み込み中...</div>';
@@ -868,9 +878,11 @@ var popupTurningId=null,popupTab='cmt';
 function openPopup(turningId,titleText){
   popupTurningId=turningId;
   popupTab='cmt';
-  var t=turnings.find(function(x){return x.id===turningId;});
   document.getElementById('popup-title-text').textContent=titleText||'転換点に関連付けて投稿';
   document.getElementById('popup-overlay').style.display='flex';
+  // Xシェアボタン表示
+  var xBtn=document.getElementById('popup-x-share');
+  if(xBtn)xBtn.style.display=turningId?'flex':'none';
   switchPopupTab('cmt');
 }
 
@@ -1045,6 +1057,23 @@ async function loadPlayerRatings(){
     });
   });
   renderPlayerGrid();
+}
+
+// ===== Xシェア =====
+function shareToX(text){
+  var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent('https://carp-talk.vercel.app/?date='+currentDate);
+  window.open(url,'_blank','noopener,noreferrer');
+}
+
+function getTurningShareText(turningId){
+  var t=turnings.find(function(x){return x.id===turningId;});
+  if(!t)return '';
+  var score=GAME.home+''+GAME.homeScore+'-'+GAME.awayScore+GAME.away;
+  return '【カープトーク】'+GAME.date+' '+score+'
+'+
+    t.inning+'「'+t.description+'」が転換点だと思う。
+あなたはどこが転換点でしたか？
+#広島カープ #カープトーク';
 }
 
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
