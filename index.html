@@ -255,6 +255,10 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .ep-back{flex:1;padding:7px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .ep-next{flex:2;padding:7px;border-radius:var(--rs);border:none;background:var(--carp);color:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;opacity:.5;transition:opacity .2s}
 .ep-next.on{opacity:1}
+.ep-sel-bar{padding:6px 1.25rem;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:3px}
+.ep-sel-item{display:flex;align-items:baseline;gap:4px}
+.ep-sel-lbl{font-size:10px;color:var(--muted);flex-shrink:0}
+.ep-sel-val{font-size:11px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px}
 .ep-share{flex:2;padding:7px;border-radius:var(--rs);border:none;background:#000;color:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px}
 .ep-action-row{display:flex;gap:6px;padding:10px 1.25rem;border-top:1px solid var(--border)}
 .ep-btn-post{flex:1;padding:7px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:700}
@@ -279,6 +283,8 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .choice-bar{flex:1;height:5px;background:var(--faint);border-radius:3px;overflow:hidden}
 .choice-bar-fill{height:5px;border-radius:3px;background:var(--blue)}
 .choice-pct{font-size:10px;color:var(--muted);width:28px;text-align:right}
+.tp-choice-opt{width:100%;padding:7px 10px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-align:left;transition:all .15s}
+.tp-choice-opt:hover{background:var(--surface2);border-color:var(--carp)}
 .tp-add-wrap{margin-top:.75rem;border-top:1px solid var(--border);padding-top:.75rem}
 .tp-add-toggle{width:100%;padding:.6rem;background:transparent;border:1px dashed var(--border2);border-radius:var(--rs);color:var(--muted);font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
 .tp-add-toggle:hover{border-color:var(--green);color:var(--green)}
@@ -343,7 +349,6 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
     <div class="popup-title" id="popup-title">✓ <span id="popup-title-text">分岐点に投票しました</span></div>
     <div class="popup-sub" id="popup-sub">一言コメントや選手評価を追加しますか？</div>
     <div class="popup-tabs">
-      <button class="ptab" id="ptab-choice" onclick="switchPopupTab('choice')">❓ どうした？</button>
       <button class="ptab active" id="ptab-cmt" onclick="switchPopupTab('cmt')">💬 コメント</button>
       <button class="ptab" id="ptab-rate" onclick="switchPopupTab('rate')">⭐ 選手評価</button>
       <button class="ptab" id="ptab-skip" onclick="closePopup()">スキップ</button>
@@ -484,6 +489,11 @@ function renderMain(g){
     '<div class="eb-header">'+
     '<span class="eb-title">この試合の評価</span>'+
     '<div class="eb-progress"><div class="ep-dot active" id="ep1"></div><div class="ep-dot" id="ep2"></div><div class="ep-dot" id="ep3"></div></div>'+
+    '</div>'+
+    '<div class="ep-sel-bar" id="ep-sel-bar" style="display:none">'+
+    '<div class="ep-sel-item" id="ep-sel1" style="display:none"><span class="ep-sel-lbl">一言：</span><span class="ep-sel-val" id="ep-sv1-bar"></span></div>'+
+    '<div class="ep-sel-item" id="ep-sel2" style="display:none"><span class="ep-sel-lbl">分岐点：</span><span class="ep-sel-val" id="ep-sv2-bar"></span></div>'+
+    '<div class="ep-sel-item" id="ep-sel3" style="display:none"><span class="ep-sel-lbl">自分なら：</span><span class="ep-sel-val" id="ep-sv3-bar"></span></div>'+
     '</div>'+
     '<div class="step-panel active" id="ep-p1">'+
     '<div class="sp-label"><span class="sp-num">1</span>この試合を一言で言うと？</div>'+
@@ -834,6 +844,26 @@ function renderStory(){
   initFI();
 }
 
+function updateEpSelBar(){
+  var bar=document.getElementById('ep-sel-bar');
+  if(!bar)return;
+  var hasAny=EP.v1||EP.v2||EP.v3;
+  bar.style.display=hasAny?'flex':'none';
+  var items=[
+    {id:'ep-sel1',bar:'ep-sv1-bar',val:EP.v1},
+    {id:'ep-sel2',bar:'ep-sv2-bar',val:EP.v2},
+    {id:'ep-sel3',bar:'ep-sv3-bar',val:EP.v3}
+  ];
+  items.forEach(function(item){
+    var el=document.getElementById(item.id);
+    var bv=document.getElementById(item.bar);
+    if(el&&bv){
+      el.style.display=item.val?'flex':'none';
+      bv.textContent=item.val||'';
+    }
+  });
+}
+
 var pfIntensity='strong';
 function setPfInt(val){
   pfIntensity=val;
@@ -1046,8 +1076,7 @@ function openPopup(turningId,titleText){
   popupTab='cmt';
   document.getElementById('popup-title-text').textContent=titleText||'分岐点に関連付けて投稿';
   document.getElementById('popup-overlay').style.display='flex';
-  // 分岐点投票後はchoiceタブを最初に表示
-  if(turningId){switchPopupTab('choice');}else{switchPopupTab('cmt');}
+  switchPopupTab('cmt');
   // Xシェアボタン表示
   var xBtn=document.getElementById('popup-x-share');
   if(xBtn)xBtn.style.display=turningId?'flex':'none';
@@ -1071,28 +1100,7 @@ function switchPopupTab(tab){
   });
   var content=document.getElementById('popup-tab-content');
   var submitBtn=document.getElementById('popup-submit-btn');
-  if(tab==='choice'){
-    var t=turnings.find(function(x){return x.id===popupTurningId;});
-    var choices=(t&&t.choices)||['続投させる','早めに交代','別の選択をする','仕方なかった'];
-    var badge=t?'<div class="popup-link-badge">→ '+esc(t.inning)+'</div>':'';
-    content.innerHTML=badge+
-      '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px" id="popup-choices">'+
-      choices.map(function(c){
-        return '<button class="sp-opt" onclick="selectPopupChoice(this)" data-v="'+esc(c)+'">'+esc(c)+'</button>';
-      }).join('')+
-      '</div>'+
-      '<input class="form-textarea" id="popup-choice-free" placeholder="または自分の言葉で..." style="width:100%;font-size:12px">';
-    submitBtn.textContent='回答して閉じる';
-    submitBtn.style.display='block';
-    // 自由入力
-    var fi=content.querySelector('#popup-choice-free');
-    if(fi)fi.addEventListener('input',function(){
-      if(fi.value.trim()){
-        document.querySelectorAll('#popup-choices .sp-opt').forEach(function(b){b.classList.remove('s3');});
-        fi.style.borderColor='var(--green)';
-      }
-    });
-  } else if(tab==='cmt'){
+  if(tab==='cmt'){
     var t=turnings.find(function(x){return x.id===popupTurningId;});
     var badge=t?'<div class="popup-link-badge">→ '+esc(t.inning)+'</div>':'';
     content.innerHTML=badge+
@@ -1155,22 +1163,6 @@ function ratePlayerPopup(btn){
 }
 
 async function submitPopup(){
-  if(popupTab==='choice'){
-    var free=document.getElementById('popup-choice-free');
-    var val=(free&&free.value.trim())||popupChoiceVal;
-    if(!val){closePopup();return;}
-    // turning_votesにchoiceを保存 or 更新
-    if(popupTurningId){
-      await sb.from('turning_votes').upsert({
-        turning_id:popupTurningId,game_id:GAME_ID,user_id:userId,choice:val
-      },{onConflict:'turning_id,user_id'});
-      // choice body を再読み込み
-      var body=document.getElementById('tpcb-'+popupTurningId);
-      if(body){body.dataset.loaded='';body.innerHTML='';}
-    }
-    showToast('回答を保存しました！');
-    closePopup();return;
-  }
   if(popupTab==='cmt'){
     var inp=document.getElementById('popup-cmt-inp');
     var txt=inp?inp.value.trim():'';
@@ -1304,12 +1296,14 @@ function epPick1(btn){
   btn.classList.add('s1'); EP.v1=btn.dataset.v;
   document.getElementById('ep-sv1').textContent=EP.v1;
   document.getElementById('ep-btn-next').classList.add('on');
+  updateEpSelBar();
 }
 function epPick2(btn){
   document.querySelectorAll('#ep-opts2 .sp-opt').forEach(function(b){b.classList.remove('s2');});
   btn.classList.add('s2'); EP.v2=btn.dataset.v; EP.bunki=btn.dataset.id;
   document.getElementById('ep-sv2').textContent=EP.v2;
   document.getElementById('ep-btn-next').classList.add('on');
+  updateEpSelBar();
   // STEP3の選択肢を分岐点に応じて更新
   var t=turnings.find(function(x){return x.id===EP.bunki;});
   renderEpStep3Choices(t);
@@ -1330,6 +1324,7 @@ function epPick3(btn){
   document.getElementById('ep-free').classList.remove('used');
   document.getElementById('ep-sv3').textContent=EP.v3;
   document.getElementById('ep-btn-next').classList.add('on');
+  updateEpSelBar();
 }
 
 // free input
@@ -1341,6 +1336,7 @@ document.addEventListener('input', function(e){
     e.target.classList.add('used'); EP.v3=val;
     document.getElementById('ep-sv3').textContent=val;
     document.getElementById('ep-btn-next').classList.add('on');
+    updateEpSelBar();
   } else {
     e.target.classList.remove('used');
     if(!document.querySelector('#ep-opts3 .sp-opt.s3')){
@@ -1361,7 +1357,7 @@ function renderEpStep(n){
   var next=document.getElementById('ep-btn-next');
   if(back)back.style.display=n>1?'':'none';
   if(next){
-    next.textContent=n===3?'Xでシェアする →':'次へ →';
+    next.textContent=n===3?'決定':'次へ →';
     var hasVal=(n===1&&EP.v1)||(n===2&&EP.v2)||(n===3&&EP.v3);
     next.classList.toggle('on',!!hasVal);
   }
@@ -1499,6 +1495,11 @@ function epReset(){
   document.querySelectorAll('.sp-opt').forEach(function(b){b.classList.remove('s1','s2','s3');});
   var fi=document.getElementById('ep-free');
   if(fi){fi.value='';fi.classList.remove('used');}
+  var bar=document.getElementById('ep-sel-bar');
+  if(bar)bar.style.display='none';
+  ['ep-sel1','ep-sel2','ep-sel3'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.style.display='none';
+  });
   ['ep-sv1','ep-sv2','ep-sv3'].forEach(function(id){
     var el=document.getElementById(id);if(el)el.textContent='';
   });
@@ -1553,34 +1554,72 @@ async function loadMinnaEval(){
 }
 
 // ===== 分岐点choice表示 =====
-async function toggleTpChoice(btn,turningId){
+async function toggleTpChoice(btn, turningId){
   var body=document.getElementById('tpcb-'+turningId);
   if(!body)return;
   var isOpen=body.classList.contains('open');
   body.classList.toggle('open',!isOpen);
   btn.textContent=isOpen?'＋':'－';
-  if(!isOpen&&!body.dataset.loaded){
-    body.dataset.loaded='1';
-    body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.5rem 0">読み込み中...</div>';
-    // turning_votesのchoice集計
-    var r=await sb.from('turning_votes').select('choice').eq('turning_id',turningId);
-    var counts={};var total=0;
-    if(r.data)r.data.forEach(function(v){
-      if(!v.choice)return;
-      counts[v.choice]=(counts[v.choice]||0)+1;
-      total++;
-    });
-    if(total===0){body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.5rem 0">まだ回答がありません</div>';return;}
-    var sorted=Object.entries(counts).sort(function(a,b){return b[1]-a[1];});
-    body.innerHTML=sorted.map(function(e){
-      var pct=Math.round(e[1]/total*100);
-      return '<div class="choice-bar-row">'+
-        '<span class="choice-lbl">'+esc(e[0])+'</span>'+
-        '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%"></div></div>'+
-        '<span class="choice-pct">'+pct+'%</span>'+
-        '</div>';
-    }).join('');
+  if(!isOpen){
+    await renderTpChoiceBody(turningId, body);
   }
+}
+
+async function renderTpChoiceBody(turningId, body){
+  body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.5rem 0">読み込み中...</div>';
+  // turning_votesのchoice集計を取得
+  var r=await sb.from('turning_votes').select('choice,user_id').eq('turning_id',turningId);
+  var counts={};var total=0;var myChoice=null;
+  if(r.data)r.data.forEach(function(v){
+    if(!v.choice)return;
+    counts[v.choice]=(counts[v.choice]||0)+1;
+    total++;
+    if(v.user_id===userId)myChoice=v.choice;
+  });
+  // 分岐点のchoices取得
+  var t=turnings.find(function(x){return x.id===turningId;});
+  var choices=(t&&t.choices)||Object.keys(counts);
+  // choicesがなければcountsのキーから生成
+  if(!choices.length){
+    body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.4rem 0">選択肢が設定されていません</div>';
+    return;
+  }
+  // 投票済み or 未投票で表示を切り替え（Xのアンケート方式）
+  if(myChoice||total>0){
+    // 投票率バー表示
+    body.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:5px">'+total+'人が回答</div>'+
+      choices.map(function(c){
+        var cnt=counts[c]||0;
+        var pct=total>0?Math.round(cnt/total*100):0;
+        var isMe=c===myChoice;
+        return '<div class="choice-bar-row">'+
+          '<span class="choice-lbl" style="'+(isMe?'color:var(--text);font-weight:500':'')+'">'+(isMe?'✓ ':'')+esc(c)+'</span>'+
+          '<div class="choice-bar"><div class="choice-bar-fill" style="width:'+pct+'%;'+(isMe?'background:var(--carp)':'')+'"></div></div>'+
+          '<span class="choice-pct">'+pct+'%</span>'+
+          '</div>';
+      }).join('');
+  } else {
+    // 未投票：選択肢ボタンを表示
+    body.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:6px">この場面ならどうした？</div>'+
+      '<div style="display:flex;flex-direction:column;gap:5px">'+
+      choices.map(function(c){
+        return '<button class="tp-choice-opt" onclick="voteTpChoice(this,''+turningId+'',''+c.replace(/'/g,'\'')+'')" data-v="'+esc(c)+'" data-tid="'+turningId+'">'+esc(c)+'</button>';
+      }).join('')+
+      '</div>';
+  }
+}
+
+async function voteTpChoice(btn, turningId, choice){
+  // optimistic UI: 即座にバー表示
+  var body=document.getElementById('tpcb-'+turningId);
+  if(body){body.innerHTML='<div style="font-size:11px;color:var(--muted);padding:.4rem 0">保存中...</div>';}
+  // turning_votesにchoiceを保存
+  await sb.from('turning_votes').upsert({
+    turning_id:turningId, game_id:GAME_ID, user_id:userId, choice:choice
+  },{onConflict:'turning_id,user_id'});
+  showToast('「'+choice+'」と回答しました！');
+  // バー表示に切り替え
+  if(body)await renderTpChoiceBody(turningId, body);
 }
 
 // ===== Xシェア =====
