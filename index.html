@@ -3,23 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¬ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯</title>
+<title>本日のカープトーク</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-<script>
-(function(){
-  var cdns=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js','https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'];
-  var idx=0;
-  function load(){
-    if(idx>=cdns.length){return;}
-    var s=document.createElement('script');
-    s.src=cdns[idx++];
-    s.onerror=load;
-    s.onload=function(){document.dispatchEvent(new Event('supabase-ready'));};
-    document.head.appendChild(s);
-  }
-  load();
-})();
-</script>
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
 :root{--bg:#0c0e11;--surface:#13161b;--surface2:#1a1e25;--surface3:#20252f;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#eef0f4;--muted:#7a8090;--faint:#2e3340;--accent:#f0c040;--blue:#4a9eff;--green:#3ecf8e;--red:#f46060;--orange:#f07840;--carp:#c8102e;--radius:12px;--radius-sm:8px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,14 +19,14 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .container{max-width:740px;margin:0 auto;padding:0 1rem 5rem}
 
-/* ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ */
+/* 日付ナビ */
 .date-nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;margin:0.5rem 0}
 .date-nav-btn{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .date-nav-btn:hover{color:var(--text)}
 .date-nav-btn:disabled{opacity:0.3;cursor:default}
 .date-nav-label{font-size:14px;font-weight:500;color:var(--text)}
 
-/* ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ */
+/* オフ日 */
 .no-game{text-align:center;padding:4rem 2rem}
 .no-game-icon{font-size:48px;margin-bottom:1rem}
 .no-game-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--muted);margin-bottom:0.5rem}
@@ -95,7 +81,7 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .moment.selected .moment-inner{border-color:var(--accent);background:rgba(240,192,64,0.05)}
 .moment.voted .moment-inner{border-color:var(--green)}
 .moment-header{display:flex;align-items:center;gap:6px;margin-bottom:4px}
-.moment-inning{font-size:11px;color:var(--muted);white-space:nowraw;font-weight:500}
+.moment-inning{font-size:11px;color:var(--muted);white-space:nowrap;font-weight:500}
 .moment-type-badge{font-size:10px;padding:1px 6px;border-radius:3px;white-space:nowrap;font-weight:700}
 .type-score-badge{background:rgba(240,192,64,0.15);color:var(--accent)}
 .type-pitcher-badge{background:rgba(74,158,255,0.15);color:var(--blue)}
@@ -175,24 +161,24 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 </head>
 <body>
 <header>
-  <div><div class="site-title">ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¬ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯</div><div class="site-sub">ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ±ÃÂÃÂ¦ÃÂÃÂ´ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ¨ÃÂÃÂ­ÃÂÃÂ°ÃÂÃÂ¨ÃÂÃÂ«ÃÂÃÂ</div></div>
+  <div><div class="site-title">本日のカープトーク</div><div class="site-sub">広島東洋カープ ファン議論</div></div>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="online-dot"></div>
     <button class="x-connect-btn" id="x-btn" onclick="handleXConnect()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      <span id="x-btn-label">XÃÂÃÂ©ÃÂÃÂÃÂÃÂ£ÃÂÃÂ¦ÃÂÃÂÃÂÃÂº</span>
+      <span id="x-btn-label">X連携</span>
     </button>
   </div>
 </header>
 <div class="container">
-  <!-- ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ -->
+  <!-- 日付ナビ -->
   <div class="date-nav">
-    <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥</button>
-    <span class="date-nav-label" id="date-nav-label">ÃÂÃÂ¨ÃÂÃÂªÃÂÃÂ­ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ¨ÃÂÃÂ¾ÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ­...</span>
-    <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">ÃÂÃÂ§ÃÂÃÂ¿ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</button>
+    <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">← 前日</button>
+    <span class="date-nav-label" id="date-nav-label">読み込み中...</span>
+    <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">翌日 →</button>
   </div>
 
-  <!-- ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ -->
+  <!-- コンテンツ（動的に入れ替え） -->
   <div id="main-content">
     <div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>
   </div>
@@ -204,23 +190,23 @@ var GAME_ID='';
 var GAME={};
 var MOMENTS=[];
 var PLAYERS=[];
-var TYPE_LABEL={score:'ÃÂÃÂ¥ÃÂÃÂ¾ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ·ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³',pitcher:'ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¥ÃÂÃÂ½ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ',crisis:'ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ±ÃÂÃÂ¥ÃÂÃÂÃÂÃÂº',hr:'ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¬ÃÂÃÂ¥ÃÂÃÂ¡ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ'};
+var TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
 var TYPE_BADGE={score:'type-score-badge',pitcher:'type-pitcher-badge',crisis:'type-crisis-badge',hr:'type-hr-badge'};
 var BAR_CLS={score:'bar-score',pitcher:'bar-pitcher',crisis:'bar-crisis',hr:'bar-hr'};
 var TAG_CLS={score:'tag-score',pitcher:'tag-pitcher',crisis:'tag-crisis',hr:'tag-hr'};
-var RATING_LABEL={mvp:'ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®MVP',great:'ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂ©ÃÂÃÂ ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¼ÃÂÃÂµÃÂÃÂ£ÃÂÃÂÃÂÃÂ£ÃÂÃÂ£ÃÂÃÂÃÂÃÂ',ganbatte:'ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂª ÃÂÃÂ¦ÃÂÃÂ¬ÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂ ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¼ÃÂÃÂµÃÂÃÂ£ÃÂÃÂÃÂÃÂ',nigun:'ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ¦ 2ÃÂÃÂ¨ÃÂÃÂ»ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂÃÂÃÂºÃÂÃÂ§ÃÂÃÂÃÂÃÂ´ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ'};
+var RATING_LABEL={mvp:'🏆 今日のMVP',great:'👏 頑張った',ganbatte:'💪 次も頑張れ',nigun:'💦 2軍で出直し？'};
 var RATING_ACTIVE={mvp:'active-mvp',great:'active-great',ganbatte:'active-ganbatte',nigun:'active-nigun'};
 var AVATAR_PAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
 var APP_URL='https://carp-talk.vercel.app';
-var HASHTAGS='#ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ #ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ #ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ¨ÃÂÃÂ­ÃÂÃÂ°ÃÂÃÂ¨ÃÂÃÂ«ÃÂÃÂ';
+var HASHTAGS='#広島カープ #カープトーク #分岐点議論';
 var sb=null,voteCounts={},myVotedId=null,selectedId=null;
 var allComments=[],myLikes=new Set(),currentTab='all';
 var userId=null,xUser=null,playerRatings={},myPlayerRatings={};
 var currentDate='';
 
-// ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ£ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ£
+// 日付ユーティリティ
 function todayStr(){var d=new Date();return d.getFullYear()+'-'+(String(d.getMonth()+1).padStart(2,'0'))+'-'+(String(d.getDate()).padStart(2,'0'));}
-function dateLabel(str){var p=str.split('-');return p[0]+'ÃÂÃÂ¥ÃÂÃÂ¹ÃÂÃÂ´'+parseInt(p[1])+'ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ'+parseInt(p[2])+'ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥';}
+function dateLabel(str){var p=str.split('-');return p[0]+'年'+parseInt(p[1])+'月'+parseInt(p[2])+'日';}
 function addDays(str,n){var d=new Date(str);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
 
 function goDate(n){
@@ -232,22 +218,22 @@ function goDate(n){
 async function loadGame(date){
   currentDate=date;
   var today=todayStr();
-  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥)':'');
+  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (今日)':'');
   document.getElementById('btn-next').disabled=(date>=today);
   document.getElementById('main-content').innerHTML='<div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>';
   
-  // JSONÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¾ÃÂÃÂ
+  // JSONファイルを取得
   var url='/games/'+date+'.json?t='+Date.now();
   var r=await fetch(url);
   
   if(!r.ok){
-    // ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂ
+    // 試合なし
     document.getElementById('main-content').innerHTML=
       '<div class="no-game">'+
-      '<div class="no-game-icon">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¾</div>'+
-      '<div class="no-game-title">ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¬ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
-      '<div class="no-game-sub">'+dateLabel(date)+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ¦ÃÂÃÂÃÂÃÂªÃÂÃÂ§ÃÂÃÂÃÂÃÂ»ÃÂÃÂ©ÃÂÃÂÃÂÃÂ²ÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
-      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</a>'+
+      '<div class="no-game-icon">⚾</div>'+
+      '<div class="no-game-title">本日は試合がありません</div>'+
+      '<div class="no-game-sub">'+dateLabel(date)+'はオフ日またはデータ未登録です</div>'+
+      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">← 前日の試合を見る</a>'+
       '</div>';
     return;
   }
@@ -258,7 +244,7 @@ async function loadGame(date){
   MOMENTS=gameData.moments||[];
   PLAYERS=gameData.players||[];
   
-  // ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂ»ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ
+  // リセット
   voteCounts={};myVotedId=null;selectedId=null;allComments=[];myLikes=new Set();currentTab='all';playerRatings={};myPlayerRatings={};
   
   renderMainContent(gameData);
@@ -266,12 +252,12 @@ async function loadGame(date){
 }
 
 function renderMainContent(g){
-  var homeColor=g.home_team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?'var(--carp)':'#f5d000';
-  var awayColor=g.away_team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?'var(--carp)':'#f5d000';
-  var homeClass=g.home_team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?'carp':'away';
-  var awayClass=g.away_team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?'carp':'away';
+  var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
+  var awayColor=g.away_team==='広島'?'var(--carp)':'#f5d000';
+  var homeClass=g.home_team==='広島'?'carp':'away';
+  var awayClass=g.away_team==='広島'?'carp':'away';
 
-  // ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ°ÃÂÃÂ¨ÃÂÃÂ¡ÃÂÃÂ¨
+  // イニング表
   var inningHtml='';
   if(g.innings&&g.innings.hansin){
     var hi=g.innings.hansin,ri=g.innings.hiroshima;
@@ -282,89 +268,89 @@ function renderMainContent(g){
       hCells+='<td class="'+(hv>0?'scoring':'zero')+'">'+hv+'</td>';
       rCells+='<td class="'+(rv>0?'scoring':'zero')+'">'+rv+'</td>';
     }
-    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">ÃÂÃÂ¨ÃÂÃÂ¨ÃÂÃÂ</th><th>ÃÂÃÂ¥ÃÂÃÂ®ÃÂÃÂ</th><th>ÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂ±</th></tr></thead><tbody>'+
+    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
       '<tr><td class="team-label" style="color:#f5d000">'+g.away_team+'</td>'+hCells+'<td class="score-col" style="color:#f5d000">'+g.away_score+'</td><td>'+(g.innings.hansin_hits||'-')+'</td><td>'+(g.innings.hansin_errors||'-')+'</td></tr>'+
       '<tr><td class="team-label" style="color:var(--carp)">'+g.home_team+'</td>'+rCells+'<td class="score-col" style="color:var(--carp)">'+g.home_score+'</td><td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>'+
       '</tbody></table></div>';
   }
 
-  // ÃÂÃÂ§ÃÂÃÂ¶ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ
+  // 継投
   var pitcherHtml='';
   if(g.pitchers&&g.pitchers.length){
     var chips='';
     g.pitchers.forEach(function(p){
-      var teamColor=p.team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?'var(--carp)':'#f5d000';
-      var bc=p.team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
-      var resultBadge=p.result==='win'?'<span class="s-win">ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ</span>':p.result==='loss'?'<span class="s-loss">ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ</span>':p.era?'<span class="s-good">ÃÂÃÂ©ÃÂÃÂÃÂÃÂ²'+p.era+'</span>':'';
+      var teamColor=p.team==='広島'?'var(--carp)':'#f5d000';
+      var bc=p.team==='広島'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
+      var resultBadge=p.result==='win'?'<span class="s-win">勝</span>':p.result==='loss'?'<span class="s-loss">敗</span>':p.era?'<span class="s-good">防'+p.era+'</span>':'';
       chips+='<div class="pitcher-chip" style="border-color:'+bc+'"><span class="role" style="color:'+teamColor+'">'+p.team+p.role+'</span><span>'+p.name+'</span>'+resultBadge+'</div>';
     });
-    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">ÃÂÃÂ§ÃÂÃÂ¶ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ</span>'+chips+'</div>';
+    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
   }
 
-  var resultLabel=g.result_label?'<span class="badge badge-final">FINALÃÂÃÂ£ÃÂÃÂÃÂÃÂ»'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
-  var hiroshimaWon=g.home_team==='ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶'?g.home_score>g.away_score:g.away_score>g.home_score;
+  var resultLabel=g.result_label?'<span class="badge badge-final">FINAL・'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
+  var hiroshimaWon=g.home_team==='広島'?g.home_score>g.away_score:g.away_score>g.home_score;
 
   document.getElementById('main-content').innerHTML=
     '<div class="hero">'+
-    '<div class="hero-eyebrow">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¾ '+GAME.date+'..('+g.venue+'ÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ</div>'+
-    '<div class="hero-title">ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ£ÃÂÃÂÃÂÃÂ©ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂ£ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ</div>'+
-    '<div class="hero-desc">ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¦ÃÂÃÂµÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ§ÃÂÃÂÃÂÃÂ®ÃÂÃÂ§ÃÂÃÂ·ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ°ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂºÃÂÃÂ¨ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
+    '<div class="hero-eyebrow">⚾ '+GAME.date+'（'+g.venue+'）</div>'+
+    '<div class="hero-title">今日の試合、分岐点はどこだった？</div>'+
+    '<div class="hero-desc">試合の流れを変えたと思う場面を選んで投票しよう。みんなの目線が集まると、新しい発見がある。</div>'+
     '<div class="scoreboard"><div><div class="team-name '+homeClass+'">'+g.home_team+'</div><div class="team-score">'+g.home_score+'</div></div>'+
-    '<div class="score-sep">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</div>'+
+    '<div class="score-sep">—</div>'+
     '<div><div class="team-name '+awayClass+'">'+g.away_team+'</div><div class="team-score">'+g.away_score+'</div></div></div>'+
-    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">ÃÂÃÂ¥ÃÂÃÂºÃÂÃÂÃÂÃÂ¥ÃÂÃÂ³ÃÂÃÂ¶ ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂ©</span>':'')+'</div>'+
+    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">広島 勝利</span>':'')+'</div>'+
     inningHtml+pitcherHtml+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¶</div>'+
-    '<div class="section-desc">ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¦ÃÂÃÂµÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂ±ÃÂÃÂºÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ£ÃÂÃÂÃÂÃÂ©ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
+    '<div class="section-label">分岐点を選ぶ</div>'+
+    '<div class="section-desc">この試合の流れを決めたと思う場面はどこ？タップして投票しよう。</div>'+
     '<div class="legend">'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>ÃÂÃÂ¥ÃÂÃÂ¾ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ·ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¥ÃÂÃÂ½ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¬ÃÂÃÂ¥ÃÂÃÂ¡ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ±ÃÂÃÂ¥ÃÂÃÂÃÂÃÂº</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>得点シーン</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>投手好投</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>本塁打</div>'+
+    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ピンチ脱出</div>'+
     '</div>'+
-    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ´ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ°ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
+    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>投票がリアルタイムで更新されています</div>'+
     '<div class="timeline"><div class="timeline-rail"></div><div id="moments-list"><div class="loading-line"><div class="loading-line-inner"></div></div></div></div>'+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨</div>'+
-    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¸ÃÂÃÂ</div>ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
+    '<div class="section-label">投票</div>'+
+    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">☝️</div>上の分岐点から選んでください</div>'+
     '<div id="vote-form" style="display:none">'+
     '<div class="selected-tag" id="selected-tag"></div>'+
-    '<textarea class="reason-input" id="reason-input" placeholder="ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂ»ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ" rows="3"></textarea>'+
-    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</button>'+
+    '<textarea class="reason-input" id="reason-input" placeholder="なぜここが分岐点だと思いましたか？（任意）" rows="3"></textarea>'+
+    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">この場面に投票する</button>'+
     '</div>'+
     '<div id="voted-done" style="display:none">'+
-    '<div class="voted-tag" id="voted-tag">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
-    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ§ÃÂÃÂµÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂXÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</button>'+
+    '<div class="voted-tag" id="voted-tag">✓ 投票しました</div>'+
+    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>投票結果をXにポスト</button>'+
     '<div id="vote-share-preview" style="display:none"></div>'+
     '</div></div>'+
 
     '<div class="section">'+
-    '<div class="section-label">ÃÂÃÂ¥ÃÂÃÂÃÂÃÂºÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ¡</div>'+
-    '<div class="section-desc">ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ¡ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ°ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ¥ÃÂÃÂ¿ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
-    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> ÃÂÃÂ¨ÃÂÃÂªÃÂÃÂ­ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ¨ÃÂÃÂ¾ÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ­...</div></div>'+
+    '<div class="section-label">出場選手への評価</div>'+
+    '<div class="section-desc">今日の選手たちへ一票を。評価数に応じてアイコンが大きくなります。</div>'+
+    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> 読み込み中...</div></div>'+
     '</div>'+
 
     '<div class="section">'+
-    '<div class="section-label">ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
+    '<div class="section-label">みんなのコメント</div>'+
     '<div class="tabs">'+
-    '<div class="tab active" onclick="setTab(\'all\',this)">ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦</div>'+
-    '<div class="tab" onclick="setTab(\'hot\',this)">ÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂ ÃÂÃÂ</div>'+
-    '<div class="tab" onclick="setTab(\'ai\',this)">AIÃÂÃÂ¨ÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂ¨ÃÂÃÂªÃÂÃÂ¬</div>'+
+    '<div class="tab active" onclick="setTab(\'all\',this)">すべて</div>'+
+    '<div class="tab" onclick="setTab(\'hot\',this)">盛り上がり順</div>'+
+    '<div class="tab" onclick="setTab(\'ai\',this)">AI解説</div>'+
     '</div>'+
     '<div id="comments-list"></div>'+
     '<div id="ai-panel" style="display:none"></div>'+
     '<div class="new-comment-area" id="comment-input-row">'+
-    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>'+
-    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">ÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ¡</button></div>'+
+    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>としてポスト</div>'+
+    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="コメントを入力..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">送信</button></div>'+
     '</div></div>';
 }
 
-// ===== ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ§ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ­ÃÂÃÂ² =====
+// ===== イベント委譲 =====
 document.addEventListener('click',function(e){
   var mid=e.target.closest('[data-mid]');
   if(mid&&!e.target.closest('[data-share]')){selectMoment(parseInt(mid.dataset.mid));}
@@ -381,30 +367,30 @@ document.addEventListener('click',function(e){
 // ===== UTILS =====
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hashStr(s){var h=0;for(var i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
-function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ£ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂ';if(diff<3600)return Math.floor(diff/60)+'ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂ';if(diff<86400)return Math.floor(diff/3600)+'ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂ';return (d.getMonth()+1)+'/'+d.getDate();}
+function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return Math.floor(diff/60)+'分前';if(diff<86400)return Math.floor(diff/3600)+'時間前';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 function xSVG(sz,fill){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+(fill||'currentColor')+'"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
 function openTweet(text){var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);var w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.click();}}
-function getDisplayName(){if(xUser)return xUser.name;var adj=['ÃÂÃÂ§ÃÂÃÂÃÂÃÂ±ÃÂÃÂ¨ÃÂÃÂ¡ÃÂÃÂ','ÃÂÃÂ©ÃÂÃÂÃÂÃÂ­ÃÂÃÂ§ÃÂÃÂÃÂÃÂ¼','ÃÂÃÂ¦ÃÂÃÂ¸ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ','ÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂ¯ÃÂÃÂ','ÃÂÃÂ¥ÃÂÃÂ¿ÃÂÃÂ«ÃÂÃÂ©ÃÂÃÂÃÂÃÂ','ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ','ÃÂÃÂ¥ÃÂÃÂ¼ÃÂÃÂ·ÃÂÃÂ¨ÃÂÃÂÃÂÃÂ©','ÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¶ÃÂÃÂ³'];var nou=['ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³','ÃÂÃÂ¨ÃÂÃÂ¦ÃÂÃÂ³ÃÂÃÂ¥ÃÂÃÂ®ÃÂÃÂ¢','ÃÂÃÂ¥ÃÂÃÂ¿ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ´ÃÂÃÂ¥ÃÂÃÂÃÂÃÂ£','ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¢','ÃÂÃÂ©ÃÂÃÂÃÂÃÂ','ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂ©ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ£ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼','ÃÂÃÂ¨ÃÂÃÂ¨ÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
+function getDisplayName(){if(xUser)return xUser.name;var adj=['熱血','鋭眼','渋い','猛鯉','快速','剛腕','強肩','俊足'];var nou=['ファン','観客','応援団','マニア','通','ウォッチャー','記者'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
 function totalVotes(){return Object.values(voteCounts).reduce(function(s,v){return s+v;},0);}
 
-// ===== XÃÂÃÂ©ÃÂÃÂÃÂÃÂ£ÃÂÃÂ¦ÃÂÃÂÃÂÃÂº =====
+// ===== X連携 =====
 function handleXConnect(){
-  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('XÃÂÃÂ©ÃÂÃÂÃÂÃÂ£ÃÂÃÂ¦ÃÂÃÂÃÂÃÂºÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ');return;}
-  var name=window.prompt('XÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¶ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ@ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ');
+  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('X連携を解除しました');return;}
+  var name=window.prompt('Xのユーザー名（@なし）を入力してください');
   if(!name||!name.trim())return;
   xUser={name:name.trim(),screen_name:name.trim()};
   localStorage.setItem('x_user',JSON.stringify(xUser));
   renderXBtn();
   document.getElementById('x-name-row').style.display='flex';
   document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;
-  showToast('@'+xUser.screen_name+' ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ©ÃÂÃÂÃÂÃÂ£ÃÂÃÂ¦ÃÂÃÂÃÂÃÂºÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ');
+  showToast('@'+xUser.screen_name+' として連携しました');
 }
 function renderXBtn(){
   var btn=document.getElementById('x-btn'),label=document.getElementById('x-btn-label');
   if(!btn)return;
   if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}
-  else{btn.classList.remove('x-connected');label.textContent='XÃÂÃÂ©ÃÂÃÂÃÂÃÂ£ÃÂÃÂ¦ÃÂÃÂÃÂÃÂº';}
+  else{btn.classList.remove('x-connected');label.textContent='X連携';}
 }
 
 // ===== MOMENTS =====
@@ -419,8 +405,8 @@ function renderMoments(){
     html+='<span class="moment-type-badge '+TYPE_BADGE[m.type]+'">'+TYPE_LABEL[m.type]+'</span></div>';
     html+='<div class="moment-desc">'+m.desc+'</div><div class="moment-sub">'+m.sub+'</div>';
     html+='<div class="moment-footer"><div class="moment-bar-row"><div class="moment-bar-wrap"><div class="moment-bar '+BAR_CLS[m.type]+'" style="width:'+pct+'%"></div></div>';
-    html+='<span class="moment-pct">'+cnt+'ÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ '+pct+'%</span></div>';
-    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' ÃÂÃÂ£ÃÂÃÂÃÂÃÂ·ÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¢</button></div>';
+    html+='<span class="moment-pct">'+cnt+'票 '+pct+'%</span></div>';
+    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' シェア</button></div>';
     html+='</div></div>';
   });
   if(document.getElementById('moments-list'))document.getElementById('moments-list').innerHTML=html;
@@ -437,30 +423,30 @@ function selectMoment(id){
 async function submitVote(){
   if(!selectedId||myVotedId)return;
   var btn=document.getElementById('vote-btn');
-  btn.disabled=true;btn.textContent='ÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¿ÃÂÃÂ¡ÃÂÃÂ¤ÃÂÃÂ¸ÃÂÃÂ­...';
+  btn.disabled=true;btn.textContent='送信中...';
   var reason=document.getElementById('reason-input').value.trim();
   var r=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});
-  if(r.error){showToast(r.error.code==='23505'?'ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ¦ÃÂÃÂ¸ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂ§ÃÂÃÂ£ÃÂÃÂÃÂÃÂ':'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂ©ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂºÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ');btn.disabled=false;btn.textContent='ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ';return;}
+  if(r.error){showToast(r.error.code==='23505'?'すでに投票済みです':'エラーが発生しました');btn.disabled=false;btn.textContent='この場面に投票する';return;}
   myVotedId=selectedId;selectedId=null;
   if(reason)await postComment(myVotedId,reason);
-  await loadVoteCounts();showVotedState(myVotedId);showToast('ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ');
+  await loadVoteCounts();showVotedState(myVotedId);showToast('投票しました！');
 }
 function showVotedState(momentId){
   var m=MOMENTS.find(function(x){return x.id===momentId;});
   document.getElementById('vote-form').style.display='none';
   document.getElementById('vote-prompt').style.display='none';
   document.getElementById('voted-done').style.display='block';
-  document.getElementById('voted-tag').innerHTML='ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ <strong>'+m.inning+' '+m.desc+'</strong> ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ';
+  document.getElementById('voted-tag').innerHTML='✓ <strong>'+m.inning+' '+m.desc+'</strong> に投票しました';
 }
 function shareVote(){
   var m=MOMENTS.find(function(x){return x.id===myVotedId;});if(!m)return;
   var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ§ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹\nÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+m.inning+' '+m.desc+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ\n'+pct+'%ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')、私の分岐点\n「'+m.inning+' '+m.desc+'」\n'+pct+'%のファンも同じ！\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 function shareMoment(id){
   var m=MOMENTS.find(function(x){return x.id===id;});
   var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet('ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\nÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+m.inning+' '+m.desc+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ\nÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¥ÃÂÃÂ ÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«'+pct+'%ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂ³ÃÂÃÂ¨ÃÂÃÂ§ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet('【分岐点】'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\n「'+m.inning+' '+m.desc+'」\nこの場面に'+pct+'%のファンが注目！\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 
 // ===== PLAYERS =====
@@ -492,15 +478,15 @@ function renderPlayers(){
     html+='<div class="player-card"><div class="player-icon carp-player" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*0.35)+'px">'+initials+'</div>';
     html+='<div class="player-name">'+p.name+'</div><div class="player-pos">'+p.pos+'</div>';
     html+='<div class="rating-btns">'+btns+'</div>';
-    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂªÃÂÃÂ£ÃÂÃÂÃÂÃÂ</span>')+'</div></div>';
+    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">まだ評価なし</span>')+'</div></div>';
   });
   document.getElementById('players-grid').innerHTML=html;
 }
 async function ratePlayer(playerName,rating){
   var prev=myPlayerRatings[playerName];
   if(prev===rating){await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);delete myPlayerRatings[playerName];}
-  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂ©ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼');return;}myPlayerRatings[playerName]=rating;}
-  await loadPlayerRatings();showToast(prev===rating?'ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂ¶ÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ':RATING_LABEL[rating]+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ');
+  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('エラー');return;}myPlayerRatings[playerName]=rating;}
+  await loadPlayerRatings();showToast(prev===rating?'評価を取り消しました':RATING_LABEL[rating]+'を送りました！');
 }
 
 // ===== COMMENTS =====
@@ -512,7 +498,7 @@ async function postComment(momentId,body){await sb.from('comments').insert({game
 async function sendComment(){
   var inp=document.getElementById('comment-input'),btn=document.getElementById('send-btn');
   var txt=inp.value.trim();if(!txt)return;
-  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ');
+  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('コメントしました！');
 }
 async function toggleLike(commentId){
   var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
@@ -524,7 +510,7 @@ function renderComments(){
   if(!document.getElementById('comments-list')||currentTab==='ai')return;
   var list=allComments.slice();
   if(currentTab==='hot')list.sort(function(a,b){return b.likes-a.likes;});
-  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¿ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>';return;}
+  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>';return;}
   var html='';
   list.forEach(function(c){
     var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
@@ -534,8 +520,8 @@ function renderComments(){
     html+='<div class="comment"><div class="comment-header"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name).slice(0,1)+'</div>';
     html+='<span class="comment-name">'+esc(c.display_name)+'</span>'+tag+'</div>';
     html+='<div class="comment-body">'+esc(c.body)+'</div><div class="comment-time">'+formatTime(c.created_at)+'</div>';
-    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¡ '+(c.likes||0)+'</button>';
-    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</button></div></div>';
+    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">♡ '+(c.likes||0)+'</button>';
+    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ポスト</button></div></div>';
   });
   document.getElementById('comments-list').innerHTML=html;
 }
@@ -552,20 +538,20 @@ function setTab(tab,el){
 function renderAI(){
   var panel=document.getElementById('ai-panel');if(!panel)return;
   var tot=totalVotes();
-  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂ ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¨AIÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¡ÃÂÃÂ¨ÃÂÃÂ§ÃÂÃÂ¤ÃÂÃÂºÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¾ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ</div>';return;}
+  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>';return;}
   var top=MOMENTS.slice().sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
   var topP=MOMENTS.filter(function(m){return m.type==='pitcher';}).sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
   var pct=Math.round((voteCounts[top.id]||0)/tot*100);
   var mvp=PLAYERS.map(function(p){return{p:p,v:(playerRatings[p.name]&&playerRatings[p.name].mvp)||0};}).sort(function(a,b){return b.v-a.v;})[0];
-  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+top.inning+' '+top.desc+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+pct+'% ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ£ÃÂÃÂÃÂÃÂ³MVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
-  panel.innerHTML='<div class="ai-box"><strong>AIÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂ('+tot+'ÃÂÃÂ§ÃÂÃÂ¥ÃÂÃÂ¨)ÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ</strong>'+GAME.home+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂ¦ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¤ÃÂÃÂÃÂÃÂ¦ÃÂÃÂ³ÃÂÃÂ¨ÃÂÃÂ§ÃÂÃÂÃÂÃÂ®ÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ²ÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯<strong>ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+top.inning+' '+top.desc+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ('+pct+'%)</strong>ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+(topP?'<br><br>ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¥ÃÂÃÂ¥ÃÂÃÂ½ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ<strong>ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+topP.inning+' '+topP.desc+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</strong>ÃÂÃÂ£ÃÂÃÂÃÂÃÂ':'')+
-  (mvp?'<br><br>ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂÃÂÃÂ¤ÃÂÃÂ¾ÃÂÃÂ¡MVPÃÂÃÂ¯ÃÂÃÂ¼ÃÂÃÂ<strong>'+mvp.p.name+'</strong>ÃÂÃÂ£ÃÂÃÂÃÂÃÂ':'')+
-  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AIÃÂÃÂ¥ÃÂÃÂÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ£ÃÂÃÂÃÂÃÂ</button></div>';
+  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') 分岐点「'+top.inning+' '+top.desc+'」'+pct+'% ファンMVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
+  panel.innerHTML='<div class="ai-box"><strong>AI分析('+tot+'票)：</strong>'+GAME.home+'の試合、最多注目分岐点は<strong>「'+top.inning+' '+top.desc+'」('+pct+'%)</strong>。'+(topP?'<br><br>投手好投：<strong>「'+topP.inning+' '+topP.desc+'」</strong>。':'')+
+  (mvp?'<br><br>選手評価MVP：<strong>'+mvp.p.name+'</strong>。':'')+
+  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AI分析をポスト</button></div>';
 }
 function shareComment(commentId){
   var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
   var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')ÃÂÃÂ£ÃÂÃÂÃÂÃÂ«ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂÃÂÃÂ£ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ£ÃÂÃÂÃÂÃÂ¯\n'+(m?'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+m.inning+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ':'')+' ÃÂÃÂ£ÃÂÃÂÃÂÃÂ'+c.body+'ÃÂÃÂ£ÃÂÃÂÃÂÃÂ\nÃÂÃÂ¢ÃÂÃÂÃÂÃÂ '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')カープトーク\n'+(m?'【'+m.inning+'】':'')+' 「'+c.body+'」\n— '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
 }
 function subscribeRealtime(){
   sb.channel('votes-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},function(){loadVoteCounts();flashLive();}).subscribe();
@@ -590,16 +576,14 @@ async function initApp(){
 }
 
 // ===== BOOT =====
-window.__bootDone=false;function bootApp(){if(window.__bootDone)return;window.__bootDone=true;
+window.addEventListener('DOMContentLoaded',function(){
   var URL_='https://dzsznmpuxuftprcqywex.supabase.co';
   var KEY_='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
   sb=supabase.createClient(URL_,KEY_);
   var params=new URLSearchParams(location.search);
   var date=params.get('date')||todayStr();
   loadGame(date);
-};
-window.addEventListener('DOMContentLoaded',bootApp);
-document.addEventListener('supabase-ready',bootApp);
+});
 </script>
 </body>
 </html>
