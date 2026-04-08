@@ -892,9 +892,9 @@ function switchPopupTab(tab){
     var badge=t?'<div class="popup-link-badge">→ '+esc(t.inning)+'</div>':'';
     content.innerHTML=badge+
       '<div class="ctype-row" style="margin-bottom:8px"><span class="ctype-lbl">種類：</span>'+
-      '<button id="pct-a" class="ctype-btn sa" onclick="setPopupCType('a')">🔍 流れ分析</button>'+
-      '<button id="pct-f" class="ctype-btn" onclick="setPopupCType('f')">💬 感情</button>'+
-      '<button id="pct-n" class="ctype-btn" onclick="setPopupCType('n')">😂 ネタ</button>'+
+      '<button id="pct-a" class="ctype-btn sa" onclick="setPopupCType(this.dataset.t)" data-t="a">🔍 流れ分析</button>'+
+      '<button id="pct-f" class="ctype-btn" onclick="setPopupCType(this.dataset.t)" data-t="f">💬 感情</button>'+
+      '<button id="pct-n" class="ctype-btn" onclick="setPopupCType(this.dataset.t)" data-t="n">😂 ネタ</button>'+
       '</div>'+
       '<textarea class="form-textarea" id="popup-cmt-inp" placeholder="この転換点について一言..." rows="3" style="width:100%"></textarea>';
     submitBtn.textContent='コメントして閉じる';
