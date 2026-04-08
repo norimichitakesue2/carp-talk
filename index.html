@@ -245,9 +245,13 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .rating-row{display:flex;gap:4px}
 .rating-btn{font-size:11px;padding:3px 8px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;white-space:nowrap}
 .rating-btn:hover{border-color:var(--border2);background:var(--surface2)}
-.rating-btn.mvp.sel{background:rgba(240,192,64,.15);border-color:var(--accent);color:var(--accent);font-weight:700}
-.rating-btn.good.sel{background:rgba(62,207,142,.12);border-color:var(--green);color:var(--green);font-weight:700}
-.rating-btn.cheer.sel{background:rgba(200,16,46,.12);border-color:var(--carp);color:#ff7090;font-weight:700}
+.rating-btn.mvp.sel{background:rgba(240,192,64,.2);border-color:var(--accent);color:var(--accent);font-weight:700;transform:scale(1.05)}
+.rating-btn.good.sel{background:rgba(62,207,142,.18);border-color:var(--green);color:var(--green);font-weight:700;transform:scale(1.05)}
+.rating-btn.cheer.sel{background:rgba(200,16,46,.15);border-color:var(--carp);color:#ff7090;font-weight:700;transform:scale(1.05)}
+.rating-btn{transition:all .15s}
+.rating-count{font-size:10px;color:var(--muted);margin-left:2px;opacity:.7}
+.player-rating-bar{display:flex;gap:4px;margin-top:4px;align-items:center;flex-wrap:wrap}
+.rating-bar-seg{height:4px;border-radius:2px;transition:width .4s ease;min-width:2px}
 @media(max-width:480px){.ts{font-size:40px}.intensity-row{flex-wrap:wrap}}
 </style>
 </head>
@@ -932,7 +936,7 @@ function renderPopupPlayers(){
   el.innerHTML=html;
 }
 
-var playerRatings={};
+var playerRatings={},playerRatingCounts={};
 function ratePlayerPopup(btn){
   var name=btn.dataset.name,rating=btn.dataset.rv;
   if(!playerRatings[name])playerRatings[name]=new Set();
@@ -976,16 +980,39 @@ function renderPlayerGrid(){
   var html='';
   PLAYERS.forEach(function(p){
     var r=playerRatings[p.name]||null;
-    var avColor='var(--faint)';
-    html+='<div class="player-row">';
+    var c=playerRatingCounts[p.name]||{mvp:0,good:0,cheer:0};
+    var total=c.mvp+c.good+c.cheer;
+    var BTNS=[{v:'mvp',l:'MVP',col:'var(--accent)'},{v:'good',l:'よかった',col:'var(--green)'},{v:'cheer',l:'もっと頑張れ',col:'var(--carp)'}];
+    html+='<div class="player-row" style="flex-direction:column;align-items:stretch;gap:5px">';
+    // 上段：アバター + 名前 + ボタン
+    html+='<div style="display:flex;align-items:center;gap:10px">';
     html+='<div class="player-av">'+p.name.slice(0,1)+'</div>';
     html+='<span class="player-name">'+esc(p.name)+'</span>';
     html+='<span class="player-pos">'+esc(p.pos)+'</span>';
-    html+='<div class="rating-row">';
-    [{v:'mvp',l:'MVP'},{v:'good',l:'よかった'},{v:'cheer',l:'もっと頑張れ'}].forEach(function(rb){
-      html+='<button class="rating-btn '+rb.v+(r===rb.v?' sel':'')+'" onclick="ratePlayerGrid(this)" data-name="'+p.name+'" data-rv="'+rb.v+'">'+rb.l+'</button>';
+    html+='<div class="rating-row" style="margin-left:auto">';
+    BTNS.forEach(function(rb){
+      var sel=r&&r.has(rb.v);
+      var cnt=c[rb.v]||0;
+      html+='<button class="rating-btn '+rb.v+(sel?' sel':'')+'" onclick="ratePlayerGrid(this)" data-name="'+p.name+'" data-rv="'+rb.v+'">';
+      html+=rb.l+(cnt>0?'<span class="rating-count">'+cnt+'</span>':'');
+      html+='</button>';
     });
     html+='</div></div>';
+    // 下段：票数バー（1票以上あるとき）
+    if(total>0){
+      html+='<div class="player-rating-bar" style="padding:0 0 0 42px">';
+      BTNS.forEach(function(rb){
+        var cnt=c[rb.v]||0;
+        if(cnt===0)return;
+        var pct=Math.round(cnt/total*100);
+        html+='<div style="display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted)">';
+        html+='<div class="rating-bar-seg" style="width:'+pct+'px;background:'+rb.col+';opacity:.6"></div>';
+        html+=rb.l+' '+pct+'%';
+        html+='</div>';
+      });
+      html+='</div>';
+    }
+    html+='</div>';
   });
   el.innerHTML=html;
 }
@@ -1004,11 +1031,23 @@ async function ratePlayerGrid(btn){
 }
 
 async function loadPlayerRatings(){
+  // 自分の投票（ハイライト用）
   var r=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);
   if(r.data)r.data.forEach(function(x){
     if(x.rating){
       playerRatings[x.player_name]=new Set(x.rating.split(',').filter(Boolean));
     }
+  });
+  // 全員の集計（票数表示用）
+  var all=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID);
+  playerRatingCounts={};
+  if(all.data)all.data.forEach(function(x){
+    if(!x.rating)return;
+    if(!playerRatingCounts[x.player_name])playerRatingCounts[x.player_name]={mvp:0,good:0,cheer:0};
+    x.rating.split(',').filter(Boolean).forEach(function(rv){
+      if(playerRatingCounts[x.player_name][rv]!==undefined)
+        playerRatingCounts[x.player_name][rv]++;
+    });
   });
   renderPlayerGrid();
 }
