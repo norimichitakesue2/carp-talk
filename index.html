@@ -4,49 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>本日のカープトーク</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
-:root{--bg:#0c0e11;--surface:#13161b;--surface2:#1a1e25;--surface3:#20252f;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#eef0f4;--muted:#7a8090;--faint:#2e3340;--accent:#f0c040;--blue:#4a9eff;--green:#3ecf8e;--red:#f46060;--orange:#f07840;--carp:#c8102e;--radius:12px;--radius-sm:8px}
+:root{--bg:#0a0c0f;--surface:#111318;--surface2:#181c23;--surface3:#1e2330;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#eef0f4;--muted:#7a8090;--faint:#2e3340;--accent:#f0c040;--blue:#4a9eff;--green:#3ecf8e;--red:#f46060;--orange:#f07840;--carp:#c8102e;--r:12px;--rs:8px}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
-header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(12,14,17,0.95);backdrop-filter:blur(14px);z-index:100}
-.site-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.1em;color:var(--carp);line-height:1}
+header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(10,12,15,0.96);backdrop-filter:blur(14px);z-index:100}
+.site-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.1em;color:var(--carp);line-height:1}
 .site-sub{font-size:10px;color:var(--muted)}
 .online-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-.x-connect-btn{display:flex;align-items:center;gap:5px;background:#000;color:#fff;border:1px solid #333;border-radius:6px;padding:5px 10px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.x-connected{border-color:#1d9bf0;color:#1d9bf0}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.container{max-width:740px;margin:0 auto;padding:0 1rem 5rem}
-
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.wrap{max-width:680px;margin:0 auto;padding:0 1rem 6rem}
 /* 日付ナビ */
-.date-nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;margin:0.5rem 0}
+.date-nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;margin:.5rem 0}
 .date-nav-btn{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.date-nav-btn:hover{color:var(--text)}
-.date-nav-btn:disabled{opacity:0.3;cursor:default}
-.date-nav-label{font-size:14px;font-weight:500;color:var(--text)}
-
-/* オフ日 */
-.no-game{text-align:center;padding:4rem 2rem}
-.no-game-icon{font-size:48px;margin-bottom:1rem}
-.no-game-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--muted);margin-bottom:0.5rem}
-.no-game-sub{font-size:14px;color:var(--muted)}
-.no-game-link{display:inline-block;margin-top:1.5rem;padding:8px 20px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);text-decoration:none;font-size:13px}
-
-.hero{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin:1.25rem 0;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--carp),#ff4060,var(--accent))}
-.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--carp);text-transform:uppercase;margin-bottom:0.4rem}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text);margin-bottom:0.4rem}
-.hero-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:1.25rem}
-.scoreboard{display:flex;align-items:center;justify-content:center;gap:2rem;margin-bottom:1rem}
-.team-name{font-family:'Bebas Neue',sans-serif;font-size:24px;text-align:center}
-.team-name.carp{color:var(--carp)}.team-name.away{color:#f5d000}
-.team-score{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;text-align:center}
-.score-sep{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--faint);padding-top:0.75rem}
-.game-meta{display:flex;align-items:center;justify-content:center;gap:0.6rem;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.date-nav-btn:hover{color:var(--text)}.date-nav-btn:disabled{opacity:.3;cursor:default}
+.date-nav-label{font-size:14px;font-weight:500}
+/* スコアカード */
+.score-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.score-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--carp),#ff4060,var(--accent))}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--carp);text-transform:uppercase;margin-bottom:.4rem}
+.scoreboard{display:flex;align-items:center;justify-content:center;gap:2rem;margin:.5rem 0 .75rem}
+.team{text-align:center}
+.tn{font-family:'Bebas Neue',sans-serif;font-size:20px}
+.tn.carp{color:var(--carp)}.tn.away{color:#f5d000}
+.ts{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1}
+.sep{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--faint);padding-top:.5rem}
+.badges{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
 .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
-.badge-final{background:var(--faint);color:var(--muted)}
-.badge-win{background:rgba(200,16,46,0.2);color:#ff7090;border:1px solid rgba(200,16,46,0.3)}
+.bf{background:var(--faint);color:var(--muted)}.bw{background:rgba(200,16,46,.2);color:#ff7090;border:1px solid rgba(200,16,46,.3)}
+/* イニング表 */
 .inning-table-wrap{margin-top:1rem;overflow-x:auto}
 .inning-table{width:100%;border-collapse:collapse;font-size:12px}
 .inning-table th,.inning-table td{text-align:center;padding:4px 6px;border:1px solid var(--border);min-width:26px}
@@ -57,106 +45,154 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .pitcher-bar{margin-top:1rem;display:flex;gap:6px;flex-wrap:wrap}
 .pitcher-chip{display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:3px 9px;font-size:12px}
 .pitcher-chip .role{font-size:10px;color:var(--muted)}
-.s-win{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(62,207,142,0.2);color:var(--green)}
-.s-loss{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(244,96,96,0.2);color:var(--red)}
-.s-good{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(74,158,255,0.15);color:var(--blue)}
-.section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.25rem}
-.section-label{font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;margin-bottom:1rem}
-.section-desc{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.6}
-.legend{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
-.legend-dot{width:8px;height:8px;border-radius:50%}
-.live-update{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;padding:0.4rem 0}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
-.timeline{position:relative;padding-left:1.75rem}
-.timeline-rail{position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border2)}
-.moment{position:relative;margin-bottom:0.65rem;cursor:pointer}
-.moment-dot{position:absolute;left:-1.45rem;top:16px;width:13px;height:13px;border-radius:50%;border:2px solid var(--faint);background:var(--surface2);transition:all 0.2s}
-.moment.selected .moment-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 8px rgba(240,192,64,0.5)}
-.moment.voted .moment-dot{background:var(--green);border-color:var(--green)}
-.type-score .moment-dot{border-color:var(--accent)}.type-pitcher .moment-dot{border-color:var(--blue)}
-.type-crisis .moment-dot{border-color:var(--orange)}.type-hr .moment-dot{border-color:var(--red)}
-.moment-inner{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.7rem 0.9rem;transition:border-color 0.15s,background 0.15s}
-.moment:hover .moment-inner{border-color:var(--border2);background:var(--surface3)}
-.moment.selected .moment-inner{border-color:var(--accent);background:rgba(240,192,64,0.05)}
-.moment.voted .moment-inner{border-color:var(--green)}
-.moment-header{display:flex;align-items:center;gap:6px;margin-bottom:4px}
-.moment-inning{font-size:11px;color:var(--muted);white-space:nowrap;font-weight:500}
-.moment-type-badge{font-size:10px;padding:1px 6px;border-radius:3px;white-space:nowrap;font-weight:700}
-.type-score-badge{background:rgba(240,192,64,0.15);color:var(--accent)}
-.type-pitcher-badge{background:rgba(74,158,255,0.15);color:var(--blue)}
-.type-crisis-badge{background:rgba(240,120,64,0.15);color:var(--orange)}
-.type-hr-badge{background:rgba(244,96,96,0.15);color:var(--red)}
-.moment-desc{font-size:14px;color:var(--text);line-height:1.5;margin-bottom:4px}
-.moment-sub{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:6px;font-style:italic}
-.moment-footer{display:flex;align-items:center;justify-content:space-between}
-.moment-bar-row{display:flex;align-items:center;gap:8px;flex:1}
-.moment-bar-wrap{flex:1;height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
-.moment-bar{height:3px;border-radius:2px;transition:width 0.5s ease}
-.bar-score{background:var(--accent)}.bar-pitcher{background:var(--blue)}.bar-crisis{background:var(--orange)}.bar-hr{background:var(--red)}
-.moment-pct{font-size:11px;color:var(--muted);min-width:54px;text-align:right}
-.moment-share-btn{background:transparent;border:1px solid var(--border2);border-radius:5px;padding:3px 8px;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:3px;flex-shrink:0;margin-left:8px;font-family:'Noto Sans JP',sans-serif}
-.loading-line{height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
-.loading-line-inner{height:3px;width:40%;background:var(--blue);border-radius:2px;animation:loadSlide 1s ease-in-out infinite alternate}
-@keyframes loadSlide{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
-.vote-prompt{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:14px}
-.vote-prompt-icon{font-size:28px;margin-bottom:6px}
-.selected-tag{background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.25);border-radius:var(--radius-sm);padding:0.65rem 0.9rem;font-size:13px;color:var(--accent);margin-bottom:0.75rem}
-.reason-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:0.7rem 0.9rem;font-size:14px;font-family:'Noto Sans JP',sans-serif;color:var(--text);resize:none;min-height:80px}
-.reason-input::placeholder{color:var(--faint)}.reason-input:focus{outline:none;border-color:var(--accent)}
-.btn-vote{margin-top:0.75rem;width:100%;padding:0.75rem;background:var(--carp);color:#fff;border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.btn-vote:disabled{opacity:0.5;cursor:not-allowed}
-.voted-tag{background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.25);border-radius:var(--radius-sm);padding:0.65rem 0.9rem;font-size:13px;color:var(--green);margin-bottom:0.75rem}
-.btn-x-post{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:0.65rem;background:#000;color:#fff;border:1px solid #333;border-radius:var(--radius-sm);font-size:14px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.player-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem 0.75rem;display:flex;flex-direction:column;align-items:center;gap:6px}
-.player-icon{border-radius:50%;background:var(--surface3);border:2px solid var(--faint);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--muted);transition:all 0.35s;width:52px;height:52px}
-.player-icon.carp-player{border-color:var(--carp);color:var(--carp);background:rgba(200,16,46,0.1)}
-.player-name{font-size:13px;font-weight:500;color:var(--text);text-align:center}
-.player-pos{font-size:10px;color:var(--muted)}
-.rating-btns{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-top:4px}
-.rating-btn{font-size:10px;padding:3px 7px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
-.rating-btn.active-mvp{background:rgba(240,192,64,0.2);border-color:var(--accent);color:var(--accent)}
-.rating-btn.active-great{background:rgba(62,207,142,0.2);border-color:var(--green);color:var(--green)}
-.rating-btn.active-ganbatte{background:rgba(74,158,255,0.2);border-color:var(--blue);color:var(--blue)}
-.rating-btn.active-nigun{background:rgba(244,96,96,0.15);border-color:var(--red);color:var(--red)}
-.player-votes{font-size:10px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.vote-pill{padding:1px 5px;border-radius:3px;font-size:10px}
-.pill-mvp{background:rgba(240,192,64,0.15);color:var(--accent)}.pill-great{background:rgba(62,207,142,0.15);color:var(--green)}
-.pill-ganbatte{background:rgba(74,158,255,0.15);color:var(--blue)}.pill-nigun{background:rgba(244,96,96,0.12);color:var(--red)}
-.tabs{display:flex;gap:4px;margin-bottom:1rem}
-.tab{flex:1;text-align:center;padding:0.45rem 0.5rem;font-size:13px;cursor:pointer;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--muted);font-family:'Noto Sans JP',sans-serif}
-.tab.active{background:var(--surface2);color:var(--text);font-weight:500;border-color:var(--border2)}
-.comment{padding:0.75rem 0;border-bottom:1px solid var(--border)}
+.s-win{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(62,207,142,.2);color:var(--green)}
+.s-loss{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(244,96,96,.2);color:var(--red)}
+.s-save{font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(74,158,255,.15);color:var(--blue)}
+/* セクション共通 */
+.section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem}
+.slabel{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:.5rem}
+.sdesc{font-size:13px;color:var(--muted);margin-bottom:.9rem;line-height:1.6}
+/* タイトル投票 */
+.title-list{display:flex;flex-direction:column;gap:6px}
+.title-opt{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:.65rem .9rem;cursor:pointer;position:relative;overflow:hidden;transition:all .15s}
+.title-opt:hover{border-color:var(--border2)}
+.title-opt.picked{border-color:var(--accent);background:rgba(240,192,64,.04)}
+.title-fill{position:absolute;left:0;top:0;bottom:0;background:rgba(240,192,64,.07);transition:width .5s ease;z-index:0}
+.title-body{position:relative;z-index:1;flex:1}
+.title-txt{font-size:14px;font-weight:500}
+.title-pct{font-size:11px;color:var(--muted);margin-top:1px}
+.title-stat{position:relative;z-index:1;font-size:11px;color:var(--muted);white-space:nowrap}
+.add-row{display:flex;gap:8px;margin-top:8px}
+.add-inp{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:var(--rs);padding:.5rem .9rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text)}
+.add-inp:focus{outline:none;border-color:var(--accent)}
+.add-btn{padding:.5rem 1rem;background:var(--accent);color:#000;border:none;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
+/* 波形グラフ */
+.wave-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem}
+.wave-svg{width:100%;display:block}
+.wave-inn-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px;padding:0 4px}
+.wave-legend{display:flex;gap:12px;margin-top:8px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+/* ストーリー */
+.story{margin-bottom:1rem}
+.inning-head{display:flex;align-items:center;gap:8px;padding:1.25rem 0 .4rem}
+.inning-num{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--muted);letter-spacing:.1em;white-space:nowrap}
+.inning-emotion{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;white-space:nowrap}
+.em-push{background:rgba(200,16,46,.12);color:#ff7090}
+.em-hold{background:rgba(74,158,255,.12);color:var(--blue)}
+.em-tens{background:rgba(240,192,64,.12);color:var(--accent)}
+.em-none{background:var(--faint);color:var(--muted)}
+.inning-divider{flex:1;height:1px;background:var(--border)}
+.inning-ctx{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:.5rem;font-style:italic}
+.flow-change{text-align:center;padding:.3rem 0;font-size:12px;display:flex;align-items:center;justify-content:center;gap:6px}
+.flow-change.up{color:rgba(200,16,46,.7)}
+.flow-change.down{color:rgba(74,158,255,.5)}
+.flow-change.flat{color:var(--faint);font-size:16px}
+.fc-line{flex:1;height:1px;max-width:60px}
+.flow-change.up .fc-line{background:rgba(200,16,46,.2)}
+.flow-change.down .fc-line{background:rgba(74,158,255,.15)}
+/* イベントチャンク */
+.evt{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.8rem 1rem;margin-bottom:.4rem;position:relative;overflow:hidden}
+.evt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.evt.hr::before{background:var(--red);opacity:1}
+.evt.score::before{background:var(--accent);opacity:1}
+.evt.crisis::before{background:var(--orange);opacity:1}
+.evt.pitcher::before{background:var(--blue);opacity:1}
+.evt-meta{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap}
+.evt-badge{font-size:10px;padding:1px 6px;border-radius:3px;font-weight:700}
+.eb-hr{background:rgba(244,96,96,.15);color:var(--red)}
+.eb-score{background:rgba(240,192,64,.15);color:var(--accent)}
+.eb-crisis{background:rgba(240,120,64,.15);color:var(--orange)}
+.eb-pitcher{background:rgba(74,158,255,.15);color:var(--blue)}
+.evt-desc{font-size:14px;color:var(--text);line-height:1.5}
+.evt-sub{font-size:12px;color:var(--muted);margin-top:2px;font-style:italic}
+/* 転換点 */
+.turning-section{margin:.5rem 0 1rem}
+.turning-hd{display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
+.turning-hd-title{font-size:13px;font-weight:700;color:var(--text)}
+.turning-hd-sub{font-size:11px;color:var(--muted)}
+.tc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:.6rem;position:relative;overflow:hidden;transition:border-color .15s}
+.tc.top-voted{border-color:rgba(200,16,46,.35);background:rgba(200,16,46,.04)}
+.tc.top-voted::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--carp),#ff4060,var(--accent))}
+.tc.user-post{border-color:rgba(62,207,142,.2);background:rgba(62,207,142,.02)}
+.tc-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.tc-inn{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;padding-top:2px}
+.tc-body{flex:1}
+.tc-desc{font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
+.tc-reason{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;font-style:italic}
+.tc-tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.tc-tag{font-size:10px;padding:2px 7px;border-radius:3px;font-weight:500}
+.tag-strong{background:rgba(200,16,46,.15);color:#ff7090}
+.tag-mid{background:rgba(240,192,64,.12);color:var(--accent)}
+.tag-weak{background:rgba(74,158,255,.12);color:var(--blue)}
+.tag-sys{background:var(--faint);color:var(--muted);border:1px solid var(--border2)}
+.tag-user{background:rgba(62,207,142,.12);color:var(--green)}
+.tc-foot{display:flex;align-items:center;gap:8px;margin-top:8px}
+.tc-vote-row{flex:1;display:flex;align-items:center;gap:6px}
+.tc-bar-wrap{flex:1;height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
+.tc-bar{height:3px;border-radius:2px;background:var(--carp);transition:width .5s ease}
+.tc-stat{font-size:11px;color:var(--muted);white-space:nowrap}
+.tc-vbtn{font-size:12px;padding:4px 12px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;white-space:nowrap}
+.tc-vbtn:hover{border-color:rgba(200,16,46,.4);color:#ff7090}
+.tc-vbtn.active{background:rgba(200,16,46,.12);border-color:var(--carp);color:#ff6080;font-weight:700}
+.tc-comments-wrap{margin-top:8px;border-top:1px solid var(--border);padding-top:8px}
+.tc-cmt{font-size:12px;color:var(--muted);padding:3px 0;display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+.tc-cmt-dot{width:5px;height:5px;border-radius:50%;background:var(--faint);flex-shrink:0;margin-top:6px}
+/* 投稿フォーム */
+.post-form{background:rgba(62,207,142,.04);border:1px solid rgba(62,207,142,.15);border-radius:var(--r);padding:1rem 1.1rem;margin-top:.75rem}
+.post-form-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.form-row{margin-bottom:.65rem}
+.form-label{font-size:11px;color:var(--muted);margin-bottom:4px;display:block}
+.form-select,.form-input,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:var(--rs);padding:.5rem .9rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text)}
+.form-textarea{resize:none;min-height:70px}
+.form-select:focus,.form-input:focus,.form-textarea:focus{outline:none;border-color:var(--green)}
+.intensity-row{display:flex;gap:6px}
+.int-btn{flex:1;padding:.4rem;font-size:11px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-align:center}
+.int-btn.sel-s{border-color:rgba(200,16,46,.4);color:#ff7090;background:rgba(200,16,46,.1);font-weight:700}
+.int-btn.sel-m{border-color:rgba(240,192,64,.4);color:var(--accent);background:rgba(240,192,64,.1);font-weight:700}
+.int-btn.sel-w{border-color:rgba(74,158,255,.4);color:var(--blue);background:rgba(74,158,255,.1);font-weight:700}
+.form-submit{width:100%;padding:.65rem;background:var(--green);color:#061a10;border:none;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:.5rem}
+/* コメント */
+.ctabs{display:flex;gap:4px;margin-bottom:.75rem}
+.ctab{flex:1;text-align:center;padding:.4rem;font-size:12px;cursor:pointer;border:1px solid var(--border);border-radius:var(--rs);color:var(--muted);font-family:'Noto Sans JP',sans-serif;background:transparent;transition:all .15s}
+.ctab.active{background:var(--surface2);color:var(--text);font-weight:500;border-color:var(--border2)}
+.comment{padding:.65rem 0;border-bottom:1px solid var(--border)}
 .comment:last-child{border-bottom:none}
-.comment-header{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.comment-name{font-size:13px;font-weight:500}
-.moment-tag-sm{font-size:10px;padding:1px 6px;border-radius:3px;margin-left:4px;font-weight:500}
-.tag-score{background:rgba(240,192,64,0.15);color:var(--accent)}.tag-pitcher{background:rgba(74,158,255,0.15);color:var(--blue)}
-.tag-crisis{background:rgba(240,120,64,0.15);color:var(--orange)}.tag-hr{background:rgba(244,96,96,0.15);color:var(--red)}
-.comment-body{font-size:14px;color:var(--text);line-height:1.65;padding-left:38px}
-.comment-time{font-size:11px;color:var(--muted);padding-left:38px;margin-top:2px}
-.comment-actions{display:flex;align-items:center;justify-content:space-between;padding-left:38px;margin-top:5px}
-.like-btn{font-size:12px;color:var(--muted);cursor:pointer;padding:2px 8px;border-radius:4px;border:1px solid transparent;font-family:'Noto Sans JP',sans-serif;background:transparent}
-.like-btn.liked{color:var(--red)}
-.comment-share-btn{font-size:11px;color:var(--muted);background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;padding:2px 6px;font-family:'Noto Sans JP',sans-serif}
-.new-comment-area{margin-top:0.75rem}
-.x-name-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;color:var(--muted)}
-.new-comment-row{display:flex;gap:8px}
-.new-comment-input{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:0.55rem 0.9rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text)}
-.new-comment-input::placeholder{color:var(--faint)}.new-comment-input:focus{outline:none;border-color:var(--blue)}
-.send-btn{padding:0.55rem 1.1rem;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
-.send-btn:disabled{opacity:0.5;cursor:not-allowed}
-.empty-state{text-align:center;padding:2rem;color:var(--muted);font-size:14px}
-.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--faint);border-top-color:var(--blue);border-radius:50%;animation:spinAnim 0.7s linear infinite}
+.cmeta{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap}
+.avatar{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.cname{font-size:12px;color:var(--muted)}
+.ccat{font-size:10px;padding:1px 6px;border-radius:3px;font-weight:500}
+.cc-a{background:rgba(74,158,255,.12);color:var(--blue)}
+.cc-f{background:rgba(62,207,142,.12);color:var(--green)}
+.cc-n{background:rgba(240,192,64,.12);color:var(--accent)}
+.clink{font-size:10px;padding:1px 6px;border-radius:3px;background:var(--faint);color:var(--muted)}
+.cbody{font-size:14px;color:var(--text);line-height:1.6;padding-left:30px}
+.empty-state{text-align:center;padding:2rem;color:var(--muted);font-size:13px}
+.new-comment{margin-top:.75rem}
+.ctype-row{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;align-items:center}
+.ctype-lbl{font-size:11px;color:var(--muted)}
+.ctype-btn{font-size:11px;padding:3px 10px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
+.ctype-btn.sa{border-color:rgba(74,158,255,.4);color:var(--blue);background:rgba(74,158,255,.1);font-weight:700}
+.ctype-btn.sf{border-color:rgba(62,207,142,.4);color:var(--green);background:rgba(62,207,142,.1);font-weight:700}
+.ctype-btn.sn{border-color:rgba(240,192,64,.4);color:var(--accent);background:rgba(240,192,64,.1);font-weight:700}
+.cinput-row{display:flex;gap:8px}
+.cinput{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:var(--rs);padding:.55rem .9rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text)}
+.cinput:focus{outline:none;border-color:var(--blue)}
+.csend{padding:.55rem 1rem;background:var(--blue);color:#fff;border:none;border-radius:var(--rs);font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
+.csend:disabled{opacity:.5;cursor:not-allowed}
+/* ローディング・その他 */
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--faint);border-top-color:var(--blue);border-radius:50%;animation:spinAnim .7s linear infinite}
 @keyframes spinAnim{to{transform:rotate(360deg)}}
-.ai-box{background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.2);border-radius:var(--radius-sm);padding:1rem 1.1rem;font-size:14px;color:#c4b5fd;line-height:1.75}
-.ai-box strong{color:var(--text);font-weight:500}
-.ai-share-btn{display:inline-flex;align-items:center;gap:5px;margin-top:0.75rem;padding:0.4rem 0.9rem;background:#000;color:#fff;border:1px solid #444;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(12px);background:var(--green);color:#061a10;font-size:13px;font-weight:700;padding:0.5rem 1.4rem;border-radius:99px;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;z-index:999}
+.no-game{text-align:center;padding:4rem 2rem}
+.no-game-icon{font-size:48px;margin-bottom:1rem}
+.no-game-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--muted);margin-bottom:.5rem}
+.no-game-sub{font-size:14px;color:var(--muted)}
+.no-game-link{display:inline-block;margin-top:1.5rem;padding:8px 20px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);text-decoration:none;font-size:13px}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(12px);background:var(--green);color:#061a10;font-size:13px;font-weight:700;padding:.5rem 1.4rem;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:999}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:480px){.team-score{font-size:40px}.players-grid{grid-template-columns:repeat(2,1fr)}}
+.live-update{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;padding:.4rem 0}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
+.fi{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
+.fi.vis{opacity:1;transform:translateY(0)}
+@media(max-width:480px){.ts{font-size:40px}.intensity-row{flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -164,422 +200,582 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
   <div><div class="site-title">本日のカープトーク</div><div class="site-sub">広島東洋カープ ファン議論</div></div>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="online-dot"></div>
-    <button class="x-connect-btn" id="x-btn" onclick="handleXConnect()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      <span id="x-btn-label">X連携</span>
-    </button>
+    <div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>更新されました</div>
   </div>
 </header>
-<div class="container">
-  <!-- 日付ナビ -->
+
+<div class="wrap">
   <div class="date-nav">
     <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">← 前日</button>
-    <span class="date-nav-label" id="date-nav-label">読み込み中...</span>
+    <span id="date-nav-label" style="font-size:14px;font-weight:500">読み込み中...</span>
     <button class="date-nav-btn" id="btn-next" onclick="goDate(1)">翌日 →</button>
   </div>
-
-  <!-- コンテンツ（動的に入れ替え） -->
   <div id="main-content">
     <div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>
   </div>
 </div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-var GAME_ID='';
-var GAME={};
-var MOMENTS=[];
-var PLAYERS=[];
-var TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
-var TYPE_BADGE={score:'type-score-badge',pitcher:'type-pitcher-badge',crisis:'type-crisis-badge',hr:'type-hr-badge'};
-var BAR_CLS={score:'bar-score',pitcher:'bar-pitcher',crisis:'bar-crisis',hr:'bar-hr'};
-var TAG_CLS={score:'tag-score',pitcher:'tag-pitcher',crisis:'tag-crisis',hr:'tag-hr'};
-var RATING_LABEL={mvp:'🏆 今日のMVP',great:'👏 頑張った',ganbatte:'💪 次も頑張れ',nigun:'💦 2軍で出直し？'};
-var RATING_ACTIVE={mvp:'active-mvp',great:'active-great',ganbatte:'active-ganbatte',nigun:'active-nigun'};
-var AVATAR_PAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
+// ===== 定数 =====
 var APP_URL='https://carp-talk.vercel.app';
-var HASHTAGS='#広島カープ #カープトーク #分岐点議論';
-var sb=null,voteCounts={},myVotedId=null,selectedId=null;
-var allComments=[],myLikes=new Set(),currentTab='all';
-var userId=null,xUser=null,playerRatings={},myPlayerRatings={};
-var currentDate='';
+var HASHTAGS='#広島カープ #カープトーク #野球';
+var URL_='https://dzsznmpuxuftprcqywex.supabase.co';
+var KEY_='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
+var sb=supabase.createClient(URL_,KEY_);
 
-// 日付ユーティリティ
+// ===== 状態 =====
+var GAME_ID='',GAME={},MOMENTS=[],PLAYERS=[];
+var currentDate='';
+var userId=null;
+var titleVotes={},myTitleVote=null;
+var turnings=[],myTurning=null;
+var allComments=[],myLikes=new Set(),currentCTab='all',currentCType='a';
+var formIntensity={};// inningN -> 'strong'|'mid'|'weak'
+var AVPAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
+var TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
+var TYPE_BADGE={score:'eb-score',pitcher:'eb-pitcher',crisis:'eb-crisis',hr:'eb-hr'};
+
+// ===== ユーティリティ =====
 function todayStr(){var d=new Date();return d.getFullYear()+'-'+(String(d.getMonth()+1).padStart(2,'0'))+'-'+(String(d.getDate()).padStart(2,'0'));}
 function dateLabel(str){var p=str.split('-');return p[0]+'年'+parseInt(p[1])+'月'+parseInt(p[2])+'日';}
 function addDays(str,n){var d=new Date(str);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
-
-function goDate(n){
-  var newDate=addDays(currentDate,n);
-  history.pushState({},'','/?date='+newDate);
-  loadGame(newDate);
-}
-
-async function loadGame(date){
-  currentDate=date;
-  var today=todayStr();
-  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (今日)':'');
-  document.getElementById('btn-next').disabled=(date>=today);
-  document.getElementById('main-content').innerHTML='<div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>';
-  
-  // JSONファイルを取得
-  var url='/games/'+date+'.json?t='+Date.now();
-  var r=await fetch(url);
-  
-  if(!r.ok){
-    // 試合なし
-    document.getElementById('main-content').innerHTML=
-      '<div class="no-game">'+
-      '<div class="no-game-icon">⚾</div>'+
-      '<div class="no-game-title">本日は試合がありません</div>'+
-      '<div class="no-game-sub">'+dateLabel(date)+'はオフ日またはデータ未登録です</div>'+
-      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">← 前日の試合を見る</a>'+
-      '</div>';
-    return;
-  }
-  
-  var gameData=await r.json();
-  GAME_ID=gameData.id;
-  GAME={home:gameData.home_team,away:gameData.away_team,homeScore:gameData.home_score,awayScore:gameData.away_score,date:dateLabel(gameData.game_date),venue:gameData.venue};
-  MOMENTS=gameData.moments||[];
-  PLAYERS=gameData.players||[];
-  
-  // リセット
-  voteCounts={};myVotedId=null;selectedId=null;allComments=[];myLikes=new Set();currentTab='all';playerRatings={};myPlayerRatings={};
-  
-  renderMainContent(gameData);
-  await initApp();
-}
-
-function renderMainContent(g){
-  var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
-  var awayColor=g.away_team==='広島'?'var(--carp)':'#f5d000';
-  var homeClass=g.home_team==='広島'?'carp':'away';
-  var awayClass=g.away_team==='広島'?'carp':'away';
-
-  // イニング表
-  var inningHtml='';
-  if(g.innings&&g.innings.hansin){
-    var hi=g.innings.hansin,ri=g.innings.hiroshima;
-    var cols='';for(var i=1;i<=9;i++)cols+='<th>'+i+'</th>';
-    var hCells='',rCells='';
-    for(var i=0;i<9;i++){
-      var hv=hi[i],rv=ri[i];
-      hCells+='<td class="'+(hv>0?'scoring':'zero')+'">'+hv+'</td>';
-      rCells+='<td class="'+(rv>0?'scoring':'zero')+'">'+rv+'</td>';
-    }
-    inningHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
-      '<tr><td class="team-label" style="color:#f5d000">'+g.away_team+'</td>'+hCells+'<td class="score-col" style="color:#f5d000">'+g.away_score+'</td><td>'+(g.innings.hansin_hits||'-')+'</td><td>'+(g.innings.hansin_errors||'-')+'</td></tr>'+
-      '<tr><td class="team-label" style="color:var(--carp)">'+g.home_team+'</td>'+rCells+'<td class="score-col" style="color:var(--carp)">'+g.home_score+'</td><td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>'+
-      '</tbody></table></div>';
-  }
-
-  // 継投
-  var pitcherHtml='';
-  if(g.pitchers&&g.pitchers.length){
-    var chips='';
-    g.pitchers.forEach(function(p){
-      var teamColor=p.team==='広島'?'var(--carp)':'#f5d000';
-      var bc=p.team==='広島'?'rgba(200,16,46,0.3)':'rgba(245,208,0,0.3)';
-      var resultBadge=p.result==='win'?'<span class="s-win">勝</span>':p.result==='loss'?'<span class="s-loss">敗</span>':p.era?'<span class="s-good">防'+p.era+'</span>':'';
-      chips+='<div class="pitcher-chip" style="border-color:'+bc+'"><span class="role" style="color:'+teamColor+'">'+p.team+p.role+'</span><span>'+p.name+'</span>'+resultBadge+'</div>';
-    });
-    pitcherHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
-  }
-
-  var resultLabel=g.result_label?'<span class="badge badge-final">FINAL・'+g.result_label+'</span>':'<span class="badge badge-final">FINAL</span>';
-  var hiroshimaWon=g.home_team==='広島'?g.home_score>g.away_score:g.away_score>g.home_score;
-
-  document.getElementById('main-content').innerHTML=
-    '<div class="hero">'+
-    '<div class="hero-eyebrow">⚾ '+GAME.date+'（'+g.venue+'）</div>'+
-    '<div class="hero-title">今日の試合、分岐点はどこだった？</div>'+
-    '<div class="hero-desc">試合の流れを変えたと思う場面を選んで投票しよう。みんなの目線が集まると、新しい発見がある。</div>'+
-    '<div class="scoreboard"><div><div class="team-name '+homeClass+'">'+g.home_team+'</div><div class="team-score">'+g.home_score+'</div></div>'+
-    '<div class="score-sep">—</div>'+
-    '<div><div class="team-name '+awayClass+'">'+g.away_team+'</div><div class="team-score">'+g.away_score+'</div></div></div>'+
-    '<div class="game-meta">'+resultLabel+(hiroshimaWon?'<span class="badge badge-win">広島 勝利</span>':'')+'</div>'+
-    inningHtml+pitcherHtml+
-    '</div>'+
-
-    '<div class="section">'+
-    '<div class="section-label">分岐点を選ぶ</div>'+
-    '<div class="section-desc">この試合の流れを決めたと思う場面はどこ？タップして投票しよう。</div>'+
-    '<div class="legend">'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>得点シーン</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>投手好投</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>本塁打</div>'+
-    '<div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>ピンチ脱出</div>'+
-    '</div>'+
-    '<div id="live-update" style="display:none" class="live-update"><div class="live-dot"></div>投票がリアルタイムで更新されています</div>'+
-    '<div class="timeline"><div class="timeline-rail"></div><div id="moments-list"><div class="loading-line"><div class="loading-line-inner"></div></div></div></div>'+
-    '</div>'+
-
-    '<div class="section">'+
-    '<div class="section-label">投票</div>'+
-    '<div id="vote-prompt" class="vote-prompt"><div class="vote-prompt-icon">☝️</div>上の分岐点から選んでください</div>'+
-    '<div id="vote-form" style="display:none">'+
-    '<div class="selected-tag" id="selected-tag"></div>'+
-    '<textarea class="reason-input" id="reason-input" placeholder="なぜここが分岐点だと思いましたか？（任意）" rows="3"></textarea>'+
-    '<button class="btn-vote" id="vote-btn" onclick="submitVote()">この場面に投票する</button>'+
-    '</div>'+
-    '<div id="voted-done" style="display:none">'+
-    '<div class="voted-tag" id="voted-tag">✓ 投票しました</div>'+
-    '<button class="btn-x-post" onclick="shareVote()"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>投票結果をXにポスト</button>'+
-    '<div id="vote-share-preview" style="display:none"></div>'+
-    '</div></div>'+
-
-    '<div class="section">'+
-    '<div class="section-label">出場選手への評価</div>'+
-    '<div class="section-desc">今日の選手たちへ一票を。評価数に応じてアイコンが大きくなります。</div>'+
-    '<div class="players-grid" id="players-grid"><div style="color:var(--muted);font-size:13px;padding:1rem 0"><span class="spin"></span> 読み込み中...</div></div>'+
-    '</div>'+
-
-    '<div class="section">'+
-    '<div class="section-label">みんなのコメント</div>'+
-    '<div class="tabs">'+
-    '<div class="tab active" onclick="setTab(\'all\',this)">すべて</div>'+
-    '<div class="tab" onclick="setTab(\'hot\',this)">盛り上がり順</div>'+
-    '<div class="tab" onclick="setTab(\'ai\',this)">AI解説</div>'+
-    '</div>'+
-    '<div id="comments-list"></div>'+
-    '<div id="ai-panel" style="display:none"></div>'+
-    '<div class="new-comment-area" id="comment-input-row">'+
-    '<div class="x-name-row" id="x-name-row" style="display:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="x-posting-as"></span>としてポスト</div>'+
-    '<div class="new-comment-row"><input class="new-comment-input" id="comment-input" placeholder="コメントを入力..." maxlength="200"><button class="send-btn" id="send-btn" onclick="sendComment()">送信</button></div>'+
-    '</div></div>';
-}
-
-// ===== イベント委譲 =====
-document.addEventListener('click',function(e){
-  var mid=e.target.closest('[data-mid]');
-  if(mid&&!e.target.closest('[data-share]')){selectMoment(parseInt(mid.dataset.mid));}
-  var share=e.target.closest('[data-share]');
-  if(share){e.stopPropagation();shareMoment(parseInt(share.dataset.share));}
-  var rate=e.target.closest('[data-rate]');
-  if(rate){ratePlayer(rate.dataset.player,rate.dataset.rate);}
-  var like=e.target.closest('[data-like]');
-  if(like){toggleLike(like.dataset.like);}
-  var cshr=e.target.closest('[data-cshr]');
-  if(cshr){shareComment(cshr.dataset.cshr);}
-});
-
-// ===== UTILS =====
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hashStr(s){var h=0;for(var i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h;}
 function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return Math.floor(diff/60)+'分前';if(diff<86400)return Math.floor(diff/3600)+'時間前';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
-function xSVG(sz,fill){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+(fill||'currentColor')+'"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.731-8.836L2.13 2.25h6.962l4.265 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';}
-function openTweet(text){var url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);var w=window.open(url,'_blank','width=550,height=420,noopener,noreferrer');if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.click();}}
-function getDisplayName(){if(xUser)return xUser.name;var adj=['熱血','鋭眼','渋い','猛鯉','快速','剛腕','強肩','俊足'];var nou=['ファン','観客','応援団','マニア','通','ウォッチャー','記者'];var s=userId.charCodeAt(2)+userId.charCodeAt(3);return adj[s%adj.length]+nou[(s>>2)%nou.length];}
-function totalVotes(){return Object.values(voteCounts).reduce(function(s,v){return s+v;},0);}
+function goDate(n){var nd=addDays(currentDate,n);history.pushState({},'','/?date='+nd);loadGame(nd);}
+function getEmotion(flow){if(flow<=20)return{label:'圧倒',cls:'em-push'};if(flow<=30)return{label:'押してる',cls:'em-push'};if(flow<=40)return{label:'緊張',cls:'em-tens'};return{label:'耐えてる',cls:'em-hold'};}
 
-// ===== X連携 =====
-function handleXConnect(){
-  if(xUser){xUser=null;localStorage.removeItem('x_user');renderXBtn();document.getElementById('x-name-row').style.display='none';showToast('X連携を解除しました');return;}
-  var name=window.prompt('Xのユーザー名（@なし）を入力してください');
-  if(!name||!name.trim())return;
-  xUser={name:name.trim(),screen_name:name.trim()};
-  localStorage.setItem('x_user',JSON.stringify(xUser));
-  renderXBtn();
-  document.getElementById('x-name-row').style.display='flex';
-  document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;
-  showToast('@'+xUser.screen_name+' として連携しました');
-}
-function renderXBtn(){
-  var btn=document.getElementById('x-btn'),label=document.getElementById('x-btn-label');
-  if(!btn)return;
-  if(xUser){btn.classList.add('x-connected');label.textContent='@'+xUser.screen_name;}
-  else{btn.classList.remove('x-connected');label.textContent='X連携';}
+// ===== 日付ナビ =====
+function updateDateNav(date){
+  var today=todayStr();
+  document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (今日)':'');
+  document.getElementById('btn-next').disabled=(date>=today);
 }
 
-// ===== MOMENTS =====
-function renderMoments(){
-  var tot=totalVotes(),html='';
-  MOMENTS.forEach(function(m){
-    var cnt=voteCounts[m.id]||0,pct=tot>0?Math.round(cnt/tot*100):0;
-    var sel=m.id===selectedId?'selected':(m.id===myVotedId?'voted':'');
-    html+='<div class="moment '+sel+' type-'+m.type+'" data-mid="'+m.id+'">';
-    html+='<div class="moment-dot"></div><div class="moment-inner">';
-    html+='<div class="moment-header"><span class="moment-inning">'+m.inning+'</span>';
-    html+='<span class="moment-type-badge '+TYPE_BADGE[m.type]+'">'+TYPE_LABEL[m.type]+'</span></div>';
-    html+='<div class="moment-desc">'+m.desc+'</div><div class="moment-sub">'+m.sub+'</div>';
-    html+='<div class="moment-footer"><div class="moment-bar-row"><div class="moment-bar-wrap"><div class="moment-bar '+BAR_CLS[m.type]+'" style="width:'+pct+'%"></div></div>';
-    html+='<span class="moment-pct">'+cnt+'票 '+pct+'%</span></div>';
-    html+='<button class="moment-share-btn" data-share="'+m.id+'">'+xSVG(10)+' シェア</button></div>';
-    html+='</div></div>';
+// ===== ゲーム読み込み =====
+async function loadGame(date){
+  currentDate=date;
+  updateDateNav(date);
+  document.getElementById('main-content').innerHTML='<div style="text-align:center;padding:4rem 0;color:var(--muted)"><span class="spin"></span></div>';
+  var r=await fetch('/games/'+date+'.json?t='+Date.now());
+  if(!r.ok){
+    document.getElementById('main-content').innerHTML=
+      '<div class="no-game">'+
+      '<div class="no-game-icon">⚾</div>'+
+      '<div class="no-game-title">試合データなし</div>'+
+      '<div class="no-game-sub">'+dateLabel(date)+'の試合データは準備中です</div>'+
+      '<a href="/?date='+addDays(date,-1)+'" class="no-game-link">← 前日の試合を見る</a>'+
+      '</div>';
+    return;
+  }
+  var g=await r.json();
+  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue};
+  MOMENTS=g.moments||[];PLAYERS=g.players||[];
+  // リセット
+  titleVotes={};myTitleVote=null;turnings=[];myTurning=null;
+  allComments=[];myLikes=new Set();currentCTab='all';currentCType='a';formIntensity={};
+  renderMain(g);
+  await initApp(g);
+}
+
+// ===== メイン描画 =====
+function renderMain(g){
+  var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
+  var awayColor=g.away_team==='広島'?'var(--carp)':'#f5d000';
+  var homeClass=g.home_team==='広島'?'carp':'away';
+  var awayClass=g.away_team==='広島'?'carp':'away';
+  var hiroshimaWon=g.home_team==='広島'?g.home_score>g.away_score:g.away_score>g.home_score;
+
+  // イニング表
+  var innHtml='';
+  if(g.innings&&g.innings.hiroshima){
+    var hi=g.innings.giants||g.innings.away_innings||[],ri=g.innings.hiroshima;
+    var cols='';for(var i=1;i<=9;i++)cols+='<th>'+i+'</th>';
+    var hCells='',rCells='';
+    for(var i=0;i<9;i++){
+      var hv=hi[i]||0,rv=ri[i];
+      hCells+='<td class="'+(hv>0?'scoring':'zero')+'">'+hv+'</td>';
+      rCells+='<td class="'+(rv>0&&rv!=='X'?'scoring':'zero')+'">'+rv+'</td>';
+    }
+    innHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
+      '<tr><td class="team-label" style="color:'+awayColor+'">'+g.away_team+'</td>'+hCells+'<td class="score-col" style="color:'+awayColor+'">'+g.away_score+'</td><td>'+(g.innings.giants_hits||'-')+'</td><td>'+(g.innings.giants_errors||'-')+'</td></tr>'+
+      '<tr><td class="team-label" style="color:var(--carp)">'+g.home_team+'</td>'+rCells+'<td class="score-col" style="color:var(--carp)">'+g.home_score+'</td><td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>'+
+      '</tbody></table></div>';
+  }
+
+  // 投手
+  var pitHtml='';
+  if(g.pitchers&&g.pitchers.length){
+    var chips='';
+    g.pitchers.forEach(function(p){
+      var tc=p.team==='広島'?'var(--carp)':'#f5d000';
+      var bc=p.team==='広島'?'rgba(200,16,46,.3)':'rgba(245,208,0,.3)';
+      var rb=p.result==='win'?'<span class="s-win">勝</span>':p.result==='loss'?'<span class="s-loss">敗</span>':p.result==='save'?'<span class="s-save">S</span>':'';
+      chips+='<div class="pitcher-chip" style="border-color:'+bc+'"><span class="role" style="color:'+tc+'">'+p.team+p.role+'</span><span>'+p.name+'</span>'+rb+'</div>';
+    });
+    pitHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
+  }
+
+  var resultLabel=g.result_label?'<span class="badge bf">FINAL・'+g.result_label+'</span>':'<span class="badge bf">FINAL</span>';
+
+  document.getElementById('main-content').innerHTML=
+    // スコアカード
+    '<div class="score-card fi">'+
+    '<div class="eyebrow">⚾ '+GAME.date+'（'+GAME.venue+'）</div>'+
+    '<div class="scoreboard">'+
+    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+g.home_score+'</div></div>'+
+    '<div class="sep">—</div>'+
+    '<div class="team"><div class="tn '+awayClass+'">'+g.away_team+'</div><div class="ts" style="color:'+awayColor+'">'+g.away_score+'</div></div>'+
+    '</div>'+
+    '<div class="badges">'+resultLabel+(hiroshimaWon?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
+    innHtml+pitHtml+
+    '</div>'+
+
+    // タイトル投票
+    '<div class="section fi" id="title-section">'+
+    '<div class="slabel">この試合、一言で言うなら？</div>'+
+    '<div class="sdesc">あなたが感じた今日の本質を選ぶか、提案してください。</div>'+
+    '<div id="title-list"></div>'+
+    '<div class="add-row">'+
+    '<input class="add-inp" id="title-inp" placeholder="別のタイトルを提案..." maxlength="30">'+
+    '<button class="add-btn" onclick="addTitle()">提案</button>'+
+    '</div></div>'+
+
+    // 波形グラフ
+    '<div class="wave-box fi">'+
+    '<div class="slabel">試合の流れ（みんなの解釈）</div>'+
+    '<svg class="wave-svg" id="wave-svg" viewBox="0 0 660 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:90px">'+
+    '<defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8102e" stop-opacity=".4"/><stop offset="100%" stop-color="#c8102e" stop-opacity="0"/></linearGradient></defs>'+
+    '<line x1="0" y1="45" x2="660" y2="45" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>'+
+    '<path id="wave-fill" fill="url(#wg)"/><path id="wave-line" fill="none" stroke="#c8102e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+    '<g id="wave-markers"></g>'+
+    '</svg>'+
+    '<div class="wave-inn-labels"><span>1回</span><span>2回</span><span>3回</span><span>4回</span><span>5回</span><span>6回</span><span>7回</span><span>8回</span><span>9回</span></div>'+
+    '<div class="wave-legend"><span>🔴 転換点（多数決）</span><span style="color:rgba(200,16,46,.6)">■ 広島優勢</span><span style="color:rgba(74,158,255,.5)">■ 拮抗</span></div>'+
+    '</div>'+
+
+    // ストーリー
+    '<div class="story fi" id="story-root"></div>'+
+
+    // コメント
+    '<div class="section fi" id="comment-section">'+
+    '<div class="slabel">コメント</div>'+
+    '<div class="ctabs">'+
+    '<button class="ctab active" onclick="setCTab(\'all\',this)">すべて</button>'+
+    '<button class="ctab" onclick="setCTab(\'a\',this)">🔍 流れ分析</button>'+
+    '<button class="ctab" onclick="setCTab(\'f\',this)">💬 感情</button>'+
+    '<button class="ctab" onclick="setCTab(\'n\',this)">😂 ネタ</button>'+
+    '</div>'+
+    '<div id="clist"></div>'+
+    '<div class="new-comment">'+
+    '<div class="ctype-row"><span class="ctype-lbl">種類：</span>'+
+    '<button id="cta" class="ctype-btn sa" onclick="setCType(\'a\')">🔍 流れ分析</button>'+
+    '<button id="ctf" class="ctype-btn" onclick="setCType(\'f\')">💬 感情</button>'+
+    '<button id="ctn" class="ctype-btn" onclick="setCType(\'n\')">😂 ネタ</button>'+
+    '</div>'+
+    '<div class="cinput-row"><input class="cinput" id="cinp" placeholder="コメントを入力..." maxlength="200"><button class="csend" id="csend" onclick="sendComment()">送信</button></div>'+
+    '</div></div>';
+
+  initFI();
+  renderStory();
+}
+
+// ===== 波形 =====
+function getFlowVal(inn,turning_data){
+  // ターニングポイントの投票数からフロー値を計算
+  var strong=turning_data.filter(function(t){return t.inning.startsWith(String(inn))&&t.intensity==='strong';});
+  var mid=turning_data.filter(function(t){return t.inning.startsWith(String(inn))&&t.intensity==='mid';});
+  var weak=turning_data.filter(function(t){return t.inning.startsWith(String(inn))&&t.intensity==='weak';});
+  // モーメントのタイプから基本フロー
+  var evt=MOMENTS.find(function(m){return m.inning&&m.inning.startsWith(String(inn)+'回');});
+  var base=45;
+  if(evt){if(evt.type==='hr'||evt.type==='score')base=20;else if(evt.type==='crisis')base=35;}
+  return base;
+}
+
+function drawWave(){
+  var el=document.getElementById('wave-svg');if(!el)return;
+  // ターニングポイントの投票から各イニングのフロー値を推定
+  var flows=[];
+  for(var i=1;i<=9;i++){
+    var myT=turnings.filter(function(t){return parseInt(t.inning)===i;});
+    var strongV=myT.filter(function(t){return t.intensity==='strong';}).reduce(function(s,t){return s+(t.vote_count||0);},0);
+    var evt=MOMENTS.find(function(m){return m.inning&&m.inning.startsWith(String(i)+'回');});
+    var base=45;
+    if(evt){if(evt.type==='hr')base=15;else if(evt.type==='score')base=20;else if(evt.type==='crisis')base=35;}
+    if(strongV>5)base=Math.max(base-10,10);
+    flows.push({x:(i-1)/8*640+10,y:base});
+  }
+  var d='M'+flows[0].x+','+flows[0].y;
+  for(var i=1;i<flows.length;i++){
+    var p=flows[i-1],c=flows[i];
+    var cx=(p.x+c.x)/2;
+    d+=' C'+cx+','+p.y+' '+cx+','+c.y+' '+c.x+','+c.y;
+  }
+  document.getElementById('wave-line').setAttribute('d',d);
+  document.getElementById('wave-fill').setAttribute('d',d+' L'+flows[flows.length-1].x+',90 L10,90 Z');
+  // 転換点マーカー（strong優先）
+  var markers='';
+  turnings.filter(function(t){return t.intensity==='strong'&&(t.vote_count||0)>0;}).forEach(function(t){
+    var n=parseInt(t.inning)-1;
+    if(isNaN(n)||n<0||n>8)return;
+    var p=flows[n];
+    markers+='<circle cx="'+p.x+'" cy="'+p.y+'" r="5" fill="#ff2040" opacity=".9"/>';
+    markers+='<circle cx="'+p.x+'" cy="'+p.y+'" r="9" fill="none" stroke="#ff2040" stroke-width="1.5" opacity=".4"/>';
   });
-  if(document.getElementById('moments-list'))document.getElementById('moments-list').innerHTML=html;
-}
-function selectMoment(id){
-  if(myVotedId||!document.getElementById('vote-form'))return;
-  selectedId=id;
-  var m=MOMENTS.find(function(x){return x.id===id;});
-  document.getElementById('vote-prompt').style.display='none';
-  document.getElementById('vote-form').style.display='block';
-  document.getElementById('selected-tag').innerHTML='<strong>'+m.inning+'</strong> '+m.desc;
-  renderMoments();
-}
-async function submitVote(){
-  if(!selectedId||myVotedId)return;
-  var btn=document.getElementById('vote-btn');
-  btn.disabled=true;btn.textContent='送信中...';
-  var reason=document.getElementById('reason-input').value.trim();
-  var r=await sb.from('votes').insert({game_id:GAME_ID,moment_id:selectedId,user_id:userId,reason:reason||null});
-  if(r.error){showToast(r.error.code==='23505'?'すでに投票済みです':'エラーが発生しました');btn.disabled=false;btn.textContent='この場面に投票する';return;}
-  myVotedId=selectedId;selectedId=null;
-  if(reason)await postComment(myVotedId,reason);
-  await loadVoteCounts();showVotedState(myVotedId);showToast('投票しました！');
-}
-function showVotedState(momentId){
-  var m=MOMENTS.find(function(x){return x.id===momentId;});
-  document.getElementById('vote-form').style.display='none';
-  document.getElementById('vote-prompt').style.display='none';
-  document.getElementById('voted-done').style.display='block';
-  document.getElementById('voted-tag').innerHTML='✓ <strong>'+m.inning+' '+m.desc+'</strong> に投票しました';
-}
-function shareVote(){
-  var m=MOMENTS.find(function(x){return x.id===myVotedId;});if(!m)return;
-  var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')、私の分岐点\n「'+m.inning+' '+m.desc+'」\n'+pct+'%のファンも同じ！\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
-}
-function shareMoment(id){
-  var m=MOMENTS.find(function(x){return x.id===id;});
-  var pct=totalVotes()>0?Math.round((voteCounts[m.id]||0)/totalVotes()*100):0;
-  openTweet('【分岐点】'+GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')\n「'+m.inning+' '+m.desc+'」\nこの場面に'+pct+'%のファンが注目！\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
+  document.getElementById('wave-markers').innerHTML=markers;
 }
 
-// ===== PLAYERS =====
-async function loadVoteCounts(){
-  var r=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID);
-  voteCounts={};MOMENTS.forEach(function(m){voteCounts[m.id]=0;});
-  if(r.data)r.data.forEach(function(v){voteCounts[v.moment_id]=(voteCounts[v.moment_id]||0)+1;});
-  renderMoments();
+// ===== タイトル投票 =====
+function renderTitles(){
+  var el=document.getElementById('title-list');if(!el)return;
+  var candidates=Object.keys(titleVotes);
+  if(!candidates.length){el.innerHTML='<div style="color:var(--muted);font-size:13px;padding:.5rem 0">まだ投票がありません。最初の投票をどうぞ！</div>';return;}
+  var total=Object.values(titleVotes).reduce(function(s,v){return s+v;},0);
+  var sorted=candidates.slice().sort(function(a,b){return titleVotes[b]-titleVotes[a];});
+  el.innerHTML=sorted.map(function(txt){
+    var cnt=titleVotes[txt]||0;
+    var pct=total>0?Math.round(cnt/total*100):0;
+    var picked=myTitleVote===txt;
+    return '<div class="title-opt'+(picked?' picked':'')+'" onclick="voteTitle(\''+esc(txt)+'\')">'+
+      '<div class="title-fill" style="width:'+pct+'%"></div>'+
+      '<div class="title-body">'+
+      '<div class="title-txt">'+(picked?'✓ ':'')+esc(txt)+'</div>'+
+      '<div class="title-pct">'+cnt+'票 '+pct+'%</div>'+
+      '</div>'+
+      '</div>';
+  }).join('');
 }
-async function loadPlayerRatings(){
-  var r=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID);
-  playerRatings={};
-  PLAYERS.forEach(function(p){playerRatings[p.name]={mvp:0,great:0,ganbatte:0,nigun:0};});
-  if(r.data)r.data.forEach(function(v){if(playerRatings[v.player_name])playerRatings[v.player_name][v.rating]++;});
-  renderPlayers();
+
+async function voteTitle(txt){
+  if(myTitleVote===txt){
+    await sb.from('title_votes').delete().eq('game_id',GAME_ID).eq('user_id',userId);
+    if(titleVotes[txt])titleVotes[txt]--;myTitleVote=null;
+  } else {
+    if(myTitleVote){
+      await sb.from('title_votes').delete().eq('game_id',GAME_ID).eq('user_id',userId);
+      if(titleVotes[myTitleVote])titleVotes[myTitleVote]--;
+    }
+    var r=await sb.from('title_votes').insert({game_id:GAME_ID,title_text:txt,user_id:userId});
+    if(!r.error){myTitleVote=txt;titleVotes[txt]=(titleVotes[txt]||0)+1;}
+    else if(r.error.code==='23505'){showToast('すでに投票済みです');return;}
+  }
+  renderTitles();
+  showToast(myTitleVote?'「'+txt+'」に投票しました！':'投票を取り消しました');
 }
-function playerTotal(name){var r=playerRatings[name]||{};return(r.mvp||0)+(r.great||0)+(r.ganbatte||0)+(r.nigun||0);}
-function iconSize(name){var tot=playerTotal(name);var max=Math.max.apply(null,PLAYERS.map(function(p){return playerTotal(p.name);}).concat([1]));return Math.round(52+(tot/max)*44);}
-function renderPlayers(){
-  if(!document.getElementById('players-grid'))return;
+
+async function addTitle(){
+  var inp=document.getElementById('title-inp'),txt=inp.value.trim();
+  if(!txt)return;
+  var r=await sb.from('title_votes').insert({game_id:GAME_ID,title_text:txt,user_id:userId});
+  if(r.error&&r.error.code==='23505'){showToast('すでに投票済みです');return;}
+  if(myTitleVote&&titleVotes[myTitleVote])titleVotes[myTitleVote]--;
+  myTitleVote=txt;titleVotes[txt]=(titleVotes[txt]||0)+1;
+  inp.value='';renderTitles();
+  showToast('「'+txt+'」を提案しました！');
+}
+
+async function loadTitleVotes(){
+  var r=await sb.from('title_votes').select('title_text').eq('game_id',GAME_ID);
+  titleVotes={};
+  if(r.data)r.data.forEach(function(v){titleVotes[v.title_text]=(titleVotes[v.title_text]||0)+1;});
+  // JSONのcandidatesをシード（票なし）
+  // 既存候補から seed
+  renderTitles();
+}
+
+// ===== ストーリー =====
+function renderStory(){
+  var el=document.getElementById('story-root');if(!el)return;
   var html='';
-  PLAYERS.forEach(function(p){
-    var r=playerRatings[p.name]||{mvp:0,great:0,ganbatte:0,nigun:0};
-    var myR=myPlayerRatings[p.name];
-    var sz=iconSize(p.name);
-    var initials=p.name.replace(' ','').slice(0,2);
-    var pills='';['mvp','great','ganbatte','nigun'].forEach(function(k){if(r[k]>0)pills+='<span class="vote-pill pill-'+k+'">'+RATING_LABEL[k].split(' ')[0]+' '+r[k]+'</span>';});
-    var btns='';Object.keys(RATING_LABEL).forEach(function(k){btns+='<button class="rating-btn '+(myR===k?RATING_ACTIVE[k]:'')+'" data-rate="'+k+'" data-player="'+esc(p.name)+'">'+RATING_LABEL[k]+'</button>';});
-    html+='<div class="player-card"><div class="player-icon carp-player" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*0.35)+'px">'+initials+'</div>';
-    html+='<div class="player-name">'+p.name+'</div><div class="player-pos">'+p.pos+'</div>';
-    html+='<div class="rating-btns">'+btns+'</div>';
-    html+='<div class="player-votes">'+(pills||'<span style="color:var(--faint)">まだ評価なし</span>')+'</div></div>';
-  });
-  document.getElementById('players-grid').innerHTML=html;
-}
-async function ratePlayer(playerName,rating){
-  var prev=myPlayerRatings[playerName];
-  if(prev===rating){await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);delete myPlayerRatings[playerName];}
-  else{if(prev)await sb.from('player_ratings').delete().eq('game_id',GAME_ID).eq('player_name',playerName).eq('user_id',userId);var r=await sb.from('player_ratings').insert({game_id:GAME_ID,player_name:playerName,user_id:userId,rating:rating});if(r.error&&r.error.code!=='23505'){showToast('エラー');return;}myPlayerRatings[playerName]=rating;}
-  await loadPlayerRatings();showToast(prev===rating?'評価を取り消しました':RATING_LABEL[rating]+'を送りました！');
+  // イニング別モーメント
+  for(var inn=1;inn<=9;inn++){
+    var evts=MOMENTS.filter(function(m){return m.inning&&parseInt(m.inning)===inn;});
+    var myT=turnings.filter(function(t){return parseInt(t.inning)===inn;});
+    if(!evts.length&&!myT.length)continue;
+
+    // 流れ変化
+    if(inn>1){
+      var prevEvts=MOMENTS.filter(function(m){return m.inning&&parseInt(m.inning)===inn-1;});
+      var hasCurrent=evts.some(function(e){return e.type==='hr'||e.type==='score';});
+      var hasPrevCrisis=prevEvts.some(function(e){return e.type==='crisis';});
+      if(hasCurrent){
+        html+='<div class="flow-change up"><div class="fc-line"></div>▼ 流れが傾いた<div class="fc-line"></div></div>';
+      } else if(hasPrevCrisis){
+        html+='<div class="flow-change down"><div class="fc-line"></div>▲ 流れが戻った<div class="fc-line"></div></div>';
+      } else {
+        html+='<div class="flow-change flat">│</div>';
+      }
+    }
+
+    html+='<div class="fi">';
+    // イニングヘッダー
+    var flow=evts.length?(evts[0].type==='hr'||evts[0].type==='score'?20:evts[0].type==='crisis'?35:40):45;
+    var emo=getEmotion(flow);
+    html+='<div class="inning-head"><span class="inning-num">'+inn+'回</span>';
+    html+='<span class="inning-emotion '+emo.cls+'">'+emo.label+'</span>';
+    html+='<div class="inning-divider"></div></div>';
+
+    // イベント
+    evts.forEach(function(e){
+      html+='<div class="evt '+e.type+'">'+
+        '<div class="evt-meta"><span class="evt-badge '+(TYPE_BADGE[e.type]||'')+'">'+(TYPE_LABEL[e.type]||e.type)+'</span></div>'+
+        '<div class="evt-desc">'+esc(e.desc)+'</div>'+
+        (e.sub?'<div class="evt-sub">'+esc(e.sub)+'</div>':'')+
+        '</div>';
+    });
+
+    // 転換点
+    if(myT.length){
+      html+='<div class="turning-section">'+
+        '<div class="turning-hd"><span style="font-size:18px">🔀</span>'+
+        '<div><div class="turning-hd-title">転換点の候補</div>'+
+        '<div class="turning-hd-sub">正解はない。あなたはどう感じた？</div></div></div>';
+
+      var totalTV=turnings.reduce(function(s,t){return s+(t.vote_count||0);},0);
+      var maxV=Math.max.apply(null,myT.map(function(t){return t.vote_count||0;}));
+
+      myT.forEach(function(t){
+        var cnt=t.vote_count||0;
+        var pct=totalTV>0?Math.round(cnt/totalTV*100):0;
+        var voted=myTurning===t.id;
+        var topV=(cnt===maxV&&cnt>0);
+        var intTag={strong:'🔴 流れを持ってきた',mid:'🟡 流れが変わった',weak:'🔵 ヒヤッとした'}[t.intensity]||'';
+        var intCls={strong:'tag-strong',mid:'tag-mid',weak:'tag-weak'}[t.intensity]||'tag-mid';
+        html+='<div class="tc'+(topV?' top-voted':'')+(t.source==='user'?' user-post':'')+'" id="tc-'+t.id+'">'+
+          '<div class="tc-head"><span class="tc-inn">'+esc(t.inning)+'</span>'+
+          '<div class="tc-body"><div class="tc-desc">'+esc(t.description)+'</div>'+
+          (t.reason?'<div class="tc-reason">「'+esc(t.reason)+'」</div>':'')+
+          '</div></div>'+
+          '<div class="tc-tags"><span class="tc-tag '+intCls+'">'+intTag+'</span>'+
+          '<span class="tc-tag '+(t.source==='user'?'tag-user':'tag-sys')+'">'+(t.source==='user'?'ユーザー投稿':'候補')+'</span></div>'+
+          '<div class="tc-foot">'+
+          '<div class="tc-vote-row"><div class="tc-bar-wrap"><div class="tc-bar" style="width:'+pct+'%"></div></div>'+
+          '<span class="tc-stat">'+cnt+'票 '+pct+'%</span></div>'+
+          '<button class="tc-vbtn'+(voted?' active':'')+'" onclick="voteTurning(\''+t.id+'\')">'+
+          (voted?'✓ 投票済':'ここが転換点')+'</button></div>';
+
+        // コメント表示
+        var tcComments=allComments.filter(function(c){return c.turning_id===t.id;});
+        if(tcComments.length){
+          html+='<div class="tc-comments-wrap">';
+          tcComments.slice(0,3).forEach(function(c){
+            html+='<div class="tc-cmt"><div class="tc-cmt-dot"></div><div>'+esc(c.body)+' <span style="font-size:10px;color:var(--faint)">— '+esc(c.display_name)+'</span></div></div>';
+          });
+          html+='</div>';
+        }
+        html+='</div>';
+      });
+
+      // 投稿フォーム
+      html+='<div class="post-form">'+
+        '<div class="post-form-title">➕ 別の転換点を追加する</div>'+
+        '<div class="form-row"><label class="form-label">対象回</label>'+
+        '<select class="form-select" id="pf-inn-'+inn+'">'+
+        '<option value="'+inn+'回表">'+inn+'回表</option>'+
+        '<option value="'+inn+'回裏">'+inn+'回裏</option>'+
+        '</select></div>'+
+        '<div class="form-row"><label class="form-label">どこで流れが変わったと感じたか</label>'+
+        '<input class="form-input" id="pf-desc-'+inn+'" placeholder="例：ここで完全に空気が変わった" maxlength="60"></div>'+
+        '<div class="form-row"><label class="form-label">理由（任意）</label>'+
+        '<textarea class="form-textarea" id="pf-reason-'+inn+'" placeholder="点は入ってないけど…でもOK" rows="2"></textarea></div>'+
+        '<div class="form-row"><label class="form-label">強度</label>'+
+        '<div class="intensity-row">'+
+        '<button class="int-btn sel-s" id="pf-int-'+inn+'-s" onclick="setInt('+inn+',\'strong\')">🔴 流れを持ってきた</button>'+
+        '<button class="int-btn" id="pf-int-'+inn+'-m" onclick="setInt('+inn+',\'mid\')">🟡 流れが変わった</button>'+
+        '<button class="int-btn" id="pf-int-'+inn+'-w" onclick="setInt('+inn+',\'weak\')">🔵 ヒヤッとした</button>'+
+        '</div></div>'+
+        '<button class="form-submit" onclick="postTurning('+inn+')">この転換点を投稿する</button>'+
+        '</div>';
+
+      html+='</div>';// turning-section
+    }
+
+    html+='</div>';// fi
+  }
+  el.innerHTML=html||'<div class="empty-state">試合データを読み込み中...</div>';
+  initFI();
 }
 
-// ===== COMMENTS =====
+function setInt(inn,val){
+  formIntensity[inn]=val;
+  ['s','m','w'].forEach(function(k){
+    var b=document.getElementById('pf-int-'+inn+'-'+k);
+    if(b){b.className='int-btn'+(k===val[0]?' sel-'+k:'');}
+  });
+}
+
+async function postTurning(inn){
+  var desc=document.getElementById('pf-desc-'+inn);
+  if(!desc||!desc.value.trim()){showToast('内容を入力してください');return;}
+  var innSel=document.getElementById('pf-inn-'+inn);
+  var reason=document.getElementById('pf-reason-'+inn);
+  var intensity=formIntensity[inn]||'strong';
+  var r=await sb.from('turnings').insert({
+    game_id:GAME_ID,inning:innSel?innSel.value:inn+'回',
+    description:desc.value.trim(),
+    reason:reason?reason.value.trim()||null:null,
+    intensity:intensity,source:'user',user_id:userId
+  }).select().single();
+  if(r.error){showToast('投稿に失敗しました');return;}
+  // 自動投票
+  var t=r.data;
+  await sb.from('turning_votes').insert({turning_id:t.id,game_id:GAME_ID,user_id:userId});
+  t.vote_count=1;t.source='user';
+  turnings.push(t);myTurning=t.id;
+  if(desc)desc.value='';if(reason)reason.value='';
+  renderStory();drawWave();
+  showToast('転換点を投稿しました！');
+}
+
+async function voteTurning(id){
+  var t=turnings.find(function(x){return x.id===id;});if(!t)return;
+  if(myTurning===id){
+    await sb.from('turning_votes').delete().eq('turning_id',id).eq('user_id',userId);
+    t.vote_count=Math.max(0,(t.vote_count||1)-1);myTurning=null;
+  } else {
+    if(myTurning){
+      await sb.from('turning_votes').delete().eq('turning_id',myTurning).eq('user_id',userId);
+      var prev=turnings.find(function(x){return x.id===myTurning;});
+      if(prev)prev.vote_count=Math.max(0,(prev.vote_count||1)-1);
+    }
+    var r=await sb.from('turning_votes').insert({turning_id:id,game_id:GAME_ID,user_id:userId});
+    if(r.error&&r.error.code==='23505'){showToast('すでに投票済みです');return;}
+    t.vote_count=(t.vote_count||0)+1;myTurning=id;
+  }
+  renderStory();drawWave();
+  showToast(myTurning?t.inning+'に投票しました！':'投票を取り消しました');
+}
+
+// ===== コメント =====
 async function loadComments(){
   var r=await sb.from('comments').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false});
   allComments=r.data||[];renderComments();
 }
-async function postComment(momentId,body){await sb.from('comments').insert({game_id:GAME_ID,moment_id:momentId||null,user_id:userId,display_name:getDisplayName(),body:body});}
-async function sendComment(){
-  var inp=document.getElementById('comment-input'),btn=document.getElementById('send-btn');
-  var txt=inp.value.trim();if(!txt)return;
-  btn.disabled=true;await postComment(myVotedId||null,txt);inp.value='';btn.disabled=false;showToast('コメントしました！');
-}
-async function toggleLike(commentId){
-  var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
-  if(myLikes.has(commentId)){await sb.from('comment_likes').delete().eq('comment_id',commentId).eq('user_id',userId);await sb.from('comments').update({likes:(c.likes||1)-1}).eq('id',commentId);myLikes.delete(commentId);}
-  else{await sb.from('comment_likes').insert({comment_id:commentId,user_id:userId});await sb.from('comments').update({likes:(c.likes||0)+1}).eq('id',commentId);myLikes.add(commentId);}
-  await loadComments();
-}
-function renderComments(){
-  if(!document.getElementById('comments-list')||currentTab==='ai')return;
-  var list=allComments.slice();
-  if(currentTab==='hot')list.sort(function(a,b){return b.likes-a.likes;});
-  if(!list.length){document.getElementById('comments-list').innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを書いてみましょう！</div>';return;}
-  var html='';
-  list.forEach(function(c){
-    var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
-    var ac=AVATAR_PAL[Math.abs(hashStr(c.user_id))%AVATAR_PAL.length];
-    var tag=m?'<span class="moment-tag-sm '+TAG_CLS[m.type]+'">'+m.inning+'</span>':'';
-    var liked=myLikes.has(c.id);
-    html+='<div class="comment"><div class="comment-header"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name).slice(0,1)+'</div>';
-    html+='<span class="comment-name">'+esc(c.display_name)+'</span>'+tag+'</div>';
-    html+='<div class="comment-body">'+esc(c.body)+'</div><div class="comment-time">'+formatTime(c.created_at)+'</div>';
-    html+='<div class="comment-actions"><button class="like-btn '+(liked?'liked':'')+'" data-like="'+c.id+'">♡ '+(c.likes||0)+'</button>';
-    html+='<button class="comment-share-btn" data-cshr="'+c.id+'">'+xSVG(10)+' ポスト</button></div></div>';
-  });
-  document.getElementById('comments-list').innerHTML=html;
-}
-function setTab(tab,el){
-  currentTab=tab;
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  el.classList.add('active');
-  var isAI=tab==='ai';
-  document.getElementById('comment-input-row').style.display=isAI?'none':'block';
-  document.getElementById('comments-list').style.display=isAI?'none':'block';
-  document.getElementById('ai-panel').style.display=isAI?'block':'none';
-  if(isAI)renderAI();else renderComments();
-}
-function renderAI(){
-  var panel=document.getElementById('ai-panel');if(!panel)return;
-  var tot=totalVotes();
-  if(tot===0){panel.innerHTML='<div class="ai-box" style="color:var(--muted)">まだ投票がありません。投票が集まるとAI分析が表示されます。</div>';return;}
-  var top=MOMENTS.slice().sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
-  var topP=MOMENTS.filter(function(m){return m.type==='pitcher';}).sort(function(a,b){return(voteCounts[b.id]||0)-(voteCounts[a.id]||0);})[0];
-  var pct=Math.round((voteCounts[top.id]||0)/tot*100);
-  var mvp=PLAYERS.map(function(p){return{p:p,v:(playerRatings[p.name]&&playerRatings[p.name].mvp)||0};}).sort(function(a,b){return b.v-a.v;})[0];
-  var shareText=GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+') 分岐点「'+top.inning+' '+top.desc+'」'+pct+'% ファンMVP:'+mvp.p.name+' '+HASHTAGS+' '+APP_URL+'?date='+currentDate;
-  panel.innerHTML='<div class="ai-box"><strong>AI分析('+tot+'票)：</strong>'+GAME.home+'の試合、最多注目分岐点は<strong>「'+top.inning+' '+top.desc+'」('+pct+'%)</strong>。'+(topP?'<br><br>投手好投：<strong>「'+topP.inning+' '+topP.desc+'」</strong>。':'')+
-  (mvp?'<br><br>選手評価MVP：<strong>'+mvp.p.name+'</strong>。':'')+
-  '<br><button class="ai-share-btn" onclick="openTweet(decodeURIComponent(\''+encodeURIComponent(shareText)+'\'))">'+xSVG(12,'#fff')+' AI分析をポスト</button></div>';
-}
-function shareComment(commentId){
-  var c=allComments.find(function(x){return x.id===commentId;});if(!c)return;
-  var m=c.moment_id?MOMENTS.find(function(x){return x.id===c.moment_id;}):null;
-  openTweet(GAME.home+GAME.homeScore+'-'+GAME.awayScore+GAME.away+'('+GAME.date+')カープトーク\n'+(m?'【'+m.inning+'】':'')+' 「'+c.body+'」\n— '+c.display_name+'\n'+HASHTAGS+'\n'+APP_URL+'?date='+currentDate);
-}
-function subscribeRealtime(){
-  sb.channel('votes-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'votes',filter:'game_id=eq.'+GAME_ID},function(){loadVoteCounts();flashLive();}).subscribe();
-  sb.channel('comments-'+GAME_ID).on('postgres_changes',{event:'*',schema:'public',table:'comments',filter:'game_id=eq.'+GAME_ID},function(){loadComments();}).subscribe();
-  sb.channel('ratings-'+GAME_ID).on('postgres_changes',{event:'*',schema:'public',table:'player_ratings',filter:'game_id=eq.'+GAME_ID},function(){loadPlayerRatings();}).subscribe();
-}
-function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
 
-async function initApp(){
+function renderComments(){
+  var el=document.getElementById('clist');if(!el)return;
+  var list=currentCTab==='all'?allComments:allComments.filter(function(c){return c.category===currentCTab;});
+  if(!list.length){el.innerHTML='<div class="empty-state">まだコメントがありません。最初のコメントを投稿してみましょう！</div>';return;}
+  var catL={a:'🔍 流れ分析',f:'💬 感情',n:'😂 ネタ'},catC={a:'cc-a',f:'cc-f',n:'cc-n'};
+  el.innerHTML='<div>'+list.map(function(c){
+    var ac=AVPAL[Math.abs(hashStr(c.user_id))%AVPAL.length];
+    return '<div class="comment">'+
+      '<div class="cmeta"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name||'?').slice(0,1)+'</div>'+
+      '<span class="cname">'+esc(c.display_name||'匿名')+'</span>'+
+      (c.category?'<span class="ccat '+(catC[c.category]||'')+'">'+(catL[c.category]||c.category)+'</span>':'')+
+      '</div><div class="cbody">'+esc(c.body)+'</div>'+
+      '<div style="font-size:11px;color:var(--faint);padding-left:30px;margin-top:2px">'+formatTime(c.created_at)+'</div>'+
+      '</div>';
+  }).join('')+'</div>';
+}
+
+function setCTab(tab,el){
+  currentCTab=tab;
+  document.querySelectorAll('.ctab').forEach(function(t){t.classList.remove('active');});
+  if(el)el.classList.add('active');renderComments();
+}
+
+function setCType(t){
+  currentCType=t;
+  ['a','f','n'].forEach(function(x){var b=document.getElementById('ct'+x);if(b)b.className='ctype-btn';});
+  var b=document.getElementById('ct'+t);if(b)b.className='ctype-btn s'+t;
+}
+
+function getDisplayName(){
+  var adj=['熱血','猛烈','闘魂','鋭い','素早い','鉄壁','颯爽'];
+  var nou=['カープファン','赤ヘル','マツダ席','ライト応援団','バックスクリーン'];
+  var s=userId.charCodeAt(2)+userId.charCodeAt(3);
+  return adj[s%adj.length]+nou[(s>>2)%nou.length];
+}
+
+async function sendComment(){
+  var inp=document.getElementById('cinp'),btn=document.getElementById('csend');
+  var txt=inp.value.trim();if(!txt)return;
+  btn.disabled=true;
+  var r=await sb.from('comments').insert({game_id:GAME_ID,user_id:userId,display_name:getDisplayName(),body:txt,category:currentCType||null});
+  if(r.error){showToast('送信に失敗しました');btn.disabled=false;return;}
+  inp.value='';btn.disabled=false;
+  await loadComments();
+  showToast('コメントしました！');
+}
+
+// ===== ターニングポイント読み込み =====
+async function loadTurnings(g){
+  // DB から読み込み
+  var r=await sb.from('turnings').select('*, turning_votes(count)').eq('game_id',GAME_ID);
+  turnings=[];
+  if(r.data)r.data.forEach(function(t){
+    t.vote_count=t.turning_votes&&t.turning_votes[0]?t.turning_votes[0].count:0;
+    turnings.push(t);
+  });
+  // JSON の suggestions をシード（DB になければ追加）
+  if(g.turning_suggestions){
+    g.turning_suggestions.forEach(function(s){
+      var exists=turnings.find(function(t){return t.description===s.description&&t.source==='system';});
+      if(!exists){
+        turnings.push({id:'sys-'+Math.random().toString(36).slice(2),game_id:GAME_ID,inning:s.inning,description:s.description,reason:s.reason||null,intensity:s.intensity||'mid',source:'system',vote_count:0});
+      }
+    });
+  }
+}
+
+// ===== 初期化 =====
+async function initApp(g){
   userId=localStorage.getItem('carp_talk_uid');
   if(!userId){userId='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('carp_talk_uid',userId);}
-  var savedX=localStorage.getItem('x_user');
-  if(savedX){xUser=JSON.parse(savedX);renderXBtn();var xnr=document.getElementById('x-name-row');if(xnr){xnr.style.display='flex';document.getElementById('x-posting-as').textContent='@'+xUser.screen_name;}}
-  var r1=await sb.from('votes').select('moment_id').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
-  if(r1.data){myVotedId=r1.data.moment_id;showVotedState(myVotedId);}
-  var r2=await sb.from('comment_likes').select('comment_id').eq('user_id',userId);
-  if(r2.data)r2.data.forEach(function(l){myLikes.add(l.comment_id);});
-  var r3=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);
-  if(r3.data)r3.data.forEach(function(r){myPlayerRatings[r.player_name]=r.rating;});
-  await Promise.all([loadVoteCounts(),loadComments(),loadPlayerRatings()]);
+
+  // データ並行取得
+  await Promise.all([loadTitleVotes(),loadTurnings(g),loadComments()]);
+
+  // JSONのtitle_candidatesをシード
+  if(g.title_candidates){
+    g.title_candidates.forEach(function(tc){
+      if(titleVotes[tc]===undefined)titleVotes[tc]=0;
+    });
+  }
+
+  // 自分の投票状態
+  var r1=await sb.from('title_votes').select('title_text').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+  if(r1.data)myTitleVote=r1.data.title_text;
+
+  var r2=await sb.from('turning_votes').select('turning_id').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+  if(r2.data)myTurning=r2.data.turning_id;
+
+  renderTitles();renderStory();drawWave();
+
+  // リアルタイム購読
   subscribeRealtime();
 }
 
-// ===== BOOT =====
+function subscribeRealtime(){
+  sb.channel('title-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'title_votes',filter:'game_id=eq.'+GAME_ID},function(payload){
+    titleVotes[payload.new.title_text]=(titleVotes[payload.new.title_text]||0)+1;
+    renderTitles();flashLive();
+  }).subscribe();
+  sb.channel('turnings-'+GAME_ID).on('postgres_changes',{event:'*',schema:'public',table:'turning_votes',filter:'game_id=eq.'+GAME_ID},function(){
+    // 再取得
+    sb.from('turning_votes').select('turning_id').eq('game_id',GAME_ID).then(function(r){
+      if(r.data){var counts={};r.data.forEach(function(v){counts[v.turning_id]=(counts[v.turning_id]||0)+1;});turnings.forEach(function(t){t.vote_count=counts[t.id]||0;});renderStory();drawWave();}
+    });
+    flashLive();
+  }).subscribe();
+  sb.channel('comments-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'comments',filter:'game_id=eq.'+GAME_ID},function(){loadComments();flashLive();}).subscribe();
+}
+
+function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
+
+// ===== フェードイン =====
+function initFI(){
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.08});
+  document.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});
+}
+
+// ===== 起動 =====
 window.addEventListener('DOMContentLoaded',function(){
-  var URL_='https://dzsznmpuxuftprcqywex.supabase.co';
-  var KEY_='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
-  sb=supabase.createClient(URL_,KEY_);
   var params=new URLSearchParams(location.search);
   var date=params.get('date')||todayStr();
   loadGame(date);
