@@ -705,22 +705,24 @@ async function sendComment(){
 
 // ===== ターニングポイント読み込み =====
 async function loadTurnings(g){
-  // DB から読み込み
-  var r=await sb.from('turnings').select('*, turning_votes(count)').eq('game_id',GAME_ID);
-  turnings=[];
-  if(r.data)r.data.forEach(function(t){
-    t.vote_count=t.turning_votes&&t.turning_votes[0]?t.turning_votes[0].count:0;
-    turnings.push(t);
-  });
-  // JSON の suggestions をシード（DB になければ追加）
+  // ① JSONのsystem候補をDBに upsert（なければ追加）
   if(g.turning_suggestions){
-    g.turning_suggestions.forEach(function(s){
-      var exists=turnings.find(function(t){return t.description===s.description&&t.source==='system';});
-      if(!exists){
-        turnings.push({id:'sys-'+Math.random().toString(36).slice(2),game_id:GAME_ID,inning:s.inning,description:s.description,reason:s.reason||null,intensity:s.intensity||'mid',source:'system',vote_count:0});
+    for(var i=0;i<g.turning_suggestions.length;i++){
+      var s=g.turning_suggestions[i];
+      var ex=await sb.from('turnings').select('id').eq('game_id',GAME_ID).eq('description',s.description).eq('source','system').maybeSingle();
+      if(!ex.data){
+        await sb.from('turnings').insert({game_id:GAME_ID,inning:s.inning,description:s.description,reason:s.reason||null,intensity:s.intensity||'mid',source:'system',user_id:'system'});
       }
-    });
+    }
   }
+  // ② DBから全転換点を取得
+  var r=await sb.from('turnings').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:true});
+  turnings=r.data||[];
+  // ③ 投票数を別クエリで取得（より確実）
+  var rv=await sb.from('turning_votes').select('turning_id').eq('game_id',GAME_ID);
+  var counts={};
+  if(rv.data)rv.data.forEach(function(v){counts[v.turning_id]=(counts[v.turning_id]||0)+1;});
+  turnings.forEach(function(t){t.vote_count=counts[t.id]||0;});
 }
 
 // ===== 初期化 =====
