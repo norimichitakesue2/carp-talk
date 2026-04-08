@@ -223,6 +223,31 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .live-update{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;padding:.4rem 0}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
 .fi{opacity:1;transform:none}
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding-bottom:0}
+.popup-sheet{background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:680px;padding:1.25rem 1.25rem 2rem;border-top:1px solid var(--border2)}
+.popup-handle{width:36px;height:4px;background:var(--faint);border-radius:2px;margin:0 auto 1.25rem}
+.popup-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.popup-sub{font-size:13px;color:var(--muted);margin-bottom:1rem}
+.popup-tabs{display:flex;gap:6px;margin-bottom:1rem}
+.ptab{flex:1;text-align:center;padding:.45rem;font-size:13px;border-radius:var(--rs);border:1px solid var(--border2);color:var(--muted);cursor:pointer;background:transparent;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
+.ptab.active{background:var(--surface2);color:var(--text);border-color:var(--border2);font-weight:500}
+.popup-tab-content{margin-bottom:1rem}
+.popup-link-badge{font-size:11px;color:var(--muted);background:rgba(200,16,46,.1);border:1px solid rgba(200,16,46,.2);color:#ff7090;padding:3px 8px;border-radius:4px;display:inline-flex;align-items:center;gap:4px;margin-bottom:.65rem}
+.popup-footer{display:flex;gap:8px}
+.popup-skip{flex:1;padding:.65rem;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.popup-submit{flex:2;padding:.65rem;border-radius:var(--rs);border:none;background:var(--carp);color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.player-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem}
+.player-grid{display:flex;flex-direction:column;gap:6px;margin-top:.75rem}
+.player-row{display:flex;align-items:center;gap:10px;padding:.5rem .75rem;background:var(--surface2);border-radius:var(--rs);border:1px solid var(--border)}
+.player-av{width:32px;height:32px;border-radius:50%;background:var(--faint);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);flex-shrink:0}
+.player-name{flex:1;font-size:13px;font-weight:500;color:var(--text)}
+.player-pos{font-size:11px;color:var(--muted);margin-left:4px}
+.rating-row{display:flex;gap:4px}
+.rating-btn{font-size:11px;padding:3px 8px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;white-space:nowrap}
+.rating-btn:hover{border-color:var(--border2);background:var(--surface2)}
+.rating-btn.mvp.sel{background:rgba(240,192,64,.15);border-color:var(--accent);color:var(--accent);font-weight:700}
+.rating-btn.good.sel{background:rgba(62,207,142,.12);border-color:var(--green);color:var(--green);font-weight:700}
+.rating-btn.cheer.sel{background:rgba(200,16,46,.12);border-color:var(--carp);color:#ff7090;font-weight:700}
 @media(max-width:480px){.ts{font-size:40px}.intensity-row{flex-wrap:wrap}}
 </style>
 </head>
@@ -247,6 +272,23 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 </div>
 
 <div class="toast" id="toast"></div>
+<div class="popup-overlay" id="popup-overlay" style="display:none" onclick="closePopupOverlay(event)">
+  <div class="popup-sheet" id="popup-sheet">
+    <div class="popup-handle"></div>
+    <div class="popup-title" id="popup-title">✓ <span id="popup-title-text">転換点に投票しました</span></div>
+    <div class="popup-sub" id="popup-sub">一言コメントや選手評価を追加しますか？</div>
+    <div class="popup-tabs">
+      <button class="ptab active" id="ptab-cmt" onclick="switchPopupTab('cmt')">💬 コメント</button>
+      <button class="ptab" id="ptab-rate" onclick="switchPopupTab('rate')">⭐ 選手評価</button>
+      <button class="ptab" id="ptab-skip" onclick="closePopup()">スキップ</button>
+    </div>
+    <div class="popup-tab-content" id="popup-tab-content"></div>
+    <div class="popup-footer">
+      <button class="popup-skip" onclick="closePopup()">スキップ</button>
+      <button class="popup-submit" id="popup-submit-btn" onclick="submitPopup()">投稿して閉じる</button>
+    </div>
+  </div>
+</div>
 
 <script>
 // ===== 定数 =====
@@ -395,6 +437,12 @@ function renderMain(g){
 
     // ストーリー
     '<div class="story fi" id="story-root"></div>'+
+
+    // 選手評価
+    '<div class="player-section fi" id="player-section">'+
+    '<div class="slabel">今日の選手評価</div>'+
+    '<div id="player-grid" class="player-grid"></div>'+
+    '</div>'+
 
     // コメント
     '<div class="section fi" id="comment-section">'+
@@ -663,7 +711,8 @@ async function postTurning(inn){
   turnings.push(t);myTurning=t.id;
   if(desc)desc.value='';if(reason)reason.value='';
   renderStory();drawWave();
-  showToast('転換点を投稿しました！');
+  // 投稿後にポップアップを表示
+  setTimeout(function(){openPopup(t.id,'転換点を投稿しました');},300);
 }
 
 async function voteTurning(id){
@@ -671,6 +720,8 @@ async function voteTurning(id){
   if(myTurning===id){
     await sb.from('turning_votes').delete().eq('turning_id',id).eq('user_id',userId);
     t.vote_count=Math.max(0,(t.vote_count||1)-1);myTurning=null;
+    renderStory();drawWave();
+    showToast('投票を取り消しました');
   } else {
     if(myTurning){
       await sb.from('turning_votes').delete().eq('turning_id',myTurning).eq('user_id',userId);
@@ -680,9 +731,10 @@ async function voteTurning(id){
     var r=await sb.from('turning_votes').insert({turning_id:id,game_id:GAME_ID,user_id:userId});
     if(r.error&&r.error.code==='23505'){showToast('すでに投票済みです');return;}
     t.vote_count=(t.vote_count||0)+1;myTurning=id;
+    renderStory();drawWave();
+    // 投票後にポップアップを表示
+    setTimeout(function(){openPopup(id,t.inning+'の転換点に投票しました');},300);
   }
-  renderStory();drawWave();
-  showToast(myTurning?t.inning+'に投票しました！':'投票を取り消しました');
 }
 
 // ===== コメント =====
@@ -698,10 +750,13 @@ function renderComments(){
   var catL={a:'🔍 流れ分析',f:'💬 感情',n:'😂 ネタ'},catC={a:'cc-a',f:'cc-f',n:'cc-n'};
   el.innerHTML='<div>'+list.map(function(c){
     var ac=AVPAL[Math.abs(hashStr(c.user_id))%AVPAL.length];
+    var tp=c.turning_id?turnings.find(function(t){return t.id===c.turning_id;}):null;
+    var tpBadge=tp?'<span class="clink" style="background:rgba(200,16,46,.1);color:#ff7090;border:1px solid rgba(200,16,46,.2)">→ '+esc(tp.inning)+'</span>':'';
     return '<div class="comment">'+
       '<div class="cmeta"><div class="avatar" style="background:'+ac.bg+';color:'+ac.c+'">'+esc(c.display_name||'?').slice(0,1)+'</div>'+
       '<span class="cname">'+esc(c.display_name||'匿名')+'</span>'+
       (c.category?'<span class="ccat '+(catC[c.category]||'')+'">'+(catL[c.category]||c.category)+'</span>':'')+
+      tpBadge+
       '</div><div class="cbody">'+esc(c.body)+'</div>'+
       '<div style="font-size:11px;color:var(--faint);padding-left:30px;margin-top:2px">'+formatTime(c.created_at)+'</div>'+
       '</div>';
@@ -782,7 +837,7 @@ async function initApp(g){
   var r2=await sb.from('turning_votes').select('turning_id').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
   if(r2.data)myTurning=r2.data.turning_id;
 
-  renderTitles();renderStory();drawWave();
+  renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
 
   // リアルタイム購読
   subscribeRealtime();
@@ -801,6 +856,152 @@ function subscribeRealtime(){
     flashLive();
   }).subscribe();
   sb.channel('comments-'+GAME_ID).on('postgres_changes',{event:'INSERT',schema:'public',table:'comments',filter:'game_id=eq.'+GAME_ID},function(){loadComments();flashLive();}).subscribe();
+}
+
+// ===== ポップアップ =====
+var popupTurningId=null,popupTab='cmt';
+
+function openPopup(turningId,titleText){
+  popupTurningId=turningId;
+  popupTab='cmt';
+  var t=turnings.find(function(x){return x.id===turningId;});
+  document.getElementById('popup-title-text').textContent=titleText||'転換点に関連付けて投稿';
+  document.getElementById('popup-overlay').style.display='flex';
+  switchPopupTab('cmt');
+}
+
+function closePopup(){
+  document.getElementById('popup-overlay').style.display='none';
+  popupTurningId=null;
+}
+
+function closePopupOverlay(e){
+  if(e.target===document.getElementById('popup-overlay'))closePopup();
+}
+
+function switchPopupTab(tab){
+  popupTab=tab;
+  ['cmt','rate'].forEach(function(t){
+    var b=document.getElementById('ptab-'+t);
+    if(b)b.className='ptab'+(t===tab?' active':'');
+  });
+  var content=document.getElementById('popup-tab-content');
+  var submitBtn=document.getElementById('popup-submit-btn');
+  if(tab==='cmt'){
+    var t=turnings.find(function(x){return x.id===popupTurningId;});
+    var badge=t?'<div class="popup-link-badge">→ '+esc(t.inning)+'</div>':'';
+    content.innerHTML=badge+
+      '<div class="ctype-row" style="margin-bottom:8px"><span class="ctype-lbl">種類：</span>'+
+      '<button id="pct-a" class="ctype-btn sa" onclick="setPopupCType('a')">🔍 流れ分析</button>'+
+      '<button id="pct-f" class="ctype-btn" onclick="setPopupCType('f')">💬 感情</button>'+
+      '<button id="pct-n" class="ctype-btn" onclick="setPopupCType('n')">😂 ネタ</button>'+
+      '</div>'+
+      '<textarea class="form-textarea" id="popup-cmt-inp" placeholder="この転換点について一言..." rows="3" style="width:100%"></textarea>';
+    submitBtn.textContent='コメントして閉じる';
+    submitBtn.style.display='block';
+  } else if(tab==='rate'){
+    content.innerHTML='<div id="popup-player-rate"></div>';
+    renderPopupPlayers();
+    submitBtn.textContent='評価して閉じる';
+    submitBtn.style.display='block';
+  }
+}
+
+var popupCType='a';
+function setPopupCType(t){
+  popupCType=t;
+  ['a','f','n'].forEach(function(x){var b=document.getElementById('pct-'+x);if(b)b.className='ctype-btn'+(x===t?' s'+t:'');});
+}
+
+function renderPopupPlayers(){
+  var el=document.getElementById('popup-player-rate');if(!el)return;
+  var html='<div style="display:flex;flex-direction:column;gap:6px">';
+  PLAYERS.forEach(function(p,i){
+    var r=playerRatings[p.name]||null;
+    html+='<div class="player-row" style="padding:.5rem .75rem;background:var(--surface2);border-radius:var(--rs);border:1px solid var(--border);display:flex;align-items:center;gap:10px">';
+    html+='<div class="player-av">'+p.name.slice(0,1)+'</div>';
+    html+='<span class="player-name">'+esc(p.name)+'</span><span class="player-pos">'+esc(p.pos)+'</span>';
+    html+='<div class="rating-row">';
+    ['mvp','good','cheer'].forEach(function(rv){
+      var labels={mvp:'MVP',good:'よかった',cheer:'応援'};
+      html+='<button class="rating-btn '+rv+(r===rv?' sel':'')+'" onclick="ratePlayerPopup(''+p.name+'',''+rv+'',this)">'+labels[rv]+'</button>';
+    });
+    html+='</div></div>';
+  });
+  html+='</div>';
+  el.innerHTML=html;
+}
+
+var playerRatings={};
+function ratePlayerPopup(name,rating,btn){
+  playerRatings[name]=(playerRatings[name]===rating)?null:rating;
+  renderPopupPlayers();
+  renderPlayerGrid();
+}
+
+async function submitPopup(){
+  if(popupTab==='cmt'){
+    var inp=document.getElementById('popup-cmt-inp');
+    var txt=inp?inp.value.trim():'';
+    if(!txt){closePopup();return;}
+    var r=await sb.from('comments').insert({
+      game_id:GAME_ID,user_id:userId,display_name:getDisplayName(),
+      body:txt,category:popupCType||'a',
+      turning_id:popupTurningId||null
+    });
+    if(!r.error){await loadComments();showToast('コメントを投稿しました！');}
+  } else if(popupTab==='rate'){
+    var entries=Object.entries(playerRatings).filter(function(e){return e[1];});
+    for(var i=0;i<entries.length;i++){
+      await sb.from('player_ratings').upsert({
+        game_id:GAME_ID,user_id:userId,
+        player_name:entries[i][0],rating:entries[i][1]
+      },{onConflict:'game_id,user_id,player_name'});
+    }
+    if(entries.length)showToast('選手評価を保存しました！');
+  }
+  closePopup();
+}
+
+// ===== 選手評価ブロック =====
+function renderPlayerGrid(){
+  var el=document.getElementById('player-grid');if(!el)return;
+  if(!PLAYERS||!PLAYERS.length){
+    el.innerHTML='<div style="color:var(--muted);font-size:13px">選手データを読み込み中...</div>';
+    return;
+  }
+  var html='';
+  PLAYERS.forEach(function(p){
+    var r=playerRatings[p.name]||null;
+    var avColor='var(--faint)';
+    html+='<div class="player-row">';
+    html+='<div class="player-av">'+p.name.slice(0,1)+'</div>';
+    html+='<span class="player-name">'+esc(p.name)+'</span>';
+    html+='<span class="player-pos">'+esc(p.pos)+'</span>';
+    html+='<div class="rating-row">';
+    [{v:'mvp',l:'MVP'},{v:'good',l:'よかった'},{v:'cheer',l:'応援'}].forEach(function(rb){
+      html+='<button class="rating-btn '+rb.v+(r===rb.v?' sel':'')+'" onclick="ratePlayerGrid(''+p.name+'',''+rb.v+'')">'+rb.l+'</button>';
+    });
+    html+='</div></div>';
+  });
+  el.innerHTML=html;
+}
+
+async function ratePlayerGrid(name,rating){
+  playerRatings[name]=(playerRatings[name]===rating)?null:rating;
+  renderPlayerGrid();
+  if(playerRatings[name]){
+    await sb.from('player_ratings').upsert({
+      game_id:GAME_ID,user_id:userId,player_name:name,rating:playerRatings[name]
+    },{onConflict:'game_id,user_id,player_name'});
+    showToast(name+' に「'+({mvp:'MVP',good:'よかった',cheer:'応援'}[playerRatings[name]]||'')+'」を付けました！');
+  }
+}
+
+async function loadPlayerRatings(){
+  var r=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);
+  if(r.data)r.data.forEach(function(x){playerRatings[x.player_name]=x.rating;});
+  renderPlayerGrid();
 }
 
 function flashLive(){var el=document.getElementById('live-update');if(!el)return;el.style.display='flex';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},3000);}
