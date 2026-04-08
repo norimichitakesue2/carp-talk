@@ -923,8 +923,8 @@ function renderPopupPlayers(){
     html+='<span class="player-name">'+esc(p.name)+'</span><span class="player-pos">'+esc(p.pos)+'</span>';
     html+='<div class="rating-row">';
     ['mvp','good','cheer'].forEach(function(rv){
-      var labels={mvp:'MVP',good:'よかった',cheer:'応援'};
-      html+='<button class="rating-btn '+rv+(r===rv?' sel':'')+'" onclick="ratePlayerPopup(this)" data-name="'+p.name+'" data-rv="'+rv+'">'+labels[rv]+'</button>';
+      var labels={mvp:'MVP',good:'よかった',cheer:'もっと頑張れ'};
+      html+='<button class="rating-btn '+rv+(r&&r.has(rv)?' sel':'')+'" onclick="ratePlayerPopup(this)" data-name="'+p.name+'" data-rv="'+rv+'">'+labels[rv]+'</button>';
     });
     html+='</div></div>';
   });
@@ -935,7 +935,9 @@ function renderPopupPlayers(){
 var playerRatings={};
 function ratePlayerPopup(btn){
   var name=btn.dataset.name,rating=btn.dataset.rv;
-  playerRatings[name]=(playerRatings[name]===rating)?null:rating;
+  if(!playerRatings[name])playerRatings[name]=new Set();
+  if(playerRatings[name].has(rating))playerRatings[name].delete(rating);
+  else playerRatings[name].add(rating);
   renderPopupPlayers();
   renderPlayerGrid();
 }
@@ -952,11 +954,11 @@ async function submitPopup(){
     });
     if(!r.error){await loadComments();showToast('コメントを投稿しました！');}
   } else if(popupTab==='rate'){
-    var entries=Object.entries(playerRatings).filter(function(e){return e[1];});
+    var entries=Object.entries(playerRatings).filter(function(e){return e[1]&&e[1].size>0;});
     for(var i=0;i<entries.length;i++){
       await sb.from('player_ratings').upsert({
         game_id:GAME_ID,user_id:userId,
-        player_name:entries[i][0],rating:entries[i][1]
+        player_name:entries[i][0],rating:Array.from(entries[i][1]).join(',')
       },{onConflict:'game_id,user_id,player_name'});
     }
     if(entries.length)showToast('選手評価を保存しました！');
@@ -980,7 +982,7 @@ function renderPlayerGrid(){
     html+='<span class="player-name">'+esc(p.name)+'</span>';
     html+='<span class="player-pos">'+esc(p.pos)+'</span>';
     html+='<div class="rating-row">';
-    [{v:'mvp',l:'MVP'},{v:'good',l:'よかった'},{v:'cheer',l:'応援'}].forEach(function(rb){
+    [{v:'mvp',l:'MVP'},{v:'good',l:'よかった'},{v:'cheer',l:'もっと頑張れ'}].forEach(function(rb){
       html+='<button class="rating-btn '+rb.v+(r===rb.v?' sel':'')+'" onclick="ratePlayerGrid(this)" data-name="'+p.name+'" data-rv="'+rb.v+'">'+rb.l+'</button>';
     });
     html+='</div></div>';
@@ -988,20 +990,26 @@ function renderPlayerGrid(){
   el.innerHTML=html;
 }
 
-async function ratePlayerGrid(name,rating){
-  playerRatings[name]=(playerRatings[name]===rating)?null:rating;
+async function ratePlayerGrid(btn){
+  var name=btn.dataset.name,rating=btn.dataset.rv;
+  if(!playerRatings[name])playerRatings[name]=new Set();
+  if(playerRatings[name].has(rating))playerRatings[name].delete(rating);
+  else playerRatings[name].add(rating);
   renderPlayerGrid();
-  if(playerRatings[name]){
-    await sb.from('player_ratings').upsert({
-      game_id:GAME_ID,user_id:userId,player_name:name,rating:playerRatings[name]
-    },{onConflict:'game_id,user_id,player_name'});
-    showToast(name+' に「'+({mvp:'MVP',good:'よかった',cheer:'応援'}[playerRatings[name]]||'')+'」を付けました！');
-  }
+  await sb.from('player_ratings').upsert({
+    game_id:GAME_ID,user_id:userId,player_name:name,
+    rating:Array.from(playerRatings[name]).join(',')
+  },{onConflict:'game_id,user_id,player_name'});
+  showToast(name+' の評価を更新しました！');
 }
 
 async function loadPlayerRatings(){
   var r=await sb.from('player_ratings').select('player_name,rating').eq('game_id',GAME_ID).eq('user_id',userId);
-  if(r.data)r.data.forEach(function(x){playerRatings[x.player_name]=x.rating;});
+  if(r.data)r.data.forEach(function(x){
+    if(x.rating){
+      playerRatings[x.player_name]=new Set(x.rating.split(',').filter(Boolean));
+    }
+  });
   renderPlayerGrid();
 }
 
