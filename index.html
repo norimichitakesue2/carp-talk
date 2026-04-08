@@ -226,6 +226,11 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .x-share-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;text-decoration:none}
 .x-share-btn:hover{background:#000;color:#fff;border-color:#000}
 .x-share-wrap{display:flex;justify-content:flex-end;margin-top:8px}
+.tp-add-wrap{margin-top:.75rem;border-top:1px solid var(--border);padding-top:.75rem}
+.tp-add-toggle{width:100%;padding:.6rem;background:transparent;border:1px dashed var(--border2);border-radius:var(--rs);color:var(--muted);font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
+.tp-add-toggle:hover{border-color:var(--green);color:var(--green)}
+.tp-add-toggle.open{border-color:var(--green);color:var(--green);background:rgba(62,207,142,.05)}
+.tp-post-form{margin-top:.75rem}
 .popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding-bottom:0}
 .popup-sheet{background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:680px;padding:1.25rem 1.25rem 2rem;border-top:1px solid var(--border2)}
 .popup-handle{width:36px;height:4px;background:var(--faint);border-radius:2px;margin:0 auto 1.25rem}
@@ -446,6 +451,34 @@ function renderMain(g){
     '<div id="tp-sel-label" class="tp-sel-inn" style="display:none"></div>'+
     '<div class="tp-track-wrap"><div class="tp-track" id="tp-track"></div></div>'+
     '<div id="tp-hint" class="tp-hint">転換点のあるイニング（赤いドット）をタップ</div>'+
+    '<div class="tp-add-wrap">'+
+    '<button class="tp-add-toggle" id="tp-add-toggle" onclick="togglePostForm()">＋ 自分の転換点を追加する</button>'+
+    '<div class="tp-post-form" id="tp-post-form" style="display:none">'+
+    '<div class="form-row"><label class="form-label">対象回</label>'+
+    '<select class="form-select" id="pf-inn">'+
+    '<option value="1回表">1回表</option><option value="1回裏">1回裏</option>'+
+    '<option value="2回表">2回表</option><option value="2回裏">2回裏</option>'+
+    '<option value="3回表">3回表</option><option value="3回裏">3回裏</option>'+
+    '<option value="4回表">4回表</option><option value="4回裏" selected>4回裏</option>'+
+    '<option value="5回表">5回表</option><option value="5回裏">5回裏</option>'+
+    '<option value="6回表">6回表</option><option value="6回裏">6回裏</option>'+
+    '<option value="7回表">7回表</option><option value="7回裏">7回裏</option>'+
+    '<option value="8回表">8回表</option><option value="8回裏">8回裏</option>'+
+    '<option value="9回表">9回表</option><option value="9回裏">9回裏</option>'+
+    '</select></div>'+
+    '<div class="form-row"><label class="form-label">どこで流れが変わったと感じた？</label>'+
+    '<input class="form-input" id="pf-desc" placeholder="例：ここで完全に空気が変わった" maxlength="60"></div>'+
+    '<div class="form-row"><label class="form-label">理由（任意）</label>'+
+    '<textarea class="form-textarea" id="pf-reason" placeholder="点は入ってないけど…でもOK" rows="2"></textarea></div>'+
+    '<div class="form-row"><label class="form-label">強度</label>'+
+    '<div class="intensity-row">'+
+    '<button class="int-btn sel-s" id="pf-int-s" onclick="setPfInt('strong')">🔴 流れを持ってきた</button>'+
+    '<button class="int-btn" id="pf-int-m" onclick="setPfInt('mid')">🟡 流れが変わった</button>'+
+    '<button class="int-btn" id="pf-int-w" onclick="setPfInt('weak')">🔵 ヒヤッとした</button>'+
+    '</div></div>'+
+    '<button class="form-submit" onclick="postTurning()">この転換点を投稿する</button>'+
+    '</div>'+
+    '</div>'+
     '</div>'+
 
     // ストーリー
@@ -697,6 +730,22 @@ function renderStory(){
   initFI();
 }
 
+var pfIntensity='strong';
+function setPfInt(val){
+  pfIntensity=val;
+  document.getElementById('pf-int-s').className='int-btn'+(val==='strong'?' sel-s':'');
+  document.getElementById('pf-int-m').className='int-btn'+(val==='mid'?' sel-m':'');
+  document.getElementById('pf-int-w').className='int-btn'+(val==='weak'?' sel-w':'');
+}
+function togglePostForm(){
+  var form=document.getElementById('tp-post-form');
+  var btn=document.getElementById('tp-add-toggle');
+  if(!form||!btn)return;
+  var open=form.style.display==='none';
+  form.style.display=open?'block':'none';
+  btn.className='tp-add-toggle'+(open?' open':'');
+  btn.textContent=open?'✕ 閉じる':'＋ 自分の転換点を追加する';
+}
 function setInt(inn,val){
   formIntensity[inn]=val;
   ['s','m','w'].forEach(function(k){
@@ -705,27 +754,29 @@ function setInt(inn,val){
   });
 }
 
-async function postTurning(inn){
-  var desc=document.getElementById('pf-desc-'+inn);
+async function postTurning(){
+  var desc=document.getElementById('pf-desc');
   if(!desc||!desc.value.trim()){showToast('内容を入力してください');return;}
-  var innSel=document.getElementById('pf-inn-'+inn);
-  var reason=document.getElementById('pf-reason-'+inn);
-  var intensity=formIntensity[inn]||'strong';
+  var innSel=document.getElementById('pf-inn');
+  var reason=document.getElementById('pf-reason');
   var r=await sb.from('turnings').insert({
-    game_id:GAME_ID,inning:innSel?innSel.value:inn+'回',
+    game_id:GAME_ID,inning:innSel?innSel.value:'不明',
     description:desc.value.trim(),
     reason:reason?reason.value.trim()||null:null,
-    intensity:intensity,source:'user',user_id:userId
+    intensity:pfIntensity||'strong',source:'user',user_id:userId
   }).select().single();
   if(r.error){showToast('投稿に失敗しました');return;}
-  // 自動投票
   var t=r.data;
   await sb.from('turning_votes').insert({turning_id:t.id,game_id:GAME_ID,user_id:userId});
   t.vote_count=1;t.source='user';
   turnings.push(t);myTurning=t.id;
-  if(desc)desc.value='';if(reason)reason.value='';
-  renderStory();drawWave();
-  // 投稿後にポップアップを表示
+  // フォームリセット
+  desc.value='';
+  if(reason)reason.value='';
+  pfIntensity='strong';
+  setPfInt('strong');
+  togglePostForm();
+  drawWave();
   setTimeout(function(){openPopup(t.id,'転換点を投稿しました');},300);
 }
 
