@@ -472,9 +472,9 @@ function renderMain(g){
     '<textarea class="form-textarea" id="pf-reason" placeholder="点は入ってないけど…でもOK" rows="2"></textarea></div>'+
     '<div class="form-row"><label class="form-label">強度</label>'+
     '<div class="intensity-row">'+
-    '<button class="int-btn sel-s" id="pf-int-s" onclick="setPfInt('strong')">🔴 流れを持ってきた</button>'+
-    '<button class="int-btn" id="pf-int-m" onclick="setPfInt('mid')">🟡 流れが変わった</button>'+
-    '<button class="int-btn" id="pf-int-w" onclick="setPfInt('weak')">🔵 ヒヤッとした</button>'+
+    '<button class="int-btn sel-s" id="pf-int-s" onclick="setPfInt(this.dataset.v)" data-v="strong">🔴 流れを持ってきた</button>'+
+    '<button class="int-btn" id="pf-int-m" onclick="setPfInt(this.dataset.v)" data-v="mid">🟡 流れが変わった</button>'+
+    '<button class="int-btn" id="pf-int-w" onclick="setPfInt(this.dataset.v)" data-v="weak">🔵 ヒヤッとした</button>'+
     '</div></div>'+
     '<button class="form-submit" onclick="postTurning()">この転換点を投稿する</button>'+
     '</div>'+
