@@ -444,7 +444,7 @@ function renderMain(g){
   // イニング表
   var innHtml='';
   if(g.innings&&g.innings.hiroshima){
-    var hi=g.innings.giants||g.innings.away_innings||[],ri=g.innings.hiroshima;
+    var hi=g.innings.giants||g.innings.dena||g.innings.yokohama||g.innings.away_innings||g.innings.home_innings||[],ri=g.innings.hiroshima;
     var cols='';for(var i=1;i<=9;i++)cols+='<th>'+i+'</th>';
     var hCells='',rCells='';
     for(var i=0;i<9;i++){
@@ -633,9 +633,9 @@ function drawWave(){
       var isUra=evt.inning&&evt.inning.includes('裏');
       var isHiroshimaAttack=hiroshimaIsAway?!isUra:isUra;
       var val;
-      if(evt.type==='hr') val=isHiroshimaAttack?72:15;
-      else if(evt.type==='score') val=isHiroshimaAttack?65:20;
-      else if(evt.type==='crisis') val=isHiroshimaAttack?35:30;
+      if(evt.type==='hr') val=isHiroshimaAttack?15:80;   // 広島HR=上、相手HR=下
+      else if(evt.type==='score') val=isHiroshimaAttack?28:72;  // 広島得点=上、相手得点=下
+      else if(evt.type==='crisis') val=isHiroshimaAttack?60:55; // チャンス逃し=やや下
       else val=45;
       if(!isUra){
         // 表のイベント：広島の攻撃なら上昇（大きい方）、相手なら下降（小さい方）
