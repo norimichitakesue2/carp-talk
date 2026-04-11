@@ -623,24 +623,33 @@ function ptX(i){return (i/8)*540+10;}
 function drawWave(){
   var el=document.getElementById('wave-svg');if(!el)return;
   var flows=[];
+  var hiroshimaIsAway = GAME && GAME.away === '広島';
   for(var i=1;i<=9;i++){
     var evts=MOMENTS.filter(function(m){return m.inning&&parseInt(m.inning)===i;});
     var base=45;
+    // 表・裏それぞれの最悪値（最も影響の大きい値）を計算
+    var omoteVal=null, uraVal=null;
     evts.forEach(function(evt){
-      // 広島が先攻(away)の場合: 表=広島の攻撃、裏=相手の攻撃
-      // 広島が後攻(home)の場合: 表=相手の攻撃、裏=広島の攻撃
-      var hiroshimaIsAway = GAME && GAME.away === '広島';
-      var isUra = evt.inning && evt.inning.includes('裏');
-      // 広島の攻撃かどうか
-      var isHiroshimaAttack = hiroshimaIsAway ? !isUra : isUra;
-      if(evt.type==='hr'){
-        base = isHiroshimaAttack ? 72 : 15;
-      } else if(evt.type==='score'){
-        base = isHiroshimaAttack ? 65 : 20;
-      } else if(evt.type==='crisis'){
-        base = 35;// チャンス逃し＝やや下
+      var isUra=evt.inning&&evt.inning.includes('裏');
+      var isHiroshimaAttack=hiroshimaIsAway?!isUra:isUra;
+      var val;
+      if(evt.type==='hr') val=isHiroshimaAttack?72:15;
+      else if(evt.type==='score') val=isHiroshimaAttack?65:20;
+      else if(evt.type==='crisis') val=isHiroshimaAttack?35:30;
+      else val=45;
+      if(!isUra){
+        // 表のイベント：広島の攻撃なら上昇（大きい方）、相手なら下降（小さい方）
+        if(omoteVal===null) omoteVal=val;
+        else omoteVal=isHiroshimaAttack?Math.max(omoteVal,val):Math.min(omoteVal,val);
+      } else {
+        // 裏のイベント
+        if(uraVal===null) uraVal=val;
+        else uraVal=isHiroshimaAttack?Math.max(uraVal,val):Math.min(uraVal,val);
       }
     });
+    // 表・裏両方あれば裏（その回の最終状態）を優先、なければ表
+    if(uraVal!==null) base=uraVal;
+    else if(omoteVal!==null) base=omoteVal;
     flows.push({x:ptX(i-1),y:base});
   }
   var d='M'+flows[0].x+','+flows[0].y;
