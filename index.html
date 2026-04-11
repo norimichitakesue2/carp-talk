@@ -1345,7 +1345,7 @@ function renderEpStep2(){
   var opts2=document.getElementById('ep-opts2');
   if(!opts2)return;
   var shown={};
-  opts2.innerHTML=turnings.slice(0,6).map(function(t){
+  opts2.innerHTML=turnings.slice(0,12).map(function(t){
     if(shown[t.description])return '';
     shown[t.description]=true;
     return '<button class="sp-opt" onclick="epPick2(this)" data-id="'+t.id+'" data-v="'+esc(t.inning+'「'+t.description.slice(0,18)+'」')+'">'+esc(t.inning)+' '+esc(t.description.slice(0,16))+'...</button>';
