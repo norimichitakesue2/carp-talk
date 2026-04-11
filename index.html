@@ -447,14 +447,31 @@ function renderMain(g){
     var hi=g.innings.giants||g.innings.dena||g.innings.yokohama||g.innings.away_innings||g.innings.home_innings||[],ri=g.innings.hiroshima;
     var cols='';for(var i=1;i<=9;i++)cols+='<th>'+i+'</th>';
     var hCells='',rCells='';
+    // hi=相手チーム(後攻/先攻に応じて)、ri=広島
+    // GAME.awayがある場合: 広島が先攻=表=ri行を上、hiを下
     for(var i=0;i<9;i++){
-      var hv=hi[i]||0,rv=ri[i];
-      hCells+='<td class="'+(hv>0?'scoring':'zero')+'">'+hv+'</td>';
-      rCells+='<td class="'+(rv>0&&rv!=='X'?'scoring':'zero')+'">'+rv+'</td>';
+      var hv=hi[i]!=null?hi[i]:0,rv=ri[i]!=null?ri[i]:0;
+      var hvDisplay=(hv==='-'||hv==='X')?hv:(hv>0?hv:0);
+      var rvDisplay=(rv==='-'||rv==='X')?rv:(rv>0?rv:0);
+      hCells+='<td class="'+(hv>0&&hv!=='-'&&hv!=='X'?'scoring':'zero')+'">'+hvDisplay+'</td>';
+      rCells+='<td class="'+(rv>0&&rv!=='-'&&rv!=='X'?'scoring':'zero')+'">'+rvDisplay+'</td>';
     }
+    // 広島が先攻(away)か後攻(home)かで行の順番を決定
+    var hiroshimaIsAway2 = g.away_team === '広島';
+    var hiroRow='<tr><td class="team-label" style="color:var(--carp)">'+
+      (hiroshimaIsAway2?g.away_team:g.home_team)+'</td>'+
+      (hiroshimaIsAway2?rCells:hCells)+
+      '<td class="score-col" style="color:var(--carp)">'+(hiroshimaIsAway2?g.away_score:g.home_score)+'</td>'+
+      '<td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>';
+    var aiteRow='<tr><td class="team-label" style="color:'+awayColor+'">'+
+      (hiroshimaIsAway2?g.home_team:g.away_team)+'</td>'+
+      (hiroshimaIsAway2?hCells:rCells)+
+      '<td class="score-col" style="color:'+awayColor+'">'+(hiroshimaIsAway2?g.home_score:g.away_score)+'</td>'+
+      '<td>'+(g.innings.dena_hits||g.innings.giants_hits||'-')+'</td>'+
+      '<td>'+(g.innings.dena_errors||g.innings.giants_errors||'-')+'</td></tr>';
+    // 先攻（away）が上の行
     innHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
-      '<tr><td class="team-label" style="color:'+awayColor+'">'+g.away_team+'</td>'+hCells+'<td class="score-col" style="color:'+awayColor+'">'+g.away_score+'</td><td>'+(g.innings.giants_hits||'-')+'</td><td>'+(g.innings.giants_errors||'-')+'</td></tr>'+
-      '<tr><td class="team-label" style="color:var(--carp)">'+g.home_team+'</td>'+rCells+'<td class="score-col" style="color:var(--carp)">'+g.home_score+'</td><td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>'+
+      (hiroshimaIsAway2?hiroRow+aiteRow:aiteRow+hiroRow)+
       '</tbody></table></div>';
   }
 
@@ -633,9 +650,9 @@ function drawWave(){
       var isUra=evt.inning&&evt.inning.includes('裏');
       var isHiroshimaAttack=hiroshimaIsAway?!isUra:isUra;
       var val;
-      if(evt.type==='hr') val=isHiroshimaAttack?15:80;   // 広島HR=上、相手HR=下
-      else if(evt.type==='score') val=isHiroshimaAttack?28:72;  // 広島得点=上、相手得点=下
-      else if(evt.type==='crisis') val=isHiroshimaAttack?60:55; // チャンス逃し=やや下
+      if(evt.type==='hr') val=isHiroshimaAttack?18:80;   // 広島HR=上(Y小)、相手HR=下(Y大)
+      else if(evt.type==='score') val=isHiroshimaAttack?25:72;  // 広島得点=上、相手得点=下
+      else if(evt.type==='crisis') val=isHiroshimaAttack?62:58; // チャンス逃し=やや下
       else val=45;
       if(!isUra){
         // 表のイベント：広島の攻撃なら上昇（大きい方）、相手なら下降（小さい方）
