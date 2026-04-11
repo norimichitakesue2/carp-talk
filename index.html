@@ -627,15 +627,18 @@ function drawWave(){
     var evts=MOMENTS.filter(function(m){return m.inning&&parseInt(m.inning)===i;});
     var base=45;
     evts.forEach(function(evt){
+      // 広島が先攻(away)の場合: 表=広島の攻撃、裏=相手の攻撃
+      // 広島が後攻(home)の場合: 表=相手の攻撃、裏=広島の攻撃
+      var hiroshimaIsAway = GAME && GAME.away === '広島';
+      var isUra = evt.inning && evt.inning.includes('裏');
+      // 広島の攻撃かどうか
+      var isHiroshimaAttack = hiroshimaIsAway ? !isUra : isUra;
       if(evt.type==='hr'){
-        // 広島のHR(inning裏)か相手のHR(inning表)かで判定
-        var isUra=evt.inning&&evt.inning.includes('裏');
-        base=isUra?15:72;// 裏=広島の攻撃=上昇、表=相手のHR=大幅下降
+        base = isHiroshimaAttack ? 72 : 15;
       } else if(evt.type==='score'){
-        var isUra=evt.inning&&evt.inning.includes('裏');
-        base=isUra?20:65;
+        base = isHiroshimaAttack ? 65 : 20;
       } else if(evt.type==='crisis'){
-        base=55;// チャンス逃し＝やや下
+        base = 35;// チャンス逃し＝やや下
       }
     });
     flows.push({x:ptX(i-1),y:base});
