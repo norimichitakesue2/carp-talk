@@ -398,7 +398,7 @@ function hashStr(s){var h=0;for(var i=0;i<s.length;i++)h=Math.imul(31,h)+s.charC
 function formatTime(iso){var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'たった今';if(diff<3600)return Math.floor(diff/60)+'分前';if(diff<86400)return Math.floor(diff/3600)+'時間前';return (d.getMonth()+1)+'/'+d.getDate();}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 function goDate(n){var nd=addDays(currentDate,n);history.pushState({},'','/?date='+nd);loadGame(nd);}
-function getEmotion(flow){if(flow<=20)return{label:'圧倒',cls:'em-push'};if(flow<=30)return{label:'押してる',cls:'em-push'};if(flow<=40)return{label:'緊張',cls:'em-tens'};return{label:'耐えてる',cls:'em-hold'};}
+function getEmotion(flow){if(flow<=20)return{label:'圧倒',cls:'em-push'};if(flow<=30)return{label:'押してる',cls:'em-push'};if(flow<=42)return{label:'緊張',cls:'em-tens'};if(flow<=60)return{label:'耐えてる',cls:'em-hold'};if(flow<=73)return{label:'ピンチ',cls:'em-hold'};return{label:'崩壊',cls:'em-hold'};}
 
 // ===== 日付ナビ =====
 function updateDateNav(date){
@@ -851,12 +851,25 @@ function renderStory(){
     // 流れ変化
     if(inn>1){
       var prevEvts=MOMENTS.filter(function(m){return m.inning&&parseInt(m.inning)===inn-1;});
-      var hasCurrent=evts.some(function(e){return e.type==='hr'||e.type==='score';});
+      var hiroshimaIsAway4 = GAME && GAME.away === '広島';
+      // 広島の攻撃かどうか判定してラベルを変える
+      var hiroScore=evts.some(function(e){
+        var isUra=e.inning&&e.inning.includes('裏');
+        var isHiro=hiroshimaIsAway4?!isUra:isUra;
+        return isHiro&&(e.type==='hr'||e.type==='score');
+      });
+      var aiteScore=evts.some(function(e){
+        var isUra=e.inning&&e.inning.includes('裏');
+        var isAite=hiroshimaIsAway4?isUra:!isUra;
+        return isAite&&(e.type==='hr'||e.type==='score');
+      });
       var hasPrevCrisis=prevEvts.some(function(e){return e.type==='crisis';});
-      if(hasCurrent){
-        html+='<div class="flow-change up"><div class="fc-line"></div>▼ 流れが傾いた<div class="fc-line"></div></div>';
+      if(hiroScore){
+        html+='<div class="flow-change up"><div class="fc-line"></div>▲ 流れが来た！<div class="fc-line"></div></div>';
+      } else if(aiteScore){
+        html+='<div class="flow-change down"><div class="fc-line"></div>▼ 流れが傾いた<div class="fc-line"></div></div>';
       } else if(hasPrevCrisis){
-        html+='<div class="flow-change down"><div class="fc-line"></div>▲ 流れが戻った<div class="fc-line"></div></div>';
+        html+='<div class="flow-change flat"><div class="fc-line"></div>▽ チャンスを逃した<div class="fc-line"></div></div>';
       } else {
         html+='<div class="flow-change flat">│</div>';
       }
@@ -864,7 +877,25 @@ function renderStory(){
 
     html+='<div class="fi">';
     // イニングヘッダー
-    var flow=evts.length?(evts[0].type==='hr'||evts[0].type==='score'?20:evts[0].type==='crisis'?35:40):45;
+    // flow: 広島優勢=小(上)、相手優勢=大(下)、45=平常
+    var hiroshimaIsAway3 = GAME && GAME.away === '広島';
+    var flow = 45;
+    if(evts.length){
+      var bestFlow = 45;
+      evts.forEach(function(evt){
+        var isUra = evt.inning && evt.inning.includes('裏');
+        var isHiroAttack = hiroshimaIsAway3 ? !isUra : isUra;
+        var f;
+        if(evt.type==='hr') f = isHiroAttack ? 18 : 80;
+        else if(evt.type==='score') f = isHiroAttack ? 25 : 72;
+        else if(evt.type==='crisis') f = isHiroAttack ? 62 : 58;
+        else f = 45;
+        // 最も極端な値を使う（広島優勢なら最小、相手優勢なら最大）
+        if(isHiroAttack) bestFlow = Math.min(bestFlow, f);
+        else bestFlow = Math.max(bestFlow, f);
+      });
+      flow = bestFlow;
+    }
     var emo=getEmotion(flow);
     html+='<div class="inning-head"><span class="inning-num">'+inn+'回</span>';
     html+='<span class="inning-emotion '+emo.cls+'">'+emo.label+'</span>';
