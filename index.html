@@ -424,7 +424,7 @@ async function loadGame(date){
     return;
   }
   var g=await r.json();
-  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue};
+  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{}};
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
   // リセット
   titleVotes={};myTitleVote=null;turnings=[];myTurning=null;
