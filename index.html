@@ -1065,18 +1065,16 @@ async function initLineup(g){
 }
 
 function renderLineupForm(area, players, pitchers){
-  var pitcherOpts = pitchers.map(function(p){return '<option value="'+esc(p)+'">'+esc(p)+'</option>';}).join('');
   area.innerHTML =
     '<div class="lineup-body">'+
-    
     '<div class="lineup-step-label">打順を選択（タップで順番に登録）</div>'+
     '<div class="lineup-players" id="lineup-players">'+
-    players.filter(function(p){return p.pos!=='投'&&!p.pos.includes('投');}).map(function(p){
+    players.filter(function(p){return true;}).map(function(p){
       return '<button class="lp-btn" onclick="addLineupPlayer(this)" data-name="'+esc(p.name)+'" data-pos="'+esc(p.pos)+'">'+esc(p.name)+'</button>';
     }).join('')+
     '</div>'+
     '<div class="lineup-order" id="lineup-order"></div>'+
-    '<div class="ep-nav" id="lineup-nav"><button class="lineup-submit" id="lineup-submit" onclick="submitLineup()">投稿する（'+LINEUP_ORDER.length+'/9）</button></div>'+
+    '<div class="ep-nav" id="lineup-nav"><button class="lineup-submit" id="lineup-submit" onclick="submitLineup()">投稿する（0/9）</button></div>'+
     '</div>'+
     '<div class="lineup-divider" style="border-top:1px solid var(--border);padding:8px 1.25rem 0">'+
     '<div class="slabel" style="margin-bottom:6px">みんなの予想オーダー</div>'+
