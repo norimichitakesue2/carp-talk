@@ -510,7 +510,7 @@ function renderMain(g){
 
   // 投手
   var pitHtml='';
-  if(g.pitchers&&g.pitchers.length){
+  if(!isScheduled&&g.pitchers&&g.pitchers.length){
     var chips='';
     g.pitchers.forEach(function(p){
       var tc=p.team==='広島'?'var(--carp)':'#f5d000';
@@ -521,7 +521,7 @@ function renderMain(g){
     pitHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
   }
 
-  var resultLabel=isScheduled?('<span class="badge bf" style="background:rgba(74,158,255,.2);color:var(--blue)">'+g.start_time+' 試合前</span>'):(g.result_label?'<span class="badge bf">FINAL・'+g.result_label+'</span>':'');
+  var resultLabel=isScheduled?'':(g.result_label?'<span class="badge bf">FINAL・'+g.result_label+'</span>':'');
 
   document.getElementById('main-content').innerHTML=
     // スコアカード
