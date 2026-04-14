@@ -260,6 +260,35 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .ep-sel-lbl{font-size:10px;color:var(--muted);flex-shrink:0}
 .ep-sel-val{font-size:11px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px}
 .ep-share{flex:2;padding:7px;border-radius:var(--rs);border:none;background:#000;color:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px}
+.lineup-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:1rem;overflow:hidden}
+.lineup-header{display:flex;align-items:center;justify-content:space-between;padding:10px 1.25rem;border-bottom:1px solid var(--border)}
+.lineup-title{font-size:13px;font-weight:700;color:var(--text)}
+.lineup-body{padding:1rem 1.25rem}
+.lineup-step-label{font-size:11px;color:var(--muted);margin-bottom:8px}
+.lineup-players{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.lp-btn{font-size:11px;padding:5px 10px;border-radius:99px;border:1px solid var(--border2);background:transparent;color:var(--text);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;white-space:nowrap}
+.lp-btn:hover{border-color:var(--carp);color:var(--carp)}
+.lp-btn.used{opacity:.3;pointer-events:none}
+.lp-btn.selected{background:var(--carp);color:#fff;border-color:var(--carp)}
+.lineup-order{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.lo-row{display:flex;align-items:center;gap:8px;padding:5px 8px;background:var(--surface2);border-radius:var(--rs);font-size:12px}
+.lo-num{width:18px;height:18px;border-radius:50%;background:var(--carp);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lo-name{font-weight:500;color:var(--text)}
+.lo-pos{font-size:10px;color:var(--muted);margin-left:4px}
+.lo-del{margin-left:auto;font-size:11px;color:var(--muted);cursor:pointer;padding:0 4px}
+.lineup-pitcher-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.lineup-pitcher-label{font-size:11px;color:var(--muted);flex-shrink:0}
+.lineup-pitcher-select{flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--rs);padding:5px 8px;font-size:12px;color:var(--text);font-family:'Noto Sans JP',sans-serif}
+.lineup-submit{width:100%;padding:8px;border-radius:var(--rs);border:none;background:var(--carp);color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;opacity:.5}
+.lineup-submit.on{opacity:1}
+.minna-lineup-track{display:flex;gap:10px;overflow-x:auto;padding:8px 1.25rem;scrollbar-width:none}
+.minna-lineup-track::-webkit-scrollbar{display:none}
+.minna-lineup-card{flex-shrink:0;width:160px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem}
+.mlc-header{font-size:10px;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between}
+.mlc-pitcher{font-size:11px;color:var(--accent);font-weight:500;margin-bottom:4px}
+.mlc-rows{display:flex;flex-direction:column;gap:2px}
+.mlc-row{display:flex;gap:4px;font-size:10px;color:var(--text)}
+.mlc-order-num{color:var(--muted);width:12px;flex-shrink:0}
 .ep-action-row{display:flex;gap:6px;padding:10px 1.25rem;border-top:1px solid var(--border)}
 .ep-btn-post{flex:1;padding:7px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:700}
 .ep-btn-share{flex:1;padding:7px;border-radius:var(--rs);border:none;background:#000;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px}
@@ -538,6 +567,15 @@ function renderMain(g){
     '</div>'+
     '</div>'+
 
+    // 予想オーダー（試合前・試合後どちらでも表示）
+    '<div class="lineup-section fi" id="lineup-section">'+
+    '<div class="lineup-header">'+
+    '<span class="lineup-title">今日のスタメン予想</span>'+
+    '<span class="slabel" style="font-size:11px" id="lineup-count"></span>'+
+    '</div>'+
+    '<div id="lineup-body-area"></div>'+
+    '</div>'+
+
     // タイトル投票
     '<div class="section fi" id="title-section">'+
     '<div class="slabel">この試合、一言で言うなら？</div>'+
@@ -585,9 +623,9 @@ function renderMain(g){
     '<textarea class="form-textarea" id="pf-reason" placeholder="点は入ってないけど…でもOK" rows="2"></textarea></div>'+
     '<div class="form-row"><label class="form-label">強度</label>'+
     '<div class="intensity-row">'+
-    '<button class="int-btn sel-s" id="pf-int-s" onclick="setPfInt(this.dataset.v)" data-v="strong">🔴 流れを持ってきた</button>'+
+    '<button class="int-btn sel-s" id="pf-int-s" onclick="setPfInt(this.dataset.v)" data-v="strong">🔴 ここが分かれ目</button>'+
     '<button class="int-btn" id="pf-int-m" onclick="setPfInt(this.dataset.v)" data-v="mid">🟡 流れが変わった</button>'+
-    '<button class="int-btn" id="pf-int-w" onclick="setPfInt(this.dataset.v)" data-v="weak">🔵 ヒヤッとした</button>'+
+    '<button class="int-btn" id="pf-int-w" onclick="setPfInt(this.dataset.v)" data-v="weak">🔵 注目場面</button>'+
     '</div></div>'+
     '<button class="form-submit" onclick="postTurning()">この分岐点を投稿する</button>'+
     '</div>'+
@@ -936,6 +974,155 @@ function updateEpSelBar(){
   });
 }
 
+// ===== 予想オーダー機能 =====
+var LINEUP_ORDER = []; // [{order:1, name:'大盛', pos:'中'}, ...]
+var LINEUP_PITCHER = '';
+var LINEUP_POSTED = false;
+
+// カープ選手マスター（JSONにない場合のデフォルト）
+var CARP_PLAYERS_MASTER = [
+  {name:'大盛 穂', pos:'外'},
+  {name:'野間 峻祥', pos:'外'},
+  {name:'秋山 翔吾', pos:'外'},
+  {name:'中村 奨成', pos:'外'},
+  {name:'菊池 涼介', pos:'内'},
+  {name:'小園 海斗', pos:'内'},
+  {name:'矢野 雅哉', pos:'内'},
+  {name:'勝田 成', pos:'内'},
+  {name:'佐々木 泰', pos:'内'},
+  {name:'坂倉 将吾', pos:'捕'},
+  {name:'石原 貴規', pos:'捕'},
+  {name:'モンテロ', pos:'一'},
+  {name:'ファビアン', pos:'外'},
+  {name:'マクブルーム', pos:'一'},
+];
+var CARP_PITCHERS_MASTER = [
+  '床田 寛樹','九里 亜蓮','森下 暢仁','大瀬良 大地',
+  'ターノック','アドゥワ 誠','玉村 昇悟','高橋 昂也',
+  '黒原 拓未','島内 颯太朗'
+];
+
+function initLineup(g){
+  var area = document.getElementById('lineup-body-area');
+  if(!area) return;
+  // 選手リストをPLAYERSとマスターからマージ
+  var players = (PLAYERS && PLAYERS.length > 0) ? PLAYERS :
+    (g && g.players ? g.players : CARP_PLAYERS_MASTER);
+  var pitchers = CARP_PITCHERS_MASTER;
+  if(g && g.pitchers) pitchers = g.pitchers.filter(function(p){return p.team==='広島';}).map(function(p){return p.name;}).concat(pitchers.filter(function(n){return !g.pitchers.find(function(p){return p.name===n;});}));
+
+  renderLineupForm(area, players, pitchers);
+  loadMinnaLineup();
+}
+
+function renderLineupForm(area, players, pitchers){
+  var pitcherOpts = pitchers.map(function(p){return '<option value="'+esc(p)+'">'+esc(p)+'</option>';}).join('');
+  area.innerHTML =
+    '<div class="lineup-body">'+
+    '<div class="lineup-pitcher-row">'+
+    '<span class="lineup-pitcher-label">先発：</span>'+
+    '<select class="lineup-pitcher-select" id="lineup-pitcher-sel" onchange="LINEUP_PITCHER=this.value;updateLineupSubmit()">'+
+    '<option value="">先発を選ぶ</option>'+pitcherOpts+
+    '</select></div>'+
+    '<div class="lineup-step-label">打順を選択（タップで順番に登録）</div>'+
+    '<div class="lineup-players" id="lineup-players">'+
+    players.filter(function(p){return p.pos!=='投'&&!p.pos.includes('投');}).map(function(p){
+      return '<button class="lp-btn" onclick="addLineupPlayer(this)" data-name="'+esc(p.name)+'" data-pos="'+esc(p.pos)+'">'+esc(p.name)+'</button>';
+    }).join('')+
+    '</div>'+
+    '<div class="lineup-order" id="lineup-order"></div>'+
+    '<button class="lineup-submit" id="lineup-submit" onclick="submitLineup()">投稿する（'+LINEUP_ORDER.length+'/9）</button>'+
+    '</div>'+
+    '<div class="lineup-divider" style="border-top:1px solid var(--border);padding:8px 1.25rem 0">'+
+    '<div class="slabel" style="margin-bottom:6px">みんなの予想オーダー</div>'+
+    '<div class="minna-lineup-track" id="minna-lineup-track"><div class="muted" style="font-size:12px;padding:4px 0">まだ予想がありません</div></div>'+
+    '</div>';
+}
+
+function addLineupPlayer(btn){
+  if(LINEUP_ORDER.length>=9) return;
+  var name=btn.dataset.name, pos=btn.dataset.pos;
+  LINEUP_ORDER.push({order:LINEUP_ORDER.length+1, name:name, pos:pos});
+  btn.classList.add('used');
+  renderLineupOrder();
+  updateLineupSubmit();
+}
+
+function removeLineupPlayer(order){
+  var removed = LINEUP_ORDER.find(function(p){return p.order===order;});
+  LINEUP_ORDER = LINEUP_ORDER.filter(function(p){return p.order!==order;});
+  // 順番を振り直す
+  LINEUP_ORDER.forEach(function(p,i){p.order=i+1;});
+  // ボタンを戻す
+  if(removed){
+    Array.from(document.querySelectorAll('#lineup-players .lp-btn')).forEach(function(btn){
+      if(btn.dataset.name===removed.name) btn.classList.remove('used');
+    });
+  }
+  renderLineupOrder();
+  updateLineupSubmit();
+}
+
+function renderLineupOrder(){
+  var el=document.getElementById('lineup-order');
+  if(!el) return;
+  el.innerHTML=LINEUP_ORDER.map(function(p){
+    return '<div class="lo-row">'+
+      '<div class="lo-num">'+p.order+'</div>'+
+      '<span class="lo-name">'+esc(p.name)+'</span>'+
+      '<span class="lo-pos">'+esc(p.pos)+'</span>'+
+      '<span class="lo-del" onclick="removeLineupPlayer('+p.order+')">✕</span>'+
+      '</div>';
+  }).join('');
+  var btn=document.getElementById('lineup-submit');
+  if(btn) btn.textContent='投稿する（'+LINEUP_ORDER.length+'/9）';
+}
+
+function updateLineupSubmit(){
+  var btn=document.getElementById('lineup-submit');
+  if(btn) btn.classList.toggle('on', LINEUP_ORDER.length===9&&!!LINEUP_PITCHER);
+}
+
+async function submitLineup(){
+  if(LINEUP_POSTED){showToast('投稿済みです');return;}
+  if(LINEUP_ORDER.length!==9){showToast('9人を選択してください');return;}
+  if(!LINEUP_PITCHER){showToast('先発投手を選んでください');return;}
+  var r=await sb.from('lineup_predictions').upsert({
+    game_id:GAME_ID, user_id:userId,
+    lineup:LINEUP_ORDER,
+    pitcher:LINEUP_PITCHER
+  },{onConflict:'game_id,user_id'});
+  if(r.error){showToast('投稿に失敗しました');return;}
+  LINEUP_POSTED=true;
+  showToast('予想オーダーを投稿しました！');
+  var btn=document.getElementById('lineup-submit');
+  if(btn){btn.textContent='✓ 投稿済み';btn.style.background='var(--green)';}
+  await loadMinnaLineup();
+}
+
+async function loadMinnaLineup(){
+  var el=document.getElementById('minna-lineup-track');
+  if(!el) return;
+  var r=await sb.from('lineup_predictions').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:false}).limit(20);
+  if(!r.data||!r.data.length){
+    el.innerHTML='<div style="font-size:12px;color:var(--muted);padding:4px 0">まだ予想がありません</div>';
+    return;
+  }
+  el.innerHTML=r.data.map(function(pred){
+    var isMe=pred.user_id===userId;
+    var rows=(pred.lineup||[]).map(function(p){
+      return '<div class="mlc-row"><span class="mlc-order-num">'+p.order+'</span><span>'+esc(p.name)+'</span></div>';
+    }).join('');
+    return '<div class="minna-lineup-card'+(isMe?' mine':'')+'">'+
+      '<div class="mlc-header">'+
+      '<span>'+(isMe?'あなた':formatTime(pred.created_at))+'</span>'+
+      '</div>'+
+      '<div class="mlc-pitcher">先発：'+esc(pred.pitcher||'未定')+'</div>'+
+      '<div class="mlc-rows">'+rows+'</div>'+
+      '</div>';
+  }).join('');
+}
+
 var pfIntensity='strong';
 function setPfInt(val){
   pfIntensity=val;
@@ -1117,6 +1304,7 @@ async function initApp(g){
 
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
   initEvalBar(g);
+  initLineup(g);
   // turnings読み込み後にSTEP2も更新
   renderEpStep2();
   loadMinnaEval();
