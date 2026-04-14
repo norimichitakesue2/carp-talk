@@ -453,7 +453,7 @@ async function loadGame(date){
     return;
   }
   var g=await r.json();
-  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{}};
+  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final'};
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
   // リセット
   titleVotes={};myTitleVote=null;turnings=[];myTurning=null;
@@ -465,6 +465,7 @@ async function loadGame(date){
 // ===== メイン描画 =====
 function renderMain(g){
   var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
+  var isScheduled=g.status==='scheduled';
   var awayColor=g.away_team==='広島'?'var(--carp)':'#f5d000';
   var homeClass=g.home_team==='広島'?'carp':'away';
   var awayClass=g.away_team==='広島'?'carp':'away';
@@ -472,7 +473,16 @@ function renderMain(g){
 
   // イニング表
   var innHtml='';
-  if(g.innings&&g.innings.hiroshima){
+  if(isScheduled){
+    // 試合前：先発予想と対戦情報を表示
+    var awayP=g.away_pitcher||'未定', homeP=g.home_pitcher||'未定';
+    innHtml='<div class="inning-table-wrap" style="padding:.75rem">'+
+      '<div style="display:flex;justify-content:center;gap:2rem;font-size:13px">'+
+      '<div style="text-align:center"><div style="color:var(--muted);font-size:10px;margin-bottom:4px">'+esc(g.away_team)+'先発</div><div style="font-weight:700;color:var(--text)">'+esc(awayP)+'</div></div>'+
+      '<div style="color:var(--muted);align-self:center;font-size:18px">VS</div>'+
+      '<div style="text-align:center"><div style="color:var(--muted);font-size:10px;margin-bottom:4px">'+esc(g.home_team)+'先発</div><div style="font-weight:700;color:var(--carp)">'+esc(homeP)+'</div></div>'+
+      '</div></div>';
+  } else   if(g.innings&&g.innings.hiroshima){
     var hi=g.innings.giants||g.innings.dena||g.innings.yokohama||g.innings.away_innings||g.innings.home_innings||[],ri=g.innings.hiroshima;
     var cols='';for(var i=1;i<=9;i++)cols+='<th>'+i+'</th>';
     var hCells='',rCells='';
@@ -517,7 +527,7 @@ function renderMain(g){
     pitHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
   }
 
-  var resultLabel=g.result_label?'<span class="badge bf">FINAL・'+g.result_label+'</span>':'<span class="badge bf">FINAL</span>';
+  var resultLabel=isScheduled?('<span class="badge bf" style="background:rgba(74,158,255,.2);color:var(--blue)">'+g.start_time+' 試合前</span>'):(g.result_label?'<span class="badge bf">FINAL・'+g.result_label+'</span>':'');
 
   document.getElementById('main-content').innerHTML=
     // スコアカード
@@ -792,7 +802,7 @@ function renderTpCards(){
     var pct=total>0?Math.round(cnt/total*100):0;
     var voted=(myTurning===t.id);
     html+='<div class="tp-card'+(isFocus?' focused'+(isS?'':isW?' weak':' mid'):'')+(isDimmed?' dimmed':'')+'" onclick="tapCard('+inn+')" id="tpc-'+i+'">';
-    html+='<div class="tp-card-head"><span class="tp-badge-'+(isS?'s':isW?'w':'m')+'">'+(isS?'流れを持ってきた':isW?'ヒヤッとした':'流れが変わった')+'</span><span class="tp-inn-lbl">'+esc(t.inning)+'</span></div>';
+    html+='<div class="tp-card-head"><span class="tp-badge-'+(isS?'s':isW?'w':'m')+'">'+(isS?'ここが分かれ目':isW?'注目場面':'流れが変わった')+'</span><span class="tp-inn-lbl">'+esc(t.inning)+'</span></div>';
     html+='<p class="tp-desc">'+esc(t.description)+'</p>';
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
@@ -1031,7 +1041,7 @@ function renderLineupForm(area, players, pitchers){
     }).join('')+
     '</div>'+
     '<div class="lineup-order" id="lineup-order"></div>'+
-    '<button class="lineup-submit" id="lineup-submit" onclick="submitLineup()">投稿する（'+LINEUP_ORDER.length+'/9）</button>'+
+    '<div class="ep-nav" id="lineup-nav"><button class="lineup-submit" id="lineup-submit" onclick="submitLineup()">投稿する（'+LINEUP_ORDER.length+'/9）</button></div>'+
     '</div>'+
     '<div class="lineup-divider" style="border-top:1px solid var(--border);padding:8px 1.25rem 0">'+
     '<div class="slabel" style="margin-bottom:6px">みんなの予想オーダー</div>'+
@@ -1076,6 +1086,7 @@ function renderLineupOrder(){
   }).join('');
   var btn=document.getElementById('lineup-submit');
   if(btn) btn.textContent='投稿する（'+LINEUP_ORDER.length+'/9）';
+  updateLineupSubmit();
 }
 
 function updateLineupSubmit(){
@@ -1087,6 +1098,8 @@ async function submitLineup(){
   if(LINEUP_POSTED){showToast('投稿済みです');return;}
   if(LINEUP_ORDER.length!==9){showToast('9人を選択してください');return;}
   if(!LINEUP_PITCHER){showToast('先発投手を選んでください');return;}
+  // 試合開始前チェック
+  if(!isBeforeGameStart()){showToast('試合が始まっているため投稿できません');return;}
   var r=await sb.from('lineup_predictions').upsert({
     game_id:GAME_ID, user_id:userId,
     lineup:LINEUP_ORDER,
@@ -1095,9 +1108,105 @@ async function submitLineup(){
   if(r.error){showToast('投稿に失敗しました');return;}
   LINEUP_POSTED=true;
   showToast('予想オーダーを投稿しました！');
-  var btn=document.getElementById('lineup-submit');
-  if(btn){btn.textContent='✓ 投稿済み';btn.style.background='var(--green)';}
+  // ボタンを「投稿済み・シェア」に切り替え
+  var nav=document.getElementById('lineup-nav');
+  if(nav){
+    nav.innerHTML='<button class="ep-back" onclick="resetLineup()">やり直す</button>'+
+      '<button class="ep-btn-share" onclick="shareLineup()">'+
+      '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'+
+      'シェア</button>';
+  }
   await loadMinnaLineup();
+}
+
+function isBeforeGameStart(){
+  if(GAME.status==='final') return false;
+  if(!GAME.startTime) return true;
+  var today=new Date();
+  var gameDateStr=currentDate+'T'+GAME.startTime+':00+09:00';
+  var gameTime=new Date(gameDateStr);
+  return today < gameTime;
+}
+
+function resetLineup(){
+  LINEUP_ORDER=[];LINEUP_POSTED=false;LINEUP_PITCHER='';
+  var area=document.getElementById('lineup-body-area');
+  if(area){
+    var players=(PLAYERS&&PLAYERS.length>0)?PLAYERS:CARP_PLAYERS_MASTER;
+    renderLineupForm(area, players, CARP_PITCHERS_MASTER);
+  }
+}
+
+function shareLineup(){
+  var score=GAME.away+'vs'+GAME.home+'（'+GAME.date+'）';
+  var orderText=LINEUP_ORDER.map(function(p){return p.order+'番 '+p.name;}).join('\n');
+  var text='【カープ予想スタメン】\n'+score+'\n先発：'+LINEUP_PITCHER+'\n'+orderText+'\n#広島カープ #カープトーク';
+  var shareUrl='https://carp-talk.vercel.app/?date='+currentDate;
+
+  // Canvas画像生成
+  function buildLineupCanvas(cb){
+    try{
+      var cv=document.createElement('canvas');cv.width=800;cv.height=500;
+      var ctx=cv.getContext('2d');
+      ctx.fillStyle='#0a0c10';ctx.fillRect(0,0,800,500);
+      var grad=ctx.createLinearGradient(0,0,800,0);
+      grad.addColorStop(0,'#c8102e');grad.addColorStop(.5,'#ff4060');grad.addColorStop(1,'#f0c040');
+      ctx.fillStyle=grad;ctx.fillRect(0,0,800,4);
+      ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='13px sans-serif';
+      ctx.fillText('本日のカープトーク｜予想スタメン　'+GAME.date,40,35);
+      ctx.fillStyle='#f0c040';ctx.font='bold 16px sans-serif';
+      ctx.fillText('先発予想：'+LINEUP_PITCHER,40,70);
+      ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(40,85);ctx.lineTo(760,85);ctx.stroke();
+      var cols=[[1,2,3,4,5],[6,7,8,9]];
+      var startY=110;
+      LINEUP_ORDER.forEach(function(p,idx){
+        var col=idx<5?0:1;
+        var row=idx<5?idx:idx-5;
+        var x=col===0?40:420;
+        var y=startY+row*52;
+        // 番号サークル
+        ctx.fillStyle='#c8102e';ctx.beginPath();ctx.arc(x+14,y+14,14,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#fff';ctx.font='bold 13px sans-serif';ctx.textAlign='center';
+        ctx.fillText(p.order,x+14,y+19);ctx.textAlign='left';
+        // 選手名
+        ctx.fillStyle='#ffffff';ctx.font='bold 18px sans-serif';
+        ctx.fillText(p.name,x+36,y+20);
+        ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='11px sans-serif';
+        ctx.fillText(p.pos,x+36,y+36);
+      });
+      ctx.fillStyle='rgba(255,255,255,0.2)';ctx.font='12px sans-serif';
+      ctx.textAlign='right';ctx.fillText('carp-talk.vercel.app',760,480);ctx.textAlign='left';
+      ctx.fillStyle='#c8102e';ctx.font='bold 12px sans-serif';ctx.fillText('本日のカープトーク',40,480);
+      cb(cv);
+    }catch(e){console.error(e);cb(null);}
+  }
+
+  if(navigator.share&&navigator.canShare){
+    buildLineupCanvas(function(cv){
+      if(cv){
+        cv.toBlob(function(blob){
+          var file=new File([blob],'lineup-'+currentDate+'.png',{type:'image/png'});
+          var shareData={title:'カープ予想スタメン',text:text,files:[file]};
+          if(navigator.canShare(shareData)){
+            navigator.share(shareData).catch(function(e){
+              if(e.name!=='AbortError'){
+                window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(shareUrl),'_blank');
+              }
+            });return;
+          }
+          var a=document.createElement('a');a.download='lineup-'+currentDate+'.png';
+          a.href=URL.createObjectURL(blob);a.click();
+          setTimeout(function(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(shareUrl),'_blank');},600);
+        },'image/png');
+      }
+    });
+  } else {
+    buildLineupCanvas(function(cv){
+      if(cv){var a=document.createElement('a');a.download='lineup-'+currentDate+'.png';a.href=cv.toDataURL('image/png');a.click();}
+      setTimeout(function(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(shareUrl),'_blank');},600);
+    });
+  }
 }
 
 async function loadMinnaLineup(){
