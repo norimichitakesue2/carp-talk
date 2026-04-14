@@ -270,6 +270,9 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .lp-btn:hover{border-color:var(--carp);color:var(--carp)}
 .lp-btn.used{opacity:.3;pointer-events:none}
 .lp-btn.selected{background:var(--carp);color:#fff;border-color:var(--carp)}
+.lp-group{margin-bottom:10px}
+.lp-group-label{font-size:10px;font-weight:700;margin-bottom:5px;letter-spacing:.05em}
+.lp-group-btns{display:flex;flex-wrap:wrap;gap:6px}
 .lineup-order{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
 .lo-row{display:flex;align-items:center;gap:8px;padding:5px 8px;background:var(--surface2);border-radius:var(--rs);font-size:12px}
 .lo-num{width:18px;height:18px;border-radius:50%;background:var(--carp);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -1019,7 +1022,10 @@ async function initLineup(g){
   var players = [];
   var pitchers = [];
   try{
-    var resp = await fetch('https://baseball.yahoo.co.jp/npb/teams/6/battingstats');
+    var rr=await fetch('/games/hiroshima_roster.json?t='+Date.now());
+    var rd=await rr.json();
+    rd.players.forEach(function(p){if(p.pos==='投')pitchers.push(p.name);else players.push(p);});
+    var resp=null;//dummy
     var html = await resp.text();
     var parser = new DOMParser();
     var doc = parser.parseFromString(html, 'text/html');
@@ -1065,20 +1071,34 @@ async function initLineup(g){
 }
 
 function renderLineupForm(area, players, pitchers){
-  area.innerHTML =
+  var groups=[
+    {label:'投手',pos:'投',color:'var(--accent)'},
+    {label:'捕手',pos:'捕',color:'#4a9eff'},
+    {label:'内野手',pos:'内',color:'#f5d000'},
+    {label:'外野手',pos:'外',color:'#4caf80'}
+  ];
+  var grouped='';
+  groups.forEach(function(g){
+    var gp=players.filter(function(p){return p.pos===g.pos;});
+    if(!gp.length) return;
+    grouped+='<div class="lp-group">'+
+      '<div class="lp-group-label" style="color:'+g.color+'">'+g.label+'</div>'+
+      '<div class="lp-group-btns">'+
+      gp.map(function(p){
+        return '<button class="lp-btn" onclick="addLineupPlayer(this)" data-name="'+esc(p.name)+'" data-pos="'+esc(p.pos)+'">'+esc(p.name)+'</button>';
+      }).join('')+
+      '</div></div>';
+  });
+  area.innerHTML=
     '<div class="lineup-body">'+
     '<div class="lineup-step-label">打順を選択（タップで順番に登録）</div>'+
-    '<div class="lineup-players" id="lineup-players">'+
-    players.filter(function(p){return true;}).map(function(p){
-      return '<button class="lp-btn" onclick="addLineupPlayer(this)" data-name="'+esc(p.name)+'" data-pos="'+esc(p.pos)+'">'+esc(p.name)+'</button>';
-    }).join('')+
-    '</div>'+
+    '<div class="lineup-players" id="lineup-players">'+grouped+'</div>'+
     '<div class="lineup-order" id="lineup-order"></div>'+
     '<div class="ep-nav" id="lineup-nav"><button class="lineup-submit" id="lineup-submit" onclick="submitLineup()">投稿する（0/9）</button></div>'+
     '</div>'+
     '<div class="lineup-divider" style="border-top:1px solid var(--border);padding:8px 1.25rem 0">'+
     '<div class="slabel" style="margin-bottom:6px">みんなの予想オーダー</div>'+
-    '<div class="minna-lineup-track" id="minna-lineup-track"><div class="muted" style="font-size:12px;padding:4px 0">まだ予想がありません</div></div>'+
+    '<div class="minna-lineup-track" id="minna-lineup-track"><div style="font-size:12px;color:var(--muted);padding:4px 0">まだ予想がありません</div></div>'+
     '</div>';
 }
 
