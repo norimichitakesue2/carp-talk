@@ -1054,6 +1054,12 @@ async function initLineup(g){
   if(!players.length) players = (g&&g.players)?g.players:CARP_PLAYERS_MASTER;
   if(!pitchers.length) pitchers = CARP_PITCHERS_MASTER;
 
+  // 先発投手をplayersに追加
+  var pitcherName=g.home_pitcher||g.homePitcher||'';
+  if(pitcherName&&!players.find(function(p){return p.name===pitcherName;})){
+    players=[{name:pitcherName,pos:'投'}].concat(players);
+  }
+  LINEUP_PITCHER=pitcherName;
   renderLineupForm(area, players, pitchers);
   loadMinnaLineup();
 }
@@ -1062,11 +1068,7 @@ function renderLineupForm(area, players, pitchers){
   var pitcherOpts = pitchers.map(function(p){return '<option value="'+esc(p)+'">'+esc(p)+'</option>';}).join('');
   area.innerHTML =
     '<div class="lineup-body">'+
-    '<div class="lineup-pitcher-row">'+
-    '<span class="lineup-pitcher-label">先発：</span>'+
-    '<select class="lineup-pitcher-select" id="lineup-pitcher-sel" onchange="LINEUP_PITCHER=this.value;updateLineupSubmit()">'+
-    '<option value="">先発を選ぶ</option>'+pitcherOpts+
-    '</select></div>'+
+    
     '<div class="lineup-step-label">打順を選択（タップで順番に登録）</div>'+
     '<div class="lineup-players" id="lineup-players">'+
     players.filter(function(p){return p.pos!=='投'&&!p.pos.includes('投');}).map(function(p){
@@ -1124,13 +1126,12 @@ function renderLineupOrder(){
 
 function updateLineupSubmit(){
   var btn=document.getElementById('lineup-submit');
-  if(btn) btn.classList.toggle('on', LINEUP_ORDER.length===9&&!!LINEUP_PITCHER);
+  if(btn) btn.classList.toggle('on', LINEUP_ORDER.length===9);
 }
 
 async function submitLineup(){
   if(LINEUP_POSTED){showToast('投稿済みです');return;}
   if(LINEUP_ORDER.length!==9){showToast('9人を選択してください');return;}
-  if(!LINEUP_PITCHER){showToast('先発投手を選んでください');return;}
   // 試合開始前チェック
   if(!isBeforeGameStart()){showToast('試合が始まっているため投稿できません');return;}
   var r=await sb.from('lineup_predictions').upsert({
