@@ -534,7 +534,7 @@ function renderMain(g){
     '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div style="font-size:11px;color:var(--carp);margin-top:3px">'+esc(g.home_pitcher||'')+'</div></div>'
     :g.away_score+'</div></div>'+
     '<div class="sep">—</div>'+
-    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+g.home_score+'</div></div>')+
+    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+(g.home_score!=null?g.home_score:'')+'</div></div>')+
 
     '<div class="badges">'+resultLabel+(hiroshimaWon?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
     innHtml+pitHtml+
