@@ -529,10 +529,12 @@ function renderMain(g){
     '<div class="eyebrow">⚾ '+GAME.date+'（'+GAME.venue+'）</div>'+
     '<div class="scoreboard">'+
     '<div class="team"><div class="tn '+awayClass+'">'+g.away_team+'</div><div class="ts" style="color:'+awayColor+'">'+
-    (isScheduled||g.away_score==null?'':g.away_score)+'</div></div>'+
+    (isScheduled?'</div><div style="font-size:11px;color:var(--muted);margin-top:3px">'+esc(g.away_pitcher||'')+'</div></div>'+
+    '<div class="sep"><div style="font-size:13px;font-weight:700">'+g.start_time+'</div><div style="font-size:10px;color:var(--muted)">試合前</div></div>'+
+    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div style="font-size:11px;color:var(--carp);margin-top:3px">'+esc(g.home_pitcher||'')+'</div></div>'
+    :g.away_score+'</div></div>'+
     '<div class="sep">—</div>'+
-    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+
-    (isScheduled||g.home_score==null?'':g.home_score)+'</div></div>'+
+    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+g.home_score+'</div></div>')+
 
     '<div class="badges">'+resultLabel+(hiroshimaWon?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
     innHtml+pitHtml+
