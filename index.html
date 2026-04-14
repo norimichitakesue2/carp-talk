@@ -408,6 +408,7 @@ var sb=supabase.createClient(URL_,KEY_);
 
 // ===== 状態 =====
 var GAME_ID='',GAME={},MOMENTS=[],PLAYERS=[];
+var isScheduled=false;
 var currentDate='';
 var userId=null;
 var titleVotes={},myTitleVote=null;
@@ -454,6 +455,7 @@ async function loadGame(date){
   }
   var g=await r.json();
   GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final'};
+  isScheduled=g.status==='scheduled';
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
   // リセット
   titleVotes={};myTitleVote=null;turnings=[];myTurning=null;
@@ -465,7 +467,6 @@ async function loadGame(date){
 // ===== メイン描画 =====
 function renderMain(g){
   var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
-  var isScheduled=g.status==='scheduled';
   var awayColor=g.away_team==='広島'?'var(--carp)':'#f5d000';
   var homeClass=g.home_team==='広島'?'carp':'away';
   var awayClass=g.away_team==='広島'?'carp':'away';
