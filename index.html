@@ -593,7 +593,7 @@ function renderMain(g){
     '</div></div>'+
 
     // 波形グラフ + 分岐点横スクロール
-    '<div class="wave-box fi">'+
+    '<div class="wave-box fi" id="wave-box">'+
     '<div class="slabel">試合の流れ</div>'+
     '<svg class="wave-svg" id="wave-svg" viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:90px">'+
     '<defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8102e" stop-opacity=".3"/><stop offset="100%" stop-color="#c8102e" stop-opacity="0"/></linearGradient></defs>'+
@@ -1448,7 +1448,7 @@ async function initApp(g){
     if(ps)ps.style.display='';
   } else {
     // scheduled時は評価系セクションを非表示
-    ['eval-bar','player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line'].forEach(function(id){
+    ['eval-bar','player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box'].forEach(function(id){
       var el=document.getElementById(id);
       if(el)el.style.display='none';
     });
