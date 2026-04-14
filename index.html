@@ -534,10 +534,12 @@ function renderMain(g){
     '<div class="score-card fi">'+
     '<div class="eyebrow">⚾ '+GAME.date+'（'+GAME.venue+'）</div>'+
     '<div class="scoreboard">'+
-    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+g.home_score+'</div></div>'+
+    '<div class="team"><div class="tn '+awayClass+'">'+g.away_team+'</div><div class="ts" style="color:'+awayColor+'">'+
+    (isScheduled||g.away_score==null?'':g.away_score)+'</div></div>'+
     '<div class="sep">—</div>'+
-    '<div class="team"><div class="tn '+awayClass+'">'+g.away_team+'</div><div class="ts" style="color:'+awayColor+'">'+g.away_score+'</div></div>'+
-    '</div>'+
+    '<div class="team"><div class="tn '+homeClass+'">'+g.home_team+'</div><div class="ts" style="color:'+homeColor+'">'+
+    (isScheduled||g.home_score==null?'':g.home_score)+'</div></div>'+
+
     '<div class="badges">'+resultLabel+(hiroshimaWon?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
     innHtml+pitHtml+
     '</div>'+
@@ -1012,14 +1014,47 @@ var CARP_PITCHERS_MASTER = [
   '黒原 拓未','島内 颯太朗'
 ];
 
-function initLineup(g){
+async function initLineup(g){
   var area = document.getElementById('lineup-body-area');
   if(!area) return;
-  // 選手リストをPLAYERSとマスターからマージ
-  var players = (PLAYERS && PLAYERS.length > 0) ? PLAYERS :
-    (g && g.players ? g.players : CARP_PLAYERS_MASTER);
-  var pitchers = CARP_PITCHERS_MASTER;
-  if(g && g.pitchers) pitchers = g.pitchers.filter(function(p){return p.team==='広島';}).map(function(p){return p.name;}).concat(pitchers.filter(function(n){return !g.pitchers.find(function(p){return p.name===n;});}));
+  // スポナビから一軍野手を動的取得
+  var players = [];
+  var pitchers = [];
+  try{
+    var resp = await fetch('https://baseball.yahoo.co.jp/npb/teams/6/battingstats');
+    var html = await resp.text();
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(html, 'text/html');
+    var links = Array.from(doc.querySelectorAll('a[href*="/player/"]'));
+    var seen = {};
+    links.forEach(function(a){
+      var name = a.textContent.trim();
+      if(name.length>1&&name.length<12&&!seen[name]){
+        seen[name]=true;
+        // テーブルのセルからポジション取得
+        var row = a.closest('tr');
+        var cells = row?Array.from(row.querySelectorAll('td,th')):[];
+        var pos = cells[1]?cells[1].textContent.trim():'';
+        // 背番号ぽい文字列はスキップ
+        if(!/^\d+$/.test(pos)) players.push({name:name, pos:pos||'野手'});
+      }
+    });
+    // 投手は別ページから
+    var resp2 = await fetch('https://baseball.yahoo.co.jp/npb/teams/6/pitchingstats');
+    var html2 = await resp2.text();
+    var doc2 = parser.parseFromString(html2, 'text/html');
+    var links2 = Array.from(doc2.querySelectorAll('a[href*="/player/"]'));
+    var seen2 = {};
+    links2.forEach(function(a){
+      var name = a.textContent.trim();
+      if(name.length>1&&name.length<12&&!seen2[name]){seen2[name]=true;pitchers.push(name);}
+    });
+  }catch(e){
+    console.warn('選手取得失敗、JSONの選手リストを使用:', e);
+  }
+  // フォールバック
+  if(!players.length) players = (g&&g.players)?g.players:CARP_PLAYERS_MASTER;
+  if(!pitchers.length) pitchers = CARP_PITCHERS_MASTER;
 
   renderLineupForm(area, players, pitchers);
   loadMinnaLineup();
@@ -1412,7 +1447,18 @@ async function initApp(g){
   if(r2.data)myTurning=r2.data.turning_id;
 
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
-  initEvalBar(g);
+  if(!isScheduled){
+    initEvalBar(g);
+    // 選手評価セクションを表示
+    var ps=document.getElementById('player-section');
+    if(ps)ps.style.display='';
+  } else {
+    // scheduled時は評価系セクションを非表示
+    ['eval-bar','player-section','minna-section','comment-section'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el)el.style.display='none';
+    });
+  }
   initLineup(g);
   // turnings読み込み後にSTEP2も更新
   renderEpStep2();
