@@ -1258,7 +1258,7 @@ function shareLineup(){
           if(navigator.canShare(shareData)){
             navigator.share(shareData).catch(function(e){
               if(e.name!=='AbortError'){
-                window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(shareUrl),'_blank');
+                window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text),'_blank');
               }
             });return;
           }
