@@ -1061,7 +1061,7 @@ async function initLineup(g){
   if(!pitchers.length) pitchers = CARP_PITCHERS_MASTER;
 
   // 先発投手をplayersに追加
-  var pitcherName=g.home_pitcher||g.homePitcher||'';
+  var pitcherName=(g.away_team==='広島'?g.away_pitcher:g.home_pitcher)||g.homePitcher||'';
   if(pitcherName&&!players.find(function(p){return p.name===pitcherName;})){
     players=[{name:pitcherName,pos:'投'}].concat(players);
   }
