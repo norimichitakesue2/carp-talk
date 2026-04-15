@@ -1192,7 +1192,7 @@ function resetLineup(){
 function shareLineup(){
   var score=GAME.away+'vs'+GAME.home+'（'+GAME.date+'）';
   var orderText=LINEUP_ORDER.map(function(p){return p.order+'番 '+p.name;}).join('\n');
-  var text='【カープ予想スタメン】\n'+score+'\n先発：'+LINEUP_PITCHER+'\n'+orderText+'\n#広島カープ #カープトーク';
+  var text='【カープ予想スタメン】\n'+score+'\n先発：'+LINEUP_PITCHER+'\n'+orderText+'\n#広島カープ #カープトーク\n'+shareUrl;
   var shareUrl='https://carp-talk.vercel.app/?date='+currentDate;
 
   // Canvas画像生成
