@@ -1198,38 +1198,53 @@ function shareLineup(){
   // Canvas画像生成
   function buildLineupCanvas(cb){
     try{
-      var cv=document.createElement('canvas');cv.width=800;cv.height=500;
+      var cv=document.createElement('canvas');cv.width=640;cv.height=720;
       var ctx=cv.getContext('2d');
-      ctx.fillStyle='#0a0c10';ctx.fillRect(0,0,800,500);
-      var grad=ctx.createLinearGradient(0,0,800,0);
-      grad.addColorStop(0,'#c8102e');grad.addColorStop(.5,'#ff4060');grad.addColorStop(1,'#f0c040');
-      ctx.fillStyle=grad;ctx.fillRect(0,0,800,4);
-      ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='13px sans-serif';
-      ctx.fillText('本日のカープトーク｜予想スタメン　'+GAME.date,40,35);
-      ctx.fillStyle='#f0c040';ctx.font='bold 16px sans-serif';
-      ctx.fillText('先発予想：'+LINEUP_PITCHER,40,70);
-      ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;
-      ctx.beginPath();ctx.moveTo(40,85);ctx.lineTo(760,85);ctx.stroke();
-      var cols=[[1,2,3,4,5],[6,7,8,9]];
-      var startY=110;
+      // 背景
+      ctx.fillStyle='#0a0c10';ctx.fillRect(0,0,640,720);
+      // グラデバー
+      var grad=ctx.createLinearGradient(0,0,640,0);
+      grad.addColorStop(0,'#c8102e');grad.addColorStop(1,'#ff6040');
+      ctx.fillStyle=grad;ctx.fillRect(0,0,640,5);
+      // タイトル
+      ctx.fillStyle='rgba(255,255,255,0.5)';ctx.font='12px sans-serif';
+      ctx.fillText('本日のカープトーク｜予想スタメン',24,30);
+      ctx.fillStyle='#ffffff';ctx.font='bold 18px sans-serif';
+      ctx.fillText(GAME.date+' vs '+GAME.home,24,56);
+      // 先発
+      ctx.fillStyle='#f0c040';ctx.font='bold 14px sans-serif';
+      ctx.fillText('先発：'+LINEUP_PITCHER,24,82);
+      // 区切り線
+      ctx.strokeStyle='rgba(200,16,46,0.4)';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(24,96);ctx.lineTo(616,96);ctx.stroke();
+      // 打順リスト
+      var startY=116;var rowH=56;
       LINEUP_ORDER.forEach(function(p,idx){
-        var col=idx<5?0:1;
-        var row=idx<5?idx:idx-5;
-        var x=col===0?40:420;
-        var y=startY+row*52;
+        var y=startY+idx*rowH;
+        // 行背景（交互）
+        ctx.fillStyle=idx%2===0?'rgba(255,255,255,0.03)':'transparent';
+        ctx.fillRect(16,y-2,608,rowH-4);
         // 番号サークル
-        ctx.fillStyle='#c8102e';ctx.beginPath();ctx.arc(x+14,y+14,14,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle='#fff';ctx.font='bold 13px sans-serif';ctx.textAlign='center';
-        ctx.fillText(p.order,x+14,y+19);ctx.textAlign='left';
+        var grad2=ctx.createLinearGradient(0,y,0,y+40);
+        grad2.addColorStop(0,'#c8102e');grad2.addColorStop(1,'#a00020');
+        ctx.fillStyle=grad2;
+        ctx.beginPath();ctx.arc(48,y+22,20,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#ffffff';ctx.font='bold 18px sans-serif';ctx.textAlign='center';
+        ctx.fillText(p.order,48,y+28);ctx.textAlign='left';
+        // ポジションバッジ
+        ctx.fillStyle='rgba(255,255,255,0.1)';
+        ctx.beginPath();ctx.roundRect(80,y+8,36,22,4);ctx.fill();
+        ctx.fillStyle='rgba(255,255,255,0.6)';ctx.font='11px sans-serif';
+        ctx.textAlign='center';ctx.fillText(p.pos,98,y+23);ctx.textAlign='left';
         // 選手名
-        ctx.fillStyle='#ffffff';ctx.font='bold 18px sans-serif';
-        ctx.fillText(p.name,x+36,y+20);
-        ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='11px sans-serif';
-        ctx.fillText(p.pos,x+36,y+36);
+        ctx.fillStyle='#ffffff';ctx.font='bold 20px sans-serif';
+        ctx.fillText(p.name,126,y+28);
       });
-      ctx.fillStyle='rgba(255,255,255,0.2)';ctx.font='12px sans-serif';
-      ctx.textAlign='right';ctx.fillText('carp-talk.vercel.app',760,480);ctx.textAlign='left';
-      ctx.fillStyle='#c8102e';ctx.font='bold 12px sans-serif';ctx.fillText('本日のカープトーク',40,480);
+      // フッター
+      ctx.fillStyle='rgba(255,255,255,0.15)';ctx.font='11px sans-serif';
+      ctx.textAlign='right';ctx.fillText('carp-talk.vercel.app',616,705);
+      ctx.fillStyle='#c8102e';ctx.font='bold 11px sans-serif';
+      ctx.textAlign='left';ctx.fillText('本日のカープトーク',24,705);
       cb(cv);
     }catch(e){console.error(e);cb(null);}
   }
