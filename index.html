@@ -1446,7 +1446,12 @@ async function loadTurnings(g){
   var rv=await sb.from('turning_votes').select('turning_id').eq('game_id',GAME_ID);
   var counts={};
   if(rv.data)rv.data.forEach(function(v){counts[v.turning_id]=(counts[v.turning_id]||0)+1;});
-  turnings.forEach(function(t){t.vote_count=counts[t.id]||0;});
+  // choice別の集計
+  var choiceCounts={};
+  if(rv.data)rv.data.forEach(function(v){if(v.choice){var key=v.turning_id+'::'+v.choice;choiceCounts[key]=(choiceCounts[key]||0)+1;}});
+  turnings.forEach(function(t){t.vote_count=counts[t.id]||0;
+    t.choice_counts={};
+    if(t.choices)t.choices.forEach(function(c){t.choice_counts[c]=choiceCounts[t.id+'::'+c]||0;});});
   // JSONのchoicesをDBのturningsにマージ
   if(g&&g.turning_suggestions){
     g.turning_suggestions.forEach(function(s){
