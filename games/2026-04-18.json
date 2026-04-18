@@ -3,31 +3,143 @@
   "game_date": "2026-04-18",
   "away_team": "DeNA",
   "home_team": "広島",
-  "away_score": null,
-  "home_score": null,
+  "away_score": 7,
+  "home_score": 2,
   "venue": "マツダスタジアム",
   "start_time": "14:00",
-  "status": "scheduled",
-  "result_label": "試合前",
+  "status": "final",
+  "result_label": "DeNA勝利",
   "away_pitcher": "東 克樹",
   "home_pitcher": "ターノック",
-  "title_candidates": [],
-  "turning_suggestions": [],
-  "innings": {},
-  "pitchers": [
+  "title_candidates": [
+    "7回の6失点、ターノックが試合を壊した",
+    "マツダで7失点、ホームの意地はどこへ",
+    "満塁から3連続タイムリーで万事休す",
+    "東に7回まで1点に抑えられ手も足も出ず",
+    "DeNAに3連敗、リリーフ前に先発が崩れた",
+    "二俣のタイムリーだけが見せ場だった"
+  ],
+  "turning_suggestions": [
     {
-      "team": "広島",
-      "role": "先発予想",
-      "name": "ターノック",
-      "result": "nd"
+      "inning": "2回表",
+      "description": "林琢真の犠牲フライでDeNAに先制を許す",
+      "reason": "2回に先制を許したが1点差。ここまでは試合になっていた",
+      "intensity": "mid",
+      "choices": [
+        "2回の先制は仕方ない、その後が問題",
+        "ターノックは2回から危なかった",
+        "1点で抑えたのはまだよかった",
+        "東が好調だっただけに先制は痛かった"
+      ]
     },
     {
-      "team": "DeNA",
-      "role": "先発予想",
-      "name": "東 克樹",
-      "result": "nd"
+      "inning": "1回裏",
+      "description": "1回裏、先制のチャンスで空振り三振、流れを掴めず",
+      "reason": "1回裏に先制できる場面で三振。東に主導権を渡してしまった",
+      "intensity": "mid",
+      "choices": [
+        "あそこで先制できていれば全然違った",
+        "東が良すぎた、仕方ない",
+        "序盤から積極的に攻めるべきだった",
+        "チャンスで打てない病が出た"
+      ]
+    },
+    {
+      "inning": "7回表",
+      "description": "ターノックが無死満塁から崩れ6失点、試合終了",
+      "reason": "6回まで1失点と踏ん張ったターノックが7回に突然崩れた。無死満塁から林・牧・度会に連続タイムリーを浴び、6点を失って試合を壊した",
+      "intensity": "strong",
+      "choices": [
+        "7回頭でターノックを代えるべきだった",
+        "ターノックは6回までで限界だった",
+        "満塁にした時点でアウト、継投が遅すぎ",
+        "打たれた選手を責めるより配球の問題"
+      ]
+    },
+    {
+      "inning": "7回表",
+      "description": "牧・度会に連続タイムリーを浴び止まらない失点",
+      "reason": "齊藤汰が登板後も止められず。リリーフ陣全体で7回の崩壊を招いた",
+      "intensity": "strong",
+      "choices": [
+        "齊藤汰も打たれた、誰を出しても同じだった",
+        "マウンドで助けに行くべきタイミングがあった",
+        "打線が援護できなかったのが根本原因",
+        "もうこの試合は諦めるしかなかった"
+      ]
+    },
+    {
+      "inning": "7回裏",
+      "description": "二俣のタイムリー3Bで1点返し意地を見せた",
+      "reason": "7点ビハインドながら二俣が右へのタイムリー3B。諦めない姿勢は見せた",
+      "intensity": "weak",
+      "choices": [
+        "二俣の一打だけが救いだった",
+        "もっと早い回に打てれば違ったのに",
+        "若手の意地を感じた",
+        "7点差では焼け石に水"
+      ]
     }
   ],
-  "moments": [],
-  "players": []
+  "innings": {
+    "hiroshima": [0, 0, 0, 0, 0, 0, 1, 0, 1],
+    "away": [0, 1, 0, 0, 0, 0, 6, 0, 0],
+    "hiroshima_hits": 6,
+    "hiroshima_errors": 0,
+    "away_hits": 12,
+    "away_errors": 0
+  },
+  "pitchers": [
+    {"team": "広島", "role": "先発", "name": "ターノック", "result": "loss"},
+    {"team": "広島", "role": "中継ぎ", "name": "齊藤 汰直", "result": "nd"},
+    {"team": "広島", "role": "中継ぎ", "name": "塹江 敦哉", "result": "nd"},
+    {"team": "広島", "role": "中継ぎ", "name": "赤木 晴哉", "result": "nd"},
+    {"team": "広島", "role": "中継ぎ", "name": "遠藤 淳志", "result": "nd"},
+    {"team": "DeNA", "role": "先発", "name": "東 克樹", "result": "win"},
+    {"team": "DeNA", "role": "中継ぎ", "name": "マルセリーノ", "result": "nd"},
+    {"team": "DeNA", "role": "中継ぎ", "name": "橋本 達弥", "result": "nd"},
+    {"team": "DeNA", "role": "抑え", "name": "堀岡 隼人", "result": "nd"}
+  ],
+  "moments": [
+    {
+      "id": 1,
+      "inning": "2回表",
+      "type": "score",
+      "desc": "林琢真の犠牲フライでDeNA先制",
+      "sub": "広島 0-1 DeNA。東に主導権を渡す展開に"
+    },
+    {
+      "id": 2,
+      "inning": "7回表",
+      "type": "score",
+      "desc": "ターノックが無死満塁から崩れ6失点！",
+      "sub": "広島 0-7 DeNA。7回の大崩れで試合終了"
+    },
+    {
+      "id": 3,
+      "inning": "7回裏",
+      "type": "score",
+      "desc": "二俣のタイムリー3Bで1点返す",
+      "sub": "広島 1-7 DeNA。意地の一打"
+    },
+    {
+      "id": 4,
+      "inning": "9回裏",
+      "type": "score",
+      "desc": "佐藤啓介のゴロで1点追加、2-7で試合終了",
+      "sub": "広島 2-7 DeNA。焼け石に水"
+    }
+  ],
+  "players": [
+    {"name": "ターノック", "pos": "投"},
+    {"name": "大盛 穂", "pos": "外"},
+    {"name": "菊池 涼介", "pos": "内"},
+    {"name": "小園 海斗", "pos": "内"},
+    {"name": "モンテロ", "pos": "内"},
+    {"name": "ファビアン", "pos": "外"},
+    {"name": "佐々木 泰", "pos": "内"},
+    {"name": "坂倉 将吾", "pos": "捕"},
+    {"name": "二俣 翔一", "pos": "内"},
+    {"name": "齊藤 汰直", "pos": "投"}
+  ]
 }
