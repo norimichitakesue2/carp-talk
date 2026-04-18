@@ -1435,7 +1435,9 @@ async function loadTurnings(g){
       var s=g.turning_suggestions[i];
       var ex=await sb.from('turnings').select('id').eq('game_id',GAME_ID).eq('description',s.description).eq('source','system').maybeSingle();
       if(!ex.data){
-        await sb.from('turnings').insert({game_id:GAME_ID,inning:s.inning,description:s.description,reason:s.reason||null,intensity:s.intensity||'mid',source:'system',user_id:'system'});
+        await sb.from('turnings').insert({game_id:GAME_ID,inning:s.inning,description:s.description,reason:s.reason||null,intensity:s.intensity||'mid',source:'system',user_id:'system',choices:s.choices||null});
+      } else if(ex.data&&s.choices){
+        await sb.from('turnings').update({choices:s.choices}).eq('id',ex.data.id);
       }
     }
   }
