@@ -808,6 +808,20 @@ function renderTpCards(){
     html+='<div class="tp-card-head"><span class="tp-badge-'+(isS?'s':isW?'w':'m')+'">'+(isS?'ここが分かれ目':isW?'注目場面':'流れが変わった')+'</span><span class="tp-inn-lbl">'+esc(t.inning)+'</span></div>';
     html+='<p class="tp-desc">'+esc(t.description)+'</p>';
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
+    // 選択肢別投票バーを表示
+    if(t.choices&&t.choices.length&&t.choice_counts){
+      var totalC=Object.values(t.choice_counts).reduce(function(a,b){return a+b;},0)||1;
+      html+='<div class="tp-choices-wrap" style="margin:8px 0">';
+      t.choices.forEach(function(c){
+        var cv=t.choice_counts[c]||0;
+        var cp=Math.round(cv/totalC*100);
+        html+='<div style="margin-bottom:6px">';
+        html+='<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:2px"><span>'+esc(c)+'</span><span>'+cv+'票 '+cp+'%</span></div>';
+        html+='<div style="height:4px;background:var(--faint);border-radius:2px"><div style="width:'+cp+'%;height:4px;background:var(--carp);border-radius:2px;transition:width .5s"></div></div>';
+        html+='</div>';
+      });
+      html+='</div>';
+    }
     html+='<div class="tp-bar-row"><div class="tp-bar-bg"><div class="tp-bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><span class="tp-stat">'+cnt+'票 '+pct+'%</span></div>';
     html+='<button class="tp-vote-btn'+(isS?'':' mid-btn')+(voted?' voted':'')+'" onclick="event.stopPropagation();voteTurning(this.dataset.tid)" data-tid="'+t.id+'">'+(voted?'✓ 投票済み':'ここが分岐点')+'</button>';
     html+='<div class="x-share-wrap" style="margin-top:6px"><button class="x-share-btn" onclick="event.stopPropagation();shareToX(getTurningShareText(this.dataset.tid))" data-tid="'+t.id+'">'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>シェア</button></div>';
