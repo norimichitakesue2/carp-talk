@@ -1445,7 +1445,7 @@ async function loadTurnings(g){
   var r=await sb.from('turnings').select('*').eq('game_id',GAME_ID).order('created_at',{ascending:true});
   turnings=r.data||[];
   // ③ 投票数を別クエリで取得（より確実）
-  var rv=await sb.from('turning_votes').select('turning_id').eq('game_id',GAME_ID);
+  var rv=await sb.from('turning_votes').select('turning_id,choice').eq('game_id',GAME_ID);
   var counts={};
   if(rv.data)rv.data.forEach(function(v){counts[v.turning_id]=(counts[v.turning_id]||0)+1;});
   // choice別の集計
