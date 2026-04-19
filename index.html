@@ -494,9 +494,9 @@ async function runAIAnalysis(){
     var topChoices=Object.entries(choiceCounts).sort(function(a,b){return b[1]-a[1];}).slice(0,10).map(function(e){return e[1]+'票：'+e[0];}).join('\n');
     var comments=(cmRes.data||[]).slice(0,15).map(function(c){return c.body;}).join('、');
     var prompt='あなたは広島東洋カープのデータアナリストです。2026年4月のファン投票データを分析してください。\n\n【ファンが選んだ試合タイトル上位】\n'+topTitles+'\n\n【分岐点での選択肢ランキング】\n'+topChoices+'\n\n【ファンコメント】'+comments+'\n\n以下の形式で分析してください：\n\n■ 現状の課題（3点、各50字以内、データの根拠付き）\n\n■ 改善案（3点、各50字以内、具体的に）\n\n■ ファンの本音（100字以内で温度感を表現）';
-    var apiRes=await fetch('https://api.anthropic.com/v1/messages',{
+    var apiRes=await fetch('/api/analyze',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json'},method:'POST',
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
     });
     var apiJson=await apiRes.json();
