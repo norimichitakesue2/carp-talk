@@ -477,8 +477,27 @@ async function runAIAnalysis(){
   var btn=document.getElementById('ai-btn');
   var result=document.getElementById('ai-result');
   if(!btn||!result) return;
-  btn.disabled=true;btn.textContent='⏳ 分析中...';
-  result.innerHTML='<div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">データを収集・分析しています...</div>';
+  btn.disabled=true;btn.textContent='⏳ 読み込み中...';
+  result.innerHTML='<div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">分析データを読み込んでいます...</div>';
+  try{
+    // まずDBから取得
+    var cached=await sb.from('ai_analysis').select('content').eq('game_id',GAME_ID).maybeSingle();
+    if(cached.data&&cached.data.content){
+      var text=cached.data.content;
+      var sections=text.split(/
+(?=■)/);
+      var html=sections.map(function(s){var lines=s.trim().split('
+');var title=lines[0]||'';var body=lines.slice(1).join('
+').trim();return '<div class="ai-result-section"><h4>'+esc(title)+'</h4><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">'+esc(body)+'</p></div>';}).join('');
+      result.innerHTML='<div class="ai-result-wrap">'+html+'</div>';
+      btn.disabled=false;btn.textContent='🔄 再読み込み';
+      return;
+    }
+    // DBになければ「準備中」を表示
+    result.innerHTML='<div style="font-size:13px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.8">⚙️ この試合の分析はまだ準備中です。<br>試合終了後に更新されます。</div>';
+    btn.disabled=false;btn.textContent='▶ 分析を実行する';
+    return;
+  }catch(dummy_catch_start){/* fallthrough */}
   try{
     var gameIds=['npb_20260407','npb_20260408','npb_20260409','npb_20260410','npb_20260411','npb_20260412','npb_20260414','npb_20260415','npb_20260417','npb_20260418','npb_20260419'];
     var [tvRes,trRes,cmRes]=await Promise.all([
