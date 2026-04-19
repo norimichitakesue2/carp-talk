@@ -82,23 +82,88 @@
     }
   ],
   "innings": {
-    "hiroshima": [0, 0, 0, 0, 0, 0, 1, 0, 1],
-    "away": [0, 1, 0, 0, 0, 0, 6, 0, 0],
+    "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "away": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0
+    ],
     "hiroshima_hits": 6,
     "hiroshima_errors": 0,
     "away_hits": 12,
     "away_errors": 0
   },
   "pitchers": [
-    {"team": "広島", "role": "先発", "name": "ターノック", "result": "loss"},
-    {"team": "広島", "role": "中継ぎ", "name": "齊藤 汰直", "result": "nd"},
-    {"team": "広島", "role": "中継ぎ", "name": "塹江 敦哉", "result": "nd"},
-    {"team": "広島", "role": "中継ぎ", "name": "赤木 晴哉", "result": "nd"},
-    {"team": "広島", "role": "中継ぎ", "name": "遠藤 淳志", "result": "nd"},
-    {"team": "DeNA", "role": "先発", "name": "東 克樹", "result": "win"},
-    {"team": "DeNA", "role": "中継ぎ", "name": "マルセリーノ", "result": "nd"},
-    {"team": "DeNA", "role": "中継ぎ", "name": "橋本 達弥", "result": "nd"},
-    {"team": "DeNA", "role": "抑え", "name": "堀岡 隼人", "result": "nd"}
+    {
+      "team": "広島",
+      "role": "先発",
+      "name": "ターノック",
+      "result": "loss"
+    },
+    {
+      "team": "広島",
+      "role": "中継ぎ",
+      "name": "齊藤 汰直",
+      "result": "nd"
+    },
+    {
+      "team": "広島",
+      "role": "中継ぎ",
+      "name": "塹江 敦哉",
+      "result": "nd"
+    },
+    {
+      "team": "広島",
+      "role": "中継ぎ",
+      "name": "赤木 晴哉",
+      "result": "nd"
+    },
+    {
+      "team": "広島",
+      "role": "中継ぎ",
+      "name": "遠藤 淳志",
+      "result": "nd"
+    },
+    {
+      "team": "DeNA",
+      "role": "先発",
+      "name": "東 克樹",
+      "result": "win"
+    },
+    {
+      "team": "DeNA",
+      "role": "中継ぎ",
+      "name": "マルセリーノ",
+      "result": "nd"
+    },
+    {
+      "team": "DeNA",
+      "role": "中継ぎ",
+      "name": "橋本 達弥",
+      "result": "nd"
+    },
+    {
+      "team": "DeNA",
+      "role": "抑え",
+      "name": "堀岡 隼人",
+      "result": "nd"
+    }
   ],
   "moments": [
     {
@@ -131,15 +196,45 @@
     }
   ],
   "players": [
-    {"name": "ターノック", "pos": "投"},
-    {"name": "大盛 穂", "pos": "外"},
-    {"name": "菊池 涼介", "pos": "内"},
-    {"name": "小園 海斗", "pos": "内"},
-    {"name": "モンテロ", "pos": "内"},
-    {"name": "ファビアン", "pos": "外"},
-    {"name": "佐々木 泰", "pos": "内"},
-    {"name": "坂倉 将吾", "pos": "捕"},
-    {"name": "二俣 翔一", "pos": "内"},
-    {"name": "齊藤 汰直", "pos": "投"}
+    {
+      "name": "ターノック",
+      "pos": "投"
+    },
+    {
+      "name": "大盛 穂",
+      "pos": "外"
+    },
+    {
+      "name": "菊池 涼介",
+      "pos": "内"
+    },
+    {
+      "name": "小園 海斗",
+      "pos": "内"
+    },
+    {
+      "name": "モンテロ",
+      "pos": "内"
+    },
+    {
+      "name": "ファビアン",
+      "pos": "外"
+    },
+    {
+      "name": "佐々木 泰",
+      "pos": "内"
+    },
+    {
+      "name": "坂倉 将吾",
+      "pos": "捕"
+    },
+    {
+      "name": "二俣 翔一",
+      "pos": "内"
+    },
+    {
+      "name": "齊藤 汰直",
+      "pos": "投"
+    }
   ]
 }
