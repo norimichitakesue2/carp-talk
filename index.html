@@ -484,8 +484,7 @@ async function runAIAnalysis(){
     var cached=await sb.from('ai_analysis').select('content').eq('game_id',GAME_ID).maybeSingle();
     if(cached.data&&cached.data.content){
       var text=cached.data.content;
-      var sections=text.split(/
-(?=■)/);
+      var sections=text.split("\n■").map(function(s,i){return i===0?s:"■"+s;});
       var html=sections.map(function(s){var lines=s.trim().split('
 ');var title=lines[0]||'';var body=lines.slice(1).join('
 ').trim();return '<div class="ai-result-section"><h4>'+esc(title)+'</h4><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">'+esc(body)+'</p></div>';}).join('');
