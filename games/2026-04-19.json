@@ -70,18 +70,58 @@
     }
   ],
   "innings": {
-    "hiroshima": [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "away": [0, 0, 1, 0, 0, 1, 0, 0, 0],
+    "hiroshima": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "away": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
     "hiroshima_hits": 8,
     "hiroshima_errors": 0,
     "away_hits": 7,
     "away_errors": 0
   },
   "pitchers": [
-    {"team": "広島", "role": "先発", "name": "床田 寛樹", "result": "loss"},
-    {"team": "広島", "role": "中継ぎ", "name": "髙 太一", "result": "nd"},
-    {"team": "DeNA", "role": "先発", "name": "石田 裕太郎", "result": "win"},
-    {"team": "DeNA", "role": "抑え", "name": "山﨑 康晃", "result": "save"}
+    {
+      "team": "広島",
+      "role": "先発",
+      "name": "床田 寛樹",
+      "result": "loss"
+    },
+    {
+      "team": "広島",
+      "role": "中継ぎ",
+      "name": "髙 太一",
+      "result": "nd"
+    },
+    {
+      "team": "DeNA",
+      "role": "先発",
+      "name": "石田 裕太郎",
+      "result": "win"
+    },
+    {
+      "team": "DeNA",
+      "role": "抑え",
+      "name": "山﨑 康晃",
+      "result": "save"
+    }
   ],
   "moments": [
     {
@@ -107,15 +147,45 @@
     }
   ],
   "players": [
-    {"name": "床田 寛樹", "pos": "投"},
-    {"name": "平川 蓮", "pos": "外"},
-    {"name": "大盛 穂", "pos": "外"},
-    {"name": "小園 海斗", "pos": "内"},
-    {"name": "モンテロ", "pos": "内"},
-    {"name": "秋山 翔吾", "pos": "外"},
-    {"name": "佐々木 泰", "pos": "内"},
-    {"name": "持丸 泰輝", "pos": "捕"},
-    {"name": "勝田 成", "pos": "内"},
-    {"name": "ファビアン", "pos": "外"}
+    {
+      "name": "床田 寛樹",
+      "pos": "投"
+    },
+    {
+      "name": "平川 蓮",
+      "pos": "外"
+    },
+    {
+      "name": "大盛 穂",
+      "pos": "外"
+    },
+    {
+      "name": "小園 海斗",
+      "pos": "内"
+    },
+    {
+      "name": "モンテロ",
+      "pos": "内"
+    },
+    {
+      "name": "秋山 翔吾",
+      "pos": "外"
+    },
+    {
+      "name": "佐々木 泰",
+      "pos": "内"
+    },
+    {
+      "name": "持丸 泰輝",
+      "pos": "捕"
+    },
+    {
+      "name": "勝田 成",
+      "pos": "内"
+    },
+    {
+      "name": "ファビアン",
+      "pos": "外"
+    }
   ]
 }
