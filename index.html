@@ -497,7 +497,7 @@ async function runAIAnalysis(){
     var apiRes=await fetch('/api/analyze',{
       method:'POST',
       headers:{'Content-Type':'application/json'},method:'POST',
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1000,messages:[{role:'user',content:prompt}]})
     });
     var apiJson=await apiRes.json();
     var text=(apiJson.content&&apiJson.content[0])?apiJson.content[0].text:'分析に失敗しました';
