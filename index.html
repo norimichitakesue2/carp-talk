@@ -251,6 +251,12 @@ header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;displ
 .ep-sum-row{display:flex;align-items:baseline;gap:6px}
 .ep-sum-lbl{font-size:10px;color:var(--muted);white-space:nowrap}
 .ep-sum-val{font-size:13px;font-weight:500;color:var(--text)}
+.ai-analysis-section{background:rgba(74,158,255,.05);border:1px solid rgba(74,158,255,.2);border-radius:12px;margin:.75rem 0;padding:1rem}
+.ai-analysis-btn{width:100%;padding:12px;background:linear-gradient(135deg,rgba(74,158,255,.15),rgba(74,158,255,.08));border:1px solid rgba(74,158,255,.3);border-radius:8px;color:#4a9eff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.ai-analysis-btn:disabled{opacity:.5;cursor:default}
+.ai-result-wrap{margin-top:12px;font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap}
+.ai-result-section{margin-bottom:12px;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,.03);border-left:3px solid rgba(74,158,255,.4)}
+.ai-result-section h4{font-size:11px;color:#4a9eff;margin:0 0 6px;font-weight:700;letter-spacing:.05em}
 .ep-nav{display:flex;gap:6px;padding:10px 1.25rem;border-top:1px solid var(--border)}
 .ep-back{flex:1;padding:7px;border-radius:var(--rs);border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
 .ep-next{flex:2;padding:7px;border-radius:var(--rs);border:none;background:var(--carp);color:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;opacity:.5;transition:opacity .2s}
@@ -467,6 +473,50 @@ async function loadGame(date){
   await initApp(g);
 }
 
+async function runAIAnalysis(){
+  var btn=document.getElementById('ai-btn');
+  var result=document.getElementById('ai-result');
+  if(!btn||!result) return;
+  btn.disabled=true;btn.textContent='⏳ 分析中...';
+  result.innerHTML='<div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">データを収集・分析しています...</div>';
+  try{
+    var gameIds=['npb_20260407','npb_20260408','npb_20260409','npb_20260410','npb_20260411','npb_20260412','npb_20260414','npb_20260415','npb_20260417','npb_20260418','npb_20260419'];
+    var [tvRes,trRes,cmRes]=await Promise.all([
+      sb.from('title_votes').select('title_text').in('game_id',gameIds),
+      sb.from('turning_votes').select('choice').in('game_id',gameIds),
+      sb.from('comments').select('body').in('game_id',gameIds)
+    ]);
+    var titleCounts={};
+    (tvRes.data||[]).forEach(function(v){titleCounts[v.title_text]=(titleCounts[v.title_text]||0)+1;});
+    var choiceCounts={};
+    (trRes.data||[]).forEach(function(v){if(v.choice)choiceCounts[v.choice]=(choiceCounts[v.choice]||0)+1;});
+    var topTitles=Object.entries(titleCounts).sort(function(a,b){return b[1]-a[1];}).slice(0,8).map(function(e){return e[1]+'票「'+e[0]+'」';}).join('\n');
+    var topChoices=Object.entries(choiceCounts).sort(function(a,b){return b[1]-a[1];}).slice(0,10).map(function(e){return e[1]+'票：'+e[0];}).join('\n');
+    var comments=(cmRes.data||[]).slice(0,15).map(function(c){return c.body;}).join('、');
+    var prompt='あなたは広島東洋カープのデータアナリストです。2026年4月のファン投票データを分析してください。\n\n【ファンが選んだ試合タイトル上位】\n'+topTitles+'\n\n【分岐点での選択肢ランキング】\n'+topChoices+'\n\n【ファンコメント】'+comments+'\n\n以下の形式で分析してください：\n\n■ 現状の課題（3点、各50字以内、データの根拠付き）\n\n■ 改善案（3点、各50字以内、具体的に）\n\n■ ファンの本音（100字以内で温度感を表現）';
+    var apiRes=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    var apiJson=await apiRes.json();
+    var text=(apiJson.content&&apiJson.content[0])?apiJson.content[0].text:'分析に失敗しました';
+    // セクション分割して表示
+    var sections=text.split(/\n(?=■)/);
+    var html=sections.map(function(s){
+      var lines=s.trim().split('\n');
+      var title=lines[0]||'';
+      var body=lines.slice(1).join('\n').trim();
+      return '<div class="ai-result-section"><h4>'+esc(title)+'</h4><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">'+esc(body)+'</p></div>';
+    }).join('');
+    result.innerHTML='<div class="ai-result-wrap">'+html+'</div>';
+  }catch(e){
+    result.innerHTML='<div style="font-size:12px;color:var(--muted);margin-top:8px">分析に失敗しました</div>';
+    console.error(e);
+  }
+  btn.disabled=false;btn.textContent='🔄 再分析する';
+}
+
 // ===== メイン描画 =====
 function renderMain(g){
   var homeColor=g.home_team==='広島'?'var(--carp)':'#f5d000';
@@ -543,6 +593,14 @@ function renderMain(g){
 
     '<div class="badges">'+resultLabel+(hiroshimaWon?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
     innHtml+pitHtml+
+    '</div>'+
+
+    // AI分析セクション
+    '<div class="ai-analysis-section fi" id="ai-section">'+
+    '<div style="font-size:11px;color:rgba(74,158,255,.8);font-weight:700;margin-bottom:8px;letter-spacing:.05em">🤖 AIが導く現状の課題と改善案</div>'+
+    '<div style="font-size:11px;color:var(--muted);margin-bottom:10px">ファンの投票データをAIが分析し、チームへの提言を生成します</div>'+
+    '<button class="ai-analysis-btn" id="ai-btn" onclick="runAIAnalysis()">▶ 分析を実行する</button>'+
+    '<div id="ai-result"></div>'+
     '</div>'+
 
     // この試合の評価バー（3ステップ）
@@ -1507,7 +1565,7 @@ async function initApp(g){
     if(ps)ps.style.display='';
   } else {
     // scheduled時は評価系セクションを非表示
-    ['eval-bar','player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box'].forEach(function(id){
+    ['eval-bar','player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section'].forEach(function(id){
       var el=document.getElementById(id);
       if(el)el.style.display='none';
     });
