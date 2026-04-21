@@ -70,17 +70,52 @@
     }
   ],
   "innings": {
-    "hiroshima": [0, 0, 0, 2, 0, 0, 0, 0, null],
-    "away": [0, 0, 0, 0, 0, 1, 0, 0, 0],
+    "hiroshima": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      null
+    ],
+    "away": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
     "hiroshima_hits": 3,
     "hiroshima_errors": 0,
     "away_hits": 4,
     "away_errors": 0
   },
   "pitchers": [
-    {"team": "広島", "role": "先発", "name": "森下 暢仁", "result": "win"},
-    {"team": "広島", "role": "抑え", "name": "中﨑 翔太", "result": "save"},
-    {"team": "ヤクルト", "role": "先発", "name": "吉村 貢司郎", "result": "loss"}
+    {
+      "team": "広島",
+      "role": "先発",
+      "name": "森下 暢仁",
+      "result": "win"
+    },
+    {
+      "team": "広島",
+      "role": "抑え",
+      "name": "中﨑 翔太",
+      "result": "save"
+    },
+    {
+      "team": "ヤクルト",
+      "role": "先発",
+      "name": "吉村 貢司郎",
+      "result": "loss"
+    }
   ],
   "moments": [
     {
@@ -106,16 +141,49 @@
     }
   ],
   "players": [
-    {"name": "森下 暢仁", "pos": "投"},
-    {"name": "中﨑 翔太", "pos": "投"},
-    {"name": "平川 蓮", "pos": "外"},
-    {"name": "大盛 穂", "pos": "外"},
-    {"name": "小園 海斗", "pos": "内"},
-    {"name": "モンテロ", "pos": "内"},
-    {"name": "秋山 翔吾", "pos": "外"},
-    {"name": "佐々木 泰", "pos": "内"},
-    {"name": "坂倉 将吾", "pos": "捕"},
-    {"name": "野間 峻祥", "pos": "外"},
-    {"name": "菊池 涼介", "pos": "内"}
+    {
+      "name": "森下 暢仁",
+      "pos": "投"
+    },
+    {
+      "name": "中﨑 翔太",
+      "pos": "投"
+    },
+    {
+      "name": "平川 蓮",
+      "pos": "外"
+    },
+    {
+      "name": "大盛 穂",
+      "pos": "外"
+    },
+    {
+      "name": "小園 海斗",
+      "pos": "内"
+    },
+    {
+      "name": "モンテロ",
+      "pos": "内"
+    },
+    {
+      "name": "秋山 翔吾",
+      "pos": "外"
+    },
+    {
+      "name": "佐々木 泰",
+      "pos": "内"
+    },
+    {
+      "name": "坂倉 将吾",
+      "pos": "捕"
+    },
+    {
+      "name": "野間 峻祥",
+      "pos": "外"
+    },
+    {
+      "name": "菊池 涼介",
+      "pos": "内"
+    }
   ]
 }
