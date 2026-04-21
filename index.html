@@ -880,7 +880,7 @@ function renderTpCards(){
     html+='<p class="tp-desc">'+esc(t.description)+'</p>';
     if(t.reason)html+='<p class="tp-reason">「'+esc(t.reason)+'」</p>';
     // 選択肢別投票バーを表示
-    if(t.choices&&t.choices.length&&t.choice_counts){
+    if(t.choices&&t.choices.length&&t.choice_counts&&myVotes[t.id]){
       var totalC=Object.values(t.choice_counts).reduce(function(a,b){return a+b;},0)||1;
       html+='<div class="tp-choices-wrap" style="margin:8px 0">';
       t.choices.forEach(function(c){
