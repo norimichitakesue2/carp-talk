@@ -566,8 +566,8 @@ function renderMain(g){
       (hiroshimaIsAway2?g.home_team:g.away_team)+'</td>'+
       (hiroshimaIsAway2?hCells:rCells)+
       '<td class="score-col" style="color:'+awayColor+'">'+(hiroshimaIsAway2?g.home_score:g.away_score)+'</td>'+
-      '<td>'+(g.innings.dena_hits||g.innings.giants_hits||'-')+'</td>'+
-      '<td>'+(g.innings.dena_errors||g.innings.giants_errors||'-')+'</td></tr>';
+      '<td>'+(g.innings.away_hits||g.innings.dena_hits||g.innings.giants_hits||g.innings.yakult_hits||g.innings.yokohama_hits||g.innings.chunichi_hits||'-')+'</td>'+
+      '<td>'+(g.innings.away_errors||g.innings.dena_errors||g.innings.giants_errors||g.innings.yakult_errors||g.innings.yokohama_errors||g.innings.chunichi_errors||'-')+'</td></tr>';
     // 先攻（away）が上の行
     innHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
       (hiroshimaIsAway2?hiroRow+aiteRow:aiteRow+hiroRow)+
