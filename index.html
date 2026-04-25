@@ -1693,46 +1693,35 @@ var CARP_PITCHERS_MASTER = [
 async function initLineup(g){
   var area = document.getElementById('lineup-body-area');
   if(!area) return;
-  // スポナビから一軍野手を動的取得
   var players = [];
   var pitchers = [];
-  try{
-    var rr=await fetch('/games/hiroshima_roster.json?t='+Date.now());
-    var rd=await rr.json();
-    rd.players.forEach(function(p){if(p.pos==='投')pitchers.push(p.name);else players.push(p);});
-    var resp=null;//dummy
-    var html = await resp.text();
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(html, 'text/html');
-    var links = Array.from(doc.querySelectorAll('a[href*="/player/"]'));
-    var seen = {};
-    links.forEach(function(a){
-      var name = a.textContent.trim();
-      if(name.length>1&&name.length<12&&!seen[name]){
-        seen[name]=true;
-        // テーブルのセルからポジション取得
-        var row = a.closest('tr');
-        var cells = row?Array.from(row.querySelectorAll('td,th')):[];
-        var pos = cells[1]?cells[1].textContent.trim():'';
-        // 背番号ぽい文字列はスキップ
-        if(!/^\d+$/.test(pos)) players.push({name:name, pos:pos||'野手'});
-      }
+
+  // 優先: 試合JSONの players（NPB roster.html 由来の今日の最新ベンチ入り）
+  // 15人以上いれば「その日のベンチ入りメンバー」として信頼できる
+  if(g && Array.isArray(g.players) && g.players.length >= 15){
+    g.players.forEach(function(p){
+      if(p.pos==='投') pitchers.push(p.name);
+      else players.push(p);
     });
-    // 投手は別ページから
-    var resp2 = await fetch('https://baseball.yahoo.co.jp/npb/teams/6/pitchingstats');
-    var html2 = await resp2.text();
-    var doc2 = parser.parseFromString(html2, 'text/html');
-    var links2 = Array.from(doc2.querySelectorAll('a[href*="/player/"]'));
-    var seen2 = {};
-    links2.forEach(function(a){
-      var name = a.textContent.trim();
-      if(name.length>1&&name.length<12&&!seen2[name]){seen2[name]=true;pitchers.push(name);}
-    });
-  }catch(e){
-    console.warn('選手取得失敗、JSONの選手リストを使用:', e);
   }
-  // フォールバック
-  if(!players.length) players = (g&&g.players)?g.players:CARP_PLAYERS_MASTER;
+
+  // フォールバック1: hiroshima_roster.json（静的マスター）
+  if(!players.length || !pitchers.length){
+    try{
+      var rr=await fetch('/games/hiroshima_roster.json?t='+Date.now());
+      var rd=await rr.json();
+      if(!players.length){
+        (rd.players||[]).forEach(function(p){if(p.pos==='投')pitchers.push(p.name);else players.push(p);});
+      } else if(!pitchers.length){
+        (rd.players||[]).forEach(function(p){if(p.pos==='投') pitchers.push(p.name);});
+      }
+    }catch(e){
+      console.warn('hiroshima_roster.json fetch failed:', e);
+    }
+  }
+
+  // フォールバック2: ハードコード
+  if(!players.length) players = (g&&g.players&&g.players.length)?g.players:CARP_PLAYERS_MASTER;
   if(!pitchers.length) pitchers = CARP_PITCHERS_MASTER;
 
   // 先発投手をplayersに追加
