@@ -104,6 +104,15 @@ async function fetchBoxFacts({ year, month, day, segment }) {
   const carpPitch = carpIsHome ? homePitch : awayPitch;
   const opPitch = carpIsHome ? awayPitch : homePitch;
 
+  // Roster 取得（試合前・試合中問わず存在する。試合後でもOK）
+  await sleep(SLEEP_MS);
+  let roster = { carp: [], opponent: [] };
+  try {
+    roster = await fetchRoster(`${base}/roster.html`);
+  } catch (e) {
+    console.error(`[fetch_game] roster fetch failed: ${e.message}`);
+  }
+
   return {
     segment,
     status,
@@ -125,14 +134,86 @@ async function fetchBoxFacts({ year, month, day, segment }) {
     homeRuns,
     carpLineup: carpBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
     opponentLineup: opBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
+    carpRoster: roster.carp,
+    opponentRoster: roster.opponent,
   };
+}
+
+// ベンチ入り選手 (roster.html) 取得・パース
+// NPBの構造: <div class="roster_section"><h5>チーム名</h5><table>...</table></div>
+// テーブル内: <th colspan="3">投手/捕手/内野手/外野手</th> がセクションヘッダー、
+// 各選手は <td class="num">背番号</td><td><a>名前</a></td><td class="w4">右投右打</td>
+async function fetchRoster(url) {
+  const html = await fetchWithUA(url);
+  const $ = cheerio.load(html);
+  const result = { carp: [], opponent: [] };
+
+  $('div.roster_section').each((_, sec) => {
+    const $sec = $(sec);
+    const heading = $sec.find('h5, h4, h3, h2').first().text().trim();
+    const $tbl = $sec.find('table').first();
+    if (!$tbl.length) return;
+
+    const isCarp = /広島東洋カープ|広島カープ/.test(heading);
+    const players = parseRosterTable($, $tbl);
+    if (players.length === 0) return;
+
+    if (isCarp && result.carp.length === 0) result.carp = players;
+    else if (!isCarp && result.opponent.length === 0) result.opponent = players;
+  });
+
+  return result;
+}
+
+function parseRosterTable($, $tbl) {
+  const players = [];
+  let currentPos = '投'; // 冒頭は投手（NPB rosterの慣例）
+  // 既知の捕手リストを使って 投/捕 を区別する補助
+  const KNOWN_CATCHERS = new Set([
+    '坂倉', '石原', '持丸', '會澤',
+    // 阪神
+    '梅野', '坂本', '伏見', '榮枝',
+    // 巨人
+    '大城', '小林', '岸田',
+    // ヤクルト
+    '中村', '内山', '松本',
+    // 中日
+    '木下', '加藤', '石橋',
+    // DeNA
+    '戸柱', '松尾', '山本',
+  ]);
+
+  $tbl.find('tr').each((_, row) => {
+    // 行内のセクションラベル検知
+    $(row).find('td, th').each((_, c) => {
+      const t = $(c).text().trim();
+      if (/^投手$/.test(t)) currentPos = '投';
+      else if (/^捕手$/.test(t)) currentPos = '捕';
+      else if (/^内野手$/.test(t)) currentPos = '内';
+      else if (/^外野手$/.test(t)) currentPos = '外';
+    });
+
+    $(row).find('a[href*="/bis/players/"]').each((_, a) => {
+      const name = $(a).text().trim().replace(/\s+/g, '');
+      if (!name) return;
+      let pos = currentPos;
+      // 投手/捕手のセクションラベルが無いNPBレイアウト対応：内野手より前で投と判定された選手のうち、既知捕手なら捕に上書き
+      if (pos === '投' && KNOWN_CATCHERS.has(name)) pos = '捕';
+      // 同名のリンクが複数（投/打のリンクなど）あるケースは1人として扱う
+      if (!players.find((p) => p.name === name)) {
+        players.push({ name, pos });
+      }
+    });
+  });
+
+  return players;
 }
 
 function parseStatus(text) {
   if (/【試合終了】/.test(text)) return 'final';
-  if (/【試合中】|【試合中断】/.test(text)) return 'live';
+  // 「試合中」は「【試合中 1回表】」「【試合中断】」のような形式もあるので開始マーカーで一致させる
+  if (/【試合中/.test(text)) return 'live';
   if (/【試合前】|【試合開始前】/.test(text)) return 'scheduled';
-  // 公式戦中止 / ノーゲーム などのフォールバック
   if (/中止|ノーゲーム/.test(text)) return 'cancelled';
   return 'unknown';
 }

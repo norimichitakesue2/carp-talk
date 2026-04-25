@@ -130,7 +130,9 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     moments,
     players: isFinal
       ? (f.carpLineup || []).map((p) => ({ name: p.name, pos: p.pos || '?' }))
-      : (prev?.players || []),
+      : ((f.carpRoster && f.carpRoster.length > 0)
+          ? f.carpRoster.map((p) => ({ name: p.name, pos: p.pos || '?' }))
+          : (prev?.players || [])),
     _meta: {
       sourceFetchedAt: factsRoot.fetchedAt,
       generatedAt: new Date().toISOString(),
