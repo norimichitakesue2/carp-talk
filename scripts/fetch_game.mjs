@@ -87,7 +87,9 @@ async function fetchBoxFacts({ year, month, day, segment }) {
   const $ = cheerio.load(boxHtml);
 
   const bodyText = $('body').text();
-  const status = parseStatus(bodyText);
+  const statusInfo = parseStatus(bodyText);
+  const status = statusInfo.status;
+  const currentInning = statusInfo.currentInning;
   const venue = parseVenue($);
   const startEnd = parseStartEnd(bodyText);
   const lineScore = parseLineScore($);
@@ -116,6 +118,7 @@ async function fetchBoxFacts({ year, month, day, segment }) {
   return {
     segment,
     status,
+    currentInning,
     venue,
     startTime: startEnd.start,
     endTime: startEnd.end,
@@ -210,12 +213,16 @@ function parseRosterTable($, $tbl) {
 }
 
 function parseStatus(text) {
-  if (/【試合終了】/.test(text)) return 'final';
-  // 「試合中」は「【試合中 1回表】」「【試合中断】」のような形式もあるので開始マーカーで一致させる
-  if (/【試合中/.test(text)) return 'live';
-  if (/【試合前】|【試合開始前】/.test(text)) return 'scheduled';
-  if (/中止|ノーゲーム/.test(text)) return 'cancelled';
-  return 'unknown';
+  if (/【試合終了】/.test(text)) return { status: 'final', currentInning: null };
+  // 「試合中」は「【試合中 1回表】」「【試合中断】」のような形式もある
+  const liveMatch = text.match(/【試合中\s*([^】]*)】/);
+  if (liveMatch) {
+    const inning = liveMatch[1].trim();
+    return { status: 'live', currentInning: inning || null };
+  }
+  if (/【試合前】|【試合開始前】/.test(text)) return { status: 'scheduled', currentInning: null };
+  if (/中止|ノーゲーム/.test(text)) return { status: 'cancelled', currentInning: null };
+  return { status: 'unknown', currentInning: null };
 }
 
 function parseVenue($) {
@@ -241,24 +248,34 @@ function parseStartEnd(text) {
 }
 
 // スコアボード (id=tablefix_ls) を away/home の2行に分解
+// 延長戦の場合、列構造が 1〜12 + 計/H/E となるため、ヘッダーから動的に列位置を解決する
 function parseLineScore($) {
   const tbl = $('table#tablefix_ls');
   if (!tbl.length) return { away: null, home: null };
   const rows = tbl.find('tr');
   if (rows.length < 3) return { away: null, home: null };
-  // row0: ヘッダ（| 1 | 2 | ... | 9 | 計 | H | E）
-  // row1: アウェイ
-  // row2: ホーム
+
+  // ヘッダー行を読み、計/H/E の列位置を特定
+  const headerCells = $(rows[0]).find('th, td').map((_, c) => $(c).text().trim()).get();
+  const totalIdx = headerCells.findIndex((t) => t === '計' || t === 'R');
+  const hitsIdx = headerCells.findIndex((t) => t === 'H' || t === '安');
+  const errorsIdx = headerCells.findIndex((t) => t === 'E' || t === '失');
+  // 1列目は team名、2列目以降が回数（最大 totalIdx-1 まで）
+  const inningCount = totalIdx > 1 ? totalIdx - 1 : 9;
+
   const parseRow = ($r) => {
     const cells = $r.find('th, td').map((_, c) => $(c).text().trim()).get();
-    if (cells.length < 12) return null;
+    if (cells.length < 4) return null;
     const teamRaw = cells[0].replace(/\s+/g, '');
     const team = extractShortTeamName(teamRaw);
     const innings = [];
-    for (let i = 1; i <= 9; i++) innings.push(normInning(cells[i] || ''));
-    const total = parseIntSafe(cells[10]) ?? 0;
-    const hits = parseIntSafe(cells[11]);
-    const errors = parseIntSafe(cells[12]);
+    // 最低9回、延長があればそれ以上
+    const limit = Math.max(9, inningCount);
+    for (let i = 1; i <= limit; i++) innings.push(normInning(cells[i] || ''));
+    const total = totalIdx > 0 ? (parseIntSafe(cells[totalIdx]) ?? 0)
+                                : innings.reduce((s, v) => s + (typeof v === 'number' ? v : 0), 0);
+    const hits = hitsIdx > 0 ? parseIntSafe(cells[hitsIdx]) : null;
+    const errors = errorsIdx > 0 ? parseIntSafe(cells[errorsIdx]) : null;
     return { team, teamRaw, innings, total, hits, errors };
   };
   const away = parseRow($(rows[1]));

@@ -561,6 +561,14 @@ body::before{
   box-shadow:0 0 16px rgba(240,192,64,.3);
   animation:winPulse 2s ease-in-out infinite;
 }
+/* live badge */
+.bl{
+  background:linear-gradient(180deg, rgba(200,16,46,.35), rgba(200,16,46,.15));
+  border:1px solid var(--carp-bright);color:#ff8090;font-weight:800;
+  box-shadow:0 0 14px rgba(200,16,46,.45);
+  animation:livePulse 1.4s ease-in-out infinite;
+}
+@keyframes livePulse{0%,100%{box-shadow:0 0 14px rgba(200,16,46,.45);opacity:1}50%{box-shadow:0 0 22px rgba(200,16,46,.7);opacity:.85}}
 @keyframes winPulse{0%,100%{box-shadow:0 0 16px rgba(240,192,64,.3)}50%{box-shadow:0 0 24px rgba(240,192,64,.55)}}
 
 /* イニング表：電光風 */
@@ -1048,7 +1056,14 @@ function renderMain(g){
     pitHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
   }
 
-  var resultLabel=isScheduled?'':(g.result_label?'<span class="badge bf">FINAL・'+g.result_label+'</span>':'');
+  var resultLabel='';
+  if(isScheduled){
+    resultLabel='';
+  } else if(g.status==='live'){
+    resultLabel='<span class="badge bl">🔴 試合中'+(g.current_inning?' '+esc(g.current_inning):'')+'</span>';
+  } else if(g.result_label){
+    resultLabel='<span class="badge bf">FINAL・'+esc(g.result_label)+'</span>';
+  }
 
   document.getElementById('main-content').innerHTML=
     // スコアカード
@@ -1065,7 +1080,7 @@ function renderMain(g){
     )+
     '</div>'+
 
-    '<div class="badges">'+resultLabel+(hiroshimaWon?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
+    '<div class="badges">'+resultLabel+((g.status==='final'&&hiroshimaWon)?'<span class="badge bw">広島勝利</span>':'')+'</div>'+
     innHtml+pitHtml+
     '</div>'+
 

@@ -42,15 +42,17 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   const carpIsHome = !!f.carpIsHome;
   const status = f.status || 'final';
   const isFinal = status === 'final';
+  const isLive = status === 'live';
+  const writeScores = isFinal || isLive;  // live 中もスコアとイニングを書き出す
 
   const homeTeam = ls.home?.team || (carpIsHome ? '広島' : '');
   const awayTeam = ls.away?.team || (carpIsHome ? '' : '広島');
   const homeScore = ls.home?.total ?? null;
   const awayScore = ls.away?.total ?? null;
 
-  // games/*.json の innings オブジェクト形式に変換（試合終了時のみ）
+  // innings オブジェクト形式に変換（試合終了時 + 試合中）
   const inningsObj = {};
-  if (isFinal) {
+  if (writeScores) {
     if (carpIsHome && ls.home) {
       inningsObj.hiroshima = ls.home.innings;
       inningsObj.hiroshima_hits = ls.home.hits;
@@ -80,12 +82,14 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   }
 
   // 試合前 / 試合中の場合は previous JSON から AI生成フィールドを保持（マージ）
+  // ID は必ず date-prefix にして、複数日のデータがSupabaseで衝突しないようにする
   const useGeneratedAi = isFinal && (generated.title_candidates?.length || generated.moments?.length);
+  const datePrefix = date.replaceAll('-', '');
   const moments = useGeneratedAi
     ? (generated.moments || []).map((m, i) => ({ id: i + 1, ...m }))
     : (prev?.moments || []);
   const positives = useGeneratedAi
-    ? (generated.positives || []).map((p, i) => ({ ...p, id: p.id || `p_${date.replaceAll('-', '')}_${i + 1}` }))
+    ? (generated.positives || []).map((p, i) => ({ ...p, id: `p_${datePrefix}_${i + 1}` }))
     : (prev?.positives || []);
   const titleCandidates = useGeneratedAi
     ? (generated.title_candidates || [])
@@ -94,7 +98,7 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     ? (generated.turning_suggestions || [])
     : (prev?.turning_suggestions || []);
   const debates = useGeneratedAi
-    ? (generated.debates || []).map((d, i) => ({ ...d, id: d.id || `d_${date.replaceAll('-', '')}_${i + 1}` }))
+    ? (generated.debates || []).map((d, i) => ({ ...d, id: `d_${datePrefix}_${i + 1}` }))
     : (prev?.debates || []);
 
   let resultLabel = '';
@@ -117,11 +121,12 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     game_date: date,
     away_team: awayTeam,
     home_team: homeTeam,
-    away_score: isFinal ? (awayScore ?? 0) : null,
-    home_score: isFinal ? (homeScore ?? 0) : null,
+    away_score: writeScores ? (awayScore ?? 0) : null,
+    home_score: writeScores ? (homeScore ?? 0) : null,
     venue: f.venue || (carpIsHome ? 'マツダスタジアム' : ''),
     start_time: f.startTime || '',
     status,
+    current_inning: f.currentInning || '',
     result_label: resultLabel,
     away_pitcher: awayPitcher || prev?.away_pitcher || '',
     home_pitcher: homePitcher || prev?.home_pitcher || '',
