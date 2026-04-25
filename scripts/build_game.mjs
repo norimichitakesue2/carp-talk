@@ -93,6 +93,9 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   const turningSuggestions = useGeneratedAi
     ? (generated.turning_suggestions || [])
     : (prev?.turning_suggestions || []);
+  const debates = useGeneratedAi
+    ? (generated.debates || []).map((d, i) => ({ ...d, id: d.id || `d_${date.replaceAll('-', '')}_${i + 1}` }))
+    : (prev?.debates || []);
 
   let resultLabel = '';
   if (isFinal && homeScore != null && awayScore != null) {
@@ -125,6 +128,7 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     title_candidates: titleCandidates,
     positives,
     turning_suggestions: turningSuggestions,
+    debates,
     innings: inningsObj,
     pitchers,
     moments,
