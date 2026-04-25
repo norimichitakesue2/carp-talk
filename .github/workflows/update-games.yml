@@ -75,9 +75,12 @@ jobs:
         run: |
           git config user.name "carp-talk-bot"
           git config user.email "carp-talk-bot@users.noreply.github.com"
-          if git diff --quiet --exit-code games/; then
-            echo "No changes."
+          # 新規未追跡ファイル＋既存ファイルの変更の両方を検知
+          if [ -z "$(git status --porcelain games/)" ]; then
+            echo "No changes in games/."
           else
+            echo "Changes detected:"
+            git status --porcelain games/
             git add games/
             git commit -m "data: auto-update ${{ steps.date.outputs.value }}"
             # Push with retry (rebase in case main moved)
