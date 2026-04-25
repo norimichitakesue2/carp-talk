@@ -36,57 +36,72 @@ const pickDateArg = () => {
   return a || new Date().toISOString().slice(0, 10);
 };
 
-function assembleGameJson(date, factsRoot, generated) {
+function assembleGameJson(date, factsRoot, generated, prev) {
   const f = factsRoot.facts;
   const ls = f.lineScore || {};
   const carpIsHome = !!f.carpIsHome;
+  const status = f.status || 'final';
+  const isFinal = status === 'final';
 
   const homeTeam = ls.home?.team || (carpIsHome ? '広島' : '');
   const awayTeam = ls.away?.team || (carpIsHome ? '' : '広島');
-  const homeScore = ls.home?.total ?? 0;
-  const awayScore = ls.away?.total ?? 0;
+  const homeScore = ls.home?.total ?? null;
+  const awayScore = ls.away?.total ?? null;
 
-  // games/*.json の innings オブジェクト形式に変換
+  // games/*.json の innings オブジェクト形式に変換（試合終了時のみ）
   const inningsObj = {};
-  if (carpIsHome && ls.home) {
-    inningsObj.hiroshima = ls.home.innings;
-    inningsObj.hiroshima_hits = ls.home.hits;
-    inningsObj.hiroshima_errors = ls.home.errors;
-  } else if (!carpIsHome && ls.away) {
-    inningsObj.hiroshima = ls.away.innings;
-    inningsObj.hiroshima_hits = ls.away.hits;
-    inningsObj.hiroshima_errors = ls.away.errors;
-  }
-  const opSide = carpIsHome ? ls.away : ls.home;
-  if (opSide) {
-    inningsObj.away = opSide.innings;
-    inningsObj.away_hits = opSide.hits;
-    inningsObj.away_errors = opSide.errors;
+  if (isFinal) {
+    if (carpIsHome && ls.home) {
+      inningsObj.hiroshima = ls.home.innings;
+      inningsObj.hiroshima_hits = ls.home.hits;
+      inningsObj.hiroshima_errors = ls.home.errors;
+    } else if (!carpIsHome && ls.away) {
+      inningsObj.hiroshima = ls.away.innings;
+      inningsObj.hiroshima_hits = ls.away.hits;
+      inningsObj.hiroshima_errors = ls.away.errors;
+    }
+    const opSide = carpIsHome ? ls.away : ls.home;
+    if (opSide) {
+      inningsObj.away = opSide.innings;
+      inningsObj.away_hits = opSide.hits;
+      inningsObj.away_errors = opSide.errors;
+    }
   }
 
-  // 投手リスト：勝/敗/セーブ + 先発を pitcher chips に
+  // 投手リスト
   const pitchers = [];
   const pp = f.pitchers || {};
-  const winnerTeam = (homeScore > awayScore) ? homeTeam : awayTeam;
-  const loserTeam  = (homeScore > awayScore) ? awayTeam : homeTeam;
-  if (pp.winningPitcher) pitchers.push({ team: winnerTeam, role: '先発', name: pp.winningPitcher, result: 'win' });
-  if (pp.losingPitcher)  pitchers.push({ team: loserTeam, role: '先発', name: pp.losingPitcher,  result: 'loss' });
-  if (pp.savePitcher)    pitchers.push({ team: winnerTeam, role: '抑え', name: pp.savePitcher,   result: 'save' });
+  if (isFinal) {
+    const winnerTeam = (homeScore > awayScore) ? homeTeam : awayTeam;
+    const loserTeam  = (homeScore > awayScore) ? awayTeam : homeTeam;
+    if (pp.winningPitcher) pitchers.push({ team: winnerTeam, role: '先発', name: pp.winningPitcher, result: 'win' });
+    if (pp.losingPitcher)  pitchers.push({ team: loserTeam, role: '先発', name: pp.losingPitcher,  result: 'loss' });
+    if (pp.savePitcher)    pitchers.push({ team: winnerTeam, role: '抑え', name: pp.savePitcher,   result: 'save' });
+  }
 
-  // moments の id 連番化
-  const moments = (generated.moments || []).map((m, i) => ({ id: i + 1, ...m }));
-
-  const positives = (generated.positives || []).map((p, i) => ({
-    ...p,
-    id: p.id || `p_${date.replaceAll('-', '')}_${i + 1}`,
-  }));
+  // 試合前 / 試合中の場合は previous JSON から AI生成フィールドを保持（マージ）
+  const useGeneratedAi = isFinal && (generated.title_candidates?.length || generated.moments?.length);
+  const moments = useGeneratedAi
+    ? (generated.moments || []).map((m, i) => ({ id: i + 1, ...m }))
+    : (prev?.moments || []);
+  const positives = useGeneratedAi
+    ? (generated.positives || []).map((p, i) => ({ ...p, id: p.id || `p_${date.replaceAll('-', '')}_${i + 1}` }))
+    : (prev?.positives || []);
+  const titleCandidates = useGeneratedAi
+    ? (generated.title_candidates || [])
+    : (prev?.title_candidates || []);
+  const turningSuggestions = useGeneratedAi
+    ? (generated.turning_suggestions || [])
+    : (prev?.turning_suggestions || []);
 
   let resultLabel = '';
-  if (homeScore !== awayScore) {
-    const winner = homeScore > awayScore ? homeTeam : awayTeam;
-    resultLabel = `${winner}勝利`;
-  } else {
-    resultLabel = '引き分け';
+  if (isFinal && homeScore != null && awayScore != null) {
+    if (homeScore !== awayScore) {
+      const winner = homeScore > awayScore ? homeTeam : awayTeam;
+      resultLabel = `${winner}勝利`;
+    } else {
+      resultLabel = '引き分け';
+    }
   }
 
   const carpStarter = pp.carpStarter || '';
@@ -99,21 +114,23 @@ function assembleGameJson(date, factsRoot, generated) {
     game_date: date,
     away_team: awayTeam,
     home_team: homeTeam,
-    away_score: awayScore,
-    home_score: homeScore,
+    away_score: isFinal ? (awayScore ?? 0) : null,
+    home_score: isFinal ? (homeScore ?? 0) : null,
     venue: f.venue || (carpIsHome ? 'マツダスタジアム' : ''),
     start_time: f.startTime || '',
-    status: f.status || 'final',
+    status,
     result_label: resultLabel,
-    away_pitcher: awayPitcher,
-    home_pitcher: homePitcher,
-    title_candidates: generated.title_candidates || [],
+    away_pitcher: awayPitcher || prev?.away_pitcher || '',
+    home_pitcher: homePitcher || prev?.home_pitcher || '',
+    title_candidates: titleCandidates,
     positives,
-    turning_suggestions: generated.turning_suggestions || [],
+    turning_suggestions: turningSuggestions,
     innings: inningsObj,
     pitchers,
     moments,
-    players: (f.carpLineup || []).map((p) => ({ name: p.name, pos: p.pos || '?' })),
+    players: isFinal
+      ? (f.carpLineup || []).map((p) => ({ name: p.name, pos: p.pos || '?' }))
+      : (prev?.players || []),
     _meta: {
       sourceFetchedAt: factsRoot.fetchedAt,
       generatedAt: new Date().toISOString(),
@@ -156,14 +173,18 @@ async function main() {
     process.exit(1);
   }
 
-  if (facts?.facts?.status !== 'final') {
-    console.error(`[build_game] Game status is "${facts?.facts?.status}", not final. Skip.`);
+  const status = facts?.facts?.status;
+  if (status === 'cancelled' || status === 'unknown') {
+    console.error(`[build_game] Game status is "${status}", skipping.`);
     process.exit(2);
   }
 
-  // STEP2: AI生成（または空）
+  // STEP2: AI生成
+  // - final: 全部生成（タイトル候補・分岐点・ポジ）
+  // - scheduled / live: AI生成はスキップ（試合中・前は事実だけ）
   let generated = { title_candidates: [], moments: [], turning_suggestions: [], positives: [] };
-  if (!noAi) {
+  const shouldRunAi = status === 'final' && !noAi;
+  if (shouldRunAi) {
     const aiScript = path.join(__dirname, 'generate_ai.mjs');
     const aiResult = runNode(aiScript, [], JSON.stringify(facts));
     if (aiResult.status !== 0) {
@@ -177,20 +198,12 @@ async function main() {
       console.error(aiResult.stdout.slice(0, 500));
       process.exit(1);
     }
+  } else if (status !== 'final') {
+    console.error(`[build_game] Game status is "${status}", skipping AI generation but writing facts.`);
   }
 
-  // STEP3: 統合
-  const gameJson = assembleGameJson(date, facts, generated);
-
-  if (dry) {
-    console.log(JSON.stringify(gameJson, null, 2));
-    return;
-  }
-
-  // STEP4: ファイル書き出し
-  await fs.mkdir(GAMES_DIR, { recursive: true });
+  // STEP3: 既存JSONを読み込んでマージ材料に
   const outPath = path.join(GAMES_DIR, `${date}.json`);
-
   let prev = null;
   try { prev = JSON.parse(await fs.readFile(outPath, 'utf8')); } catch { /* not existing */ }
   if (prev?._meta?.manuallyEdited) {
@@ -198,8 +211,18 @@ async function main() {
     process.exit(0);
   }
 
+  // STEP4: 統合
+  const gameJson = assembleGameJson(date, facts, generated, prev);
+
+  if (dry) {
+    console.log(JSON.stringify(gameJson, null, 2));
+    return;
+  }
+
+  // STEP5: ファイル書き出し
+  await fs.mkdir(GAMES_DIR, { recursive: true });
   await fs.writeFile(outPath, JSON.stringify(gameJson, null, 2) + '\n', 'utf8');
-  console.error(`[build_game] Wrote ${outPath}`);
+  console.error(`[build_game] Wrote ${outPath} (status=${gameJson.status})`);
 }
 
 main().catch((e) => {
