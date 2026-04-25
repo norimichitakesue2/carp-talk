@@ -1,0 +1,83 @@
+name: Update game data
+
+# 試合終了をポーリングで検知して、データを生成→コミット
+# 日本時間 17:00〜23:00 のあいだ、30分ごとに実行
+# UTC で言うと 8:00〜14:00（夏時間考慮なし）
+on:
+  schedule:
+    - cron: '0,30 8-14 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '対象日 (YYYY-MM-DD、空欄なら今日)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-games
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Resolve target date (JST)
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "value=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            # GitHub Actions runner is UTC. Compute JST date.
+            JST_DATE=$(TZ='Asia/Tokyo' date +%Y-%m-%d)
+            echo "value=${JST_DATE}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build game data
+        id: build
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set +e
+          OUT=$(node scripts/build_game.mjs ${{ steps.date.outputs.value }} 2>&1)
+          STATUS=$?
+          echo "$OUT"
+          echo "exit_code=${STATUS}" >> $GITHUB_OUTPUT
+          # status 2 = no game / not finished, treat as success-but-no-update
+          if [ "$STATUS" != "0" ] && [ "$STATUS" != "2" ]; then
+            exit $STATUS
+          fi
+
+      - name: Commit changes (if any)
+        if: steps.build.outputs.exit_code == '0'
+        run: |
+          git config user.name "carp-talk-bot"
+          git config user.email "carp-talk-bot@users.noreply.github.com"
+          if git diff --quiet --exit-code games/; then
+            echo "No changes."
+          else
+            git add games/
+            git commit -m "data: auto-update ${{ steps.date.outputs.value }}"
+            # Push with retry (rebase in case main moved)
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push origin HEAD:main && break
+              sleep 5
+            done
+          fi

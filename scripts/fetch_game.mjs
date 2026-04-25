@@ -1,0 +1,283 @@
+// NPB公式からカープの試合データを取得してJSONを返すスクレイパー
+// 使い方:
+//   node scripts/fetch_game.mjs YYYY-MM-DD
+// 出力: カープが試合してる場合はJSON、試合がない場合はexit 2
+//
+// 利用規約への配慮:
+// - 事実データ（スコア・選手名・イニング）のみを取得
+// - 解説テキスト・記事はコピーしない
+// - 自サイトを名乗るUser-Agent
+// - リクエスト間は1.5秒以上スリープ
+
+import * as cheerio from 'cheerio';
+import { TEAM_BY_CODE, isCarpGame, parseGameSegment, SHORT_NAMES } from './team_codes.mjs';
+
+const UA = 'carp-talk-bot/0.1 (+https://carp-talk.vercel.app; fan-site data sync)';
+const SLEEP_MS = 1500;
+
+async function fetchWithUA(url) {
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent': UA,
+      'Accept-Language': 'ja-JP,ja;q=0.9,en;q=0.8',
+    },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return await res.text();
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function parseDate(dateStr) {
+  const m = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) throw new Error(`Invalid date: ${dateStr}`);
+  return { year: m[1], month: m[2], day: m[3] };
+}
+
+// その月のスケジュールページから、指定日付のカープの試合URLセグメントを検索
+async function findCarpGameSegment({ year, month, day }) {
+  const scheduleUrl = `https://npb.jp/games/${year}/schedule_${month}_detail.html`;
+  const html = await fetchWithUA(scheduleUrl);
+  const $ = cheerio.load(html);
+
+  const links = new Set();
+  $(`a[href*="/scores/${year}/${month}${day}/"]`).each((_, el) => {
+    const href = $(el).attr('href') || '';
+    const m = href.match(new RegExp(`/scores/${year}/${month}${day}/([^/]+)/`));
+    if (m) links.add(m[1]);
+  });
+
+  for (const seg of links) {
+    if (isCarpGame(seg)) return seg;
+  }
+  return null;
+}
+
+// テキストから既知の短縮チーム名を抜き出す（重複表記対応）
+// 例: "東京ヤクルトスワローズヤクルト" → "ヤクルト"
+function extractShortTeamName(text) {
+  const t = (text || '').replace(/\s+/g, '');
+  for (const short of SHORT_NAMES) {
+    if (t.endsWith(short)) return short;
+  }
+  // フォールバック：DeNA/楽天等は二回繰り返さないこともあるので、含むかでも判定
+  for (const short of SHORT_NAMES) {
+    if (t.includes(short)) return short;
+  }
+  return t;
+}
+
+// イニング数値の正規化
+function normInning(v) {
+  if (v === '' || v == null) return 0;
+  if (v === '-' || v === 'X') return v;
+  const n = parseInt(v, 10);
+  return isNaN(n) ? 0 : n;
+}
+
+function parseIntSafe(v) {
+  if (v == null) return null;
+  const n = parseInt(String(v).replace(/[^\d-]/g, ''), 10);
+  return isNaN(n) ? null : n;
+}
+
+async function fetchBoxFacts({ year, month, day, segment }) {
+  const base = `https://npb.jp/scores/${year}/${month}${day}/${segment}`;
+  const boxHtml = await fetchWithUA(`${base}/box.html`);
+  const $ = cheerio.load(boxHtml);
+
+  const bodyText = $('body').text();
+  const status = parseStatus(bodyText);
+  const venue = parseVenue($);
+  const startEnd = parseStartEnd(bodyText);
+  const lineScore = parseLineScore($);
+  const awayBat = parseBatting($, $('table#tablefix_t_b'));
+  const homeBat = parseBatting($, $('table#tablefix_b_b'));
+  const awayPitch = parsePitching($, $('table#tablefix_t_p'));
+  const homePitch = parsePitching($, $('table#tablefix_b_p'));
+  const homeRuns = extractHomeRuns(awayBat).concat(extractHomeRuns(homeBat));
+
+  const gameParts = parseGameSegment(segment);
+  const carpIsHome = gameParts?.homeCode === 'c';
+  const carpBat = carpIsHome ? homeBat : awayBat;
+  const opBat = carpIsHome ? awayBat : homeBat;
+  const carpPitch = carpIsHome ? homePitch : awayPitch;
+  const opPitch = carpIsHome ? awayPitch : homePitch;
+
+  return {
+    segment,
+    status,
+    venue,
+    startTime: startEnd.start,
+    endTime: startEnd.end,
+    gameParts,
+    carpIsHome,
+    lineScore,
+    pitchers: {
+      carpStarter: carpPitch[0]?.name || null,
+      opStarter: opPitch[0]?.name || null,
+      winningPitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'win')?.name || null,
+      losingPitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'loss')?.name || null,
+      savePitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'save')?.name || null,
+      carpAll: carpPitch.map((p) => ({ name: p.name, result: p.result, ipText: p.ipText })),
+      opAll: opPitch.map((p) => ({ name: p.name, result: p.result, ipText: p.ipText })),
+    },
+    homeRuns,
+    carpLineup: carpBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
+    opponentLineup: opBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
+  };
+}
+
+function parseStatus(text) {
+  if (/【試合終了】/.test(text)) return 'final';
+  if (/【試合中】|【試合中断】/.test(text)) return 'live';
+  if (/【試合前】|【試合開始前】/.test(text)) return 'scheduled';
+  // 公式戦中止 / ノーゲーム などのフォールバック
+  if (/中止|ノーゲーム/.test(text)) return 'cancelled';
+  return 'unknown';
+}
+
+function parseVenue($) {
+  // ヘッダ周辺の専用要素に「マツダスタジアム」「神宮」など短縮表記
+  // ・headingの直前/直後の generic 要素にあることが多い
+  const candidates = [];
+  $('div, span, p').each((_, el) => {
+    const t = $(el).text().trim();
+    if (/^(マツダスタジアム|神宮|横浜|甲子園|東京ドーム|京セラD大阪|エスコンF|バンテリンドーム|PayPayドーム|ZOZOマリン|ベルーナドーム|楽天モバイルパーク|ほっと神戸|札幌ドーム|福岡ドーム|横浜スタジアム|MAZDA Zoom-Zoom スタジアム広島|明治神宮野球場|阪神甲子園球場|バンテリンドーム ナゴヤ|エスコンフィールドHOKKAIDO)/.test(t) && t.length < 30) {
+      candidates.push(t);
+    }
+  });
+  if (candidates.length > 0) return candidates[0];
+  return '';
+}
+
+function parseStartEnd(text) {
+  const m = text.match(/◇開始\s*([\d:]+)\s*◇終了\s*([\d:]+)/);
+  if (m) return { start: m[1], end: m[2] };
+  const m2 = text.match(/◇開始\s*([\d:]+)/);
+  if (m2) return { start: m2[1], end: '' };
+  return { start: '', end: '' };
+}
+
+// スコアボード (id=tablefix_ls) を away/home の2行に分解
+function parseLineScore($) {
+  const tbl = $('table#tablefix_ls');
+  if (!tbl.length) return { away: null, home: null };
+  const rows = tbl.find('tr');
+  if (rows.length < 3) return { away: null, home: null };
+  // row0: ヘッダ（| 1 | 2 | ... | 9 | 計 | H | E）
+  // row1: アウェイ
+  // row2: ホーム
+  const parseRow = ($r) => {
+    const cells = $r.find('th, td').map((_, c) => $(c).text().trim()).get();
+    if (cells.length < 12) return null;
+    const teamRaw = cells[0].replace(/\s+/g, '');
+    const team = extractShortTeamName(teamRaw);
+    const innings = [];
+    for (let i = 1; i <= 9; i++) innings.push(normInning(cells[i] || ''));
+    const total = parseIntSafe(cells[10]) ?? 0;
+    const hits = parseIntSafe(cells[11]);
+    const errors = parseIntSafe(cells[12]);
+    return { team, teamRaw, innings, total, hits, errors };
+  };
+  const away = parseRow($(rows[1]));
+  const home = parseRow($(rows[2]));
+  return { away, home };
+}
+
+// 打撃成績テーブル（tablefix_t_b / tablefix_b_b）を選手の配列に
+// 列: |番|守備|選手|打数|得点|安打|打点|盗塁|1|2|3|4|5|6|7|8|9
+function parseBatting($, $tbl) {
+  if (!$tbl || !$tbl.length) return [];
+  const rows = $tbl.find('tr').slice(1); // skip header
+  const result = [];
+  rows.each((_, r) => {
+    const cells = $(r).find('th, td').map((_, c) => $(c).text().trim().replace(/\s+/g, ' ')).get();
+    if (cells.length < 8) return;
+    const lineupNum = parseIntSafe(cells[0]);
+    const pos = (cells[1] || '').replace(/[（）()]/g, '').replace(/\s+/g, '');
+    const name = (cells[2] || '').replace(/\s+/g, '');
+    if (!name || /^選手$/.test(name)) return;
+    // チーム計（合計行）など、選手以外の行を除外
+    if (/チーム計|合計|計$/.test(name)) return;
+    const innings = cells.slice(8, 17);
+    result.push({ lineupNum, pos, name, innings });
+  });
+  return result;
+}
+
+// 投手成績テーブル（tablefix_t_p / tablefix_b_p）
+// 列: |結果|投手|投球数|打者|投球回|安打|本塁打|四球|死球|三振|暴投|ボーク|失点|自責点
+// 結果列に ○=勝 / ●=敗 / Ｓ or S=セーブ
+function parsePitching($, $tbl) {
+  if (!$tbl || !$tbl.length) return [];
+  const rows = $tbl.find('tr').slice(1);
+  const result = [];
+  rows.each((_, r) => {
+    const cells = $(r).find('th, td').map((_, c) => $(c).text().trim().replace(/\s+/g, ' ')).get();
+    if (cells.length < 4) return;
+    const flag = cells[0] || '';
+    const name = (cells[1] || '').replace(/\s+/g, '');
+    const ipText = cells[4] || cells[3] || '';  // 投球回
+    if (!name || /^投手$/.test(name)) return;
+    if (/チーム計|合計|計$/.test(name)) return;
+    let resultMark = '';
+    if (flag.includes('○') || /^[oO]$/.test(flag)) resultMark = 'win';
+    else if (flag.includes('●')) resultMark = 'loss';
+    else if (flag.includes('Ｓ') || flag === 'S') resultMark = 'save';
+    else if (flag.includes('Ｈ') || flag === 'H') resultMark = 'hold';
+    result.push({ name, result: resultMark, ipText });
+  });
+  return result;
+}
+
+// 打席結果に「本」を含むセルから本塁打情報を抽出
+//   "右中本②" → { hitter: ..., inning: 5, type: '右中', rbi: 2 }
+function extractHomeRuns(battingArr) {
+  const RBI_MAP = { '①': 1, '②': 2, '③': 3, '④': 4, '⑤': 5 };
+  const out = [];
+  for (const b of battingArr) {
+    b.innings?.forEach((cell, i) => {
+      const m = cell?.match(/([^本\s\-]{1,4})本([①②③④⑤])?/);
+      if (m) {
+        out.push({
+          hitter: b.name,
+          inning: i + 1,
+          dir: m[1],
+          rbi: RBI_MAP[m[2]] || 1,
+        });
+      }
+    });
+  }
+  return out;
+}
+
+// ===== エントリポイント =====
+async function main() {
+  const dateStr = process.argv[2] || new Date().toISOString().slice(0, 10);
+  const parts = parseDate(dateStr);
+
+  const segment = await findCarpGameSegment(parts);
+  if (!segment) {
+    console.error(`[fetch_game] No Carp game found for ${dateStr}`);
+    process.exit(2);
+  }
+  console.error(`[fetch_game] Found game: ${segment}`);
+
+  await sleep(SLEEP_MS);
+  const facts = await fetchBoxFacts({ ...parts, segment });
+
+  const output = {
+    date: dateStr,
+    segment,
+    source: 'npb.jp',
+    fetchedAt: new Date().toISOString(),
+    facts,
+  };
+  console.log(JSON.stringify(output, null, 2));
+}
+
+main().catch((e) => {
+  console.error(`[fetch_game] ERROR: ${e.message}`);
+  process.exit(1);
+});
