@@ -930,7 +930,7 @@ async function loadGame(date){
     return;
   }
   var g=await r.json();
-  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[]};
+  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[],team_analysis:g.team_analysis||null};
   isScheduled=g.status==='scheduled';
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
   // リセット
@@ -949,7 +949,30 @@ async function runAIAnalysis(){
   btn.disabled=true;btn.textContent='⏳ 読み込み中...';
   result.innerHTML='<div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">分析データを読み込んでいます...</div>';
   try{
-    // まずDBから取得
+    // 試合JSON（GAME）の team_analysis を最優先
+    var ta=GAME&&GAME.team_analysis;
+    if(ta&&(ta.issues||ta.improvements||ta.fan_voice)){
+      var html='<div class="ai-result-wrap" style="margin-top:10px">';
+      if(ta.issues&&ta.issues.length){
+        html+='<div style="font-size:11px;font-weight:700;color:#ff8090;letter-spacing:.08em;margin-bottom:4px">■ 現状の課題</div>';
+        html+='<ul style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px 1rem;padding:0">'+
+          ta.issues.map(function(s){return '<li style="margin-bottom:3px">'+esc(s)+'</li>';}).join('')+'</ul>';
+      }
+      if(ta.improvements&&ta.improvements.length){
+        html+='<div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:4px">■ 改善案</div>';
+        html+='<ul style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px 1rem;padding:0">'+
+          ta.improvements.map(function(s){return '<li style="margin-bottom:3px">'+esc(s)+'</li>';}).join('')+'</ul>';
+      }
+      if(ta.fan_voice){
+        html+='<div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.08em;margin-bottom:4px">■ ファンの本音</div>';
+        html+='<p style="font-size:13px;color:var(--text);line-height:1.7;margin:0;font-style:italic;border-left:2px solid var(--blue);padding-left:.65rem">「'+esc(ta.fan_voice)+'」</p>';
+      }
+      html+='</div>';
+      result.innerHTML=html;
+      btn.disabled=false;btn.textContent='🔄 再読み込み';
+      return;
+    }
+    // フォールバック: 旧形式の Supabase ai_analysis テーブル
     var cached=await sb.from('ai_analysis').select('content').eq('game_id',GAME_ID).maybeSingle();
     if(cached.data&&cached.data.content){
       var rawText=cached.data.content;
@@ -957,7 +980,6 @@ async function runAIAnalysis(){
       btn.disabled=false;btn.textContent='🔄 再読み込み';
       return;
     }
-    // DBになければ「準備中」を表示
     result.innerHTML='<div style="font-size:13px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.8">⚙️ この試合の分析はまだ準備中です。<br>試合終了後に更新されます。</div>';
     btn.disabled=false;btn.textContent='▶ 分析を実行する';
     return;
@@ -1262,6 +1284,10 @@ function renderMain(g){
   renderStory();
   renderPositives();
   renderDebates();
+  // team_analysis が JSON にあれば自動的に AI 分析を表示（ボタン押し不要）
+  if(GAME.team_analysis && (GAME.team_analysis.issues || GAME.team_analysis.fan_voice)){
+    setTimeout(runAIAnalysis, 50);
+  }
 }
 
 // ===== ポジティブ（今日の光）=====

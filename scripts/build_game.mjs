@@ -100,6 +100,9 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   const debates = useGeneratedAi
     ? (generated.debates || []).map((d, i) => ({ ...d, id: `d_${datePrefix}_${i + 1}` }))
     : (prev?.debates || []);
+  const teamAnalysis = useGeneratedAi
+    ? (generated.team_analysis || null)
+    : (prev?.team_analysis || null);
 
   let resultLabel = '';
   if (isFinal && homeScore != null && awayScore != null) {
@@ -134,6 +137,7 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     positives,
     turning_suggestions: turningSuggestions,
     debates,
+    team_analysis: teamAnalysis,
     innings: inningsObj,
     pitchers,
     moments,
