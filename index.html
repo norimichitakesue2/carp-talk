@@ -1997,87 +1997,86 @@ function _drawCardBase(ctx, W, H){
   // 上端カープレッドストライプ
   var s = ctx.createLinearGradient(0,0,W,0);
   s.addColorStop(0,'#8a0a1e'); s.addColorStop(.5,'#c8102e'); s.addColorStop(1,'#f0c040');
-  ctx.fillStyle=s; ctx.fillRect(0,0,W,14);
+  ctx.fillStyle=s; ctx.fillRect(0,0,W,12);
 
   // 下端 ストライプ
-  ctx.fillStyle=s; ctx.fillRect(0,H-14,W,14);
+  ctx.fillStyle=s; ctx.fillRect(0,H-12,W,12);
 
   // 微細な縦ストライプ（電光掲示板風）
   ctx.fillStyle='rgba(255,255,255,.018)';
-  for(var x=40; x<W; x+=80){ ctx.fillRect(x,14,1,H-28); }
+  for(var x=30; x<W; x+=60){ ctx.fillRect(x,12,1,H-24); }
 }
 function _drawScoreboard(ctx, W, y, away, awayS, home, homeS){
   ctx.textAlign='center';
   ctx.fillStyle='#f0c040';
-  ctx.font='bold 22px sans-serif';
+  ctx.font='bold 24px sans-serif';
   ctx.fillText(currentDate+' ／ '+(GAME.venue||'マツダスタジアム'), W/2, y);
   // チーム名 + スコア
-  ctx.font='bold 56px "Bebas Neue", sans-serif';
   var awayDisp=(awayS!=null?awayS:'-'), homeDisp=(homeS!=null?homeS:'-');
   // away
   ctx.fillStyle='#f5d000';
-  ctx.font='30px "Bebas Neue", sans-serif';
-  ctx.fillText(away, W*0.22, y+50);
-  ctx.font='100px "Bebas Neue", sans-serif';
-  ctx.fillText(awayDisp, W*0.22, y+150);
+  ctx.font='36px "Bebas Neue", sans-serif';
+  ctx.fillText(away, W*0.22, y+58);
+  ctx.font='120px "Bebas Neue", sans-serif';
+  ctx.fillText(awayDisp, W*0.22, y+170);
   // separator
-  ctx.fillStyle='rgba(255,255,255,.25)'; ctx.font='80px "Bebas Neue", sans-serif';
-  ctx.fillText('—', W/2, y+135);
+  ctx.fillStyle='rgba(255,255,255,.25)'; ctx.font='90px "Bebas Neue", sans-serif';
+  ctx.fillText('—', W/2, y+155);
   // home
   ctx.fillStyle='#ff4060';
-  ctx.font='30px "Bebas Neue", sans-serif';
-  ctx.fillText(home, W*0.78, y+50);
-  ctx.font='100px "Bebas Neue", sans-serif';
-  ctx.fillText(homeDisp, W*0.78, y+150);
+  ctx.font='36px "Bebas Neue", sans-serif';
+  ctx.fillText(home, W*0.78, y+58);
+  ctx.font='120px "Bebas Neue", sans-serif';
+  ctx.fillText(homeDisp, W*0.78, y+170);
   ctx.textAlign='left';
 }
 function _drawWatermark(ctx, W, H){
   ctx.fillStyle='rgba(240,192,64,.55)';
-  ctx.font='bold 18px sans-serif';
+  ctx.font='bold 20px sans-serif';
   ctx.textAlign='right';
-  ctx.fillText('CARP TALK · #carptalk', W-30, H-30);
+  ctx.fillText('CARP TALK · #carptalk', W-25, H-25);
   ctx.textAlign='left';
 }
 
 function generateMoodImage(){
-  var W=1080, H=1080;
+  var W=800, H=800;
   var canvas=document.createElement('canvas');
   canvas.width=W; canvas.height=H;
   var ctx=canvas.getContext('2d');
 
   _drawCardBase(ctx, W, H);
 
-  ctx.fillStyle='#f0c040'; ctx.font='bold 22px sans-serif';
-  ctx.fillText('🎫 今日の気分', 50, 70);
+  ctx.fillStyle='#f0c040'; ctx.font='bold 26px sans-serif';
+  ctx.fillText('🎫 今日の気分', 35, 60);
 
-  _drawScoreboard(ctx, W, 110, GAME.away, GAME.awayScore, GAME.home, GAME.homeScore);
+  _drawScoreboard(ctx, W, 90, GAME.away, GAME.awayScore, GAME.home, GAME.homeScore);
 
   // 大きな気分絵文字
   ctx.textAlign='center';
-  ctx.font='280px "Apple Color Emoji", "Segoe UI Emoji", sans-serif';
+  ctx.font='240px "Apple Color Emoji", "Segoe UI Emoji", sans-serif';
   var emoji=(MOOD_LABELS[myMood]||'').split(' ')[0]||'';
-  ctx.fillText(emoji, W/2, 620);
+  ctx.fillText(emoji, W/2, 510);
 
   // ラベル
   ctx.fillStyle='#ffd965';
-  ctx.font='bold 56px sans-serif';
+  ctx.font='bold 64px sans-serif';
   var label=(MOOD_LABELS[myMood]||'').replace(/^[^\s]+\s/,'');
-  ctx.fillText(label, W/2, 730);
+  ctx.fillText(label, W/2, 605);
 
   // パーセンテージ（5人以上）
   var total=Object.values(moodCounts).reduce(function(s,v){return s+v;},0);
   if(total>=5){
     var pct=Math.round(moodCounts[myMood]/total*100);
     ctx.fillStyle='rgba(255,255,255,.85)';
-    ctx.font='32px sans-serif';
-    ctx.fillText('カープファンの '+pct+'% が同じ気分', W/2, 800);
+    ctx.font='36px sans-serif';
+    ctx.fillText('カープファンの '+pct+'% が同じ気分', W/2, 670);
     ctx.fillStyle='rgba(255,255,255,.55)';
-    ctx.font='22px sans-serif';
-    ctx.fillText('（'+total+'人中）', W/2, 840);
+    ctx.font='26px sans-serif';
+    ctx.fillText('（'+total+'人中）', W/2, 710);
   } else if(total<=1) {
     ctx.fillStyle='rgba(255,255,255,.7)';
-    ctx.font='28px sans-serif';
-    ctx.fillText('今日の最初の投票者です', W/2, 800);
+    ctx.font='32px sans-serif';
+    ctx.fillText('今日の最初の投票者です', W/2, 680);
   }
 
   ctx.textAlign='left';
@@ -2086,7 +2085,7 @@ function generateMoodImage(){
 }
 
 function generateMyCardImage(){
-  var W=1080, H=1350;
+  var W=800, H=1100;
   var canvas=document.createElement('canvas');
   canvas.width=W; canvas.height=H;
   var ctx=canvas.getContext('2d');
@@ -2094,18 +2093,18 @@ function generateMyCardImage(){
   _drawCardBase(ctx, W, H);
 
   // ヘッダー：チケット風タイトル
-  ctx.fillStyle='#f0c040'; ctx.font='bold 28px sans-serif';
-  ctx.fillText('🎫 観戦カード', 50, 70);
-  ctx.font='14px sans-serif'; ctx.fillStyle='rgba(255,255,255,.5)';
-  ctx.fillText('CARP TALK', 50, 95);
+  ctx.fillStyle='#f0c040'; ctx.font='bold 32px sans-serif';
+  ctx.fillText('🎫 観戦カード', 35, 60);
+  ctx.font='16px sans-serif'; ctx.fillStyle='rgba(255,255,255,.5)';
+  ctx.fillText('CARP TALK', 35, 88);
 
   // スコアボード
-  _drawScoreboard(ctx, W, 130, GAME.away, GAME.awayScore, GAME.home, GAME.homeScore);
+  _drawScoreboard(ctx, W, 120, GAME.away, GAME.awayScore, GAME.home, GAME.homeScore);
 
   // 区切り線
   ctx.strokeStyle='rgba(240,192,64,.35)'; ctx.lineWidth=2;
   ctx.setLineDash([8,6]);
-  ctx.beginPath(); ctx.moveTo(60,360); ctx.lineTo(W-60,360); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(40,355); ctx.lineTo(W-40,355); ctx.stroke();
   ctx.setLineDash([]);
 
   // ユーザー参加内容（rows各要素は { key, type:'simple'|'debate', val 等 }）
@@ -2130,9 +2129,9 @@ function generateMyCardImage(){
   });
 
   // 各行を描画
-  var y=420;
+  var y=405;
   ctx.textAlign='left';
-  var maxW=W-220;
+  var maxW=W-200;
 
   // テキスト折返し描画ヘルパー（最大 maxLines 行、超えたら最後の行末に…）
   function drawWrappedText(text, x, y, maxWidth, lineHeight, maxLines){
@@ -2170,58 +2169,58 @@ function generateMyCardImage(){
     if(r.type==='debate'){
       // 論点行：質問（小・muted）→ 選択肢（大・白）→ stanceバッジ
       ctx.fillStyle='#f0c040';
-      ctx.font='bold 22px sans-serif';
-      ctx.fillText(r.key, 60, y);
+      ctx.font='bold 26px sans-serif';
+      ctx.fillText(r.key, 35, y);
 
       // 質問（2行まで折返し）
       ctx.fillStyle='rgba(255,255,255,.65)';
-      ctx.font='22px sans-serif';
-      var qHeight = drawWrappedText('Q. '+r.question, 200, y, maxW, 30, 2);
+      ctx.font='24px sans-serif';
+      var qHeight = drawWrappedText('Q. '+r.question, 175, y, maxW, 32, 2);
 
       // 選択肢（2行まで折返し）
       ctx.fillStyle='#ffd965';
-      ctx.font='bold 28px sans-serif';
-      var aY = y + qHeight + 10;
-      var aHeight = drawWrappedText('→ '+r.choice, 200, aY, maxW, 36, 2);
+      ctx.font='bold 32px sans-serif';
+      var aY = y + qHeight + 12;
+      var aHeight = drawWrappedText('→ '+r.choice, 175, aY, maxW, 40, 2);
 
       // stanceバッジ
       var endY = aY + aHeight;
       if(r.stance){
-        ctx.font='bold 16px sans-serif';
+        ctx.font='bold 18px sans-serif';
         var st='['+r.stance+']';
         var stW=ctx.measureText(st).width;
         ctx.fillStyle='rgba(240,192,64,.18)';
-        ctx.fillRect(200, endY-6, stW+18, 28);
+        ctx.fillRect(175, endY-4, stW+18, 30);
         ctx.fillStyle='#ffd965';
-        ctx.fillText(st, 209, endY+12);
-        endY += 32;
+        ctx.fillText(st, 184, endY+15);
+        endY += 36;
       } else {
         endY += 8;
       }
-      rowHeight = (endY - y) + 10;
+      rowHeight = (endY - y) + 14;
     } else {
       // シンプル行
       ctx.fillStyle='#f0c040';
-      ctx.font='bold 22px sans-serif';
-      ctx.fillText(r.key, 60, y);
+      ctx.font='bold 26px sans-serif';
+      ctx.fillText(r.key, 35, y);
       ctx.fillStyle='#fff';
-      ctx.font='30px sans-serif';
-      var sHeight = drawWrappedText(r.val, 200, y, maxW, 38, 2);
-      rowHeight = sHeight + 18;
+      ctx.font='34px sans-serif';
+      var sHeight = drawWrappedText(r.val, 175, y, maxW, 42, 2);
+      rowHeight = sHeight + 20;
     }
 
     // 区切り線
     ctx.strokeStyle='rgba(255,255,255,.06)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(60, y + rowHeight - 8); ctx.lineTo(W-60, y + rowHeight - 8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(40, y + rowHeight - 8); ctx.lineTo(W-40, y + rowHeight - 8); ctx.stroke();
     y += rowHeight;
   }
 
   // 中央: 結果バッジ（FINAL勝利／引き分け／LIVEなど）
   if(GAME.status==='final' && GAME.result_label){
     ctx.fillStyle='#ffd965';
-    ctx.font='bold 24px sans-serif';
+    ctx.font='bold 28px sans-serif';
     ctx.textAlign='center';
-    ctx.fillText('FINAL · '+GAME.result_label, W/2, H-90);
+    ctx.fillText('FINAL · '+GAME.result_label, W/2, H-70);
     ctx.textAlign='left';
   }
 
