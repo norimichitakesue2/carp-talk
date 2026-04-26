@@ -115,6 +115,17 @@ async function fetchBoxFacts({ year, month, day, segment }) {
     console.error(`[fetch_game] roster fetch failed: ${e.message}`);
   }
 
+  // playbyplay.html から一球速報を取得（試合中・試合終了後）
+  let playByPlay = [];
+  if (status === 'live' || status === 'final') {
+    await sleep(SLEEP_MS);
+    try {
+      playByPlay = await fetchPlayByPlay(`${base}/playbyplay.html`);
+    } catch (e) {
+      console.error(`[fetch_game] playbyplay fetch failed: ${e.message}`);
+    }
+  }
+
   // 試合前/中 で NPB に先発投手が無ければ Yahoo!プロ野球から予告先発を取得
   let yahooStarters = { homeStarter: null, awayStarter: null };
   const carpPitchStarter = (carpIsHome ? homePitch : awayPitch)[0]?.name || null;
@@ -156,7 +167,63 @@ async function fetchBoxFacts({ year, month, day, segment }) {
     opponentLineup: opBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
     carpRoster: roster.carp,
     opponentRoster: roster.opponent,
+    playByPlay,
   };
+}
+
+// playbyplay.html から一球速報を取得
+// 構造: <h5>1回表（チーム攻撃）</h5> 直後に複数の <table>
+//   各 <table> は1打席で、<tr> が [アウト | 塁上 | 打者 | カウント | 結果]
+//   または投手情報 <td colspan="5">（先発投手）NAME</td> や （投手交代）OLD → NEW
+async function fetchPlayByPlay(url) {
+  const html = await fetchWithUA(url);
+  const $ = cheerio.load(html);
+  const plays = [];
+
+  // h5#com1-1 みたいなID付きの見出しがイニング区切り
+  $('h5[id^="com"]').each((_, h5) => {
+    const $h5 = $(h5);
+    const m = $h5.text().match(/^([1-9]|1[0-2])回(表|裏)/);
+    if (!m) return;
+    const inning = `${m[1]}回${m[2]}`;
+    const half = m[2] === '表' ? 'top' : 'bottom';
+
+    // 次のh5までのsibling tableを順に処理
+    let $cur = $h5.next();
+    while ($cur.length && !$cur.is('h5')) {
+      if ($cur.is('table')) {
+        $cur.find('tr').each((_, r) => {
+          const $tds = $(r).find('td');
+          if (!$tds.length) return;
+          const cells = $tds.map((_, c) => ({
+            text: $(c).text().trim().replace(/\s+/g, ''),
+            colspan: parseInt($(c).attr('colspan') || '0', 10),
+          })).get();
+
+          // 投手情報行
+          if (cells[0].colspan >= 4 || /^（(先発投手|投手|投手交代)）/.test(cells[0].text)) {
+            plays.push({ inning, half, type: 'pitcher_info', text: cells[0].text });
+            return;
+          }
+          // 打席結果行 (5列: アウト/塁上/打者/カウント/結果)
+          if (cells.length >= 5) {
+            plays.push({
+              inning, half,
+              type: 'play',
+              outs: cells[0].text,
+              runners: cells[1].text || '',
+              batter: cells[2].text,
+              count: cells[3].text,
+              result: cells[4].text,
+            });
+          }
+        });
+      }
+      $cur = $cur.next();
+    }
+  });
+
+  return plays;
 }
 
 // ベンチ入り選手 (roster.html) 取得・パース

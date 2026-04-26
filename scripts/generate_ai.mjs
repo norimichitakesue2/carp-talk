@@ -12,6 +12,38 @@ if (!ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
+// playByPlay 配列を AI に読みやすい形式（イニング毎にまとめる）に整形
+function formatPlayByPlay(plays, carpIsHome) {
+  if (!Array.isArray(plays) || plays.length === 0) return '';
+  const carpAttackHalf = carpIsHome ? 'bottom' : 'top';
+  const buckets = {};   // inning -> array of formatted lines
+  for (const p of plays) {
+    if (!buckets[p.inning]) buckets[p.inning] = { half: p.half, items: [] };
+    if (p.type === 'pitcher_info') {
+      buckets[p.inning].items.push(`  [${p.text}]`);
+    } else if (p.type === 'play') {
+      const runners = p.runners ? `(${p.runners})` : '';
+      // 得点が絡みそうな結果は ★ マーク
+      const star = /本塁打|タイムリー|犠牲フライ|押し出し|スクイズ|サヨナラ|ホームイン|失策|エラー/.test(p.result) ? ' ★' : '';
+      buckets[p.inning].items.push(`  ${p.outs} ${runners} ${p.batter}: ${p.result}${star}`);
+    }
+  }
+  const orderedInnings = Object.keys(buckets).sort((a, b) => {
+    const an = parseInt(a, 10), bn = parseInt(b, 10);
+    if (an !== bn) return an - bn;
+    return a.includes('表') ? -1 : 1;
+  });
+  const out = [];
+  for (const inn of orderedInnings) {
+    const bucket = buckets[inn];
+    const isCarpAttack = bucket.half === carpAttackHalf;
+    const tag = isCarpAttack ? '【カープ攻撃】' : '【相手攻撃】';
+    out.push(`${inn} ${tag}`);
+    out.push(...bucket.items);
+  }
+  return out.join('\n');
+}
+
 async function readStdin() {
   return new Promise((resolve, reject) => {
     let data = '';
@@ -29,30 +61,35 @@ function buildPrompt(facts) {
   } = facts;
   const tha = f?.teamHomeAway || {};
   const innings = f?.innings || [];
-  const carpIsHome = (tha.home || '').includes('広島') || (tha.home || '').includes('カープ');
-  const opponent = carpIsHome ? tha.away : tha.home;
+  const carpIsHome = !!f?.carpIsHome;
   const lineup = (f?.carpLineup || []).slice(0, 9);
   const opLineup = (f?.opponentLineup || []).slice(0, 9);
+
+  // play-by-play を AI に読みやすい形式にフォーマット
+  const playByPlayText = formatPlayByPlay(f?.playByPlay || [], carpIsHome);
 
   const factsBlob = JSON.stringify({
     date,
     venue: f?.venue,
     status: f?.status,
-    teamHomeAway: tha,
-    innings,
+    lineScore: f?.lineScore,
     pitchers: f?.pitchers,
     homeRuns: f?.homeRuns,
+    carpIsHome,
     carpLineup: lineup,
     opponentLineup: opLineup,
   }, null, 2);
 
   // システムプロンプト：事実厳守、創作禁止、文体はカジュアルなファン視点
   return `あなたは広島東洋カープを愛するベテランファンライターです。
-試合の「事実データ」のみが与えられます。事実から逸脱した内容や、データにない選手名・場面を「創作」してはいけません。
+試合の「事実データ」と「一球速報」のみが与えられます。事実から逸脱した内容や、データにない選手名・場面を「創作」してはいけません。
 出力は必ず指定されたJSONフォーマットで、コードブロックや説明文を一切付けず、JSON単体で返してください。
 
 【今日の試合の事実データ】
 ${factsBlob}
+
+【一球速報（全打席結果）】
+${playByPlayText || '（一球速報データなし）'}
 
 【出力JSONフォーマット】
 {
@@ -105,12 +142,18 @@ ${factsBlob}
 - 全試合で同じ問いを使い回さない。その試合特有の状況に基づくこと
 
 【全体ルール】
-- 事実データに記載のない選手名・イベントは絶対に創作しない
+- 事実データ・一球速報に記載のない選手名・イベントは絶対に創作しない
 - 「カープ視点」で書く（「広島が」ではなく「カープが」「うちが」など、ファン目線）
 - 完封負け・完封勝ちなどスコアから明らかな出来事はfacts経由で必ず反映
 - 同じ表現の繰り返しを避ける
 - 過度に攻撃的・断定的な表現（「○○は二軍に落とせ」など）は避け、議論を呼ぶ程度に留める
 - moments と turning_suggestions の inning 値は必ず "X回表" または "X回裏" の形式
+
+【一球速報の活用】
+- moments と turning_suggestions は必ず一球速報を根拠にした「具体的な打席や場面」で構成すること（例：「6回裏 二死満塁から持丸が空振り三振」）
+- 単に「打線が沈黙」「先発が崩れた」のような抽象表現ではなく、実際にどの打席で何が起きたかを書く
+- debates の question / context / choices も具体的な打席ベースで設計すること（例：「6回裏の二死満塁、持丸の三振は誰の責任？」のような）
+- 凡退連続やチャンス機逸など、得点が動いていない場面でも重要なら拾うこと（タイムリーを打てなかった場面、四球を活かせなかった場面、など）
 `;
 }
 
