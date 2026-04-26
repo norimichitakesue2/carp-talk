@@ -115,6 +115,22 @@ async function fetchBoxFacts({ year, month, day, segment }) {
     console.error(`[fetch_game] roster fetch failed: ${e.message}`);
   }
 
+  // 試合前/中 で NPB に先発投手が無ければ Yahoo!プロ野球から予告先発を取得
+  let yahooStarters = { homeStarter: null, awayStarter: null };
+  const carpPitchStarter = (carpIsHome ? homePitch : awayPitch)[0]?.name || null;
+  const opPitchStarter = (carpIsHome ? awayPitch : homePitch)[0]?.name || null;
+  if (!carpPitchStarter || !opPitchStarter) {
+    await sleep(SLEEP_MS);
+    try {
+      yahooStarters = await fetchYahooStarters({ year, month, day });
+    } catch (e) {
+      console.error(`[fetch_game] Yahoo starters fetch failed: ${e.message}`);
+    }
+  }
+  // NPB に投手情報がある場合は NPB を優先、無ければ Yahoo を採用
+  const finalCarpStarter = carpPitchStarter || (carpIsHome ? yahooStarters.homeStarter : yahooStarters.awayStarter);
+  const finalOpStarter   = opPitchStarter   || (carpIsHome ? yahooStarters.awayStarter : yahooStarters.homeStarter);
+
   return {
     segment,
     status,
@@ -126,13 +142,14 @@ async function fetchBoxFacts({ year, month, day, segment }) {
     carpIsHome,
     lineScore,
     pitchers: {
-      carpStarter: carpPitch[0]?.name || null,
-      opStarter: opPitch[0]?.name || null,
+      carpStarter: finalCarpStarter,
+      opStarter: finalOpStarter,
       winningPitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'win')?.name || null,
       losingPitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'loss')?.name || null,
       savePitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'save')?.name || null,
       carpAll: carpPitch.map((p) => ({ name: p.name, result: p.result, ipText: p.ipText })),
       opAll: opPitch.map((p) => ({ name: p.name, result: p.result, ipText: p.ipText })),
+      carpStarterSource: carpPitchStarter ? 'npb' : (yahooStarters.homeStarter || yahooStarters.awayStarter ? 'yahoo' : 'unknown'),
     },
     homeRuns,
     carpLineup: carpBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
@@ -163,6 +180,36 @@ async function fetchRoster(url) {
 
     if (isCarp && result.carp.length === 0) result.carp = players;
     else if (!isCarp && result.opponent.length === 0) result.opponent = players;
+  });
+
+  return result;
+}
+
+// Yahoo!プロ野球の日次スケジュールから予告先発を取得
+// URL: https://baseball.yahoo.co.jp/npb/schedule/?selectDate=YYYYMMDD
+// スケジュールページの試合リンクテキストに「(予)大竹 (予)栗林」のように表示
+async function fetchYahooStarters({ year, month, day }) {
+  const url = `https://baseball.yahoo.co.jp/npb/schedule/?selectDate=${year}${month}${day}`;
+  const html = await fetchWithUA(url);
+  const $ = cheerio.load(html);
+
+  let result = { homeStarter: null, awayStarter: null, gameId: null };
+
+  // /npb/game/{id}/index|top の link を全部見て、テキストにカープ表記が含まれるものを採用
+  $('a[href*="/npb/game/"]').each((_, el) => {
+    if (result.homeStarter && result.awayStarter) return;
+    const href = $(el).attr('href') || '';
+    const text = $(el).text().replace(/\s+/g, ' ').trim();
+    if (!/広島|カープ/.test(text)) return;
+    const idMatch = href.match(/\/npb\/game\/(\d+)/);
+    if (idMatch) result.gameId = idMatch[1];
+    // フォーマット: "...見どころ (予)NAME1 (予)NAME2"
+    // Yahoo の link テキストでは home → away の順で投手が並ぶ
+    const m = text.match(/\(予\)\s*([^\s\(\)]+)\s*\(予\)\s*([^\s\(\)]+)/);
+    if (m) {
+      result.homeStarter = m[1];
+      result.awayStarter = m[2];
+    }
   });
 
   return result;
