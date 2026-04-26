@@ -2070,46 +2070,112 @@ function generateMyCardImage(){
   ctx.beginPath(); ctx.moveTo(60,360); ctx.lineTo(W-60,360); ctx.stroke();
   ctx.setLineDash([]);
 
-  // ユーザー参加内容
+  // ユーザー参加内容（rows各要素は { key, type:'simple'|'debate', val 等 }）
   var rows=[];
-  if(myMood) rows.push({key:'気分', val:MOOD_LABELS[myMood]});
-  if(myTitleVote) rows.push({key:'一言', val:'「'+myTitleVote.slice(0,28)+'」'});
+  if(myMood) rows.push({key:'気分', type:'simple', val:MOOD_LABELS[myMood]});
+  if(myTitleVote) rows.push({key:'一言', type:'simple', val:'「'+myTitleVote+'」'});
   if(myTurning){
     var t=turnings.find(function(x){return x.id===myTurning;});
-    if(t) rows.push({key:'分岐点', val:t.inning+' '+(t.description||'').slice(0,28)});
+    if(t) rows.push({key:'分岐点', type:'simple', val:t.inning+' '+(t.description||'')});
   }
   Object.keys(myDebateVotes).slice(0,2).forEach(function(did){
     var d=(GAME.debates||[]).find(function(x){return x.id===did;});
     if(!d) return;
     var c=d.choices[myDebateVotes[did]];
-    if(c) rows.push({key:'論点', val:'Q:'+(d.question||'').slice(0,22)+' →「'+(c.label||c).slice(0,12)+'」'});
+    if(c) rows.push({
+      key:'論点',
+      type:'debate',
+      question:d.question||'',
+      choice:c.label||c||'',
+      stance:c.stance||'',
+    });
   });
 
   // 各行を描画
   var y=420;
   ctx.textAlign='left';
+  var maxW=W-220;
+
+  // テキスト折返し描画ヘルパー（最大 maxLines 行、超えたら最後の行末に…）
+  function drawWrappedText(text, x, y, maxWidth, lineHeight, maxLines){
+    var s=String(text);
+    var lines=[];
+    var i=0;
+    while(i<s.length && lines.length<maxLines){
+      var line='';
+      while(i<s.length){
+        var test=line+s[i];
+        if(ctx.measureText(test).width>maxWidth && line.length>0) break;
+        line=test;
+        i++;
+      }
+      // 最終行で残りがあるなら末尾に「…」
+      if(lines.length===maxLines-1 && i<s.length){
+        while(ctx.measureText(line+'…').width>maxWidth && line.length>1){
+          line=line.slice(0,-1);
+        }
+        line=line+'…';
+        i=s.length;
+      }
+      lines.push(line);
+    }
+    for(var j=0;j<lines.length;j++){
+      ctx.fillText(lines[j], x, y+j*lineHeight);
+    }
+    return lines.length*lineHeight;
+  }
+
   for (var i=0; i<rows.length && i<6; i++){
     var r=rows[i];
-    // ラベル
-    ctx.fillStyle='#f0c040';
-    ctx.font='bold 22px sans-serif';
-    ctx.fillText(r.key, 60, y);
-    // 値
-    ctx.fillStyle='#fff';
-    ctx.font='30px sans-serif';
-    var maxW=W-200;
-    var vw=ctx.measureText(r.val).width;
-    if(vw>maxW){
-      // 端折り
-      var s=r.val;
-      while(ctx.measureText(s+'…').width>maxW && s.length>10) s=s.slice(0,-1);
-      r.val=s+'…';
+    var rowHeight;
+
+    if(r.type==='debate'){
+      // 論点行：質問（小・muted）→ 選択肢（大・白）→ stanceバッジ
+      ctx.fillStyle='#f0c040';
+      ctx.font='bold 22px sans-serif';
+      ctx.fillText(r.key, 60, y);
+
+      // 質問（2行まで折返し）
+      ctx.fillStyle='rgba(255,255,255,.65)';
+      ctx.font='22px sans-serif';
+      var qHeight = drawWrappedText('Q. '+r.question, 200, y, maxW, 30, 2);
+
+      // 選択肢（2行まで折返し）
+      ctx.fillStyle='#ffd965';
+      ctx.font='bold 28px sans-serif';
+      var aY = y + qHeight + 10;
+      var aHeight = drawWrappedText('→ '+r.choice, 200, aY, maxW, 36, 2);
+
+      // stanceバッジ
+      var endY = aY + aHeight;
+      if(r.stance){
+        ctx.font='bold 16px sans-serif';
+        var st='['+r.stance+']';
+        var stW=ctx.measureText(st).width;
+        ctx.fillStyle='rgba(240,192,64,.18)';
+        ctx.fillRect(200, endY-6, stW+18, 28);
+        ctx.fillStyle='#ffd965';
+        ctx.fillText(st, 209, endY+12);
+        endY += 32;
+      } else {
+        endY += 8;
+      }
+      rowHeight = (endY - y) + 10;
+    } else {
+      // シンプル行
+      ctx.fillStyle='#f0c040';
+      ctx.font='bold 22px sans-serif';
+      ctx.fillText(r.key, 60, y);
+      ctx.fillStyle='#fff';
+      ctx.font='30px sans-serif';
+      var sHeight = drawWrappedText(r.val, 200, y, maxW, 38, 2);
+      rowHeight = sHeight + 18;
     }
-    ctx.fillText(r.val, 200, y);
+
     // 区切り線
     ctx.strokeStyle='rgba(255,255,255,.06)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(60,y+22); ctx.lineTo(W-60,y+22); ctx.stroke();
-    y+=80;
+    ctx.beginPath(); ctx.moveTo(60, y + rowHeight - 8); ctx.lineTo(W-60, y + rowHeight - 8); ctx.stroke();
+    y += rowHeight;
   }
 
   // 中央: 結果バッジ（FINAL勝利／引き分け／LIVEなど）
