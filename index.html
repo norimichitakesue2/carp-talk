@@ -569,6 +569,102 @@ body::before{
   animation:livePulse 1.4s ease-in-out infinite;
 }
 @keyframes livePulse{0%,100%{box-shadow:0 0 14px rgba(200,16,46,.45);opacity:1}50%{box-shadow:0 0 22px rgba(200,16,46,.7);opacity:.85}}
+
+/* ============================================================ */
+/* 😤 気分チェックイン                                         */
+/* ============================================================ */
+.mood-section{
+  background:linear-gradient(180deg, var(--surface) 0%, #0d1117 100%);
+  border:1px solid rgba(200,16,46,.22);
+  border-radius:var(--r);
+  padding:.9rem 1rem .85rem;
+  margin-bottom:1rem;
+  position:relative;
+  overflow:hidden;
+}
+.mood-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, var(--carp), var(--gold), var(--carp));
+}
+.mood-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mood-q{font-size:13px;font-weight:700;color:var(--text);letter-spacing:.02em}
+.mood-meta{font-size:10px;color:var(--muted)}
+.mood-buttons{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.mood-btn{
+  background:var(--bg);border:1px solid var(--border2);border-radius:var(--rs);
+  padding:.55rem .3rem .5rem;cursor:pointer;font-family:'Noto Sans JP',sans-serif;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  transition:all .15s;position:relative;overflow:hidden;
+}
+.mood-btn:hover{border-color:var(--carp);transform:translateY(-2px);box-shadow:0 4px 12px rgba(200,16,46,.2)}
+.mood-btn.picked{border-color:var(--gold);background:linear-gradient(180deg, rgba(240,192,64,.15), rgba(200,16,46,.05));box-shadow:0 0 12px rgba(240,192,64,.3)}
+.mood-emoji{font-size:24px;line-height:1;filter:grayscale(.2);transition:filter .2s}
+.mood-btn:hover .mood-emoji,.mood-btn.picked .mood-emoji{filter:grayscale(0) drop-shadow(0 0 4px rgba(255,255,255,.3))}
+.mood-label{font-size:10.5px;color:var(--muted);font-weight:600}
+.mood-btn.picked .mood-label{color:var(--gold-bright)}
+.mood-pct{font-size:9.5px;color:var(--muted);margin-top:1px;font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;height:11px}
+.mood-btn.picked .mood-pct{color:var(--gold-bright)}
+.mood-fill{position:absolute;left:0;bottom:0;height:2px;background:linear-gradient(90deg, var(--carp), var(--gold));transition:width .5s ease;z-index:0}
+.mood-share-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border2)}
+.mood-status{font-size:10.5px;color:var(--muted)}
+.mood-status .em{color:var(--gold)}
+.mood-share-btn{font-size:10.5px;padding:4px 10px;border-radius:4px;border:1px solid var(--blue);background:rgba(74,158,255,.08);color:var(--blue);cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:600}
+.mood-share-btn:hover{background:rgba(74,158,255,.2)}
+
+/* ============================================================ */
+/* 🎫 マイカード（観戦サマリー）                                 */
+/* ============================================================ */
+.mycard-section{
+  background:
+    radial-gradient(ellipse at top right, rgba(240,192,64,.1), transparent 50%),
+    linear-gradient(180deg, var(--surface) 0%, #100c14 100%);
+  border:1px solid rgba(240,192,64,.3);
+  border-radius:var(--r);
+  padding:1.1rem 1rem;
+  margin-bottom:1rem;
+  position:relative;
+  overflow:hidden;
+}
+.mycard-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--gold), var(--carp), var(--gold));
+  background-size:200% 100%;
+  animation:headerShine 5s linear infinite;
+}
+.mc-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.mc-icon{font-size:18px;filter:drop-shadow(0 0 6px rgba(240,192,64,.5))}
+.mc-title{
+  font-family:'Bebas Neue', 'Noto Sans JP', sans-serif;
+  font-size:18px;letter-spacing:.1em;
+  background:linear-gradient(90deg, var(--gold-bright), #ffb840);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.mc-sub{font-size:11px;color:var(--muted);margin-bottom:12px;margin-left:26px}
+.mc-card{
+  background:linear-gradient(180deg, #1a1820 0%, #0d0c12 100%);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--rs);
+  padding:.85rem 1rem;
+  position:relative;
+}
+.mc-row{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.06);font-size:12.5px}
+.mc-row:last-child{border-bottom:none}
+.mc-icon-mini{flex-shrink:0;width:20px;text-align:center;font-size:13px}
+.mc-key{flex-shrink:0;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.04em;width:80px}
+.mc-val{flex:1;color:var(--text);line-height:1.5;font-weight:500}
+.mc-val.empty{color:var(--faint);font-style:italic;font-weight:400;font-size:11.5px}
+.mc-stance{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:3px;background:rgba(240,192,64,.15);color:var(--gold-bright);margin-left:6px;letter-spacing:.04em}
+.mc-cta{display:flex;justify-content:flex-end;margin-top:10px;gap:8px}
+.mc-share-btn{
+  font-size:12px;padding:.5rem 1rem;border-radius:var(--rs);
+  background:linear-gradient(180deg, var(--carp-bright), var(--carp));
+  color:#fff;border:none;font-weight:700;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;letter-spacing:.04em;
+  box-shadow:0 4px 14px rgba(200,16,46,.35);
+  transition:all .18s;
+}
+.mc-share-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(200,16,46,.5)}
+.mc-empty-hint{font-size:10.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
 @keyframes winPulse{0%,100%{box-shadow:0 0 16px rgba(240,192,64,.3)}50%{box-shadow:0 0 24px rgba(240,192,64,.55)}}
 
 /* イニング表：電光風 */
@@ -890,6 +986,8 @@ var turnings=[],myTurning=null,myVotes={};
 var allComments=[],myLikes=new Set(),currentCTab='all',currentCType='a';
 var fanPositives=[],myPosLikes=new Set(),currentPosTab='ai';
 var debateVotes={},myDebateVotes={},debateComments={};
+var moodCounts={angry:0,sigh:0,mixed:0,light:0,best:0},myMood=null;
+var MOOD_LABELS={angry:'😤 悔しい',sigh:'😮‍💨 ため息',mixed:'🤔 複雑',light:'✨ 光あり',best:'🔥 最高'};
 var formIntensity={};// inningN -> 'strong'|'mid'|'weak'
 var AVPAL=[{bg:'#1a2a40',c:'#4a9eff'},{bg:'#1a2e25',c:'#3ecf8e'},{bg:'#2d2010',c:'#f0c040'},{bg:'#2d1a1a',c:'#f46060'},{bg:'#251a2d',c:'#a78bfa'}];
 var TYPE_LABEL={score:'得点シーン',pitcher:'投手好投',crisis:'ピンチ脱出',hr:'本塁打'};
@@ -938,6 +1036,7 @@ async function loadGame(date){
   allComments=[];myLikes=new Set();currentCTab='all';currentCType='a';formIntensity={};
   fanPositives=[];myPosLikes=new Set();
   debateVotes={};myDebateVotes={};debateComments={};
+  moodCounts={angry:0,sigh:0,mixed:0,light:0,best:0};myMood=null;
   renderMain(g);
   await initApp(g);
 }
@@ -1138,38 +1237,22 @@ function renderMain(g){
     '<div id="ai-result"></div>'+
     '</div>'+
 
-    // この試合の評価バー（3ステップ）
-    '<div class="eval-bar fi" id="eval-bar">'+
-    '<div class="eb-header">'+
-    '<span class="eb-title">この試合の評価</span>'+
-    '<div class="eb-progress"><div class="ep-dot active" id="ep1"></div><div class="ep-dot" id="ep2"></div><div class="ep-dot" id="ep3"></div></div>'+
+    // 😤 気分チェックイン（スコアカード直後に配置）
+    '<div class="mood-section fi" id="mood-section">'+
+    '<div class="mood-head">'+
+      '<span class="mood-q">今日の気分は？</span>'+
+      '<span class="mood-meta" id="mood-meta"></span>'+
     '</div>'+
-    '<div class="ep-sel-bar" id="ep-sel-bar" style="display:none">'+
-    '<div class="ep-sel-item" id="ep-sel1" style="display:none"><span class="ep-sel-lbl">一言：</span><span class="ep-sel-val" id="ep-sv1-bar"></span></div>'+
-    '<div class="ep-sel-item" id="ep-sel2" style="display:none"><span class="ep-sel-lbl">分岐点：</span><span class="ep-sel-val" id="ep-sv2-bar"></span></div>'+
-    '<div class="ep-sel-item" id="ep-sel3" style="display:none"><span class="ep-sel-lbl">自分なら：</span><span class="ep-sel-val" id="ep-sv3-bar"></span></div>'+
+    '<div class="mood-buttons" id="mood-buttons">'+
+      '<button class="mood-btn" data-mood="angry" onclick="voteMood(\'angry\')"><span class="mood-emoji">😤</span><span class="mood-label">悔しい</span><span class="mood-pct" data-pct="angry"></span><div class="mood-fill" data-fill="angry" style="width:0"></div></button>'+
+      '<button class="mood-btn" data-mood="sigh" onclick="voteMood(\'sigh\')"><span class="mood-emoji">😮‍💨</span><span class="mood-label">ため息</span><span class="mood-pct" data-pct="sigh"></span><div class="mood-fill" data-fill="sigh" style="width:0"></div></button>'+
+      '<button class="mood-btn" data-mood="mixed" onclick="voteMood(\'mixed\')"><span class="mood-emoji">🤔</span><span class="mood-label">複雑</span><span class="mood-pct" data-pct="mixed"></span><div class="mood-fill" data-fill="mixed" style="width:0"></div></button>'+
+      '<button class="mood-btn" data-mood="light" onclick="voteMood(\'light\')"><span class="mood-emoji">✨</span><span class="mood-label">光あり</span><span class="mood-pct" data-pct="light"></span><div class="mood-fill" data-fill="light" style="width:0"></div></button>'+
+      '<button class="mood-btn" data-mood="best" onclick="voteMood(\'best\')"><span class="mood-emoji">🔥</span><span class="mood-label">最高</span><span class="mood-pct" data-pct="best"></span><div class="mood-fill" data-fill="best" style="width:0"></div></button>'+
     '</div>'+
-    '<div class="step-panel active" id="ep-p1">'+
-    '<div class="sp-label"><span class="sp-num">1</span>この試合を一言で言うと？</div>'+
-    '<div class="sp-opts" id="ep-opts1"></div>'+
-    '</div>'+
-    '<div class="step-panel" id="ep-p2">'+
-    '<div class="sp-label"><span class="sp-num">2</span>分岐点はどこ？</div>'+
-    '<div class="sp-opts" id="ep-opts2"></div>'+
-    '</div>'+
-    '<div class="step-panel" id="ep-p3">'+
-    '<div class="sp-label"><span class="sp-num">3</span>この場面ならどうする？</div>'+
-    '<div class="sp-opts" id="ep-opts3"></div>'+
-    '<input class="sp-inp" id="ep-free" placeholder="または自分の言葉で入力...">'+
-    '</div>'+
-    '<div class="ep-summary" id="ep-summary" style="display:none">'+
-    '<div class="ep-sum-row"><span class="ep-sum-lbl">一言：</span><span class="ep-sum-val" id="ep-sv1"></span></div>'+
-    '<div class="ep-sum-row"><span class="ep-sum-lbl">分岐点：</span><span class="ep-sum-val" id="ep-sv2"></span></div>'+
-    '<div class="ep-sum-row"><span class="ep-sum-lbl">自分なら：</span><span class="ep-sum-val" id="ep-sv3"></span></div>'+
-    '</div>'+
-    '<div class="ep-nav" id="ep-nav">'+
-    '<button class="ep-back" id="ep-btn-back" style="display:none" onclick="epBack()">← 戻る</button>'+
-    '<button class="ep-next" id="ep-btn-next" onclick="epNext()">次へ →</button>'+
+    '<div class="mood-share-row" id="mood-share-row" style="display:none">'+
+      '<span class="mood-status" id="mood-status"></span>'+
+      '<button class="mood-share-btn" onclick="shareMood()">🐦 シェア</button>'+
     '</div>'+
     '</div>'+
 
@@ -1277,7 +1360,16 @@ function renderMain(g){
     '<button id="ctn" class="ctype-btn" onclick="setCType(\'n\')">😂 ネタ</button>'+
     '</div>'+
     '<div class="cinput-row"><input class="cinput" id="cinp" placeholder="コメントを入力..." maxlength="200"><button class="csend" id="csend" onclick="sendComment()">送信</button></div>'+
-    '</div></div>';
+    '</div></div>'+
+
+    // 🎫 マイカード（観戦サマリー）
+    '<div class="mycard-section fi" id="mycard-section">'+
+    '<div class="mc-head"><span class="mc-icon">🎫</span><span class="mc-title">あなたの観戦カード</span></div>'+
+    '<div class="mc-sub">サイト全体での参加内容を1枚にまとめました</div>'+
+    '<div class="mc-card" id="mc-card-body"></div>'+
+    '<div class="mc-cta"><button class="mc-share-btn" onclick="shareMyCard()">🐦 観戦カードをシェア</button></div>'+
+    '<div class="mc-empty-hint" id="mc-empty-hint">気分・タイトル投票・分岐点投票・debates・選手評価などに参加すると、ここに集約されます。</div>'+
+    '</div>';
 
   initFI();
   setTimeout(initFI, 100);
@@ -1601,6 +1693,7 @@ async function voteDebate(debateId,choiceIdx){
       myDebateVotes[debateId]=choiceIdx;
     }
     renderDebates();
+    renderMyCard();
   }catch(e){
     console.warn('[debate] vote failed:',e.message||e);
     showToast('投票に失敗しました');
@@ -1657,6 +1750,195 @@ async function loadDebates(){
   }catch(e){
     console.warn('[debate] load failed:',e.message||e);
   }
+}
+
+// ===== 😤 気分チェックイン =====
+async function loadMoodVotes(){
+  try{
+    var r=await sb.from('mood_votes').select('mood,user_id').eq('game_id',GAME_ID);
+    if(r.data){
+      var c={angry:0,sigh:0,mixed:0,light:0,best:0};
+      r.data.forEach(function(v){
+        if(c[v.mood] !== undefined) c[v.mood]++;
+        if(v.user_id===userId) myMood=v.mood;
+      });
+      moodCounts=c;
+    }
+    renderMood();
+  }catch(e){
+    console.warn('[mood] load failed:',e.message||e);
+    renderMood();
+  }
+}
+
+function renderMood(){
+  var total=Object.values(moodCounts).reduce(function(s,v){return s+v;},0);
+  var voted=!!myMood;
+  // ボタンの選択状態
+  document.querySelectorAll('.mood-btn').forEach(function(b){
+    b.classList.toggle('picked', b.dataset.mood===myMood);
+  });
+  // パーセンテージ・バー（投票済み かつ N≥5 のみ）
+  var showStats = voted && total >= 5;
+  ['angry','sigh','mixed','light','best'].forEach(function(m){
+    var pctEl=document.querySelector('.mood-pct[data-pct="'+m+'"]');
+    var fillEl=document.querySelector('.mood-fill[data-fill="'+m+'"]');
+    if(showStats){
+      var pct=Math.round((moodCounts[m]||0)/total*100);
+      if(pctEl) pctEl.textContent=pct+'%';
+      if(fillEl) fillEl.style.width=pct+'%';
+    } else {
+      if(pctEl) pctEl.textContent='';
+      if(fillEl) fillEl.style.width='0';
+    }
+  });
+  // メタ表示
+  var meta=document.getElementById('mood-meta');
+  if(meta) meta.textContent=total>0?total+'人参加':'';
+  // シェア行
+  var shareRow=document.getElementById('mood-share-row');
+  var status=document.getElementById('mood-status');
+  if(voted){
+    if(shareRow) shareRow.style.display='flex';
+    if(status){
+      if(showStats){
+        var pct=Math.round(moodCounts[myMood]/total*100);
+        status.innerHTML='あなたは「<span class="em">'+esc(MOOD_LABELS[myMood])+'</span>」（'+pct+'%）';
+      } else if(total<=1){
+        status.innerHTML='あなたが今日の最初の投票者です！';
+      } else {
+        status.innerHTML='あなたは「<span class="em">'+esc(MOOD_LABELS[myMood])+'</span>」（あと'+(5-total)+'人で分布表示）';
+      }
+    }
+  } else {
+    if(shareRow) shareRow.style.display='none';
+  }
+}
+
+async function voteMood(mood){
+  try{
+    if(myMood===mood){
+      // 同じものを再タップで解除
+      await sb.from('mood_votes').delete().eq('game_id',GAME_ID).eq('user_id',userId);
+      moodCounts[mood]=Math.max(0,moodCounts[mood]-1);
+      myMood=null;
+    } else {
+      var prev=myMood;
+      // upsertで新規 or 更新
+      await sb.from('mood_votes').upsert({game_id:GAME_ID,user_id:userId,mood:mood}, {onConflict:'game_id,user_id'});
+      if(prev) moodCounts[prev]=Math.max(0,moodCounts[prev]-1);
+      moodCounts[mood]=(moodCounts[mood]||0)+1;
+      myMood=mood;
+    }
+    renderMood();
+    renderMyCard();
+  }catch(e){
+    console.warn('[mood] vote failed:',e.message||e);
+    showToast('投票に失敗しました');
+  }
+}
+
+function shareMood(){
+  if(!myMood) return;
+  var label=MOOD_LABELS[myMood];
+  var scoreText=GAME.away+' '+(GAME.awayScore!=null?GAME.awayScore:'-')+'-'+(GAME.homeScore!=null?GAME.homeScore:'-')+' '+GAME.home;
+  var total=Object.values(moodCounts).reduce(function(s,v){return s+v;},0);
+  var pct=total>=5?' （カープファンの'+Math.round(moodCounts[myMood]/total*100)+'%が同じ気分）':'';
+  var txt='今日の気分：'+label+pct+'\n'+scoreText+' ('+currentDate+')';
+  openXShare(txt);
+}
+
+// ===== 🎫 マイカード =====
+function renderMyCard(){
+  var body=document.getElementById('mc-card-body');
+  var hint=document.getElementById('mc-empty-hint');
+  if(!body) return;
+
+  var rows=[];
+  // 1. 気分
+  if(myMood){
+    rows.push({icon:'❤️', key:'今日の気分', val:MOOD_LABELS[myMood]});
+  }
+  // 2. タイトル投票
+  if(myTitleVote){
+    rows.push({icon:'💬', key:'一言', val:'「'+myTitleVote+'」'});
+  }
+  // 3. 分岐点
+  if(myTurning){
+    var t=turnings.find(function(x){return x.id===myTurning;});
+    if(t) rows.push({icon:'🔻', key:'分岐点', val:t.inning+' '+(t.description||'').slice(0,30)});
+  }
+  // 4. 議論への参加（最大2件）
+  var debateRows=Object.keys(myDebateVotes).slice(0,2);
+  debateRows.forEach(function(did){
+    var d=(GAME.debates||[]).find(function(x){return x.id===did;});
+    if(!d) return;
+    var idx=myDebateVotes[did];
+    var c=d.choices[idx];
+    if(c){
+      rows.push({icon:'⚔️', key:'論点', val:'「'+(d.question||'').slice(0,24)+'」→ '+(c.label||c)+(c.stance?'<span class="mc-stance">'+esc(c.stance)+'</span>':'')});
+    }
+  });
+  // 5. 選手評価（簡易）
+  var ratedCount=0;
+  try{
+    if(typeof PLAYER_RATINGS_MINE === 'object' && PLAYER_RATINGS_MINE){
+      ratedCount=Object.keys(PLAYER_RATINGS_MINE).length;
+    }
+  }catch(e){}
+  if(ratedCount>0){
+    rows.push({icon:'⭐', key:'選手評価', val:ratedCount+'人を評価'});
+  }
+
+  // 試合情報
+  var scoreText=GAME.away+' '+(GAME.awayScore!=null?GAME.awayScore:'-')+'-'+(GAME.homeScore!=null?GAME.homeScore:'-')+' '+GAME.home;
+  var headerRow={icon:'⚾', key:'試合', val:scoreText+' ('+currentDate+')'};
+
+  if(rows.length===0){
+    body.innerHTML='<div class="mc-row">'+
+      '<span class="mc-icon-mini">'+headerRow.icon+'</span>'+
+      '<span class="mc-key">'+headerRow.key+'</span>'+
+      '<span class="mc-val empty">まだ何も投稿していません</span>'+
+    '</div>';
+    if(hint) hint.style.display='block';
+    return;
+  }
+
+  if(hint) hint.style.display='none';
+
+  var allRows=[headerRow].concat(rows);
+  body.innerHTML=allRows.map(function(r){
+    return '<div class="mc-row">'+
+      '<span class="mc-icon-mini">'+r.icon+'</span>'+
+      '<span class="mc-key">'+esc(r.key)+'</span>'+
+      '<span class="mc-val">'+r.val+'</span>'+
+    '</div>';
+  }).join('');
+}
+
+function shareMyCard(){
+  var lines=[];
+  lines.push('🎫 私の観戦カード');
+  var scoreText=GAME.away+' '+(GAME.awayScore!=null?GAME.awayScore:'-')+'-'+(GAME.homeScore!=null?GAME.homeScore:'-')+' '+GAME.home;
+  lines.push(scoreText+' ('+currentDate+')');
+  lines.push('');
+  if(myMood) lines.push('気分: '+MOOD_LABELS[myMood]);
+  if(myTitleVote) lines.push('一言: '+myTitleVote);
+  if(myTurning){
+    var t=turnings.find(function(x){return x.id===myTurning;});
+    if(t) lines.push('分岐点: '+t.inning+' '+(t.description||'').slice(0,40));
+  }
+  Object.keys(myDebateVotes).slice(0,2).forEach(function(did){
+    var d=(GAME.debates||[]).find(function(x){return x.id===did;});
+    if(!d) return;
+    var c=d.choices[myDebateVotes[did]];
+    if(c) lines.push('論点: '+(d.question||'').slice(0,28)+' → '+(c.label||c));
+  });
+  if(lines.length<=3){
+    showToast('まず気分・投票・コメントなどに参加してください');
+    return;
+  }
+  openXShare(lines.join('\n'));
 }
 
 // ===== 波形 + 分岐点横スクロール =====
@@ -1855,6 +2137,7 @@ async function voteTitle(txt){
     else if(r.error.code==='23505'){showToast('すでに投票済みです');return;}
   }
   renderTitles();
+  renderMyCard();
   showToast(myTitleVote?'「'+txt+'」に投票しました！':'投票を取り消しました');
 }
 
@@ -2347,6 +2630,7 @@ async function voteTurning(id){
     // 投票後にポップアップを表示
     setTimeout(function(){openPopup(id,t.inning+'の分岐点に投票しました');},300);
   }
+  renderMyCard();
 }
 
 // ===== コメント =====
@@ -2465,25 +2749,23 @@ async function initApp(g){
 
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
   if(!isScheduled){
-    initEvalBar(g);
     // 選手評価セクションを表示
     var ps=document.getElementById('player-section');
     if(ps)ps.style.display='';
   } else {
     // scheduled時は評価系セクションを非表示
-    ['eval-bar','player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section','positive-section','debate-section'].forEach(function(id){
+    ['player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section','positive-section','debate-section','mood-section','mycard-section'].forEach(function(id){
       var el=document.getElementById(id);
       if(el)el.style.display='none';
     });
   }
   initLineup(g);
-  // turnings読み込み後にSTEP2も更新
-  renderEpStep2();
   loadMinnaEval();
   // 少し遅延してchoice表示を確実に初期化
   setTimeout(loadAllTpChoices,800);
-  // 投稿済みかチェック
-  checkEvalPostDone();
+  // 気分チェックイン・マイカードを初期化
+  loadMoodVotes();
+  renderMyCard();
 
   // リアルタイム購読
   subscribeRealtime();
@@ -2526,6 +2808,10 @@ function subscribeRealtime(){
       renderDebates();
       flashLive();
     }
+  }).subscribe();
+  // 気分チェックインのリアルタイム
+  sb.channel('mood-'+GAME_ID).on('postgres_changes',{event:'*',schema:'public',table:'mood_votes',filter:'game_id=eq.'+GAME_ID},function(){
+    loadMoodVotes();flashLive();
   }).subscribe();
 }
 
