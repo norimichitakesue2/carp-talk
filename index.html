@@ -1855,7 +1855,8 @@ async function voteMood(mood){
 async function shareMood(){
   if(!myMood) return;
   var canvas=generateMoodImage();
-  var txt='今日の気分シェア '+HASHTAGS;
+  var pageUrl = APP_URL+'/?date='+currentDate;
+  var txt='今日の気分シェア\n'+HASHTAGS+'\n'+pageUrl;
   await shareCanvasImage(canvas, txt, 'carp-mood-'+currentDate+'.png');
 }
 
@@ -1989,12 +1990,13 @@ async function shareMyCard(){
   }
   lines.push('⚾ '+scoreText+' ('+currentDate+')');
   lines.push(HASHTAGS);
+  lines.push(APP_URL+'/?date='+currentDate);
   await shareCanvasImage(canvas, lines.join('\n'), 'carp-mycard-'+currentDate+'.png');
 }
 
 // ===== Canvas画像生成 + シェア =====
+// text には URL（試合ページのリンク）・ハッシュタグまで全て含めて渡すこと
 async function shareCanvasImage(canvas, text, filename){
-  var pageUrl = APP_URL + '/?date=' + currentDate;
   // PNG Blob 化
   var blob = await new Promise(function(resolve){ canvas.toBlob(resolve,'image/png',0.95); });
   if(!blob){ showToast('画像生成に失敗しました'); return; }
@@ -2003,12 +2005,12 @@ async function shareCanvasImage(canvas, text, filename){
   // 1) Web Share API（モバイル中心）に画像添付できるなら最優先
   try{
     if(navigator.canShare && navigator.canShare({files:[file]}) && navigator.share){
-      await navigator.share({ files:[file], text:text, url:pageUrl });
+      await navigator.share({ files:[file], text:text });
       return;
     }
   }catch(e){ /* user cancelled or unsupported */ }
 
-  // 2) フォールバック: 画像をダウンロード → X intent をテキスト＋URL で開く
+  // 2) フォールバック: 画像をダウンロード → X intent をテキスト で開く
   var blobUrl = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = blobUrl; a.download = filename;
@@ -2016,8 +2018,8 @@ async function shareCanvasImage(canvas, text, filename){
   setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 1000);
   showToast('📥 画像をダウンロードしました。Xに添付してください');
   setTimeout(function(){
-    // X intent — text にはハッシュタグまで含む。URLは別パラメータで添付
-    var shareUrl='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(pageUrl);
+    // X intent — text にURL・ハッシュタグまで全て含めて渡す（&url=は使わない）
+    var shareUrl='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);
     window.open(shareUrl,'_blank','noopener,noreferrer,width=600,height=500');
   }, 600);
 }
