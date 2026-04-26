@@ -3,12 +3,12 @@
   "game_date": "2026-04-26",
   "away_team": "広島",
   "home_team": "阪神",
-  "away_score": null,
-  "home_score": null,
+  "away_score": 0,
+  "home_score": 1,
   "venue": "甲子園",
-  "start_time": "14:00",
-  "status": "scheduled",
-  "current_inning": "",
+  "start_time": "14:02",
+  "status": "live",
+  "current_inning": "5回裏",
   "result_label": "",
   "away_pitcher": "栗林",
   "home_pitcher": "大竹",
@@ -17,7 +17,34 @@
   "turning_suggestions": [],
   "debates": [],
   "team_analysis": null,
-  "innings": {},
+  "innings": {
+    "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hiroshima_hits": 2,
+    "hiroshima_errors": 0,
+    "away": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "away_hits": 2,
+    "away_errors": 0
+  },
   "pitchers": [],
   "moments": [],
   "players": [
@@ -127,8 +154,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-04-26T04:18:21.720Z",
-    "generatedAt": "2026-04-26T04:18:21.727Z",
+    "sourceFetchedAt": "2026-04-26T06:22:54.681Z",
+    "generatedAt": "2026-04-26T06:22:54.693Z",
     "sourceUrl": "https://npb.jp/scores/2026/0426/t-c-05/"
   }
 }
