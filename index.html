@@ -1959,6 +1959,7 @@ async function shareMyCard(){
 
 // ===== Canvas画像生成 + シェア =====
 async function shareCanvasImage(canvas, text, filename){
+  var pageUrl = APP_URL + '/?date=' + currentDate;
   // PNG Blob 化
   var blob = await new Promise(function(resolve){ canvas.toBlob(resolve,'image/png',0.95); });
   if(!blob){ showToast('画像生成に失敗しました'); return; }
@@ -1967,19 +1968,23 @@ async function shareCanvasImage(canvas, text, filename){
   // 1) Web Share API（モバイル中心）に画像添付できるなら最優先
   try{
     if(navigator.canShare && navigator.canShare({files:[file]}) && navigator.share){
-      await navigator.share({ files:[file], text:text });
+      await navigator.share({ files:[file], text:text, url:pageUrl });
       return;
     }
   }catch(e){ /* user cancelled or unsupported */ }
 
-  // 2) フォールバック: 画像をダウンロード → X intent をテキストで開く
-  var url = URL.createObjectURL(blob);
+  // 2) フォールバック: 画像をダウンロード → X intent をテキスト＋URL で開く
+  var blobUrl = URL.createObjectURL(blob);
   var a = document.createElement('a');
-  a.href = url; a.download = filename;
+  a.href = blobUrl; a.download = filename;
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 1000);
   showToast('📥 画像をダウンロードしました。Xに添付してください');
-  setTimeout(function(){ openXShare(text); }, 600);
+  setTimeout(function(){
+    // X intent — text にはハッシュタグまで含む。URLは別パラメータで添付
+    var shareUrl='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(pageUrl);
+    window.open(shareUrl,'_blank','noopener,noreferrer,width=600,height=500');
+  }, 600);
 }
 
 // 共通：背景・タイトル等の描画
