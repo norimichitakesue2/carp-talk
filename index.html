@@ -1491,6 +1491,7 @@ async function postFanPositive(){
       fanPositives.unshift(r.data);
       renderFanPositives();
     }
+    if(typeof renderMyCard==='function') renderMyCard();
     showToast('✨ 投稿しました');
   }catch(e){
     showToast('投稿に失敗しました');
@@ -1513,6 +1514,7 @@ async function likeFanPositive(id){
       p.like_count=(p.like_count||0)+1;
     }
     renderFanPositives();
+    if(typeof renderMyCard==='function') renderMyCard();
   }catch(e){
     showToast('操作に失敗しました');
   }
@@ -1534,6 +1536,7 @@ async function likeCuratedPositive(id){
       p.like_count=(p.like_count||0)+1;
     }
     renderPositives();
+    if(typeof renderMyCard==='function') renderMyCard();
   }catch(e){
     // スキーマが未セットアップの場合はローカルだけ更新
     if(myPosLikes.has(id)){
@@ -1544,6 +1547,7 @@ async function likeCuratedPositive(id){
       p.like_count=(p.like_count||0)+1;
     }
     renderPositives();
+    if(typeof renderMyCard==='function') renderMyCard();
   }
 }
 
@@ -1856,10 +1860,36 @@ async function shareMood(){
 }
 
 // ===== 🎫 マイカード =====
+// 自分の「今日の光」を1件取得（投稿>わかる、ファン>キュレーションの優先）
+function pickMyLight(){
+  // 1) 自分が投稿したファンの光
+  var posted = (typeof fanPositives !== 'undefined' && Array.isArray(fanPositives))
+    ? fanPositives.find(function(p){ return p.user_id===userId; })
+    : null;
+  if(posted) return { kind:'posted', text:posted.body||'' };
+  // 2) 自分が「わかる」したファンの光
+  if(typeof fanPositives !== 'undefined' && Array.isArray(fanPositives)){
+    for(var i=0;i<fanPositives.length;i++){
+      var p=fanPositives[i];
+      if(myPosLikes && myPosLikes.has('f_'+p.id)) return { kind:'liked', text:p.body||'' };
+    }
+  }
+  // 3) 自分が「わかる」したキュレーションの光（layer1/2）
+  var curated = (GAME && GAME.positives) ? GAME.positives : [];
+  for(var j=0;j<curated.length;j++){
+    var c=curated[j];
+    if(myPosLikes && myPosLikes.has(c.id)) return { kind:'liked', text:c.title || c.desc || '' };
+  }
+  return null;
+}
+
 function renderMyCard(){
   var body=document.getElementById('mc-card-body');
   var hint=document.getElementById('mc-empty-hint');
   if(!body) return;
+
+  // 自分の「今日の光」を取得（投稿 > わかる、ファン > キュレーション の優先順）
+  var myLight = pickMyLight();
 
   var rows=[];
   // 1. 気分
@@ -1875,7 +1905,12 @@ function renderMyCard(){
     var t=turnings.find(function(x){return x.id===myTurning;});
     if(t) rows.push({icon:'🔻', key:'分岐点', val:t.inning+' '+(t.description||'').slice(0,30)});
   }
-  // 4. 議論への参加（最大2件）
+  // 4. 今日の光（自分が投稿/わかる した1件）
+  if(myLight){
+    var lightLabel = myLight.kind==='posted' ? '光（投稿）' : '光';
+    rows.push({icon:'✨', key:lightLabel, val:'「'+myLight.text.slice(0,40)+'」'});
+  }
+  // 5. 議論への参加（最大2件）
   var debateRows=Object.keys(myDebateVotes).slice(0,2);
   debateRows.forEach(function(did){
     var d=(GAME.debates||[]).find(function(x){return x.id===did;});
@@ -1886,7 +1921,7 @@ function renderMyCard(){
       rows.push({icon:'⚔️', key:'論点', val:'「'+(d.question||'').slice(0,24)+'」→ '+(c.label||c)+(c.stance?'<span class="mc-stance">'+esc(c.stance)+'</span>':'')});
     }
   });
-  // 5. 選手評価（簡易）
+  // 6. 選手評価（簡易）
   var ratedCount=0;
   try{
     if(typeof PLAYER_RATINGS_MINE === 'object' && PLAYER_RATINGS_MINE){
@@ -1924,7 +1959,7 @@ function renderMyCard(){
 }
 
 async function shareMyCard(){
-  var hasContent = !!(myMood || myTitleVote || myTurning || Object.keys(myDebateVotes).length);
+  var hasContent = !!(myMood || myTitleVote || myTurning || Object.keys(myDebateVotes).length || pickMyLight());
   if(!hasContent){
     showToast('まず気分・投票・コメントなどに参加してください');
     return;
@@ -2114,6 +2149,10 @@ function generateMyCardImage(){
   if(myTurning){
     var t=turnings.find(function(x){return x.id===myTurning;});
     if(t) rows.push({key:'分岐点', type:'simple', val:t.inning+' '+(t.description||'')});
+  }
+  var myLight = pickMyLight();
+  if(myLight){
+    rows.push({key:(myLight.kind==='posted'?'光（投稿）':'光'), type:'simple', val:'「'+myLight.text+'」'});
   }
   Object.keys(myDebateVotes).slice(0,2).forEach(function(did){
     var d=(GAME.debates||[]).find(function(x){return x.id===did;});
