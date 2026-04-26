@@ -665,6 +665,11 @@ body::before{
 }
 .mc-share-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(200,16,46,.5)}
 .mc-empty-hint{font-size:10.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
+.mc-comment-wrap{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border2)}
+.mc-comment-lbl{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:5px}
+.mc-comment-input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:var(--rs);padding:.55rem .75rem;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text);resize:vertical;min-height:48px;line-height:1.5}
+.mc-comment-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 8px rgba(240,192,64,.2)}
+.mc-comment-meta{font-size:10.5px;color:var(--muted);text-align:right;margin-top:3px}
 @keyframes winPulse{0%,100%{box-shadow:0 0 16px rgba(240,192,64,.3)}50%{box-shadow:0 0 24px rgba(240,192,64,.55)}}
 
 /* イニング表：電光風 */
@@ -971,7 +976,7 @@ body::before{
 <script>
 // ===== 定数 =====
 var APP_URL='https://carp-talk.vercel.app';
-var HASHTAGS='#広島カープ #カープトーク #野球';
+var HASHTAGS='#広島カープ #カープ #Carp #カープトーク #野球';
 var URL_='https://dzsznmpuxuftprcqywex.supabase.co';
 var KEY_='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6c3pubXB1eHVmdHByY3F5d2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDg5MDUsImV4cCI6MjA5MTEyNDkwNX0.Dnk1Z7SV0SyjNwSqrtzVpt9JR4NZkJE7-zrdMKhcHlc';
 var sb=supabase.createClient(URL_,KEY_);
@@ -1367,6 +1372,11 @@ function renderMain(g){
     '<div class="mc-head"><span class="mc-icon">🎫</span><span class="mc-title">あなたの観戦カード</span></div>'+
     '<div class="mc-sub">サイト全体での参加内容を1枚にまとめました</div>'+
     '<div class="mc-card" id="mc-card-body"></div>'+
+    '<div class="mc-comment-wrap" id="mc-comment-wrap">'+
+      '<div class="mc-comment-lbl">今日のひとこと <span style="color:var(--faint);font-weight:400">（任意）</span></div>'+
+      '<textarea class="mc-comment-input" id="mc-comment-input" placeholder="例：持丸の起用、見直すべき！／岡本よく粘った！／また明日切り替えよう" maxlength="140" rows="2"></textarea>'+
+      '<div class="mc-comment-meta"><span id="mc-comment-count">0</span>/140</div>'+
+    '</div>'+
     '<div class="mc-cta"><button class="mc-share-btn" onclick="shareMyCard()">🐦 観戦カードをシェア</button></div>'+
     '<div class="mc-empty-hint" id="mc-empty-hint">気分・タイトル投票・分岐点投票・debates・選手評価などに参加すると、ここに集約されます。</div>'+
     '</div>';
@@ -1920,8 +1930,31 @@ async function shareMyCard(){
     return;
   }
   var canvas=generateMyCardImage();
-  var txt='私の観戦カード '+HASHTAGS;
-  await shareCanvasImage(canvas, txt, 'carp-mycard-'+currentDate+'.png');
+  // ユーザーが入力したひとこと
+  var inp=document.getElementById('mc-comment-input');
+  var userComment = inp ? (inp.value||'').trim() : '';
+  // テキストを構築：ひとこと → スコア要約 → ハッシュタグ
+  var scoreText=GAME.away+' '+(GAME.awayScore!=null?GAME.awayScore:'-')+'-'+(GAME.homeScore!=null?GAME.homeScore:'-')+' '+GAME.home;
+  var lines=[];
+  if(userComment){
+    lines.push(userComment);
+    lines.push('');
+  } else {
+    // デフォルトの一言（気分に応じて）
+    var defaults={
+      angry:'今日のカープ、悔しすぎる…でも次は絶対勝つ！',
+      sigh:'今日のカープ、ため息しか出ない…',
+      mixed:'今日のカープ、複雑な気持ち。色々考えさせられた。',
+      light:'今日のカープ、負けたけど光は見えた！',
+      best:'今日のカープ、最高すぎる！！',
+    };
+    var def = myMood && defaults[myMood] ? defaults[myMood] : '今日の試合、私はこう見た。';
+    lines.push(def);
+    lines.push('');
+  }
+  lines.push('⚾ '+scoreText+' ('+currentDate+')');
+  lines.push(HASHTAGS);
+  await shareCanvasImage(canvas, lines.join('\n'), 'carp-mycard-'+currentDate+'.png');
 }
 
 // ===== Canvas画像生成 + シェア =====
@@ -3340,7 +3373,15 @@ function epPick3(btn){
   updateEpSelBar();
 }
 
-// free input
+// マイカードのひとこと入力 - 文字数カウント
+document.addEventListener('input', function(e){
+  if(e.target.id==='mc-comment-input'){
+    var c=document.getElementById('mc-comment-count');
+    if(c) c.textContent=e.target.value.length;
+  }
+});
+
+// free input (旧 eval-bar 用、現在は未使用だが残す)
 document.addEventListener('input', function(e){
   if(e.target.id!=='ep-free')return;
   var val=e.target.value.trim();
