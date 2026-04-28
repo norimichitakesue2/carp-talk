@@ -29,6 +29,9 @@ on:
         description: '対象日 (YYYY-MM-DD、空欄なら今日)'
         required: false
         default: ''
+  # 外部cron（cron-job.org）から POST で起動可能
+  repository_dispatch:
+    types: [update-games]
 
 permissions:
   contents: write
@@ -59,8 +62,12 @@ jobs:
       - name: Resolve target date (JST)
         id: date
         run: |
-          if [ -n "${{ github.event.inputs.date }}" ]; then
-            echo "value=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          INPUT_DATE="${{ github.event.inputs.date }}"
+          DISPATCH_DATE="${{ github.event.client_payload.date }}"
+          if [ -n "$INPUT_DATE" ]; then
+            echo "value=$INPUT_DATE" >> $GITHUB_OUTPUT
+          elif [ -n "$DISPATCH_DATE" ]; then
+            echo "value=$DISPATCH_DATE" >> $GITHUB_OUTPUT
           else
             # GitHub Actions runner is UTC. Compute JST date.
             JST_DATE=$(TZ='Asia/Tokyo' date +%Y-%m-%d)
