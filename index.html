@@ -1138,34 +1138,44 @@ function renderMain(g){
   if(isScheduled){
     innHtml='';
   } else   if(g.innings&&g.innings.hiroshima){
-    var hi=g.innings.giants||g.innings.dena||g.innings.yokohama||(g.innings.away||g.innings.giants||g.innings.dena||g.innings.yokohama||g.innings.chunichi||[])||g.innings.away_innings||g.innings.home_innings||[];var ri=hi;hi=g.innings.hiroshima;
+    // 整理: hiroshima=カープ自身のイニング、away=相手のイニング（フィールド名は legacy だが内容は対戦相手）
+    var carpInnings = g.innings.hiroshima || [];
+    var oppInnings  = g.innings.away
+                   || g.innings.giants || g.innings.dena || g.innings.yokohama
+                   || g.innings.chunikai || g.innings.chunichi
+                   || g.innings.away_innings || g.innings.home_innings || [];
+    var carpIsAwayG = g.away_team === '広島';
+    var carpScore = carpIsAwayG ? g.away_score : g.home_score;
+    var oppScore  = carpIsAwayG ? g.home_score : g.away_score;
+    var oppName   = carpIsAwayG ? g.home_team  : g.away_team;
+    var carpHits  = g.innings.hiroshima_hits;
+    var carpErrs  = g.innings.hiroshima_errors;
+    var oppHits   = g.innings.away_hits||g.innings.dena_hits||g.innings.giants_hits||g.innings.yakult_hits||g.innings.yokohama_hits||g.innings.chunichi_hits;
+    var oppErrs   = g.innings.away_errors||g.innings.dena_errors||g.innings.giants_errors||g.innings.yakult_errors||g.innings.yokohama_errors||g.innings.chunichi_errors;
+
     var cols='';for(var i=1;i<=9;i++)cols+='<th>'+i+'</th>';
-    var hCells='',rCells='';
-    // hi=相手チーム(後攻/先攻に応じて)、ri=広島
-    // GAME.awayがある場合: 広島が先攻=表=ri行を上、hiを下
+    var carpCells='', oppCells='';
     for(var i=0;i<9;i++){
-      var hv=hi[i]!=null?hi[i]:0,rv=ri[i]!=null?ri[i]:0;
-      var hvDisplay=(hv==='-'||hv==='X')?hv:(hv>0?hv:0);
-      var rvDisplay=(rv==='-'||rv==='X')?rv:(rv>0?rv:0);
-      hCells+='<td class="'+(hv>0&&hv!=='-'&&hv!=='X'?'scoring':'zero')+'">'+hvDisplay+'</td>';
-      rCells+='<td class="'+(rv>0&&rv!=='-'&&rv!=='X'?'scoring':'zero')+'">'+rvDisplay+'</td>';
+      var cv=carpInnings[i]!=null?carpInnings[i]:0;
+      var ov=oppInnings[i]!=null?oppInnings[i]:0;
+      var cvDisp=(cv==='-'||cv==='X')?cv:(cv>0?cv:0);
+      var ovDisp=(ov==='-'||ov==='X')?ov:(ov>0?ov:0);
+      carpCells+='<td class="'+(cv>0&&cv!=='-'&&cv!=='X'?'scoring':'zero')+'">'+cvDisp+'</td>';
+      oppCells +='<td class="'+(ov>0&&ov!=='-'&&ov!=='X'?'scoring':'zero')+'">'+ovDisp+'</td>';
     }
-    // 広島が先攻(away)か後攻(home)かで行の順番を決定
-    var hiroshimaIsAway2 = g.away_team === '広島';
-    var hiroRow='<tr><td class="team-label" style="color:var(--carp)">'+
-      (hiroshimaIsAway2?g.away_team:g.home_team)+'</td>'+
-      (hiroshimaIsAway2?rCells:hCells)+
-      '<td class="score-col" style="color:var(--carp)">'+(hiroshimaIsAway2?g.away_score:g.home_score)+'</td>'+
-      '<td>'+(g.innings.hiroshima_hits||'-')+'</td><td>'+(g.innings.hiroshima_errors||'-')+'</td></tr>';
-    var aiteRow='<tr><td class="team-label" style="color:'+awayColor+'">'+
-      (hiroshimaIsAway2?g.home_team:g.away_team)+'</td>'+
-      (hiroshimaIsAway2?hCells:rCells)+
-      '<td class="score-col" style="color:'+awayColor+'">'+(hiroshimaIsAway2?g.home_score:g.away_score)+'</td>'+
-      '<td>'+(g.innings.away_hits||g.innings.dena_hits||g.innings.giants_hits||g.innings.yakult_hits||g.innings.yokohama_hits||g.innings.chunichi_hits||'-')+'</td>'+
-      '<td>'+(g.innings.away_errors||g.innings.dena_errors||g.innings.giants_errors||g.innings.yakult_errors||g.innings.yokohama_errors||g.innings.chunichi_errors||'-')+'</td></tr>';
-    // 先攻（away）が上の行
+
+    var carpRow='<tr><td class="team-label" style="color:var(--carp)">'+esc(g.away_team==='広島'?g.away_team:g.home_team)+'</td>'+
+      carpCells+
+      '<td class="score-col" style="color:var(--carp)">'+(carpScore!=null?carpScore:'-')+'</td>'+
+      '<td>'+(carpHits||'-')+'</td><td>'+(carpErrs||'-')+'</td></tr>';
+    var oppRow='<tr><td class="team-label" style="color:'+awayColor+'">'+esc(oppName||'')+'</td>'+
+      oppCells+
+      '<td class="score-col" style="color:'+awayColor+'">'+(oppScore!=null?oppScore:'-')+'</td>'+
+      '<td>'+(oppHits||'-')+'</td><td>'+(oppErrs||'-')+'</td></tr>';
+
+    // 先攻（away team）が上の行に来る
     innHtml='<div class="inning-table-wrap"><table class="inning-table"><thead><tr><th></th>'+cols+'<th class="score-col">計</th><th>安</th><th>失</th></tr></thead><tbody>'+
-      (hiroshimaIsAway2?hiroRow+aiteRow:aiteRow+hiroRow)+
+      (carpIsAwayG ? carpRow + oppRow : oppRow + carpRow)+
       '</tbody></table></div>';
   }
 
