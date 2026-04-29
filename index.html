@@ -2631,8 +2631,7 @@ async function initLineup(g){
   var players = [];
   var pitchers = [];
 
-  // 優先: 試合JSONの players（NPB roster.html 由来の今日の最新ベンチ入り）
-  // 15人以上いれば「その日のベンチ入りメンバー」として信頼できる
+  // 優先1: 今日の試合JSONの players（NPB roster.html 由来の最新ベンチ入り）
   if(g && Array.isArray(g.players) && g.players.length >= 15){
     g.players.forEach(function(p){
       if(p.pos==='投') pitchers.push(p.name);
@@ -2640,7 +2639,26 @@ async function initLineup(g){
     });
   }
 
-  // フォールバック1: hiroshima_roster.json（静的マスター）
+  // 優先2: 直近1週間の試合JSONを遡って探す（試合のない日や未取得日があってもスキップして直近の有効データを使う）
+  if(!players.length){
+    for(var d=1; d<=7; d++){
+      var prevDate = addDays(currentDate, -d);
+      try{
+        var pr = await fetch('/games/'+prevDate+'.json?t='+Date.now());
+        if(!pr.ok) continue;
+        var pd = await pr.json();
+        if(pd && Array.isArray(pd.players) && pd.players.length >= 15){
+          pd.players.forEach(function(p){
+            if(p.pos==='投') pitchers.push(p.name);
+            else players.push(p);
+          });
+          break;
+        }
+      } catch(e){ /* try next */ }
+    }
+  }
+
+  // 優先3: 静的マスター（hiroshima_roster.json）
   if(!players.length || !pitchers.length){
     try{
       var rr=await fetch('/games/hiroshima_roster.json?t='+Date.now());
@@ -2655,7 +2673,7 @@ async function initLineup(g){
     }
   }
 
-  // フォールバック2: ハードコード
+  // 最終フォールバック: ハードコード
   if(!players.length) players = (g&&g.players&&g.players.length)?g.players:CARP_PLAYERS_MASTER;
   if(!pitchers.length) pitchers = CARP_PITCHERS_MASTER;
 
