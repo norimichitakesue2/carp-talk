@@ -141,10 +141,12 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     innings: inningsObj,
     pitchers,
     moments,
-    players: isFinal
-      ? (f.carpLineup || []).map((p) => ({ name: p.name, pos: p.pos || '?' }))
-      : ((f.carpRoster && f.carpRoster.length > 0)
-          ? f.carpRoster.map((p) => ({ name: p.name, pos: p.pos || '?' }))
+    // players はスタメン予想機能で使うので、常に carpRoster（ベンチ入り26人）を最優先
+    // carpRoster が無い場合だけ carpLineup（実際の出場選手）→ prev → CARP_PLAYERS_MASTER の順でフォールバック
+    players: (f.carpRoster && f.carpRoster.length > 0)
+      ? f.carpRoster.map((p) => ({ name: p.name, pos: p.pos || '?' }))
+      : (isFinal
+          ? (f.carpLineup || []).map((p) => ({ name: p.name, pos: p.pos || '?' }))
           : (prev?.players || [])),
     _meta: {
       sourceFetchedAt: factsRoot.fetchedAt,
