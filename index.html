@@ -2631,15 +2631,35 @@ async function initLineup(g){
   var players = [];
   var pitchers = [];
 
+  // 守備位置を 投/捕/内/外 に正規化（carpLineup由来の「中」「二」「三」等も対応）
+  function normalizePos(pos){
+    if(!pos) return '?';
+    var first = String(pos).charAt(0);
+    if(first==='投') return '投';
+    if(first==='捕') return '捕';
+    if(['一','二','三','遊'].indexOf(first)>=0) return '内';
+    if(['左','中','右'].indexOf(first)>=0) return '外';
+    if(pos==='DH') return '内';
+    if(['投','捕','内','外'].indexOf(pos)>=0) return pos;
+    return pos;
+  }
+
   // 優先1: 今日の試合JSONの players（NPB roster.html 由来の最新ベンチ入り）
-  if(g && Array.isArray(g.players) && g.players.length >= 15){
+  // ベンチ入りは通常25〜26人なので24人以上を「信頼できる」と判定
+  // それ未満は carpLineup（実際の出場選手のみ）の可能性が高いので使わない
+  var ROSTER_THRESHOLD = 24;
+  if(g && Array.isArray(g.players) && g.players.length >= ROSTER_THRESHOLD){
     g.players.forEach(function(p){
-      if(p.pos==='投') pitchers.push(p.name);
-      else players.push(p);
+      var np = normalizePos(p.pos);
+      if(np==='投') pitchers.push(p.name);
+      else players.push({name:p.name, pos:np});
     });
   }
 
-  // 優先2: 直近1週間の試合JSONを遡って探す（試合のない日や未取得日があってもスキップして直近の有効データを使う）
+  // 優先2: 直近1週間の試合JSONを遡って探す
+  // 14人以上あれば実績データとして許容（carpLineup でも欠損 carpRoster でも）
+  // ただし正規化してグルーピング可能にする
+  var FALLBACK_THRESHOLD = 14;
   if(!players.length){
     for(var d=1; d<=7; d++){
       var prevDate = addDays(currentDate, -d);
@@ -2647,10 +2667,11 @@ async function initLineup(g){
         var pr = await fetch('/games/'+prevDate+'.json?t='+Date.now());
         if(!pr.ok) continue;
         var pd = await pr.json();
-        if(pd && Array.isArray(pd.players) && pd.players.length >= 15){
+        if(pd && Array.isArray(pd.players) && pd.players.length >= FALLBACK_THRESHOLD){
           pd.players.forEach(function(p){
-            if(p.pos==='投') pitchers.push(p.name);
-            else players.push(p);
+            var np = normalizePos(p.pos);
+            if(np==='投') pitchers.push(p.name);
+            else players.push({name:p.name, pos:np});
           });
           break;
         }
@@ -2664,9 +2685,13 @@ async function initLineup(g){
       var rr=await fetch('/games/hiroshima_roster.json?t='+Date.now());
       var rd=await rr.json();
       if(!players.length){
-        (rd.players||[]).forEach(function(p){if(p.pos==='投')pitchers.push(p.name);else players.push(p);});
+        (rd.players||[]).forEach(function(p){
+          var np=normalizePos(p.pos);
+          if(np==='投')pitchers.push(p.name);
+          else players.push({name:p.name, pos:np});
+        });
       } else if(!pitchers.length){
-        (rd.players||[]).forEach(function(p){if(p.pos==='投') pitchers.push(p.name);});
+        (rd.players||[]).forEach(function(p){if(normalizePos(p.pos)==='投') pitchers.push(p.name);});
       }
     }catch(e){
       console.warn('hiroshima_roster.json fetch failed:', e);
@@ -2674,7 +2699,11 @@ async function initLineup(g){
   }
 
   // 最終フォールバック: ハードコード
-  if(!players.length) players = (g&&g.players&&g.players.length)?g.players:CARP_PLAYERS_MASTER;
+  if(!players.length){
+    players = (g&&g.players&&g.players.length)?g.players:CARP_PLAYERS_MASTER;
+    // ハードコードも正規化（"一" のような場合のため）
+    players = players.map(function(p){return {name:p.name, pos:normalizePos(p.pos)};});
+  }
   if(!pitchers.length) pitchers = CARP_PITCHERS_MASTER;
 
   // 先発投手をplayersに追加
