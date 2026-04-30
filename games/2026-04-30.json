@@ -8,7 +8,7 @@
   "venue": "東京ドーム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "9回表",
+  "current_inning": "9回裏",
   "result_label": "",
   "away_pitcher": "玉村",
   "home_pitcher": "ウィットリー",
@@ -29,7 +29,7 @@
       3,
       0
     ],
-    "hiroshima_hits": 2,
+    "hiroshima_hits": 3,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -42,7 +42,7 @@
       0,
       0
     ],
-    "away_hits": 7,
+    "away_hits": 8,
     "away_errors": 1
   },
   "pitchers": [],
@@ -154,8 +154,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-04-30T12:00:44.579Z",
-    "generatedAt": "2026-04-30T12:00:44.592Z",
+    "sourceFetchedAt": "2026-04-30T12:15:35.668Z",
+    "generatedAt": "2026-04-30T12:15:35.680Z",
     "sourceUrl": "https://npb.jp/scores/2026/0430/g-c-05/"
   }
 }
