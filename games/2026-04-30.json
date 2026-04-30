@@ -4,7 +4,7 @@
   "away_team": "広島",
   "home_team": "巨人",
   "away_score": 0,
-  "home_score": 0,
+  "home_score": 1,
   "venue": "東京ドーム",
   "start_time": "18:00",
   "status": "live",
@@ -33,7 +33,7 @@
     "hiroshima_errors": 0,
     "away": [
       0,
-      0,
+      1,
       0,
       0,
       0,
@@ -42,7 +42,7 @@
       0,
       0
     ],
-    "away_hits": 0,
+    "away_hits": 2,
     "away_errors": 0
   },
   "pitchers": [],
@@ -154,8 +154,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-04-30T09:31:24.642Z",
-    "generatedAt": "2026-04-30T09:31:24.653Z",
+    "sourceFetchedAt": "2026-04-30T09:36:25.302Z",
+    "generatedAt": "2026-04-30T09:36:25.313Z",
     "sourceUrl": "https://npb.jp/scores/2026/0430/g-c-05/"
   }
 }
