@@ -4,11 +4,11 @@
   "away_team": "中日",
   "home_team": "広島",
   "away_score": 0,
-  "home_score": 1,
+  "home_score": 2,
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "5回表",
+  "current_inning": "5回裏",
   "result_label": "",
   "away_pitcher": "柳",
   "home_pitcher": "岡本",
@@ -64,13 +64,13 @@
       0,
       1,
       0,
-      0,
+      1,
       0,
       0,
       0,
       0
     ],
-    "hiroshima_hits": 3,
+    "hiroshima_hits": 5,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -83,7 +83,7 @@
       0,
       0
     ],
-    "away_hits": 2,
+    "away_hits": 4,
     "away_errors": 1
   },
   "pitchers": [],
@@ -195,8 +195,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-01T10:45:32.295Z",
-    "generatedAt": "2026-05-01T10:45:32.307Z",
+    "sourceFetchedAt": "2026-05-01T11:00:38.041Z",
+    "generatedAt": "2026-05-01T11:00:38.053Z",
     "sourceUrl": "https://npb.jp/scores/2026/0501/c-d-06/"
   }
 }
