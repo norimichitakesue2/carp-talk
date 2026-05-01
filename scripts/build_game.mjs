@@ -103,6 +103,10 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   const teamAnalysis = useGeneratedAi
     ? (generated.team_analysis || null)
     : (prev?.team_analysis || null);
+  // preview は試合前 (scheduled/live) のAI生成で出てくる。final 時は prev を維持（試合中の予想は残す）
+  const preview = generated?.preview
+    ? generated.preview
+    : (prev?.preview || null);
 
   let resultLabel = '';
   if (isFinal && homeScore != null && awayScore != null) {
@@ -138,6 +142,7 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     turning_suggestions: turningSuggestions,
     debates,
     team_analysis: teamAnalysis,
+    preview,
     innings: inningsObj,
     pitchers,
     moments,
@@ -196,11 +201,30 @@ async function main() {
     process.exit(2);
   }
 
-  // STEP2: AI生成
-  // - final: 全部生成（タイトル候補・分岐点・ポジ）
-  // - scheduled / live: AI生成はスキップ（試合中・前は事実だけ）
-  let generated = { title_candidates: [], moments: [], turning_suggestions: [], positives: [] };
-  const shouldRunAi = status === 'final' && !noAi;
+  // STEP2: 既存JSONを先に読む（キャッシュ判定用）
+  const outPath = path.join(GAMES_DIR, `${date}.json`);
+  let prev = null;
+  try { prev = JSON.parse(await fs.readFile(outPath, 'utf8')); } catch { /* not existing */ }
+  if (prev?._meta?.manuallyEdited) {
+    console.error(`[build_game] ${outPath} is manually edited; skipping overwrite.`);
+    process.exit(0);
+  }
+
+  // STEP3: AI生成
+  // - final: 全部生成（タイトル候補・分岐点・ポジ・debates・team_analysis）
+  // - scheduled/live: 先発判明＆既存previewなし → preview生成、それ以外はスキップ
+  let generated = { title_candidates: [], moments: [], turning_suggestions: [], positives: [], debates: [] };
+  const f = facts?.facts || {};
+  const hasStarter = !!(f.pitchers?.carpStarter && f.pitchers?.opStarter);
+  const hasExistingPreview = !!(prev?.preview && (prev.preview.watchpoints?.length || prev.preview.key_players?.length));
+  let shouldRunAi = false;
+  if (!noAi) {
+    if (status === 'final') {
+      shouldRunAi = true;
+    } else if ((status === 'scheduled' || status === 'live') && hasStarter && !hasExistingPreview) {
+      shouldRunAi = true;
+    }
+  }
   if (shouldRunAi) {
     const aiScript = path.join(__dirname, 'generate_ai.mjs');
     const aiResult = runNode(aiScript, [], JSON.stringify(facts));
@@ -216,16 +240,7 @@ async function main() {
       process.exit(1);
     }
   } else if (status !== 'final') {
-    console.error(`[build_game] Game status is "${status}", skipping AI generation but writing facts.`);
-  }
-
-  // STEP3: 既存JSONを読み込んでマージ材料に
-  const outPath = path.join(GAMES_DIR, `${date}.json`);
-  let prev = null;
-  try { prev = JSON.parse(await fs.readFile(outPath, 'utf8')); } catch { /* not existing */ }
-  if (prev?._meta?.manuallyEdited) {
-    console.error(`[build_game] ${outPath} is manually edited; skipping overwrite.`);
-    process.exit(0);
+    console.error(`[build_game] Status="${status}", AI ${hasExistingPreview ? 'preview cached' : 'skipped (no starter info)'}.`);
   }
 
   // STEP4: 統合

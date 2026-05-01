@@ -1,8 +1,16 @@
-// 試合の事実データから Claude API で title_candidates / moments / turning_suggestions / positives を生成
+// 試合の事実データから Claude API で生成:
+// - status='final': title_candidates / moments / turning_suggestions / positives / debates / team_analysis
+// - status='scheduled': preview（見どころ・キープレイヤー・試合展開予想）
 // 使い方:
 //   echo "$FACTS_JSON" | node scripts/generate_ai.mjs
-//   または
-//   cat facts.json | node scripts/generate_ai.mjs
+
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(__dirname, '..');
+const GAMES_DIR = path.join(REPO_ROOT, 'games');
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
@@ -192,6 +200,104 @@ function extractJson(text) {
   return JSON.parse(json);
 }
 
+// 直近のカープ試合（final状態）を最大 N 試合読み込む
+async function loadPastCarpGames(currentDate, count) {
+  const games = [];
+  const date = new Date(currentDate);
+  let attempts = 0;
+  while (games.length < count && attempts < 30) {
+    date.setDate(date.getDate() - 1);
+    const dateStr = date.toISOString().slice(0, 10);
+    const filePath = path.join(GAMES_DIR, dateStr + '.json');
+    try {
+      const data = await fs.readFile(filePath, 'utf8');
+      const game = JSON.parse(data);
+      if (game.status === 'final') {
+        games.push(game);
+      }
+    } catch (e) { /* file doesn't exist */ }
+    attempts++;
+  }
+  return games;
+}
+
+// 試合前プレビュー（見どころ・キープレイヤー・展開予想）の生成プロンプト
+function buildPreviewPrompt(facts, pastGames) {
+  const f = facts?.facts || {};
+  const tha = {
+    home: f.gameParts?.homeTeam || (f.carpIsHome ? '広島' : ''),
+    away: f.gameParts?.awayTeam || (!f.carpIsHome ? '広島' : ''),
+  };
+  const opponent = f.carpIsHome ? tha.away : tha.home;
+  const pastSummaries = pastGames.map(g => ({
+    date: g.game_date,
+    opponent: g.away_team === '広島' ? g.home_team : g.away_team,
+    venue: g.venue,
+    score: `${g.away_team} ${g.away_score ?? '-'}-${g.home_score ?? '-'} ${g.home_team}`,
+    result: g.result_label,
+    titles: (g.title_candidates || []).slice(0, 3),
+    keyMoments: (g.moments || []).slice(0, 4).map(m => `${m.inning} ${m.desc}`),
+    turningPoints: (g.turning_suggestions || []).slice(0, 2).map(t => `${t.inning} ${t.description}`),
+    positives: (g.positives || []).filter(p => p.layer === 1).slice(0, 3).map(p => p.title),
+    issues: g.team_analysis?.issues || [],
+    fanVoice: g.team_analysis?.fan_voice || '',
+  }));
+  const todayInfo = {
+    date: facts.date,
+    opponent,
+    venue: f.venue,
+    carpIsHome: f.carpIsHome,
+    carpStarter: f.pitchers?.carpStarter,
+    opStarter: f.pitchers?.opStarter,
+    carpStarterSource: f.pitchers?.carpStarterSource,
+  };
+
+  return `あなたは広島東洋カープを30年見続けてるベテランファンです。
+今日の試合の見どころを、直近${pastGames.length}試合の実データをもとに予想してください。
+事実から逸脱した内容や創作はNG。直近データに根拠がある予想だけ書いてください。
+出力は必ず指定されたJSONフォーマットで、コードブロックや説明文を一切付けず、JSON単体で返してください。
+
+【今日の試合】
+${JSON.stringify(todayInfo, null, 2)}
+
+【直近${pastGames.length}試合のサマリ】
+${JSON.stringify(pastSummaries, null, 2)}
+
+【出力JSONフォーマット】
+{
+  "preview": {
+    "watchpoints": [
+      {
+        "title": "<25字以内、見どころのタイトル>",
+        "desc": "<80字以内、何を見るべきか・直近データの根拠つき>"
+      }
+    ],
+    "key_players": [
+      {
+        "name": "<選手名>",
+        "role": "投手|打者",
+        "reason": "<60字以内、なぜ注目か直近データを根拠に>"
+      }
+    ],
+    "predicted_flow": "<80字以内、序盤・中盤・終盤の試合展開予想>",
+    "carp_strength": "<50字以内、今のカープの強み>",
+    "carp_weakness": "<50字以内、今の課題>",
+    "opponent_threat": "<50字以内、対戦相手の脅威要素>"
+  }
+}
+
+【ルール】
+- watchpoints は 3〜4 個
+- key_players は 2〜3 名
+- 各項目は直近データ（特定の試合・打席・場面）を根拠にする
+- 「だろう」「ありそう」など断定しすぎない口調
+- ファン目線で熱量ある書き方（「カープが」「うちが」）
+- 創作禁止（直近データに無い選手名・出来事を書かない）
+- carpStarter / opStarter が null の場合は先発投手を断定しない
+- 直近${pastGames.length}試合とはいえカープ視点で、相手の脅威も含める
+`;
+}
+
 async function main() {
   const stdin = await readStdin();
   if (!stdin.trim()) {
@@ -199,9 +305,27 @@ async function main() {
     process.exit(1);
   }
   const facts = JSON.parse(stdin);
-  const prompt = buildPrompt(facts);
+  const status = facts.facts?.status;
 
-  console.error(`[generate_ai] Calling ${MODEL}...`);
+  let prompt;
+  if (status === 'final') {
+    prompt = buildPrompt(facts);
+  } else if (status === 'scheduled' || status === 'live') {
+    // プレビュー生成：直近のカープ試合データを読む
+    const pastGames = await loadPastCarpGames(facts.date, 5);
+    if (pastGames.length === 0) {
+      console.error('[generate_ai] No past games available for preview, skipping AI');
+      console.log('{}');
+      return;
+    }
+    prompt = buildPreviewPrompt(facts, pastGames);
+  } else {
+    console.error(`[generate_ai] Status "${status}" — skipping AI`);
+    console.log('{}');
+    return;
+  }
+
+  console.error(`[generate_ai] Calling ${MODEL} (status=${status})...`);
   const raw = await callClaude(prompt);
   const generated = extractJson(raw);
 

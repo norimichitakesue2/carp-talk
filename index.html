@@ -828,6 +828,98 @@ body::before{
 ::-webkit-scrollbar-thumb:hover{background:var(--carp-bright)}
 
 /* ============================================================ */
+/* 🔮 試合前プレビュー（preview）                                */
+/* ============================================================ */
+.preview-section{
+  background:
+    radial-gradient(ellipse at top right, rgba(74,158,255,.1), transparent 50%),
+    linear-gradient(180deg, var(--surface) 0%, #0c0d18 100%);
+  border:1px solid rgba(74,158,255,.3);
+  border-radius:var(--r);
+  padding:1rem;
+  margin-bottom:1rem;
+  position:relative;
+  overflow:hidden;
+}
+.preview-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, #4a9eff, var(--gold), #4a9eff);
+  background-size:200% 100%;
+  animation:headerShine 5s linear infinite;
+}
+.pv-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.pv-icon{font-size:18px;filter:drop-shadow(0 0 6px rgba(74,158,255,.5))}
+.pv-title-t{
+  font-family:'Bebas Neue', 'Noto Sans JP', sans-serif;
+  font-size:18px;letter-spacing:.1em;
+  background:linear-gradient(90deg, #5badff, var(--gold-bright));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.pv-sub{font-size:11px;color:var(--muted);margin-bottom:12px;margin-left:26px}
+.pv-flow{
+  background:rgba(74,158,255,.08);
+  border:1px solid rgba(74,158,255,.2);
+  border-radius:var(--rs);
+  padding:.7rem .9rem;
+  font-size:13px;line-height:1.6;color:var(--text);
+  margin-bottom:14px;
+}
+.pv-flow-lbl{font-size:10.5px;font-weight:700;color:#5badff;letter-spacing:.06em;margin-bottom:4px}
+.pv-section-lbl{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;margin:14px 0 8px;text-transform:uppercase}
+.pv-watchpoints{display:flex;flex-direction:column;gap:8px}
+.pv-wp{
+  background:linear-gradient(180deg, var(--surface) 0%, #0d1117 100%);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--rs);
+  padding:.7rem .9rem;
+  position:relative;padding-left:1.6rem;
+}
+.pv-wp::before{
+  content:counter(pv-counter);
+  counter-increment:pv-counter;
+  position:absolute;left:.65rem;top:.7rem;
+  font-family:'Bebas Neue',sans-serif;font-size:14px;
+  background:linear-gradient(180deg, var(--gold), #d4a020);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-weight:700;
+}
+.pv-watchpoints{counter-reset:pv-counter}
+.pv-wp-title{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:3px}
+.pv-wp-desc{font-size:11.5px;color:var(--muted);line-height:1.6}
+.pv-players{display:flex;flex-direction:column;gap:6px}
+.pv-player{
+  background:linear-gradient(90deg, rgba(200,16,46,.06), transparent);
+  border:1px solid rgba(200,16,46,.18);
+  border-radius:var(--rs);
+  padding:.55rem .8rem;
+  display:flex;align-items:flex-start;gap:8px;
+}
+.pv-player-role{
+  flex-shrink:0;
+  font-size:10px;font-weight:700;
+  padding:2px 7px;border-radius:3px;
+  background:rgba(240,192,64,.18);color:var(--gold-bright);
+  margin-top:2px;letter-spacing:.04em;
+}
+.pv-player-body{flex:1}
+.pv-player-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:1px}
+.pv-player-reason{font-size:11px;color:var(--muted);line-height:1.5}
+.pv-stats-grid{display:grid;grid-template-columns:1fr;gap:6px;margin-top:10px}
+@media(min-width:600px){.pv-stats-grid{grid-template-columns:1fr 1fr 1fr}}
+.pv-stat{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--rs);
+  padding:.55rem .75rem;
+}
+.pv-stat-lbl{font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:2px}
+.pv-stat.strength .pv-stat-lbl{color:var(--green)}
+.pv-stat.weakness .pv-stat-lbl{color:#ff7090}
+.pv-stat.threat .pv-stat-lbl{color:#ffa040}
+.pv-stat-val{font-size:11.5px;color:var(--text);line-height:1.5}
+.pv-disclaimer{font-size:10px;color:var(--faint);margin-top:10px;text-align:center;font-style:italic}
+
+/* ============================================================ */
 /* ⚔️ 議論エンジン（debates）                                   */
 /* ============================================================ */
 .debate-section{
@@ -1033,7 +1125,7 @@ async function loadGame(date){
     return;
   }
   var g=await r.json();
-  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[],team_analysis:g.team_analysis||null};
+  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[],team_analysis:g.team_analysis||null,preview:g.preview||null};
   isScheduled=g.status==='scheduled';
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
   // リセット
@@ -1271,6 +1363,14 @@ function renderMain(g){
     '</div>'+
     '</div>'+
 
+    // 🔮 試合前プレビュー（preview生成された日のみ表示、内容は renderPreview で）
+    '<div class="preview-section fi" id="preview-section" style="display:none">'+
+    '<div class="pv-head"><span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span></div>'+
+    '<div class="pv-sub">直近の試合データから AI が予想する注目ポイント</div>'+
+    '<div id="pv-body"></div>'+
+    '<div class="pv-disclaimer">※ 予想は直近の試合データを元にした参考情報です</div>'+
+    '</div>'+
+
     // 予想オーダー（試合前・試合後どちらでも表示）
     '<div class="lineup-section fi" id="lineup-section">'+
     '<div class="lineup-header">'+
@@ -1396,6 +1496,7 @@ function renderMain(g){
   renderStory();
   renderPositives();
   renderDebates();
+  renderPreview();
   // team_analysis が JSON にあれば自動的に AI 分析を表示（ボタン押し不要）
   if(GAME.team_analysis && (GAME.team_analysis.issues || GAME.team_analysis.fan_voice)){
     setTimeout(runAIAnalysis, 50);
@@ -1613,6 +1714,78 @@ function openXShare(text){
 }
 
 // ===== ⚔️ 議論エンジン（debates）=====
+// ===== 🔮 試合前プレビュー =====
+function renderPreview(){
+  var sec = document.getElementById('preview-section');
+  if(!sec) return;
+  var p = GAME && GAME.preview;
+  // 試合終了後（final）は preview を表示しない（試合中までは見せる）
+  var hasContent = p && (
+    (Array.isArray(p.watchpoints) && p.watchpoints.length) ||
+    (Array.isArray(p.key_players) && p.key_players.length) ||
+    p.predicted_flow
+  );
+  if(!hasContent || GAME.status === 'final'){
+    sec.style.display = 'none';
+    return;
+  }
+  sec.style.display = '';
+  var body = document.getElementById('pv-body');
+  if(!body) return;
+  var html = '';
+
+  // 試合展開予想
+  if(p.predicted_flow){
+    html += '<div class="pv-flow"><div class="pv-flow-lbl">▶ 試合展開予想</div>'+esc(p.predicted_flow)+'</div>';
+  }
+
+  // 見どころ
+  if(p.watchpoints && p.watchpoints.length){
+    html += '<div class="pv-section-lbl">注目ポイント</div>';
+    html += '<div class="pv-watchpoints">';
+    p.watchpoints.forEach(function(w){
+      html += '<div class="pv-wp">';
+      html += '<div class="pv-wp-title">'+esc(w.title||'')+'</div>';
+      if(w.desc) html += '<div class="pv-wp-desc">'+esc(w.desc)+'</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // キープレイヤー
+  if(p.key_players && p.key_players.length){
+    html += '<div class="pv-section-lbl">キープレイヤー</div>';
+    html += '<div class="pv-players">';
+    p.key_players.forEach(function(k){
+      html += '<div class="pv-player">';
+      if(k.role) html += '<span class="pv-player-role">'+esc(k.role)+'</span>';
+      html += '<div class="pv-player-body">';
+      html += '<div class="pv-player-name">'+esc(k.name||'')+'</div>';
+      if(k.reason) html += '<div class="pv-player-reason">'+esc(k.reason)+'</div>';
+      html += '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // 強み・課題・脅威
+  if(p.carp_strength || p.carp_weakness || p.opponent_threat){
+    html += '<div class="pv-stats-grid">';
+    if(p.carp_strength){
+      html += '<div class="pv-stat strength"><div class="pv-stat-lbl">💪 カープの強み</div><div class="pv-stat-val">'+esc(p.carp_strength)+'</div></div>';
+    }
+    if(p.carp_weakness){
+      html += '<div class="pv-stat weakness"><div class="pv-stat-lbl">⚠️ 課題</div><div class="pv-stat-val">'+esc(p.carp_weakness)+'</div></div>';
+    }
+    if(p.opponent_threat){
+      html += '<div class="pv-stat threat"><div class="pv-stat-lbl">🎯 相手の脅威</div><div class="pv-stat-val">'+esc(p.opponent_threat)+'</div></div>';
+    }
+    html += '</div>';
+  }
+
+  body.innerHTML = html;
+}
+
 function renderDebates(){
   var list=document.getElementById('deb-list');
   if(!list) return;
