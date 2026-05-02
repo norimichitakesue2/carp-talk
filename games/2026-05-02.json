@@ -3,12 +3,12 @@
   "game_date": "2026-05-02",
   "away_team": "中日",
   "home_team": "広島",
-  "away_score": 0,
+  "away_score": 2,
   "home_score": 0,
   "venue": "マツダスタジアム",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "6回裏",
+  "current_inning": "7回表",
   "result_label": "",
   "away_pitcher": "大野",
   "home_pitcher": "ターノック",
@@ -70,7 +70,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 3,
+    "hiroshima_hits": 4,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -79,11 +79,11 @@
       0,
       0,
       0,
-      0,
+      2,
       0,
       0
     ],
-    "away_hits": 4,
+    "away_hits": 7,
     "away_errors": 0
   },
   "pitchers": [],
@@ -195,8 +195,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-02T07:15:33.041Z",
-    "generatedAt": "2026-05-02T07:15:33.052Z",
+    "sourceFetchedAt": "2026-05-02T07:30:30.729Z",
+    "generatedAt": "2026-05-02T07:30:30.741Z",
     "sourceUrl": "https://npb.jp/scores/2026/0502/c-d-07/"
   }
 }
