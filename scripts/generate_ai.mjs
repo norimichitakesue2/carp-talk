@@ -221,6 +221,44 @@ async function loadPastCarpGames(currentDate, count) {
   return games;
 }
 
+// 試合のplayByPlayから戦術的に重要な数値パターンを集計
+function summarizeGamePatterns(g) {
+  const plays = (g.playByPlay || []).filter(p => p.type === 'play');
+  const carpHalf = g.away_team === '広島' ? 'top' : 'bottom';
+  const carpPlays = plays.filter(p => p.half === carpHalf);
+  const opPlays = plays.filter(p => p.half !== carpHalf);
+
+  const isHit = (r) => /安|前|越|線|本塁打|二塁打|三塁打|タイムリー|ホームラン/.test(r || '');
+  const isStrikeout = (r) => /三振/.test(r || '');
+  const isWalk = (r) => /四球|フォアボール|敬遠|デッドボール|死球/.test(r || '');
+  const isScoring = (runners) => /[1-3]塁|満塁/.test(runners || '');
+
+  const tally = (arr) => ({
+    total: arr.length,
+    hits: arr.filter(p => isHit(p.result)).length,
+    strikeouts: arr.filter(p => isStrikeout(p.result)).length,
+    walks: arr.filter(p => isWalk(p.result)).length,
+  });
+
+  return {
+    date: g.game_date,
+    carp_total: tally(carpPlays),
+    carp_two_out: tally(carpPlays.filter(p => p.outs === '2アウト')),
+    carp_with_runners: tally(carpPlays.filter(p => isScoring(p.runners))),
+    carp_innings_scored: countScoringInnings(g, carpHalf),
+    op_total: tally(opPlays),
+    op_two_out: tally(opPlays.filter(p => p.outs === '2アウト')),
+    op_innings_scored: countScoringInnings(g, carpHalf === 'top' ? 'bottom' : 'top'),
+  };
+}
+
+function countScoringInnings(g, half) {
+  const innings = (half === 'top' ? g.innings?.away : g.innings?.hiroshima) || [];
+  const scoring = [];
+  innings.forEach((v, i) => { if (typeof v === 'number' && v > 0) scoring.push(`${i+1}回(${v})`); });
+  return scoring;
+}
+
 // 試合前プレビュー（見どころ・キープレイヤー・展開予想）の生成プロンプト
 function buildPreviewPrompt(facts, pastGames) {
   const f = facts?.facts || {};
@@ -237,10 +275,15 @@ function buildPreviewPrompt(facts, pastGames) {
     result: g.result_label,
     titles: (g.title_candidates || []).slice(0, 3),
     keyMoments: (g.moments || []).slice(0, 4).map(m => `${m.inning} ${m.desc}`),
-    turningPoints: (g.turning_suggestions || []).slice(0, 2).map(t => `${t.inning} ${t.description}`),
+    turningPoints: (g.turning_suggestions || []).slice(0, 3).map(t => `${t.inning} ${t.description}`),
     positives: (g.positives || []).filter(p => p.layer === 1).slice(0, 3).map(p => p.title),
     issues: g.team_analysis?.issues || [],
     fanVoice: g.team_analysis?.fan_voice || '',
+    patterns: summarizeGamePatterns(g),
+    // playByPlayの全打席は重いので、得点が動いた回・ピンチ場面・三振場面に絞った要約
+    keyPlays: (g.playByPlay || []).filter(p => p.type === 'play' && (
+      /本塁打|タイムリー|犠牲フライ|押し出し|サヨナラ|失策|エラー|併殺|三振/.test(p.result || '')
+    )).slice(0, 15).map(p => `${p.inning} ${p.outs}${p.runners?'('+p.runners+')':''} ${p.batter}: ${p.result}`),
   }));
   const todayInfo = {
     date: facts.date,
@@ -252,15 +295,22 @@ function buildPreviewPrompt(facts, pastGames) {
     carpStarterSource: f.pitchers?.carpStarterSource,
   };
 
-  return `あなたは広島東洋カープを30年見続けてるベテランファンです。
-今日の試合の見どころを、直近${pastGames.length}試合の実データをもとに予想してください。
-事実から逸脱した内容や創作はNG。直近データに根拠がある予想だけ書いてください。
+  return `あなたは広島東洋カープを30年見続けてる、戦術にも詳しいベテランファンです。
+今日の試合の「ニッチで具体的な見どころ」を、直近${pastGames.length}試合の実データをもとに予想してください。
+
+【最重要：単なる感想ではなく、戦術的・統計的なインサイトを出すこと】
+- "patterns" の数値（二死での成績、得点圏成績、得失点イニング等）を読み取って傾向を抽出
+- "keyPlays" の打席結果から失敗/成功パターンを見つける
+- 「直近X試合中Y試合で○○が起きている」のような数値根拠で語る
+- 一般論（「打線が大事」など）ではなく、このカープ固有の傾向に基づく具体策
+
+事実から逸脱した内容や創作はNG。直近データに無い選手名・成績は絶対に書かない。
 出力は必ず指定されたJSONフォーマットで、コードブロックや説明文を一切付けず、JSON単体で返してください。
 
 【今日の試合】
 ${JSON.stringify(todayInfo, null, 2)}
 
-【直近${pastGames.length}試合のサマリ】
+【直近${pastGames.length}試合のサマリ＋数値パターン】
 ${JSON.stringify(pastSummaries, null, 2)}
 
 【出力JSONフォーマット】
@@ -269,32 +319,50 @@ ${JSON.stringify(pastSummaries, null, 2)}
     "watchpoints": [
       {
         "title": "<25字以内、見どころのタイトル>",
-        "desc": "<80字以内、何を見るべきか・直近データの根拠つき>"
+        "desc": "<100字以内、何を見るべきか。必ず直近データの数値や具体場面を根拠に挙げる>"
       }
     ],
     "key_players": [
       {
-        "name": "<選手名>",
+        "name": "<選手名（直近データに登場した選手のみ）>",
         "role": "投手|打者",
-        "reason": "<60字以内、なぜ注目か直近データを根拠に>"
+        "reason": "<80字以内、なぜ注目か直近の具体的な打席・登板を根拠に>"
       }
     ],
-    "predicted_flow": "<80字以内、序盤・中盤・終盤の試合展開予想>",
-    "carp_strength": "<50字以内、今のカープの強み>",
-    "carp_weakness": "<50字以内、今の課題>",
-    "opponent_threat": "<50字以内、対戦相手の脅威要素>"
+    "tactical_advice": [
+      {
+        "title": "<25字以内、戦術提案のタイトル>",
+        "desc": "<100字以内、なぜこの戦術が良いか直近データの根拠つき。例：「直近5試合で4回までに先制した試合は2勝0敗、4回までに失点した試合は0勝3敗。序盤の援護が鍵」>"
+      }
+    ],
+    "patterns": {
+      "carp_trend": "<80字以内、カープが直近で陥っている/脱しつつあるパターン。具体数値で>",
+      "opponent_note": "<80字以内、対戦相手の傾向・カープが付け入る隙。直近対戦データがあれば言及>"
+    },
+    "predicted_flow": "<100字以内、序盤・中盤・終盤の試合展開予想。具体数値根拠で>",
+    "carp_strength": "<60字以内、今のカープの強み。直近データの数値で>",
+    "carp_weakness": "<60字以内、今の課題。直近データの数値で>",
+    "opponent_threat": "<60字以内、対戦相手の脅威要素>"
   }
 }
 
+【インサイト抽出のヒント】
+- carp_two_out（二死からの結果）：得点を取れる/取れない傾向
+- carp_with_runners（得点圏での結果）：チャンスでの集中力
+- carp_innings_scored / op_innings_scored：得点が動く回パターン
+- keyPlays（重要打席）：併殺・三振が多いカウント、本塁打を打たれた状況
+- 連敗/連勝中なら、その共通項を探る
+- 直近試合の opponent と今日の opponent が同じなら、対戦相性を強く意識
+
 【ルール】
-- watchpoints は 3〜4 個
-- key_players は 2〜3 名
-- 各項目は直近データ（特定の試合・打席・場面）を根拠にする
+- watchpoints は 3〜4 個（具体性最優先）
+- key_players は 2〜3 名（直近データに名前が出てきた選手限定）
+- tactical_advice は 2〜3 個（攻撃方針・継投・采配の具体提案）
 - 「だろう」「ありそう」など断定しすぎない口調
 - ファン目線で熱量ある書き方（「カープが」「うちが」）
 - 創作禁止（直近データに無い選手名・出来事を書かない）
+- AIの一般知識による選手評価は最小限に。直近データから引き出せる範囲で
 - carpStarter / opStarter が null の場合は先発投手を断定しない
-- 直近${pastGames.length}試合とはいえカープ視点で、相手の脅威も含める
 `;
 }
 

@@ -1768,6 +1768,32 @@ function renderPreview(){
     html += '</div>';
   }
 
+  // 戦術提案（新規）
+  if(p.tactical_advice && p.tactical_advice.length){
+    html += '<div class="pv-section-lbl">🧠 戦術提案</div>';
+    html += '<div class="pv-watchpoints">';
+    p.tactical_advice.forEach(function(t){
+      html += '<div class="pv-wp">';
+      html += '<div class="pv-wp-title">'+esc(t.title||'')+'</div>';
+      if(t.desc) html += '<div class="pv-wp-desc">'+esc(t.desc)+'</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // パターン分析（新規）
+  if(p.patterns && (p.patterns.carp_trend || p.patterns.opponent_note)){
+    html += '<div class="pv-section-lbl">📊 パターン分析</div>';
+    html += '<div class="pv-stats-grid" style="grid-template-columns:1fr">';
+    if(p.patterns.carp_trend){
+      html += '<div class="pv-stat"><div class="pv-stat-lbl">🔍 カープの傾向</div><div class="pv-stat-val">'+esc(p.patterns.carp_trend)+'</div></div>';
+    }
+    if(p.patterns.opponent_note){
+      html += '<div class="pv-stat threat"><div class="pv-stat-lbl">🎯 相手の傾向</div><div class="pv-stat-val">'+esc(p.patterns.opponent_note)+'</div></div>';
+    }
+    html += '</div>';
+  }
+
   // 強み・課題・脅威
   if(p.carp_strength || p.carp_weakness || p.opponent_threat){
     html += '<div class="pv-stats-grid">';
