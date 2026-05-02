@@ -3,12 +3,12 @@
   "game_date": "2026-05-02",
   "away_team": "中日",
   "home_team": "広島",
-  "away_score": null,
-  "home_score": null,
+  "away_score": 0,
+  "home_score": 0,
   "venue": "マツダスタジアム",
   "start_time": "14:00",
-  "status": "scheduled",
-  "current_inning": "",
+  "status": "live",
+  "current_inning": "1回裏",
   "result_label": "",
   "away_pitcher": "大野",
   "home_pitcher": "ターノック",
@@ -58,7 +58,34 @@
     "carp_weakness": "先発が6回を投げ切れない傾向と、大差・接戦問わず中継ぎが失点する場面が続いている点。",
     "opponent_threat": "大野は技巧派左腕で、4/26の大竹戦のように序盤から打線を沈黙させるリスクがある。"
   },
-  "innings": {},
+  "innings": {
+    "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hiroshima_hits": 0,
+    "hiroshima_errors": 0,
+    "away": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "away_hits": 0,
+    "away_errors": 0
+  },
   "pitchers": [],
   "moments": [],
   "players": [
@@ -168,8 +195,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-02T05:00:38.923Z",
-    "generatedAt": "2026-05-02T05:00:38.934Z",
+    "sourceFetchedAt": "2026-05-02T05:16:47.766Z",
+    "generatedAt": "2026-05-02T05:16:47.777Z",
     "sourceUrl": "https://npb.jp/scores/2026/0502/c-d-07/"
   }
 }
