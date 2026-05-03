@@ -568,6 +568,11 @@ body::before{
   box-shadow:0 0 14px rgba(200,16,46,.45);
   animation:livePulse 1.4s ease-in-out infinite;
 }
+/* cancelled badge */
+.bc{
+  background:linear-gradient(180deg, rgba(180,180,180,.18), rgba(180,180,180,.06));
+  border:1px solid rgba(200,200,200,.35);color:#cfcfcf;font-weight:700;
+}
 @keyframes livePulse{0%,100%{box-shadow:0 0 14px rgba(200,16,46,.45);opacity:1}50%{box-shadow:0 0 22px rgba(200,16,46,.7);opacity:.85}}
 
 /* ============================================================ */
@@ -1076,6 +1081,7 @@ var sb=supabase.createClient(URL_,KEY_);
 // ===== 状態 =====
 var GAME_ID='',GAME={},MOMENTS=[],PLAYERS=[];
 var isScheduled=false;
+var isCancelled=false;
 var currentDate='';
 var userId=null;
 var titleVotes={},myTitleVote=null;
@@ -1127,6 +1133,7 @@ async function loadGame(date){
   var g=await r.json();
   GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[],team_analysis:g.team_analysis||null,preview:g.preview||null};
   isScheduled=g.status==='scheduled';
+  isCancelled=g.status==='cancelled';
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
   // リセット
   titleVotes={};myTitleVote=null;turnings=[];myTurning=null;
@@ -1227,7 +1234,7 @@ function renderMain(g){
 
   // イニング表
   var innHtml='';
-  if(isScheduled){
+  if(isScheduled||isCancelled){
     innHtml='';
   } else   if(g.innings&&g.innings.hiroshima){
     // 整理: hiroshima=カープ自身のイニング、away=相手のイニング（フィールド名は legacy だが内容は対戦相手）
@@ -1273,7 +1280,7 @@ function renderMain(g){
 
   // 投手
   var pitHtml='';
-  if(!isScheduled&&g.pitchers&&g.pitchers.length){
+  if(!isScheduled&&!isCancelled&&g.pitchers&&g.pitchers.length){
     var chips='';
     g.pitchers.forEach(function(p){
       var tc=p.team==='広島'?'var(--carp)':'#f5d000';
@@ -1287,6 +1294,8 @@ function renderMain(g){
   var resultLabel='';
   if(isScheduled){
     resultLabel='';
+  } else if(isCancelled){
+    resultLabel='<span class="badge bc">⚪ 試合中止</span>';
   } else if(g.status==='live'){
     resultLabel='<span class="badge bl">🔴 試合中'+(g.current_inning?' '+esc(g.current_inning):'')+'</span>';
   } else if(g.result_label){
@@ -1298,7 +1307,11 @@ function renderMain(g){
     '<div class="score-card fi" data-hiroshima-win="'+(hiroshimaWon?'true':'false')+'">'+
     '<div class="eyebrow">⚾ '+GAME.date+'（'+GAME.venue+'）</div>'+
     '<div class="scoreboard">'+
-    (isScheduled
+    (isCancelled
+    ?'<div class="team" style="text-align:center;opacity:.55"><div class="tn '+awayClass+'">'+g.away_team+'</div><div style="font-size:11px;color:var(--muted);margin-top:3px">'+esc(g.away_pitcher||'')+'</div></div>'+
+    '<div class="sep"><div style="font-size:15px;font-weight:800;color:#bbb">中止</div><div style="font-size:10px;color:var(--muted);margin-top:2px">CANCELLED</div></div>'+
+    '<div class="team" style="text-align:center;opacity:.55"><div class="tn '+homeClass+'">'+g.home_team+'</div><div style="font-size:11px;color:var(--carp);margin-top:3px">'+esc(g.home_pitcher||'')+'</div></div>'
+    :isScheduled
     ?'<div class="team" style="text-align:center"><div class="tn '+awayClass+'">'+g.away_team+'</div><div style="font-size:11px;color:var(--muted);margin-top:3px">'+esc(g.away_pitcher||'')+'</div></div>'+
     '<div class="sep"><div style="font-size:13px;font-weight:700">'+g.start_time+'</div><div style="font-size:10px;color:var(--muted)">試合前</div></div>'+
     '<div class="team" style="text-align:center"><div class="tn '+homeClass+'">'+g.home_team+'</div><div style="font-size:11px;color:var(--carp);margin-top:3px">'+esc(g.home_pitcher||'')+'</div></div>'
@@ -1725,7 +1738,7 @@ function renderPreview(){
     (Array.isArray(p.key_players) && p.key_players.length) ||
     p.predicted_flow
   );
-  if(!hasContent || GAME.status === 'final'){
+  if(!hasContent || GAME.status === 'final' || GAME.status === 'cancelled'){
     sec.style.display = 'none';
     return;
   }
@@ -3332,7 +3345,25 @@ async function initApp(g){
   if(r2.data)myTurning=r2.data.turning_id;
 
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
-  if(!isScheduled){
+  if(isCancelled){
+    // 中止時は評価系・予想系・スタメン予想まで全て非表示にする（試合自体が無いため）
+    ['player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section','positive-section','debate-section','mood-section','mycard-section','preview-section','lineup-section'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el)el.style.display='none';
+    });
+    // 「中止」の補足メッセージを表示
+    var mc=document.getElementById('main-content');
+    if(mc && !document.getElementById('cancelled-note')){
+      var note=document.createElement('div');
+      note.id='cancelled-note';
+      note.style.cssText='background:rgba(180,180,180,.08);border:1px solid rgba(200,200,200,.2);border-radius:var(--r);padding:1.1rem 1.1rem;margin-bottom:1rem;text-align:center;color:var(--muted);font-size:13px;line-height:1.7';
+      note.innerHTML='⚪ 本日の試合は中止になりました。<br><span style="font-size:11px">次の試合をお楽しみに ⚾</span>';
+      // スコアカードの直後に挿入
+      var sc=mc.querySelector('.score-card');
+      if(sc&&sc.nextSibling) mc.insertBefore(note, sc.nextSibling);
+      else mc.appendChild(note);
+    }
+  } else if(!isScheduled){
     // 選手評価セクションを表示
     var ps=document.getElementById('player-section');
     if(ps)ps.style.display='';

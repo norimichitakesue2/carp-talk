@@ -327,15 +327,19 @@ function parseRosterTable($, $tbl) {
 }
 
 function parseStatus(text) {
+  // 中止系は最優先で判定（NPB は 試合終了 タグを残したまま 試合中止 を併記する場合があるため）
+  if (/【試合中止】|【中止】|【ノーゲーム】|【コールドゲーム】/.test(text)) {
+    return { status: 'cancelled', currentInning: null };
+  }
   if (/【試合終了】/.test(text)) return { status: 'final', currentInning: null };
   // 「試合中」は「【試合中 1回表】」「【試合中断】」のような形式もある
-  const liveMatch = text.match(/【試合中\s*([^】]*)】/);
+  // ただし「【試合中止】」は上で先に弾いている
+  const liveMatch = text.match(/【試合中\s*([^】止]*)】/);
   if (liveMatch) {
     const inning = liveMatch[1].trim();
     return { status: 'live', currentInning: inning || null };
   }
   if (/【試合前】|【試合開始前】/.test(text)) return { status: 'scheduled', currentInning: null };
-  if (/中止|ノーゲーム/.test(text)) return { status: 'cancelled', currentInning: null };
   return { status: 'unknown', currentInning: null };
 }
 

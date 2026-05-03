@@ -43,6 +43,7 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   const status = f.status || 'final';
   const isFinal = status === 'final';
   const isLive = status === 'live';
+  const isCancelled = status === 'cancelled';
   const writeScores = isFinal || isLive;  // live 中もスコアとイニングを書き出す
 
   const homeTeam = ls.home?.team || (carpIsHome ? '広島' : '');
@@ -116,6 +117,8 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     } else {
       resultLabel = '引き分け';
     }
+  } else if (isCancelled) {
+    resultLabel = '試合中止';
   }
 
   const carpStarter = pp.carpStarter || '';
@@ -196,9 +199,13 @@ async function main() {
   }
 
   const status = facts?.facts?.status;
-  if (status === 'cancelled' || status === 'unknown') {
-    console.error(`[build_game] Game status is "${status}", skipping.`);
+  if (status === 'unknown') {
+    console.error(`[build_game] Game status is "unknown", skipping.`);
     process.exit(2);
+  }
+  // status === 'cancelled' は skip せず、JSONを書き出して中止表示できるようにする
+  if (status === 'cancelled') {
+    console.error(`[build_game] Game status is "cancelled", writing JSON to mark as 試合中止.`);
   }
 
   // STEP2: 既存JSONを先に読む（キャッシュ判定用）
@@ -224,6 +231,7 @@ async function main() {
     } else if ((status === 'scheduled' || status === 'live') && hasStarter && !hasExistingPreview) {
       shouldRunAi = true;
     }
+    // cancelled の場合は AI を走らせない（試合自体が無いので分析対象なし）
   }
   if (shouldRunAi) {
     const aiScript = path.join(__dirname, 'generate_ai.mjs');
