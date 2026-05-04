@@ -3,12 +3,12 @@
   "game_date": "2026-05-04",
   "away_team": "広島",
   "home_team": "DeNA",
-  "away_score": 6,
+  "away_score": 8,
   "home_score": 11,
   "venue": "",
   "start_time": "15:00",
   "status": "live",
-  "current_inning": "8回裏",
+  "current_inning": "9回表",
   "result_label": "",
   "away_pitcher": "大瀬良",
   "home_pitcher": "竹田",
@@ -124,9 +124,9 @@
       0,
       0,
       1,
-      0
+      2
     ],
-    "hiroshima_hits": 6,
+    "hiroshima_hits": 7,
     "hiroshima_errors": 1,
     "away": [
       0,
@@ -139,7 +139,7 @@
       0,
       0
     ],
-    "away_hits": 15,
+    "away_hits": 16,
     "away_errors": 0
   },
   "pitchers": [],
@@ -251,8 +251,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-04T09:07:43.878Z",
-    "generatedAt": "2026-05-04T09:07:43.891Z",
+    "sourceFetchedAt": "2026-05-04T09:15:24.253Z",
+    "generatedAt": "2026-05-04T09:15:24.266Z",
     "sourceUrl": "https://npb.jp/scores/2026/0504/db-c-06/"
   }
 }
