@@ -312,15 +312,43 @@ function buildPreviewPrompt(facts, pastGames) {
   - 完投${s.completeGames ?? '?'} / 完封${s.shutouts ?? '?'} / 勝率${s.winPct ?? '?'}
 
 この投手の数値から「何を仕掛けるべきか」を必ず1つ tactical_advice に入れること。
-（例：QS率が高い → 序盤勝負 / 与四球が多い → 早打ちせず球数稼ぐ / 被本塁打が多い → 一発を狙う / WHIP高い → ランナー貯めれば崩れる など）
+（例：QS率が高い → 序盤勝負 / 与四球が多い → 早打ちせず球数稼ぐ / 被本塁打が多い → 一発を狙う / WHIP高い → ランナー貯めれば崩れる など）`;
 
-【球種・投手タイプの記述】
-あなたが ${nf3.name} の球種・投球スタイルを高い確度で知っている場合は、
-key_players の reason または tactical_advice の中で球種特徴に触れること。
-- 例：「${nf3.name} はストレート＋カットボール＋カーブが軸の左腕。インコース突きが武器」
-- 例：「フォーク主体の奪三振タイプ。低めを振らないことが攻略のカギ」
-- 数値からも特徴は読める（K/9 高 → 奪三振型 / BB/9 低 → 制球型 / HR/9 高 → 球が高めに集まる）
-- 知らない投手・自信がない場合は球種に触れないこと（創作禁止）`;
+    // Phase 5: 投手の対右打者/対左打者 成績（左右別成績）
+    if (s.vsRightBatter || s.vsLeftBatter) {
+      const r = s.vsRightBatter, l = s.vsLeftBatter;
+      opPitcherBlock += `
+
+【投手の対打者左右別成績（nf3）】
+対右打者: 被打率${r?.avg ?? '?'} (${r?.h ?? 0}-${r?.ab ?? 0}, 本${r?.hr ?? 0}, K${r?.k ?? 0}, 四球${r?.bb ?? 0})
+対左打者: 被打率${l?.avg ?? '?'} (${l?.h ?? 0}-${l?.ab ?? 0}, 本${l?.hr ?? 0}, K${l?.k ?? 0}, 四球${l?.bb ?? 0})
+
+→ どちらに弱いかを必ず tactical_advice か patterns.opponent_note で具体的に指摘
+（例: 「対右に弱い (.293) → 右打ちのモンテロ・菊池を中軸に積極起用」）`;
+    }
+
+    // Phase 6: Yahoo Sportsnavi の球種データ
+    if (nf3.yahoo && Array.isArray(nf3.yahoo.pitchTypes) && nf3.yahoo.pitchTypes.length > 0) {
+      const lines = nf3.yahoo.pitchTypes.map(p => {
+        return `  - ${p.name}: 平均${p.avgSpeed}km/h(最高${p.maxSpeed}) / 全体${p.ratioOverall} 対左${p.ratioVsLeft} 対右${p.ratioVsRight} / K率${p.kRate} 空振${p.whiffRate} 被打${p.avgAgainst}`;
+      }).join('\n');
+      opPitcherBlock += `
+
+【投手の球種データ（Yahoo Sportsnavi）】
+${lines}
+
+→ 必ず以下を活用すること:
+  1) key_players の投手 reason に「ストレート平均XXkm/h、決め球はYY (K率Z%)」のように球種特徴を具体的に書く
+  2) tactical_advice の1つに「対左で多投する球種は○○ (XX%) → 左打者は△△を意識」など球種別対策を入れる
+  3) 被打率が高い球種があれば「××は被打率.XXX、当たれば長打」と打者へのヒント
+  4) 創作禁止 — このリストに無い球種は書かない`;
+    }
+
+    opPitcherBlock += `
+
+【球種・投手タイプの記述（追加知識）】
+あなたが ${nf3.name} の投球スタイルや個性を高い確度で知っている場合（フォーム、配球パターン、性格、勝負強さなど）、
+key_players の reason の中で言及してOK。ただし球種・球速の数値は上の Yahoo データから引用すること（創作禁止）。`;
 
     // Phase 4: カープ打者の通算 + 対右/対左 成績（refresh_carp_batters.mjs が生成）
     // 相手投手の利き腕に対応する成績を強調する

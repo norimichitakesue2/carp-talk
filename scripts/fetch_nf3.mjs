@@ -130,6 +130,53 @@ export async function fetchPitcherStats({ league, code }, num) {
     if (rows.length >= 4) collect(rows[2], rows[3]);
   });
 
+  // Phase 5: 投手の対左/対右打者 成績テーブル (左右別成績)
+  const splits = { vsRightBatter: null, vsLeftBatter: null };
+  $('table.Base_P').each((_, t) => {
+    const cap = $(t).find('caption').text().trim();
+    if (cap !== '左右別成績') return;
+    const rows = $(t).find('tr');
+    let headers = [];
+    let dataRowsStart = -1;
+    rows.each((i, r) => {
+      const ths = $(rows[i]).find('th').map((_, c) => $(c).text().trim()).get();
+      if (ths.length >= 5 && ths.includes('打率')) {
+        headers = ths;
+        dataRowsStart = i + 1;
+      }
+    });
+    if (headers.length === 0) return;
+    for (let i = dataRowsStart; i < rows.length; i++) {
+      const $r = $(rows[i]);
+      const firstTh = $r.find('th').first().text().trim();
+      const cells = $r.find('td').map((_, c) => $(c).text().trim()).get();
+      if (cells.length === 0) continue;
+      const obj = {};
+      for (let j = 1; j < headers.length; j++) obj[headers[j]] = cells[j - 1] || '';
+      const mapped = {
+        avg: obj['打率'] || null,
+        pa: parseIntOrNull(obj['打席']),
+        ab: parseIntOrNull(obj['打数']),
+        h: parseIntOrNull(obj['安打']),
+        hr: parseIntOrNull(obj['本塁'] ?? obj['本塁打']),
+        k: parseIntOrNull(obj['三振']),
+        bb: parseIntOrNull(obj['四球']),
+      };
+      if (firstTh === '対右打者') splits.vsRightBatter = mapped;
+      else if (firstTh === '対左打者') splits.vsLeftBatter = mapped;
+    }
+  });
+
+  // Yahoo Sportsnavi の player ID をヘッダーリンクから抽出
+  // <a href="https://baseball.yahoo.co.jp/npb/player/1600123/top">
+  let yahooPlayerId = null;
+  $('a[href*="baseball.yahoo.co.jp/npb/player/"]').each((_, a) => {
+    if (yahooPlayerId) return;
+    const href = $(a).attr('href') || '';
+    const m = href.match(/\/npb\/player\/(\d+)/);
+    if (m) yahooPlayerId = m[1];
+  });
+
   return {
     number: nameMatch ? nameMatch[1] : String(num),
     name: nameMatch ? nameMatch[2] : '',
@@ -158,6 +205,9 @@ export async function fetchPitcherStats({ league, code }, num) {
     whip: career['WHIP'] || null,
     qsRate: career['QS率'] || null,
     winPct: career['勝率'] || null,
+    vsRightBatter: splits.vsRightBatter,
+    vsLeftBatter: splits.vsLeftBatter,
+    yahooPlayerId,
   };
 }
 
@@ -346,6 +396,62 @@ function mapBatterSplit(o) {
   };
 }
 
+// === Phase 6: Yahoo Sportsnavi から投手の球種データを取得 ===
+//
+// Yahoo の player top ページには HTML テーブルとして
+// 球種 / 球速(最高/平均) / 投球割合(全体/対左/対右) / 奪三振率 / 空振り率 / 被打率
+// が静的に埋め込まれている (JS不要)。
+//
+// テーブル構造:
+//   <table class="bb-pitchingRateTable">
+//     <thead> 球種, 球速最高/平均, 投球割合全体/対左/対右, 奪三振率, 空振り率, 被打率 </thead>
+//     <tbody>
+//       <tr><th>ストレート</th><td>150</td><td>143.3</td>...</tr>
+//
+// nf3 fetch の延長で1回呼ぶだけ (試合あたり +1 fetch、Yahoo へ)。
+const YAHOO_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
+async function fetchYahooHtml(url) {
+  const r = await fetch(url, {
+    headers: { 'User-Agent': YAHOO_UA, 'Accept-Language': 'ja-JP,ja;q=0.9' },
+  });
+  if (!r.ok) throw new Error(`Yahoo HTTP ${r.status}: ${url}`);
+  return await r.text();
+}
+
+export async function fetchYahooPitcherProfile(yahooPlayerId) {
+  if (!yahooPlayerId) return null;
+  const url = `https://baseball.yahoo.co.jp/npb/player/${yahooPlayerId}/top`;
+  const html = await fetchYahooHtml(url);
+  const $ = cheerio.load(html);
+
+  // 球種テーブル: class に "bb-pitchingRateTable" を含む table
+  const tbl = $('table.bb-pitchingRateTable').first();
+  if (!tbl.length) return { yahooPlayerId, pitchTypes: [] };
+
+  const pitchTypes = [];
+  tbl.find('tbody tr').each((_, r) => {
+    const $r = $(r);
+    const name = $r.find('th').first().text().trim();
+    if (!name) return;
+    const cells = $r.find('td').map((_, c) => $(c).text().trim().replace(/\s+/g, ' ')).get();
+    // 列順 (確認済み): 最高(km/h), 平均, 投球割合全体%, 対左%, 対右%, 奪三振率(回数), 空振り率, 被打率(被本塁打)
+    if (cells.length < 8) return;
+    pitchTypes.push({
+      name,
+      maxSpeed: cells[0],          // "150"
+      avgSpeed: cells[1],          // "143.3"
+      ratioOverall: cells[2],      // "33.7%"
+      ratioVsLeft: cells[3],       // "36.8%"
+      ratioVsRight: cells[4],      // "32.1%"
+      kRate: cells[5],             // "17.4% (4)"
+      whiffRate: cells[6],         // "4.2%"
+      avgAgainst: cells[7],        // ".302 (2)"
+    });
+  });
+
+  return { yahooPlayerId, sourceUrl: url, pitchTypes };
+}
+
 // === 統合エントリ: 試合用に呼ぶトップレベル関数 ===
 //
 // opts.includeVsBatters=false にすると Phase 2 のみ (3 fetch → 2 fetch に削減)
@@ -391,6 +497,19 @@ export async function fetchOpponentPitcherData(opponentTeamName, pitcherName, op
     }
   }
 
+  // Phase 6: Yahoo Sportsnavi から球種・球速データ取得
+  // nf3 投手ページ内のリンクから取得した yahooPlayerId を使う
+  let yahoo = null;
+  if (stats?.yahooPlayerId && opts.includeYahooPitchTypes !== false) {
+    await sleep(SLEEP_MS);
+    try {
+      yahoo = await fetchYahooPitcherProfile(stats.yahooPlayerId);
+      console.error(`[nf3] Yahoo球種取得: ${yahoo?.pitchTypes?.length ?? 0} 球種`);
+    } catch (e) {
+      console.error(`[nf3] fetchYahooPitcherProfile failed: ${e.message}`);
+    }
+  }
+
   return {
     team: opponentTeamName,
     teamCode: team.code,
@@ -400,9 +519,11 @@ export async function fetchOpponentPitcherData(opponentTeamName, pitcherName, op
     queriedName: pitcherName,
     stats,
     vsCarp,
+    yahoo,
     sourceUrls: {
       stats: `${NF3_BASE}/${team.league}/${team.code}/p/${foundPitcher.number}_stat.htm`,
       vsB:   includeVsBatters ? `${NF3_BASE}/${team.league}/${team.code}/p/${foundPitcher.number}_stat_vsB.htm` : null,
+      yahoo: stats?.yahooPlayerId ? `https://baseball.yahoo.co.jp/npb/player/${stats.yahooPlayerId}/top` : null,
     },
   };
 }
