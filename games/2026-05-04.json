@@ -4,7 +4,7 @@
   "away_team": "広島",
   "home_team": "DeNA",
   "away_score": 4,
-  "home_score": 0,
+  "home_score": 4,
   "venue": "",
   "start_time": "15:00",
   "status": "live",
@@ -130,7 +130,7 @@
     "hiroshima_errors": 0,
     "away": [
       0,
-      0,
+      4,
       0,
       0,
       0,
@@ -139,7 +139,7 @@
       0,
       0
     ],
-    "away_hits": 0,
+    "away_hits": 5,
     "away_errors": 0
   },
   "pitchers": [],
@@ -251,8 +251,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-04T06:30:38.208Z",
-    "generatedAt": "2026-05-04T06:30:38.221Z",
+    "sourceFetchedAt": "2026-05-04T06:45:26.874Z",
+    "generatedAt": "2026-05-04T06:45:26.885Z",
     "sourceUrl": "https://npb.jp/scores/2026/0504/db-c-06/"
   }
 }
