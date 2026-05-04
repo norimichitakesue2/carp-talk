@@ -344,17 +344,33 @@ function parseStatus(text) {
 }
 
 function parseVenue($) {
-  // ヘッダ周辺の専用要素に「マツダスタジアム」「神宮」など短縮表記
-  // ・headingの直前/直後の generic 要素にあることが多い
-  const candidates = [];
-  $('div, span, p').each((_, el) => {
-    const t = $(el).text().trim();
-    if (/^(マツダスタジアム|神宮|横浜|甲子園|東京ドーム|京セラD大阪|エスコンF|バンテリンドーム|PayPayドーム|ZOZOマリン|ベルーナドーム|楽天モバイルパーク|ほっと神戸|札幌ドーム|福岡ドーム|横浜スタジアム|MAZDA Zoom-Zoom スタジアム広島|明治神宮野球場|阪神甲子園球場|バンテリンドーム ナゴヤ|エスコンフィールドHOKKAIDO)/.test(t) && t.length < 30) {
-      candidates.push(t);
-    }
+  // 既知の球場名で「完全一致」のみを採用する。
+  // 部分マッチ (e.g. /^横浜/) を許すと「横浜DeNAベイスターズDeNA」のような
+  // チーム名混じりの span にヒットして duplication するため要素単位で厳密に。
+  const KNOWN_VENUES = [
+    'マツダスタジアム', 'MAZDA Zoom-Zoom スタジアム広島', 'マツダ スタジアム',
+    '横浜スタジアム', '横浜', 'ハマスタ',
+    '神宮', '神宮球場', '明治神宮野球場',
+    '甲子園', '甲子園球場', '阪神甲子園球場',
+    '東京ドーム',
+    'バンテリンドーム', 'バンテリンドーム ナゴヤ', 'バンテリンドームナゴヤ',
+    '京セラD大阪', '京セラドーム大阪', '京セラドーム',
+    'PayPayドーム', '福岡PayPayドーム', '福岡ドーム',
+    'エスコンF', 'エスコンフィールドHOKKAIDO', 'エスコンフィールド',
+    'ZOZOマリン', 'ZOZOマリンスタジアム',
+    'ベルーナドーム', '西武ドーム',
+    '楽天モバイルパーク', '楽天モバイルパーク宮城',
+    'ほっと神戸',
+    '札幌ドーム',
+  ];
+  let found = '';
+  $('div, span, p, td, th').each((_, el) => {
+    if (found) return;
+    const t = $(el).text().trim().replace(/\s+/g, ' ');
+    if (!t || t.length > 30) return;
+    if (KNOWN_VENUES.includes(t)) found = t;
   });
-  if (candidates.length > 0) return candidates[0];
-  return '';
+  return found;
 }
 
 function parseStartEnd(text) {
