@@ -233,6 +233,33 @@ async function main() {
     }
     // cancelled の場合は AI を走らせない（試合自体が無いので分析対象なし）
   }
+
+  // STEP3.5: nf3 から相手先発の詳細統計を取得（preview生成時のみ・取得失敗しても継続）
+  // Phase 2: 相手投手の通算/今季成績 (防御率/WHIP/QS率/被本塁打/直近登板など)
+  if (shouldRunAi && (status === 'scheduled' || status === 'live') && hasStarter) {
+    const opTeamName = f.carpIsHome
+      ? (f.lineScore?.away?.team || '')
+      : (f.lineScore?.home?.team || '');
+    const opStarterName = f.pitchers?.opStarter || '';
+    if (opTeamName && opStarterName) {
+      console.error(`[build_game] Fetching nf3 stats for ${opTeamName} ${opStarterName}...`);
+      try {
+        const { fetchOpponentPitcherData } = await import('./fetch_nf3.mjs');
+        // includeVsBatters は Phase 3 で true にする。今は Phase 2 のみ
+        const nf3 = await fetchOpponentPitcherData(opTeamName, opStarterName, { includeVsBatters: false });
+        if (nf3) {
+          if (!facts.facts) facts.facts = {};
+          facts.facts.opponentPitcherNf3 = nf3;
+          console.error(`[build_game] nf3 stats: 防御率${nf3.stats?.era ?? '?'} / WHIP${nf3.stats?.whip ?? '?'} / QS率${nf3.stats?.qsRate ?? '?'}`);
+        } else {
+          console.error('[build_game] nf3 returned null (skipping enrichment)');
+        }
+      } catch (e) {
+        console.error(`[build_game] nf3 fetch error (skipping): ${e.message}`);
+      }
+    }
+  }
+
   if (shouldRunAi) {
     const aiScript = path.join(__dirname, 'generate_ai.mjs');
     const aiResult = runNode(aiScript, [], JSON.stringify(facts));

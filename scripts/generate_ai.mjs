@@ -295,6 +295,26 @@ function buildPreviewPrompt(facts, pastGames) {
     carpStarterSource: f.pitchers?.carpStarterSource,
   };
 
+  // nf3 から取得した相手先発の詳細統計（Phase 2）
+  // 数値が無いと AI が一般論に逃げるので、ある時だけ強調して投入する
+  const nf3 = f.opponentPitcherNf3;
+  let opPitcherBlock = '';
+  if (nf3 && nf3.stats) {
+    const s = nf3.stats;
+    opPitcherBlock = `
+
+【相手先発の詳細統計（nf3.sakura.ne.jp より）】
+投手: ${nf3.name}（背番号${nf3.number}, ${s.hand || '?'}, 最終登板${s.lastAppearance || '?'}）
+今季成績:
+  - 防御率 ${s.era ?? '?'} / WHIP ${s.whip ?? '?'} / QS率 ${s.qsRate ?? '?'}
+  - ${s.starts ?? '?'}先発 / ${s.wins ?? '?'}勝${s.losses ?? '?'}敗 / ${s.ip ?? '?'}回 / 投球数${s.pitches ?? '?'} (P/IP ${s.pitchesPerInning ?? '?'})
+  - 三振${s.strikeouts ?? '?'} / 四球${s.walks ?? '?'} / 死球${s.hbp ?? '?'} / 被本塁打${s.hrAllowed ?? '?'} / 失点${s.runs ?? '?'} / 自責${s.earnedRuns ?? '?'}
+  - 完投${s.completeGames ?? '?'} / 完封${s.shutouts ?? '?'} / 勝率${s.winPct ?? '?'}
+
+この投手の数値から「何を仕掛けるべきか」を必ず1つ tactical_advice に入れること。
+（例：QS率が高い → 序盤勝負 / 与四球が多い → 早打ちせず球数稼ぐ / 被本塁打が多い → 一発を狙う / WHIP高い → ランナー貯めれば崩れる など）`;
+  }
+
   return `あなたは広島東洋カープを30年見続けてる、戦術にも詳しいベテランファンです。
 今日の試合の「ニッチで具体的な見どころ」を、直近${pastGames.length}試合の実データをもとに予想してください。
 
@@ -309,6 +329,7 @@ function buildPreviewPrompt(facts, pastGames) {
 
 【今日の試合】
 ${JSON.stringify(todayInfo, null, 2)}
+${opPitcherBlock}
 
 【直近${pastGames.length}試合のサマリ＋数値パターン】
 ${JSON.stringify(pastSummaries, null, 2)}
