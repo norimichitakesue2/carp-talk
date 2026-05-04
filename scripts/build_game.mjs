@@ -234,6 +234,22 @@ async function main() {
     // cancelled の場合は AI を走らせない（試合自体が無いので分析対象なし）
   }
 
+  // STEP3.4: カープ打者の通算 + 対右/対左 成績キャッシュを読み込む（Phase 4）
+  // 1日1回 refresh-carp-batters ワークフローで生成される games/nf3_carp_batters.json
+  if (shouldRunAi && (status === 'scheduled' || status === 'live')) {
+    try {
+      const cachePath = path.join(GAMES_DIR, 'nf3_carp_batters.json');
+      const cache = JSON.parse(await fs.readFile(cachePath, 'utf8'));
+      if (cache?.batters?.length) {
+        if (!facts.facts) facts.facts = {};
+        facts.facts.carpBatters = cache.batters;
+        console.error(`[build_game] Loaded carp batter cache: ${cache.batters.length} batters (${cache.fetchedAt})`);
+      }
+    } catch (e) {
+      console.error(`[build_game] No carp batter cache available (${e.code || e.message})`);
+    }
+  }
+
   // STEP3.5: nf3 から相手先発の詳細統計を取得（preview生成時のみ・取得失敗しても継続）
   // Phase 2: 相手投手の通算/今季成績 (防御率/WHIP/QS率/被本塁打/直近登板など)
   if (shouldRunAi && (status === 'scheduled' || status === 'live') && hasStarter) {

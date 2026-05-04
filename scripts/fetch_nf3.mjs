@@ -221,6 +221,131 @@ function parseIntOrNull(v) {
   return isNaN(n) ? null : n;
 }
 
+// === カープ打者の名簿 + 個別成績取得 ===
+// 1日1回キャッシュする想定。試合ごとには json を読むだけで済む
+
+// nf3 の打撃成績PHPページから全カープ打者の (背番号, フルネーム) を取得
+// 投手の打撃成績ページもこのリストに混ざるが、投手は対右左成績がほぼ意味ないのでフィルタ前提
+export async function fetchCarpBatterList() {
+  const url = `${NF3_BASE}/php/stat_disp/stat_disp.php?y=0&leg=0&tm=C&fp=0&dn=1&dk=0`;
+  const html = await fetchUA(url);
+  const $ = cheerio.load(html);
+
+  const out = [];
+  const seen = new Set();
+  $('a[href*="/Central/C/f/"][href$="_stat.htm"]').each((_, a) => {
+    const $a = $(a);
+    const href = $a.attr('href') || '';
+    const m = href.match(/\/f\/(\d+)_stat\.htm/);
+    if (!m) return;
+    const num = m[1];
+    const name = $a.text().trim();
+    if (!name || seen.has(num)) return;
+    seen.add(num);
+    out.push({ number: num, name });
+  });
+  return out;
+}
+
+// 個別打者ページから 通算 + 対右/対左 成績を抜く
+export async function fetchBatterStats(num) {
+  const url = `${NF3_BASE}/Central/C/f/${num}_stat.htm`;
+  const html = await fetchUA(url);
+  const $ = cheerio.load(html);
+
+  // ヘッダーから氏名・利き腕
+  const fullPageText = $('body').text().replace(/[\s　]+/g, ' ').trim();
+  const nameMatch = fullPageText.match(/#\s*(\d+)\s+([^\s#]+?)\s*(?:野手|投手|内野手|外野手|捕手|左投|右投)/);
+  const handMatch = fullPageText.match(/(右|左|両)投(右|左|両)打/);
+
+  // 通算成績テーブル
+  // ヘッダ: 打率/打席/打数/得点/安打/2塁/3塁/本塁/打点/盗塁/盗死/犠打/犠飛/四球/敬遠/死球/三振/併殺/出塁/長打/OPS など
+  let career = {};
+  $('table.Base_P').each((_, t) => {
+    const cap = $(t).find('caption').text().trim();
+    if (cap !== '通算成績') return;
+    const rows = $(t).find('tr');
+    const collect = (hRow, dRow) => {
+      const hs = $(hRow).find('th').map((_, c) => $(c).text().trim()).get();
+      const ds = $(dRow).find('td').map((_, c) => $(c).text().trim()).get();
+      hs.forEach((h, i) => { if (h) career[h] = ds[i] || ''; });
+    };
+    if (rows.length >= 2) collect(rows[0], rows[1]);
+    if (rows.length >= 4) collect(rows[2], rows[3]);
+  });
+
+  // 対左右別成績テーブル (対右投手 / 対左投手)
+  // 列: 打率/打席/打数/安打/2塁/3塁/本塁/三振/四球/死球/犠打/犠飛
+  const splits = { vsRight: null, vsLeft: null };
+  $('table.Base_P').each((_, t) => {
+    const cap = $(t).find('caption').text().trim();
+    if (cap !== '対左右別成績') return;
+    const rows = $(t).find('tr');
+    // header 行を探す
+    let headers = [];
+    let dataRowsStart = -1;
+    rows.each((i, r) => {
+      const $r = $(rows[i]);
+      const ths = $r.find('th').map((_, c) => $(c).text().trim()).get();
+      if (ths.length >= 5 && ths.includes('打率')) {
+        headers = ths;
+        dataRowsStart = i + 1;
+      }
+    });
+    if (headers.length === 0) return;
+    for (let i = dataRowsStart; i < rows.length; i++) {
+      const $r = $(rows[i]);
+      const firstTh = $r.find('th').first().text().trim();
+      const cells = $r.find('td').map((_, c) => $(c).text().trim()).get();
+      if (cells.length === 0) continue;
+      // headers[0] は「対右投手」「対左投手」のラベル列なので、cells は headers.length - 1 個
+      const obj = {};
+      for (let j = 1; j < headers.length; j++) {
+        obj[headers[j]] = cells[j - 1] || '';
+      }
+      if (firstTh === '対右投手') splits.vsRight = obj;
+      else if (firstTh === '対左投手') splits.vsLeft = obj;
+    }
+  });
+
+  return {
+    number: String(num),
+    name: nameMatch ? nameMatch[2] : '',
+    hand: handMatch ? `${handMatch[1]}投${handMatch[2]}打` : '',
+    career: {
+      avg: career['打率'] || null,
+      pa: parseIntOrNull(career['打席']),
+      ab: parseIntOrNull(career['打数']),
+      r: parseIntOrNull(career['得点']),
+      h: parseIntOrNull(career['安打']),
+      d: parseIntOrNull(career['2塁打'] ?? career['二塁']),
+      t: parseIntOrNull(career['3塁打'] ?? career['三塁']),
+      hr: parseIntOrNull(career['本塁打'] ?? career['本塁']),
+      rbi: parseIntOrNull(career['打点']),
+      sb: parseIntOrNull(career['盗塁']),
+      bb: parseIntOrNull(career['四球']),
+      k: parseIntOrNull(career['三振']),
+      obp: career['出塁'] || career['出塁率'] || null,
+      slg: career['長打'] || career['長打率'] || null,
+      ops: career['OPS'] || null,
+    },
+    vsRight: splits.vsRight ? mapBatterSplit(splits.vsRight) : null,
+    vsLeft:  splits.vsLeft  ? mapBatterSplit(splits.vsLeft)  : null,
+  };
+}
+
+function mapBatterSplit(o) {
+  return {
+    avg: o['打率'] || null,
+    pa: parseIntOrNull(o['打席']),
+    ab: parseIntOrNull(o['打数']),
+    h: parseIntOrNull(o['安打']),
+    hr: parseIntOrNull(o['本塁'] ?? o['本塁打']),
+    k: parseIntOrNull(o['三振']),
+    bb: parseIntOrNull(o['四球']),
+  };
+}
+
 // === 統合エントリ: 試合用に呼ぶトップレベル関数 ===
 //
 // opts.includeVsBatters=false にすると Phase 2 のみ (3 fetch → 2 fetch に削減)
@@ -297,6 +422,8 @@ async function main() {
   console.log(JSON.stringify(data, null, 2));
 }
 
-const isMain = import.meta.url === `file://${process.argv[1]}` ||
-               import.meta.url.endsWith(process.argv[1]?.replace(/\\/g, '/') || '');
+// `node scripts/fetch_nf3.mjs ...` で実行された時のみ main() を走らせる。
+// `node -e "import('./scripts/fetch_nf3.mjs')..."` のような import 経由では走らせない。
+const argv1 = process.argv[1] || '';
+const isMain = argv1.endsWith('fetch_nf3.mjs');
 if (isMain) main().catch((e) => { console.error('[nf3] ERROR:', e); process.exit(1); });

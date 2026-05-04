@@ -1,0 +1,59 @@
+name: Refresh Carp batters cache
+
+# 1日1回 nf3 から全カープ打者の通算/対右/対左 成績を取得して
+# games/nf3_carp_batters.json に保存する。
+# build_game.mjs がこれを読んで AI プロンプトに利用する。
+#
+# nf3 への配慮:
+# - 1日1回のみ実行
+# - 1.5秒スリープで14-20選手を順次取得 (約30秒で完了)
+
+on:
+  schedule:
+    # JST 04:00 = UTC 19:00 (前日)
+    - cron: '0 19 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-carp-batters
+  cancel-in-progress: false  # データ取得は最後まで走らせる
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Refresh carp batter stats from nf3
+        run: node scripts/refresh_carp_batters.mjs
+
+      - name: Commit changes (if any)
+        run: |
+          git config user.name "carp-talk-bot"
+          git config user.email "carp-talk-bot@users.noreply.github.com"
+          if [ -z "$(git status --porcelain games/nf3_carp_batters.json)" ]; then
+            echo "No changes."
+          else
+            git add games/nf3_carp_batters.json
+            git commit -m "data: refresh carp batter stats from nf3"
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push origin HEAD:main && break
+              sleep 5
+            done
+          fi
