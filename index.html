@@ -924,6 +924,24 @@ body::before{
 .pv-stat-val{font-size:11.5px;color:var(--text);line-height:1.5}
 .pv-disclaimer{font-size:10px;color:var(--faint);margin-top:10px;text-align:center;font-style:italic}
 
+/* 🎯 相手先発との相性 (key_matchups) */
+.pv-matchups{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.pv-matchup{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-left-width:3px;
+  border-radius:var(--rs);
+  padding:.5rem .75rem;
+}
+.pv-matchup.mu-good{border-left-color:#3ecf8e;background:linear-gradient(90deg, rgba(62,207,142,.08), transparent 60%)}
+.pv-matchup.mu-bad{border-left-color:#ff7090;background:linear-gradient(90deg, rgba(255,112,144,.08), transparent 60%)}
+.pv-matchup.mu-even{border-left-color:rgba(200,200,200,.4)}
+.pv-mu-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pv-mu-icon{font-size:13px}
+.pv-mu-name{font-size:13px;font-weight:700;color:var(--text)}
+.pv-mu-stat{font-size:11px;color:var(--muted);font-family:ui-monospace, 'SF Mono', monospace;letter-spacing:.02em}
+.pv-mu-note{font-size:11px;color:var(--text);line-height:1.5;margin-top:3px;opacity:.85}
+
 /* ============================================================ */
 /* ⚔️ 議論エンジン（debates）                                   */
 /* ============================================================ */
@@ -1789,6 +1807,26 @@ function renderPreview(){
       html += '<div class="pv-wp">';
       html += '<div class="pv-wp-title">'+esc(t.title||'')+'</div>';
       if(t.desc) html += '<div class="pv-wp-desc">'+esc(t.desc)+'</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // 🎯 相手先発との相性（Phase 3: nf3 vs カープ打者データ）
+  if(p.key_matchups && p.key_matchups.length){
+    html += '<div class="pv-section-lbl">🎯 相手先発との相性</div>';
+    html += '<div class="pv-matchups">';
+    p.key_matchups.forEach(function(m){
+      var v = (m.verdict||'even').toLowerCase();
+      var icon = v==='good'?'🔥':(v==='bad'?'❄️':'➖');
+      var cls = v==='good'?'mu-good':(v==='bad'?'mu-bad':'mu-even');
+      html += '<div class="pv-matchup '+cls+'">';
+      html += '<div class="pv-mu-head">';
+      html += '<span class="pv-mu-icon">'+icon+'</span>';
+      html += '<span class="pv-mu-name">'+esc(m.batter||'')+'</span>';
+      if(m.stat) html += '<span class="pv-mu-stat">'+esc(m.stat)+'</span>';
+      html += '</div>';
+      if(m.note) html += '<div class="pv-mu-note">'+esc(m.note)+'</div>';
       html += '</div>';
     });
     html += '</div>';

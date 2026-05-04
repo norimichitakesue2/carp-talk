@@ -245,12 +245,13 @@ async function main() {
       console.error(`[build_game] Fetching nf3 stats for ${opTeamName} ${opStarterName}...`);
       try {
         const { fetchOpponentPitcherData } = await import('./fetch_nf3.mjs');
-        // includeVsBatters は Phase 3 で true にする。今は Phase 2 のみ
-        const nf3 = await fetchOpponentPitcherData(opTeamName, opStarterName, { includeVsBatters: false });
+        // Phase 3: vs カープ打者の通算成績も取得 (fetch +1)
+        const nf3 = await fetchOpponentPitcherData(opTeamName, opStarterName, { includeVsBatters: true });
         if (nf3) {
           if (!facts.facts) facts.facts = {};
           facts.facts.opponentPitcherNf3 = nf3;
-          console.error(`[build_game] nf3 stats: 防御率${nf3.stats?.era ?? '?'} / WHIP${nf3.stats?.whip ?? '?'} / QS率${nf3.stats?.qsRate ?? '?'}`);
+          const vsCarpCount = Array.isArray(nf3.vsCarp) ? nf3.vsCarp.length : 0;
+          console.error(`[build_game] nf3 stats: 防御率${nf3.stats?.era ?? '?'} / WHIP${nf3.stats?.whip ?? '?'} / QS率${nf3.stats?.qsRate ?? '?'} / vs カープ打者${vsCarpCount}人`);
         } else {
           console.error('[build_game] nf3 returned null (skipping enrichment)');
         }

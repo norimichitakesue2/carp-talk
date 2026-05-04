@@ -295,7 +295,7 @@ function buildPreviewPrompt(facts, pastGames) {
     carpStarterSource: f.pitchers?.carpStarterSource,
   };
 
-  // nf3 から取得した相手先発の詳細統計（Phase 2）
+  // nf3 から取得した相手先発の詳細統計（Phase 2 + Phase 3）
   // 数値が無いと AI が一般論に逃げるので、ある時だけ強調して投入する
   const nf3 = f.opponentPitcherNf3;
   let opPitcherBlock = '';
@@ -312,7 +312,40 @@ function buildPreviewPrompt(facts, pastGames) {
   - 完投${s.completeGames ?? '?'} / 完封${s.shutouts ?? '?'} / 勝率${s.winPct ?? '?'}
 
 この投手の数値から「何を仕掛けるべきか」を必ず1つ tactical_advice に入れること。
-（例：QS率が高い → 序盤勝負 / 与四球が多い → 早打ちせず球数稼ぐ / 被本塁打が多い → 一発を狙う / WHIP高い → ランナー貯めれば崩れる など）`;
+（例：QS率が高い → 序盤勝負 / 与四球が多い → 早打ちせず球数稼ぐ / 被本塁打が多い → 一発を狙う / WHIP高い → ランナー貯めれば崩れる など）
+
+【球種・投手タイプの記述】
+あなたが ${nf3.name} の球種・投球スタイルを高い確度で知っている場合は、
+key_players の reason または tactical_advice の中で球種特徴に触れること。
+- 例：「${nf3.name} はストレート＋カットボール＋カーブが軸の左腕。インコース突きが武器」
+- 例：「フォーク主体の奪三振タイプ。低めを振らないことが攻略のカギ」
+- 数値からも特徴は読める（K/9 高 → 奪三振型 / BB/9 低 → 制球型 / HR/9 高 → 球が高めに集まる）
+- 知らない投手・自信がない場合は球種に触れないこと（創作禁止）`;
+
+    // Phase 3: 対カープ打者 通算成績
+    if (Array.isArray(nf3.vsCarp) && nf3.vsCarp.length > 0) {
+      // 打席数で並べて、有意なサンプルがある選手だけ AI に渡す
+      const meaningful = nf3.vsCarp.filter(b => (b.pa ?? 0) >= 3);
+      meaningful.sort((a, b) => (b.pa ?? 0) - (a.pa ?? 0));
+      const top = meaningful.slice(0, 12);
+      if (top.length > 0) {
+        const lines = top.map(b => {
+          const avg = b.avg || '.000';
+          const ops = (b.h != null && b.ab != null && b.ab > 0) ? `(${b.h}-${b.ab})` : '';
+          return `  - ${b.name}: 通算${b.pa}打席 打率${avg} ${ops} / 本${b.hr ?? 0} 三振${b.k ?? 0} 四球${b.bb ?? 0}`;
+        }).join('\n');
+        opPitcherBlock += `
+
+【カープ打者 vs ${nf3.name} 通算成績】
+(打席数3以上の打者のみ、打席数順)
+${lines}
+
+この相性データを必ず以下に活用すること:
+  1) tactical_advice の1つに「相性の悪い打者を○○で起用」「打率高い打者を中軸に」など具体的に
+  2) key_matchups に4〜6人ピックアップして所感を付ける（相性○な打者と×な打者を両方入れる）
+  3) 通算0安打 (0-X) の選手や被本塁打のある選手は特に強調`;
+      }
+    }
   }
 
   return `あなたは広島東洋カープを30年見続けてる、戦術にも詳しいベテランファンです。
@@ -363,7 +396,15 @@ ${JSON.stringify(pastSummaries, null, 2)}
     "predicted_flow": "<100字以内、序盤・中盤・終盤の試合展開予想。具体数値根拠で>",
     "carp_strength": "<60字以内、今のカープの強み。直近データの数値で>",
     "carp_weakness": "<60字以内、今の課題。直近データの数値で>",
-    "opponent_threat": "<60字以内、対戦相手の脅威要素>"
+    "opponent_threat": "<60字以内、対戦相手の脅威要素>",
+    "key_matchups": [
+      {
+        "batter": "<カープ打者名（vsCarp データに居る選手のみ）>",
+        "stat": "<例：通算12-3 .250 (本1)>",
+        "verdict": "<相性 'good' | 'bad' | 'even' のどれか>",
+        "note": "<60字以内、相性所感。例：'三振率高め、初球からファール狙い'>"
+      }
+    ]
   }
 }
 
@@ -379,9 +420,10 @@ ${JSON.stringify(pastSummaries, null, 2)}
 - watchpoints は 3〜4 個（具体性最優先）
 - key_players は 2〜3 名（直近データに名前が出てきた選手限定）
 - tactical_advice は 2〜3 個（攻撃方針・継投・采配の具体提案）
+- key_matchups は 4〜6 名（vsCarp データがある時のみ。無ければ空配列）
 - 「だろう」「ありそう」など断定しすぎない口調
 - ファン目線で熱量ある書き方（「カープが」「うちが」）
-- 創作禁止（直近データに無い選手名・出来事を書かない）
+- 創作禁止（直近データ・vsCarp データに無い選手名・成績を書かない）
 - AIの一般知識による選手評価は最小限に。直近データから引き出せる範囲で
 - carpStarter / opStarter が null の場合は先発投手を断定しない
 `;
