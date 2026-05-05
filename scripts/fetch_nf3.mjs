@@ -71,6 +71,11 @@ function namesMatch(a, b) {
   // 床田 / 床田寛樹 のような部分一致
   if (na.length >= 2 && nb.includes(na)) return true;
   if (nb.length >= 2 && na.includes(nb)) return true;
+  // 苗字1文字（「東」「林」「森」など）対応:
+  //   検索語が短くてもリスト名の「先頭一致」ならOK（"東" → "東克樹"）
+  //   苗字は通常先頭にあるので startsWith に絞って誤マッチを防ぐ
+  if (nb.length === 1 && na.startsWith(nb)) return true;
+  if (na.length === 1 && nb.startsWith(na)) return true;
   return false;
 }
 
