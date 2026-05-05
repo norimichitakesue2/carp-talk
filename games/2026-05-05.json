@@ -3,12 +3,12 @@
   "game_date": "2026-05-05",
   "away_team": "広島",
   "home_team": "DeNA",
-  "away_score": null,
-  "home_score": null,
+  "away_score": 0,
+  "home_score": 0,
   "venue": "横浜スタジアム",
   "start_time": "14:00",
-  "status": "scheduled",
-  "current_inning": "",
+  "status": "live",
+  "current_inning": "1回裏",
   "result_label": "",
   "away_pitcher": "床田",
   "home_pitcher": "東",
@@ -114,7 +114,34 @@
       }
     ]
   },
-  "innings": {},
+  "innings": {
+    "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hiroshima_hits": 0,
+    "hiroshima_errors": 0,
+    "away": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "away_hits": 0,
+    "away_errors": 0
+  },
   "pitchers": [],
   "moments": [],
   "players": [
@@ -224,8 +251,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-05T05:00:39.660Z",
-    "generatedAt": "2026-05-05T05:00:39.670Z",
+    "sourceFetchedAt": "2026-05-05T05:15:28.044Z",
+    "generatedAt": "2026-05-05T05:15:28.056Z",
     "sourceUrl": "https://npb.jp/scores/2026/0505/db-c-07/"
   }
 }
