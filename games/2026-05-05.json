@@ -8,7 +8,7 @@
   "venue": "横浜スタジアム",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "10回表",
+  "current_inning": "11回表",
   "result_label": "",
   "away_pitcher": "床田",
   "home_pitcher": "東",
@@ -125,6 +125,7 @@
       0,
       2,
       1,
+      0,
       0
     ],
     "hiroshima_hits": 9,
@@ -139,9 +140,10 @@
       0,
       0,
       0,
+      0,
       0
     ],
-    "away_hits": 7,
+    "away_hits": 8,
     "away_errors": 1
   },
   "pitchers": [],
@@ -253,8 +255,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-05T08:00:42.893Z",
-    "generatedAt": "2026-05-05T08:00:42.905Z",
+    "sourceFetchedAt": "2026-05-05T08:15:27.675Z",
+    "generatedAt": "2026-05-05T08:15:27.687Z",
     "sourceUrl": "https://npb.jp/scores/2026/0505/db-c-07/"
   }
 }
