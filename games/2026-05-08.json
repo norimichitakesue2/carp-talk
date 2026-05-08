@@ -3,12 +3,12 @@
   "game_date": "2026-05-08",
   "away_team": "ヤクルト",
   "home_team": "広島",
-  "away_score": 2,
-  "home_score": 0,
+  "away_score": 3,
+  "home_score": 1,
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "4回表",
+  "current_inning": "8回表",
   "result_label": "",
   "away_pitcher": "高梨",
   "home_pitcher": "森下",
@@ -119,27 +119,27 @@
       0,
       0,
       0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0
     ],
-    "hiroshima_hits": 2,
-    "hiroshima_errors": 0,
+    "hiroshima_hits": 5,
+    "hiroshima_errors": 1,
     "away": [
       1,
       0,
       0,
       1,
-      0,
+      1,
       0,
       0,
       0,
       0
     ],
-    "away_hits": 5,
+    "away_hits": 8,
     "away_errors": 1
   },
   "pitchers": [],
@@ -251,8 +251,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-08T10:05:08.332Z",
-    "generatedAt": "2026-05-08T10:05:08.345Z",
+    "sourceFetchedAt": "2026-05-08T11:39:26.562Z",
+    "generatedAt": "2026-05-08T11:39:26.574Z",
     "sourceUrl": "https://npb.jp/scores/2026/0508/c-s-06/"
   }
 }
