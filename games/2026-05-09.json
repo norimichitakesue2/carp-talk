@@ -3,12 +3,12 @@
   "game_date": "2026-05-09",
   "away_team": "ヤクルト",
   "home_team": "広島",
-  "away_score": null,
-  "home_score": null,
+  "away_score": 2,
+  "home_score": 0,
   "venue": "マツダスタジアム",
-  "start_time": "14:00",
-  "status": "scheduled",
-  "current_inning": "",
+  "start_time": "14:01",
+  "status": "live",
+  "current_inning": "2回表",
   "result_label": "",
   "away_pitcher": "松本健",
   "home_pitcher": "岡本",
@@ -77,7 +77,34 @@
     "opponent_threat": "松本健吾のフォーク（K率42.3%）と安定したQS率75%。特に追い込んでからの三振奪取能力が高く、二死からの得点機を潰されるリスクがある。",
     "key_matchups": []
   },
-  "innings": {},
+  "innings": {
+    "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hiroshima_hits": 0,
+    "hiroshima_errors": 0,
+    "away": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "away_hits": 2,
+    "away_errors": 0
+  },
   "pitchers": [],
   "moments": [],
   "players": [
@@ -187,8 +214,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-09T04:56:37.749Z",
-    "generatedAt": "2026-05-09T04:56:37.773Z",
+    "sourceFetchedAt": "2026-05-09T05:29:48.214Z",
+    "generatedAt": "2026-05-09T05:29:48.226Z",
     "sourceUrl": "https://npb.jp/scores/2026/0509/c-s-07/"
   }
 }
