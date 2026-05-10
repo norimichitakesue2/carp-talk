@@ -3,12 +3,12 @@
   "game_date": "2026-05-10",
   "away_team": "ヤクルト",
   "home_team": "広島",
-  "away_score": null,
-  "home_score": null,
+  "away_score": 0,
+  "home_score": 0,
   "venue": "マツダスタジアム",
   "start_time": "13:30",
-  "status": "scheduled",
-  "current_inning": "",
+  "status": "live",
+  "current_inning": "2回表",
   "result_label": "",
   "away_pitcher": "石原",
   "home_pitcher": "赤木",
@@ -77,7 +77,34 @@
     "opponent_threat": "ヤクルトは直近2試合でカープ戦に計8得点。序盤〜中盤に得点を重ねる攻撃パターンが確立されており、先制を許すと試合が難しくなる。",
     "key_matchups": []
   },
-  "innings": {},
+  "innings": {
+    "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "hiroshima_hits": 0,
+    "hiroshima_errors": 0,
+    "away": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "away_hits": 0,
+    "away_errors": 0
+  },
   "pitchers": [],
   "moments": [],
   "players": [
@@ -187,8 +214,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-10T04:16:48.044Z",
-    "generatedAt": "2026-05-10T04:16:48.052Z",
+    "sourceFetchedAt": "2026-05-10T04:54:32.680Z",
+    "generatedAt": "2026-05-10T04:54:32.692Z",
     "sourceUrl": "https://npb.jp/scores/2026/0510/c-s-08/"
   }
 }
