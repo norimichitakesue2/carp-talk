@@ -4,11 +4,11 @@
   "away_team": "ヤクルト",
   "home_team": "広島",
   "away_score": 0,
-  "home_score": 1,
+  "home_score": 2,
   "venue": "マツダスタジアム",
   "start_time": "13:30",
   "status": "live",
-  "current_inning": "3回裏",
+  "current_inning": "4回裏",
   "result_label": "",
   "away_pitcher": "石原",
   "home_pitcher": "赤木",
@@ -82,14 +82,14 @@
       0,
       1,
       0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0
     ],
-    "hiroshima_hits": 2,
+    "hiroshima_hits": 5,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -214,8 +214,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-10T05:23:51.089Z",
-    "generatedAt": "2026-05-10T05:23:51.100Z",
+    "sourceFetchedAt": "2026-05-10T05:45:43.890Z",
+    "generatedAt": "2026-05-10T05:45:43.902Z",
     "sourceUrl": "https://npb.jp/scores/2026/0510/c-s-08/"
   }
 }
