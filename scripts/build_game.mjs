@@ -72,14 +72,43 @@ function assembleGameJson(date, factsRoot, generated, prev) {
   }
 
   // 投手リスト
+  // 注意: 「先発」「勝利投手」「敗戦投手」「セーブ投手」は別物。
+  // サヨナラ試合では 勝利/敗戦投手は中継ぎ・抑えになることもあるので、
+  // 先発を別エントリで持ち、勝/敗/Sは結果として記録する。
   const pitchers = [];
   const pp = f.pitchers || {};
   if (isFinal) {
     const winnerTeam = (homeScore > awayScore) ? homeTeam : awayTeam;
     const loserTeam  = (homeScore > awayScore) ? awayTeam : homeTeam;
-    if (pp.winningPitcher) pitchers.push({ team: winnerTeam, role: '先発', name: pp.winningPitcher, result: 'win' });
-    if (pp.losingPitcher)  pitchers.push({ team: loserTeam, role: '先発', name: pp.losingPitcher,  result: 'loss' });
-    if (pp.savePitcher)    pitchers.push({ team: winnerTeam, role: '抑え', name: pp.savePitcher,   result: 'save' });
+    const carpTeam = carpIsHome ? homeTeam : awayTeam;
+    const opTeam   = carpIsHome ? awayTeam : homeTeam;
+
+    // 1. 先発投手 (本物の先発)
+    if (pp.carpStarter) pitchers.push({ team: carpTeam, role: '先発', name: pp.carpStarter, result: '' });
+    if (pp.opStarter)   pitchers.push({ team: opTeam,   role: '先発', name: pp.opStarter,   result: '' });
+
+    // 2. 勝/敗/S は別エントリ。先発がそのまま勝敗投手なら role を「先発 勝」のように合成
+    const composeRole = (name, base) => {
+      if (name && (name === pp.carpStarter || name === pp.opStarter)) {
+        // 先発エントリの result を上書きしてマージ
+        const ent = pitchers.find(p => p.name === name && p.role === '先発');
+        if (ent) ent.result = base;
+        return null; // 別エントリは追加しない
+      }
+      return base;
+    };
+    if (pp.winningPitcher) {
+      const r = composeRole(pp.winningPitcher, 'win');
+      if (r) pitchers.push({ team: winnerTeam, role: '勝', name: pp.winningPitcher, result: 'win' });
+    }
+    if (pp.losingPitcher) {
+      const r = composeRole(pp.losingPitcher, 'loss');
+      if (r) pitchers.push({ team: loserTeam, role: '敗', name: pp.losingPitcher, result: 'loss' });
+    }
+    if (pp.savePitcher) {
+      const r = composeRole(pp.savePitcher, 'save');
+      if (r) pitchers.push({ team: winnerTeam, role: 'S', name: pp.savePitcher, result: 'save' });
+    }
   }
 
   // 試合前 / 試合中の場合は previous JSON から AI生成フィールドを保持（マージ）
