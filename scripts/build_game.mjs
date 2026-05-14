@@ -402,7 +402,7 @@ async function main() {
   // 失敗しても build 自体は成功扱い（調子表示は付加機能）。
   try {
     const formScript = path.join(__dirname, 'build_recent_form.mjs');
-    const r = runNode(formScript, [date, '--days', '7']);
+    const r = runNode(formScript, [date, '--games', '6']);
     if (r.status === 0) {
       console.error('[build_game] recent_form.json updated');
     } else {

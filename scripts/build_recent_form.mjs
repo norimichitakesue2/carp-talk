@@ -1,13 +1,14 @@
-// 直近N日のカープ各打者の打撃成績を集計して「調子」を算出する。
+// 直近N試合のカープ各打者の打撃成績を集計して「調子」を算出する。
 // games/YYYY-MM-DD.json の carp_batting フィールドを読んで合算する。
 // 出力: games/recent_form.json
 //
 // 使い方:
-//   node scripts/build_recent_form.mjs [基準日 YYYY-MM-DD] [--days N] [--dry]
-//   基準日省略時は今日(JST)。--days 省略時は 7。
+//   node scripts/build_recent_form.mjs [基準日 YYYY-MM-DD] [--games N] [--dry]
+//   基準日省略時は今日(JST)。--games 省略時は 6。
+//   日数ではなく「実際に試合があった直近N試合」を集計（オフ日に左右されない）。
 //
-// 調子アイコン (パワプロ風 5段階) は週間OPS換算で判定。
-// サンプル(打席数)が少ない場合は「判定不能」にする。
+// 調子アイコン (パワプロ風 5段階) は打率/防御率ベースで判定。
+// サンプル(打数/投球回)が少ない場合は「様子見」にする。
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -17,10 +18,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
 const GAMES_DIR = path.join(REPO_ROOT, 'games');
 
-const argDays = (() => {
-  const i = process.argv.indexOf('--days');
-  if (i >= 0 && process.argv[i + 1]) return parseInt(process.argv[i + 1], 10) || 7;
-  return 7;
+// 直近何試合を集計対象にするか（--games N、デフォルト6）
+const argGames = (() => {
+  const i = process.argv.indexOf('--games');
+  if (i >= 0 && process.argv[i + 1]) return parseInt(process.argv[i + 1], 10) || 6;
+  return 6;
 })();
 const dry = process.argv.includes('--dry');
 const baseDate = (() => {
@@ -31,12 +33,6 @@ const baseDate = (() => {
   const jst = new Date(now.getTime() + 9 * 3600 * 1000);
   return jst.toISOString().slice(0, 10);
 })();
-
-function addDays(dateStr, n) {
-  const d = new Date(dateStr + 'T00:00:00Z');
-  d.setUTCDate(d.getUTCDate() + n);
-  return d.toISOString().slice(0, 10);
-}
 
 // 調子判定: 実打率 + 本塁打/打点の小ボーナスで5段階。
 // サンプル(打数)が少ない選手のノイズ対策:
@@ -98,24 +94,43 @@ function outsToIp(outs) {
 }
 
 async function main() {
-  const startDate = addDays(baseDate, -(argDays - 1));
-  console.error(`[recent_form] Aggregating ${startDate} 〜 ${baseDate} (${argDays}日間)`);
+  // games ディレクトリから「基準日以前で carp_batting を持つ試合」を新しい順に列挙し、
+  // 直近 argGames 試合だけを集計対象にする（オフ日に左右されない試合数ベース）。
+  let allFiles;
+  try { allFiles = await fs.readdir(GAMES_DIR); }
+  catch { allFiles = []; }
+  const candidateDates = allFiles
+    .filter((fn) => /^\d{4}-\d{2}-\d{2}\.json$/.test(fn))
+    .map((fn) => fn.replace('.json', ''))
+    .filter((d) => d <= baseDate)
+    .sort()
+    .reverse();   // 新しい順
 
-  // 対象期間の games JSON を読む
+  // 直近 argGames 試合（carp_batting を持つもの）を収集
+  const targetGames = [];   // { date, json }
+  for (const date of candidateDates) {
+    if (targetGames.length >= argGames) break;
+    let g;
+    try { g = JSON.parse(await fs.readFile(path.join(GAMES_DIR, `${date}.json`), 'utf8')); }
+    catch { continue; }
+    const hasBatting = Array.isArray(g.carp_batting) && g.carp_batting.length > 0;
+    const hasPitching = Array.isArray(g.carp_pitching) && g.carp_pitching.length > 0;
+    if (!hasBatting && !hasPitching) continue;   // 試合データが無い日はスキップ
+    targetGames.push({ date, json: g });
+  }
+  // 古い順に並べ直す（集計順序は問わないが dates 表示用）
+  targetGames.reverse();
+
+  const rangeStart = targetGames.length ? targetGames[0].date : baseDate;
+  const rangeEnd   = targetGames.length ? targetGames[targetGames.length - 1].date : baseDate;
+  console.error(`[recent_form] Aggregating ${targetGames.length} games: ${rangeStart} 〜 ${rangeEnd} (直近${argGames}試合)`);
+
   const perPlayer = {};   // name -> {games, ab, r, h, rbi, sb, hr, dates:[]}
   const perPitcher = {};  // name -> {games, outs, er, r, h, hr, bb, k, pitches, win, loss, save, hold}
-  let scannedDays = 0;
   let foundGames = 0;
   let foundPitchingGames = 0;
 
-  for (let i = 0; i < argDays; i++) {
-    const date = addDays(startDate, i);
-    const p = path.join(GAMES_DIR, `${date}.json`);
-    let g;
-    try { g = JSON.parse(await fs.readFile(p, 'utf8')); }
-    catch { continue; }
-    scannedDays++;
-
+  for (const { date, json: g } of targetGames) {
     // --- 打者集計 ---
     const batting = g.carp_batting;
     if (Array.isArray(batting) && batting.length > 0) {
@@ -168,7 +183,7 @@ async function main() {
     }
   }
 
-  console.error(`[recent_form] Scanned ${scannedDays} days, found ${foundGames} batting / ${foundPitchingGames} pitching games`);
+  console.error(`[recent_form] Found ${foundGames} batting / ${foundPitchingGames} pitching games`);
 
   // 投手が代打・投手の打席で carp_batting に混ざるので、野手リストから除外する。
   // 期間中に1度でも登板した選手＝投手とみなす。
@@ -254,10 +269,9 @@ async function main() {
   const output = {
     generatedAt: new Date().toISOString(),
     baseDate,
-    days: argDays,
-    rangeStart: startDate,
-    rangeEnd: baseDate,
-    scannedDays,
+    games: argGames,           // 集計対象の試合数（直近N試合）
+    rangeStart,                // 実際に集計した最古の試合日
+    rangeEnd,                  // 実際に集計した最新の試合日
     foundGames,
     foundPitchingGames,
     mvp: mvp ? { name: mvp.name, summary: mvp.summary, form: mvp.form } : null,
