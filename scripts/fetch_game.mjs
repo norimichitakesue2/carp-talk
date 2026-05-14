@@ -569,16 +569,133 @@ function extractHomeRuns(battingArr) {
   return out;
 }
 
+// Yahoo!スポナビの日次スケジュールから「未来の試合」を組み立てる。
+// NPB は試合直前まで /scores/ リンクを作らないため、翌日プレビュー用に
+// Yahoo のスケジュール表（bb-scheduleTable）からカープ戦の基本情報を拾う。
+// 取得できるのは: home/awayチーム名・予告先発・開始時刻・球場。
+//
+// 注意: Yahoo のスケジュールページは「週表示」で複数日が並ぶ。
+// <th rowspan=N>5月15日（金）</th> が日付の区切りなので、
+// 行を上から走査して「現在の日付」を追跡し、指定日の行だけを見る。
+async function fetchYahooScheduledGame({ year, month, day }) {
+  const url = `https://baseball.yahoo.co.jp/npb/schedule/?selectDate=${year}-${month}-${day}`;
+  const html = await fetchWithUA(url);
+  const $ = cheerio.load(html);
+
+  // 指定日の表示形式: "5月15日" （先頭ゼロ無し）
+  const targetLabel = `${parseInt(month, 10)}月${parseInt(day, 10)}日`;
+
+  let result = null;
+  let currentDateMatches = false;
+
+  $('tr.bb-scheduleTable__row').each((_, row) => {
+    if (result) return;
+    const $row = $(row);
+    // この行に日付見出し(th[scope=row])があれば「現在の日付」を更新
+    const $dateTh = $row.find('th[scope="row"]').first();
+    if ($dateTh.length) {
+      const label = $dateTh.text().replace(/\s+/g, '');
+      currentDateMatches = label.startsWith(targetLabel);
+    }
+    if (!currentDateMatches) return;
+
+    // 指定日の行内で grid を探す
+    const $g = $row.find('.bb-scheduleTable__grid').first();
+    if (!$g.length) return;
+    const homeTeam = $g.find('.bb-scheduleTable__homeName').text().replace(/\s+/g, '');
+    const awayTeam = $g.find('.bb-scheduleTable__awayName').text().replace(/\s+/g, '');
+    if (!/広島|カープ/.test(homeTeam + awayTeam)) return;
+
+    const stripYokoku = (s) => (s || '').replace(/\s+/g, '').replace(/^\(予\)/, '').replace(/^\((勝|敗|Ｓ|S|H)\)/, '');
+    const homeStarter = stripYokoku($g.find('.bb-scheduleTable__homePlayer .bb-scheduleTable__player').first().text());
+    const awayStarter = stripYokoku($g.find('.bb-scheduleTable__awayPlayer .bb-scheduleTable__player').first().text());
+    const startTime = $g.find('.bb-scheduleTable__info span').first().text().trim();
+    const venue = $row.find('td.bb-scheduleTable__data--stadium').first().text().trim();
+    const gidHref = $g.find('a[href*="/npb/game/"]').attr('href') || '';
+    const gidMatch = gidHref.match(/\/npb\/game\/(\d+)/);
+
+    const carpIsHome = /広島|カープ/.test(homeTeam);
+    result = {
+      homeTeam, awayTeam, homeStarter, awayStarter,
+      startTime: startTime && startTime !== '-' ? startTime : '',
+      venue: venue || '',
+      gameId: gidMatch ? gidMatch[1] : null,
+      carpIsHome,
+    };
+  });
+  return result;
+}
+
+// Yahoo スケジュール情報から「試合前(scheduled)」の facts オブジェクトを組み立てる。
+// box/roster/playbyplay は試合がまだ無いので空。preview 生成に必要な最小限のみ。
+function buildScheduledFactsFromYahoo(y) {
+  const carpStarter = y.carpIsHome ? y.homeStarter : y.awayStarter;
+  const opStarter   = y.carpIsHome ? y.awayStarter : y.homeStarter;
+  return {
+    segment: y.gameId ? `yahoo-${y.gameId}` : 'yahoo-scheduled',
+    status: 'scheduled',
+    currentInning: null,
+    venue: y.venue || '',
+    startTime: y.startTime || '',
+    endTime: '',
+    gameParts: { homeTeam: y.homeTeam, awayTeam: y.awayTeam, homeCode: y.carpIsHome ? 'c' : '?' },
+    carpIsHome: y.carpIsHome,
+    lineScore: {
+      away: { team: y.awayTeam },
+      home: { team: y.homeTeam },
+    },
+    pitchers: {
+      carpStarter: carpStarter || null,
+      opStarter: opStarter || null,
+      winningPitcher: null,
+      losingPitcher: null,
+      savePitcher: null,
+      carpAll: [],
+      opAll: [],
+      carpStarterSource: 'yahoo',
+    },
+    homeRuns: [],
+    carpLineup: [],
+    opponentLineup: [],
+    carpRoster: [],
+    opponentRoster: [],
+    playByPlay: [],
+  };
+}
+
 // ===== エントリポイント =====
 async function main() {
   const dateStr = process.argv[2] || new Date().toISOString().slice(0, 10);
   const parts = parseDate(dateStr);
 
   const segment = await findCarpGameSegment(parts);
+
+  // NPB に試合セグメントが無い場合 → Yahoo の予定から「試合前」データを試みる
+  // （翌日プレビュー用。NPB は試合直前までリンクを作らないため）
   if (!segment) {
-    console.error(`[fetch_game] No Carp game found for ${dateStr}`);
-    process.exit(2);
+    console.error(`[fetch_game] No NPB segment for ${dateStr}, trying Yahoo schedule...`);
+    let yahooGame = null;
+    try {
+      yahooGame = await fetchYahooScheduledGame(parts);
+    } catch (e) {
+      console.error(`[fetch_game] Yahoo schedule fetch failed: ${e.message}`);
+    }
+    if (!yahooGame) {
+      console.error(`[fetch_game] No Carp game found for ${dateStr} (NPB+Yahoo)`);
+      process.exit(2);
+    }
+    console.error(`[fetch_game] Yahoo scheduled game: ${yahooGame.homeTeam} vs ${yahooGame.awayTeam} (先発 ${yahooGame.homeStarter}/${yahooGame.awayStarter})`);
+    const facts = buildScheduledFactsFromYahoo(yahooGame);
+    console.log(JSON.stringify({
+      date: dateStr,
+      segment: facts.segment,
+      source: 'yahoo.co.jp',
+      fetchedAt: new Date().toISOString(),
+      facts,
+    }, null, 2));
+    return;
   }
+
   console.error(`[fetch_game] Found game: ${segment}`);
 
   await sleep(SLEEP_MS);

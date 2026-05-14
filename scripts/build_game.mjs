@@ -209,7 +209,10 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     _meta: {
       sourceFetchedAt: factsRoot.fetchedAt,
       generatedAt: new Date().toISOString(),
-      sourceUrl: `https://npb.jp/scores/${date.slice(0,4)}/${date.slice(5,7)}${date.slice(8,10)}/${factsRoot.segment}/`,
+      // Yahoo 由来（未来の試合プレビュー）は NPB の scores URL が存在しないため出さない
+      sourceUrl: (factsRoot.source === 'yahoo.co.jp' || String(factsRoot.segment).startsWith('yahoo-'))
+        ? `https://baseball.yahoo.co.jp/npb/schedule/?selectDate=${date}`
+        : `https://npb.jp/scores/${date.slice(0,4)}/${date.slice(5,7)}${date.slice(8,10)}/${factsRoot.segment}/`,
     },
   };
 }
