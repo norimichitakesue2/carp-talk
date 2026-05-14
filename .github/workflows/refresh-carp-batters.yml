@@ -43,15 +43,18 @@ jobs:
       - name: Refresh carp batter stats from nf3
         run: node scripts/refresh_carp_batters.mjs
 
+      - name: Refresh Carp farm stats from NPB
+        run: node scripts/fetch_npb_farm.mjs || true
+
       - name: Commit changes (if any)
         run: |
           git config user.name "carp-talk-bot"
           git config user.email "carp-talk-bot@users.noreply.github.com"
-          if [ -z "$(git status --porcelain games/nf3_carp_batters.json)" ]; then
+          if [ -z "$(git status --porcelain games/nf3_carp_batters.json games/npb_farm_carp.json)" ]; then
             echo "No changes."
           else
-            git add games/nf3_carp_batters.json
-            git commit -m "data: refresh carp batter stats from nf3"
+            git add games/nf3_carp_batters.json games/npb_farm_carp.json
+            git commit -m "data: refresh carp batter + farm stats"
             for i in 1 2 3; do
               git pull --rebase origin main && git push origin HEAD:main && break
               sleep 5

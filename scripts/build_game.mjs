@@ -488,6 +488,14 @@ async function main() {
         console.error(`[build_game] recent_form loaded: ${rf.players.length} batters (${rf.rangeStart}〜${rf.rangeEnd})`);
       }
     } catch { /* recent_form がまだ無い場合はスキップ */ }
+    // (d) カープ2軍（ファーム）成績 — コールアップ提案用
+    try {
+      const farm = JSON.parse(await fs.readFile(path.join(GAMES_DIR, 'npb_farm_carp.json'), 'utf8'));
+      if (farm && (farm.batters?.length || farm.pitchers?.length)) {
+        facts.facts.farmStats = farm;
+        console.error(`[build_game] farm stats loaded: 打者${farm.batters?.length || 0}人 / 投手${farm.pitchers?.length || 0}人`);
+      }
+    } catch { /* npb_farm_carp.json がまだ無い場合はスキップ */ }
   }
 
   // STEP3.5: nf3 から相手先発の詳細統計を取得（preview生成時のみ・取得失敗しても継続）
