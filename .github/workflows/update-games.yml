@@ -74,7 +74,7 @@ jobs:
             echo "value=${JST_DATE}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Build game data
+      - name: Build game data (today)
         id: build
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -89,8 +89,24 @@ jobs:
             exit $STATUS
           fi
 
+      - name: Build game data (tomorrow preview)
+        # 翌日の試合がスケジュール済みなら preview を先に生成しておく
+        # （前日からサイトで「明日の見どころ」が見られるように）
+        # 失敗・試合なしでもワークフロー全体は止めない
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set +e
+          JST_TOMORROW=$(TZ='Asia/Tokyo' date -d '+1 day' +%Y-%m-%d)
+          echo "Building tomorrow: ${JST_TOMORROW}"
+          node scripts/build_game.mjs "${JST_TOMORROW}" 2>&1
+          echo "tomorrow build exit: $?"
+          exit 0
+
       - name: Commit changes (if any)
-        if: steps.build.outputs.exit_code == '0'
+        # today が exit 0/2 のどちらでも、games/ に変更があればコミットする
+        # （today が試合なし(=2)でも tomorrow preview が生成されている可能性があるため）
+        if: steps.build.outputs.exit_code == '0' || steps.build.outputs.exit_code == '2'
         run: |
           git config user.name "carp-talk-bot"
           git config user.email "carp-talk-bot@users.noreply.github.com"
@@ -101,7 +117,7 @@ jobs:
             echo "Changes detected:"
             git status --porcelain games/
             git add games/
-            git commit -m "data: auto-update ${{ steps.date.outputs.value }}"
+            git commit -m "data: auto-update ${{ steps.date.outputs.value }} (+tomorrow)"
             # Push with retry (rebase in case main moved)
             for i in 1 2 3; do
               git pull --rebase origin main && git push origin HEAD:main && break
