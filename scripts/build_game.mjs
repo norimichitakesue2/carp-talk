@@ -60,6 +60,79 @@ async function findLatestRoster(beforeDate) {
   return null;
 }
 
+// 指定日より前の games を新しい順に読む（共通ヘルパー）
+async function listPastGames(beforeDate) {
+  let files;
+  try { files = await fs.readdir(GAMES_DIR); } catch { return []; }
+  return files
+    .filter((fn) => /^\d{4}-\d{2}-\d{2}\.json$/.test(fn))
+    .map((fn) => fn.replace('.json', ''))
+    .filter((d) => d < beforeDate)
+    .sort()
+    .reverse();
+}
+
+// 相手先発投手の「前回カープ対戦」を games archive から探す。
+// その試合での相手先発（広島側でない away/home_pitcher）が今日の相手先発と一致する
+// 最新の final 試合を返す。
+async function findLastMatchup(opponentStarter, beforeDate) {
+  if (!opponentStarter) return null;
+  const target = opponentStarter.replace(/\s+/g, '');
+  for (const d of await listPastGames(beforeDate)) {
+    let g;
+    try { g = JSON.parse(await fs.readFile(path.join(GAMES_DIR, `${d}.json`), 'utf8')); }
+    catch { continue; }
+    if (g.status !== 'final') continue;
+    const carpIsHome = g.home_team === '広島';
+    const opStarter = (carpIsHome ? g.away_pitcher : g.home_pitcher) || '';
+    if (opStarter.replace(/\s+/g, '') !== target) continue;
+    // 一致：その試合のカープ打撃成績と結果を返す
+    const carpScore = carpIsHome ? g.home_score : g.away_score;
+    const opScore   = carpIsHome ? g.away_score : g.home_score;
+    return {
+      date: g.game_date,
+      opponent: carpIsHome ? g.away_team : g.home_team,
+      venue: g.venue || '',
+      carpScore, opScore,
+      result: g.result_label || '',
+      carpWon: (carpScore != null && opScore != null) ? carpScore > opScore : null,
+      // その試合のカープ各打者成績（打順付き）
+      carpBatting: (g.carp_batting || []).map((b) => ({
+        name: b.name, line: b.line ?? null,
+        ab: b.ab ?? 0, h: b.h ?? 0, hr: b.hr ?? 0, rbi: b.rbi ?? 0,
+        k: b.k ?? 0, bb: b.bb ?? 0,
+        double: b.double ?? 0, triple: b.triple ?? 0,
+      })),
+    };
+  }
+  return null;
+}
+
+// 直近 n 試合のカープ打順（1〜9番）を抽出する。
+// carp_batting の line でソートして [{line, name, pos}] にする。
+async function getRecentLineups(beforeDate, n = 3) {
+  const out = [];
+  for (const d of await listPastGames(beforeDate)) {
+    if (out.length >= n) break;
+    let g;
+    try { g = JSON.parse(await fs.readFile(path.join(GAMES_DIR, `${d}.json`), 'utf8')); }
+    catch { continue; }
+    if (g.status !== 'final') continue;
+    const batting = (g.carp_batting || []).filter((b) => b.line != null);
+    if (batting.length === 0) continue;
+    // line でソートし、各打順の先発（最初に出てきた選手）を採用
+    const byLine = {};
+    for (const b of batting) {
+      if (b.line >= 1 && b.line <= 9 && !byLine[b.line]) {
+        byLine[b.line] = { line: b.line, name: b.name, pos: b.pos || '' };
+      }
+    }
+    const order = Object.values(byLine).sort((a, b) => a.line - b.line);
+    if (order.length >= 5) out.push({ date: g.game_date, order });
+  }
+  return out;
+}
+
 function assembleGameJson(date, factsRoot, generated, prev) {
   const f = factsRoot.facts;
   const ls = f.lineScore || {};
@@ -215,7 +288,8 @@ function assembleGameJson(date, factsRoot, generated, prev) {
       ? (f.carpLineup || [])
           .filter((p) => p.ab != null && p.ab >= 0)
           .map((p) => ({
-            name: p.name, ab: p.ab ?? 0, r: p.r ?? 0, h: p.h ?? 0,
+            name: p.name, pos: p.pos || '', line: p.line ?? null,
+            ab: p.ab ?? 0, r: p.r ?? 0, h: p.h ?? 0,
             rbi: p.rbi ?? 0, sb: p.sb ?? 0, hr: p.hr ?? 0,
             k: p.k ?? 0, bb: p.bb ?? 0,
             double: p.double ?? 0, triple: p.triple ?? 0,
@@ -340,6 +414,43 @@ async function main() {
     } catch (e) {
       console.error(`[build_game] No carp batter cache available (${e.code || e.message})`);
     }
+  }
+
+  // STEP3.45: Phase 8 — 前回対戦の振り返り・直近打順・選手の調子を facts に注入
+  if (shouldRunAi && (status === 'scheduled' || status === 'live')) {
+    // (a) 相手先発との前回カープ対戦
+    const opStarterName = f.pitchers?.opStarter || '';
+    if (opStarterName) {
+      try {
+        const lastMatchup = await findLastMatchup(opStarterName, date);
+        if (lastMatchup) {
+          facts.facts.lastMatchup = lastMatchup;
+          console.error(`[build_game] last matchup vs ${opStarterName}: ${lastMatchup.date} (${lastMatchup.result})`);
+        } else {
+          console.error(`[build_game] no past matchup vs ${opStarterName} in archive`);
+        }
+      } catch (e) {
+        console.error(`[build_game] findLastMatchup error: ${e.message}`);
+      }
+    }
+    // (b) 直近3試合の打順
+    try {
+      const recentLineups = await getRecentLineups(date, 3);
+      if (recentLineups.length) {
+        facts.facts.recentLineups = recentLineups;
+        console.error(`[build_game] recent lineups: ${recentLineups.map(l => l.date).join(', ')}`);
+      }
+    } catch (e) {
+      console.error(`[build_game] getRecentLineups error: ${e.message}`);
+    }
+    // (c) 選手の調子（既存の recent_form.json を読む。STEP6 で更新される前の=昨日までの状態）
+    try {
+      const rf = JSON.parse(await fs.readFile(path.join(GAMES_DIR, 'recent_form.json'), 'utf8'));
+      if (rf?.players?.length) {
+        facts.facts.recentForm = rf;
+        console.error(`[build_game] recent_form loaded: ${rf.players.length} batters (${rf.rangeStart}〜${rf.rangeEnd})`);
+      }
+    } catch { /* recent_form がまだ無い場合はスキップ */ }
   }
 
   // STEP3.5: nf3 から相手先発の詳細統計を取得（preview生成時のみ・取得失敗しても継続）

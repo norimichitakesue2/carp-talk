@@ -435,6 +435,174 @@ ${lines}
     }
   }
 
+  // Phase 8a: 相手先発との前回カープ対戦の振り返り
+  let matchupBlock = '';
+  const lm = f.lastMatchup;
+  if (lm) {
+    const bat = (lm.carpBatting || [])
+      .filter(b => b.line != null)
+      .sort((a, b) => (a.line ?? 99) - (b.line ?? 99))
+      .map(b => `  ${b.line}番 ${b.name}: ${b.ab}打数${b.h}安打` +
+        (b.hr ? ` ${b.hr}本` : '') + (b.rbi ? ` ${b.rbi}打点` : '') +
+        (b.double ? ` ${b.double}二塁打` : '') +
+        (b.bb ? ` ${b.bb}四球` : '') + (b.k ? ` ${b.k}三振` : ''))
+      .join('\n');
+    const teamH = (lm.carpBatting || []).reduce((s, b) => s + (b.h ?? 0), 0);
+    const teamAb = (lm.carpBatting || []).reduce((s, b) => s + (b.ab ?? 0), 0);
+    const teamK = (lm.carpBatting || []).reduce((s, b) => s + (b.k ?? 0), 0);
+    matchupBlock = `
+
+【相手先発との前回カープ対戦（自軍アーカイブより）】
+${lm.date} @${lm.venue || '?'} : カープ ${lm.carpScore}-${lm.opScore} ${lm.opponent}（${lm.result || '?'}）
+チーム成績: ${teamAb}打数${teamH}安打 ${teamK}三振
+打者別:
+${bat}
+
+これを必ず以下に活用すること:
+  1) last_matchup フィールドに「前回どう抑えられた/打てたか」の振り返りを書く
+  2) やられていた場合（チーム打率が低い・三振が多い等）は具体的な対策を countermeasure に書く
+  3) 打てていた場合は「この形を継続」という方向で書く
+  4) 数字を必ず引用（「前回は${teamAb}打数${teamH}安打、${teamK}三振で封じられた」など）`;
+  } else {
+    matchupBlock = `
+
+【相手先発との前回カープ対戦】
+自軍アーカイブに過去対戦記録なし（今季初対戦、または対戦データ未蓄積）。
+→ last_matchup フィールドは is_first: true として「今季初対戦」と書く。
+  ただし nf3 の通算 vs カープ成績があればそちらで相性傾向に触れてよい。`;
+  }
+
+  // Phase 8b: 直近の打順 + 選手の調子（打順提案用）
+  let lineupBlock = '';
+  const recentLineups = f.recentLineups || [];
+  const rfPlayers = f.recentForm?.players || [];
+  if (recentLineups.length > 0) {
+    const lineupText = recentLineups.map(l =>
+      `  ${l.date}: ` + l.order.map(o => `${o.line}番${o.name}(${o.pos})`).join(' / ')
+    ).join('\n');
+
+    // 直近スタメン選手の名前セット（控え判定用）
+    const starterNames = new Set();
+    recentLineups.forEach(l => l.order.forEach(o => o.name && starterNames.add(o.name)));
+    const isStarterName = (name) => {
+      if (!name) return false;
+      for (const sn of starterNames) {
+        if (sn === name || name.startsWith(sn) || sn.startsWith(name)) return true;
+      }
+      return false;
+    };
+
+    // nf3 の vsカープ通算成績を名前で引けるように（控えの相性チェック用）
+    const vsCarpByName = {};
+    if (nf3 && Array.isArray(nf3.vsCarp)) {
+      nf3.vsCarp.forEach(b => { if (b.name) vsCarpByName[b.name] = b; });
+    }
+    const findVsCarp = (name) => {
+      if (vsCarpByName[name]) return vsCarpByName[name];
+      for (const k of Object.keys(vsCarpByName)) {
+        if (k.startsWith(name) || name.startsWith(k)) return vsCarpByName[k];
+      }
+      return null;
+    };
+
+    // スタメン組と控え組に分ける
+    const starterForm = rfPlayers.filter(p => isStarterName(p.name));
+    const benchForm   = rfPlayers.filter(p => !isStarterName(p.name));
+
+    const fmtForm = (p) => {
+      const vc = findVsCarp(p.name);
+      const vcText = vc ? ` | 対${nf3?.name || '相手'}通算 ${vc.h ?? 0}-${vc.ab ?? 0}(.${(vc.avg||'.000').replace(/^\./,'')})` : '';
+      return `  ${p.name}: ${p.form?.label || '?'} | OPS${p.ops || '?'} 出塁${p.obp || '?'} 長打${p.slg || '?'} 打率${p.avg || '?'} | ${p.hr || 0}本 ${p.rbi || 0}打点 ${p.bb || 0}四球 ${p.k || 0}三振${vcText}`;
+    };
+    const formText = starterForm.map(fmtForm).join('\n');
+    const benchText = benchForm.length
+      ? benchForm.map(fmtForm).join('\n')
+      : '  （該当なし）';
+
+    lineupBlock = `
+
+【直近の打順（直近3試合）】
+${lineupText}
+
+【スタメン組の調子（直近6試合）】
+${formText || '  （調子データなし）'}
+
+【控え組の調子（直近スタメンに居ない選手）】
+${benchText}
+
+lineup_proposal は以下の【手順】を順番通りに実行して組み立てること。
+手順を飛ばしたり、独自判断で「最適化」してはいけない。
+
+【打順提案の手順 — この順番で機械的に実行】
+
+STEP 0. 直近3試合の打順から「直近の基準打順」を決める（最新試合の打順を基準にする）。
+        この基準打順を配列としてコピーする。これが出発点。
+
+STEP 1. 各選手に調子ラベル（絶好調/好調/普通/不調/絶不調/様子見）を割り当てる。
+
+STEP 2. 「動かす対象」を特定する。動かす対象は次の2種類だけ:
+        (A) 絶不調・不調 なのに 中軸(3〜4番) または 上位(1〜2番) に居る選手 → 降格対象
+        (B) 絶好調・好調 なのに 下位(6〜8番) に埋もれている選手 → 昇格対象
+        ※ これ以外の選手は「動かさない」。特に:
+           - 好調以上で既に1〜5番に居る選手は【絶対に動かさない】（聖域）。
+             4番で好調の選手を「3番の方が役割に合う」等の理由で動かすのは厳禁。
+           - 普通・様子見の選手も、降格/昇格対象に押し出されない限り動かさない。
+        ※【厳守】降格対象(A)は原則すべて中軸/上位から外す。
+           「モンテロは下げたが小園は3番に放置」のような不整合・曖昧な理由はダメ。
+           ただし好調者不在で中軸が埋まらない場合は STEP 4.5 の手順に従い、
+           最も妥当な選手を明確な理由付きで中軸に残してよい（曖昧な放置だけが禁止）。
+
+STEP 3. 降格対象(A)を下位(6〜8番)へ移す。空いた枠を「空き枠」として記録。
+
+STEP 4. 【最優先】昇格対象(B)＝自軍の好調以上の選手を空き枠へ。
+        昇格対象(B)を、STEP3で空いた枠 or 「普通・様子見の選手が居る枠」へ入れる。
+        ※ 控え選手の起用より「自軍スタメンの好調選手の昇格」を必ず優先する。
+          絶好調の選手が6番に居るなら、まずその選手を中軸へ上げる（控え検討より先）。
+        【厳守】好調以上の選手が居る枠には絶対に入れない（玉突きで追い出さない）。
+        入れる枠を選ぶ時、複数候補があれば選手特性に合う方を選ぶ:
+          - 高出塁・俊足型 → なるべく1〜2番側
+          - 長打型 → なるべく4〜5番側
+        押し出された普通・様子見の選手は、空いている枠へスライド。
+
+STEP 4.5. 【中軸の空き枠を埋める】STEP4の後でも中軸(3〜5番)に空きが残り、
+        好調以上の選手で埋まらない場合（チーム全体が不調なケース）:
+          - 普通・様子見の選手、または相手投手と相性の良い選手を中軸に置く。
+          - その選手が本調子でない/絶不調でも「相手投手に通算◎」なら起用してよい。
+          - note には「他に適任者がおらず、○番にせざるを得ない」と正直に書く。
+            妥協・苦肉の策であることを率直に明示するトーンにする。
+            （例：「好調者不在で、大竹に通算.500と相性の良い小園を3番にせざるを得ない。
+              本調子ではないが現状ベストの選択」）
+          - 絶対NG：絶不調の選手を「絶不調だが維持」と曖昧な理由で中軸に放置すること。
+            置くなら「せざるを得ない」理由（相性・消去法）を明確に述べる。
+
+STEP 4.7. 【控え選手のスタメン起用提案】※最終手段。STEP4・4.5 を終えてもなお
+        「絶不調のスタメンが残っている」場合のみ検討する。
+        「控え組」の中に次のどちらかに該当する選手が居る場合のみ提案してよい:
+          (a) 絶好調 or 好調（打数8以上の確かなサンプル）
+          (b) 今日の相手投手との通算相性が明確に良い（通算打率高い・複数安打）
+        該当する控え選手が居て、かつスタメンに「絶不調」の選手が残っている場合:
+          → その絶不調スタメンを外し、控え選手をその打順あたりに起用提案。
+          → note に「控えだが○○の理由でスタメン提案」と明示する。
+        ※ 自軍スタメンの好調選手で空き枠が埋まるなら、控えは呼ばない。
+        ※ 該当者が居なければ何もしない。サンプル不足の控えは絶対に提案しない。
+
+STEP 5. 残った全選手は基準打順の位置のまま。1〜8番を埋めて order 配列にする。
+
+【各 note の書き方】
+- 動かした選手: なぜ動かしたかを調子の数値で書く
+  （「絶不調OPS.467のため中軸から7番へ降格」「絶好調OPS.981、長打型なので4番付近へ」）
+- 動かさなかった選手: 「直近の打順を維持」と簡潔に。好調なら「好調OPS.xxxで○番継続」
+- 役割にハマる選手が居ない枠は正直に「適任者不在、消去法で配置」と書く（嘘の理由を作らない）
+
+【各打順の役割（昇格先を選ぶ時の参考。既存選手の配置換え理由には使わない）】
+- 1〜2番: 出塁率・三振の少なさ重視  / 3番: OPS総合力  / 4〜5番: 長打率・打点重視
+
+【その他】
+- 1〜8番（野手）の order を出力。投手の打順は省略。
+- intro は「何を変えたか」を一言で。note(全体) は「あくまで一案」のトーン。
+- 変更が0〜1箇所でも構わない。チームが好調者だらけ/不調者だらけなら無理に動かさない。`;
+  }
+
   return `あなたは広島東洋カープを30年見続けてる、戦術にも詳しいベテランファンです。
 今日の試合の「ニッチで具体的な見どころ」を、直近${pastGames.length}試合の実データをもとに予想してください。
 
@@ -450,6 +618,8 @@ ${lines}
 【今日の試合】
 ${JSON.stringify(todayInfo, null, 2)}
 ${opPitcherBlock}
+${matchupBlock}
+${lineupBlock}
 
 【直近${pastGames.length}試合のサマリ＋数値パターン】
 ${JSON.stringify(pastSummaries, null, 2)}
@@ -491,9 +661,28 @@ ${JSON.stringify(pastSummaries, null, 2)}
         "verdict": "<相性 'good' | 'bad' | 'even' のどれか>",
         "note": "<60字以内、相性所感。例：'三振率高め、初球からファール狙い'>"
       }
-    ]
+    ],
+    "last_matchup": {
+      "is_first": <前回対戦データが無ければ true、あれば false>,
+      "summary": "<前回対戦の振り返り。日付・スコア・チーム成績を引用。100字以内。is_first:true なら『今季初対戦』と書く>",
+      "countermeasure": "<前回やられていた場合の対策、打てていた場合は継続方針。80字以内。is_first:true なら空文字でよい>"
+    },
+    "lineup_proposal": {
+      "intro": "<40字以内、提案の主旨。例：'絶好調の持丸を2番に上げる組み替え案'>",
+      "order": [
+        { "line": 1, "name": "<選手名>", "note": "<30字以内、起用理由。直近の打順から変えた箇所のみ理由必須>" }
+      ],
+      "note": "<60字以内、全体の狙い・補足。「あくまで一案」のトーンで>"
+    }
   }
 }
+
+【last_matchup / lineup_proposal のルール】
+- last_matchup: 上の【相手先発との前回カープ対戦】ブロックの数字を必ず引用。創作禁止。
+- lineup_proposal: 上の【直近の打順】【選手の調子】ブロックを必ず使う。
+  - order は1〜8番（野手）。直近の打順をベースに2〜3箇所の入れ替えに留める。
+  - データ（直近の打順・調子）が無い場合は lineup_proposal を null にする。
+  - 直近データ・調子データに居ない選手名は絶対に書かない。
 
 【インサイト抽出のヒント】
 - carp_two_out（二死からの結果）：得点を取れる/取れない傾向

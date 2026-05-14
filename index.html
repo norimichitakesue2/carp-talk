@@ -942,6 +942,39 @@ body::before{
 .pv-mu-stat{font-size:11px;color:var(--muted);font-family:ui-monospace, 'SF Mono', monospace;letter-spacing:.02em}
 .pv-mu-note{font-size:11px;color:var(--text);line-height:1.5;margin-top:3px;opacity:.85}
 
+/* 🆚 相手先発との前回対戦 (last_matchup) */
+.pv-matchup-review{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--rs);
+  padding:.65rem .8rem;margin-top:6px;
+}
+.pv-mr-summary{font-size:12px;color:var(--text);line-height:1.65}
+.pv-mr-counter{
+  font-size:11.5px;color:var(--text);line-height:1.6;margin-top:7px;
+  padding-top:7px;border-top:1px dashed var(--border2);
+}
+.pv-mr-counter-lbl{font-weight:800;color:var(--accent);margin-right:5px}
+
+/* ⚙️ 調子を踏まえた打順提案 (lineup_proposal) */
+.pv-lineup-prop{
+  background:linear-gradient(135deg, rgba(200,16,46,.06), rgba(200,16,46,.01));
+  border:1px solid rgba(200,16,46,.22);
+  border-radius:var(--rs);
+  padding:.7rem .8rem;margin-top:6px;
+}
+.pv-lp-intro{font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.5}
+.pv-lp-order{display:flex;flex-direction:column;gap:3px}
+.pv-lp-row{display:flex;align-items:baseline;gap:8px}
+.pv-lp-num{
+  flex-shrink:0;width:20px;height:20px;line-height:20px;text-align:center;
+  background:var(--carp);color:#fff;font-size:11px;font-weight:800;border-radius:4px;
+}
+.pv-lp-name{font-size:12.5px;font-weight:700;color:var(--text);flex-shrink:0;min-width:60px}
+.pv-lp-note{font-size:10.5px;color:var(--muted);line-height:1.5}
+.pv-lp-foot{font-size:11px;color:var(--text);line-height:1.6;margin-top:8px;opacity:.9}
+.pv-lp-disclaimer{font-size:9.5px;color:var(--faint);margin-top:6px;font-style:italic}
+
 /* ============================================================ */
 /* 📊 選手の調子（recent form）                                 */
 /* ============================================================ */
@@ -2036,6 +2069,38 @@ function renderPreview(){
     if(p.opponent_threat){
       html += '<div class="pv-stat threat"><div class="pv-stat-lbl">🎯 相手の脅威</div><div class="pv-stat-val">'+esc(p.opponent_threat)+'</div></div>';
     }
+    html += '</div>';
+  }
+
+  // 🆚 相手先発との前回対戦（Phase 8a）
+  if(p.last_matchup && (p.last_matchup.summary)){
+    var lm=p.last_matchup;
+    html += '<div class="pv-section-lbl">🆚 相手先発との前回対戦</div>';
+    html += '<div class="pv-matchup-review">';
+    html += '<div class="pv-mr-summary">'+esc(lm.summary)+'</div>';
+    if(lm.countermeasure && !lm.is_first){
+      html += '<div class="pv-mr-counter"><span class="pv-mr-counter-lbl">▶ 対策</span>'+esc(lm.countermeasure)+'</div>';
+    }
+    html += '</div>';
+  }
+
+  // ⚙️ 調子を踏まえた打順提案（Phase 8b）
+  if(p.lineup_proposal && Array.isArray(p.lineup_proposal.order) && p.lineup_proposal.order.length){
+    var lp=p.lineup_proposal;
+    html += '<div class="pv-section-lbl">⚙️ 調子を踏まえた打順提案</div>';
+    html += '<div class="pv-lineup-prop">';
+    if(lp.intro) html += '<div class="pv-lp-intro">'+esc(lp.intro)+'</div>';
+    html += '<div class="pv-lp-order">';
+    lp.order.forEach(function(o){
+      html += '<div class="pv-lp-row">'+
+        '<span class="pv-lp-num">'+esc(String(o.line||''))+'</span>'+
+        '<span class="pv-lp-name">'+esc(o.name||'')+'</span>'+
+        (o.note?'<span class="pv-lp-note">'+esc(o.note)+'</span>':'')+
+      '</div>';
+    });
+    html += '</div>';
+    if(lp.note) html += '<div class="pv-lp-foot">'+esc(lp.note)+'</div>';
+    html += '<div class="pv-lp-disclaimer">※ あくまで一つの案です</div>';
     html += '</div>';
   }
 
