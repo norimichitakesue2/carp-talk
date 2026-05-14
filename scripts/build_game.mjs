@@ -217,6 +217,9 @@ function assembleGameJson(date, factsRoot, generated, prev) {
           .map((p) => ({
             name: p.name, ab: p.ab ?? 0, r: p.r ?? 0, h: p.h ?? 0,
             rbi: p.rbi ?? 0, sb: p.sb ?? 0, hr: p.hr ?? 0,
+            k: p.k ?? 0, bb: p.bb ?? 0,
+            double: p.double ?? 0, triple: p.triple ?? 0,
+            single: p.single ?? 0, hbp: p.hbp ?? 0, sf: p.sf ?? 0,
           }))
       : (prev?.carp_batting || []),
     // carp_pitching: その試合のカープ各投手の投球成績（直近成績の集計用）

@@ -34,11 +34,13 @@ const baseDate = (() => {
   return jst.toISOString().slice(0, 10);
 })();
 
-// 調子判定: 実打率 + 本塁打/打点の小ボーナスで5段階。
+// 調子判定: OPS を主指標に、三振率で微調整して5段階。
+//   ベーススコア = OPS
+//   三振率 K/(打数+四球) が高ければ減点、低ければ加点
 // サンプル(打数)が少ない選手のノイズ対策:
 //   - 打数8未満は「様子見」（判定不能）
 //   - 打数8〜11は極端評価(絶好調/絶不調)を避け、好調/不調どまりにする
-function judgeForm(ab, h, hr, rbi) {
+function judgeForm(ab, ops, bb, k) {
   const NONE  = { icon: '－', label: '様子見', level: 0, cls: 'form-none' };
   const HOT2  = { icon: '↑↑', label: '絶好調', level: 2,  cls: 'form-hot2' };
   const HOT1  = { icon: '↑',  label: '好調',   level: 1,  cls: 'form-hot1' };
@@ -47,15 +49,21 @@ function judgeForm(ab, h, hr, rbi) {
   const COLD2 = { icon: '↓↓', label: '絶不調', level: -2, cls: 'form-cold2' };
 
   if (ab < 8) return NONE;                       // サンプル不足
-  const avg = h / ab;
-  const bonus = (hr * 0.030) + (rbi * 0.006);    // 長打・打点の小ボーナス
-  const score = avg + bonus;
+
+  // 三振率（打席ベース近似）で OPS を微補正
+  const pa = ab + bb;
+  const kRate = pa > 0 ? k / pa : 0;
+  let score = ops;
+  if (kRate >= 0.35) score -= 0.07;        // 三振が多すぎる → 減点
+  else if (kRate >= 0.28) score -= 0.035;
+  else if (kRate <= 0.10) score += 0.03;   // 三振が少ない → 加点
+
   const small = ab < 12;                         // 8〜11打数は極端評価を避ける
 
-  if (score >= 0.330) return small ? HOT1 : HOT2;
-  if (score >= 0.275) return HOT1;
-  if (score >= 0.235) return EVEN;
-  if (score >= 0.190) return COLD1;
+  if (score >= 0.900) return small ? HOT1 : HOT2;
+  if (score >= 0.720) return HOT1;
+  if (score >= 0.580) return EVEN;
+  if (score >= 0.450) return COLD1;
   return small ? COLD1 : COLD2;
 }
 
@@ -138,16 +146,26 @@ async function main() {
       for (const b of batting) {
         if (!b.name) continue;
         if (!perPlayer[b.name]) {
-          perPlayer[b.name] = { name: b.name, games: 0, ab: 0, r: 0, h: 0, rbi: 0, sb: 0, hr: 0, dates: [] };
+          perPlayer[b.name] = {
+            name: b.name, games: 0, ab: 0, r: 0, h: 0, rbi: 0, sb: 0, hr: 0,
+            k: 0, bb: 0, double: 0, triple: 0, single: 0, hbp: 0, sf: 0, dates: [],
+          };
         }
         const pp = perPlayer[b.name];
-        pp.games += 1;
-        pp.ab  += b.ab  ?? 0;
-        pp.r   += b.r   ?? 0;
-        pp.h   += b.h   ?? 0;
-        pp.rbi += b.rbi ?? 0;
-        pp.sb  += b.sb  ?? 0;
-        pp.hr  += b.hr  ?? 0;
+        pp.games  += 1;
+        pp.ab     += b.ab     ?? 0;
+        pp.r      += b.r      ?? 0;
+        pp.h      += b.h      ?? 0;
+        pp.rbi    += b.rbi    ?? 0;
+        pp.sb     += b.sb     ?? 0;
+        pp.hr     += b.hr     ?? 0;
+        pp.k      += b.k      ?? 0;
+        pp.bb     += b.bb     ?? 0;
+        pp.double += b.double ?? 0;
+        pp.triple += b.triple ?? 0;
+        pp.single += b.single ?? 0;
+        pp.hbp    += b.hbp    ?? 0;
+        pp.sf     += b.sf     ?? 0;
         pp.dates.push(date);
       }
     }
@@ -194,25 +212,41 @@ async function main() {
     }
   }
 
-  // 各選手の派生指標を計算
-  // 打席数 PA は厳密には四死球犠打を含むが、carp_batting には打数しか無いので
-  // ここでは「打数」を打席数の近似として扱い、出塁率の代わりに簡易OPSを使う。
-  // 簡易OPS = 打率 + 長打率（長打率は単打/二塁/三塁/本塁の内訳が無いので
-  //           本塁打のみ4倍, それ以外の安打を1.4倍した粗い近似）。
+  // 各選手の派生指標を計算（当該試合数における OPS を含む）
   const players = Object.values(perPlayer).map((pp) => {
     const ab = pp.ab;
     const avg = ab ? pp.h / ab : 0;
-    const form = judgeForm(ab, pp.h, pp.hr, pp.rbi);
+    // 単打数: イニング解析の single を使う。万一ズレたら H から逆算で補正
+    const singles = (pp.single != null && pp.single >= 0)
+      ? pp.single
+      : Math.max(0, pp.h - pp.double - pp.triple - pp.hr);
+    // 塁打 (TB) = 単打 + 2*二塁打 + 3*三塁打 + 4*本塁打
+    const tb = singles + pp.double * 2 + pp.triple * 3 + pp.hr * 4;
+    const slg = ab ? tb / ab : 0;
+    // 出塁率 OBP = (安打 + 四球 + 死球) / (打数 + 四球 + 死球 + 犠飛)
+    const obpDenom = ab + pp.bb + pp.hbp + pp.sf;
+    const obp = obpDenom ? (pp.h + pp.bb + pp.hbp) / obpDenom : 0;
+    const ops = obp + slg;
+    const fmt3 = (n) => n.toFixed(3).replace(/^0/, '');
+    const form = judgeForm(ab, ops, pp.bb, pp.k);
     const summary = `直近${pp.games}試合 ${pp.ab}打数${pp.h}安打 ${calcAvg(pp.h, pp.ab)}` +
+                    ` OPS${fmt3(ops)}` +
                     (pp.hr ? ` ${pp.hr}本` : '') +
                     (pp.rbi ? ` ${pp.rbi}打点` : '') +
+                    (pp.bb ? ` ${pp.bb}四球` : '') +
+                    (pp.k  ? ` ${pp.k}三振`  : '') +
                     (pp.sb ? ` ${pp.sb}盗塁` : '');
     return {
       name: pp.name,
       games: pp.games,
-      ab: pp.ab, r: pp.r, h: pp.h, rbi: pp.rbi, sb: pp.sb, hr: pp.hr,
+      ab: pp.ab, r: pp.r, h: pp.h, rbi: pp.rbi, sb: pp.sb, hr: pp.hr, k: pp.k, bb: pp.bb,
+      double: pp.double, triple: pp.triple, single: singles, hbp: pp.hbp, sf: pp.sf,
       avg: calcAvg(pp.h, pp.ab),
       avg_num: Number(avg.toFixed(3)),
+      obp: fmt3(obp),
+      slg: fmt3(slg),
+      ops: fmt3(ops),
+      ops_num: Number(ops.toFixed(3)),
       form,
       summary,
     };

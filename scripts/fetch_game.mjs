@@ -169,7 +169,8 @@ async function fetchBoxFacts({ year, month, day, segment }) {
     homeRuns,
     carpLineup: carpBat.map((b) => ({
       name: b.name, pos: b.pos, line: b.lineupNum,
-      ab: b.ab, r: b.r, h: b.h, rbi: b.rbi, sb: b.sb, hr: b.hr,
+      ab: b.ab, r: b.r, h: b.h, rbi: b.rbi, sb: b.sb, hr: b.hr, k: b.k, bb: b.bb,
+      double: b.double, triple: b.triple, single: b.single, hbp: b.hbp, sf: b.sf,
     })),
     opponentLineup: opBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
     carpRoster: roster.carp,
@@ -479,12 +480,31 @@ function parseBatting($, $tbl) {
     const h   = parseIntSafe(cells[5]);
     const rbi = parseIntSafe(cells[6]);
     const sb  = parseIntSafe(cells[7]);
-    // 本塁打: イニングセルに「右中本②」のような表記。1セルにつき本塁打1本。
-    let hr = 0;
+    // イニングセルの打席結果表記から内訳を数える（OPS算出用）。
+    //   本塁打: 「右越本①」(本を含む)
+    //   三塁打: 全角３ を含む（① 等の丸数字=打点とは別字）
+    //   二塁打: 全角２ を含む
+    //   単打:   「中前安」等（安を含み、上記以外）
+    //   三振:   「三振」 / 四球: 「四球」「敬遠四」 / 死球: 「死球」 / 犠飛: 「犠飛」
+    let hr = 0, triple = 0, double_ = 0, single = 0;
+    let k = 0, bb = 0, hbp = 0, sf = 0;
     for (const cell of innings) {
-      if (cell && /[^本\s\-]本/.test(cell)) hr++;
+      if (!cell) continue;
+      const c = cell.replace(/[\s　]/g, '');
+      if (/本/.test(c)) { hr++; }
+      else if (/[３3]/.test(c) && /安|越|線|中/.test(c)) { triple++; }
+      else if (/[２2]/.test(c)) { double_++; }
+      else if (/安/.test(c)) { single++; }
+      if (c === '三振') k++;
+      if (c.includes('四球') || c.includes('敬遠')) bb++;  // 敬遠四・押出四球も含む
+      if (c.includes('死球')) hbp++;
+      if (c.includes('犠飛')) sf++;
     }
-    result.push({ lineupNum, pos, name, innings, ab, r: r_, h, rbi, sb, hr });
+    result.push({
+      lineupNum, pos, name, innings,
+      ab, r: r_, h, rbi, sb, hr, k, bb,
+      double: double_, triple, single, hbp, sf,
+    });
   });
   return result;
 }

@@ -486,7 +486,14 @@
       "h": 1,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "菊池",
@@ -495,7 +502,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "小園",
@@ -504,7 +518,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 2,
+      "bb": 1,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "坂倉",
@@ -513,7 +534,14 @@
       "h": 2,
       "rbi": 1,
       "sb": 0,
-      "hr": 1
+      "hr": 1,
+      "k": 0,
+      "bb": 1,
+      "double": 1,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "モンテロ",
@@ -522,7 +550,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 3,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "持丸",
@@ -531,7 +566,14 @@
       "h": 1,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "二俣",
@@ -540,7 +582,14 @@
       "h": 1,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 1,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 1,
+      "sf": 0
     },
     {
       "name": "辰見",
@@ -549,7 +598,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "中﨑",
@@ -558,7 +614,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "田村",
@@ -567,7 +630,14 @@
       "h": 1,
       "rbi": 1,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "床田",
@@ -576,7 +646,14 @@
       "h": 0,
       "rbi": 1,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "髙",
@@ -585,7 +662,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "ハーン",
@@ -594,7 +678,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "野間",
@@ -603,7 +694,14 @@
       "h": 0,
       "rbi": 0,
       "sb": 0,
-      "hr": 0
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -657,8 +755,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-14T08:18:02.405Z",
-    "generatedAt": "2026-05-14T08:18:02.412Z",
+    "sourceFetchedAt": "2026-05-14T10:42:21.380Z",
+    "generatedAt": "2026-05-14T10:42:21.389Z",
     "sourceUrl": "https://npb.jp/scores/2026/0512/g-c-06/"
   }
 }
