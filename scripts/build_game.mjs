@@ -72,13 +72,16 @@ async function listPastGames(beforeDate) {
     .reverse();
 }
 
-// 相手先発投手の「前回カープ対戦」を games archive から探す。
-// その試合での相手先発（広島側でない away/home_pitcher）が今日の相手先発と一致する
-// 最新の final 試合を返す。
-async function findLastMatchup(opponentStarter, beforeDate) {
+// 相手先発投手との「今季の全カープ対戦」を games archive から集計する。
+// 相手先発（広島側でない away/home_pitcher）が今日の相手先発と一致する
+// 同年の final 試合をすべて集め、チーム成績・打者別成績を合算して返す。
+async function findSeasonMatchups(opponentStarter, beforeDate) {
   if (!opponentStarter) return null;
   const target = opponentStarter.replace(/\s+/g, '');
+  const year = beforeDate.slice(0, 4);
+  const games = [];
   for (const d of await listPastGames(beforeDate)) {
+    if (!d.startsWith(year)) continue;   // 同年のみ
     let g;
     try { g = JSON.parse(await fs.readFile(path.join(GAMES_DIR, `${d}.json`), 'utf8')); }
     catch { continue; }
@@ -86,26 +89,60 @@ async function findLastMatchup(opponentStarter, beforeDate) {
     const carpIsHome = g.home_team === '広島';
     const opStarter = (carpIsHome ? g.away_pitcher : g.home_pitcher) || '';
     if (opStarter.replace(/\s+/g, '') !== target) continue;
-    // 一致：その試合のカープ打撃成績と結果を返す
     const carpScore = carpIsHome ? g.home_score : g.away_score;
     const opScore   = carpIsHome ? g.away_score : g.home_score;
-    return {
+    games.push({
       date: g.game_date,
       opponent: carpIsHome ? g.away_team : g.home_team,
       venue: g.venue || '',
       carpScore, opScore,
       result: g.result_label || '',
       carpWon: (carpScore != null && opScore != null) ? carpScore > opScore : null,
-      // その試合のカープ各打者成績（打順付き）
       carpBatting: (g.carp_batting || []).map((b) => ({
         name: b.name, line: b.line ?? null,
         ab: b.ab ?? 0, h: b.h ?? 0, hr: b.hr ?? 0, rbi: b.rbi ?? 0,
         k: b.k ?? 0, bb: b.bb ?? 0,
         double: b.double ?? 0, triple: b.triple ?? 0,
       })),
-    };
+    });
   }
-  return null;
+  if (games.length === 0) return null;
+
+  // games は新しい順。チーム合算 & 打者別合算
+  const teamTotals = { games: games.length, ab: 0, h: 0, hr: 0, k: 0, bb: 0,
+    double: 0, triple: 0, rbi: 0, carpWins: 0 };
+  const perBatter = {};   // name -> 合算
+  for (const gm of games) {
+    if (gm.carpWon === true) teamTotals.carpWins += 1;
+    for (const b of gm.carpBatting) {
+      teamTotals.ab += b.ab; teamTotals.h += b.h; teamTotals.hr += b.hr;
+      teamTotals.k += b.k; teamTotals.bb += b.bb;
+      teamTotals.double += b.double; teamTotals.triple += b.triple;
+      teamTotals.rbi += b.rbi;
+      if (!b.name) continue;
+      if (!perBatter[b.name]) {
+        perBatter[b.name] = { name: b.name, ab: 0, h: 0, hr: 0, rbi: 0, k: 0, bb: 0, double: 0, triple: 0 };
+      }
+      const pb = perBatter[b.name];
+      pb.ab += b.ab; pb.h += b.h; pb.hr += b.hr; pb.rbi += b.rbi;
+      pb.k += b.k; pb.bb += b.bb; pb.double += b.double; pb.triple += b.triple;
+    }
+  }
+  const fmt3 = (n) => n.toFixed(3).replace(/^0/, '');
+  teamTotals.avg = teamTotals.ab ? fmt3(teamTotals.h / teamTotals.ab) : '.000';
+
+  const batters = Object.values(perBatter)
+    .filter((b) => b.ab >= 1)
+    .map((b) => ({ ...b, avg: b.ab ? fmt3(b.h / b.ab) : '.000' }))
+    .sort((a, b) => b.ab - a.ab);
+
+  return {
+    count: games.length,
+    games,                    // 個別試合（新しい順）
+    teamTotals,
+    batters,                  // 打者別合算（打数順）
+    lastDate: games[0].date,  // 最新対戦日
+  };
 }
 
 // 直近 n 試合のカープ打順（1〜9番）を抽出する。
@@ -418,19 +455,19 @@ async function main() {
 
   // STEP3.45: Phase 8 — 前回対戦の振り返り・直近打順・選手の調子を facts に注入
   if (shouldRunAi && (status === 'scheduled' || status === 'live')) {
-    // (a) 相手先発との前回カープ対戦
+    // (a) 相手先発との今季の全カープ対戦
     const opStarterName = f.pitchers?.opStarter || '';
     if (opStarterName) {
       try {
-        const lastMatchup = await findLastMatchup(opStarterName, date);
-        if (lastMatchup) {
-          facts.facts.lastMatchup = lastMatchup;
-          console.error(`[build_game] last matchup vs ${opStarterName}: ${lastMatchup.date} (${lastMatchup.result})`);
+        const seasonMatchups = await findSeasonMatchups(opStarterName, date);
+        if (seasonMatchups) {
+          facts.facts.seasonMatchups = seasonMatchups;
+          console.error(`[build_game] season matchups vs ${opStarterName}: ${seasonMatchups.count}試合 通算${seasonMatchups.teamTotals.avg}`);
         } else {
           console.error(`[build_game] no past matchup vs ${opStarterName} in archive`);
         }
       } catch (e) {
-        console.error(`[build_game] findLastMatchup error: ${e.message}`);
+        console.error(`[build_game] findSeasonMatchups error: ${e.message}`);
       }
     }
     // (b) 直近3試合の打順

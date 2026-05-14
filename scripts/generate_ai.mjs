@@ -435,41 +435,65 @@ ${lines}
     }
   }
 
-  // Phase 8a: 相手先発との前回カープ対戦の振り返り
+  // Phase 8a + 深掘り: 相手先発との「今季全対戦」集計 + nf3 通算 vsカープ を統合
   let matchupBlock = '';
-  const lm = f.lastMatchup;
-  if (lm) {
-    const bat = (lm.carpBatting || [])
-      .filter(b => b.line != null)
-      .sort((a, b) => (a.line ?? 99) - (b.line ?? 99))
-      .map(b => `  ${b.line}番 ${b.name}: ${b.ab}打数${b.h}安打` +
-        (b.hr ? ` ${b.hr}本` : '') + (b.rbi ? ` ${b.rbi}打点` : '') +
-        (b.double ? ` ${b.double}二塁打` : '') +
-        (b.bb ? ` ${b.bb}四球` : '') + (b.k ? ` ${b.k}三振` : ''))
-      .join('\n');
-    const teamH = (lm.carpBatting || []).reduce((s, b) => s + (b.h ?? 0), 0);
-    const teamAb = (lm.carpBatting || []).reduce((s, b) => s + (b.ab ?? 0), 0);
-    const teamK = (lm.carpBatting || []).reduce((s, b) => s + (b.k ?? 0), 0);
+  const sm = f.seasonMatchups;
+  const nf3VsCarp = (nf3 && Array.isArray(nf3.vsCarp)) ? nf3.vsCarp : [];
+  if (sm && sm.count > 0) {
+    const tt = sm.teamTotals;
+    // 各試合の1行サマリ（新しい順、最大5試合）
+    const gamesText = sm.games.slice(0, 5).map(gm =>
+      `  ${gm.date} @${gm.venue || '?'}: カープ${gm.carpScore}-${gm.opScore}（${gm.result || '?'}）`
+    ).join('\n');
+    // 今季この投手と対戦したカープ打者の合算（打数順、上位12）
+    const battersText = sm.batters.slice(0, 12).map(b =>
+      `  ${b.name}: 今季${b.ab}打数${b.h}安打 .${(b.avg||'.000').replace(/^\./,'')}` +
+      (b.hr ? ` ${b.hr}本` : '') + (b.rbi ? ` ${b.rbi}打点` : '') +
+      (b.k ? ` ${b.k}三振` : '') + (b.bb ? ` ${b.bb}四球` : '')
+    ).join('\n');
+    // nf3 の通算 vsカープ（今季データに無い相性傾向の補完）
+    const nf3Text = nf3VsCarp.length
+      ? nf3VsCarp.filter(b => (b.pa ?? 0) >= 1).slice(0, 12).map(b =>
+          `  ${b.name}: 通算${b.pa}打席 打率${b.avg || '.000'}` +
+          (b.hr ? ` ${b.hr}本` : '') + (b.k ? ` ${b.k}三振` : '')
+        ).join('\n')
+      : '  （nf3通算データなし）';
     matchupBlock = `
 
-【相手先発との前回カープ対戦（自軍アーカイブより）】
-${lm.date} @${lm.venue || '?'} : カープ ${lm.carpScore}-${lm.opScore} ${lm.opponent}（${lm.result || '?'}）
-チーム成績: ${teamAb}打数${teamH}安打 ${teamK}三振
-打者別:
-${bat}
+【相手先発との今季カープ対戦（自軍アーカイブ集計）】
+今季 ${tt.games}試合対戦 / カープ ${tt.carpWins}勝${tt.games - tt.carpWins}敗
+チーム通算: ${tt.ab}打数${tt.h}安打 打率${tt.avg} / ${tt.hr}本 ${tt.double}二塁打 ${tt.rbi}打点 ${tt.k}三振 ${tt.bb}四球
+各試合:
+${gamesText}
+
+【今季この投手と対戦したカープ打者の合算成績】
+${battersText}
+
+【参考: nf3 通算 vsカープ成績（今季以前も含む）】
+${nf3Text}
 
 これを必ず以下に活用すること:
-  1) last_matchup フィールドに「前回どう抑えられた/打てたか」の振り返りを書く
-  2) やられていた場合（チーム打率が低い・三振が多い等）は具体的な対策を countermeasure に書く
-  3) 打てていた場合は「この形を継続」という方向で書く
-  4) 数字を必ず引用（「前回は${teamAb}打数${teamH}安打、${teamK}三振で封じられた」など）`;
+  1) last_matchup フィールドに「今季この投手にどう抑えられている/打てているか」を書く。
+     必ず数字を引用（「今季3試合で通算${tt.ab}打数${tt.h}安打.${(tt.avg||'.000').replace(/^\./,'')}、${tt.k}三振」など）。
+  2) やられている場合（チーム打率が低い・三振が多い等）は具体的な対策を countermeasure に書く。
+  3) 打者別データで「特に苦手な打者」「逆に打てている打者」が居れば summary で名指しする
+     （「小園は今季0-8と完全に抑え込まれている」「坂倉は.333と相性良し」など）。
+  4) is_first は false にする。`;
   } else {
+    // 今季対戦なし — nf3 通算データだけでも触れる
+    const nf3Text = nf3VsCarp.length
+      ? nf3VsCarp.filter(b => (b.pa ?? 0) >= 2).slice(0, 10).map(b =>
+          `  ${b.name}: 通算${b.pa}打席 打率${b.avg || '.000'}` + (b.hr ? ` ${b.hr}本` : '') + (b.k ? ` ${b.k}三振` : '')
+        ).join('\n')
+      : '';
     matchupBlock = `
 
-【相手先発との前回カープ対戦】
-自軍アーカイブに過去対戦記録なし（今季初対戦、または対戦データ未蓄積）。
+【相手先発との今季カープ対戦】
+今季の対戦記録なし（今季初対戦、または対戦データ未蓄積）。
+${nf3Text ? `\n【参考: nf3 通算 vsカープ成績】\n${nf3Text}\n` : ''}
 → last_matchup フィールドは is_first: true として「今季初対戦」と書く。
-  ただし nf3 の通算 vs カープ成績があればそちらで相性傾向に触れてよい。`;
+  nf3 通算データがあれば「通算では○○が苦手」など相性傾向に触れてよい。
+  countermeasure は通算データから言えることがあれば書く、無ければ空文字。`;
   }
 
   // Phase 8b: 直近の打順 + 選手の調子（打順提案用）

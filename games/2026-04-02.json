@@ -1,44 +1,20 @@
 {
-  "id": "npb_20260407",
-  "game_date": "2026-04-07",
-  "away_team": "巨人",
-  "home_team": "広島",
-  "away_score": 2,
-  "home_score": 5,
-  "venue": "マツダスタジアム",
+  "id": "npb_20260402",
+  "game_date": "2026-04-02",
+  "away_team": "広島",
+  "home_team": "ヤクルト",
+  "away_score": 1,
+  "home_score": 2,
+  "venue": "神宮球場",
   "start_time": "18:00",
   "status": "final",
   "current_inning": "",
-  "result_label": "広島勝利",
-  "away_pitcher": "ウィットリー",
-  "home_pitcher": "森下",
-  "title_candidates": [
-    "二本のアーチで全て決まった",
-    "森下7回、完璧な仕事",
-    "大盛のプロ初弾が試合を終わらせた",
-    "継投リレーの美学"
-  ],
+  "result_label": "ヤクルト勝利",
+  "away_pitcher": "岡本",
+  "home_pitcher": "奥川",
+  "title_candidates": [],
   "positives": [],
-  "turning_suggestions": [
-    {
-      "inning": "4回裏",
-      "description": "ファビアンの2ランで流れが完全に広島に",
-      "reason": "0-0の膠着がここで一気に崩れた。ウィットリーの表情が変わった瞬間",
-      "intensity": "strong"
-    },
-    {
-      "inning": "5回裏",
-      "description": "大盛のプロ初本塁打で試合を決定づけた",
-      "reason": "連続2ランで巨人ベンチが諦めた。精神的に4-0は重かった",
-      "intensity": "strong"
-    },
-    {
-      "inning": "7回表",
-      "description": "巨人に2点返され、一瞬ヒヤッとした",
-      "reason": "点は入ったけど継投陣が踏ん張った。ここが耐えどころだった",
-      "intensity": "weak"
-    }
-  ],
+  "turning_suggestions": [],
   "debates": [],
   "team_analysis": null,
   "preview": null,
@@ -47,14 +23,14 @@
       0,
       0,
       0,
-      2,
-      2,
+      0,
+      0,
       1,
       0,
       0,
       0
     ],
-    "hiroshima_hits": 5,
+    "hiroshima_hits": 4,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -63,70 +39,40 @@
       0,
       0,
       0,
-      2,
       0,
-      0
+      0,
+      2
     ],
-    "away_hits": 7,
-    "away_errors": 3
+    "away_hits": 5,
+    "away_errors": 0
   },
   "pitchers": [
     {
       "team": "広島",
       "role": "先発",
-      "name": "森下",
+      "name": "岡本",
+      "result": ""
+    },
+    {
+      "team": "ヤクルト",
+      "role": "先発",
+      "name": "奥川",
+      "result": ""
+    },
+    {
+      "team": "ヤクルト",
+      "role": "勝",
+      "name": "松本健",
       "result": "win"
     },
     {
-      "team": "巨人",
-      "role": "先発",
-      "name": "ウィットリー",
-      "result": "loss"
-    },
-    {
       "team": "広島",
-      "role": "S",
-      "name": "中﨑",
-      "result": "save"
+      "role": "敗",
+      "name": "森浦",
+      "result": "loss"
     }
   ],
-  "moments": [
-    {
-      "id": 1,
-      "inning": "4回裏",
-      "type": "hr",
-      "desc": "ファビアン、待望の来日1号2ランホームラン！先制に成功",
-      "sub": "広島 2-0 巨人。ウィットリーから右中間へ叩き込む豪快な当たり"
-    },
-    {
-      "id": 2,
-      "inning": "5回裏",
-      "type": "hr",
-      "desc": "大盛穂、プロ初本塁打！1番打者が連続2ランで突き放す",
-      "sub": "広島 4-0 巨人。今季絶好調の大盛がダメ押し弾でチームを鼓舞"
-    },
-    {
-      "id": 3,
-      "inning": "6回裏",
-      "type": "score",
-      "desc": "6回にも1点を追加、森下が7回2失点の好投で試合を作る",
-      "sub": "広島 5-0 巨人。先発森下が粘り強いピッチングで7回マウンドを降りる"
-    },
-    {
-      "id": 4,
-      "inning": "7回表",
-      "type": "crisis",
-      "desc": "巨人が7回に2点を返しリリーフ陣が緊張の場面に",
-      "sub": "広島 5-2 巨人。ハーン→森浦→中﨑の継投でリードを守りきる"
-    },
-    {
-      "id": 5,
-      "inning": "9回表",
-      "type": "pitcher",
-      "desc": "中﨑、今季初セーブで試合を締める。完璧な中継ぎリレー完成",
-      "sub": "森下(7回2失点)→ハーン→森浦→中﨑の4投手継投で完封リレー"
-    }
-  ],
+  "moments": [],
   "players": [
     {
       "name": "齊藤汰",
@@ -134,10 +80,6 @@
     },
     {
       "name": "森浦",
-      "pos": "投"
-    },
-    {
-      "name": "森下",
       "pos": "投"
     },
     {
@@ -161,7 +103,15 @@
       "pos": "投"
     },
     {
+      "name": "岡本",
+      "pos": "投"
+    },
+    {
       "name": "ハーン",
+      "pos": "投"
+    },
+    {
+      "name": "辻",
       "pos": "投"
     },
     {
@@ -174,10 +124,6 @@
     },
     {
       "name": "勝田",
-      "pos": "内"
-    },
-    {
-      "name": "矢野",
       "pos": "内"
     },
     {
@@ -239,12 +185,12 @@
       "pos": "中",
       "line": 1,
       "ab": 4,
-      "r": 1,
-      "h": 2,
-      "rbi": 2,
-      "sb": 1,
-      "hr": 1,
-      "k": 0,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "k": 2,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -258,15 +204,15 @@
       "line": 2,
       "ab": 4,
       "r": 0,
-      "h": 2,
+      "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 2,
+      "single": 0,
       "hbp": 0,
       "sf": 0
     },
@@ -274,14 +220,14 @@
       "name": "小園",
       "pos": "遊",
       "line": 3,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
       "k": 1,
-      "bb": 1,
+      "bb": 0,
       "double": 0,
       "triple": 0,
       "single": 0,
@@ -293,7 +239,7 @@
       "pos": "三",
       "line": 4,
       "ab": 4,
-      "r": 2,
+      "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
@@ -310,67 +256,13 @@
       "name": "ファビアン",
       "pos": "左",
       "line": 5,
-      "ab": 4,
-      "r": 1,
-      "h": 1,
-      "rbi": 2,
-      "sb": 0,
-      "hr": 1,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "坂倉",
-      "pos": "捕",
-      "line": 6,
-      "ab": 4,
-      "r": 0,
-      "h": 0,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "モンテロ",
-      "pos": "一",
-      "line": 7,
-      "ab": 2,
-      "r": 0,
-      "h": 0,
-      "rbi": 1,
-      "sb": 0,
-      "hr": 0,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 1
-    },
-    {
-      "name": "勝田",
-      "pos": "二",
-      "line": 8,
       "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -379,18 +271,36 @@
       "sf": 0
     },
     {
-      "name": "森下",
-      "pos": "投",
-      "line": 9,
-      "ab": 0,
-      "r": 1,
-      "h": 0,
+      "name": "菊池",
+      "pos": "二",
+      "line": 6,
+      "ab": 3,
+      "r": 0,
+      "h": 2,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
       "k": 0,
-      "bb": 1,
+      "bb": 0,
       "double": 0,
+      "triple": 0,
+      "single": 2,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "坂倉",
+      "pos": "捕",
+      "line": 7,
+      "ab": 3,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 1,
       "triple": 0,
       "single": 0,
       "hbp": 0,
@@ -407,6 +317,60 @@
       "sb": 0,
       "hr": 0,
       "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "森浦",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "モンテロ",
+      "pos": "一",
+      "line": 8,
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 1,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "岡本",
+      "pos": "投",
+      "line": 9,
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -433,26 +397,8 @@
       "sf": 0
     },
     {
-      "name": "森浦",
-      "pos": "投",
-      "line": null,
-      "ab": 0,
-      "r": 0,
-      "h": 0,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "中﨑",
-      "pos": "投",
+      "name": "石原",
+      "pos": "捕",
       "line": null,
       "ab": 0,
       "r": 0,
@@ -471,57 +417,45 @@
   ],
   "carp_pitching": [
     {
-      "name": "森下",
-      "result": "win",
-      "outs": 19,
+      "name": "岡本",
+      "result": "",
+      "outs": 21,
       "pitches": 101,
-      "hitsAllowed": 6,
+      "hitsAllowed": 3,
       "hrAllowed": 0,
-      "walks": 3,
+      "walks": 2,
       "strikeouts": 4,
-      "runs": 2,
-      "earnedRuns": 2
+      "runs": 0,
+      "earnedRuns": 0
     },
     {
       "name": "ハーン",
       "result": "hold",
-      "outs": 2,
-      "pitches": 7,
+      "outs": 3,
+      "pitches": 14,
       "hitsAllowed": 0,
       "hrAllowed": 0,
       "walks": 0,
-      "strikeouts": 1,
+      "strikeouts": 2,
       "runs": 0,
       "earnedRuns": 0
     },
     {
       "name": "森浦",
-      "result": "hold",
-      "outs": 3,
-      "pitches": 15,
-      "hitsAllowed": 1,
+      "result": "loss",
+      "outs": 2,
+      "pitches": 24,
+      "hitsAllowed": 2,
       "hrAllowed": 0,
-      "walks": 0,
-      "strikeouts": 1,
-      "runs": 0,
-      "earnedRuns": 0
-    },
-    {
-      "name": "中﨑",
-      "result": "save",
-      "outs": 3,
-      "pitches": 10,
-      "hitsAllowed": 0,
-      "hrAllowed": 0,
-      "walks": 0,
-      "strikeouts": 1,
-      "runs": 0,
-      "earnedRuns": 0
+      "walks": 1,
+      "strikeouts": 0,
+      "runs": 2,
+      "earnedRuns": 2
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-14T12:26:00.247Z",
-    "generatedAt": "2026-05-14T12:26:00.257Z",
-    "sourceUrl": "https://npb.jp/scores/2026/0407/c-g-01/"
+    "sourceFetchedAt": "2026-05-14T12:26:31.332Z",
+    "generatedAt": "2026-05-14T12:26:31.345Z",
+    "sourceUrl": "https://npb.jp/scores/2026/0402/s-c-02/"
   }
 }

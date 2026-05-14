@@ -1,16 +1,16 @@
 {
-  "id": "npb_20260405",
-  "game_date": "2026-04-05",
-  "away_team": "阪神",
+  "id": "npb_20260329",
+  "game_date": "2026-03-29",
+  "away_team": "中日",
   "home_team": "広島",
-  "away_score": 1,
-  "home_score": 2,
+  "away_score": 0,
+  "home_score": 1,
   "venue": "マツダスタジアム",
-  "start_time": "14:00",
+  "start_time": "13:32",
   "status": "final",
   "current_inning": "",
   "result_label": "広島勝利",
-  "away_pitcher": "髙橋",
+  "away_pitcher": "髙橋宏",
   "home_pitcher": "栗林",
   "title_candidates": [],
   "positives": [],
@@ -20,17 +20,17 @@
   "preview": null,
   "innings": {
     "hiroshima": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
+      0
     ],
-    "hiroshima_hits": 8,
+    "hiroshima_hits": 6,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -40,89 +40,27 @@
       0,
       0,
       0,
-      1,
+      0,
       0
     ],
-    "away_hits": 5,
-    "away_errors": 0
+    "away_hits": 1,
+    "away_errors": 1
   },
   "pitchers": [
     {
       "team": "広島",
       "role": "先発",
       "name": "栗林",
-      "result": ""
-    },
-    {
-      "team": "阪神",
-      "role": "先発",
-      "name": "髙橋",
-      "result": ""
-    },
-    {
-      "team": "広島",
-      "role": "勝",
-      "name": "中﨑",
       "result": "win"
     },
     {
-      "team": "阪神",
-      "role": "敗",
-      "name": "桐敷",
+      "team": "中日",
+      "role": "先発",
+      "name": "髙橋宏",
       "result": "loss"
     }
   ],
-  "moments": [
-    {
-      "id": 1,
-      "inning": "1回裏",
-      "type": "score",
-      "desc": "佐々木泰、二死二塁から先制タイムリー",
-      "sub": "広島が最初の好機を確実に生かす。広 1-0 神"
-    },
-    {
-      "id": 2,
-      "inning": "2〜3回",
-      "type": "pitcher",
-      "desc": "栗林・髙橋、両先発が無失点で抑える",
-      "sub": "広島・栗林（防0.00）、阪神・髙橋（防0.00）がともに好投。"
-    },
-    {
-      "id": 3,
-      "inning": "4〜5回",
-      "type": "pitcher",
-      "desc": "髙橋遥人、広島中軸を完全封殺",
-      "sub": "モンテロ・坂倉をゼロに封じ続ける。"
-    },
-    {
-      "id": 4,
-      "inning": "6〜7回",
-      "type": "pitcher",
-      "desc": "栗林、7回まで阪神を無失点に封じる",
-      "sub": "木浪・森下を抑え込む好投。"
-    },
-    {
-      "id": 5,
-      "inning": "8回表",
-      "type": "score",
-      "desc": "近本光司、一死一三塁から犠牲フライ（同点）",
-      "sub": "阪神・近本が同点に追いつく。広 1-1 神"
-    },
-    {
-      "id": 6,
-      "inning": "8回裏",
-      "type": "crisis",
-      "desc": "広島、同点後も無得点で9回へ",
-      "sub": "桐敷が広島の反撃を断ち切る。"
-    },
-    {
-      "id": 7,
-      "inning": "9回裏",
-      "type": "hr",
-      "desc": "モンテロ、2-2からサヨナラ本塁打！",
-      "sub": "広島7番・モンテロが桐敷の球をレフトスタンドへ。連敗ストップ！"
-    }
-  ],
+  "moments": [],
   "players": [
     {
       "name": "齊藤汰",
@@ -157,7 +95,7 @@
       "pos": "投"
     },
     {
-      "name": "ハーン",
+      "name": "辻",
       "pos": "投"
     },
     {
@@ -170,10 +108,6 @@
     },
     {
       "name": "勝田",
-      "pos": "内"
-    },
-    {
-      "name": "矢野",
       "pos": "内"
     },
     {
@@ -217,6 +151,10 @@
       "pos": "外"
     },
     {
+      "name": "平川",
+      "pos": "外"
+    },
+    {
       "name": "大盛",
       "pos": "外"
     },
@@ -231,12 +169,12 @@
   ],
   "carp_batting": [
     {
-      "name": "大盛",
-      "pos": "中",
+      "name": "平川",
+      "pos": "中右",
       "line": 1,
       "ab": 4,
-      "r": 1,
-      "h": 2,
+      "r": 0,
+      "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -244,50 +182,14 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 2,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "中村奨",
-      "pos": "右",
-      "line": 2,
-      "ab": 1,
-      "r": 0,
-      "h": 1,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 0,
-      "bb": 1,
-      "double": 0,
-      "triple": 0,
       "single": 1,
       "hbp": 0,
       "sf": 0
     },
     {
-      "name": "辰見",
-      "pos": "走右",
-      "line": null,
-      "ab": 0,
-      "r": 0,
-      "h": 0,
-      "rbi": 0,
-      "sb": 1,
-      "hr": 0,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "小園",
-      "pos": "遊",
-      "line": 3,
+      "name": "中村奨",
+      "pos": "右左",
+      "line": 2,
       "ab": 3,
       "r": 0,
       "h": 0,
@@ -303,13 +205,49 @@
       "sf": 0
     },
     {
-      "name": "佐々木",
+      "name": "小園",
       "pos": "三",
-      "line": 4,
+      "line": 3,
       "ab": 4,
       "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "佐々木",
+      "pos": "一",
+      "line": 4,
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "ファビアン",
+      "pos": "左",
+      "line": 5,
+      "ab": 3,
+      "r": 0,
       "h": 2,
-      "rbi": 1,
+      "rbi": 0,
       "sb": 0,
       "hr": 0,
       "k": 0,
@@ -321,10 +259,28 @@
       "sf": 0
     },
     {
-      "name": "ファビアン",
-      "pos": "左",
-      "line": 5,
-      "ab": 4,
+      "name": "大盛",
+      "pos": "中",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "菊池",
+      "pos": "二",
+      "line": 6,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -341,43 +297,7 @@
     {
       "name": "坂倉",
       "pos": "捕",
-      "line": 6,
-      "ab": 4,
-      "r": 0,
-      "h": 0,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 2,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "モンテロ",
-      "pos": "一",
       "line": 7,
-      "ab": 4,
-      "r": 1,
-      "h": 2,
-      "rbi": 1,
-      "sb": 0,
-      "hr": 1,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 1,
-      "hbp": 0,
-      "sf": 0
-    },
-    {
-      "name": "勝田",
-      "pos": "二",
-      "line": 8,
       "ab": 3,
       "r": 0,
       "h": 1,
@@ -393,17 +313,17 @@
       "sf": 0
     },
     {
-      "name": "栗林",
-      "pos": "投",
-      "line": 9,
-      "ab": 1,
+      "name": "勝田",
+      "pos": "遊",
+      "line": 8,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 1,
-      "bb": 0,
+      "k": 2,
+      "bb": 1,
       "double": 0,
       "triple": 0,
       "single": 0,
@@ -411,16 +331,16 @@
       "sf": 0
     },
     {
-      "name": "中﨑",
+      "name": "栗林",
       "pos": "投",
-      "line": null,
-      "ab": 0,
+      "line": 9,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 3,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -432,32 +352,20 @@
   "carp_pitching": [
     {
       "name": "栗林",
-      "result": "",
-      "outs": 24,
-      "pitches": 100,
-      "hitsAllowed": 5,
+      "result": "win",
+      "outs": 27,
+      "pitches": 95,
+      "hitsAllowed": 1,
       "hrAllowed": 0,
       "walks": 0,
       "strikeouts": 9,
-      "runs": 1,
-      "earnedRuns": 1
-    },
-    {
-      "name": "中﨑",
-      "result": "win",
-      "outs": 3,
-      "pitches": 18,
-      "hitsAllowed": 0,
-      "hrAllowed": 0,
-      "walks": 0,
-      "strikeouts": 0,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-14T12:26:10.075Z",
-    "generatedAt": "2026-05-14T12:26:10.085Z",
-    "sourceUrl": "https://npb.jp/scores/2026/0405/c-t-03/"
+    "sourceFetchedAt": "2026-05-14T12:26:55.376Z",
+    "generatedAt": "2026-05-14T12:26:55.387Z",
+    "sourceUrl": "https://npb.jp/scores/2026/0329/c-d-03/"
   }
 }

@@ -8,9 +8,10 @@
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "final",
+  "current_inning": "",
   "result_label": "DeNA勝利",
-  "away_pitcher": "平良 拳太郎",
-  "home_pitcher": "岡本 駿",
+  "away_pitcher": "平良",
+  "home_pitcher": "岡本",
   "title_candidates": [
     "6回の5失点、投手陣が崩れた",
     "岡本は踏ん張ったのに島内・森浦が台無しに",
@@ -20,6 +21,7 @@
     "島内を6回頭から使う采配は正解だったのか",
     "リリーフ陣の整備なしに上位は見えない"
   ],
+  "positives": [],
   "turning_suggestions": [
     {
       "inning": "1回表",
@@ -82,6 +84,9 @@
       ]
     }
   ],
+  "debates": [],
+  "team_analysis": null,
+  "preview": null,
   "innings": {
     "hiroshima": [
       0,
@@ -94,6 +99,8 @@
       0,
       0
     ],
+    "hiroshima_hits": 3,
+    "hiroshima_errors": 0,
     "away": [
       1,
       0,
@@ -105,65 +112,27 @@
       0,
       0
     ],
-    "hiroshima_hits": 6,
-    "hiroshima_errors": 0,
-    "away_hits": 9,
+    "away_hits": 8,
     "away_errors": 0
   },
   "pitchers": [
     {
       "team": "広島",
       "role": "先発",
-      "name": "岡本 駿",
-      "result": "nd"
-    },
-    {
-      "team": "広島",
-      "role": "中継ぎ",
-      "name": "島内 颯太郎",
-      "result": "loss"
-    },
-    {
-      "team": "広島",
-      "role": "中継ぎ",
-      "name": "塹江 敦哉",
-      "result": "nd"
-    },
-    {
-      "team": "広島",
-      "role": "中継ぎ",
-      "name": "森浦 大輔",
-      "result": "nd"
-    },
-    {
-      "team": "広島",
-      "role": "中継ぎ",
-      "name": "鈴木 健矢",
-      "result": "nd"
+      "name": "岡本",
+      "result": ""
     },
     {
       "team": "DeNA",
       "role": "先発",
-      "name": "平良 拳太郎",
+      "name": "平良",
       "result": "win"
     },
     {
-      "team": "DeNA",
-      "role": "中継ぎ",
-      "name": "伊勢 大夢",
-      "result": "nd"
-    },
-    {
-      "team": "DeNA",
-      "role": "中継ぎ",
-      "name": "中川 虎大",
-      "result": "nd"
-    },
-    {
-      "team": "DeNA",
-      "role": "抑え",
-      "name": "坂本 裕哉",
-      "result": "nd"
+      "team": "広島",
+      "role": "敗",
+      "name": "島内",
+      "result": "loss"
     }
   ],
   "moments": [
@@ -198,19 +167,79 @@
   ],
   "players": [
     {
-      "name": "岡本 駿",
+      "name": "齊藤汰",
       "pos": "投"
     },
     {
-      "name": "大盛 穂",
-      "pos": "外"
+      "name": "森浦",
+      "pos": "投"
     },
     {
-      "name": "菊池 涼介",
+      "name": "中﨑",
+      "pos": "投"
+    },
+    {
+      "name": "髙",
+      "pos": "投"
+    },
+    {
+      "name": "塹江",
+      "pos": "投"
+    },
+    {
+      "name": "鈴木",
+      "pos": "投"
+    },
+    {
+      "name": "島内",
+      "pos": "投"
+    },
+    {
+      "name": "岡本",
+      "pos": "投"
+    },
+    {
+      "name": "ハーン",
+      "pos": "投"
+    },
+    {
+      "name": "坂倉",
+      "pos": "捕"
+    },
+    {
+      "name": "持丸",
+      "pos": "捕"
+    },
+    {
+      "name": "勝田",
       "pos": "内"
     },
     {
-      "name": "小園 海斗",
+      "name": "矢野",
+      "pos": "内"
+    },
+    {
+      "name": "小園",
+      "pos": "内"
+    },
+    {
+      "name": "佐々木",
+      "pos": "内"
+    },
+    {
+      "name": "菊池",
+      "pos": "内"
+    },
+    {
+      "name": "渡邉",
+      "pos": "内"
+    },
+    {
+      "name": "辰見",
+      "pos": "内"
+    },
+    {
+      "name": "佐藤啓",
       "pos": "内"
     },
     {
@@ -218,28 +247,367 @@
       "pos": "内"
     },
     {
+      "name": "二俣",
+      "pos": "内"
+    },
+    {
+      "name": "秋山",
+      "pos": "外"
+    },
+    {
+      "name": "野間",
+      "pos": "外"
+    },
+    {
+      "name": "大盛",
+      "pos": "外"
+    },
+    {
       "name": "ファビアン",
       "pos": "外"
     },
     {
-      "name": "坂倉 将吾",
-      "pos": "捕"
-    },
-    {
-      "name": "佐々木 泰",
-      "pos": "内"
-    },
-    {
-      "name": "中村 奨成",
+      "name": "中村奨",
       "pos": "外"
-    },
-    {
-      "name": "野間 峻祥",
-      "pos": "外"
-    },
-    {
-      "name": "林 晃汰",
-      "pos": "内"
     }
-  ]
+  ],
+  "carp_batting": [
+    {
+      "name": "大盛",
+      "pos": "中",
+      "line": 1,
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 2,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "菊池",
+      "pos": "二",
+      "line": 2,
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 2,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "小園",
+      "pos": "遊",
+      "line": 3,
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "モンテロ",
+      "pos": "一",
+      "line": 4,
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 1,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "ファビアン",
+      "pos": "左",
+      "line": 5,
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "坂倉",
+      "pos": "捕",
+      "line": 6,
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "鈴木",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "佐々木",
+      "pos": "三",
+      "line": 7,
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "中村奨",
+      "pos": "右",
+      "line": 8,
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 1,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "岡本",
+      "pos": "投",
+      "line": 9,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "佐藤啓",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "島内",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "塹江",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "森浦",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "持丸",
+      "pos": "捕",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    }
+  ],
+  "carp_pitching": [
+    {
+      "name": "岡本",
+      "result": "",
+      "outs": 15,
+      "pitches": 92,
+      "hitsAllowed": 5,
+      "hrAllowed": 0,
+      "walks": 4,
+      "strikeouts": 6,
+      "runs": 1,
+      "earnedRuns": 1
+    },
+    {
+      "name": "島内",
+      "result": "loss",
+      "outs": 2,
+      "pitches": 17,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 2,
+      "strikeouts": 0,
+      "runs": 3,
+      "earnedRuns": 3
+    },
+    {
+      "name": "塹江",
+      "result": "",
+      "outs": 1,
+      "pitches": 6,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "森浦",
+      "result": "",
+      "outs": 3,
+      "pitches": 22,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 1,
+      "strikeouts": 3,
+      "runs": 1,
+      "earnedRuns": 1
+    },
+    {
+      "name": "鈴木",
+      "result": "",
+      "outs": 6,
+      "pitches": 37,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 2,
+      "strikeouts": 0,
+      "runs": 0,
+      "earnedRuns": 0
+    }
+  ],
+  "_meta": {
+    "sourceFetchedAt": "2026-05-14T12:24:57.073Z",
+    "generatedAt": "2026-05-14T12:24:57.083Z",
+    "sourceUrl": "https://npb.jp/scores/2026/0417/c-db-03/"
+  }
 }
