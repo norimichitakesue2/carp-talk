@@ -853,6 +853,22 @@ body::before{
   animation:headerShine 5s linear infinite;
 }
 .pv-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+/* 試合後の「答え合わせ」折りたたみ */
+.pv-head-toggle{cursor:pointer;user-select:none}
+.pv-toggle-arrow{
+  margin-left:auto;font-size:11px;color:var(--muted);
+  transition:transform .2s;
+}
+.preview-section.pv-collapsed .pv-toggle-arrow{transform:rotate(-90deg)}
+.preview-section.pv-collapsed .pv-sub,
+.preview-section.pv-collapsed #pv-body,
+.preview-section.pv-collapsed .pv-disclaimer{display:none}
+/* 試合後レビュー時は青みを抑えて控えめに */
+.preview-section.pv-review{
+  border-color:var(--border);
+  background:linear-gradient(180deg, var(--surface) 0%, #0d1117 100%);
+}
+.preview-section.pv-review.pv-collapsed{margin-bottom:1rem}
 .pv-icon{font-size:18px;filter:drop-shadow(0 0 6px rgba(74,158,255,.5))}
 .pv-title-t{
   font-family:'Bebas Neue', 'Noto Sans JP', sans-serif;
@@ -1989,17 +2005,45 @@ function renderPreview(){
   var sec = document.getElementById('preview-section');
   if(!sec) return;
   var p = GAME && GAME.preview;
-  // 試合終了後（final）は preview を表示しない（試合中までは見せる）
   var hasContent = p && (
     (Array.isArray(p.watchpoints) && p.watchpoints.length) ||
     (Array.isArray(p.key_players) && p.key_players.length) ||
     p.predicted_flow
   );
-  if(!hasContent || GAME.status === 'final' || GAME.status === 'cancelled'){
+  // 中止時 or 中身なしは非表示。試合終了後は「答え合わせ」として折りたたみ表示。
+  if(!hasContent || GAME.status === 'cancelled'){
     sec.style.display = 'none';
     return;
   }
   sec.style.display = '';
+  var isFinalReview = (GAME.status === 'final');
+
+  // ヘッダー/サブ/折りたたみ状態を状況で切り替え
+  var headEl = sec.querySelector('.pv-head');
+  var subEl = sec.querySelector('.pv-sub');
+  if(isFinalReview){
+    sec.classList.add('pv-review');
+    // 試合後はデフォルト折りたたみ。クリックで開閉
+    if(!sec.dataset.pvInit){
+      sec.classList.add('pv-collapsed');
+      sec.dataset.pvInit = '1';
+    }
+    if(headEl){
+      headEl.classList.add('pv-head-toggle');
+      headEl.onclick = function(){ sec.classList.toggle('pv-collapsed'); };
+      headEl.innerHTML = '<span class="pv-icon">🔮</span><span class="pv-title-t">試合前の見どころ（答え合わせ）</span><span class="pv-toggle-arrow">▼</span>';
+    }
+    if(subEl) subEl.textContent = '試合前のAI予想。実際の結果と見比べてみよう';
+  } else {
+    sec.classList.remove('pv-review','pv-collapsed');
+    if(headEl){
+      headEl.classList.remove('pv-head-toggle');
+      headEl.onclick = null;
+      headEl.innerHTML = '<span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span>';
+    }
+    if(subEl) subEl.textContent = '直近の試合データから AI が予想する注目ポイント';
+  }
+
   var body = document.getElementById('pv-body');
   if(!body) return;
   var html = '';
