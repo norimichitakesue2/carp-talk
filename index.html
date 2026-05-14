@@ -1493,6 +1493,14 @@ function renderMain(g){
     innHtml+pitHtml+
     '</div>'+
 
+    // 🔮 試合前プレビュー（スコアボード直下。preview生成された日のみ表示、内容は renderPreview で）
+    '<div class="preview-section fi" id="preview-section" style="display:none">'+
+    '<div class="pv-head"><span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span></div>'+
+    '<div class="pv-sub">直近の試合データから AI が予想する注目ポイント</div>'+
+    '<div id="pv-body"></div>'+
+    '<div class="pv-disclaimer">※ 予想は直近の試合データを元にした参考情報です</div>'+
+    '</div>'+
+
     // ✨ 今日の光（ポジティブ・3レイヤー）
     '<div class="positive-section fi" id="positive-section">'+
     '<div class="pos-head"><span class="pos-icon">✨</span><span class="pos-title-t">今日の光</span></div>'+
@@ -1542,14 +1550,6 @@ function renderMain(g){
       '<span class="mood-status" id="mood-status"></span>'+
       '<button class="mood-share-btn" onclick="shareMood()">🐦 シェア</button>'+
     '</div>'+
-    '</div>'+
-
-    // 🔮 試合前プレビュー（preview生成された日のみ表示、内容は renderPreview で）
-    '<div class="preview-section fi" id="preview-section" style="display:none">'+
-    '<div class="pv-head"><span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span></div>'+
-    '<div class="pv-sub">直近の試合データから AI が予想する注目ポイント</div>'+
-    '<div id="pv-body"></div>'+
-    '<div class="pv-disclaimer">※ 予想は直近の試合データを元にした参考情報です</div>'+
     '</div>'+
 
     // 📊 選手の調子（直近6試合の成績ベース・パワプロ風アイコン）
