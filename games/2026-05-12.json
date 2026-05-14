@@ -318,15 +318,15 @@
   },
   "pitchers": [
     {
-      "team": "巨人",
-      "role": "先発",
-      "name": "戸郷",
-      "result": ""
-    },
-    {
       "team": "広島",
       "role": "先発",
       "name": "床田",
+      "result": ""
+    },
+    {
+      "team": "巨人",
+      "role": "先発",
+      "name": "戸郷",
       "result": ""
     },
     {
@@ -478,9 +478,187 @@
       "pos": "外"
     }
   ],
+  "carp_batting": [
+    {
+      "name": "大盛",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "菊池",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "小園",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "坂倉",
+      "ab": 3,
+      "r": 2,
+      "h": 2,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 1
+    },
+    {
+      "name": "モンテロ",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "持丸",
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "二俣",
+      "ab": 2,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "辰見",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "中﨑",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "田村",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "床田",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "髙",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "ハーン",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "野間",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    }
+  ],
+  "carp_pitching": [
+    {
+      "name": "床田",
+      "result": "",
+      "outs": 20,
+      "pitches": 104,
+      "hitsAllowed": 8,
+      "hrAllowed": 1,
+      "walks": 0,
+      "strikeouts": 3,
+      "runs": 3,
+      "earnedRuns": 3
+    },
+    {
+      "name": "髙",
+      "result": "",
+      "outs": 1,
+      "pitches": 8,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "ハーン",
+      "result": "hold",
+      "outs": 3,
+      "pitches": 19,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 1,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "中﨑",
+      "result": "loss",
+      "outs": 0,
+      "pitches": 5,
+      "hitsAllowed": 2,
+      "hrAllowed": 1,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 2,
+      "earnedRuns": 2
+    }
+  ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-12T12:19:20.159Z",
-    "generatedAt": "2026-05-12T12:20:30.443Z",
+    "sourceFetchedAt": "2026-05-14T08:18:02.405Z",
+    "generatedAt": "2026-05-14T08:18:02.412Z",
     "sourceUrl": "https://npb.jp/scores/2026/0512/g-c-06/"
   }
 }

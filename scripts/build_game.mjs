@@ -185,6 +185,27 @@ function assembleGameJson(date, factsRoot, generated, prev) {
       : (isFinal
           ? (f.carpLineup || []).map((p) => ({ name: p.name, pos: p.pos || '?' }))
           : (prev?.players || [])),
+    // carp_batting: その試合のカープ各打者の打撃成績（直近成績の集計用）
+    // final/live のみ。試合前は prev を維持（無ければ空配列）
+    carp_batting: (isFinal || isLive)
+      ? (f.carpLineup || [])
+          .filter((p) => p.ab != null && p.ab >= 0)
+          .map((p) => ({
+            name: p.name, ab: p.ab ?? 0, r: p.r ?? 0, h: p.h ?? 0,
+            rbi: p.rbi ?? 0, sb: p.sb ?? 0, hr: p.hr ?? 0,
+          }))
+      : (prev?.carp_batting || []),
+    // carp_pitching: その試合のカープ各投手の投球成績（直近成績の集計用）
+    carp_pitching: (isFinal || isLive)
+      ? (pp.carpAll || [])
+          .filter((p) => p.name)
+          .map((p) => ({
+            name: p.name, result: p.result || '', outs: p.outs ?? 0,
+            pitches: p.pitches ?? 0, hitsAllowed: p.hitsAllowed ?? 0,
+            hrAllowed: p.hrAllowed ?? 0, walks: p.walks ?? 0,
+            strikeouts: p.strikeouts ?? 0, runs: p.runs ?? 0, earnedRuns: p.earnedRuns ?? 0,
+          }))
+      : (prev?.carp_pitching || []),
     _meta: {
       sourceFetchedAt: factsRoot.fetchedAt,
       generatedAt: new Date().toISOString(),
@@ -336,6 +357,21 @@ async function main() {
   await fs.mkdir(GAMES_DIR, { recursive: true });
   await fs.writeFile(outPath, JSON.stringify(gameJson, null, 2) + '\n', 'utf8');
   console.error(`[build_game] Wrote ${outPath} (status=${gameJson.status})`);
+
+  // STEP6: 直近成績(調子)の再集計
+  // carp_batting が更新された可能性があるので recent_form.json を作り直す。
+  // 失敗しても build 自体は成功扱い（調子表示は付加機能）。
+  try {
+    const formScript = path.join(__dirname, 'build_recent_form.mjs');
+    const r = runNode(formScript, [date, '--days', '7']);
+    if (r.status === 0) {
+      console.error('[build_game] recent_form.json updated');
+    } else {
+      console.error(`[build_game] build_recent_form failed (non-fatal):\n${r.stderr}`);
+    }
+  } catch (e) {
+    console.error(`[build_game] build_recent_form error (non-fatal): ${e.message}`);
+  }
 }
 
 main().catch((e) => {

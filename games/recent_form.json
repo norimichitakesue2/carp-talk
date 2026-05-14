@@ -1,0 +1,1018 @@
+{
+  "generatedAt": "2026-05-14T08:19:24.935Z",
+  "baseDate": "2026-05-13",
+  "days": 7,
+  "rangeStart": "2026-05-07",
+  "rangeEnd": "2026-05-13",
+  "scannedDays": 5,
+  "foundGames": 5,
+  "foundPitchingGames": 5,
+  "mvp": {
+    "name": "大盛",
+    "summary": "直近3試合 13打数4安打 .308 1本 1打点 1盗塁",
+    "form": {
+      "icon": "↑↑",
+      "label": "絶好調",
+      "level": 2,
+      "cls": "form-hot2"
+    }
+  },
+  "worst": {
+    "name": "平川",
+    "summary": "直近4試合 13打数1安打 .077",
+    "form": {
+      "icon": "↓↓",
+      "label": "絶不調",
+      "level": -2,
+      "cls": "form-cold2"
+    }
+  },
+  "pitcherMvp": {
+    "name": "塹江",
+    "summary": "直近2登板 3回 防御率0.00 自責0 被安0 奪三振3 1勝",
+    "form": {
+      "icon": "↑",
+      "label": "好調",
+      "level": 1,
+      "cls": "form-hot1"
+    }
+  },
+  "pitcherWorst": {
+    "name": "岡本",
+    "summary": "直近1登板 6回 防御率6.00 自責4 被安5 奪三振6 1敗",
+    "form": {
+      "icon": "↓↓",
+      "label": "絶不調",
+      "level": -2,
+      "cls": "form-cold2"
+    }
+  },
+  "players": [
+    {
+      "name": "大盛",
+      "games": 3,
+      "ab": 13,
+      "r": 3,
+      "h": 4,
+      "rbi": 1,
+      "sb": 1,
+      "hr": 1,
+      "avg": ".308",
+      "avg_num": 0.308,
+      "form": {
+        "icon": "↑↑",
+        "label": "絶好調",
+        "level": 2,
+        "cls": "form-hot2"
+      },
+      "summary": "直近3試合 13打数4安打 .308 1本 1打点 1盗塁"
+    },
+    {
+      "name": "坂倉",
+      "games": 5,
+      "ab": 17,
+      "r": 3,
+      "h": 5,
+      "rbi": 3,
+      "sb": 0,
+      "hr": 2,
+      "avg": ".294",
+      "avg_num": 0.294,
+      "form": {
+        "icon": "↑↑",
+        "label": "絶好調",
+        "level": 2,
+        "cls": "form-hot2"
+      },
+      "summary": "直近5試合 17打数5安打 .294 2本 3打点"
+    },
+    {
+      "name": "持丸",
+      "games": 5,
+      "ab": 17,
+      "r": 1,
+      "h": 5,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".294",
+      "avg_num": 0.294,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近5試合 17打数5安打 .294"
+    },
+    {
+      "name": "菊池",
+      "games": 5,
+      "ab": 18,
+      "r": 1,
+      "h": 5,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".278",
+      "avg_num": 0.278,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近5試合 18打数5安打 .278"
+    },
+    {
+      "name": "勝田",
+      "games": 4,
+      "ab": 5,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".400",
+      "avg_num": 0.4,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近4試合 5打数2安打 .400"
+    },
+    {
+      "name": "モンテロ",
+      "games": 5,
+      "ab": 15,
+      "r": 1,
+      "h": 4,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".267",
+      "avg_num": 0.267,
+      "form": {
+        "icon": "→",
+        "label": "普通",
+        "level": 0,
+        "cls": "form-even"
+      },
+      "summary": "直近5試合 15打数4安打 .267 1打点"
+    },
+    {
+      "name": "二俣",
+      "games": 3,
+      "ab": 8,
+      "r": 0,
+      "h": 2,
+      "rbi": 2,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".250",
+      "avg_num": 0.25,
+      "form": {
+        "icon": "→",
+        "label": "普通",
+        "level": 0,
+        "cls": "form-even"
+      },
+      "summary": "直近3試合 8打数2安打 .250 2打点"
+    },
+    {
+      "name": "矢野",
+      "games": 4,
+      "ab": 5,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近4試合 5打数0安打 .000"
+    },
+    {
+      "name": "前川",
+      "games": 3,
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 3打数0安打 .000"
+    },
+    {
+      "name": "森下",
+      "games": 1,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 1打数0安打 .000"
+    },
+    {
+      "name": "林",
+      "games": 3,
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 2打数0安打 .000"
+    },
+    {
+      "name": "辻",
+      "games": 1,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 0打数0安打 .000"
+    },
+    {
+      "name": "遠藤",
+      "games": 3,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 0打数0安打 .000"
+    },
+    {
+      "name": "鈴木",
+      "games": 1,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 0打数0安打 .000"
+    },
+    {
+      "name": "塹江",
+      "games": 2,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近2試合 0打数0安打 .000"
+    },
+    {
+      "name": "益田",
+      "games": 1,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 0打数0安打 .000"
+    },
+    {
+      "name": "常廣",
+      "games": 1,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 0打数0安打 .000"
+    },
+    {
+      "name": "岡本",
+      "games": 1,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 1打数0安打 .000"
+    },
+    {
+      "name": "ハーン",
+      "games": 3,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 0打数0安打 .000"
+    },
+    {
+      "name": "中﨑",
+      "games": 3,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 0打数0安打 .000"
+    },
+    {
+      "name": "赤木",
+      "games": 1,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 0打数0安打 .000"
+    },
+    {
+      "name": "森浦",
+      "games": 2,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近2試合 0打数0安打 .000"
+    },
+    {
+      "name": "髙",
+      "games": 3,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 0打数0安打 .000"
+    },
+    {
+      "name": "辰見",
+      "games": 3,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 3,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3試合 0打数0安打 .000 3盗塁"
+    },
+    {
+      "name": "床田",
+      "games": 1,
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 3打数0安打 .000 1打点"
+    },
+    {
+      "name": "玉村",
+      "games": 1,
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1試合 2打数0安打 .000"
+    },
+    {
+      "name": "小園",
+      "games": 5,
+      "ab": 20,
+      "r": 1,
+      "h": 4,
+      "rbi": 1,
+      "sb": 1,
+      "hr": 0,
+      "avg": ".200",
+      "avg_num": 0.2,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近5試合 20打数4安打 .200 1打点 1盗塁"
+    },
+    {
+      "name": "田村",
+      "games": 2,
+      "ab": 8,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".125",
+      "avg_num": 0.125,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近2試合 8打数1安打 .125 1打点"
+    },
+    {
+      "name": "野間",
+      "games": 3,
+      "ab": 9,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".111",
+      "avg_num": 0.111,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近3試合 9打数1安打 .111"
+    },
+    {
+      "name": "秋山",
+      "games": 3,
+      "ab": 9,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近3試合 9打数0安打 .000"
+    },
+    {
+      "name": "平川",
+      "games": 4,
+      "ab": 13,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "avg": ".077",
+      "avg_num": 0.077,
+      "form": {
+        "icon": "↓↓",
+        "label": "絶不調",
+        "level": -2,
+        "cls": "form-cold2"
+      },
+      "summary": "直近4試合 13打数1安打 .077"
+    }
+  ],
+  "pitchers": [
+    {
+      "name": "塹江",
+      "games": 2,
+      "outs": 9,
+      "ip": "3回",
+      "er": 0,
+      "r": 0,
+      "h": 0,
+      "hr": 0,
+      "bb": 1,
+      "k": 3,
+      "pitches": 33,
+      "win": 1,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近2登板 3回 防御率0.00 自責0 被安0 奪三振3 1勝"
+    },
+    {
+      "name": "ハーン",
+      "games": 3,
+      "outs": 9,
+      "ip": "3回",
+      "er": 0,
+      "r": 0,
+      "h": 0,
+      "hr": 0,
+      "bb": 1,
+      "k": 4,
+      "pitches": 48,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 2,
+      "era": 0,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近3登板 3回 防御率0.00 自責0 被安0 奪三振4 2H"
+    },
+    {
+      "name": "玉村",
+      "games": 1,
+      "outs": 18,
+      "ip": "6回",
+      "er": 1,
+      "r": 1,
+      "h": 5,
+      "hr": 1,
+      "bb": 1,
+      "k": 4,
+      "pitches": 79,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 1.5,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近1登板 6回 防御率1.50 自責1 被安5 奪三振4"
+    },
+    {
+      "name": "辻",
+      "games": 1,
+      "outs": 3,
+      "ip": "1回",
+      "er": 0,
+      "r": 0,
+      "h": 0,
+      "hr": 0,
+      "bb": 0,
+      "k": 2,
+      "pitches": 11,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 1回 防御率0.00 自責0 被安0 奪三振2"
+    },
+    {
+      "name": "益田",
+      "games": 1,
+      "outs": 3,
+      "ip": "1回",
+      "er": 0,
+      "r": 0,
+      "h": 1,
+      "hr": 0,
+      "bb": 0,
+      "k": 0,
+      "pitches": 15,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 1回 防御率0.00 自責0 被安1 奪三振0"
+    },
+    {
+      "name": "常廣",
+      "games": 1,
+      "outs": 3,
+      "ip": "1回",
+      "er": 0,
+      "r": 0,
+      "h": 2,
+      "hr": 0,
+      "bb": 1,
+      "k": 1,
+      "pitches": 29,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 1回 防御率0.00 自責0 被安2 奪三振1"
+    },
+    {
+      "name": "赤木",
+      "games": 1,
+      "outs": 6,
+      "ip": "2回",
+      "er": 0,
+      "r": 0,
+      "h": 1,
+      "hr": 0,
+      "bb": 0,
+      "k": 1,
+      "pitches": 21,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 2回 防御率0.00 自責0 被安1 奪三振1"
+    },
+    {
+      "name": "森浦",
+      "games": 2,
+      "outs": 6,
+      "ip": "2回",
+      "er": 0,
+      "r": 0,
+      "h": 1,
+      "hr": 0,
+      "bb": 0,
+      "k": 2,
+      "pitches": 32,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 1,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近2登板 2回 防御率0.00 自責0 被安1 奪三振2 1H"
+    },
+    {
+      "name": "髙",
+      "games": 3,
+      "outs": 7,
+      "ip": "2回1/3",
+      "er": 0,
+      "r": 0,
+      "h": 2,
+      "hr": 0,
+      "bb": 2,
+      "k": 1,
+      "pitches": 45,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 2,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3登板 2回1/3 防御率0.00 自責0 被安2 奪三振1 2H"
+    },
+    {
+      "name": "森下",
+      "games": 1,
+      "outs": 15,
+      "ip": "5回",
+      "er": 2,
+      "r": 3,
+      "h": 8,
+      "hr": 0,
+      "bb": 1,
+      "k": 5,
+      "pitches": 94,
+      "win": 0,
+      "loss": 1,
+      "save": 0,
+      "hold": 0,
+      "era": 3.6,
+      "form": {
+        "icon": "→",
+        "label": "普通",
+        "level": 0,
+        "cls": "form-even"
+      },
+      "summary": "直近1登板 5回 防御率3.60 自責2 被安8 奪三振5 1敗"
+    },
+    {
+      "name": "鈴木",
+      "games": 1,
+      "outs": 3,
+      "ip": "1回",
+      "er": 1,
+      "r": 1,
+      "h": 2,
+      "hr": 0,
+      "bb": 0,
+      "k": 0,
+      "pitches": 24,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 9,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 1回 防御率9.00 自責1 被安2 奪三振0"
+    },
+    {
+      "name": "中﨑",
+      "games": 3,
+      "outs": 6,
+      "ip": "2回",
+      "er": 2,
+      "r": 2,
+      "h": 2,
+      "hr": 1,
+      "bb": 1,
+      "k": 2,
+      "pitches": 39,
+      "win": 0,
+      "loss": 1,
+      "save": 0,
+      "hold": 1,
+      "era": 9,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近3登板 2回 防御率9.00 自責2 被安2 奪三振2 1敗1H"
+    },
+    {
+      "name": "床田",
+      "games": 1,
+      "outs": 20,
+      "ip": "6回2/3",
+      "er": 3,
+      "r": 3,
+      "h": 8,
+      "hr": 1,
+      "bb": 0,
+      "k": 3,
+      "pitches": 104,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 4.05,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近1登板 6回2/3 防御率4.05 自責3 被安8 奪三振3"
+    },
+    {
+      "name": "遠藤",
+      "games": 3,
+      "outs": 13,
+      "ip": "4回1/3",
+      "er": 3,
+      "r": 3,
+      "h": 6,
+      "hr": 1,
+      "bb": 2,
+      "k": 6,
+      "pitches": 88,
+      "win": 0,
+      "loss": 1,
+      "save": 0,
+      "hold": 1,
+      "era": 6.23,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近3登板 4回1/3 防御率6.23 自責3 被安6 奪三振6 1敗1H"
+    },
+    {
+      "name": "岡本",
+      "games": 1,
+      "outs": 18,
+      "ip": "6回",
+      "er": 4,
+      "r": 4,
+      "h": 5,
+      "hr": 1,
+      "bb": 3,
+      "k": 6,
+      "pitches": 104,
+      "win": 0,
+      "loss": 1,
+      "save": 0,
+      "hold": 0,
+      "era": 6,
+      "form": {
+        "icon": "↓↓",
+        "label": "絶不調",
+        "level": -2,
+        "cls": "form-cold2"
+      },
+      "summary": "直近1登板 6回 防御率6.00 自責4 被安5 奪三振6 1敗"
+    }
+  ]
+}

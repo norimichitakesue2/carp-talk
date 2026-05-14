@@ -330,12 +330,6 @@
   },
   "pitchers": [
     {
-      "team": "ヤクルト",
-      "role": "先発",
-      "name": "高梨",
-      "result": "win"
-    },
-    {
       "team": "広島",
       "role": "先発",
       "name": "森下",
@@ -343,7 +337,13 @@
     },
     {
       "team": "ヤクルト",
-      "role": "抑え",
+      "role": "先発",
+      "name": "高梨",
+      "result": "win"
+    },
+    {
+      "team": "ヤクルト",
+      "role": "S",
       "name": "キハダ",
       "result": "save"
     }
@@ -491,9 +491,205 @@
       "pos": "外"
     }
   ],
+  "carp_batting": [
+    {
+      "name": "秋山",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "菊池",
+      "ab": 4,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "小園",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "坂倉",
+      "ab": 3,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 1
+    },
+    {
+      "name": "野間",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "平川",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "矢野",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "前川",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "持丸",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "森下",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "林",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "辻",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "遠藤",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "勝田",
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "鈴木",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "モンテロ",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    }
+  ],
+  "carp_pitching": [
+    {
+      "name": "森下",
+      "result": "loss",
+      "outs": 15,
+      "pitches": 94,
+      "hitsAllowed": 8,
+      "hrAllowed": 0,
+      "walks": 1,
+      "strikeouts": 5,
+      "runs": 3,
+      "earnedRuns": 2
+    },
+    {
+      "name": "辻",
+      "result": "",
+      "outs": 3,
+      "pitches": 11,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "遠藤",
+      "result": "",
+      "outs": 6,
+      "pitches": 37,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 1,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "鈴木",
+      "result": "",
+      "outs": 3,
+      "pitches": 24,
+      "hitsAllowed": 2,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 1,
+      "earnedRuns": 1
+    }
+  ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-08T14:56:23.169Z",
-    "generatedAt": "2026-05-08T14:57:29.107Z",
+    "sourceFetchedAt": "2026-05-14T08:18:27.849Z",
+    "generatedAt": "2026-05-14T08:18:27.860Z",
     "sourceUrl": "https://npb.jp/scores/2026/0508/c-s-06/"
   }
 }

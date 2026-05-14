@@ -503,9 +503,265 @@
       "pos": "外"
     }
   ],
+  "carp_batting": [
+    {
+      "name": "大盛",
+      "ab": 5,
+      "r": 2,
+      "h": 1,
+      "rbi": 1,
+      "sb": 1,
+      "hr": 1
+    },
+    {
+      "name": "菊池",
+      "ab": 6,
+      "r": 0,
+      "h": 3,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "小園",
+      "ab": 6,
+      "r": 0,
+      "h": 2,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "坂倉",
+      "ab": 6,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "モンテロ",
+      "ab": 5,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "矢野",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "持丸",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "二俣",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "林",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "髙",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "前川",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "遠藤",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "田村",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "辰見",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 1,
+      "hr": 0
+    },
+    {
+      "name": "玉村",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "森浦",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "勝田",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "ハーン",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "中﨑",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "平川",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    }
+  ],
+  "carp_pitching": [
+    {
+      "name": "玉村",
+      "result": "",
+      "outs": 18,
+      "pitches": 79,
+      "hitsAllowed": 5,
+      "hrAllowed": 1,
+      "walks": 1,
+      "strikeouts": 4,
+      "runs": 1,
+      "earnedRuns": 1
+    },
+    {
+      "name": "森浦",
+      "result": "",
+      "outs": 3,
+      "pitches": 16,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "ハーン",
+      "result": "hold",
+      "outs": 3,
+      "pitches": 19,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "中﨑",
+      "result": "hold",
+      "outs": 3,
+      "pitches": 17,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 1,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "髙",
+      "result": "hold",
+      "outs": 3,
+      "pitches": 30,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 2,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "遠藤",
+      "result": "loss",
+      "outs": 4,
+      "pitches": 34,
+      "hitsAllowed": 4,
+      "hrAllowed": 1,
+      "walks": 1,
+      "strikeouts": 3,
+      "runs": 3,
+      "earnedRuns": 3
+    }
+  ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-14T02:00:24.201Z",
-    "generatedAt": "2026-05-14T02:01:30.777Z",
+    "sourceFetchedAt": "2026-05-14T08:17:53.496Z",
+    "generatedAt": "2026-05-14T08:17:53.508Z",
     "sourceUrl": "https://npb.jp/scores/2026/0513/g-c-07/"
   }
 }

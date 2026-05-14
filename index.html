@@ -943,6 +943,73 @@ body::before{
 .pv-mu-note{font-size:11px;color:var(--text);line-height:1.5;margin-top:3px;opacity:.85}
 
 /* ============================================================ */
+/* 📊 選手の調子（recent form）                                 */
+/* ============================================================ */
+.form-section{
+  background:linear-gradient(180deg, var(--surface) 0%, #0d1117 100%);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.1rem 1.1rem .9rem;
+  margin-bottom:1rem;
+}
+.form-head{display:flex;align-items:center;gap:7px;margin-bottom:2px}
+.form-icon{font-size:16px}
+.form-title-t{font-size:14px;font-weight:800;color:var(--text);letter-spacing:.02em}
+.form-range{font-size:10.5px;color:var(--muted);margin-left:auto;font-family:ui-monospace,'SF Mono',monospace}
+/* 野手/投手 切り替えタブ */
+.form-tabs{display:flex;gap:6px;margin:10px 0 8px}
+.form-tab{
+  flex:1;padding:.5rem .4rem;font-size:12px;font-weight:700;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:var(--rs);
+  color:var(--muted);cursor:pointer;transition:all .15s;
+}
+.form-tab.active{
+  background:linear-gradient(180deg, rgba(200,16,46,.25), rgba(200,16,46,.1));
+  border-color:var(--carp-bright);color:#ff8090;
+}
+.form-sub{font-size:11px;color:var(--muted);margin-bottom:10px}
+/* MVP / 心配な選手 ピックアップ */
+.form-pickup{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+@media(max-width:480px){.form-pickup{grid-template-columns:1fr}}
+.form-pick{
+  border-radius:var(--rs);padding:.6rem .7rem;
+  border:1px solid var(--border);
+}
+.form-pick.pick-mvp{background:linear-gradient(135deg, rgba(240,192,64,.14), rgba(240,192,64,.03));border-color:var(--gold)}
+.form-pick.pick-worst{background:linear-gradient(135deg, rgba(120,150,255,.12), rgba(120,150,255,.02));border-color:rgba(120,150,255,.4)}
+.form-pick-lbl{font-size:9.5px;font-weight:800;letter-spacing:.08em;margin-bottom:3px}
+.form-pick.pick-mvp .form-pick-lbl{color:var(--gold-bright)}
+.form-pick.pick-worst .form-pick-lbl{color:#9ab0ff}
+.form-pick-name{font-size:14px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:6px}
+.form-pick-sum{font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.5}
+/* 選手リスト */
+.form-list{display:flex;flex-direction:column;gap:5px}
+.form-row{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+  border-radius:var(--rs);
+  padding:.5rem .7rem;
+}
+.form-badge{
+  flex-shrink:0;width:42px;text-align:center;
+  font-size:15px;font-weight:900;line-height:1.15;
+  border-radius:6px;padding:3px 0;
+}
+.form-badge .fb-label{display:block;font-size:8px;font-weight:700;letter-spacing:.02em}
+.form-hot2{background:rgba(0,150,255,.18);color:#4ab8ff;border:1px solid rgba(74,184,255,.5)}
+.form-hot1{background:rgba(0,150,255,.1);color:#6ec3ff;border:1px solid rgba(110,195,255,.3)}
+.form-even{background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--border)}
+.form-cold1{background:rgba(255,140,60,.1);color:#ffa860;border:1px solid rgba(255,168,96,.3)}
+.form-cold2{background:rgba(255,70,70,.16);color:#ff7676;border:1px solid rgba(255,118,118,.5)}
+.form-none{background:rgba(255,255,255,.03);color:var(--faint);border:1px solid var(--border)}
+.form-row-body{flex:1;min-width:0}
+.form-row-name{font-size:13px;font-weight:700;color:var(--text)}
+.form-row-sum{font-size:10.5px;color:var(--muted);margin-top:1px;font-family:ui-monospace,'SF Mono',monospace}
+
+/* ============================================================ */
 /* ⚔️ 議論エンジン（debates）                                   */
 /* ============================================================ */
 .debate-section{
@@ -1303,7 +1370,12 @@ function renderMain(g){
     g.pitchers.forEach(function(p){
       var tc=p.team==='広島'?'var(--carp)':'#f5d000';
       var bc=p.team==='広島'?'rgba(200,16,46,.3)':'rgba(245,208,0,.3)';
-      var rb=p.result==='win'?'<span class="s-win">勝</span>':p.result==='loss'?'<span class="s-loss">敗</span>':p.result==='save'?'<span class="s-save">S</span>':'';
+      // role が「勝/敗/S」の場合は team+役割と result バッジが重複するのでバッジ省略
+      var roleIsResult = (p.role==='勝'||p.role==='敗'||p.role==='S');
+      var rb = (!roleIsResult && p.result==='win')  ? '<span class="s-win">勝</span>'
+             : (!roleIsResult && p.result==='loss') ? '<span class="s-loss">敗</span>'
+             : (!roleIsResult && p.result==='save') ? '<span class="s-save">S</span>'
+             : '';
       chips+='<div class="pitcher-chip" style="border-color:'+bc+'"><span class="role" style="color:'+tc+'">'+p.team+p.role+'</span><span>'+p.name+'</span>'+rb+'</div>';
     });
     pitHtml='<div class="pitcher-bar"><span style="font-size:11px;color:var(--muted);align-self:center">継投：</span>'+chips+'</div>';
@@ -1400,6 +1472,19 @@ function renderMain(g){
     '<div class="pv-sub">直近の試合データから AI が予想する注目ポイント</div>'+
     '<div id="pv-body"></div>'+
     '<div class="pv-disclaimer">※ 予想は直近の試合データを元にした参考情報です</div>'+
+    '</div>'+
+
+    // 📊 選手の調子（直近7日の成績ベース・パワプロ風アイコン）
+    '<div class="form-section fi" id="form-section" style="display:none">'+
+    '<div class="form-head"><span class="form-icon">📊</span><span class="form-title-t">選手の調子</span><span class="form-range" id="form-range"></span></div>'+
+    '<div class="form-tabs">'+
+    '<button class="form-tab active" data-ftab="bat" onclick="switchFormTab(\'bat\')">⚾ 野手</button>'+
+    '<button class="form-tab" data-ftab="pit" onclick="switchFormTab(\'pit\')">🔥 投手</button>'+
+    '</div>'+
+    '<div class="form-sub" id="form-sub">直近7日間の打撃成績から算出</div>'+
+    '<div class="form-pickup" id="form-pickup"></div>'+
+    '<div class="form-list" id="form-list"></div>'+
+    '<div class="pv-disclaimer" id="form-disclaimer">※ 打数が少ない選手は「様子見」表示。サンプル数も併記しています</div>'+
     '</div>'+
 
     // 予想オーダー（試合前・試合後どちらでも表示）
@@ -1528,9 +1613,101 @@ function renderMain(g){
   renderPositives();
   renderDebates();
   renderPreview();
+  renderRecentForm();
   // team_analysis が JSON にあれば自動的に AI 分析を表示（ボタン押し不要）
   if(GAME.team_analysis && (GAME.team_analysis.issues || GAME.team_analysis.fan_voice)){
     setTimeout(runAIAnalysis, 50);
+  }
+}
+
+// ===== 📊 選手の調子（直近7日成績）=====
+var RECENT_FORM=null, currentFormTab='bat';
+
+function renderRecentForm(){
+  var sec=document.getElementById('form-section');
+  if(!sec) return;
+  fetch('/games/recent_form.json?t='+Date.now()).then(function(r){
+    return r.ok ? r.json() : null;
+  }).then(function(d){
+    var hasBat=d && Array.isArray(d.players) && d.players.length>0;
+    var hasPit=d && Array.isArray(d.pitchers) && d.pitchers.length>0;
+    if(!hasBat && !hasPit){
+      sec.style.display='none';
+      return;
+    }
+    RECENT_FORM=d;
+    sec.style.display='';
+    var rangeEl=document.getElementById('form-range');
+    if(rangeEl) rangeEl.textContent=(d.rangeStart||'')+' 〜 '+(d.rangeEnd||'');
+    // デフォルトタブ: 野手データがあれば野手、無ければ投手
+    currentFormTab=hasBat?'bat':'pit';
+    switchFormTab(currentFormTab);
+  }).catch(function(){
+    sec.style.display='none';
+  });
+}
+
+function switchFormTab(tab){
+  if(!RECENT_FORM) return;
+  currentFormTab=tab;
+  // タブのactive切り替え
+  document.querySelectorAll('.form-tab').forEach(function(b){
+    b.classList.toggle('active', b.dataset.ftab===tab);
+  });
+  var d=RECENT_FORM;
+  var isBat=(tab==='bat');
+  var rows=isBat?(d.players||[]):(d.pitchers||[]);
+  var mvp=isBat?d.mvp:d.pitcherMvp;
+  var worst=isBat?d.worst:d.pitcherWorst;
+
+  var subEl=document.getElementById('form-sub');
+  if(subEl) subEl.textContent=isBat?'直近の打撃成績から算出':'直近の登板成績（防御率）から算出';
+  var discEl=document.getElementById('form-disclaimer');
+  if(discEl) discEl.textContent=isBat
+    ?'※ 打数が少ない選手は「様子見」表示。サンプル数も併記しています'
+    :'※ 投球回3未満の投手は「様子見」表示。直近の防御率で判定しています';
+
+  // MVP / 心配な選手
+  var pickup=document.getElementById('form-pickup');
+  if(pickup){
+    var html='';
+    if(mvp){
+      html+='<div class="form-pick pick-mvp">'+
+        '<div class="form-pick-lbl">'+(isBat?'🔥 直近の主役':'🔥 直近の柱')+'</div>'+
+        '<div class="form-pick-name">'+(mvp.form?mvp.form.icon:'')+' '+esc(mvp.name)+'</div>'+
+        '<div class="form-pick-sum">'+esc(mvp.summary||'')+'</div>'+
+      '</div>';
+    }
+    if(worst){
+      html+='<div class="form-pick pick-worst">'+
+        '<div class="form-pick-lbl">💧 気がかりな'+(isBat?'選手':'投手')+'</div>'+
+        '<div class="form-pick-name">'+(worst.form?worst.form.icon:'')+' '+esc(worst.name)+'</div>'+
+        '<div class="form-pick-sum">'+esc(worst.summary||'')+'</div>'+
+      '</div>';
+    }
+    pickup.innerHTML=html;
+  }
+
+  // リスト
+  var list=document.getElementById('form-list');
+  if(list){
+    if(rows.length===0){
+      list.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:1rem 0">'+
+        (isBat?'野手':'投手')+'の直近データがまだありません</div>';
+    } else {
+      list.innerHTML=rows.map(function(p){
+        var f=p.form||{};
+        return '<div class="form-row">'+
+          '<div class="form-badge '+(f.cls||'form-none')+'">'+(f.icon||'－')+
+            '<span class="fb-label">'+esc(f.label||'')+'</span>'+
+          '</div>'+
+          '<div class="form-row-body">'+
+            '<div class="form-row-name">'+esc(p.name)+'</div>'+
+            '<div class="form-row-sum">'+esc(p.summary||'')+'</div>'+
+          '</div>'+
+        '</div>';
+      }).join('');
+    }
   }
 }
 

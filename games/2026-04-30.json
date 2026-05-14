@@ -203,6 +203,7 @@
     ],
     "fan_voice": "3安打で逆転勝利なんて、カープらしくて最高やないか！でも毎回こんな綱渡りじゃ心臓が持たん。坂倉の一発に救われたけど、もっと早い回に点を取れる打線にしてくれよ。それでも諦めないこのチームが好きやけどな！"
   },
+  "preview": null,
   "innings": {
     "hiroshima": [
       0,
@@ -235,18 +236,30 @@
     {
       "team": "広島",
       "role": "先発",
+      "name": "玉村",
+      "result": ""
+    },
+    {
+      "team": "巨人",
+      "role": "先発",
+      "name": "ウィットリー",
+      "result": ""
+    },
+    {
+      "team": "広島",
+      "role": "勝",
       "name": "森浦",
       "result": "win"
     },
     {
       "team": "巨人",
-      "role": "先発",
+      "role": "敗",
       "name": "ルシアーノ",
       "result": "loss"
     },
     {
       "team": "広島",
-      "role": "抑え",
+      "role": "S",
       "name": "中﨑",
       "result": "save"
     }
@@ -394,9 +407,244 @@
       "pos": "外"
     }
   ],
+  "carp_batting": [
+    {
+      "name": "大盛",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "菊池",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "小園",
+      "ab": 3,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "坂倉",
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 3,
+      "sb": 0,
+      "hr": 1
+    },
+    {
+      "name": "野間",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 1,
+      "hr": 0
+    },
+    {
+      "name": "ハーン",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "矢野",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "勝田",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "中﨑",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "平川",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "持丸",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "辰見",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "髙",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "モンテロ",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "森浦",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "佐々木",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "玉村",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "石原",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    },
+    {
+      "name": "秋山",
+      "ab": 1,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0
+    }
+  ],
+  "carp_pitching": [
+    {
+      "name": "玉村",
+      "result": "",
+      "outs": 15,
+      "pitches": 87,
+      "hitsAllowed": 6,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 5,
+      "runs": 1,
+      "earnedRuns": 1
+    },
+    {
+      "name": "髙",
+      "result": "",
+      "outs": 3,
+      "pitches": 15,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "森浦",
+      "result": "win",
+      "outs": 3,
+      "pitches": 17,
+      "hitsAllowed": 1,
+      "hrAllowed": 1,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 1,
+      "earnedRuns": 1
+    },
+    {
+      "name": "ハーン",
+      "result": "hold",
+      "outs": 3,
+      "pitches": 12,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "中﨑",
+      "result": "save",
+      "outs": 3,
+      "pitches": 14,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 0,
+      "earnedRuns": 0
+    }
+  ],
   "_meta": {
-    "sourceFetchedAt": "2026-04-30T14:45:27.329Z",
-    "generatedAt": "2026-04-30T14:46:48.060Z",
+    "sourceFetchedAt": "2026-05-14T08:19:22.823Z",
+    "generatedAt": "2026-05-14T08:19:22.834Z",
     "sourceUrl": "https://npb.jp/scores/2026/0430/g-c-05/"
   }
 }

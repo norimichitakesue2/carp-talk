@@ -158,12 +158,19 @@ async function fetchBoxFacts({ year, month, day, segment }) {
       winningPitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'win')?.name || null,
       losingPitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'loss')?.name || null,
       savePitcher: [...awayPitch, ...homePitch].find((p) => p.result === 'save')?.name || null,
-      carpAll: carpPitch.map((p) => ({ name: p.name, result: p.result, ipText: p.ipText })),
+      carpAll: carpPitch.map((p) => ({
+        name: p.name, result: p.result, ipText: p.ipText, outs: p.outs,
+        pitches: p.pitches, hitsAllowed: p.hitsAllowed, hrAllowed: p.hrAllowed,
+        walks: p.walks, strikeouts: p.strikeouts, runs: p.runs, earnedRuns: p.earnedRuns,
+      })),
       opAll: opPitch.map((p) => ({ name: p.name, result: p.result, ipText: p.ipText })),
       carpStarterSource: carpPitchStarter ? 'npb' : (yahooStarters.homeStarter || yahooStarters.awayStarter ? 'yahoo' : 'unknown'),
     },
     homeRuns,
-    carpLineup: carpBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
+    carpLineup: carpBat.map((b) => ({
+      name: b.name, pos: b.pos, line: b.lineupNum,
+      ab: b.ab, r: b.r, h: b.h, rbi: b.rbi, sb: b.sb, hr: b.hr,
+    })),
     opponentLineup: opBat.map((b) => ({ name: b.name, pos: b.pos, line: b.lineupNum })),
     carpRoster: roster.carp,
     opponentRoster: roster.opponent,
@@ -450,6 +457,8 @@ function parseLineScore($) {
 
 // 打撃成績テーブル（tablefix_t_b / tablefix_b_b）を選手の配列に
 // 列: |番|守備|選手|打数|得点|安打|打点|盗塁|1|2|3|4|5|6|7|8|9
+//   cells[3]=打数 cells[4]=得点 cells[5]=安打 cells[6]=打点 cells[7]=盗塁
+// 本塁打は打数列には無いので、各イニングセルの「○本」表記から数える。
 function parseBatting($, $tbl) {
   if (!$tbl || !$tbl.length) return [];
   const rows = $tbl.find('tr').slice(1); // skip header
@@ -464,24 +473,52 @@ function parseBatting($, $tbl) {
     // チーム計（合計行）など、選手以外の行を除外
     if (/チーム計|合計|計$/.test(name)) return;
     const innings = cells.slice(8, 17);
-    result.push({ lineupNum, pos, name, innings });
+    // 個人打撃成績（直近成績集計用）
+    const ab  = parseIntSafe(cells[3]);
+    const r_  = parseIntSafe(cells[4]);
+    const h   = parseIntSafe(cells[5]);
+    const rbi = parseIntSafe(cells[6]);
+    const sb  = parseIntSafe(cells[7]);
+    // 本塁打: イニングセルに「右中本②」のような表記。1セルにつき本塁打1本。
+    let hr = 0;
+    for (const cell of innings) {
+      if (cell && /[^本\s\-]本/.test(cell)) hr++;
+    }
+    result.push({ lineupNum, pos, name, innings, ab, r: r_, h, rbi, sb, hr });
   });
   return result;
 }
 
+// 投球回テキストを「アウト数」に変換
+//   "6.2" → 20 (6回2/3)、"0.1" → 1、"1" → 3、"0+" / "0 +" → 0
+function ipToOuts(ipText) {
+  if (ipText == null) return 0;
+  const t = String(ipText).replace(/[\s　＋]/g, (m) => (m === '＋' ? '+' : ''));
+  // "0+" のように + を含む（アウトなしで降板）
+  if (/^\d+\+$/.test(t)) return parseInt(t, 10) * 3;
+  const m = t.match(/^(\d+)\.(\d)/);
+  if (m) return parseInt(m[1], 10) * 3 + parseInt(m[2], 10);
+  const n = parseInt(t, 10);
+  return isNaN(n) ? 0 : n * 3;
+}
+
 // 投手成績テーブル（tablefix_t_p / tablefix_b_p）
-// 列: |結果|投手|投球数|打者|投球回|安打|本塁打|四球|死球|三振|暴投|ボーク|失点|自責点
-// 結果列に ○=勝 / ●=敗 / Ｓ or S=セーブ
+// ヘッダー(14列): 結果|投手|投球数|打者|投球回|安打|本塁打|四球|死球|三振|暴投|ボーク|失点|自責点
+// ただしデータ行では「投球回」が「6」「.2」のように分割されて2セル余分に入り、
+// 16セル構造になる（投球回 display + whole + frac）。よって安打以降が +2 ズレる。
+//   16セル: [0]結果 [1]投手 [2]投球数 [3]打者 [4]投球回(表示) [5]回 [6]分
+//           [7]安打 [8]本塁打 [9]四球 [10]死球 [11]三振 [12]暴投 [13]ボーク [14]失点 [15]自責点
+// 結果列に ○=勝 / ●=敗 / Ｓ or S=セーブ / Ｈ=ホールド
 function parsePitching($, $tbl) {
   if (!$tbl || !$tbl.length) return [];
   const rows = $tbl.find('tr').slice(1);
   const result = [];
   rows.each((_, r) => {
     const cells = $(r).find('th, td').map((_, c) => $(c).text().trim().replace(/\s+/g, ' ')).get();
-    if (cells.length < 4) return;
+    if (cells.length < 4) return;  // 「6 .2」のような分割サブ行(2セル)を除外
     const flag = cells[0] || '';
     const name = (cells[1] || '').replace(/\s+/g, '');
-    const ipText = cells[4] || cells[3] || '';  // 投球回
+    const ipText = cells[4] || cells[3] || '';  // 投球回（表示セル）
     if (!name || /^投手$/.test(name)) return;
     if (/チーム計|合計|計$/.test(name)) return;
     let resultMark = '';
@@ -489,7 +526,24 @@ function parsePitching($, $tbl) {
     else if (flag.includes('●')) resultMark = 'loss';
     else if (flag.includes('Ｓ') || flag === 'S') resultMark = 'save';
     else if (flag.includes('Ｈ') || flag === 'H') resultMark = 'hold';
-    result.push({ name, result: resultMark, ipText });
+    // 16セル構造を基準にマッピング。それ未満なら旧来想定(14列)にフォールバック。
+    const wide = cells.length >= 16;
+    const i = wide
+      ? { h: 7, hr: 8, bb: 9, k: 11, r: 14, er: 15 }
+      : { h: 5, hr: 6, bb: 7, k: 9,  r: 12, er: 13 };
+    result.push({
+      name,
+      result: resultMark,
+      ipText,
+      outs: ipToOuts(ipText),
+      pitches: parseIntSafe(cells[2]),
+      hitsAllowed: parseIntSafe(cells[i.h]),
+      hrAllowed: parseIntSafe(cells[i.hr]),
+      walks: parseIntSafe(cells[i.bb]),
+      strikeouts: parseIntSafe(cells[i.k]),
+      runs: parseIntSafe(cells[i.r]),
+      earnedRuns: parseIntSafe(cells[i.er]),
+    });
   });
   return result;
 }
