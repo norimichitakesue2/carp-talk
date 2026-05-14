@@ -170,6 +170,15 @@ async function main() {
 
   console.error(`[recent_form] Scanned ${scannedDays} days, found ${foundGames} batting / ${foundPitchingGames} pitching games`);
 
+  // 投手が代打・投手の打席で carp_batting に混ざるので、野手リストから除外する。
+  // 期間中に1度でも登板した選手＝投手とみなす。
+  const pitcherNames = new Set(Object.keys(perPitcher));
+  for (const name of Object.keys(perPlayer)) {
+    if (pitcherNames.has(name)) {
+      delete perPlayer[name];
+    }
+  }
+
   // 各選手の派生指標を計算
   // 打席数 PA は厳密には四死球犠打を含むが、carp_batting には打数しか無いので
   // ここでは「打数」を打席数の近似として扱い、出塁率の代わりに簡易OPSを使う。

@@ -1195,8 +1195,10 @@ function getEmotion(flow){if(flow<=20)return{label:'圧倒',cls:'em-push'};if(fl
 // ===== 日付ナビ =====
 function updateDateNav(date){
   var today=todayStr();
+  var tomorrow=addDays(today,1);
   document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (今日)':'');
-  document.getElementById('btn-next').disabled=(date>=today);
+  // 翌日まで選択可能（試合前プレビューを見られるように）
+  document.getElementById('btn-next').disabled=(date>=tomorrow);
 }
 
 // ===== ゲーム読み込み =====
