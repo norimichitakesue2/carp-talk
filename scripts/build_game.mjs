@@ -36,6 +36,30 @@ const pickDateArg = () => {
   return a || new Date().toISOString().slice(0, 10);
 };
 
+// 指定日より前の直近の試合JSONから players（最新の1軍公示）を探す。
+// carpRoster が空の試合（Yahoo由来の未来の試合など）のフォールバック用。
+async function findLatestRoster(beforeDate) {
+  let files;
+  try {
+    files = await fs.readdir(GAMES_DIR);
+  } catch { return null; }
+  const gameDates = files
+    .filter((fn) => /^\d{4}-\d{2}-\d{2}\.json$/.test(fn))
+    .map((fn) => fn.replace('.json', ''))
+    .filter((d) => d < beforeDate)   // 指定日より前
+    .sort()
+    .reverse();                       // 新しい順
+  for (const d of gameDates) {
+    try {
+      const g = JSON.parse(await fs.readFile(path.join(GAMES_DIR, `${d}.json`), 'utf8'));
+      if (Array.isArray(g.players) && g.players.length > 0) {
+        return { date: d, players: g.players.map((p) => ({ name: p.name, pos: p.pos || '?' })) };
+      }
+    } catch { /* skip */ }
+  }
+  return null;
+}
+
 function assembleGameJson(date, factsRoot, generated, prev) {
   const f = factsRoot.facts;
   const ls = f.lineScore || {};
@@ -268,6 +292,18 @@ async function main() {
   if (prev?._meta?.manuallyEdited) {
     console.error(`[build_game] ${outPath} is manually edited; skipping overwrite.`);
     process.exit(0);
+  }
+
+  // STEP2.5: carpRoster が空なら直近試合の players（最新の1軍公示）で補完する。
+  // Yahoo 由来の未来の試合や、NPB がまだ公示を出していない試合では
+  // carpRoster が空になり、AI preview のフィルタが効かず抹消選手が混ざるため。
+  if (!facts.facts) facts.facts = {};
+  if (!Array.isArray(facts.facts.carpRoster) || facts.facts.carpRoster.length === 0) {
+    const latestRoster = await findLatestRoster(date);
+    if (latestRoster && latestRoster.players.length > 0) {
+      facts.facts.carpRoster = latestRoster.players;
+      console.error(`[build_game] carpRoster empty → backfilled from ${latestRoster.date} (${latestRoster.players.length} players)`);
+    }
   }
 
   // STEP3: AI生成
