@@ -8,7 +8,7 @@
   "venue": "阪神甲子園球場",
   "start_time": "14:04",
   "status": "live",
-  "current_inning": "7回表",
+  "current_inning": "8回表",
   "result_label": "",
   "away_pitcher": "森下",
   "home_pitcher": "村上",
@@ -202,7 +202,7 @@
       0,
       0
     ],
-    "away_hits": 5,
+    "away_hits": 6,
     "away_errors": 0
   },
   "pitchers": [],
@@ -408,7 +408,7 @@
       "name": "持丸",
       "pos": "捕",
       "line": 6,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -426,13 +426,13 @@
       "name": "田村",
       "pos": "左",
       "line": 7,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -511,6 +511,24 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "塹江",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -537,11 +555,23 @@
       "strikeouts": 1,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "塹江",
+      "result": "",
+      "outs": 3,
+      "pitches": 17,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-16T07:04:38.132Z",
-    "generatedAt": "2026-05-16T07:04:38.145Z",
+    "sourceFetchedAt": "2026-05-16T07:19:46.661Z",
+    "generatedAt": "2026-05-16T07:19:46.674Z",
     "sourceUrl": "https://npb.jp/scores/2026/0516/t-c-07/"
   }
 }
