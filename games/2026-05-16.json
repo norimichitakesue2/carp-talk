@@ -8,7 +8,7 @@
   "venue": "阪神甲子園球場",
   "start_time": "14:04",
   "status": "live",
-  "current_inning": "4回裏",
+  "current_inning": "5回裏",
   "result_label": "",
   "away_pitcher": "森下",
   "home_pitcher": "村上",
@@ -189,7 +189,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 0,
+    "hiroshima_hits": 2,
     "hiroshima_errors": 0,
     "away": [
       2,
@@ -202,7 +202,7 @@
       0,
       0
     ],
-    "away_hits": 3,
+    "away_hits": 4,
     "away_errors": 0
   },
   "pitchers": [],
@@ -372,9 +372,9 @@
       "name": "坂倉",
       "pos": "三",
       "line": 4,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
-      "h": 0,
+      "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -382,7 +382,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -390,7 +390,7 @@
       "name": "モンテロ",
       "pos": "一",
       "line": 5,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -408,9 +408,9 @@
       "name": "持丸",
       "pos": "捕",
       "line": 6,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
-      "h": 0,
+      "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -418,7 +418,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -426,7 +426,7 @@
       "name": "田村",
       "pos": "左",
       "line": 7,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -444,7 +444,7 @@
       "name": "勝田",
       "pos": "二",
       "line": 8,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -481,19 +481,19 @@
     {
       "name": "森下",
       "result": "",
-      "outs": 11,
-      "pitches": 68,
-      "hitsAllowed": 4,
+      "outs": 14,
+      "pitches": 85,
+      "hitsAllowed": 5,
       "hrAllowed": 1,
       "walks": 2,
-      "strikeouts": 2,
+      "strikeouts": 3,
       "runs": 3,
       "earnedRuns": 3
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-16T06:13:21.306Z",
-    "generatedAt": "2026-05-16T06:13:21.316Z",
+    "sourceFetchedAt": "2026-05-16T06:37:19.209Z",
+    "generatedAt": "2026-05-16T06:37:19.222Z",
     "sourceUrl": "https://npb.jp/scores/2026/0516/t-c-07/"
   }
 }
