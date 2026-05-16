@@ -295,6 +295,22 @@ function buildPreviewPrompt(facts, pastGames) {
     carpStarterSource: f.pitchers?.carpStarterSource,
   };
 
+  // 現1軍メンバー（NPB公示）— preview 全体で「使える選手」を縛るための名簿
+  const activeRosterList = Array.isArray(f.carpRoster) && f.carpRoster.length > 0
+    ? f.carpRoster.map(p => `${p.pos || '?'} ${p.name}`).join(' / ')
+    : '（取得失敗）';
+  const activeRosterBlock = `
+
+【今日の1軍登録メンバー（NPB公示）— これが今日カープが使える選手の全て】
+${activeRosterList}
+
+★ preview の全セクション（watchpoints, key_players, tactical_advice, lineup_proposal 等）で
+  「カープ選手」を名前で言及・推奨できるのは【上記の1軍メンバーのみ】。
+  過去データ（直近試合・playByPlay 等）に登場しても、この名簿に居なければ抹消・故障で
+  今日は出場できない。決して「○○に期待」「○○を起用」のように推さない。
+  過去の事実として「△月△日に○○が打った」と回顧的に触れるのは可（ただしその選手を
+  今日のキープレイヤーや起用提案には絶対に入れない）。`;
+
   // nf3 から取得した相手先発の詳細統計（Phase 2 + Phase 3）
   // 数値が無いと AI が一般論に逃げるので、ある時だけ強調して投入する
   const nf3 = f.opponentPitcherNf3;
@@ -499,13 +515,30 @@ ${nf3Text ? `\n【参考: nf3 通算 vsカープ成績】\n${nf3Text}\n` : ''}
   // Phase 8b: 直近の打順 + 選手の調子（打順提案用）
   let lineupBlock = '';
   const recentLineups = f.recentLineups || [];
-  const rfPlayers = f.recentForm?.players || [];
+  const rfPlayersRaw = f.recentForm?.players || [];
   if (recentLineups.length > 0) {
+    // 当日の carpRoster (現在の1軍公示) で抹消選手を除外
+    // recent_form は直近6試合の選手なので、その間に抹消された選手も含まれる
+    const activeNames = Array.isArray(f.carpRoster) && f.carpRoster.length > 0
+      ? f.carpRoster.map(p => p.name).filter(Boolean)
+      : null;
+    const isActive = (name) => {
+      if (!activeNames) return true;   // 公示データ無ければ素通し
+      if (!name) return false;
+      return activeNames.some(rn => rn === name || name.startsWith(rn) || rn.startsWith(name));
+    };
+    const rfPlayers = rfPlayersRaw.filter(p => isActive(p.name));
+    const excludedFromForm = rfPlayersRaw.length - rfPlayers.length;
+    if (excludedFromForm > 0) {
+      console.error(`[ai] lineup_proposal: filtered out ${excludedFromForm} non-active players (抹消選手) from form data`);
+    }
+
     const lineupText = recentLineups.map(l =>
       `  ${l.date}: ` + l.order.map(o => `${o.line}番${o.name}(${o.pos})`).join(' / ')
     ).join('\n');
 
-    // 直近スタメン選手の名前セット（控え判定用）
+    // 直近スタメン選手の名前セット（控え判定用）— 抹消含む historical fact
+    // ただし提案には使わない（提案は rfPlayers＝アクティブのみから選ばせる）
     const starterNames = new Set();
     recentLineups.forEach(l => l.order.forEach(o => o.name && starterNames.add(o.name)));
     const isStarterName = (name) => {
@@ -533,26 +566,67 @@ ${nf3Text ? `\n【参考: nf3 通算 vsカープ成績】\n${nf3Text}\n` : ''}
     const starterForm = rfPlayers.filter(p => isStarterName(p.name));
     const benchForm   = rfPlayers.filter(p => !isStarterName(p.name));
 
+    // carpRoster から 名前→守備位置 マップ（守備整合チェック用）
+    const posByName = {};
+    if (Array.isArray(f.carpRoster)) {
+      f.carpRoster.forEach(rp => { if (rp.name) posByName[rp.name] = rp.pos || '?'; });
+    }
+    const findPos = (name) => {
+      if (posByName[name]) return posByName[name];
+      for (const k of Object.keys(posByName)) {
+        if (k === name || k.startsWith(name) || name.startsWith(k)) return posByName[k];
+      }
+      return '?';
+    };
     const fmtForm = (p) => {
       const vc = findVsCarp(p.name);
       const vcText = vc ? ` | 対${nf3?.name || '相手'}通算 ${vc.h ?? 0}-${vc.ab ?? 0}(.${(vc.avg||'.000').replace(/^\./,'')})` : '';
-      return `  ${p.name}: ${p.form?.label || '?'} | OPS${p.ops || '?'} 出塁${p.obp || '?'} 長打${p.slg || '?'} 打率${p.avg || '?'} | ${p.hr || 0}本 ${p.rbi || 0}打点 ${p.bb || 0}四球 ${p.k || 0}三振${vcText}`;
+      const pos = findPos(p.name);
+      return `  ${p.name}(${pos}): ${p.form?.label || '?'} | OPS${p.ops || '?'} 出塁${p.obp || '?'} 長打${p.slg || '?'} 打率${p.avg || '?'} | ${p.hr || 0}本 ${p.rbi || 0}打点 ${p.bb || 0}四球 ${p.k || 0}三振${vcText}`;
     };
     const formText = starterForm.map(fmtForm).join('\n');
     const benchText = benchForm.length
       ? benchForm.map(fmtForm).join('\n')
       : '  （該当なし）';
 
+    // 最新試合の打順だけ別途明示（AIが古い試合の打順を引きずる対策）
+    const latest = recentLineups[0];   // recentLineups は新しい順
+    const latestLineupText = latest
+      ? '  ' + latest.order.map(o => `${o.line}番${o.name}(${o.pos})`).join(' / ')
+      : '（データなし）';
+
     lineupBlock = `
 
-【直近の打順（直近3試合）】
+★★【最新試合(${latest?.date || '?'})の打順 — これが基準】★★
+${latestLineupText}
+※ この最新試合の打順が「基準打順」。これをそのままコピーして書き出してから
+  入れ替えだけ行うこと。古い試合の打順を引きずるのは禁止。
+
+【直近3試合の打順（参考）】※ 抹消・故障の選手も含まれる
 ${lineupText}
 
-【スタメン組の調子（直近6試合）】
+【スタメン組の調子（直近6試合）】※ ここに居る選手＝現1軍登録のみ
 ${formText || '  （調子データなし）'}
 
-【控え組の調子（直近スタメンに居ない選手）】
+【控え組の調子（直近スタメンに居ない現1軍選手）】
 ${benchText}
+
+★【絶対厳守①】lineup_proposal の order に書ける選手は、上の
+【スタメン組の調子】【控え組の調子】に列挙されている選手【だけ】。
+直近の打順に出てくるが【調子リスト】に居ない選手（＝抹消・故障で1軍離脱）は
+絶対に提案に含めないこと。
+
+★【絶対厳守②】基準打順は「最新試合(${latest?.date || '?'})の打順」のみ。
+それより古い試合の打順は参考程度。最新試合に居なかった選手を
+「直近2試合は2番だった」等の理由で提案に入れるのは禁止。
+
+★【絶対厳守③】守備位置の整合性チェック:
+  - 8人の野手で 投以外の守備位置（捕・一・二・三・遊・左・中・右）を
+    可能な限り網羅すること。
+  - 同じ守備位置に2人の選手を置くのは禁止（例：菊池(二)と勝田(二)を両方入れる）。
+    上の調子リストの末尾に各選手の守備位置(pos)が「(右)」「(二)」のように書いてある。
+  - もし入れ替えで守備被りが発生しそうなら、被る側の選手を控えに回すか、
+    入れ替えそのものを諦める。守備被りより、最新打順維持を優先してよい。
 
 lineup_proposal は以下の【手順】を順番通りに実行して組み立てること。
 手順を飛ばしたり、独自判断で「最適化」してはいけない。
@@ -685,6 +759,7 @@ farm_callup フィールドを次の方針で組み立てること:
 
 【今日の試合】
 ${JSON.stringify(todayInfo, null, 2)}
+${activeRosterBlock}
 ${opPitcherBlock}
 ${matchupBlock}
 ${lineupBlock}
