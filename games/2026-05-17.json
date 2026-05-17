@@ -8,7 +8,7 @@
   "venue": "阪神甲子園球場",
   "start_time": "14:01",
   "status": "live",
-  "current_inning": "5回表",
+  "current_inning": "5回裏",
   "result_label": "",
   "away_pitcher": "岡本",
   "home_pitcher": "才木",
@@ -488,19 +488,19 @@
     {
       "name": "岡本",
       "result": "",
-      "outs": 12,
-      "pitches": 75,
+      "outs": 15,
+      "pitches": 86,
       "hitsAllowed": 3,
       "hrAllowed": 0,
       "walks": 2,
-      "strikeouts": 3,
+      "strikeouts": 4,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-17T06:29:32.813Z",
-    "generatedAt": "2026-05-17T06:29:32.826Z",
+    "sourceFetchedAt": "2026-05-17T06:37:23.464Z",
+    "generatedAt": "2026-05-17T06:37:23.476Z",
     "sourceUrl": "https://npb.jp/scores/2026/0517/t-c-08/"
   }
 }
