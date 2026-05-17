@@ -209,7 +209,7 @@
       0,
       0
     ],
-    "away_hits": 3,
+    "away_hits": 4,
     "away_errors": 0
   },
   "pitchers": [],
@@ -518,6 +518,24 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "髙",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -532,11 +550,23 @@
       "strikeouts": 4,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "髙",
+      "result": "",
+      "outs": 2,
+      "pitches": 9,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-17T07:16:18.477Z",
-    "generatedAt": "2026-05-17T07:16:18.490Z",
+    "sourceFetchedAt": "2026-05-17T07:27:02.993Z",
+    "generatedAt": "2026-05-17T07:27:03.006Z",
     "sourceUrl": "https://npb.jp/scores/2026/0517/t-c-08/"
   }
 }
