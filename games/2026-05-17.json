@@ -8,7 +8,7 @@
   "venue": "阪神甲子園球場",
   "start_time": "14:01",
   "status": "live",
-  "current_inning": "7回裏",
+  "current_inning": "8回表",
   "result_label": "",
   "away_pitcher": "岡本",
   "home_pitcher": "才木",
@@ -325,7 +325,7 @@
       "name": "大盛",
       "pos": "中",
       "line": 1,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -487,7 +487,7 @@
       "name": "二俣",
       "pos": "右一",
       "line": 8,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -536,6 +536,42 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "田村",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "ハーン",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -562,11 +598,23 @@
       "strikeouts": 1,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "ハーン",
+      "result": "",
+      "outs": 0,
+      "pitches": 0,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-17T07:27:02.993Z",
-    "generatedAt": "2026-05-17T07:27:03.006Z",
+    "sourceFetchedAt": "2026-05-17T07:35:51.701Z",
+    "generatedAt": "2026-05-17T07:35:51.715Z",
     "sourceUrl": "https://npb.jp/scores/2026/0517/t-c-08/"
   }
 }
