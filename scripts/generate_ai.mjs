@@ -566,23 +566,63 @@ ${nf3Text ? `\n【参考: nf3 通算 vsカープ成績】\n${nf3Text}\n` : ''}
     const starterForm = rfPlayers.filter(p => isStarterName(p.name));
     const benchForm   = rfPlayers.filter(p => !isStarterName(p.name));
 
-    // carpRoster から 名前→守備位置 マップ（守備整合チェック用）
-    const posByName = {};
+    // 名前→守備位置 マップ
+    // 優先順: 直近試合の実戦守備位置（細かい：一/二/三/遊/左/中/右/捕）
+    //         → fallback: carpRoster の大分類（捕/内/外/投）
+    // 直近実戦の方が「実際にその選手がどこを守るか」を正確に表す
+    const detailedPosByName = {};
+    // 古い試合から順に処理 → 最新試合の pos が最終的に上書きされる
+    [...recentLineups].reverse().forEach(l => {
+      l.order.forEach(o => {
+        if (o.name && o.pos) detailedPosByName[o.name] = o.pos;
+      });
+    });
+    const rosterPosByName = {};
     if (Array.isArray(f.carpRoster)) {
-      f.carpRoster.forEach(rp => { if (rp.name) posByName[rp.name] = rp.pos || '?'; });
+      f.carpRoster.forEach(rp => { if (rp.name) rosterPosByName[rp.name] = rp.pos || '?'; });
     }
     const findPos = (name) => {
-      if (posByName[name]) return posByName[name];
-      for (const k of Object.keys(posByName)) {
-        if (k === name || k.startsWith(name) || name.startsWith(k)) return posByName[k];
-      }
-      return '?';
+      // 完全一致 or 部分一致で実戦守備位置を引く（複数登録の柔軟マッチ）
+      const tryMap = (m) => {
+        if (m[name]) return m[name];
+        for (const k of Object.keys(m)) {
+          if (k === name || k.startsWith(name) || name.startsWith(k)) return m[k];
+        }
+        return null;
+      };
+      return tryMap(detailedPosByName) || tryMap(rosterPosByName) || '?';
     };
     const fmtForm = (p) => {
       const vc = findVsCarp(p.name);
       const vcText = vc ? ` | 対${nf3?.name || '相手'}通算 ${vc.h ?? 0}-${vc.ab ?? 0}(.${(vc.avg||'.000').replace(/^\./,'')})` : '';
-      const pos = findPos(p.name);
-      return `  ${p.name}(${pos}): ${p.form?.label || '?'} | OPS${p.ops || '?'} 出塁${p.obp || '?'} 長打${p.slg || '?'} 打率${p.avg || '?'} | ${p.hr || 0}本 ${p.rbi || 0}打点 ${p.bb || 0}四球 ${p.k || 0}三振${vcText}`;
+      // 実戦ポジ(細かい) と 登録ポジ(大分類) を併記。柔軟性が伝わる
+      // 例: 二俣(右/内) = 実戦は右翼、登録は内野 → 内野でも守れる
+      const playPos = (() => {
+        const tryMap = (m) => {
+          if (m[p.name]) return m[p.name];
+          for (const k of Object.keys(m)) {
+            if (k === p.name || k.startsWith(p.name) || p.name.startsWith(k)) return m[k];
+          }
+          return null;
+        };
+        return tryMap(detailedPosByName);
+      })();
+      const regPos = (() => {
+        const tryMap = (m) => {
+          if (m[p.name]) return m[p.name];
+          for (const k of Object.keys(m)) {
+            if (k === p.name || k.startsWith(p.name) || p.name.startsWith(k)) return m[k];
+          }
+          return null;
+        };
+        return tryMap(rosterPosByName);
+      })();
+      let posDisplay = playPos || regPos || '?';
+      if (playPos && regPos && !regPos.includes(playPos.charAt(0))) {
+        // 実戦と登録が違う系統なら両方表示（例：右/内）
+        posDisplay = `${playPos}/${regPos}`;
+      }
+      return `  ${p.name}(${posDisplay}): ${p.form?.label || '?'} | OPS${p.ops || '?'} 出塁${p.obp || '?'} 長打${p.slg || '?'} 打率${p.avg || '?'} | ${p.hr || 0}本 ${p.rbi || 0}打点 ${p.bb || 0}四球 ${p.k || 0}三振${vcText}`;
     };
     const formText = starterForm.map(fmtForm).join('\n');
     const benchText = benchForm.length
@@ -621,12 +661,22 @@ ${benchText}
 「直近2試合は2番だった」等の理由で提案に入れるのは禁止。
 
 ★【絶対厳守③】守備位置の整合性チェック:
-  - 8人の野手で 投以外の守備位置（捕・一・二・三・遊・左・中・右）を
-    可能な限り網羅すること。
-  - 同じ守備位置に2人の選手を置くのは禁止（例：菊池(二)と勝田(二)を両方入れる）。
-    上の調子リストの末尾に各選手の守備位置(pos)が「(右)」「(二)」のように書いてある。
-  - もし入れ替えで守備被りが発生しそうなら、被る側の選手を控えに回すか、
-    入れ替えそのものを諦める。守備被りより、最新打順維持を優先してよい。
+  - 各選手の括弧内 pos の見方:
+    - 「右」「二」など1文字 = 直近実戦の細かい守備位置
+    - 「右/内」のようなスラッシュ表記 = 実戦は前者、登録は後者の系統 → 柔軟に動ける
+    - 「内」「外」「捕」のみ = 大分類しか分からない（実戦記録なし）
+  - 8人の野手で 捕・一・二・三・遊・左・中・右 を必ず網羅。重複禁止。
+  - 同じ細かい守備位置に2人禁止:
+    × 菊池(二) と 勝田(二) を両方入れる
+    × 野間(右) と 二俣(右) を両方入れる ← 1文字目「右」が同じ
+  - 柔軟プレイヤーは別位置にスライドさせる:
+    例：野間(右) を入れたいが二俣(右) も中軸に入れたい場合
+        → 二俣(右/内) は内野もできるので、別の控え内野手と入れ替えて
+          二俣を内野守備に回す案を出してもよい
+        → ただし複雑な兼任は避け、被りが解消できないなら
+          【入れ替えそのものを諦めて最新打順維持】が正解
+  - 入れ替え提案する前に必ず守備配置を頭の中で組み立て、
+    8人全員の守備位置が重複なく決まることを確認してから order を出力する。
 
 lineup_proposal は以下の【手順】を順番通りに実行して組み立てること。
 手順を飛ばしたり、独自判断で「最適化」してはいけない。

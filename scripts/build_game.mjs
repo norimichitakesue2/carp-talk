@@ -539,6 +539,32 @@ async function main() {
       console.error(aiResult.stdout.slice(0, 500));
       process.exit(1);
     }
+
+    // 守備位置被り検証: AI が守備整合に失敗してたら lineup_proposal を無効化
+    // （嘘の提案を出すよりは「提案なし」の方が誠実）
+    const lp = generated?.preview?.lineup_proposal;
+    if (lp && Array.isArray(lp.order) && lp.order.length > 0) {
+      const posMap = {};
+      (facts.facts.recentLineups || []).forEach(l =>
+        l.order.forEach(o => { if (o.name && o.pos) posMap[o.name] = o.pos; })
+      );
+      const posCount = {};
+      const POSITIONS = ['一','二','三','遊','左','中','右','捕'];
+      for (const o of lp.order) {
+        const pos = posMap[o.name] || '';
+        for (const ch of POSITIONS) {
+          if (pos.includes(ch)) {
+            posCount[ch] = (posCount[ch] || 0) + 1;
+            break;
+          }
+        }
+      }
+      const dup = Object.entries(posCount).filter(([_, v]) => v > 1).map(([k]) => k);
+      if (dup.length > 0) {
+        console.error(`[build_game] lineup_proposal 守備被り検出 (${dup.join('/')}) → 提案を無効化`);
+        generated.preview.lineup_proposal = null;
+      }
+    }
   } else if (status !== 'final') {
     console.error(`[build_game] Status="${status}", AI ${hasExistingPreview ? 'preview cached' : 'skipped (no starter info)'}.`);
   }
