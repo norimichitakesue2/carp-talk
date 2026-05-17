@@ -540,29 +540,103 @@ async function main() {
       process.exit(1);
     }
 
-    // 守備位置被り検証: AI が守備整合に失敗してたら lineup_proposal を無効化
-    // （嘘の提案を出すよりは「提案なし」の方が誠実）
+    // 守備位置被り検証: AI が守備整合に失敗してたら自動修復
+    // 被ってる位置の「下位打順の選手」を order から外す（嘘の提案を出すより7人提案がマシ）
     const lp = generated?.preview?.lineup_proposal;
     if (lp && Array.isArray(lp.order) && lp.order.length > 0) {
       const posMap = {};
       (facts.facts.recentLineups || []).forEach(l =>
         l.order.forEach(o => { if (o.name && o.pos) posMap[o.name] = o.pos; })
       );
-      const posCount = {};
       const POSITIONS = ['一','二','三','遊','左','中','右','捕'];
+      // primary position = pos 文字列の【先頭文字】（実戦の主守備位置）
+      // 「三一」→「三」、「遊三」→「遊」、「右/内」→「右」のように主守備位置を取る
+      const primaryPos = (name) => {
+        const pos = posMap[name] || '';
+        if (!pos) return null;
+        const first = pos.charAt(0);
+        return POSITIONS.includes(first) ? first : null;
+      };
+      // 被ってる位置を検出
+      const posCount = {};
       for (const o of lp.order) {
-        const pos = posMap[o.name] || '';
-        for (const ch of POSITIONS) {
-          if (pos.includes(ch)) {
-            posCount[ch] = (posCount[ch] || 0) + 1;
-            break;
+        const pp = primaryPos(o.name);
+        if (pp) posCount[pp] = (posCount[pp] || 0) + 1;
+      }
+      const dupPositions = Object.entries(posCount).filter(([_, v]) => v > 1).map(([k]) => k);
+
+      if (dupPositions.length > 0) {
+        // 各被り位置について、下位打順の選手を除外
+        const removed = [];
+        let order = [...lp.order];
+        for (const dupPos of dupPositions) {
+          const matching = order
+            .filter(o => primaryPos(o.name) === dupPos)
+            .sort((a, b) => (b.line || 99) - (a.line || 99));   // 下位打順から
+          if (matching.length > 1) {
+            const toRemove = matching[0];
+            order = order.filter(o => o !== toRemove);
+            removed.push(`${toRemove.name}(${dupPos})`);
           }
         }
-      }
-      const dup = Object.entries(posCount).filter(([_, v]) => v > 1).map(([k]) => k);
-      if (dup.length > 0) {
-        console.error(`[build_game] lineup_proposal 守備被り検出 (${dup.join('/')}) → 提案を無効化`);
-        generated.preview.lineup_proposal = null;
+
+        // 除外で空いた守備位置を、その位置を守れる1軍選手で自動補完
+        // （田村→左、辰見→左 など。外野は流動的に扱う）
+        const usedPositions = new Set(order.map(o => primaryPos(o.name)).filter(Boolean));
+        const missingPositions = POSITIONS.filter(p => !usedPositions.has(p));
+        const inOrderNames = new Set(order.map(o => o.name));
+        const rfPlayersAll = facts.facts.recentForm?.players || [];
+        const activeNames = Array.isArray(facts.facts.carpRoster)
+          ? facts.facts.carpRoster.map(p => p.name).filter(Boolean)
+          : [];
+        const isActiveBuild = (nm) => activeNames.length === 0
+          || activeNames.some(rn => rn === nm || nm.startsWith(rn) || rn.startsWith(nm));
+
+        const filled = [];
+        for (const missPos of missingPositions) {
+          // 候補: 1軍登録 & order に居ない & そのポジションを守れる(posに含む)
+          const candidates = rfPlayersAll.filter(p => {
+            if (!isActiveBuild(p.name)) return false;
+            if (inOrderNames.has(p.name)) return false;
+            const pos = posMap[p.name] || '';
+            return pos.includes(missPos);
+          });
+          if (candidates.length === 0) continue;
+          // 調子レベル降順 → 打席数降順 で最良候補
+          candidates.sort((a, b) => {
+            const lv = (b.form?.level ?? 0) - (a.form?.level ?? 0);
+            if (lv !== 0) return lv;
+            return (b.ab ?? 0) - (a.ab ?? 0);
+          });
+          const filler = candidates[0];
+          // 空いてる打順を探す（下位優先）
+          const usedLines = new Set(order.map(o => o.line));
+          let nextLine = 8;
+          while (nextLine >= 1 && usedLines.has(nextLine)) nextLine--;
+          if (nextLine < 1) break;
+          order.push({
+            line: nextLine,
+            name: filler.name,
+            note: `(自動補完) ${missPos}守備として復帰。${filler.form?.label || '?'}OPS${filler.ops || '?'}`,
+          });
+          inOrderNames.add(filler.name);
+          usedPositions.add(missPos);
+          filled.push(`${filler.name}(${missPos})`);
+        }
+
+        // 打順順にソート
+        order.sort((a, b) => (a.line || 99) - (b.line || 99));
+
+        const noteAddRemove = removed.length
+          ? `※守備整合のため ${removed.map(r => r.split('(')[0]).join('・')} を除外。`
+          : '';
+        const noteAddFill = filled.length
+          ? `${missingPositions.length ? '空いた' : ''}守備位置を ${filled.join('・')} で補完。`
+          : '';
+        console.error(`[build_game] 守備被り (${dupPositions.join('/')}) → 除外:${removed.join(',')} / 補完:${filled.join(',') || 'なし'}`);
+
+        generated.preview.lineup_proposal.order = order;
+        generated.preview.lineup_proposal.note = (lp.note || '') + ' ' + noteAddRemove + noteAddFill;
       }
     }
   } else if (status !== 'final') {
