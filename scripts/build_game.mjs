@@ -408,15 +408,29 @@ async function main() {
     process.exit(0);
   }
 
-  // STEP2.5: carpRoster が空なら直近試合の players（最新の1軍公示）で補完する。
-  // Yahoo 由来の未来の試合や、NPB がまだ公示を出していない試合では
-  // carpRoster が空になり、AI preview のフィルタが効かず抹消選手が混ざるため。
+  // STEP2.5: carpRoster が空なら補完する。
+  // 優先順:
+  //   1. NPB公示キャッシュ (npb_official_roster_c.json) — 鮮度最高
+  //   2. 直近試合の players — フォールバック
   if (!facts.facts) facts.facts = {};
   if (!Array.isArray(facts.facts.carpRoster) || facts.facts.carpRoster.length === 0) {
-    const latestRoster = await findLatestRoster(date);
-    if (latestRoster && latestRoster.players.length > 0) {
-      facts.facts.carpRoster = latestRoster.players;
-      console.error(`[build_game] carpRoster empty → backfilled from ${latestRoster.date} (${latestRoster.players.length} players)`);
+    // 1) NPB公示キャッシュ
+    let usedOfficial = false;
+    try {
+      const cache = JSON.parse(await fs.readFile(path.join(GAMES_DIR, 'npb_official_roster_c.json'), 'utf8'));
+      if (cache?.players?.length) {
+        facts.facts.carpRoster = cache.players.map((p) => ({ name: p.name, pos: p.pos }));
+        console.error(`[build_game] carpRoster empty → NPB公示キャッシュから取得 (${cache.players.length} players, ${cache.fetchedAt})`);
+        usedOfficial = true;
+      }
+    } catch { /* キャッシュ無し */ }
+    // 2) フォールバック: 直近試合の players
+    if (!usedOfficial) {
+      const latestRoster = await findLatestRoster(date);
+      if (latestRoster && latestRoster.players.length > 0) {
+        facts.facts.carpRoster = latestRoster.players;
+        console.error(`[build_game] carpRoster empty → 直近試合(${latestRoster.date})から補完 (${latestRoster.players.length} players)`);
+      }
     }
   }
 
