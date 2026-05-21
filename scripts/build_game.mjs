@@ -351,8 +351,20 @@ function assembleGameJson(date, factsRoot, generated, prev) {
       sourceUrl: (factsRoot.source === 'yahoo.co.jp' || String(factsRoot.segment).startsWith('yahoo-'))
         ? `https://baseball.yahoo.co.jp/npb/schedule/?selectDate=${date}`
         : `https://npb.jp/scores/${date.slice(0,4)}/${date.slice(5,7)}${date.slice(8,10)}/${factsRoot.segment}/`,
+      // preview生成時の活性ロースター指紋。次回 build 時にこれが現ロースターと
+      // 異なれば「ロースター変更後にpreview古い」と判定して再生成する。
+      previewRosterFingerprint: preview
+        ? computeRosterFingerprint(f.carpRoster)
+        : (prev?._meta?.previewRosterFingerprint || null),
     },
   };
+}
+
+// 活性ロースター（NPB公示）の指紋を計算。名前リストをソートして結合した文字列。
+// scheduled/live の preview が「どのロースター cohort で生成されたか」を識別するため。
+function computeRosterFingerprint(roster) {
+  if (!Array.isArray(roster) || roster.length === 0) return null;
+  return roster.map(p => p?.name).filter(Boolean).sort().join(',');
 }
 
 async function main() {
@@ -432,6 +444,21 @@ async function main() {
         console.error(`[build_game] carpRoster empty → 直近試合(${latestRoster.date})から補完 (${latestRoster.players.length} players)`);
       }
     }
+  }
+
+  // STEP2.7: 既存previewが古いロースター cohort で生成されたものなら破棄して再生成する。
+  // 抹消・故障で1軍離脱した選手 (例: 秋山・ファビアン) が key_players/key_matchups に
+  // 残ったまま固着するのを防ぐ。fingerprint = sort(carpRoster名前リスト).join(',')
+  if (prev?.preview && prev?._meta?.previewRosterFingerprint) {
+    const currentFingerprint = computeRosterFingerprint(facts.facts.carpRoster);
+    if (currentFingerprint && currentFingerprint !== prev._meta.previewRosterFingerprint) {
+      console.error(`[build_game] 既存previewは旧ロースターcohort由来 → 破棄して再生成 (旧:${prev._meta.previewRosterFingerprint.slice(0, 60)}... → 新:${currentFingerprint.slice(0, 60)}...)`);
+      prev.preview = null;
+    }
+  } else if (prev?.preview && !prev?._meta?.previewRosterFingerprint) {
+    // 指紋未記録の既存preview（旧フォーマット）は一度破棄して新フォーマットで再生成
+    console.error(`[build_game] 既存previewに指紋未記録 → 一度破棄して再生成 (次回以降は指紋比較で判定)`);
+    prev.preview = null;
   }
 
   // STEP3: AI生成
