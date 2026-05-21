@@ -455,21 +455,43 @@ ${lines}
   let matchupBlock = '';
   const sm = f.seasonMatchups;
   const nf3VsCarp = (nf3 && Array.isArray(nf3.vsCarp)) ? nf3.vsCarp : [];
+
+  // 抹消選手フィルタ用: AIに渡す対戦データから現1軍に居ない選手を除外する
+  // （key_players / key_matchups / last_matchup に過去の数字根拠で抹消選手を出させないため）
+  const activeRosterForMatchup = Array.isArray(f.carpRoster) && f.carpRoster.length > 0
+    ? f.carpRoster.map(p => p.name).filter(Boolean)
+    : null;
+  const isActiveForMatchup = (name) => {
+    if (!activeRosterForMatchup) return true;  // 公示データ無ければ素通し（保険）
+    if (!name) return false;
+    return activeRosterForMatchup.some(rn => rn === name || name.startsWith(rn) || rn.startsWith(name));
+  };
+
   if (sm && sm.count > 0) {
     const tt = sm.teamTotals;
     // 各試合の1行サマリ（新しい順、最大5試合）
     const gamesText = sm.games.slice(0, 5).map(gm =>
       `  ${gm.date} @${gm.venue || '?'}: カープ${gm.carpScore}-${gm.opScore}（${gm.result || '?'}）`
     ).join('\n');
-    // 今季この投手と対戦したカープ打者の合算（打数順、上位12）
-    const battersText = sm.batters.slice(0, 12).map(b =>
+    // 今季この投手と対戦したカープ打者の合算（打数順、上位12）— 抹消選手は除外
+    const smBattersActive = sm.batters.filter(b => isActiveForMatchup(b.name));
+    const excludedSm = sm.batters.length - smBattersActive.length;
+    if (excludedSm > 0) {
+      console.error(`[ai] matchupBlock: filtered out ${excludedSm} non-active batters from seasonMatchups`);
+    }
+    const battersText = smBattersActive.slice(0, 12).map(b =>
       `  ${b.name}: 今季${b.ab}打数${b.h}安打 .${(b.avg||'.000').replace(/^\./,'')}` +
       (b.hr ? ` ${b.hr}本` : '') + (b.rbi ? ` ${b.rbi}打点` : '') +
       (b.k ? ` ${b.k}三振` : '') + (b.bb ? ` ${b.bb}四球` : '')
     ).join('\n');
-    // nf3 の通算 vsカープ（今季データに無い相性傾向の補完）
-    const nf3Text = nf3VsCarp.length
-      ? nf3VsCarp.filter(b => (b.pa ?? 0) >= 1).slice(0, 12).map(b =>
+    // nf3 の通算 vsカープ（今季データに無い相性傾向の補完）— 抹消選手は除外
+    const nf3Active = nf3VsCarp.filter(b => (b.pa ?? 0) >= 1 && isActiveForMatchup(b.name));
+    const excludedNf3 = nf3VsCarp.filter(b => (b.pa ?? 0) >= 1).length - nf3Active.length;
+    if (excludedNf3 > 0) {
+      console.error(`[ai] matchupBlock: filtered out ${excludedNf3} non-active batters from nf3VsCarp`);
+    }
+    const nf3Text = nf3Active.length
+      ? nf3Active.slice(0, 12).map(b =>
           `  ${b.name}: 通算${b.pa}打席 打率${b.avg || '.000'}` +
           (b.hr ? ` ${b.hr}本` : '') + (b.k ? ` ${b.k}三振` : '')
         ).join('\n')
@@ -482,11 +504,16 @@ ${lines}
 各試合:
 ${gamesText}
 
-【今季この投手と対戦したカープ打者の合算成績】
+【今季この投手と対戦したカープ打者の合算成績】※現1軍登録メンバーのみ
 ${battersText}
 
-【参考: nf3 通算 vsカープ成績（今季以前も含む）】
+【参考: nf3 通算 vsカープ成績（今季以前も含む）】※現1軍登録メンバーのみ
 ${nf3Text}
+
+★ 上記の打者リストは「現1軍登録メンバー」だけに絞り込み済み。
+  ここに名前が無い選手（例：抹消中・故障中）は今日出場できないため、
+  watchpoints / key_players / tactical_advice / key_matchups / last_matchup.summary などに
+  絶対に名前を出さないこと。過去の数字（.800 など）を理由に持ち出すのも禁止。
 
 これを必ず以下に活用すること:
   1) last_matchup フィールドに「今季この投手にどう抑えられている/打てているか」を書く。
@@ -494,11 +521,12 @@ ${nf3Text}
   2) やられている場合（チーム打率が低い・三振が多い等）は具体的な対策を countermeasure に書く。
   3) 打者別データで「特に苦手な打者」「逆に打てている打者」が居れば summary で名指しする
      （「小園は今季0-8と完全に抑え込まれている」「坂倉は.333と相性良し」など）。
+     ※ ただし上記リストに含まれる選手のみ。
   4) is_first は false にする。`;
   } else {
-    // 今季対戦なし — nf3 通算データだけでも触れる
+    // 今季対戦なし — nf3 通算データだけでも触れる（抹消選手は除外）
     const nf3Text = nf3VsCarp.length
-      ? nf3VsCarp.filter(b => (b.pa ?? 0) >= 2).slice(0, 10).map(b =>
+      ? nf3VsCarp.filter(b => (b.pa ?? 0) >= 2 && isActiveForMatchup(b.name)).slice(0, 10).map(b =>
           `  ${b.name}: 通算${b.pa}打席 打率${b.avg || '.000'}` + (b.hr ? ` ${b.hr}本` : '') + (b.k ? ` ${b.k}三振` : '')
         ).join('\n')
       : '';
