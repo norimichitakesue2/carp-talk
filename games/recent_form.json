@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-22T11:24:44.529Z",
+  "generatedAt": "2026-05-22T13:20:17.362Z",
   "baseDate": "2026-05-23",
   "games": 6,
   "rangeStart": "2026-05-16",
@@ -8,7 +8,7 @@
   "foundPitchingGames": 6,
   "mvp": {
     "name": "佐々木",
-    "summary": "直近4試合 13打数4安打 .308 OPS.769 1打点 1三振",
+    "summary": "直近4試合 14打数5安打 .357 OPS.857 1打点 1三振",
     "form": {
       "icon": "↑",
       "label": "好調",
@@ -18,7 +18,7 @@
   },
   "worst": {
     "name": "持丸",
-    "summary": "直近5試合 12打数1安打 .083 OPS.298 1四球 4三振",
+    "summary": "直近5試合 13打数1安打 .077 OPS.277 1四球 4三振",
     "form": {
       "icon": "↓↓",
       "label": "絶不調",
@@ -50,9 +50,9 @@
     {
       "name": "佐々木",
       "games": 4,
-      "ab": 13,
+      "ab": 14,
       "r": 2,
-      "h": 4,
+      "h": 5,
       "rbi": 1,
       "sb": 0,
       "hr": 0,
@@ -60,52 +60,52 @@
       "bb": 0,
       "double": 0,
       "triple": 1,
-      "single": 3,
+      "single": 4,
       "hbp": 0,
       "sf": 0,
-      "avg": ".308",
-      "avg_num": 0.308,
-      "obp": ".308",
-      "slg": ".462",
-      "ops": ".769",
-      "ops_num": 0.769,
+      "avg": ".357",
+      "avg_num": 0.357,
+      "obp": ".357",
+      "slg": ".500",
+      "ops": ".857",
+      "ops_num": 0.857,
       "form": {
         "icon": "↑",
         "label": "好調",
         "level": 1,
         "cls": "form-hot1"
       },
-      "summary": "直近4試合 13打数4安打 .308 OPS.769 1打点 1三振"
+      "summary": "直近4試合 14打数5安打 .357 OPS.857 1打点 1三振"
     },
     {
       "name": "名原",
       "games": 1,
-      "ab": 3,
+      "ab": 4,
       "r": 1,
       "h": 2,
       "rbi": 1,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 1,
       "single": 1,
       "hbp": 0,
       "sf": 0,
-      "avg": ".667",
-      "avg_num": 0.667,
-      "obp": ".667",
-      "slg": "1.333",
-      "ops": "2.000",
-      "ops_num": 2,
+      "avg": ".500",
+      "avg_num": 0.5,
+      "obp": ".500",
+      "slg": "1.000",
+      "ops": "1.500",
+      "ops_num": 1.5,
       "form": {
         "icon": "－",
         "label": "様子見",
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近1試合 3打数2安打 .667 OPS2.000 1打点"
+      "summary": "直近1試合 4打数2安打 .500 OPS1.500 1打点 1三振"
     },
     {
       "name": "前川",
@@ -138,69 +138,39 @@
       "summary": "直近3試合 3打数1安打 .333 OPS.667 1打点 1三振"
     },
     {
-      "name": "中村奨",
-      "games": 3,
-      "ab": 3,
-      "r": 0,
-      "h": 1,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 0,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 1,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".333",
-      "avg_num": 0.333,
-      "obp": ".333",
-      "slg": ".333",
-      "ops": ".667",
-      "ops_num": 0.667,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近3試合 3打数1安打 .333 OPS.667"
-    },
-    {
       "name": "坂倉",
       "games": 6,
-      "ab": 20,
+      "ab": 21,
       "r": 0,
       "h": 6,
       "rbi": 2,
       "sb": 0,
       "hr": 0,
-      "k": 6,
+      "k": 7,
       "bb": 1,
       "double": 1,
       "triple": 0,
       "single": 5,
       "hbp": 0,
       "sf": 0,
-      "avg": ".300",
-      "avg_num": 0.3,
-      "obp": ".333",
-      "slg": ".350",
-      "ops": ".683",
-      "ops_num": 0.683,
+      "avg": ".286",
+      "avg_num": 0.286,
+      "obp": ".318",
+      "slg": ".333",
+      "ops": ".652",
+      "ops_num": 0.652,
       "form": {
         "icon": "→",
         "label": "普通",
         "level": 0,
         "cls": "form-even"
       },
-      "summary": "直近6試合 20打数6安打 .300 OPS.683 2打点 1四球 6三振"
+      "summary": "直近6試合 21打数6安打 .286 OPS.652 2打点 1四球 7三振"
     },
     {
       "name": "小園",
       "games": 6,
-      "ab": 22,
+      "ab": 23,
       "r": 2,
       "h": 6,
       "rbi": 2,
@@ -213,60 +183,30 @@
       "single": 4,
       "hbp": 0,
       "sf": 0,
-      "avg": ".273",
-      "avg_num": 0.273,
-      "obp": ".304",
-      "slg": ".409",
-      "ops": ".713",
-      "ops_num": 0.713,
+      "avg": ".261",
+      "avg_num": 0.261,
+      "obp": ".292",
+      "slg": ".391",
+      "ops": ".683",
+      "ops_num": 0.683,
       "form": {
         "icon": "→",
         "label": "普通",
         "level": 0,
         "cls": "form-even"
       },
-      "summary": "直近6試合 22打数6安打 .273 OPS.713 2打点 1四球 6三振"
+      "summary": "直近6試合 23打数6安打 .261 OPS.683 2打点 1四球 6三振"
     },
     {
-      "name": "モンテロ",
-      "games": 6,
-      "ab": 20,
-      "r": 0,
-      "h": 5,
-      "rbi": 2,
-      "sb": 0,
-      "hr": 0,
-      "k": 4,
-      "bb": 0,
-      "double": 2,
-      "triple": 0,
-      "single": 3,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".250",
-      "avg_num": 0.25,
-      "obp": ".250",
-      "slg": ".350",
-      "ops": ".600",
-      "ops_num": 0.6,
-      "form": {
-        "icon": "→",
-        "label": "普通",
-        "level": 0,
-        "cls": "form-even"
-      },
-      "summary": "直近6試合 20打数5安打 .250 OPS.600 2打点 4三振"
-    },
-    {
-      "name": "二俣",
-      "games": 2,
+      "name": "中村奨",
+      "games": 3,
       "ab": 4,
       "r": 0,
       "h": 1,
-      "rbi": 1,
+      "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 2,
+      "k": 0,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -285,7 +225,7 @@
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近2試合 4打数1安打 .250 OPS.500 1打点 2三振"
+      "summary": "直近3試合 4打数1安打 .250 OPS.500"
     },
     {
       "name": "辰見",
@@ -316,6 +256,36 @@
         "cls": "form-none"
       },
       "summary": "直近4試合 5打数1安打 .200 OPS.400 1三振 1盗塁"
+    },
+    {
+      "name": "二俣",
+      "games": 2,
+      "ab": 5,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "k": 3,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".200",
+      "avg_num": 0.2,
+      "obp": ".200",
+      "slg": ".200",
+      "ops": ".400",
+      "ops_num": 0.4,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近2試合 5打数1安打 .200 OPS.400 1打点 3三振"
     },
     {
       "name": "石原",
@@ -498,6 +468,36 @@
       "summary": "直近1試合 1打数0安打 .000 OPS.000 1三振"
     },
     {
+      "name": "モンテロ",
+      "games": 6,
+      "ab": 21,
+      "r": 0,
+      "h": 5,
+      "rbi": 2,
+      "sb": 0,
+      "hr": 0,
+      "k": 4,
+      "bb": 0,
+      "double": 2,
+      "triple": 0,
+      "single": 3,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".238",
+      "avg_num": 0.238,
+      "obp": ".238",
+      "slg": ".333",
+      "ops": ".571",
+      "ops_num": 0.571,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近6試合 21打数5安打 .238 OPS.571 2打点 4三振"
+    },
+    {
       "name": "大盛",
       "games": 6,
       "ab": 22,
@@ -567,7 +567,7 @@
       "sb": 0,
       "hr": 0,
       "k": 6,
-      "bb": 4,
+      "bb": 5,
       "double": 0,
       "triple": 0,
       "single": 2,
@@ -575,22 +575,22 @@
       "sf": 0,
       "avg": ".133",
       "avg_num": 0.133,
-      "obp": ".316",
+      "obp": ".350",
       "slg": ".133",
-      "ops": ".449",
-      "ops_num": 0.449,
+      "ops": ".483",
+      "ops_num": 0.483,
       "form": {
         "icon": "↓↓",
         "label": "絶不調",
         "level": -2,
         "cls": "form-cold2"
       },
-      "summary": "直近5試合 15打数2安打 .133 OPS.449 1打点 4四球 6三振"
+      "summary": "直近5試合 15打数2安打 .133 OPS.483 1打点 5四球 6三振"
     },
     {
       "name": "持丸",
       "games": 5,
-      "ab": 12,
+      "ab": 13,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -603,19 +603,19 @@
       "single": 1,
       "hbp": 1,
       "sf": 0,
-      "avg": ".083",
-      "avg_num": 0.083,
-      "obp": ".214",
-      "slg": ".083",
-      "ops": ".298",
-      "ops_num": 0.298,
+      "avg": ".077",
+      "avg_num": 0.077,
+      "obp": ".200",
+      "slg": ".077",
+      "ops": ".277",
+      "ops_num": 0.277,
       "form": {
         "icon": "↓↓",
         "label": "絶不調",
         "level": -2,
         "cls": "form-cold2"
       },
-      "summary": "直近5試合 12打数1安打 .083 OPS.298 1四球 4三振"
+      "summary": "直近5試合 13打数1安打 .077 OPS.277 1四球 4三振"
     }
   ],
   "pitchers": [
@@ -693,31 +693,6 @@
         "cls": "form-hot1"
       },
       "summary": "直近2登板 4回1/3 防御率0.00 自責0 被安2 奪三振5"
-    },
-    {
-      "name": "塹江",
-      "games": 2,
-      "outs": 9,
-      "ip": "3回",
-      "er": 0,
-      "r": 0,
-      "h": 3,
-      "hr": 0,
-      "bb": 1,
-      "k": 3,
-      "pitches": 48,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 0,
-      "form": {
-        "icon": "↑",
-        "label": "好調",
-        "level": 1,
-        "cls": "form-hot1"
-      },
-      "summary": "直近2登板 3回 防御率0.00 自責0 被安3 奪三振3"
     },
     {
       "name": "益田",
@@ -895,6 +870,31 @@
       "summary": "直近3登板 3回 防御率3.00 自責1 被安1 奪三振3 1敗1S1H"
     },
     {
+      "name": "塹江",
+      "games": 3,
+      "outs": 15,
+      "ip": "5回",
+      "er": 2,
+      "r": 2,
+      "h": 6,
+      "hr": 0,
+      "bb": 2,
+      "k": 6,
+      "pitches": 87,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 3.6,
+      "form": {
+        "icon": "→",
+        "label": "普通",
+        "level": 0,
+        "cls": "form-even"
+      },
+      "summary": "直近3登板 5回 防御率3.60 自責2 被安6 奪三振6"
+    },
+    {
       "name": "栗林",
       "games": 1,
       "outs": 2,
@@ -907,7 +907,7 @@
       "k": 0,
       "pitches": 17,
       "win": 0,
-      "loss": 0,
+      "loss": 1,
       "save": 0,
       "hold": 0,
       "era": 27,
@@ -917,7 +917,7 @@
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近1登板 0回2/3 防御率27.00 自責2 被安3 奪三振0"
+      "summary": "直近1登板 0回2/3 防御率27.00 自責2 被安3 奪三振0 1敗"
     },
     {
       "name": "森",
