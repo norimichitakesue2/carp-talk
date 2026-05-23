@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-05-23T04:38:11.000Z",
+  "model": "claude-haiku-4-5-20251001",
+  "phase": "pre",
+  "inputCount": 44,
+  "classifiedCount": 44,
+  "clusterCount": 13,
+  "bubbleCount": 13,
+  "fetchWindow": {
+    "startTime": "2026-05-23T04:23:09.000Z",
+    "endTime": "2026-05-23T04:38:11.000Z",
+    "spanMinutes": 15
+  },
+  "bubbles": [
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "選手酷使",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/tukuyon33/status/2058042423369171068",
+        "https://x.com/CNqeP8Nb5E6MSoR/status/2058041831968117142"
+      ],
+      "sampleTexts": [
+        {"text": "これ内転筋違和感で治療ベンチから戻し投げさせた首脳陣は栗林良吏長期離脱したら完全に責任問題や 本当にカープ首脳陣て何も考えて無いんやな", "user": "月詠@カープ", "time": "2026-05-23T04:28:44.000Z"},
+        {"text": "活躍した選手をすぐ中心で使ってその後全く打てなくなるカープあるあるは全て首脳陣のせい #カープ", "user": "野田たくみ", "time": "2026-05-23T04:26:23.000Z"}
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "背番号92",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": ["https://x.com/GoForItCarp/status/2058043275119063544", "https://x.com/iga_sunrise285/status/2058043226691612801"],
+      "sampleTexts": [
+        {"text": "あんまり名原名原ってポストするとウザがられて皆さんからミュートされそう 控えめにしよ", "user": "2 5 8", "time": "2026-05-23T04:32:08.000Z"}
+      ]
+    },
+    {"target": "栗林", "targetType": "選手", "topic_broad": "離脱・復帰", "topic_label": "復帰期待", "sentiment": "応援弱", "sentimentScore": 1, "count": 1, "tweetUrls": ["https://x.com/yukiramu/status/2058044604218548639"], "sampleTexts": [{"text": "絶対的な勝ち柱の栗林投手が抹消 ゆっくり休んでほしいけど、早く活躍するの期待してます", "user": "ユキ@WEB制作", "time": "2026-05-23T04:37:24.000Z"}]},
+    {"target": "名原", "targetType": "選手", "topic_broad": "起用・スタメン", "topic_label": "1番抜擢評価", "sentiment": "応援強", "sentimentScore": 2, "count": 1, "tweetUrls": ["https://x.com/factor_impact/status/2058044076763815956"], "sampleTexts": [{"text": "おぉ〜名原選手トップバッター抜擢か 昨日の初モノ尽くしの活躍も嬉しかったけど、三振した後の表情がもうギラついててよかったわぁ〜", "user": "Impact Factor", "time": "2026-05-23T04:35:19.000Z"}]},
+    {"target": "名原", "targetType": "選手", "topic_broad": "打撃", "topic_label": "デビュー活躍", "sentiment": "応援強", "sentimentScore": 2, "count": 1, "tweetUrls": ["https://x.com/daily_hiroshima/status/2058043557634826745"], "sampleTexts": [{"text": "名原典彦 支配下2日で1軍鮮烈デビュー プロ初出場初先発初安打→初タイムリー三塁打", "user": "デイリースポーツ広島", "time": "2026-05-23T04:33:15.000Z"}]},
+    {"target": "栗林", "targetType": "選手", "topic_broad": "離脱・復帰", "topic_label": "戦力不足", "sentiment": "批判弱", "sentimentScore": -1, "count": 1, "tweetUrls": ["https://x.com/nukozukio/status/2058043207225856057"], "sampleTexts": [{"text": "カープ離脱してる人居ないのに弱い弱い言われてるけど栗林も秋山も居ないのダメージデカい", "user": "もるんが", "time": "2026-05-23T04:31:51.000Z"}]},
+    {"target": "新井", "targetType": "首脳陣", "topic_broad": "起用", "topic_label": "林晃汰の起用差別", "sentiment": "批判弱", "sentimentScore": -1, "count": 1, "tweetUrls": ["https://x.com/77tanisan/status/2058042845303599407"], "sampleTexts": [{"text": "林晃汰、1軍で、たいした出番も貰えずに2軍に落とされたの？佐々木泰や中村奨成は使われるのに？嫌な感じ", "user": "tanisan", "time": "2026-05-23T04:30:25.000Z"}]},
+    {"target": "平川", "targetType": "選手", "topic_broad": "ホームラン", "topic_label": "復帰ホームラン", "sentiment": "応援弱", "sentimentScore": 1, "count": 1, "tweetUrls": ["https://x.com/tekisitetekitou/status/2058042092744765759"], "sampleTexts": [{"text": "2軍とはいえ復帰1打席目でホームランを放つ 平川さん流石です", "user": "適して当てはまる", "time": "2026-05-23T04:27:26.000Z"}]},
+    {"target": "首脳陣", "targetType": "首脳陣", "topic_broad": "采配", "topic_label": "右打者スタメン", "sentiment": "応援弱", "sentimentScore": 1, "count": 1, "tweetUrls": ["https://x.com/tom19752018/status/2058041408481902884"], "sampleTexts": [{"text": "大野雄大さん対策で小園さん坂倉さん以外右打者ズラリ", "user": "ナゴヤのカープおじさん", "time": "2026-05-23T04:24:42.000Z"}]},
+    {"target": "菊地", "targetType": "選手", "topic_broad": "起用・スタメン", "topic_label": "早期昇格", "sentiment": "応援強", "sentimentScore": 2, "count": 1, "tweetUrls": ["https://x.com/tekisitetekitou/status/2058041365507047523"], "sampleTexts": [{"text": "菊地ハルン、1軍昇格。栗林のアクシデントによって今日になりました", "user": "適して当てはまる", "time": "2026-05-23T04:24:32.000Z"}]},
+    {"target": "小園", "targetType": "選手", "topic_broad": "その他", "topic_label": "応援激励", "sentiment": "応援弱", "sentimentScore": 1, "count": 1, "tweetUrls": ["https://x.com/nyarochi1929/status/2058041319591911780"], "sampleTexts": [{"text": "頑張れカープ 頑張れ小園海斗", "user": "にゃろち", "time": "2026-05-23T04:24:21.000Z"}]},
+    {"target": "名原", "targetType": "選手", "topic_broad": "起用・スタメン", "topic_label": "名原センター起用", "sentiment": "応援弱", "sentimentScore": 1, "count": 1, "tweetUrls": ["https://x.com/GoForItCarp/status/2058041015966355660"], "sampleTexts": [{"text": "えええええええ 名原が一番センターでスタメン 頑張れよー！", "user": "2 5 8", "time": "2026-05-23T04:23:09.000Z"}]}
+  ]
+}

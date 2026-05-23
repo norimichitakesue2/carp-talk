@@ -1086,6 +1086,99 @@ body::before{
 .form-row-sum{font-size:10.5px;color:var(--muted);margin-top:1px;font-family:ui-monospace,'SF Mono',monospace}
 
 /* ============================================================ */
+/* 📡 X ファン速報（X Pulse）                                    */
+/* ============================================================ */
+.xpulse-section{
+  background:
+    radial-gradient(ellipse at top left, rgba(74,158,255,.08), transparent 50%),
+    linear-gradient(180deg, var(--surface) 0%, #0c0d18 100%);
+  border:1px solid rgba(74,158,255,.25);
+  border-radius:var(--r);
+  padding:1rem;
+  margin-bottom:1rem;
+  position:relative;
+  overflow:hidden;
+}
+.xpulse-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, #1d9bf0, #5badff, #1d9bf0);
+}
+.xp-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.xp-icon{font-size:18px}
+.xp-title-t{
+  font-family:'Bebas Neue','Noto Sans JP',sans-serif;
+  font-size:18px;letter-spacing:.1em;
+  background:linear-gradient(90deg,#5badff,#3ecf8e);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.xp-meta{margin-left:auto;font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.xp-live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite;display:inline-block}
+.xp-sub{font-size:11px;color:var(--muted);margin-bottom:12px;margin-left:26px}
+.xp-tabs{display:flex;gap:6px;margin-bottom:12px}
+.xp-tab{
+  flex:1;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:6px;padding:8px 10px;font-size:12px;color:var(--muted);
+  cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:500;
+  transition:all .15s;
+}
+.xp-tab:hover{color:var(--text)}
+.xp-tab.active{background:rgba(74,158,255,.15);border-color:rgba(74,158,255,.4);color:#5badff}
+.xp-tab.empty{opacity:.45}
+.xp-tab .xp-tab-count{font-size:10px;color:var(--faint);margin-left:4px}
+.xp-tab.active .xp-tab-count{color:rgba(91,173,255,.7)}
+.xp-chart-wrap{
+  position:relative;width:100%;aspect-ratio:1.4 / 1;
+  background:rgba(0,0,0,.2);border-radius:var(--rs);
+  border:1px solid var(--border);overflow:hidden;
+}
+.xp-chart-wrap svg{width:100%;height:100%;display:block}
+.xp-axis-line{stroke:rgba(255,255,255,.1);stroke-width:.5;stroke-dasharray:3,3}
+.xp-axis-label{fill:var(--muted);font-size:10px;font-family:'Noto Sans JP',sans-serif}
+.xp-quadrant-label{fill:rgba(255,255,255,.25);font-size:10px;font-weight:500;font-family:'Noto Sans JP',sans-serif}
+.xp-bubble{cursor:pointer;transition:opacity .15s}
+.xp-bubble:hover{opacity:.8}
+.xp-bubble-text{fill:#fff;font-size:11px;font-weight:500;font-family:'Noto Sans JP',sans-serif;pointer-events:none;text-anchor:middle}
+.xp-bubble-text.small{font-size:9px}
+.xp-bubble-count{fill:rgba(255,255,255,.7);font-size:9px;font-family:'Noto Sans JP',sans-serif;pointer-events:none;text-anchor:middle}
+.xp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.xp-stat{background:var(--surface2);border-radius:var(--rs);padding:6px 8px;text-align:center}
+.xp-stat-lbl{font-size:9.5px;color:var(--muted);letter-spacing:.02em}
+.xp-stat-val{font-size:15px;font-weight:700;color:var(--text);margin-top:2px;font-family:'Bebas Neue',sans-serif}
+.xp-stat.cheer-player .xp-stat-val{color:#5dcaa5}
+.xp-stat.cheer-staff .xp-stat-val{color:#5badff}
+.xp-stat.crit-player .xp-stat-val{color:#f0997b}
+.xp-stat.crit-staff .xp-stat-val{color:#f09595}
+.xp-empty{padding:2rem 1rem;text-align:center;color:var(--muted);font-size:13px}
+.xp-empty-icon{font-size:32px;margin-bottom:8px;opacity:.4}
+.xp-loading{padding:2rem 1rem;text-align:center;color:var(--muted);font-size:12px}
+.xp-disclaimer{font-size:10px;color:var(--faint);margin-top:10px;text-align:right}
+/* バブル詳細パネル（クリック時に下に展開） */
+.xp-detail{
+  margin-top:12px;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:var(--rs);padding:.7rem .9rem;display:none;
+}
+.xp-detail.show{display:block;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.xp-detail-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.xp-detail-tag{
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;
+  letter-spacing:.04em;
+}
+.xp-detail-tag.cheer{background:rgba(62,207,142,.15);color:#5dcaa5}
+.xp-detail-tag.crit{background:rgba(244,96,96,.15);color:#f09595}
+.xp-detail-title{font-size:14px;font-weight:700;color:var(--text);flex:1}
+.xp-detail-count{font-size:11px;color:var(--muted);font-family:'Bebas Neue',sans-serif}
+.xp-detail-close{cursor:pointer;color:var(--muted);font-size:14px;padding:0 4px}
+.xp-detail-close:hover{color:var(--text)}
+.xp-detail-sample{
+  background:rgba(0,0,0,.2);border-radius:var(--rs);padding:.55rem .7rem;
+  font-size:12px;line-height:1.5;color:var(--text);margin-bottom:6px;
+}
+.xp-detail-sample-meta{font-size:10px;color:var(--muted);margin-top:3px}
+.xp-detail-sample-meta a{color:#5badff;text-decoration:none}
+.xp-detail-sample-meta a:hover{text-decoration:underline}
+
+/* ============================================================ */
 /* ⚔️ 議論エンジン（debates）                                   */
 /* ============================================================ */
 .debate-section{
@@ -1493,7 +1586,25 @@ function renderMain(g){
     innHtml+pitHtml+
     '</div>'+
 
-    // 🔮 試合前プレビュー（スコアボード直下。preview生成された日のみ表示、内容は renderPreview で）
+    // 📡 X ファン速報（X Pulse）— スコアカード直下に配置
+    '<div class="xpulse-section fi" id="xpulse-section" style="display:none">'+
+    '<div class="xp-head">'+
+      '<span class="xp-icon">📡</span><span class="xp-title-t">ファン速報</span>'+
+      '<span class="xp-meta" id="xp-meta"></span>'+
+    '</div>'+
+    '<div class="xp-sub">Xでカープファンが今盛り上がってる話題を、応援⇄批判 × 選手⇄首脳陣 の4象限で可視化</div>'+
+    '<div class="xp-tabs" id="xp-tabs">'+
+      '<button class="xp-tab" data-phase="pre" onclick="switchXPulsePhase(\'pre\')">試合前<span class="xp-tab-count" id="xp-tab-count-pre"></span></button>'+
+      '<button class="xp-tab" data-phase="live" onclick="switchXPulsePhase(\'live\')">試合中<span class="xp-tab-count" id="xp-tab-count-live"></span></button>'+
+      '<button class="xp-tab" data-phase="post" onclick="switchXPulsePhase(\'post\')">試合後<span class="xp-tab-count" id="xp-tab-count-post"></span></button>'+
+    '</div>'+
+    '<div class="xp-chart-wrap" id="xp-chart-wrap"></div>'+
+    '<div class="xp-stats" id="xp-stats"></div>'+
+    '<div class="xp-detail" id="xp-detail"></div>'+
+    '<div class="xp-disclaimer">※ Xから直近サンプル取得、Haikuで分類。バブルクリックで詳細表示</div>'+
+    '</div>'+
+
+    // 🔮 試合前プレビュー（preview生成された日のみ表示、内容は renderPreview で）
     '<div class="preview-section fi" id="preview-section" style="display:none">'+
     '<div class="pv-head"><span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span></div>'+
     '<div class="pv-sub">直近の試合データから AI が予想する注目ポイント</div>'+
@@ -1997,6 +2108,264 @@ function openXShare(text){
   var url=APP_URL+'/?date='+currentDate;
   var shareUrl='https://twitter.com/intent/tweet?text='+encodeURIComponent(text+'\n'+HASHTAGS)+'&url='+encodeURIComponent(url);
   window.open(shareUrl,'_blank','noopener,noreferrer,width=600,height=500');
+}
+
+// ===== 📡 X ファン速報（X Pulse）=====
+var XPULSE = {pre:null, live:null, post:null, phase:'pre', selectedBubble:null};
+
+async function loadXPulse(date){
+  var sec=document.getElementById('xpulse-section');
+  if(!sec) return;
+  var phases=['pre','live','post'];
+  // 並列で3 phase 取得（404 は null 扱いで処理続行）
+  var results=await Promise.all(phases.map(function(p){
+    return fetch('/games/x_pulse/'+date+'/'+p+'.json?t='+Date.now())
+      .then(function(r){return r.ok ? r.json() : null;})
+      .catch(function(){return null;});
+  }));
+  XPULSE.pre=results[0]; XPULSE.live=results[1]; XPULSE.post=results[2];
+
+  // どの phase もデータ無しなら全体非表示
+  if(!XPULSE.pre && !XPULSE.live && !XPULSE.post){
+    sec.style.display='none';
+    return;
+  }
+  sec.style.display='block';
+  // 各タブにバブル件数を表示、データ無しは empty クラス
+  phases.forEach(function(p){
+    var btn=sec.querySelector('[data-phase="'+p+'"]');
+    var cnt=document.getElementById('xp-tab-count-'+p);
+    if(XPULSE[p]){
+      btn.classList.remove('empty');
+      if(cnt) cnt.textContent='('+(XPULSE[p].bubbleCount||0)+')';
+    }else{
+      btn.classList.add('empty');
+      if(cnt) cnt.textContent='';
+    }
+  });
+  // 初期 phase 選択: live > pre > post の優先で最も新しいデータがある phase
+  var initial=XPULSE.live?'live':(XPULSE.pre?'pre':'post');
+  switchXPulsePhase(initial);
+}
+
+function switchXPulsePhase(phase){
+  if(!XPULSE[phase]) return; // データ無いタブは無効
+  XPULSE.phase=phase;
+  XPULSE.selectedBubble=null;
+  // タブのアクティブ状態
+  var tabs=document.querySelectorAll('#xp-tabs .xp-tab');
+  tabs.forEach(function(t){
+    t.classList.toggle('active', t.getAttribute('data-phase')===phase);
+  });
+  // 詳細パネルを閉じる
+  var det=document.getElementById('xp-detail');
+  if(det) det.classList.remove('show');
+  renderXPulse();
+}
+
+function renderXPulse(){
+  var data=XPULSE[XPULSE.phase];
+  if(!data){return;}
+  var meta=document.getElementById('xp-meta');
+  if(meta){
+    var win=data.fetchWindow||{};
+    var fetchedAt=data.generatedAt?new Date(data.generatedAt):null;
+    var timeStr=fetchedAt?(String(fetchedAt.getHours()).padStart(2,'0')+':'+String(fetchedAt.getMinutes()).padStart(2,'0')):'';
+    meta.innerHTML=(XPULSE.phase==='live'?'<span class="xp-live-dot"></span>':'')+
+      'ツイート '+(data.inputCount||0)+'件 / 更新 '+timeStr;
+  }
+  renderXPulseChart(data.bubbles||[]);
+  renderXPulseStats(data.bubbles||[]);
+}
+
+function renderXPulseChart(bubbles){
+  var wrap=document.getElementById('xp-chart-wrap');
+  if(!wrap) return;
+  if(!bubbles.length){
+    wrap.innerHTML='<div class="xp-empty"><div class="xp-empty-icon">💬</div>このphaseで盛り上がっている話題はまだありません</div>';
+    return;
+  }
+  // 4象限に振り分け
+  var quadrants={
+    'staff-cheer':[],  // 首脳陣×応援 (top-left)
+    'staff-crit':[],   // 首脳陣×批判 (top-right)
+    'player-cheer':[], // 選手×応援 (bottom-left)
+    'player-crit':[]   // 選手×批判 (bottom-right)
+  };
+  bubbles.forEach(function(b){
+    var isStaff=(b.targetType==='首脳陣');
+    var isCheer=(b.sentimentScore||0)>0;
+    var key=(isStaff?'staff':'player')+'-'+(isCheer?'cheer':'crit');
+    quadrants[key].push(b);
+  });
+  // 各象限を count 降順でソート、Top8 に制限
+  Object.keys(quadrants).forEach(function(k){
+    quadrants[k].sort(function(a,b){return (b.count||0)-(a.count||0);});
+    quadrants[k]=quadrants[k].slice(0,8);
+  });
+
+  var W=680, H=480, MX=340, MY=240;
+  // 象限の領域定義 (内側パディング 25)
+  var QPAD=25;
+  var qRect={
+    'staff-cheer':  {x0:QPAD,       y0:QPAD,        x1:MX-QPAD,  y1:MY-QPAD},
+    'staff-crit':   {x0:MX+QPAD,    y0:QPAD,        x1:W-QPAD,   y1:MY-QPAD},
+    'player-cheer': {x0:QPAD,       y0:MY+QPAD,     x1:MX-QPAD,  y1:H-QPAD},
+    'player-crit':  {x0:MX+QPAD,    y0:MY+QPAD,     x1:W-QPAD,   y1:H-QPAD}
+  };
+
+  // バブルを配置（最大 r から順に、衝突避けて）
+  var placed=[];  // {b, x, y, r, key}
+  Object.keys(quadrants).forEach(function(key){
+    var rect=qRect[key];
+    var qb=quadrants[key];
+    var maxCount=Math.max.apply(null,qb.map(function(b){return b.count||0;}).concat(1));
+    var localPlaced=[];
+    qb.forEach(function(b,idx){
+      // r = sqrt(count) * scale, 12-46
+      var r=Math.max(14, Math.min(46, 14 + Math.sqrt(b.count||1) * 14));
+      var cx=(rect.x0+rect.x1)/2, cy=(rect.y0+rect.y1)/2;
+      var pos=null;
+      if(idx===0){
+        pos={x:cx, y:cy};
+      }else{
+        // 中心から外向きスパイラルで空きを探す
+        for(var step=0; step<60 && !pos; step++){
+          var radius=18+step*6;
+          var nSamples=Math.max(6, Math.floor(radius/4));
+          for(var k=0;k<nSamples;k++){
+            var angle=(k/nSamples)*Math.PI*2 + idx*0.3;
+            var tx=cx+radius*Math.cos(angle);
+            var ty=cy+radius*Math.sin(angle);
+            // 象限内チェック
+            if(tx-r<rect.x0 || tx+r>rect.x1 || ty-r<rect.y0 || ty+r>rect.y1) continue;
+            // 衝突チェック
+            var clash=false;
+            for(var j=0;j<localPlaced.length;j++){
+              var pp=localPlaced[j];
+              var dist=Math.sqrt((tx-pp.x)*(tx-pp.x)+(ty-pp.y)*(ty-pp.y));
+              if(dist < r+pp.r+3){clash=true;break;}
+            }
+            if(!clash){pos={x:tx, y:ty}; break;}
+          }
+        }
+      }
+      if(!pos){pos={x:cx,y:cy};} // フォールバック
+      var item={b:b, x:pos.x, y:pos.y, r:r, key:key};
+      localPlaced.push(item);
+      placed.push(item);
+    });
+  });
+
+  // 感情の濃淡で色決定
+  function bubbleColor(b){
+    var s=b.sentimentScore||0;
+    if(s>=2)  return {fill:'#3ecf8e', stroke:'#3ecf8e', textShadow:'#0F6E56'};
+    if(s===1) return {fill:'#9fe1cb', stroke:'#3ecf8e', textShadow:'#0F6E56'};
+    if(s===-1) return {fill:'#f0997b', stroke:'#d85a30', textShadow:'#993C1D'};
+    return {fill:'#f09595', stroke:'#e24b4a', textShadow:'#A32D2D'};
+  }
+
+  // SVG 構築
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">';
+  // 軸
+  svg+='<line class="xp-axis-line" x1="'+MX+'" y1="10" x2="'+MX+'" y2="'+(H-10)+'"/>';
+  svg+='<line class="xp-axis-line" x1="10" y1="'+MY+'" x2="'+(W-10)+'" y2="'+MY+'"/>';
+  // 軸ラベル
+  svg+='<text class="xp-axis-label" x="'+(W-15)+'" y="'+(MY+12)+'" text-anchor="end">→ 批判</text>';
+  svg+='<text class="xp-axis-label" x="15" y="'+(MY+12)+'" text-anchor="start">応援 ←</text>';
+  svg+='<text class="xp-axis-label" x="'+(MX+5)+'" y="14" text-anchor="start">↑ 首脳陣</text>';
+  svg+='<text class="xp-axis-label" x="'+(MX+5)+'" y="'+(H-6)+'" text-anchor="start">↓ 選手</text>';
+  // 象限ラベル
+  svg+='<text class="xp-quadrant-label" x="'+(MX/2)+'" y="22" text-anchor="middle">首脳陣 × 応援</text>';
+  svg+='<text class="xp-quadrant-label" x="'+(MX+MX/2)+'" y="22" text-anchor="middle">首脳陣 × 批判</text>';
+  svg+='<text class="xp-quadrant-label" x="'+(MX/2)+'" y="'+(H-6)+'" text-anchor="middle">選手 × 応援</text>';
+  svg+='<text class="xp-quadrant-label" x="'+(MX+MX/2)+'" y="'+(H-6)+'" text-anchor="middle">選手 × 批判</text>';
+
+  // バブル描画
+  placed.forEach(function(item,i){
+    var b=item.b;
+    var col=bubbleColor(b);
+    var label=b.topic_label || b.target;
+    var smallLabel=(label.length>=6);
+    var displayText=b.target+(b.topic_label?'｜'+b.topic_label:'');
+    if(displayText.length>10) displayText=displayText.slice(0,10)+'…';
+    svg+='<g class="xp-bubble" onclick="selectXPulseBubble('+i+')">';
+    svg+='<circle cx="'+item.x.toFixed(1)+'" cy="'+item.y.toFixed(1)+'" r="'+item.r.toFixed(1)+'" fill="'+col.fill+'" fill-opacity="0.25" stroke="'+col.stroke+'" stroke-width="1"/>';
+    // テキスト（target名）
+    if(item.r >= 20){
+      var fs=Math.max(9, Math.min(13, item.r/2.6));
+      svg+='<text class="xp-bubble-text'+(smallLabel?' small':'')+'" x="'+item.x.toFixed(1)+'" y="'+(item.y-2).toFixed(1)+'" style="font-size:'+fs+'px;fill:'+col.textShadow+'">'+escapeHtml(b.target)+'</text>';
+      if(b.topic_label && item.r >= 26){
+        svg+='<text class="xp-bubble-count" x="'+item.x.toFixed(1)+'" y="'+(item.y+fs*0.9).toFixed(1)+'" style="font-size:'+(fs*0.75)+'px;fill:'+col.textShadow+';opacity:0.75">'+escapeHtml(b.topic_label.slice(0,7))+'</text>';
+      }
+    }
+    svg+='</g>';
+  });
+
+  svg+='</svg>';
+  wrap.innerHTML=svg;
+  // selectedBubble の参照用に保持
+  XPULSE._placed=placed;
+}
+
+function renderXPulseStats(bubbles){
+  var cnt={cp:0, cs:0, rp:0, rs:0};  // cp=cheer player, cs=cheer staff, rp=crit player, rs=crit staff
+  bubbles.forEach(function(b){
+    var isStaff=(b.targetType==='首脳陣');
+    var isCheer=(b.sentimentScore||0)>0;
+    var bucket=(isCheer?'c':'r')+(isStaff?'s':'p');
+    cnt[bucket]+=(b.count||0);
+  });
+  var html='';
+  html+='<div class="xp-stat cheer-player"><div class="xp-stat-lbl">選手 × 応援</div><div class="xp-stat-val">'+cnt.cp+'</div></div>';
+  html+='<div class="xp-stat crit-player"><div class="xp-stat-lbl">選手 × 批判</div><div class="xp-stat-val">'+cnt.rp+'</div></div>';
+  html+='<div class="xp-stat cheer-staff"><div class="xp-stat-lbl">首脳陣 × 応援</div><div class="xp-stat-val">'+cnt.cs+'</div></div>';
+  html+='<div class="xp-stat crit-staff"><div class="xp-stat-lbl">首脳陣 × 批判</div><div class="xp-stat-val">'+cnt.rs+'</div></div>';
+  var s=document.getElementById('xp-stats');
+  if(s) s.innerHTML=html;
+}
+
+function selectXPulseBubble(idx){
+  var item=XPULSE._placed && XPULSE._placed[idx];
+  if(!item) return;
+  XPULSE.selectedBubble=item;
+  var b=item.b;
+  var det=document.getElementById('xp-detail');
+  if(!det) return;
+  var isCheer=(b.sentimentScore||0)>0;
+  var tagCls=isCheer?'cheer':'crit';
+  var tagText=({2:'応援強',1:'応援弱','-1':'批判弱','-2':'批判強'})[b.sentimentScore]||'';
+  var samples=(b.sampleTexts||[]).slice(0,3);
+  var urls=b.tweetUrls||[];
+  var samplesHtml=samples.map(function(s,i){
+    var url=urls[i]||'';
+    var timeStr='';
+    if(s.time){var d=new Date(s.time); timeStr=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+    return '<div class="xp-detail-sample">'+escapeHtml(s.text||'')+
+      '<div class="xp-detail-sample-meta">@'+escapeHtml(s.user||'unknown')+' / '+timeStr+
+      (url?' / <a href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Xで見る</a>':'')+
+      '</div></div>';
+  }).join('');
+  det.innerHTML=
+    '<div class="xp-detail-head">'+
+      '<span class="xp-detail-tag '+tagCls+'">'+tagText+'</span>'+
+      '<span class="xp-detail-title">'+escapeHtml(b.target)+(b.topic_label?'｜'+escapeHtml(b.topic_label):'')+'</span>'+
+      '<span class="xp-detail-count">'+(b.count||0)+'件</span>'+
+      '<span class="xp-detail-close" onclick="closeXPulseDetail()">✕</span>'+
+    '</div>'+
+    samplesHtml;
+  det.classList.add('show');
+}
+
+function closeXPulseDetail(){
+  XPULSE.selectedBubble=null;
+  var det=document.getElementById('xp-detail');
+  if(det) det.classList.remove('show');
+}
+
+function escapeHtml(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // ===== ⚔️ 議論エンジン（debates）=====
@@ -3702,7 +4071,7 @@ async function initApp(g){
   if(!userId){userId='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('carp_talk_uid',userId);}
 
   // データ並行取得
-  await Promise.all([loadTitleVotes(),loadTurnings(g),loadComments(),loadFanPositives(),loadCuratedPositiveLikes(),loadDebates()]);
+  await Promise.all([loadTitleVotes(),loadTurnings(g),loadComments(),loadFanPositives(),loadCuratedPositiveLikes(),loadDebates(),loadXPulse(currentDate)]);
 
   // JSONのtitle_candidatesをシード
   if(g.title_candidates){
@@ -3721,7 +4090,7 @@ async function initApp(g){
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
   if(isCancelled){
     // 中止時は評価系・予想系・スタメン予想まで全て非表示にする（試合自体が無いため）
-    ['player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section','positive-section','debate-section','mood-section','mycard-section','preview-section','lineup-section'].forEach(function(id){
+    ['player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section','positive-section','debate-section','mood-section','mycard-section','preview-section','lineup-section','xpulse-section'].forEach(function(id){
       var el=document.getElementById(id);
       if(el)el.style.display='none';
     });
