@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-22T20:41:53.817Z",
+  "fetchedAt": "2026-05-23T20:04:56.745Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -10,30 +10,30 @@
   "batters": [
     {
       "name": "ラミレス",
-      "avg": ".264",
-      "games": 33,
-      "pa": 127,
-      "ab": 121,
+      "avg": ".266",
+      "games": 34,
+      "pa": 131,
+      "ab": 124,
       "r": 9,
-      "h": 32,
-      "double": 10,
+      "h": 33,
+      "double": 11,
       "triple": 1,
       "hr": 2,
-      "tb": 50,
+      "tb": 52,
       "rbi": 18,
       "sb": 0,
       "bb": 5,
-      "k": 36,
-      "slg": ".413",
-      "obp": ".291",
-      "ops": ".704"
+      "k": 37,
+      "slg": ".419",
+      "obp": ".298",
+      "ops": ".717"
     },
     {
       "name": "末包昇大",
-      "avg": ".210",
-      "games": 37,
-      "pa": 126,
-      "ab": 119,
+      "avg": ".203",
+      "games": 38,
+      "pa": 130,
+      "ab": 123,
       "r": 8,
       "h": 25,
       "double": 4,
@@ -43,10 +43,10 @@
       "rbi": 13,
       "sb": 0,
       "bb": 6,
-      "k": 20,
-      "slg": ".336",
-      "obp": ".246",
-      "ops": ".582"
+      "k": 22,
+      "slg": ".325",
+      "obp": ".238",
+      "ops": ".563"
     }
   ],
   "pitchers": [
@@ -67,18 +67,18 @@
     },
     {
       "name": "佐藤柳之介",
-      "era": "2.44",
-      "games": 8,
+      "era": "3.17",
+      "games": 9,
       "wins": 1,
-      "losses": 3,
+      "losses": 4,
       "saves": 0,
-      "ip": "48",
-      "hitsAllowed": 37,
+      "ip": "54",
+      "hitsAllowed": 46,
       "hrAllowed": 1,
-      "walks": 17,
-      "strikeouts": 46,
-      "runs": 17,
-      "earnedRuns": 13
+      "walks": 19,
+      "strikeouts": 51,
+      "runs": 23,
+      "earnedRuns": 19
     },
     {
       "name": "菊地ハルン",
@@ -111,28 +111,13 @@
       "earnedRuns": 9
     },
     {
-      "name": "齊藤汰直",
-      "era": "0.00",
-      "games": 2,
-      "wins": 0,
-      "losses": 0,
-      "saves": 1,
-      "ip": "2",
-      "hitsAllowed": 0,
-      "hrAllowed": 0,
-      "walks": 1,
-      "strikeouts": 2,
-      "runs": 0,
-      "earnedRuns": 0
-    },
-    {
       "name": "杉田健",
-      "era": "1.38",
-      "games": 14,
+      "era": "1.33",
+      "games": 15,
       "wins": 0,
       "losses": 0,
       "saves": 1,
-      "ip": "26",
+      "ip": "27",
       "hitsAllowed": 21,
       "hrAllowed": 1,
       "walks": 4,
@@ -184,6 +169,21 @@
       "strikeouts": 1,
       "runs": 10,
       "earnedRuns": 10
+    },
+    {
+      "name": "齊藤汰直",
+      "era": "9.00",
+      "games": 3,
+      "wins": 0,
+      "losses": 0,
+      "saves": 1,
+      "ip": "3",
+      "hitsAllowed": 4,
+      "hrAllowed": 0,
+      "walks": 2,
+      "strikeouts": 2,
+      "runs": 3,
+      "earnedRuns": 3
     }
   ]
 }
