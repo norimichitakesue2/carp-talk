@@ -8,7 +8,7 @@
   "venue": "バンテリンドームナゴヤ",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "4回裏",
+  "current_inning": "5回裏",
   "result_label": "",
   "away_pitcher": "森下",
   "home_pitcher": "大野",
@@ -189,7 +189,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 7,
+    "hiroshima_hits": 9,
     "hiroshima_errors": 0,
     "away": [
       2,
@@ -202,7 +202,7 @@
       0,
       0
     ],
-    "away_hits": 5,
+    "away_hits": 6,
     "away_errors": 0
   },
   "pitchers": [],
@@ -372,9 +372,9 @@
       "name": "坂倉",
       "pos": "三",
       "line": 4,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
-      "h": 1,
+      "h": 2,
       "rbi": 1,
       "sb": 0,
       "hr": 0,
@@ -382,7 +382,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 1,
+      "single": 2,
       "hbp": 0,
       "sf": 0
     },
@@ -390,7 +390,7 @@
       "name": "モンテロ",
       "pos": "一",
       "line": 5,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -408,7 +408,7 @@
       "name": "佐々木",
       "pos": "左",
       "line": 6,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -426,9 +426,9 @@
       "name": "中村奨",
       "pos": "右",
       "line": 7,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
-      "h": 0,
+      "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -436,7 +436,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -481,19 +481,19 @@
     {
       "name": "森下",
       "result": "",
-      "outs": 11,
-      "pitches": 67,
+      "outs": 15,
+      "pitches": 83,
       "hitsAllowed": 6,
       "hrAllowed": 1,
       "walks": 1,
-      "strikeouts": 4,
+      "strikeouts": 5,
       "runs": 3,
       "earnedRuns": 3
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-23T06:26:08.480Z",
-    "generatedAt": "2026-05-23T06:26:08.491Z",
+    "sourceFetchedAt": "2026-05-23T06:47:31.482Z",
+    "generatedAt": "2026-05-23T06:47:31.494Z",
     "sourceUrl": "https://npb.jp/scores/2026/0523/d-c-09/",
     "previewRosterFingerprint": "ハーン,モンテロ,中村奨,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,塹江,大盛,小園,持丸,森下,森浦,益田,矢野,石原,菊地,菊池,辰見,遠藤,野間,髙"
   }
