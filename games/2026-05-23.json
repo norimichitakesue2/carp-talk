@@ -8,7 +8,7 @@
   "venue": "バンテリンドームナゴヤ",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "4回表",
+  "current_inning": "4回裏",
   "result_label": "",
   "away_pitcher": "森下",
   "home_pitcher": "大野",
@@ -189,7 +189,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 5,
+    "hiroshima_hits": 7,
     "hiroshima_errors": 0,
     "away": [
       2,
@@ -354,7 +354,7 @@
       "name": "小園",
       "pos": "遊",
       "line": 3,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 1,
       "rbi": 1,
@@ -481,9 +481,9 @@
     {
       "name": "森下",
       "result": "",
-      "outs": 9,
-      "pitches": 60,
-      "hitsAllowed": 5,
+      "outs": 11,
+      "pitches": 67,
+      "hitsAllowed": 6,
       "hrAllowed": 1,
       "walks": 1,
       "strikeouts": 4,
@@ -492,8 +492,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-23T06:18:56.284Z",
-    "generatedAt": "2026-05-23T06:18:56.295Z",
+    "sourceFetchedAt": "2026-05-23T06:26:08.480Z",
+    "generatedAt": "2026-05-23T06:26:08.491Z",
     "sourceUrl": "https://npb.jp/scores/2026/0523/d-c-09/",
     "previewRosterFingerprint": "ハーン,モンテロ,中村奨,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,塹江,大盛,小園,持丸,森下,森浦,益田,矢野,石原,菊地,菊池,辰見,遠藤,野間,髙"
   }
