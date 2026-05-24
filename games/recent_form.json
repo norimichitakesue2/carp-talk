@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T06:46:05.904Z",
+  "generatedAt": "2026-05-24T06:51:53.948Z",
   "baseDate": "2026-05-24",
   "games": 6,
   "rangeStart": "2026-05-19",
@@ -610,6 +610,31 @@
       "summary": "直近3登板 3回 防御率0.00 自責0 被安1 奪三振4 2S1H"
     },
     {
+      "name": "遠藤",
+      "games": 3,
+      "outs": 9,
+      "ip": "3回",
+      "er": 0,
+      "r": 0,
+      "h": 3,
+      "hr": 0,
+      "bb": 0,
+      "k": 4,
+      "pitches": 48,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 1,
+      "era": 0,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近3登板 3回 防御率0.00 自責0 被安3 奪三振4 1H"
+    },
+    {
       "name": "鈴木",
       "games": 1,
       "outs": 10,
@@ -683,31 +708,6 @@
         "cls": "form-none"
       },
       "summary": "直近2登板 2回 防御率0.00 自責0 被安0 奪三振2 2H"
-    },
-    {
-      "name": "遠藤",
-      "games": 3,
-      "outs": 8,
-      "ip": "2回2/3",
-      "er": 0,
-      "r": 0,
-      "h": 3,
-      "hr": 0,
-      "bb": 0,
-      "k": 3,
-      "pitches": 44,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 1,
-      "era": 0,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近3登板 2回2/3 防御率0.00 自責0 被安3 奪三振3 1H"
     },
     {
       "name": "益田",
