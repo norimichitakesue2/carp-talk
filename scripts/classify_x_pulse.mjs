@@ -252,6 +252,56 @@ async function pass2Label(clusters) {
   return labeled;
 }
 
+// ---- Pass 3: 全体サマリ (Haiku, 1文) ----
+function buildPass3Prompt(bubbles, classified, phaseName) {
+  const top = bubbles.slice(0, 8);
+  const phaseLabel = ({ pre: '試合前', live: '試合中', post: '試合後' })[phaseName] || phaseName;
+  const bubbleLines = top.length
+    ? top.map((b, i) => `${i + 1}. ${b.target}｜${b.topic_label || b.topic_broad}｜${b.sentiment} (${b.count}件)`).join('\n')
+    : '(クラスタなし)';
+  const eligibleTweetCount = classified.filter(c => c.targetType !== 'なし').length;
+  return `あなたはカープファンの ${phaseLabel} の Xでの盛り上がりを **1文** で要約するアシスタントです。
+
+以下のバブル情報をベースに、「いま何が話題か」を **30〜60文字** で1文にまとめてください。
+
+【バブル (件数順 Top${top.length})】
+${bubbleLines}
+
+【メタ情報】
+- フェーズ: ${phaseLabel}
+- 分類された関連ツイート: ${eligibleTweetCount}件 / 取得 ${classified.length}件
+- バブル総数: ${bubbles.length}個
+
+【良い例】
+- 「名原のスタメン抜擢に期待の声が集中、森下の好投も評価」
+- 「劇的勝利、栗林代役の活躍を讃える声が多数」
+- 「首脳陣の継投ミスに批判集中、選手は奮闘で応援殺到」
+
+【悪い例】
+- 「いろんな話題が出ています」（具体性なし）
+- 長すぎる文 (80字以上)
+- 箇条書き
+
+出力: 1文の日本語テキストのみ（引用符・前置き不要）`;
+}
+
+async function pass3Summary(bubbles, classified, phaseName) {
+  console.error('[pass3] generating summary...');
+  try {
+    const raw = await callClaude(buildPass3Prompt(bubbles, classified, phaseName), { temperature: 0.5, maxTokens: 200 });
+    // 改行や引用符を整理、最大100字
+    const summary = raw
+      .replace(/^["'「『]+|["'」』]+$/g, '')
+      .replace(/\n.*$/s, '')
+      .slice(0, 100);
+    console.error(`[pass3] summary: ${summary}`);
+    return summary;
+  } catch (e) {
+    console.error(`[pass3] failed: ${e.message}`);
+    return null;
+  }
+}
+
 // ---- Build bubbles ----
 function buildBubbles(labeledClusters) {
   return labeledClusters.map(c => ({
@@ -295,6 +345,13 @@ async function main() {
 
   const bubbles = buildBubbles(labeled);
 
+  console.error('[classify_x_pulse] === Pass 3: overall summary ===');
+  // phase 名は output path から推測（例: games/x_pulse/2026-05-24/pre.json → "pre"）
+  const phaseName = outputPath
+    ? (outputPath.match(/\/(pre|live|post)\.json$/i)?.[1] || null)
+    : null;
+  const summary = await pass3Summary(bubbles, classified, phaseName);
+
   const output = {
     generatedAt: new Date().toISOString(),
     model: MODEL,
@@ -302,6 +359,7 @@ async function main() {
     classifiedCount: classified.length,
     clusterCount: clusters.length,
     bubbleCount: bubbles.length,
+    summary,
     bubbles,
     // デバッグ用に分類結果一覧も保持（後で容量が問題になったら削れる）
     all: classified,

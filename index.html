@@ -1126,6 +1126,17 @@ body::before{
 .xp-tab.empty{opacity:.45}
 .xp-tab .xp-tab-count{font-size:10px;color:var(--faint);margin-left:4px}
 .xp-tab.active .xp-tab-count{color:rgba(91,173,255,.7)}
+.xp-summary{
+  background:rgba(74,158,255,.06);
+  border-left:3px solid rgba(91,173,255,.6);
+  border-radius:0 var(--rs) var(--rs) 0;
+  padding:8px 12px;margin-bottom:10px;
+  font-size:13px;line-height:1.5;color:var(--text);
+}
+.xp-summary:empty{display:none}
+.xp-summary::before{
+  content:'📊 ';margin-right:2px;
+}
 .xp-chart-wrap{
   position:relative;width:100%;aspect-ratio:1.4 / 1;
   background:rgba(0,0,0,.2);border-radius:var(--rs);
@@ -1598,6 +1609,7 @@ function renderMain(g){
       '<button class="xp-tab" data-phase="live" onclick="switchXPulsePhase(\'live\')">試合中<span class="xp-tab-count" id="xp-tab-count-live"></span></button>'+
       '<button class="xp-tab" data-phase="post" onclick="switchXPulsePhase(\'post\')">試合後<span class="xp-tab-count" id="xp-tab-count-post"></span></button>'+
     '</div>'+
+    '<div class="xp-summary" id="xp-summary"></div>'+
     '<div class="xp-chart-wrap" id="xp-chart-wrap"></div>'+
     '<div class="xp-stats" id="xp-stats"></div>'+
     '<div class="xp-detail" id="xp-detail"></div>'+
@@ -2174,6 +2186,9 @@ function renderXPulse(){
     meta.innerHTML=(XPULSE.phase==='live'?'<span class="xp-live-dot"></span>':'')+
       'ツイート '+(data.inputCount||0)+'件 / 更新 '+timeStr;
   }
+  // サマリ表示（Pass3 で生成。古いデータには無いので空時は非表示）
+  var sumEl=document.getElementById('xp-summary');
+  if(sumEl) sumEl.textContent=data.summary||'';
   renderXPulseChart(data.bubbles||[]);
   renderXPulseStats(data.bubbles||[]);
 }
@@ -2185,12 +2200,12 @@ function renderXPulseChart(bubbles){
     wrap.innerHTML='<div class="xp-empty"><div class="xp-empty-icon">💬</div>このphaseで盛り上がっている話題はまだありません</div>';
     return;
   }
-  // 4象限に振り分け
+  // 4象限に振り分け（軸: 右=応援/左=批判、上=選手/下=首脳陣）
   var quadrants={
-    'staff-cheer':[],  // 首脳陣×応援 (top-left)
-    'staff-crit':[],   // 首脳陣×批判 (top-right)
-    'player-cheer':[], // 選手×応援 (bottom-left)
-    'player-crit':[]   // 選手×批判 (bottom-right)
+    'player-crit':[],  // 選手×批判 (top-left)
+    'player-cheer':[], // 選手×応援 (top-right) ← 良いニュースが右上に集まる
+    'staff-crit':[],   // 首脳陣×批判 (bottom-left)
+    'staff-cheer':[]   // 首脳陣×応援 (bottom-right)
   };
   bubbles.forEach(function(b){
     var isStaff=(b.targetType==='首脳陣');
@@ -2208,10 +2223,10 @@ function renderXPulseChart(bubbles){
   // 象限の領域定義 (内側パディング 25)
   var QPAD=25;
   var qRect={
-    'staff-cheer':  {x0:QPAD,       y0:QPAD,        x1:MX-QPAD,  y1:MY-QPAD},
-    'staff-crit':   {x0:MX+QPAD,    y0:QPAD,        x1:W-QPAD,   y1:MY-QPAD},
-    'player-cheer': {x0:QPAD,       y0:MY+QPAD,     x1:MX-QPAD,  y1:H-QPAD},
-    'player-crit':  {x0:MX+QPAD,    y0:MY+QPAD,     x1:W-QPAD,   y1:H-QPAD}
+    'player-crit':  {x0:QPAD,       y0:QPAD,        x1:MX-QPAD,  y1:MY-QPAD},  // top-left
+    'player-cheer': {x0:MX+QPAD,    y0:QPAD,        x1:W-QPAD,   y1:MY-QPAD},  // top-right
+    'staff-crit':   {x0:QPAD,       y0:MY+QPAD,     x1:MX-QPAD,  y1:H-QPAD},   // bottom-left
+    'staff-cheer':  {x0:MX+QPAD,    y0:MY+QPAD,     x1:W-QPAD,   y1:H-QPAD}    // bottom-right
   };
 
   // バブルを配置（最大 r から順に、衝突避けて）
@@ -2271,16 +2286,16 @@ function renderXPulseChart(bubbles){
   // 軸
   svg+='<line class="xp-axis-line" x1="'+MX+'" y1="10" x2="'+MX+'" y2="'+(H-10)+'"/>';
   svg+='<line class="xp-axis-line" x1="10" y1="'+MY+'" x2="'+(W-10)+'" y2="'+MY+'"/>';
-  // 軸ラベル
-  svg+='<text class="xp-axis-label" x="'+(W-15)+'" y="'+(MY+12)+'" text-anchor="end">→ 批判</text>';
-  svg+='<text class="xp-axis-label" x="15" y="'+(MY+12)+'" text-anchor="start">応援 ←</text>';
-  svg+='<text class="xp-axis-label" x="'+(MX+5)+'" y="14" text-anchor="start">↑ 首脳陣</text>';
-  svg+='<text class="xp-axis-label" x="'+(MX+5)+'" y="'+(H-6)+'" text-anchor="start">↓ 選手</text>';
-  // 象限ラベル
-  svg+='<text class="xp-quadrant-label" x="'+(MX/2)+'" y="22" text-anchor="middle">首脳陣 × 応援</text>';
-  svg+='<text class="xp-quadrant-label" x="'+(MX+MX/2)+'" y="22" text-anchor="middle">首脳陣 × 批判</text>';
-  svg+='<text class="xp-quadrant-label" x="'+(MX/2)+'" y="'+(H-6)+'" text-anchor="middle">選手 × 応援</text>';
-  svg+='<text class="xp-quadrant-label" x="'+(MX+MX/2)+'" y="'+(H-6)+'" text-anchor="middle">選手 × 批判</text>';
+  // 軸ラベル（右=応援/左=批判、上=選手/下=首脳陣）
+  svg+='<text class="xp-axis-label" x="'+(W-15)+'" y="'+(MY+12)+'" text-anchor="end">→ 応援</text>';
+  svg+='<text class="xp-axis-label" x="15" y="'+(MY+12)+'" text-anchor="start">批判 ←</text>';
+  svg+='<text class="xp-axis-label" x="'+(MX+5)+'" y="14" text-anchor="start">↑ 選手</text>';
+  svg+='<text class="xp-axis-label" x="'+(MX+5)+'" y="'+(H-6)+'" text-anchor="start">↓ 首脳陣</text>';
+  // 象限ラベル（選手×応援が右上、人間直感に合わせる）
+  svg+='<text class="xp-quadrant-label" x="'+(MX/2)+'" y="22" text-anchor="middle">選手 × 批判</text>';
+  svg+='<text class="xp-quadrant-label" x="'+(MX+MX/2)+'" y="22" text-anchor="middle">選手 × 応援</text>';
+  svg+='<text class="xp-quadrant-label" x="'+(MX/2)+'" y="'+(H-6)+'" text-anchor="middle">首脳陣 × 批判</text>';
+  svg+='<text class="xp-quadrant-label" x="'+(MX+MX/2)+'" y="'+(H-6)+'" text-anchor="middle">首脳陣 × 応援</text>';
 
   // バブル描画
   placed.forEach(function(item,i){
