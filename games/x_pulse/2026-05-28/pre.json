@@ -1,0 +1,495 @@
+{
+  "generatedAt": "2026-05-28T08:27:35.213Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 40,
+  "classifiedCount": 40,
+  "clusterCount": 4,
+  "bubbleCount": 4,
+  "summary": "鈴木の初先発起用に期待する声がある一方、栗林のチーム優先姿勢が高く評価されている。",
+  "bubbles": [
+    {
+      "target": "鈴木",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "初先発期待",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/e4vD41mc3L0pGhm/status/2059911312344547793",
+        "https://x.com/carp_ruigoshi/status/2059909308662608161"
+      ],
+      "sampleTexts": [
+        {
+          "text": "改めて。今日はここからカープを応援します！先発は鈴木！チームの突然のアクシデントにも即座に対応！今日は先発でチームをまとめる！今こそチーム一丸で勝利をつかむ！頑張れ鈴木！ ファイターズは福島が先発！甲",
+          "user": "勝てば好きなアラフォー",
+          "time": "2026-05-28T08:15:02.000Z"
+        },
+        {
+          "text": "今日はカープ移籍後初先発の鈴木投手に頑張って貰って、このカード3連敗阻止して貰いましょう！！ 頑張れ鈴木投手！頑張れカープ！！ #カープ",
+          "user": "涙越ごう＠鯉応援アカ",
+          "time": "2026-05-28T08:07:05.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "起用機会なし",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/koikoi3337/status/2059910933368189359"
+      ],
+      "sampleTexts": [
+        {
+          "text": "ハルンくん1度も投げてないじゃん 明日からソソソが予想されるんだから､大差つけられて勝ちパは温存してほしかった ハルンくんの1軍のマウンド度胸も見たかったな 何がしたいのか分からないカープ球団",
+          "user": "あい(プロ野球専用垢)",
+          "time": "2026-05-28T08:13:32.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "起用",
+      "topic_label": "若手優遇批判",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/heatflame/status/2059910124991656064"
+      ],
+      "sampleTexts": [
+        {
+          "text": "若手を優先させ、中堅やベテランを変に蔑ろにした結果が、ここ最近のカープの惨状だと思うんですがね… あれが理想なんでしょうか…？",
+          "user": "ツバキ",
+          "time": "2026-05-28T08:10:19.000Z"
+        }
+      ]
+    },
+    {
+      "target": "栗林",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "チーム優先姿勢",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/BaseBallMOnline/status/2059907788768518166"
+      ],
+      "sampleTexts": [
+        {
+          "text": "【#オーロラビジョン】 広島・栗林良吏 チームの勝利めがけて／#序盤戦MVP 「10点台でも20点台でも、10勝できれば別に。まずはチーム。自分が投げた試合にチームが勝てるように」 #栗林良吏 #広島",
+          "user": "週刊ベースボールONLINE",
+          "time": "2026-05-28T08:01:02.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "羽月の会見今日だっけか？いまさらなに配信するんだろ #カープ",
+      "user": "emipon@黒猫れおたそorカープ垢",
+      "time": "2026-05-28T08:16:10.000Z",
+      "url": "https://x.com/emipon_0650/status/2059911594142994495",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日はテラス席でカープ観戦 がんばれちいかわ",
+      "user": "こてつ",
+      "time": "2026-05-28T08:15:25.000Z",
+      "url": "https://x.com/Kotehui/status/2059911409358782498",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "改めて。今日はここからカープを応援します！先発は鈴木！チームの突然のアクシデントにも即座に対応！今日は先発でチームをまとめる！今こそチーム一丸で勝利をつかむ！頑張れ鈴木！ ファイターズは福島が先発！甲子園3連勝目指して！頑張れカープ、頑張れファイターズ！#carp #lovefighters",
+      "user": "勝てば好きなアラフォー",
+      "time": "2026-05-28T08:15:02.000Z",
+      "url": "https://x.com/e4vD41mc3L0pGhm/status/2059911312344547793",
+      "targetType": "選手",
+      "target": "鈴木",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "2026 #広島チームパック 好評発売中 輝く未来へ！一歩ずつ！ #SHAKARIKI #サブセット 大瀬良大地 #広島東洋カープ #カープ #carp #bbmcards #BBMカード",
+      "user": "BBMcards【公式】",
+      "time": "2026-05-28T08:15:00.000Z",
+      "url": "https://x.com/BBMcards/status/2059911301460099088",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "なお昨日、一昨日の ボイグルメ（？） は 床田の豚キムチ丼 島内の柑橘ビール カープうどん（きつね） でございました",
+      "user": "ボイアングル@ねぎま",
+      "time": "2026-05-28T08:14:20.000Z",
+      "url": "https://x.com/Boi_Angle0415/status/2059911134623441005",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#カープ",
+      "user": "米重和臣",
+      "time": "2026-05-28T08:14:02.000Z",
+      "url": "https://x.com/VLekJ6zZCc76201/status/2059911060078100682",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ハルンくん1度も投げてないじゃん 明日からソソソが予想されるんだから､大差つけられて勝ちパは温存してほしかった ハルンくんの1軍のマウンド度胸も見たかったな 何がしたいのか分からないカープ球団",
+      "user": "あい(プロ野球専用垢)",
+      "time": "2026-05-28T08:13:32.000Z",
+      "url": "https://x.com/koikoi3337/status/2059910933368189359",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "子供、蹴りがち #chibalotte #千葉ロッテマリーンズ #広島カープ",
+      "user": "pokosuke",
+      "time": "2026-05-28T08:12:50.000Z",
+      "url": "https://x.com/pokosuke1yd6/status/2059910755399721102",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "熊本 不用品｜広島カープ復刻ユニフォームが30,500円になった理由 ウルバイ熊本｜ヤフオク出品 ウルバイ熊本のヤフオク出品代行ブログ #Amebaブログ #アメブロ",
+      "user": "熊本ウルバイ☆ヤフオク出品代行",
+      "time": "2026-05-28T08:11:53.000Z",
+      "url": "https://x.com/atumaru110/status/2059910519637856727",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日はカープ観戦です。",
+      "user": "シン・もとみや-1.0",
+      "time": "2026-05-28T08:11:33.000Z",
+      "url": "https://x.com/0330al/status/2059910436167041492",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "早速カープうどんいただきますね (@ Mazda Zoom-Zoom スタジアム広島 in 広島市, 広島県)",
+      "user": "teko",
+      "time": "2026-05-28T08:11:30.000Z",
+      "url": "https://x.com/kenanasq/status/2059910422703272167",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープの他はまあほとんど誰かしらやってる内容だったのでそれが他球団の選手に波及してないかという",
+      "user": "トレトラ",
+      "time": "2026-05-28T08:11:15.000Z",
+      "url": "https://x.com/hantore0428/status/2059910358467547455",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "活躍選手予想3日目。現在82628位 今日からサトテル森下解禁やね。 福島は正統派だから打ちそう。 先発で武内選んでるから ネビンとカナリオに頑張ってほしい。 カープ勢はなし。 シンプルに入れたい人いない。 今日こそ跳ねたい！ #活躍選手予想",
+      "user": "カープくん 鯉党",
+      "time": "2026-05-28T08:10:46.000Z",
+      "url": "https://x.com/YGyaradosu23129/status/2059910236253946351",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "その他",
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日最後まっちゃんのカープ時代の応援歌歌ってるニキいてみんな歌ってて爆泣き",
+      "user": "⑧全力応援",
+      "time": "2026-05-28T08:10:29.000Z",
+      "url": "https://x.com/55BIGLOVE55/status/2059910165600813116",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "若手を優先させ、中堅やベテランを変に蔑ろにした結果が、ここ最近のカープの惨状だと思うんですがね… あれが理想なんでしょうか…？",
+      "user": "ツバキ",
+      "time": "2026-05-28T08:10:19.000Z",
+      "url": "https://x.com/heatflame/status/2059910124991656064",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "起用",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "本日の予告先発 カープ 鈴木健矢 ロッテ戦は日本ハム時代の2023年９月27日エスコンでリリーフ登板して以来３年ぶり ロッテ戦通算16試合２勝２敗防御率2.55 ロッテ 広池康志郎 カープ戦初登板初先発 ストレート最速は155キロに加えてスプリットシュートチェンジアップを中心に多彩な変化球を操る",
+      "user": "massa@カープ垢",
+      "time": "2026-05-28T08:10:18.000Z",
+      "url": "https://x.com/carp186223863/status/2059910118716891354",
+      "targetType": "選手",
+      "target": "鈴木",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープの佐々岡監督と山内さんと「博貴」へ 國松焼きは革命だっ",
+      "user": "k-okita",
+      "time": "2026-05-28T08:10:08.000Z",
+      "url": "https://x.com/KazunariOkita/status/2059910078711619946",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "スカパープロ野球セット 加入月は視聴料・基本料 0円 千葉ロッテ 西武ライオンズ 横浜ベイスターズ ソフトバンクホークス 中日ドラゴンズ 楽天イーグルス ヤクルトスワローズ オリックスバファローズ ジャイアンツ 日本ハムファイターズ 阪神タイガース 広島カープ",
+      "user": "さなえ",
+      "time": "2026-05-28T08:09:19.000Z",
+      "url": "https://x.com/ake1530/status/2059909871533969588",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "さぞカープの選手の引き締まったプレーが見れるんだろうなぁ",
+      "user": "にくまん",
+      "time": "2026-05-28T08:09:09.000Z",
+      "url": "https://x.com/DHmYi32mXF51430/status/2059909829490299361",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "今日はカープ移籍後初先発の鈴木投手に頑張って貰って、このカード3連敗阻止して貰いましょう！！ 頑張れ鈴木投手！頑張れカープ！！ #カープ",
+      "user": "涙越ごう＠鯉応援アカ",
+      "time": "2026-05-28T08:07:05.000Z",
+      "url": "https://x.com/carp_ruigoshi/status/2059909308662608161",
+      "targetType": "選手",
+      "target": "鈴木",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ",
+      "user": "ちょんが",
+      "time": "2026-05-28T08:06:58.000Z",
+      "url": "https://x.com/tyongabi/status/2059909279042392375",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "疲れたらカープ注入せねば！",
+      "user": "タッちゃん@お好み焼き愛好家",
+      "time": "2026-05-28T08:06:39.000Z",
+      "url": "https://x.com/tatchan1976/status/2059909200600604686",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "巨人の阿部監督の件にしろカープのゾンビタバコにしろバレー代表の大麻にしろ確かに衝撃のニュースではあったけどはっきり言ってどうでもいいんだよね。 各自問題解決に努めてくれとしか思わん。 それよりW杯とかの明るいニュースを届けてくれよ。 他にもたくさんのアスリートが世界で活躍してるぞ。",
+      "user": "Vamos",
+      "time": "2026-05-28T08:06:32.000Z",
+      "url": "https://x.com/IPpD778hfE51454/status/2059909172427448419",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ球団はFA行使残留を認めて欲しい。義理と人情だけでは選手は残らないぞ。まぁ、本当にお金がないならFA大量流出は避けられない。まぁ、セ・リーグのお荷物球団アゲインではないでしょうか？FA大量流出を許すと当分はAクラスも厳しくなるかと…。 #広島東洋カープ",
+      "user": "米重和臣",
+      "time": "2026-05-28T08:05:26.000Z",
+      "url": "https://x.com/VLekJ6zZCc76201/status/2059908897125908897",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "無料から牧。前回の熱気牧から継承するか。 そして熱気ファビアンお迎え後即継承。悩んだけど取った #カープ純正 #プロスピA",
+      "user": "プロスピA カープ純正＋",
+      "time": "2026-05-28T08:04:57.000Z",
+      "url": "https://x.com/qHEBzdiv891sHYd/status/2059908774148854187",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "昨日の #MOMOグルメ MAZDA Zoom-Zoomスタジアム広島 むすび むさし -むさしむすび 750円 前も食べたんだけどこの俵むすびが本当に美味しすぎるの うめ、こぶ、おしんこ、しその4種類！お気に入りのカープ飯です",
+      "user": "成瀬ももか【虹色の飛行少女】",
+      "time": "2026-05-28T08:04:30.000Z",
+      "url": "https://x.com/momoka_nrs/status/2059908660793692658",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "駅の周りに赤い服の人がいっぱいいるからアカの集会でもあるのかと思ったらカープの試合があるらしい",
+      "user": "でーち",
+      "time": "2026-05-28T08:03:56.000Z",
+      "url": "https://x.com/KousakaAssoluto/status/2059908517583376827",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "PR プロ野球 交流戦 アマプラjsports 千葉ロッテ 広島カープ 横浜ベイスターズ オリックスバファローズ 中日ドラゴンズ 楽天イーグルス",
+      "user": "あや",
+      "time": "2026-05-28T08:03:44.000Z",
+      "url": "https://x.com/VNUIovIAOp16417/status/2059908467281072425",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープがキツすぎて編成全部入らない場所ですが、文句なしの順光で振り子全開でやって来る383に酔いしれる。",
+      "user": "ちおい",
+      "time": "2026-05-28T08:03:42.000Z",
+      "url": "https://x.com/pastelchioi/status/2059908460003893352",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "ウヒョー！ 熱気ファビアンパワーカンストや！ #プロスピA #熱気 #カープ純正 #ファビアン",
+      "user": "ﾀｸﾔ",
+      "time": "2026-05-28T08:03:34.000Z",
+      "url": "https://x.com/takoyakun05/status/2059908426097123376",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "先日の広島カープの元選手も他の選手にも居ると話します。同じ事はバレーボール界でもあると思います。今回もバックを忘れたから発覚。氷山の一角でしょ。それに仕入先も話すかどうか？正直でない容疑者は執行猶予なしで実刑。全ての球界で徹底的に検査すべきです。",
+      "user": "dusters ベイブ",
+      "time": "2026-05-28T08:03:34.000Z",
+      "url": "https://x.com/mogakekui_1973/status/2059908425677668677",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "久しぶりの1位。エナジーありがたや #プロスピA #カープ純正",
+      "user": "プロスピA カープ純正＋",
+      "time": "2026-05-28T08:03:12.000Z",
+      "url": "https://x.com/qHEBzdiv891sHYd/status/2059908333159784767",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "最近なんでもチャッピーに相談してるし海外旅行の情報ももちろん仕入れてる。今もチャッピー信じて中央アジアを旅してる。阿部監督事件を見て不安になってきたな。早稲田卒のカープの選手として高卒の中村奨成をあげてきた時点でチャッピーは信用仕切れてはいないものの最近は結構信じてるところある",
+      "user": "あらいさん",
+      "time": "2026-05-28T08:02:40.000Z",
+      "url": "https://x.com/investraveler12/status/2059908198564528378",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "我が家もセは昔からカープファンです",
+      "user": "むつ吾郎",
+      "time": "2026-05-28T08:02:20.000Z",
+      "url": "https://x.com/J9U1VroW2heT3tD/status/2059908116469387438",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "仕事終わりました… マジで疲れました。 明日は定時デーなので気が楽です。 家に帰って試合を見る準備だけします。 #カープ",
+      "user": "おいパイ食わねぇか",
+      "time": "2026-05-28T08:01:33.000Z",
+      "url": "https://x.com/orajimahiroyuki/status/2059907916279558651",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "プロ初勝利に向けてガンバレ！ #カープ #carp",
+      "user": "エリモマリトッツォ",
+      "time": "2026-05-28T08:01:06.000Z",
+      "url": "https://x.com/butisukiya_carp/status/2059907805440794854",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "【#オーロラビジョン】 広島・栗林良吏 チームの勝利めがけて／#序盤戦MVP 「10点台でも20点台でも、10勝できれば別に。まずはチーム。自分が投げた試合にチームが勝てるように」 #栗林良吏 #広島東洋カープ #カープ #carp",
+      "user": "週刊ベースボールONLINE",
+      "time": "2026-05-28T08:01:02.000Z",
+      "url": "https://x.com/BaseBallMOnline/status/2059907788768518166",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "あれ？ハルンくん投げたっけ？？ #カープ",
+      "user": "ぽん。",
+      "time": "2026-05-28T08:00:31.000Z",
+      "url": "https://x.com/pon1698/status/2059907659827183663",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "「周囲にも吸っているカープ選手がいた」ー。「ゾンビたばこ」と呼ばれる指定薬物のエトミデートを使用したとして、有罪判決を受けたプロ野球広島東洋カープの羽月隆太郎元選手（26）が法廷で明かした証言はいまだ尾を引く。耳目を集めた公判を振り返る。",
+      "user": "産経電子版公式",
+      "time": "2026-05-28T08:00:01.000Z",
+      "url": "https://x.com/sankeidenshiban/status/2059907533112791488",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "／ #カープトレカ 『VS 千葉ロッテマリーンズ 2026』は本日まで！ ＼ 交流戦試合期間のみの3日間限定販売！ ★5トレカを公開！お見逃しなく！ #カープ",
+      "user": "カープトレカ",
+      "time": "2026-05-28T08:00:00.000Z",
+      "url": "https://x.com/carp_treca/status/2059907529627369764",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    }
+  ]
+}
