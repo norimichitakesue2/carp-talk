@@ -1,0 +1,539 @@
+{
+  "generatedAt": "2026-05-30T09:18:25.428Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 40,
+  "classifiedCount": 40,
+  "clusterCount": 6,
+  "bubbleCount": 6,
+  "summary": "岡本の連敗脱出に期待する一方、新井の交流戦成績不振に批判が集中している。",
+  "bubbles": [
+    {
+      "target": "岡本",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "連敗脱出",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/kamkam2515/status/2060649595219345837",
+        "https://x.com/yochi9441/status/2060649147758453157"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ5連敗しんどいなぁ...\n明日なんとか岡本で勝ってほしい",
+          "user": "かみゅ",
+          "time": "2026-05-30T09:08:43.000Z"
+        },
+        {
+          "text": "今、結果見ました！まけほ\nカープファミリーの皆さん、現地応援の皆さん、朝早くから勝利を信じて遠征された皆さん、応援お疲れ様でした\n５連敗！交流戦未勝利！中々抜け出せない連敗地獄！\n明日こそは岡本くんで",
+          "user": "松村きい",
+          "time": "2026-05-30T09:06:56.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "運の悪さ",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/shinobu1965/status/2060649565511106689",
+        "https://x.com/sSZS2VUN5332291/status/2060648728663646430"
+      ],
+      "sampleTexts": [
+        {
+          "text": "交流戦5連敗、\nどうする新井監督…\n\n#カープ",
+          "user": "ナカマル　シノブ",
+          "time": "2026-05-30T09:08:36.000Z"
+        },
+        {
+          "text": "広島カープ、厳しい戦いが続いているけど、新井監督ばかり責めることはできない、なんか今年は運が悪い、やはり羽月元選手の問題は大きかったな、広島カープは、野球どころじゃない感じになっている、今球団が再調査",
+          "user": "秀典平坂",
+          "time": "2026-05-30T09:05:16.000Z"
+        }
+      ]
+    },
+    {
+      "target": "塹江",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "ストレート四球",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/lazy24944216/status/2060649851822715119"
+      ],
+      "sampleTexts": [
+        {
+          "text": "塹江さん　ノーアウトでストレートの四球はいかん\n\nこれだけ赤く染めてるのに\nカープファン不憫",
+          "user": "りょー",
+          "time": "2026-05-30T09:09:44.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "立ち上がり失点",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/BEGA0717/status/2060649362360017076"
+      ],
+      "sampleTexts": [
+        {
+          "text": "我らがカープ\n\nソフトバンクとの3連戦の2戦目。\n今日も負け\n先発の森下はいつもの森下病が出て序盤に2失点。\nホントに立ち上がりのピッチングに難がありますよね。\nえぇっと、今日の負けで交流戦5連敗です",
+          "user": "ベガ",
+          "time": "2026-05-30T09:07:47.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "交流戦成績不振",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/iS0KlB3sGUHDDqp/status/2060649149473927319"
+      ],
+      "sampleTexts": [
+        {
+          "text": "新井カープ、交流戦ぶっちぎりの負けっぷりで休養コースにならんかな",
+          "user": "メランコリースマッシュ康晴",
+          "time": "2026-05-30T09:06:56.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "走塁",
+      "topic_label": "初盗塁成功",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/L_yogurti__carp/status/2060648872301691240"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープちゃんは負けたのね\n1-1までしかみとらんからダメージはほぼない\n名原くん初盗塁おめでとう\n上がってから次から次へとたくさんのおめでとうを積み上げていくの希望の星でしかないわ\n明日は猛打賞でもや",
+          "user": "よぐるてぃカープ応援垢",
+          "time": "2026-05-30T09:05:50.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "つーか、ウチがカープに3連勝⇒珍に連敗は想定内だが、ハムが珍に3連勝⇒虚に連敗はちょっと意味がわからない(´・ω・｀)\n珍カス激怒事案だろこれ(´・ω・｀)",
+      "user": "ゴンシャ☆",
+      "time": "2026-05-30T09:10:41.000Z",
+      "url": "https://x.com/rjgcb/status/2060650091279692138",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ現地応援帰りの電車内で聴いておりま〜す。負けてしょんぼりな心にグッドミュージックが沁みるぅ #761spin",
+      "user": "きなこまる(転職済)",
+      "time": "2026-05-30T09:10:36.000Z",
+      "url": "https://x.com/shachicuatl/status/2060650071524556913",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "【広島】新井貴浩監督「点の取られ方が…」塹江敦哉に苦言　６回に先頭四球から２点勝ち越し許す　球団最悪の交流戦開幕５連敗／一問一答\n#カープ #carp #ベースボールポスト\n記事はこちら▼",
+      "user": "ベースボールポスト｜最新の野球ニュース",
+      "time": "2026-05-30T09:10:07.000Z",
+      "url": "https://x.com/baseballpost_jp/status/2060649948576624757",
+      "targetType": "選手",
+      "target": "塹江",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "塹江さん　ノーアウトでストレートの四球はいかん\n\nこれだけ赤く染めてるのに\nカープファン不憫",
+      "user": "りょー",
+      "time": "2026-05-30T09:09:44.000Z",
+      "url": "https://x.com/lazy24944216/status/2060649851822715119",
+      "targetType": "選手",
+      "target": "塹江",
+      "topic_broad": "投球",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ファームのカープ相手にマダックス決めたとのこと、\n願わくば、1軍でそれを再現はしてはくれまいか...？！\n\n徐若熙投手... 明天要加油喔",
+      "user": "Ukubo -ふたつのホークスを応援するホークス帽子-",
+      "time": "2026-05-30T09:09:07.000Z",
+      "url": "https://x.com/psff_FUKUOKA/status/2060649698961305738",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "しずく「やりました^_^これでカープ戦も勝ち越し決定です」\nメイ「ぐわぁ〜やられた〜今年もホークス戦負け越しだ〜だけど明日はカープが勝つからな！3タテは阻止してやるぞ」",
+      "user": "九州のラブライバー1219号",
+      "time": "2026-05-30T09:09:04.000Z",
+      "url": "https://x.com/0nDPrtOBGvWZUhP/status/2060649682855166080",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "負けてもイラつかなくなった。(笑)\nみずほPayPayドームは良い球場でした。\n疲れたんで、もつ鍋食べて帰ります。\n#カープ",
+      "user": "元カープ監督　緒方考一",
+      "time": "2026-05-30T09:09:00.000Z",
+      "url": "https://x.com/mochi22806991/status/2060649669307633926",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ5連敗しんどいなぁ...\n明日なんとか岡本で勝ってほしい",
+      "user": "かみゅ",
+      "time": "2026-05-30T09:08:43.000Z",
+      "url": "https://x.com/kamkam2515/status/2060649595219345837",
+      "targetType": "選手",
+      "target": "岡本",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープの勝敗より\n羽月のライブで判明したゾンビタバコ使用者が他にも5人いたって方が盛り上がってるよ・・・",
+      "user": "かんぽ",
+      "time": "2026-05-30T09:08:42.000Z",
+      "url": "https://x.com/kanpo3/status/2060649593638096981",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "交流戦5連敗、\nどうする新井監督…\n\n#カープ",
+      "user": "ナカマル　シノブ",
+      "time": "2026-05-30T09:08:36.000Z",
+      "url": "https://x.com/shinobu1965/status/2060649565511106689",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "我らがカープ\n\nソフトバンクとの3連戦の2戦目。\n今日も負け\n先発の森下はいつもの森下病が出て序盤に2失点。\nホントに立ち上がりのピッチングに難がありますよね。\nえぇっと、今日の負けで交流戦5連敗ですか。\n負けはいつ止まるだろう？\n悔しいよ、ホントに。",
+      "user": "ベガ",
+      "time": "2026-05-30T09:07:47.000Z",
+      "url": "https://x.com/BEGA0717/status/2060649362360017076",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "残念相手は打てないバッターが居無い抑えれんかったら負けるカープとのチカラの差を感じたねぇ〜カープは打力じゃ勝てないから意表を突いた野球で得点を積み重ねて欲しい",
+      "user": "巳みTARO",
+      "time": "2026-05-30T09:07:07.000Z",
+      "url": "https://x.com/bpF8R8sl1g78297/status/2060649192104894887",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "楽しみにすんなそっちはカープだけ祈ってろwww",
+      "user": "はーれ",
+      "time": "2026-05-30T09:07:06.000Z",
+      "url": "https://x.com/Har_627/status/2060649188212543970",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "新井カープ、交流戦ぶっちぎりの負けっぷりで休養コースにならんかな",
+      "user": "メランコリースマッシュ康晴",
+      "time": "2026-05-30T09:06:56.000Z",
+      "url": "https://x.com/iS0KlB3sGUHDDqp/status/2060649149473927319",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "今、結果見ました！まけほ\nカープファミリーの皆さん、現地応援の皆さん、朝早くから勝利を信じて遠征された皆さん、応援お疲れ様でした\n５連敗！交流戦未勝利！中々抜け出せない連敗地獄！\n明日こそは岡本くんで勝って\nズムスタに戻りましょー\n#広島\n#スラィリー",
+      "user": "松村きい",
+      "time": "2026-05-30T09:06:56.000Z",
+      "url": "https://x.com/yochi9441/status/2060649147758453157",
+      "targetType": "選手",
+      "target": "岡本",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ポスト制限されてました\n試合中も極力控えてるんだけどついついポストしちゃうなあ\nそろそろ考えなきゃならんですね\n\n負け\n\n勝てないなあ。\n勝てなさそうで勝てない\n\n現地の皆様お疲れ様でした\n\nスラィリーが接待されていますね\n元気だそうね広島カープ\n#カープ #carp",
+      "user": "Sasun +",
+      "time": "2026-05-30T09:06:51.000Z",
+      "url": "https://x.com/Sasun836612092/status/2060649128154300635",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ (ご贔屓外球団なのですが)\n\n野球好き(見る専)だけに\n\n残念すぎる。。(´･ω･｀)ｼｮﾎﾞ-ﾝ",
+      "user": "おだりん49(高知)",
+      "time": "2026-05-30T09:06:45.000Z",
+      "url": "https://x.com/odarin49/status/2060649103722414335",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "博多駅、なんか赤い人たち多いな…？と思ったらカープが試合してんのか そりゃ赤いわ",
+      "user": "38(さんぱち)",
+      "time": "2026-05-30T09:06:44.000Z",
+      "url": "https://x.com/Karari_SunnyDay/status/2060649095447159271",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "現地から帰りながらたかほーーー\nカード勝ち越し、３連勝\n木村光初勝利おめでとう\n近ちゃん逆転タイムリーありがとう\nギータのホームランも正木の押し出し四球もナイス\nカープの応援迫力あったなぁ…ビジターにいるのかと思った\n明日も勝ってスイープだっ\n #sbhawks",
+      "user": "鷹のお芋",
+      "time": "2026-05-30T09:06:25.000Z",
+      "url": "https://x.com/hanachan0625/status/2060649017051406464",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープと楽天最後に当たるのめちゃくちゃ面白い",
+      "user": "蕩",
+      "time": "2026-05-30T09:06:08.000Z",
+      "url": "https://x.com/CE25180955/status/2060648947581165886",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "現地PayPayドームよりまけほ\nまたまた負けてPayPayドーム\n7連敗\nでも気持ちでは負けへん！\n明日は絶対に勝つ！\n頑張れ広島カープ\nあっヒルトンや！\n\n明日は絶対ヒルトンホテル見たらあかんで",
+      "user": "誠也はおっさんのヒーローメジャー！",
+      "time": "2026-05-30T09:06:03.000Z",
+      "url": "https://x.com/matuyama44/status/2060648924814393629",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "逆転(負け)のカープになってしまってる…\n精神的に落ちてる自分には正直見ていられない…\n逆に怒りさえ湧いてくる\n勝って元気もらいたいよ！\n#carp",
+      "user": "カネゴン",
+      "time": "2026-05-30T09:06:02.000Z",
+      "url": "https://x.com/kanegon_aiko15/status/2060648922910277992",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "背景黒だけど、\nカープ5勝無敗やん\n何で下にあるんだ？",
+      "user": "じゃむ",
+      "time": "2026-05-30T09:05:59.000Z",
+      "url": "https://x.com/carpjamu814/status/2060648907592650784",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "【悲報】\n広島カープ 交流戦 勝ち無し継続\n広島 2-4 ソフトバンク\n・チャンスであと一本出ない ・勝負どころであと一歩届かない ・ファンの胃だけが限界突破\nそれでも信じるしかない。\n交流戦初勝利はいつになるんだ…？\n#carp #広島東洋カープ #交流戦 #まけほー",
+      "user": "カムイ軍団長",
+      "time": "2026-05-30T09:05:57.000Z",
+      "url": "https://x.com/Ryo_the_18/status/2060648898352521399",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープちゃんは負けたのね\n1-1までしかみとらんからダメージはほぼない\n名原くん初盗塁おめでとう\n上がってから次から次へとたくさんのおめでとうを積み上げていくの希望の星でしかないわ\n明日は猛打賞でもやっとく？",
+      "user": "よぐるてぃカープ応援垢",
+      "time": "2026-05-30T09:05:50.000Z",
+      "url": "https://x.com/L_yogurti__carp/status/2060648872301691240",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "走塁",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "本当クソみたいな試合をありがとうございます。\n\nカープもアビスパも。\nナメてんの？",
+      "user": "羽衣",
+      "time": "2026-05-30T09:05:47.000Z",
+      "url": "https://x.com/Hagoromo515/status/2060648858477338918",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "ワイが広島帰ってから\nあべちゃん家が不幸になってから\nカープも勝てなくなったのは\nきっと何かの因果律がー",
+      "user": "野村浩司@大和ミュジオープンまでに呉に戻りたい人生だったマン",
+      "time": "2026-05-30T09:05:18.000Z",
+      "url": "https://x.com/hiroshi_irs/status/2060648738239250753",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープ、厳しい戦いが続いているけど、新井監督ばかり責めることはできない、なんか今年は運が悪い、やはり羽月元選手の問題は大きかったな、広島カープは、野球どころじゃない感じになっている、今球団が再調査している段階、正直いってチームとしてうまくいってない、まずたてなおすことが先決",
+      "user": "秀典平坂",
+      "time": "2026-05-30T09:05:16.000Z",
+      "url": "https://x.com/sSZS2VUN5332291/status/2060648728663646430",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープについては羽月絡みが落ち着くまで静観を決め込んで、某氏みたいに推しの選手を追うにとどめますかねぇ\n\n羽月も眉唾感はまだまだ否めないし、少なくとも炙りフォークの方はどっちにしてもはっきりさせないと\n試合どころじゃないし、主語がデカくなるけど応援する人も疑心暗鬼になるだろ",
+      "user": "ふーりん副ヘッド",
+      "time": "2026-05-30T09:04:53.000Z",
+      "url": "https://x.com/Fukucho77/status/2060648630495928506",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "2年前のシカゴ・ホワイトソックスのファンの気持ちを今カープファンは味わっていると言う感じか",
+      "user": "shigezin Y",
+      "time": "2026-05-30T09:04:37.000Z",
+      "url": "https://x.com/shigezin/status/2060648563668050189",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ球団はオンラインカジノ問題の時も基本ダンマリだったしなあ\nいそうな空気だけ流して...結局だれも書類送検されなかったから有耶無耶になってるけど\nそういうとこも昭和の匂いがするんよねこの球団",
+      "user": "霧崎ピエ郎",
+      "time": "2026-05-30T09:04:15.000Z",
+      "url": "https://x.com/Pierottripper/status/2060648474321059876",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ負けたのか。\nお疲れ様でした。\nソフトバンクには勝てないと思うので、明日もきっと負けるんでしょうね。\n\n#カープ",
+      "user": "アリス",
+      "time": "2026-05-30T09:04:11.000Z",
+      "url": "https://x.com/YMIcWgJJ6wV5n1T/status/2060648455333466595",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "数日前のワイ「交流戦いきなりロッテソフバンか・・・贅沢言わないから2勝4敗くらいでなんとか」\n昨日誕生日の名言マン「一体いつから問題だらけのカープが1個でも勝てると錯覚していた？」\nワイ「ｱｯﾊｲ」",
+      "user": "野村浩司@大和ミュジオープンまでに呉に戻りたい人生だったマン",
+      "time": "2026-05-30T09:03:30.000Z",
+      "url": "https://x.com/hiroshi_irs/status/2060648282804908366",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "パリーグは楽天を応援しててこっちも泥沼だが3HR出たとはカープより絶対強いw\n明日こそどちらも勝って連敗脱出して欲しい（切実）\n#rakuteneagles #carp\n【楽天】3本塁打飛び出すも今季4度目5連敗で借金は今季最多12　交流戦開幕から全敗(日刊スポーツ)\n#Yahooニュース",
+      "user": "きよかる",
+      "time": "2026-05-30T09:03:20.000Z",
+      "url": "https://x.com/bonelessfaron/status/2060648242048868718",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープなんかよりダービーの予想に頭切り替えよ！\n\n岩田父ちゃんは問題なさそうだけど津村さん大丈夫かしら。\n明日になって痛みが増したりしたら本来の騎乗ができなくなるし。",
+      "user": "ミンミン",
+      "time": "2026-05-30T09:03:00.000Z",
+      "url": "https://x.com/Ilovettymrkm/status/2060648157835567161",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "なし"
+    },
+    {
+      "text": "カープ女子・明智あんな、小林みくる:『もうソ○バンに勝てる望みに期待なんてできんや･･･これで2連続3タコ決まったも同然だわ･･･』\n#広島カープ\n#たんプリ\n#precure",
+      "user": "ブレイブ・マジェスティ@B小町マジェスティ",
+      "time": "2026-05-30T09:02:55.000Z",
+      "url": "https://x.com/Majesty_SPIRIT/status/2060648135890997430",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "まけほ～\nでも大健闘だったと思います\n私もテレビの前で応援していたのですが\n応援が足りなかったようです\n\n明日は勝つぞカープ\n皆様応援お疲れ様でした\n\n明日も福岡は暑くなりそうだ…",
+      "user": "にゃまらん",
+      "time": "2026-05-30T09:02:52.000Z",
+      "url": "https://x.com/nyamawings27/status/2060648122326688172",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ18連敗しそうなんですけど楽天になら\n勝てるかな",
+      "user": "みりー",
+      "time": "2026-05-30T09:02:45.000Z",
+      "url": "https://x.com/miripea16804/status/2060648096225464516",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "…あれ？チュニドラさんが4連勝でピヨ島カープが交流戦未勝利ということは…\nあっという間にゲーム差0.5！シャー芯かっ！",
+      "user": "カナヅチとにー",
+      "time": "2026-05-30T09:02:44.000Z",
+      "url": "https://x.com/tonythehummer/status/2060648091418849753",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島生まれ育ちでカープファンだけど\n羽月の薬物の件はガッカリしたが、それ以上にチーム内で他に嫌疑がかかる人物がいるのに、球団調査がなぁなぁすぎんか？\n俺は羽月が配信で内情告発したくなる気持ちも分かるよ。\n薬物提供した人物も逮捕された事だし、対象者割れて一掃されても良いと思うわ\n#carp",
+      "user": "Psychic@MotoGP",
+      "time": "2026-05-30T09:02:34.000Z",
+      "url": "https://x.com/Psychic16bit/status/2060648049035407785",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    }
+  ]
+}
