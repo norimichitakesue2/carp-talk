@@ -8,7 +8,7 @@
   "venue": "みずほPayPay",
   "start_time": "14:01",
   "status": "live",
-  "current_inning": "7回表",
+  "current_inning": "7回裏",
   "result_label": "",
   "away_pitcher": "森下",
   "home_pitcher": "前田純",
@@ -158,7 +158,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 6,
+    "hiroshima_hits": 7,
     "hiroshima_errors": 1,
     "away": [
       0,
@@ -285,7 +285,7 @@
   "carp_batting": [
     {
       "name": "名原",
-      "pos": "中",
+      "pos": "中右",
       "line": 1,
       "ab": 3,
       "r": 1,
@@ -429,7 +429,7 @@
     },
     {
       "name": "大盛",
-      "pos": "打",
+      "pos": "打中",
       "line": null,
       "ab": 1,
       "r": 0,
@@ -465,15 +465,15 @@
     },
     {
       "name": "二俣",
-      "pos": "打",
+      "pos": "打遊",
       "line": null,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -506,11 +506,23 @@
       "strikeouts": 0,
       "runs": 2,
       "earnedRuns": 2
+    },
+    {
+      "name": "益田",
+      "result": "",
+      "outs": 2,
+      "pitches": 15,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-05-30T07:31:45.809Z",
-    "generatedAt": "2026-05-30T07:31:45.821Z",
+    "sourceFetchedAt": "2026-05-30T07:43:17.553Z",
+    "generatedAt": "2026-05-30T07:43:17.566Z",
     "sourceUrl": "https://npb.jp/scores/2026/0530/h-c-02/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中村奨,中﨑,二俣,佐々木,前川,勝田,名原,坂倉,塹江,大盛,小園,持丸,森下,森浦,益田,矢野,石原,菊池,辰見,辻,遠藤,野間,髙"
   }
