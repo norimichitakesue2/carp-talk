@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-03T09:05:07.640Z",
+  "generatedAt": "2026-06-03T09:18:00.808Z",
   "baseDate": "2026-06-04",
   "games": 6,
   "rangeStart": "2026-05-27",
@@ -8,17 +8,17 @@
   "foundPitchingGames": 6,
   "mvp": {
     "name": "名原",
-    "summary": "直近6試合 20打数7安打 .350 OPS.850 1本 2打点 1三振 1盗塁",
+    "summary": "直近6試合 21打数8安打 .381 OPS.952 1本 2打点 1三振 1盗塁",
     "form": {
-      "icon": "↑",
-      "label": "好調",
-      "level": 1,
-      "cls": "form-hot1"
+      "icon": "↑↑",
+      "label": "絶好調",
+      "level": 2,
+      "cls": "form-hot2"
     }
   },
   "worst": {
     "name": "小園",
-    "summary": "直近6試合 12打数1安打 .083 OPS.250 1三振",
+    "summary": "直近6試合 13打数1安打 .077 OPS.231 2三振",
     "form": {
       "icon": "↓↓",
       "label": "絶不調",
@@ -50,32 +50,32 @@
     {
       "name": "名原",
       "games": 6,
-      "ab": 20,
+      "ab": 21,
       "r": 3,
-      "h": 7,
+      "h": 8,
       "rbi": 2,
       "sb": 1,
       "hr": 1,
       "k": 1,
       "bb": 0,
-      "double": 0,
+      "double": 1,
       "triple": 0,
       "single": 6,
       "hbp": 0,
       "sf": 0,
-      "avg": ".350",
-      "avg_num": 0.35,
-      "obp": ".350",
-      "slg": ".500",
-      "ops": ".850",
-      "ops_num": 0.85,
+      "avg": ".381",
+      "avg_num": 0.381,
+      "obp": ".381",
+      "slg": ".571",
+      "ops": ".952",
+      "ops_num": 0.952,
       "form": {
-        "icon": "↑",
-        "label": "好調",
-        "level": 1,
-        "cls": "form-hot1"
+        "icon": "↑↑",
+        "label": "絶好調",
+        "level": 2,
+        "cls": "form-hot2"
       },
-      "summary": "直近6試合 20打数7安打 .350 OPS.850 1本 2打点 1三振 1盗塁"
+      "summary": "直近6試合 21打数8安打 .381 OPS.952 1本 2打点 1三振 1盗塁"
     },
     {
       "name": "菊池",
@@ -590,32 +590,32 @@
     {
       "name": "小園",
       "games": 6,
-      "ab": 12,
+      "ab": 13,
       "r": 1,
       "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 1,
+      "k": 2,
       "bb": 0,
       "double": 1,
       "triple": 0,
       "single": 0,
       "hbp": 0,
       "sf": 0,
-      "avg": ".083",
-      "avg_num": 0.083,
-      "obp": ".083",
-      "slg": ".167",
-      "ops": ".250",
-      "ops_num": 0.25,
+      "avg": ".077",
+      "avg_num": 0.077,
+      "obp": ".077",
+      "slg": ".154",
+      "ops": ".231",
+      "ops_num": 0.231,
       "form": {
         "icon": "↓↓",
         "label": "絶不調",
         "level": -2,
         "cls": "form-cold2"
       },
-      "summary": "直近6試合 12打数1安打 .083 OPS.250 1三振"
+      "summary": "直近6試合 13打数1安打 .077 OPS.231 2三振"
     }
   ],
   "pitchers": [
@@ -722,15 +722,15 @@
     {
       "name": "床田",
       "games": 1,
-      "outs": 2,
-      "ip": "0回2/3",
+      "outs": 3,
+      "ip": "1回",
       "er": 0,
       "r": 0,
-      "h": 0,
+      "h": 1,
       "hr": 0,
       "bb": 0,
       "k": 1,
-      "pitches": 11,
+      "pitches": 17,
       "win": 0,
       "loss": 0,
       "save": 0,
@@ -742,7 +742,7 @@
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近1登板 0回2/3 防御率0.00 自責0 被安0 奪三振1"
+      "summary": "直近1登板 1回 防御率0.00 自責0 被安1 奪三振1"
     },
     {
       "name": "玉村",
