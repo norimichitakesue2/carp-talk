@@ -165,7 +165,7 @@ ${playByPlayText || '（一球速報データなし）'}
 `;
 }
 
-async function callClaude(prompt) {
+async function callClaude(prompt, { maxTokens = 8192 } = {}) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -175,7 +175,7 @@ async function callClaude(prompt) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 4096,
+      max_tokens: maxTokens,
       temperature: 0.4,
       messages: [{ role: 'user', content: prompt }],
     }),
@@ -186,7 +186,26 @@ async function callClaude(prompt) {
   }
   const data = await res.json();
   const text = data?.content?.[0]?.text || '';
+  const stopReason = data?.stop_reason;
+  if (stopReason === 'max_tokens') {
+    console.error(`[generate_ai] WARNING: response hit max_tokens (${maxTokens}). Output may be truncated.`);
+  }
   return text.trim();
+}
+
+// JSON文字列の最小限の修復を試みる
+//   - 末尾の trailing comma 除去 ( ", }" や ", ]" )
+//   - 末尾の不正トークン除去
+function repairJson(json) {
+  let s = json;
+  // trailing comma before } or ]
+  s = s.replace(/,(\s*[}\]])/g, '$1');
+  // 末尾の余分なテキスト（最後の}以降）
+  const lastBrace = s.lastIndexOf('}');
+  if (lastBrace !== -1 && lastBrace < s.length - 1) {
+    s = s.slice(0, lastBrace + 1);
+  }
+  return s;
 }
 
 function extractJson(text) {
@@ -197,7 +216,36 @@ function extractJson(text) {
   const end = candidate.lastIndexOf('}');
   if (start === -1 || end === -1) throw new Error('No JSON object found in response');
   const json = candidate.slice(start, end + 1);
-  return JSON.parse(json);
+  try {
+    return JSON.parse(json);
+  } catch (e1) {
+    // 修復を試みる
+    console.error(`[generate_ai] JSON parse failed (${e1.message.slice(0, 80)}), trying repair...`);
+    const repaired = repairJson(json);
+    try {
+      const result = JSON.parse(repaired);
+      console.error('[generate_ai] JSON repaired successfully');
+      return result;
+    } catch (e2) {
+      // 失敗。コンテキストを少し残してエラー
+      const pos = parseInt((e2.message.match(/position (\d+)/) || [])[1] || '0', 10);
+      const ctx = json.slice(Math.max(0, pos - 80), Math.min(json.length, pos + 80));
+      throw new Error(`${e2.message} / context: ...${ctx}...`);
+    }
+  }
+}
+
+// callClaude + extractJson、JSONパース失敗時に1回だけリトライ
+async function callClaudeWithJsonRetry(prompt, { maxTokens = 8192 } = {}) {
+  try {
+    const raw1 = await callClaude(prompt, { maxTokens });
+    return extractJson(raw1);
+  } catch (e1) {
+    console.error(`[generate_ai] first attempt failed (${e1.message.slice(0, 120)}), retrying with stricter prompt...`);
+    const stricterPrompt = prompt + `\n\n【厳格に守ること】\n- 出力は厳密に有効なJSONのみ。途中で打ち切らず最後まで書く\n- trailing comma 禁止（配列・オブジェクトの最後にカンマを付けない）\n- 全ての配列・オブジェクトを正しく閉じる（[ → ]、{ → }）\n- マークダウン記法（\`\`\`json）も不要、純粋なJSONのみ`;
+    const raw2 = await callClaude(stricterPrompt, { maxTokens });
+    return extractJson(raw2);
+  }
 }
 
 // 直近のカープ試合（final状態）を最大 N 試合読み込む
@@ -957,8 +1005,7 @@ async function main() {
   }
 
   console.error(`[generate_ai] Calling ${MODEL} (status=${status})...`);
-  const raw = await callClaude(prompt);
-  const generated = extractJson(raw);
+  const generated = await callClaudeWithJsonRetry(prompt, { maxTokens: 8192 });
 
   console.log(JSON.stringify(generated, null, 2));
 }
