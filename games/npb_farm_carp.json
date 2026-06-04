@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-03T21:46:32.120Z",
+  "fetchedAt": "2026-06-04T20:56:12.901Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -10,10 +10,10 @@
   "batters": [
     {
       "name": "ラミレス",
-      "avg": ".278",
-      "games": 40,
-      "pa": 152,
-      "ab": 144,
+      "avg": ".276",
+      "games": 41,
+      "pa": 153,
+      "ab": 145,
       "r": 11,
       "h": 40,
       "double": 15,
@@ -24,9 +24,9 @@
       "sb": 0,
       "bb": 6,
       "k": 43,
-      "slg": ".438",
-      "obp": ".309",
-      "ops": ".747"
+      "slg": ".434",
+      "obp": ".307",
+      "ops": ".741"
     }
   ],
   "pitchers": [
@@ -77,16 +77,16 @@
     },
     {
       "name": "高橋昂也",
-      "era": "5.60",
-      "games": 14,
+      "era": "5.03",
+      "games": 15,
       "wins": 0,
       "losses": 1,
       "saves": 2,
-      "ip": "17.2",
+      "ip": "19.2",
       "hitsAllowed": 21,
       "hrAllowed": 0,
-      "walks": 14,
-      "strikeouts": 13,
+      "walks": 15,
+      "strikeouts": 14,
       "runs": 12,
       "earnedRuns": 11
     },
@@ -151,21 +151,6 @@
       "earnedRuns": 4
     },
     {
-      "name": "齊藤汰直",
-      "era": "9.53",
-      "games": 6,
-      "wins": 0,
-      "losses": 1,
-      "saves": 1,
-      "ip": "5.2",
-      "hitsAllowed": 11,
-      "hrAllowed": 0,
-      "walks": 3,
-      "strikeouts": 2,
-      "runs": 6,
-      "earnedRuns": 6
-    },
-    {
       "name": "工藤泰己",
       "era": "9.60",
       "games": 15,
@@ -179,6 +164,21 @@
       "strikeouts": 3,
       "runs": 16,
       "earnedRuns": 16
+    },
+    {
+      "name": "齊藤汰直",
+      "era": "10.80",
+      "games": 7,
+      "wins": 0,
+      "losses": 1,
+      "saves": 1,
+      "ip": "6.2",
+      "hitsAllowed": 12,
+      "hrAllowed": 0,
+      "walks": 6,
+      "strikeouts": 2,
+      "runs": 8,
+      "earnedRuns": 8
     }
   ]
 }
