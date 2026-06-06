@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "14:01",
   "status": "live",
-  "current_inning": "8回表",
+  "current_inning": "8回裏",
   "result_label": "",
   "away_pitcher": "田嶋大",
   "home_pitcher": "森下",
@@ -425,6 +425,24 @@
       "double": 0,
       "triple": 0,
       "single": 1,
+      "hbp": 1,
+      "sf": 0
+    },
+    {
+      "name": "辰見",
+      "pos": "走",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
       "hbp": 0,
       "sf": 0
     },
@@ -517,19 +535,19 @@
     {
       "name": "髙",
       "result": "",
-      "outs": 1,
-      "pitches": 6,
+      "outs": 2,
+      "pitches": 13,
       "hitsAllowed": 0,
       "hrAllowed": 0,
-      "walks": 0,
+      "walks": 1,
       "strikeouts": 0,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-06T07:36:59.472Z",
-    "generatedAt": "2026-06-06T07:36:59.484Z",
+    "sourceFetchedAt": "2026-06-06T07:49:00.314Z",
+    "generatedAt": "2026-06-06T07:49:00.326Z",
     "sourceUrl": "https://npb.jp/scores/2026/0606/c-b-02/",
     "previewRosterFingerprint": "ファビアン,モンテロ,中﨑,二俣,佐々木,前川,勝田,名原,坂倉,塹江,大盛,小園,平川,持丸,森下,森浦,益田,矢野,石原,菊池,赤木,辰見,辻,遠藤,野間,髙"
   }
