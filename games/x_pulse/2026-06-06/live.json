@@ -1,0 +1,798 @@
+{
+  "generatedAt": "2026-06-06T08:21:58.386Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 49,
+  "classifiedCount": 49,
+  "clusterCount": 12,
+  "bubbleCount": 12,
+  "summary": "名原のポジティブな活躍とタイムリーヒットに応援が集中する一方、森下の好投にも評価の声が上がっている。",
+  "bubbles": [
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "ポジパワー",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 4,
+      "tweetUrls": [
+        "https://x.com/radio4265/status/2063171864806236450",
+        "https://x.com/milky312/status/2063171758212202646",
+        "https://x.com/catlovecarp/status/2063171607401763124",
+        "https://x.com/gradycrossing/status/2063171592419770773"
+      ],
+      "sampleTexts": [
+        {
+          "text": "こいほー！！ カープ勝った〜〜〜〜 しびれるいい試合だった！ 名原がすげーわ",
+          "user": "らじ子",
+          "time": "2026-06-06T08:11:19.000Z"
+        },
+        {
+          "text": "キタキタこいほー！٩( ᐛ )و ありがとうありがとう名原！！ 坂倉持丸ホームラン素晴らしい もうヒーローいっぱいいるよー！！ 現地鯉党の方々おめでとう御座います‼︎ (*´꒳`ﾉﾉﾞ☆ﾊﾟﾁﾊﾟﾁ",
+          "user": "milky-3-",
+          "time": "2026-06-06T08:10:53.000Z"
+        },
+        {
+          "text": "こいほー 森下暢仁ー髙太一&中崎翔太 今日は投打が噛み合った てか若鯉パワーよ やはり名原典彦の持つポジパワーです 今季の始まりは由宇で声出ししてた選手ですよ？ よく支配下してくれました カープ母さん",
+          "user": "カープねこ",
+          "time": "2026-06-06T08:10:17.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "森下好投",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/hiro_toyo_carp/status/2063171837803237439",
+        "https://x.com/mrusciante/status/2063171705212920051",
+        "https://x.com/punipuni1969/status/2063171572320629230"
+      ],
+      "sampleTexts": [
+        {
+          "text": "こいほー 森下粘り強く良く投げたね！ 名原がカープの雰囲気を変えてくれてるよね！ ファイターズも勝ち！ﾊﾑﾎｰ 山﨑福也今季初先発で勝利おめでとう！ お疲れ様でした",
+          "user": "HTC",
+          "time": "2026-06-06T08:11:12.000Z"
+        },
+        {
+          "text": "最後は中崎どんが3人で締めてカープ勝利！嬉しい 森下投手もよく投げたね。",
+          "user": "まるま（maruma）",
+          "time": "2026-06-06T08:10:41.000Z"
+        },
+        {
+          "text": "名原は呼んであげてほしいな 先制ゴロ（打点付き）&ソロ弾の坂倉も呼ばれるかな。 自責4でもしっかり役目を果たした森下はもちろん。 #carp #カープ #広島東洋カープ",
+          "user": "ぷにすけ（2026シーズン現地1勝5敗）",
+          "time": "2026-06-06T08:10:09.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "名原の成長",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/OujyoK/status/2063171765225074784",
+        "https://x.com/taku2503924206/status/2063171728889852024",
+        "https://x.com/Himechan_oshi/status/2063171709742809273"
+      ],
+      "sampleTexts": [
+        {
+          "text": "コイホー 「カープ勝ったけ明日は雨じゃ」と悪態つく所長。 「もとから明日は雨予報！」と皆から総ツッコミ浴びるw 試合見れてないけど、また名原が光を放ったとか。帰って色々見るのが楽しみじゃ お疲れ様！ ",
+          "user": "王城鯉太",
+          "time": "2026-06-06T08:10:55.000Z"
+        },
+        {
+          "text": "こいほムッハー ただの1勝（交流戦2勝目…）だけど今までのカープなら8回に追いつかれてるorひっくり返されてるような展開… こういう試合を勝ち切ったのは大きい まぁちょこちょこ思うとこはあるけど勝てば",
+          "user": "taku25",
+          "time": "2026-06-06T08:10:46.000Z"
+        },
+        {
+          "text": "今度マツスタ行ったら名原のユニ買おうかなぁ #カープ",
+          "user": "フィーバー(ナオキ)",
+          "time": "2026-06-06T08:10:42.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "打線援護",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/WQdXBotCYs43422/status/2063171735353184431",
+        "https://x.com/akazoroe2022/status/2063171658882670927",
+        "https://x.com/Kuma11102/status/2063171623419789443"
+      ],
+      "sampleTexts": [
+        {
+          "text": "きゃーコイホーコイホー 森下くん勝利投手おめでとう一点差に迫ってこられた時の名原君のタイムリー最高ですガッツポーズは元気勇気を与えてくれてますよ～ ホームランもモッチ～と坂倉くんに出ました みんな頑張",
+          "user": "庄原のまめ太郎",
+          "time": "2026-06-06T08:10:48.000Z"
+        },
+        {
+          "text": "７得点でこいほ〜 森下くんの好投 髙くんの熱投 坂倉くん持丸くんの ホームラン 勝ちきれたぁ 素晴らしいナイスゲーム 明日も勝つよカープ",
+          "user": "AKAZUKIN",
+          "time": "2026-06-06T08:10:30.000Z"
+        },
+        {
+          "text": "勝った〜！！！ 途中危なかったけど名原が決めてくれた！ 森下もよく投げた！！ #カープ",
+          "user": "MAKU",
+          "time": "2026-06-06T08:10:21.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "タイムリーヒット",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/tencho_majan/status/2063171675840241735",
+        "https://x.com/di_atom/status/2063171674217074859",
+        "https://x.com/hiroshimathlete/status/2063171658480058478"
+      ],
+      "sampleTexts": [
+        {
+          "text": "名原くん好きすぎる！毎試合毎打席命賭けてますって顔と背中が言うてる ほんま今のカープに足らんのはこの執念",
+          "user": "転ちょ",
+          "time": "2026-06-06T08:10:34.000Z"
+        },
+        {
+          "text": "勝ったー！！！ ナイスクローズ中崎翔太 ナイスプレー平川蓮 そして今日は名原典彦気合いの 8回裏二点タイムリー！最高かよ 森下暢仁も久しぶりにナイスピッチング髙太一もがん張った 本塁打出たしOK！よー",
+          "user": "これでいいのだ！",
+          "time": "2026-06-06T08:10:33.000Z"
+        },
+        {
+          "text": "6/6 #カープ #オリックス 7-4でカープが勝利 #森下暢仁 投手4勝目 満塁のピンチに堂々たる ピッチングを魅せた #髙太一 投手 そして、気合と根性 #名原典彦 選手の 2点タイムリースリーベ",
+          "user": "アスリートマガジン編集部",
+          "time": "2026-06-06T08:10:29.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "采配への不満",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/tikuwabu_o/status/2063171682236497984",
+        "https://x.com/Galette021/status/2063171639773372870"
+      ],
+      "sampleTexts": [
+        {
+          "text": "途中胃薬必須の試合だったけど、最後、監督の謎采配を選手が助けて勝利！ 一つ一つ勝利を積み重ねていこうカープ！ #広島カープ #カープ #carp",
+          "user": "ちくわぶ",
+          "time": "2026-06-06T08:10:35.000Z"
+        },
+        {
+          "text": "こいほー 相手チームに加えてこの首脳陣も相手にしながら選手はようやってるよ 今日も名原様々 森下もよう頑張った #カープ",
+          "user": "021 Galette",
+          "time": "2026-06-06T08:10:25.000Z"
+        }
+      ]
+    },
+    {
+      "target": "福也",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "初勝利達成",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/muu_rx6/status/2063171757947945087"
+      ],
+      "sampleTexts": [
+        {
+          "text": "やったーー3連勝！！ 福也さん今季初勝利！！ カープ戦も志願してる！！ 新庄監督なら登板あり得そう",
+          "user": "Mutsumi",
+          "time": "2026-06-06T08:10:53.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "守備好プレー",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/nobumurimono523/status/2063171737932660988"
+      ],
+      "sampleTexts": [
+        {
+          "text": "小園君サードゴロ素晴らしい守備！ 今日のカープは勝ったよ！ 持丸君や名原君の活躍の中攻撃陣が活性化してきた嬉しい 勝ちパ投手の負担がものすごく心配やけど みんなの力で勝って行こう 応援お疲れさまでした",
+          "user": "やしのぶ",
+          "time": "2026-06-06T08:10:48.000Z"
+        }
+      ]
+    },
+    {
+      "target": "西川",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "守備ミス批判",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/carp1153242/status/2063171716675928442"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ勝利で盛り上がってる最中に、西川のタオル掲げられるのモヤっとするわ 昨日犠牲フライ打たれて、あんなに疲れる試合になったんじゃん",
+          "user": "とこ@carp&ラン",
+          "time": "2026-06-06T08:10:43.000Z"
+        }
+      ]
+    },
+    {
+      "target": "中崎",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "抑え安定性",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/hiroshi_irs/status/2063171706248908890"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープの抑えって、抑え候補がセーブ失敗したら、お手つきで次の候補に挑戦権移るクイズ番組方式なん？ とか考えてたら 中崎まさかのサクサクで おわってたw こいほ",
+          "user": "野村浩司@大和ミュジオープンまでに呉に戻りたい人生だったマン",
+          "time": "2026-06-06T08:10:41.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "粘りのバッティング",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/syu_0103_carp/status/2063171653971169344"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープこいほー粘り勝ちキュン＆高くん粘りのピッチング＆やっぱ、名原くんナイスバッティング残り仕事頑張ります",
+          "user": "にいにい(Syu)",
+          "time": "2026-06-06T08:10:28.000Z"
+        }
+      ]
+    },
+    {
+      "target": "髙",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "熱投と援護",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/kgr8jKEGkugoMMA/status/2063171595032776982"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ家族の皆様、叫びますよ せ〜の、鯉フォ〜 ホームランあり、髙投手の熱投、 辰見選手の盗塁 名原選手のスリーベースヒット ズムスタに流れるOK、最高です 明日は、岡本投手に期待です",
+          "user": "にんじゃりばんばん",
+          "time": "2026-06-06T08:10:14.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "こいほーこいほーこいほー 今日はやってくれました〜！ モンちゃん！さく！モッチー！ そんでもって名原くん〜〜！ 皆んなありがと〜！髙くんもよく踏ん張ってくれた！感謝 毎回、勝ち試合も最後までドキドキの多い試合ばかりだけどカープ全力応援〜〜 明日も頑張れカープ〜",
+      "user": "MJ→5/23バンド6/18SCANDAL LIVE",
+      "time": "2026-06-06T08:11:22.000Z",
+      "url": "https://x.com/jun1975m/status/2063171879368843722",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "こいほー！ 今季現地初勝利！ 終始リードするものの、追いつかれるのかドキドキもしつつ、最後に試合を決める名原の適時打もありめちゃくちゃ楽しい試合でした 明日も勝つぞーーー！ #carp #カープ",
+      "user": "日髙",
+      "time": "2026-06-06T08:11:22.000Z",
+      "url": "https://x.com/hihihidakasan/status/2063171878823592125",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "打撃ではプレッシャーに負けたけど、投手ではプレッシャーに勝った山崎 このまま一軍に残るならカープ戦登板あるし、もし明日流れるとその代替試合で登板あるか？ 北山、加藤、伊藤、福島、細野、達、北山、山崎みたいな感じで",
+      "user": "小坂淳",
+      "time": "2026-06-06T08:11:19.000Z",
+      "url": "https://x.com/kosakan/status/2063171865108263230",
+      "targetType": "選手",
+      "target": "山崎",
+      "topic_broad": "その他",
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー！！ カープ勝った〜〜〜〜 しびれるいい試合だった！ 名原がすげーわ",
+      "user": "らじ子",
+      "time": "2026-06-06T08:11:19.000Z",
+      "url": "https://x.com/radio4265/status/2063171864806236450",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "こいほー 森下粘り強く良く投げたね！ 名原がカープの雰囲気を変えてくれてるよね！ ファイターズも勝ち！ﾊﾑﾎｰ 山﨑福也今季初先発で勝利おめでとう！ お疲れ様でした",
+      "user": "HTC",
+      "time": "2026-06-06T08:11:12.000Z",
+      "url": "https://x.com/hiro_toyo_carp/status/2063171837803237439",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ勝った！同一カード3連戦負け越さなかった！明日を残して一勝一分だし！ #carp",
+      "user": "hiroCS",
+      "time": "2026-06-06T08:11:10.000Z",
+      "url": "https://x.com/hiron0310/status/2063171828672299100",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今後のようへいのバンテリンドーム現地観戦予定日です ６月２４日（水）ベイスターズ戦 パノラマBレフト側 ７月１２日（日）カープ戦 内野Ｂ三塁側 ７月１５日（水）阪神戦 ドラゴンズ外野応援シートレフト側 ７月２６日（日）ベイスターズ戦パノラマBレフト側 ６月と７月です",
+      "user": "ようへい",
+      "time": "2026-06-06T08:11:09.000Z",
+      "url": "https://x.com/newyoheiiwata/status/2063171825564295651",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー！！ 若手躍動 カープ7得点！",
+      "user": "カンプリ広島大手町店 ",
+      "time": "2026-06-06T08:11:05.000Z",
+      "url": "https://x.com/kanpuri_hiro/status/2063171808149545205",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こいほー今季現地初勝利 #カープ #CARP #マツダスタジアム",
+      "user": "☙のんぱわ～ ",
+      "time": "2026-06-06T08:11:03.000Z",
+      "url": "https://x.com/non_power18/status/2063171800230694984",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こいほー！！！ 交流戦勝利嬉しい！ #カープ #carp",
+      "user": "trap",
+      "time": "2026-06-06T08:10:57.000Z",
+      "url": "https://x.com/trap41/status/2063171772309291054",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "コイホー 「カープ勝ったけ明日は雨じゃ」と悪態つく所長。 「もとから明日は雨予報！」と皆から総ツッコミ浴びるw 試合見れてないけど、また名原が光を放ったとか。帰って色々見るのが楽しみじゃ お疲れ様！ #カープ",
+      "user": "王城鯉太",
+      "time": "2026-06-06T08:10:55.000Z",
+      "url": "https://x.com/OujyoK/status/2063171765225074784",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "キタキタこいほー！٩( ᐛ )و ありがとうありがとう名原！！ 坂倉持丸ホームラン素晴らしい もうヒーローいっぱいいるよー！！ 現地鯉党の方々おめでとう御座います‼︎ (*´꒳`ﾉﾉﾞ☆ﾊﾟﾁﾊﾟﾁ",
+      "user": "milky-3-",
+      "time": "2026-06-06T08:10:53.000Z",
+      "url": "https://x.com/milky312/status/2063171758212202646",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "やったーー3連勝！！ 福也さん今季初勝利！！ カープ戦も志願してる！！ 新庄監督なら登板あり得そう",
+      "user": "Mutsumi",
+      "time": "2026-06-06T08:10:53.000Z",
+      "url": "https://x.com/muu_rx6/status/2063171757947945087",
+      "targetType": "選手",
+      "target": "福也",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープ7-4バファローズ 試合終了 オリックス、引き分け挟んで4連敗。。。んほー！ #bs2026",
+      "user": "アマラオン",
+      "time": "2026-06-06T08:10:52.000Z",
+      "url": "https://x.com/Amaraon_1993/status/2063171755037110657",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!! えーよ！！！ こいほーよ！！！！ 交流戦で７点もとった、これは凄いことですよ！！ やっぱり、”やれる気”があれば、何とかなる 元気があれば、交流戦も勝てる！！ 久しぶりのチケット完売、完売御礼のカープファンに最高の試合をお届けʕ•ᴥ•ʔ",
+      "user": "やまじん",
+      "time": "2026-06-06T08:10:51.000Z",
+      "url": "https://x.com/yamajinwind/status/2063171747328008196",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "こいほー ホントに選手皆んなの気迫溢れる プレーの賜物です これ以上なんも言うコトなし ヒャッフゥぅぅぅぅ╰(*´︶`*)╯♡ #カープファンと繋がりたい",
+      "user": "taku",
+      "time": "2026-06-06T08:10:50.000Z",
+      "url": "https://x.com/carp_ani_run/status/2063171745088168155",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "こいほーﾜｧ───ヽ(*ﾟ∀ﾟ*)ﾉ───ｲ さくほーﾜｧ───ヽ(*ﾟ∀ﾟ*)ﾉ───ｲ もちほーﾜｧ───ヽ(*ﾟ∀ﾟ*)ﾉ───ｲ のりほーﾜｧ───ヽ(*ﾟ∀ﾟ*)ﾉ───ｲ #カープ",
+      "user": "ごんち",
+      "time": "2026-06-06T08:10:50.000Z",
+      "url": "https://x.com/gonti19710221/status/2063171743934722371",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "まけほ。 セ・リーグ＆交流戦最下位のカープを相手にこんなクソゲーやってたら溜まったもんじゃない。 打線もクソやし投手陣もクソ。 恥ずかしいと思わんのかい、ボケかす！ #Bs2026",
+      "user": "USK",
+      "time": "2026-06-06T08:10:48.000Z",
+      "url": "https://x.com/usk_89_315/status/2063171738410885161",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "小園君サードゴロ素晴らしい守備！ 今日のカープは勝ったよ！ 持丸君や名原君の活躍の中攻撃陣が活性化してきた嬉しい 勝ちパ投手の負担がものすごく心配やけど みんなの力で勝って行こう 応援お疲れさまでした",
+      "user": "やしのぶ",
+      "time": "2026-06-06T08:10:48.000Z",
+      "url": "https://x.com/nobumurimono523/status/2063171737932660988",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "守備",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "きゃーコイホーコイホー 森下くん勝利投手おめでとう一点差に迫ってこられた時の名原君のタイムリー最高ですガッツポーズは元気勇気を与えてくれてますよ～ ホームランもモッチ～と坂倉くんに出ました みんな頑張れ #カープ",
+      "user": "庄原のまめ太郎",
+      "time": "2026-06-06T08:10:48.000Z",
+      "url": "https://x.com/WQdXBotCYs43422/status/2063171735353184431",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "こいほムッハー ただの1勝（交流戦2勝目…）だけど今までのカープなら8回に追いつかれてるorひっくり返されてるような展開… こういう試合を勝ち切ったのは大きい まぁちょこちょこ思うとこはあるけど勝てば良し 明日が大事 名原 凄いな… こないだまで３桁とは思えん #carp #カープ",
+      "user": "taku25",
+      "time": "2026-06-06T08:10:46.000Z",
+      "url": "https://x.com/taku2503924206/status/2063171728889852024",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こいほー カープの交流戦の勝利全部現地はラッキーすぎる（なおまだ2勝目）",
+      "user": "ぽこ",
+      "time": "2026-06-06T08:10:44.000Z",
+      "url": "https://x.com/Neqr5Tjlu26219/status/2063171721214189812",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほーー勝ったーー #カープ",
+      "user": "トムニエル",
+      "time": "2026-06-06T08:10:44.000Z",
+      "url": "https://x.com/k502841/status/2063171717686845858",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ勝利で盛り上がってる最中に、西川のタオル掲げられるのモヤっとするわ 昨日犠牲フライ打たれて、あんなに疲れる試合になったんじゃん",
+      "user": "とこ@carp&ラン",
+      "time": "2026-06-06T08:10:43.000Z",
+      "url": "https://x.com/carp1153242/status/2063171716675928442",
+      "targetType": "選手",
+      "target": "西川",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "今度マツスタ行ったら名原のユニ買おうかなぁ #カープ",
+      "user": "フィーバー(ナオキ)",
+      "time": "2026-06-06T08:10:42.000Z",
+      "url": "https://x.com/Himechan_oshi/status/2063171709742809273",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープの抑えって、抑え候補がセーブ失敗したら、お手つきで次の候補に挑戦権移るクイズ番組方式なん？ とか考えてたら 中崎まさかのサクサクで おわってたw こいほ",
+      "user": "野村浩司@大和ミュジオープンまでに呉に戻りたい人生だったマン",
+      "time": "2026-06-06T08:10:41.000Z",
+      "url": "https://x.com/hiroshi_irs/status/2063171706248908890",
+      "targetType": "選手",
+      "target": "中崎",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープと阪神は頑張ったが、西武とバンクは負けないな、自力で勝ち続けるしかない",
+      "user": "Ｚぴこ",
+      "time": "2026-06-06T08:10:41.000Z",
+      "url": "https://x.com/Cryptopone813/status/2063171705640747284",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "最後は中崎どんが3人で締めてカープ勝利！嬉しい 森下投手もよく投げたね。",
+      "user": "まるま（maruma）",
+      "time": "2026-06-06T08:10:41.000Z",
+      "url": "https://x.com/mrusciante/status/2063171705212920051",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "顔出しタオルなんてあるんや #カープ",
+      "user": "きーちゃん",
+      "time": "2026-06-06T08:10:37.000Z",
+      "url": "https://x.com/miyupon33/status/2063171691300458855",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "途中胃薬必須の試合だったけど、最後、監督の謎采配を選手が助けて勝利！ 一つ一つ勝利を積み重ねていこうカープ！ #広島カープ #カープ #carp",
+      "user": "ちくわぶ",
+      "time": "2026-06-06T08:10:35.000Z",
+      "url": "https://x.com/tikuwabu_o/status/2063171682236497984",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "東京ドームの試合以外は終了 タイガースとカープ以外はパ・リーグの勝ち パ・リーグが強くて順位が変わらない",
+      "user": "Nina",
+      "time": "2026-06-06T08:10:35.000Z",
+      "url": "https://x.com/Nina57422026376/status/2063171681280254406",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "名原くん好きすぎる！毎試合毎打席命賭けてますって顔と背中が言うてる ほんま今のカープに足らんのはこの執念",
+      "user": "転ちょ",
+      "time": "2026-06-06T08:10:34.000Z",
+      "url": "https://x.com/tencho_majan/status/2063171675840241735",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "勝ったー！！！ ナイスクローズ中崎翔太 ナイスプレー平川蓮 そして今日は名原典彦気合いの 8回裏二点タイムリー！最高かよ 森下暢仁も久しぶりにナイスピッチング髙太一もがん張った 本塁打出たしOK！よー #carp #カープ さあこの雰囲気で明日も勝つぞー カーープー！ 貴浩監督は元気だせ！",
+      "user": "これでいいのだ！",
+      "time": "2026-06-06T08:10:33.000Z",
+      "url": "https://x.com/di_atom/status/2063171674217074859",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "日ハムは昨年やってて､カープは今年やるみたいです〜！行けるなら行きたいところですが",
+      "user": "ちかこ",
+      "time": "2026-06-06T08:10:32.000Z",
+      "url": "https://x.com/k_i_4623/status/2063171667933978747",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "７得点でこいほ〜 森下くんの好投 髙くんの熱投 坂倉くん持丸くんの ホームラン 勝ちきれたぁ 素晴らしいナイスゲーム 明日も勝つよカープ",
+      "user": "AKAZUKIN",
+      "time": "2026-06-06T08:10:30.000Z",
+      "url": "https://x.com/akazoroe2022/status/2063171658882670927",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "6/6 #カープ #オリックス 7-4でカープが勝利 #森下暢仁 投手4勝目 満塁のピンチに堂々たる ピッチングを魅せた #髙太一 投手 そして、気合と根性 #名原典彦 選手の 2点タイムリースリーベースヒット 最高の一戦でした #carp",
+      "user": "アスリートマガジン編集部",
+      "time": "2026-06-06T08:10:29.000Z",
+      "url": "https://x.com/hiroshimathlete/status/2063171658480058478",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープこいほー粘り勝ちキュン＆高くん粘りのピッチング＆やっぱ、名原くんナイスバッティング残り仕事頑張ります",
+      "user": "にいにい(Syu)",
+      "time": "2026-06-06T08:10:28.000Z",
+      "url": "https://x.com/syu_0103_carp/status/2063171653971169344",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こいほー 今日は打線が頑張ってくれて、打ち勝てました 投手陣もピンチをよく凌いで、投打で頑張りましたね 今日は応援お疲れ様でしたー #カープ",
+      "user": "涙越ごう＠鯉応援アカ",
+      "time": "2026-06-06T08:10:28.000Z",
+      "url": "https://x.com/carp_ruigoshi/status/2063171652717031433",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "よし！あと4勝な！！！！ (6勝12敗で満足するカープファン)",
+      "user": "crescent(くれせんと)",
+      "time": "2026-06-06T08:10:27.000Z",
+      "url": "https://x.com/curesaint5292/status/2063171649294508197",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "こいほー 相手チームに加えてこの首脳陣も相手にしながら選手はようやってるよ 今日も名原様々 森下もよう頑張った #カープ",
+      "user": "021 Galette",
+      "time": "2026-06-06T08:10:25.000Z",
+      "url": "https://x.com/Galette021/status/2063171639773372870",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "お！おカープちゃん交流戦2勝目！",
+      "user": "ANN",
+      "time": "2026-06-06T08:10:22.000Z",
+      "url": "https://x.com/annie0216/status/2063171629061124283",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "勝った〜！！！ 途中危なかったけど名原が決めてくれた！ 森下もよく投げた！！ #カープ",
+      "user": "MAKU",
+      "time": "2026-06-06T08:10:21.000Z",
+      "url": "https://x.com/Kuma11102/status/2063171623419789443",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープ こいほー やればできる よっしゃ 君がヒーロー",
+      "user": "晴れっち☆前進あるのみ",
+      "time": "2026-06-06T08:10:19.000Z",
+      "url": "https://x.com/carp_tamago555/status/2063171615966585014",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こいほー 森下暢仁ー髙太一&中崎翔太 今日は投打が噛み合った てか若鯉パワーよ やはり名原典彦の持つポジパワーです 今季の始まりは由宇で声出ししてた選手ですよ？ よく支配下してくれました カープ母さん達、今夜はお寿司 現地さん熱い応援ありがとうございました お疲れさまでした！",
+      "user": "カープねこ",
+      "time": "2026-06-06T08:10:17.000Z",
+      "url": "https://x.com/catlovecarp/status/2063171607401763124",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "鯉勝ちホーおめでとう、７－４：１７：０５ 愛ちゃん、カープファンおめでとう",
+      "user": "けんちゃん",
+      "time": "2026-06-06T08:10:17.000Z",
+      "url": "https://x.com/ksta93758065/status/2063171605220720797",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ家族の皆様、叫びますよ せ〜の、鯉フォ〜 ホームランあり、髙投手の熱投、 辰見選手の盗塁 名原選手のスリーベースヒット ズムスタに流れるOK、最高です 明日は、岡本投手に期待です",
+      "user": "にんじゃりばんばん",
+      "time": "2026-06-06T08:10:14.000Z",
+      "url": "https://x.com/kgr8jKEGkugoMMA/status/2063171595032776982",
+      "targetType": "選手",
+      "target": "髙",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "やっと こいほー 神ってる名原 森下くんも今日は踏ん張れた！ もちまると ホームランも出て 今日は現地がうらやましい #カープ",
+      "user": "ろいず　(roize)",
+      "time": "2026-06-06T08:10:14.000Z",
+      "url": "https://x.com/gradycrossing/status/2063171592419770773",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "名原は呼んであげてほしいな 先制ゴロ（打点付き）&ソロ弾の坂倉も呼ばれるかな。 自責4でもしっかり役目を果たした森下はもちろん。 #carp #カープ #広島東洋カープ",
+      "user": "ぷにすけ（2026シーズン現地1勝5敗）",
+      "time": "2026-06-06T08:10:09.000Z",
+      "url": "https://x.com/punipuni1969/status/2063171572320629230",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "辰見盗塁からの名原タイムリーがカープファン唯一の希望 現役ドラフトと育成ドラフト",
+      "user": "じゃんぶ",
+      "time": "2026-06-06T08:10:08.000Z",
+      "url": "https://x.com/onsentarget/status/2063171569372090834",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    }
+  ]
+}
