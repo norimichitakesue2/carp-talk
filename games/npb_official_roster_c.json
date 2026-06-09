@@ -1,8 +1,8 @@
 {
-  "fetchedAt": "2026-06-08T21:11:16.730Z",
+  "fetchedAt": "2026-06-09T20:54:20.932Z",
   "sourceUrl": "https://npb.jp/announcement/roster/",
   "note": "NPB公式公示の「広島東洋カープ 出場選手一覧」を直接スクレイプ。試合直前まで更新されないNPB box の roster.html より鮮度高い。",
-  "expectedCount": 30,
+  "expectedCount": 31,
   "players": [
     {
       "pos": "投",
@@ -51,6 +51,12 @@
       "number": "36",
       "fullName": "塹江",
       "name": "塹江"
+    },
+    {
+      "pos": "投",
+      "number": "41",
+      "fullName": "鈴木",
+      "name": "鈴木"
     },
     {
       "pos": "投",
