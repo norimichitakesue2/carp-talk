@@ -8,7 +8,7 @@
   "venue": "楽天モバイルパーク宮城",
   "start_time": "13:00",
   "status": "live",
-  "current_inning": "8回表",
+  "current_inning": "9回裏",
   "result_label": "",
   "away_pitcher": "岡本",
   "home_pitcher": "藤井",
@@ -171,7 +171,7 @@
       0,
       0
     ],
-    "away_hits": 2,
+    "away_hits": 4,
     "away_errors": 0
   },
   "pitchers": [],
@@ -285,7 +285,7 @@
   "carp_batting": [
     {
       "name": "名原",
-      "pos": "右",
+      "pos": "右左",
       "line": 1,
       "ab": 3,
       "r": 1,
@@ -359,13 +359,13 @@
       "name": "モンテロ",
       "pos": "指",
       "line": 5,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 0,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -392,10 +392,28 @@
       "sf": 0
     },
     {
-      "name": "小園",
+      "name": "矢野",
       "pos": "遊",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 1,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "小園",
+      "pos": "遊三",
       "line": 7,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -413,7 +431,7 @@
       "name": "ファビアン",
       "pos": "左",
       "line": 8,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 1,
@@ -428,10 +446,28 @@
       "sf": 1
     },
     {
+      "name": "辰見",
+      "pos": "右",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
       "name": "持丸",
       "pos": "捕",
       "line": 9,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -449,7 +485,7 @@
   "carp_pitching": [
     {
       "name": "岡本",
-      "result": "",
+      "result": "win",
       "outs": 21,
       "pitches": 107,
       "hitsAllowed": 2,
@@ -458,11 +494,35 @@
       "strikeouts": 8,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "ハーン",
+      "result": "hold",
+      "outs": 3,
+      "pitches": 18,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
+    },
+    {
+      "name": "森浦",
+      "result": "save",
+      "outs": 3,
+      "pitches": 9,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-14T06:22:02.742Z",
-    "generatedAt": "2026-06-14T06:22:02.755Z",
+    "sourceFetchedAt": "2026-06-14T06:56:24.198Z",
+    "generatedAt": "2026-06-14T06:56:24.208Z",
     "sourceUrl": "https://npb.jp/scores/2026/0614/e-c-03/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中﨑,二俣,佐々木,前川,勝田,名原,坂倉,大盛,小園,岡本,持丸,林,森浦,益田,矢野,石原,菊池,辰見,辻,遠藤,野間,鈴木,髙"
   }
