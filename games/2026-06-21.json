@@ -8,7 +8,7 @@
   "venue": "神宮球場",
   "start_time": "13:30",
   "status": "live",
-  "current_inning": "5回裏",
+  "current_inning": "6回裏",
   "result_label": "",
   "away_pitcher": "岡本",
   "home_pitcher": "高橋",
@@ -189,7 +189,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 6,
+    "hiroshima_hits": 7,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -318,7 +318,7 @@
       "name": "名原",
       "pos": "右",
       "line": 1,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -426,9 +426,9 @@
       "name": "大盛",
       "pos": "中",
       "line": 7,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
-      "h": 2,
+      "h": 3,
       "rbi": 0,
       "sb": 1,
       "hr": 0,
@@ -436,7 +436,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 2,
+      "single": 3,
       "hbp": 0,
       "sf": 0
     },
@@ -444,7 +444,7 @@
       "name": "勝田",
       "pos": "遊",
       "line": 8,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -482,8 +482,8 @@
       "name": "岡本",
       "result": "",
       "outs": 15,
-      "pitches": 79,
-      "hitsAllowed": 2,
+      "pitches": 81,
+      "hitsAllowed": 3,
       "hrAllowed": 0,
       "walks": 1,
       "strikeouts": 6,
@@ -492,8 +492,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-21T06:18:51.719Z",
-    "generatedAt": "2026-06-21T06:18:51.730Z",
+    "sourceFetchedAt": "2026-06-21T06:33:08.203Z",
+    "generatedAt": "2026-06-21T06:33:08.213Z",
     "sourceUrl": "https://npb.jp/scores/2026/0621/s-c-11/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,岡本,常廣,持丸,森浦,矢野,石原,菊池,辻,遠藤,野間,鈴木,髙,黒原"
   }
