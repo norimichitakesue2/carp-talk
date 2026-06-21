@@ -1,0 +1,983 @@
+{
+  "generatedAt": "2026-06-21T05:58:25.051Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 68,
+  "classifiedCount": 68,
+  "clusterCount": 14,
+  "bubbleCount": 14,
+  "summary": "新井監督の積極的な采配が話題の中心で、スクイズ不採用の判断には批判も出つつ、得点機を活かせない打線への指摘も集中している。",
+  "bubbles": [
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "積極的な攻撃采配",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571323077681397",
+        "https://x.com/i/web/status/2068571057133699379",
+        "https://x.com/i/web/status/2068570784147349555"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ首脳陣頑張って 正直、このイニングはキツイ 得点出来るか分からなくても 確率を上げる作戦を 選手を信じてるだけなら スタメン発表・試合開始で 采配・作戦は要らないよ 相手は徐々に調子を上げていく",
+          "user": "じゃっぴー",
+          "time": "2026-06-21T05:46:50.000Z"
+        },
+        {
+          "text": "カープって、バントさせるの好きなクセになんでスクイズのサインは出さないのかね",
+          "user": "とこ@carp&ラン",
+          "time": "2026-06-21T05:45:46.000Z"
+        },
+        {
+          "text": "円陣組んで「顔の高さの球を振るのはやめよう」と約束させろよ。 #carp #カープ #広島東洋カープ",
+          "user": "ぷにすけ(2026シーズン現地1勝8敗)",
+          "time": "2026-06-21T05:44:41.000Z"
+        }
+      ]
+    },
+    {
+      "target": "高津",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "得点機を活かせない",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068572005050532053",
+        "https://x.com/i/web/status/2068570913860469204"
+      ],
+      "sampleTexts": [
+        {
+          "text": "#carp #カープ 4表ワンアウト一三塁のチャンスを無策でつぶす 高津監督「こういうところがカープがなかなか点がとれないところなんでしょうね」",
+          "user": "あゆたろう",
+          "time": "2026-06-21T05:49:32.000Z"
+        },
+        {
+          "text": "サッカー日本代表は点取って、その瞬間にカープは残塁。 残塁祭り。高津も言ってるわ。こういうところって #carp",
+          "user": "おはるんるん@",
+          "time": "2026-06-21T05:45:12.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "スクイズ不採用",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571295806329108",
+        "https://x.com/i/web/status/2068571257474527530"
+      ],
+      "sampleTexts": [
+        {
+          "text": "新井はスクイズとかさせんよな 監督として肝が座ってない 監督向いてないよ #カープ",
+          "user": "ゆうたまん",
+          "time": "2026-06-21T05:46:43.000Z"
+        },
+        {
+          "text": "新井マジなんもしねえな、スクイズとかなんでもやれよ #カープ",
+          "user": "たまたま",
+          "time": "2026-06-21T05:46:34.000Z"
+        }
+      ]
+    },
+    {
+      "target": "辰見",
+      "targetType": "選手",
+      "topic_broad": "離脱・復帰",
+      "topic_label": "軽傷祈願",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068572298412691510"
+      ],
+      "sampleTexts": [
+        {
+          "text": "辰見くんは病院行ってるのか。どうかどうか軽傷でありますように #カープ #carp",
+          "user": "どう最近？＠NO CARP NO LIFE",
+          "time": "2026-06-21T05:50:42.000Z"
+        }
+      ]
+    },
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "懐かしさ",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068572255958028657"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープファンとして久々の応援 ライトなファンになってしまったが楽しい 菊池の応援歌とか覚えてて嬉しい",
+          "user": "∠にゃも(も) 6/25市原",
+          "time": "2026-06-21T05:50:32.000Z"
+        }
+      ]
+    },
+    {
+      "target": "會澤",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "會澤好調",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068572065301745953"
+      ],
+      "sampleTexts": [
+        {
+          "text": "6/21ファームＬソフトバンク戦 3-2 ５回裏 會澤 右中間へマルチ 元気です!! 大瀬良 6回87球2安打(1HR)1失点ナイピ １軍で投げる準備はできてます！ ７回表からアドゥワ いきなりソロ被",
+          "user": "きな子パパ＠鯉党",
+          "time": "2026-06-21T05:49:47.000Z"
+        }
+      ]
+    },
+    {
+      "target": "岡本",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "打線援護不足",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571749755785449"
+      ],
+      "sampleTexts": [
+        {
+          "text": "岡本くん、これがカープ打線よ 挫けず頑張れ",
+          "user": "全力応援、今年こそ日本一へ",
+          "time": "2026-06-21T05:48:32.000Z"
+        }
+      ]
+    },
+    {
+      "target": "勝田",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "守備ミス",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571535036780776"
+      ],
+      "sampleTexts": [
+        {
+          "text": "勝田、最低限の仕事も出来ないとは… #カープ",
+          "user": "スコーン",
+          "time": "2026-06-21T05:47:40.000Z"
+        }
+      ]
+    },
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "選手会長不在",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571352798486617"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープが円陣してるのもう長いこと見てない気がする なんせここ数年、選手会長が１軍におらんのやからしゃーない",
+          "user": "アカリレッド",
+          "time": "2026-06-21T05:46:57.000Z"
+        }
+      ]
+    },
+    {
+      "target": "勝田",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "身長差別",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571347308175445"
+      ],
+      "sampleTexts": [
+        {
+          "text": "開幕からちょくちょく見ているが、勝田を良いと思ったことは一度もない。やっぱチビはダメだ #carp #カープ",
+          "user": "クレメンティア",
+          "time": "2026-06-21T05:46:56.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "走塁",
+      "topic_label": "走塁技術",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571331902505226"
+      ],
+      "sampleTexts": [
+        {
+          "text": "小園大盛選手一、三塁でなんかちょっとサッカー気になって来たら本田解説がファールでしょって言ってて 大盛選手の単独スチールからまたサッカー気になったら 4点目が入ってた カープは岡本投手が粘って無得点だ",
+          "user": "ソンブレロババ",
+          "time": "2026-06-21T05:46:52.000Z"
+        }
+      ]
+    },
+    {
+      "target": "勝田",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "チャンス活かせず",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571182610493465"
+      ],
+      "sampleTexts": [
+        {
+          "text": "あー残念 勝田くん、岡本くん連続三振 チャンスじゃったのにねー 取れる時には取っとかんと #カープ",
+          "user": "こま",
+          "time": "2026-06-21T05:46:16.000Z"
+        }
+      ]
+    },
+    {
+      "target": "岡本",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "残塁が多い",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571075559166007"
+      ],
+      "sampleTexts": [
+        {
+          "text": "岡本くん自援護ならず。絶賛カープ十八番の残塁祭り開催中 #カープ #carp",
+          "user": "どう最近？＠NO CARP NO LIFE",
+          "time": "2026-06-21T05:45:51.000Z"
+        }
+      ]
+    },
+    {
+      "target": "岡本",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "先制点阻止",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/i/web/status/2068571004696420433"
+      ],
+      "sampleTexts": [
+        {
+          "text": "う〜ん……。 こんなんじゃ相手に先制許してしまう流れやよなぁ……。 岡本投手踏ん張ってくれぇ〜 #carp #カープ",
+          "user": "Impact Factor",
+          "time": "2026-06-21T05:45:34.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "カープ「サンフレッチェに浮気……？日本代表……？私だけを見てくれないんだ……？」",
+      "user": "行城白雪",
+      "time": "2026-06-21T05:50:59.000Z",
+      "url": "https://x.com/i/web/status/2068572369229316510",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#テンカラ サッカーも決まりですね。 これからは広島カープの試合をみます。 こっちは応援頑張らなければ",
+      "user": "びんちゃんスマイル",
+      "time": "2026-06-21T05:50:43.000Z",
+      "url": "https://x.com/i/web/status/2068572303336837333",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "辰見くんは病院行ってるのか。どうかどうか軽傷でありますように #カープ #carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-06-21T05:50:42.000Z",
+      "url": "https://x.com/i/web/status/2068572298412691510",
+      "targetType": "選手",
+      "target": "辰見",
+      "topic_broad": "離脱・復帰",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープファンとして久々の応援 ライトなファンになってしまったが楽しい 菊池の応援歌とか覚えてて嬉しい",
+      "user": "∠にゃも(も) 6/25市原",
+      "time": "2026-06-21T05:50:32.000Z",
+      "url": "https://x.com/i/web/status/2068572255958028657",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "なお除籍した「やまゆき」は『ライジング・カープ』のコールサインらしく相当なカープ党だったそうで、退官者がいるとカープのテーマ曲で送るのが伝統だったとか何とか。 それをよりにもよって阪神基地への寄港中にも敢行したため、基地から怒られたなんてネタ話もありますな。",
+      "user": "imgurの人／とほほ電池@充電中",
+      "time": "2026-06-21T05:50:06.000Z",
+      "url": "https://x.com/i/web/status/2068572144746066205",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "TL上のドラゴンズファンやカープファン自重してくれwwwww",
+      "user": "晴.lzh",
+      "time": "2026-06-21T05:49:57.000Z",
+      "url": "https://x.com/i/web/status/2068572107408380094",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "6/21ファームＬソフトバンク戦 3-2 ５回裏 會澤 右中間へマルチ 元気です!! 大瀬良 6回87球2安打(1HR)1失点ナイピ １軍で投げる準備はできてます！ ７回表からアドゥワ いきなりソロ被弾 #カープ",
+      "user": "きな子パパ＠鯉党",
+      "time": "2026-06-21T05:49:47.000Z",
+      "url": "https://x.com/i/web/status/2068572065301745953",
+      "targetType": "選手",
+      "target": "會澤",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "確かに広島カープがんばってますね。岡本投手ナイスピッチングです",
+      "user": "Kenta.",
+      "time": "2026-06-21T05:49:43.000Z",
+      "url": "https://x.com/i/web/status/2068572048541303295",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#carp #カープ 4表ワンアウト一三塁のチャンスを無策でつぶす 高津監督「こういうところがカープがなかなか点がとれないところなんでしょうね」",
+      "user": "あゆたろう",
+      "time": "2026-06-21T05:49:32.000Z",
+      "url": "https://x.com/i/web/status/2068572005050532053",
+      "targetType": "首脳陣",
+      "target": "高津",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープより点取るやん、SAMURAI BLUE イケイケドンドンッ",
+      "user": "りしゅ;reshue@Osaka",
+      "time": "2026-06-21T05:49:09.000Z",
+      "url": "https://x.com/i/web/status/2068571908757684506",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "同じカープの施設応援団の人には、黒で統一したので「ゴキブリみたい」と言われたので虎ファン以外に身内からもゴキブリと言われたので筋金入りかと ちなみに少年野球やってた頃は体が小さかったからバントと盗塁ばかりやらされてたよ（ゴキブリ野球）",
+      "user": "あるす",
+      "time": "2026-06-21T05:48:59.000Z",
+      "url": "https://x.com/i/web/status/2068571866676232447",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープがクソボール振ってくれてるから助かってるな笑 ノーコン高橋にとっては乗っていけそう！",
+      "user": "Do~su",
+      "time": "2026-06-21T05:48:51.000Z",
+      "url": "https://x.com/i/web/status/2068571832622678019",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "確かに消化試合以外はデーゲームや月曜でもスポンサーが付いていますし、カープ全試合中継がRCCラジオの売りですからね…",
+      "user": "105Series F11",
+      "time": "2026-06-21T05:48:46.000Z",
+      "url": "https://x.com/i/web/status/2068571808866214040",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "岡本くん、これがカープ打線よ 挫けず頑張れ",
+      "user": "全力応援、今年こそ日本一へ",
+      "time": "2026-06-21T05:48:32.000Z",
+      "url": "https://x.com/i/web/status/2068571749755785449",
+      "targetType": "選手",
+      "target": "岡本",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープさんより森保ジャパンの方が点取れる気配ありまくり",
+      "user": "鴎鯉信者",
+      "time": "2026-06-21T05:48:17.000Z",
+      "url": "https://x.com/i/web/status/2068571689026515272",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープもイケイケドンドンしろ #カープ",
+      "user": "新井貴浩信者",
+      "time": "2026-06-21T05:48:04.000Z",
+      "url": "https://x.com/i/web/status/2068571632940286170",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープくんより点入るからサッカー楽しい",
+      "user": "黒宮魚",
+      "time": "2026-06-21T05:48:01.000Z",
+      "url": "https://x.com/i/web/status/2068571622626525383",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "勝田、最低限の仕事も出来ないとは… #カープ",
+      "user": "スコーン",
+      "time": "2026-06-21T05:47:40.000Z",
+      "url": "https://x.com/i/web/status/2068571535036780776",
+      "targetType": "選手",
+      "target": "勝田",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "RCCの土日の関東でのカープのビジターは、ナイターだとNRNの枠組みで文化放送からですが、デーゲームだとJRN野球中継崩壊以降 巨人・DeNA・ロッテ＝RFラジオ日本 ヤクルト＝ニッポン放送 西武＝文化放送 ですね。",
+      "user": "105Series F11",
+      "time": "2026-06-21T05:47:35.000Z",
+      "url": "https://x.com/i/web/status/2068571511074775325",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ホーム遠すぎる #carp #カープ 点取らな勝てないぞ 点取れ",
+      "user": "これでいいのだ！",
+      "time": "2026-06-21T05:47:34.000Z",
+      "url": "https://x.com/i/web/status/2068571510365917566",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "今日のカープ、サッカー日本代表より点取れない説",
+      "user": "2。ー広島的限界得点についてー",
+      "time": "2026-06-21T05:47:28.000Z",
+      "url": "https://x.com/i/web/status/2068571481970483386",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "とりあえずカープは寝ててよさそうよ",
+      "user": "アカリレッド",
+      "time": "2026-06-21T05:47:25.000Z",
+      "url": "https://x.com/i/web/status/2068571470356463982",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "【2026年6月21日 スワローズ × カープ 】 カープ #名原典彦 選手のスライディングキャッチでピンチ脱出！ #カープ #フジテレビ",
+      "user": "【公式】フジテレビ野球",
+      "time": "2026-06-21T05:47:21.000Z",
+      "url": "https://x.com/i/web/status/2068571455932289236",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "守備",
+      "sentiment": "中立"
+    },
+    {
+      "text": "サッカーって（カープの）野球より点が入って面白いですね！",
+      "user": "蒼焔@ほぼ独り言",
+      "time": "2026-06-21T05:47:20.000Z",
+      "url": "https://x.com/i/web/status/2068571448449589545",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "やっぱりいつの時代もカープのブルペン陣はとってもめろいですよねえ",
+      "user": "きな ໒꒱⋆*",
+      "time": "2026-06-21T05:47:16.000Z",
+      "url": "https://x.com/i/web/status/2068571435019420138",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "概ねそんな感じです 私がカープファンと知ってからネイティブの広島弁でカープの話を色々して下さるのでめっちゃうれしいです",
+      "user": "しまこ(きゅうりー夫人)",
+      "time": "2026-06-21T05:47:12.000Z",
+      "url": "https://x.com/i/web/status/2068571414781890936",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープが円陣してるのもう長いこと見てない気がする なんせここ数年、選手会長が１軍におらんのやからしゃーない",
+      "user": "アカリレッド",
+      "time": "2026-06-21T05:46:57.000Z",
+      "url": "https://x.com/i/web/status/2068571352798486617",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "外からカープ応援してこよかな",
+      "user": "こたつ",
+      "time": "2026-06-21T05:46:56.000Z",
+      "url": "https://x.com/i/web/status/2068571350940434452",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "開幕からちょくちょく見ているが、勝田を良いと思ったことは一度もない。やっぱチビはダメだ #carp #カープ",
+      "user": "クレメンティア",
+      "time": "2026-06-21T05:46:56.000Z",
+      "url": "https://x.com/i/web/status/2068571347308175445",
+      "targetType": "選手",
+      "target": "勝田",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "津田恒美のサイン色紙。カープの14番ユニフォーム姿が良い。 プロ野球選手 直筆サイン色紙 14番",
+      "user": "野球メモ",
+      "time": "2026-06-21T05:46:54.000Z",
+      "url": "https://x.com/i/web/status/2068571342329290771",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "…で、何でカープは点取れないの？ #carp",
+      "user": "茜",
+      "time": "2026-06-21T05:46:53.000Z",
+      "url": "https://x.com/i/web/status/2068571337942261918",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ4点以上取れよ？",
+      "user": "広",
+      "time": "2026-06-21T05:46:53.000Z",
+      "url": "https://x.com/i/web/status/2068571336327458992",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "小園大盛選手一、三塁でなんかちょっとサッカー気になって来たら本田解説がファールでしょって言ってて 大盛選手の単独スチールからまたサッカー気になったら 4点目が入ってた カープは岡本投手が粘って無得点だった うむっ",
+      "user": "ソンブレロババ",
+      "time": "2026-06-21T05:46:52.000Z",
+      "url": "https://x.com/i/web/status/2068571331902505226",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "走塁",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ首脳陣頑張って 正直、このイニングはキツイ 得点出来るか分からなくても 確率を上げる作戦を 選手を信じてるだけなら スタメン発表・試合開始で 采配・作戦は要らないよ 相手は徐々に調子を上げていく高橋 早めに点を取らないと 試合後コメント『あと１本でしたね』は聞きたくないよ",
+      "user": "じゃっぴー",
+      "time": "2026-06-21T05:46:50.000Z",
+      "url": "https://x.com/i/web/status/2068571323077681397",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "頑張れカープ！ こういう商品あったんだねー",
+      "user": "ichikawa5963",
+      "time": "2026-06-21T05:46:47.000Z",
+      "url": "https://x.com/i/web/status/2068571310331199545",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "新井はスクイズとかさせんよな 監督として肝が座ってない 監督向いてないよ #カープ",
+      "user": "ゆうたまん",
+      "time": "2026-06-21T05:46:43.000Z",
+      "url": "https://x.com/i/web/status/2068571295806329108",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "昨日8点取るとすぐ息切れするんですねカープ打線",
+      "user": "ヨッティー",
+      "time": "2026-06-21T05:46:42.000Z",
+      "url": "https://x.com/i/web/status/2068571289217122735",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ダゾーン見れるけどカープ戦見てる。 あと一本が出ないね。",
+      "user": "ゴール・D・飲茶",
+      "time": "2026-06-21T05:46:39.000Z",
+      "url": "https://x.com/i/web/status/2068571277833769177",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープおもんなさすぎて神宮でサッカー見てるわ",
+      "user": "福岡のカープ男子",
+      "time": "2026-06-21T05:46:36.000Z",
+      "url": "https://x.com/i/web/status/2068571263510204711",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "かが艦内で撮影された写真でも示されてるので「そういってるだけ」では済みませんな。 この手のコールサインは乗員の趣味がモロに出るとこで、除籍した護衛艦「やまゆき」のコールサインが『ライジング・カープ』だったりと、まあ趣味が出てくるのです。",
+      "user": "imgurの人／とほほ電池@充電中",
+      "time": "2026-06-21T05:46:34.000Z",
+      "url": "https://x.com/i/web/status/2068571258514796612",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "新井マジなんもしねえな、スクイズとかなんでもやれよ #カープ",
+      "user": "たまたま",
+      "time": "2026-06-21T05:46:34.000Z",
+      "url": "https://x.com/i/web/status/2068571257474527530",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープよりサッカーのほうが点とっとるでな",
+      "user": "Aki♡Opus.0",
+      "time": "2026-06-21T05:46:21.000Z",
+      "url": "https://x.com/i/web/status/2068571202826973265",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "日本4点目 カープは得点ならず〜残念 #FIFAワールドカップ #カープ",
+      "user": "あんこ",
+      "time": "2026-06-21T05:46:16.000Z",
+      "url": "https://x.com/i/web/status/2068571182807572530",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "あー残念 勝田くん、岡本くん連続三振 チャンスじゃったのにねー 取れる時には取っとかんと #カープ",
+      "user": "こま",
+      "time": "2026-06-21T05:46:16.000Z",
+      "url": "https://x.com/i/web/status/2068571182610493465",
+      "targetType": "選手",
+      "target": "勝田",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "序盤、毎回のように得点圏にランナー送って点取れない。これは今年のカープの負けパターン。",
+      "user": "ひできち",
+      "time": "2026-06-21T05:46:15.000Z",
+      "url": "https://x.com/i/web/status/2068571175551369314",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "#carp #カープ #FIFAWorldCup",
+      "user": "ヒロ",
+      "time": "2026-06-21T05:46:10.000Z",
+      "url": "https://x.com/i/web/status/2068571156907794842",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープもイケイケドンドンになってくれんやろか #イケイケドンドン",
+      "user": "ZAKI@広島カープ応援おじさん(SFC会員)",
+      "time": "2026-06-21T05:46:08.000Z",
+      "url": "https://x.com/i/web/status/2068571147478933675",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "オケ、ノルマクリアヨーロッパ上位クラスの力がある事の証明は終わり後はトーナメント次第どこ来ても勝つしかないんだから。さてさてカープはどうなってるんかしら",
+      "user": "まめとはな",
+      "time": "2026-06-21T05:46:04.000Z",
+      "url": "https://x.com/i/web/status/2068571129913176387",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "みんなサッカーとカープ比べてて",
+      "user": "maki",
+      "time": "2026-06-21T05:46:00.000Z",
+      "url": "https://x.com/i/web/status/2068571112263545285",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "岡本くん自援護ならず。絶賛カープ十八番の残塁祭り開催中 #カープ #carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-06-21T05:45:51.000Z",
+      "url": "https://x.com/i/web/status/2068571075559166007",
+      "targetType": "選手",
+      "target": "岡本",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "昨日、この草野球打線が奇跡の大量8得点取ったしな。 やっぱり今日はいつもの無得点打線に戻ってやがるw #カープ",
+      "user": "ケンジ",
+      "time": "2026-06-21T05:45:50.000Z",
+      "url": "https://x.com/i/web/status/2068571070484066314",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープって、バントさせるの好きなクセになんでスクイズのサインは出さないのかね",
+      "user": "とこ@carp&ラン",
+      "time": "2026-06-21T05:45:46.000Z",
+      "url": "https://x.com/i/web/status/2068571057133699379",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "う〜ん……。 こんなんじゃ相手に先制許してしまう流れやよなぁ……。 岡本投手踏ん張ってくれぇ〜 #carp #カープ",
+      "user": "Impact Factor",
+      "time": "2026-06-21T05:45:34.000Z",
+      "url": "https://x.com/i/web/status/2068571004696420433",
+      "targetType": "選手",
+      "target": "岡本",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "くあー！ チャンスはほんとに多いけどあと少し 絶対勝つぞカープ",
+      "user": "りろのすかしさん",
+      "time": "2026-06-21T05:45:33.000Z",
+      "url": "https://x.com/i/web/status/2068571001378775334",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープより得点力あるじゃん泣",
+      "user": "L'y-c@",
+      "time": "2026-06-21T05:45:32.000Z",
+      "url": "https://x.com/i/web/status/2068570996962210094",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "チュニジア戦の日本カープより点とるやん",
+      "user": "19ネキ",
+      "time": "2026-06-21T05:45:13.000Z",
+      "url": "https://x.com/i/web/status/2068570918432182369",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "サッカー日本代表は点取って、その瞬間にカープは残塁。 残塁祭り。高津も言ってるわ。こういうところって #carp",
+      "user": "おはるんるん@",
+      "time": "2026-06-21T05:45:12.000Z",
+      "url": "https://x.com/i/web/status/2068570913860469204",
+      "targetType": "首脳陣",
+      "target": "高津",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "4回表終了。0対0。 勝田2三振。ドンマイ。モンティとファビアンも三振してる。気にするな。 カープも長岡の打球がファールになったり、サンタナの打球を名原がファインプレーしたりしてツイてる。6回まではゼロゼロで7回あたりで勝負に出よう。",
+      "user": "ひが",
+      "time": "2026-06-21T05:45:10.000Z",
+      "url": "https://x.com/i/web/status/2068570906138706351",
+      "targetType": "選手",
+      "target": "勝田",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープちゃんはあいかわらず長打皆無で残塁祭りなんかい…？",
+      "user": "つちや",
+      "time": "2026-06-21T05:45:08.000Z",
+      "url": "https://x.com/i/web/status/2068570896785383525",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ここで点入らないのがカープのつまんないとこ",
+      "user": "坂倉の打球エロすぎbot(元梅野留太浪)",
+      "time": "2026-06-21T05:44:52.000Z",
+      "url": "https://x.com/i/web/status/2068570828963479761",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "日本4-0チュニジア スワローズ0-0カープ",
+      "user": "伊藤海彦",
+      "time": "2026-06-21T05:44:48.000Z",
+      "url": "https://x.com/i/web/status/2068570813008384207",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ0点目！！！",
+      "user": "ザガースキー 6/20,21神宮",
+      "time": "2026-06-21T05:44:48.000Z",
+      "url": "https://x.com/i/web/status/2068570812668678344",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "円陣組んで「顔の高さの球を振るのはやめよう」と約束させろよ。 #carp #カープ #広島東洋カープ",
+      "user": "ぷにすけ(2026シーズン現地1勝8敗)",
+      "time": "2026-06-21T05:44:41.000Z",
+      "url": "https://x.com/i/web/status/2068570784147349555",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "今日もカープ粘ってたけど惜しかったわ 明日切り替えてがんばろ",
+      "user": "赤ヘルかりん",
+      "time": "2026-06-21T05:44:37.000Z",
+      "url": "https://x.com/i/web/status/2068570767684411571",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "勝田の打席で代打坂倉とかどうでしょうか？ #カープ",
+      "user": "黒狼",
+      "time": "2026-06-21T05:44:33.000Z",
+      "url": "https://x.com/i/web/status/2068570749506605077",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "代打",
+      "sentiment": "中立"
+    },
+    {
+      "text": "サッカーは、もう日本4点いれましたよ 野球なので早く点を入れましょうカープさん",
+      "user": "ハッチ",
+      "time": "2026-06-21T05:44:33.000Z",
+      "url": "https://x.com/i/web/status/2068570747975667729",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "アドゥワ 初球をレフトスタンドまで 持っていかれる… なんか 今年の福山でも見たな #カープ",
+      "user": "ファジR(アール)",
+      "time": "2026-06-21T05:44:32.000Z",
+      "url": "https://x.com/i/web/status/2068570744083415273",
+      "targetType": "選手",
+      "target": "アドゥワ",
+      "topic_broad": "ホームラン",
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープはチャンスで点入らず…日本代表が羨ましい",
+      "user": "Saya",
+      "time": "2026-06-21T05:44:30.000Z",
+      "url": "https://x.com/i/web/status/2068570735732478305",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    }
+  ]
+}
