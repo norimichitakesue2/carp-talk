@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-20T20:14:07.533Z",
+  "fetchedAt": "2026-06-21T20:22:00.040Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -55,6 +55,21 @@
       "earnedRuns": 3
     },
     {
+      "name": "高橋昂也",
+      "era": "4.50",
+      "games": 19,
+      "wins": 0,
+      "losses": 1,
+      "saves": 3,
+      "ip": "24",
+      "hitsAllowed": 22,
+      "hrAllowed": 0,
+      "walks": 17,
+      "strikeouts": 17,
+      "runs": 13,
+      "earnedRuns": 12
+    },
+    {
       "name": "常廣羽也斗",
       "era": "2.25",
       "games": 12,
@@ -68,21 +83,6 @@
       "strikeouts": 12,
       "runs": 3,
       "earnedRuns": 3
-    },
-    {
-      "name": "高橋昂也",
-      "era": "4.70",
-      "games": 18,
-      "wins": 0,
-      "losses": 1,
-      "saves": 2,
-      "ip": "23",
-      "hitsAllowed": 21,
-      "hrAllowed": 0,
-      "walks": 17,
-      "strikeouts": 15,
-      "runs": 13,
-      "earnedRuns": 12
     }
   ]
 }
