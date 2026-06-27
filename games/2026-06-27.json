@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "7回裏",
+  "current_inning": "8回表",
   "result_label": "",
   "away_pitcher": "村上",
   "home_pitcher": "床田",
@@ -202,7 +202,7 @@
       0,
       0
     ],
-    "away_hits": 8,
+    "away_hits": 9,
     "away_errors": 1
   },
   "pitchers": [],
@@ -637,19 +637,19 @@
     {
       "name": "ハーン",
       "result": "",
-      "outs": 0,
-      "pitches": 0,
-      "hitsAllowed": 0,
+      "outs": 3,
+      "pitches": 13,
+      "hitsAllowed": 1,
       "hrAllowed": 0,
       "walks": 0,
-      "strikeouts": 0,
+      "strikeouts": 1,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-27T07:39:53.493Z",
-    "generatedAt": "2026-06-27T07:39:53.505Z",
+    "sourceFetchedAt": "2026-06-27T07:52:01.663Z",
+    "generatedAt": "2026-06-27T07:52:01.672Z",
     "sourceUrl": "https://npb.jp/scores/2026/0627/c-t-09/",
     "previewRosterFingerprint": "ターノック,ハーン,ファビアン,モンテロ,中村奨,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,床田,持丸,森浦,矢野,石原,菊池,辻,遠藤,野間,鈴木,髙"
   }
