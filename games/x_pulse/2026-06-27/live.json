@@ -1,0 +1,1205 @@
+{
+  "generatedAt": "2026-06-27T06:12:48.181Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 78,
+  "classifiedCount": 78,
+  "clusterCount": 19,
+  "bubbleCount": 19,
+  "summary": "石原の守備ミスと送球遅延が話題の中心だが、誹謗中傷への反発も見られ、ファンの評価が分かれている。",
+  "bubbles": [
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "送球遅延",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 5,
+      "tweetUrls": [
+        "https://x.com/10hirokichi/status/2070749670998233183",
+        "https://x.com/punipuni1969/status/2070749347000832356",
+        "https://x.com/Ryuuchan62/status/2070749297659011531",
+        "https://x.com/iketomo1505/status/2070749239890854211",
+        "https://x.com/Rf080UGH6i67237/status/2070749069912518736"
+      ],
+      "sampleTexts": [
+        {
+          "text": "どっちのファンでもないけど、\nカープの石原さん。。。。1失点目といい今のと言い酷いプレーだ\n #広島カープ",
+          "user": "ひろきち",
+          "time": "2026-06-27T06:02:48.000Z"
+        },
+        {
+          "text": "また石原の送球。なんであんなに貯めるの⁉︎\n#carp #カープ #広島東洋カープ",
+          "user": "ぷにすけ（2026シーズン現地1勝8敗）",
+          "time": "2026-06-27T06:01:31.000Z"
+        },
+        {
+          "text": "#カープ\n石原捕手の投げるのが遅い",
+          "user": "ryuuchan6.25",
+          "time": "2026-06-27T06:01:19.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "守備ミス",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 4,
+      "tweetUrls": [
+        "https://x.com/yusuke19840415/status/2070749395126272356",
+        "https://x.com/ochiziru/status/2070749300070797555",
+        "https://x.com/takupiro22nyan/status/2070748858079134037",
+        "https://x.com/finalfunboy/status/2070748653938217251"
+      ],
+      "sampleTexts": [
+        {
+          "text": "石原…\n #カープ",
+          "user": "ユースケ",
+          "time": "2026-06-27T06:01:43.000Z"
+        },
+        {
+          "text": "石原ひどいな\n#carp #カープ #SHAKARIK1",
+          "user": "まさきち",
+          "time": "2026-06-27T06:01:20.000Z"
+        },
+        {
+          "text": "石原ひとりでやらかしてるし\n\n#カープ",
+          "user": "にゃんた★（好物は猫と編み物）",
+          "time": "2026-06-27T05:59:35.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "采配ミス",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/papiko_left/status/2070749840943014216",
+        "https://x.com/vanpetta/status/2070749412096405519"
+      ],
+      "sampleTexts": [
+        {
+          "text": "投手のリズムを捕手が崩してどうするだよ\n#カープ",
+          "user": "パピコの左",
+          "time": "2026-06-27T06:03:29.000Z"
+        },
+        {
+          "text": "しかしなぜゲッツー取りに行かなかったかなカープは　#hanshin",
+          "user": "チップinボギー",
+          "time": "2026-06-27T06:01:47.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "石原への誹謗中傷",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/333tenka/status/2070749640639811975",
+        "https://x.com/boukencarp/status/2070749387652026663"
+      ],
+      "sampleTexts": [
+        {
+          "text": "石原への誹謗中傷はカープファンの義務ですよ #carp",
+          "user": "@333tenka",
+          "time": "2026-06-27T06:02:41.000Z"
+        },
+        {
+          "text": "(  ºДº)/ｵｲ\n(  ºДº)/ｵｲ\n(  ºДº)/ｵｲ\nまた石原貴規かよ\nしっかりしてくれよ\nほんと頼むよ\n\n頑張れカープ",
+          "user": "みぎなげりょううち 7/20、22東京ドーム7/26、8/11、13神宮8/23東京ドーム",
+          "time": "2026-06-27T06:01:41.000Z"
+        }
+      ]
+    },
+    {
+      "target": "床田",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "満塁の場面",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/carp_yasuda1206/status/2070749492534800850",
+        "https://x.com/waiwai01204328/status/2070749399966441665"
+      ],
+      "sampleTexts": [
+        {
+          "text": "セーフか、うんセーフやった‍\nなんとか抑えてトコちゃん\n応援します\n#carp #カープ",
+          "user": "よしろう|カープ垢|",
+          "time": "2026-06-27T06:02:06.000Z"
+        },
+        {
+          "text": "ワンアウト満塁床田頑張れ\n #カープ",
+          "user": "まさひろ鯉党",
+          "time": "2026-06-27T06:01:44.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "代打",
+      "topic_label": "石原交代",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/hirosimarailway/status/2070749220349546669",
+        "https://x.com/livefutoshi/status/2070749136144777235"
+      ],
+      "sampleTexts": [
+        {
+          "text": "セーフか…よし、石原チェンジで。\n #カープ",
+          "user": "ひろてつ",
+          "time": "2026-06-27T06:01:01.000Z"
+        },
+        {
+          "text": "石原を代えてください。\n\n今日はダメな日です。\n\n #カープ",
+          "user": "ケンキョ山カンシャの介@6/30新潟対DeNA参戦",
+          "time": "2026-06-27T06:00:41.000Z"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "守備機会",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/KxewKqKi5hUvVE2/status/2070749818864210269"
+      ],
+      "sampleTexts": [
+        {
+          "text": "坂倉のフィルダースチョイスになるんかよw\n#カープ\n#carp",
+          "user": "きりたろう",
+          "time": "2026-06-27T06:03:24.000Z"
+        }
+      ]
+    },
+    {
+      "target": "床田",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "守備の失敗",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/punipuni1969/status/2070749722596593761"
+      ],
+      "sampleTexts": [
+        {
+          "text": "床田がかわいそう。こんなに足を引っ張られて。\n#carp #カープ #広島東洋カープ",
+          "user": "ぷにすけ（2026シーズン現地1勝8敗）",
+          "time": "2026-06-27T06:03:01.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "起用",
+      "topic_label": "石原重用",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/YMIcWgJJ6wV5n1T/status/2070749594124980693"
+      ],
+      "sampleTexts": [
+        {
+          "text": "床田投手、７番？で、石原捕手、８番？\n新井さん、ホントに石原さん、好きですね。\nっていうか阪神のビジターユニフォーム、違和感ありまくりなんですけど\n\n#カープ",
+          "user": "アリス",
+          "time": "2026-06-27T06:02:30.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "守備不安",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/saorinkyabetu/status/2070749583936995673"
+      ],
+      "sampleTexts": [
+        {
+          "text": "もう早速点取られてるし\nカープはほんと元気なくて荒井さん心配です",
+          "user": "SAORIN",
+          "time": "2026-06-27T06:02:28.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "送球が遅い",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/carpnana280219/status/2070749578564174313"
+      ],
+      "sampleTexts": [
+        {
+          "text": "とことん石原がやらかす\n今のも3塁に投げるのが遅すぎた\n#カープ",
+          "user": "つむぎ-TSUMUGI-",
+          "time": "2026-06-27T06:02:26.000Z"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "走塁",
+      "topic_label": "走塁判断",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/aFsYWIfR7ZGuWEM/status/2070749533722808481"
+      ],
+      "sampleTexts": [
+        {
+          "text": "タイミング的に坂倉1塁踏んでからでもホーム間に合ったよね。\n#carp #カープ",
+          "user": "アジャスト(●▲●)マッスルペイン",
+          "time": "2026-06-27T06:02:16.000Z"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "知能批判",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/MakeMahjong/status/2070749491423260726"
+      ],
+      "sampleTexts": [
+        {
+          "text": "坂倉も石原もiq低くてカープは大変やね",
+          "user": "MakeMahjong",
+          "time": "2026-06-27T06:02:06.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小島",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "守備位置悪い",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/factor_impact/status/2070749379930292665"
+      ],
+      "sampleTexts": [
+        {
+          "text": "こいし……ホンマに何しよん…。\n追いすぎやろ…。\n#carp\n#カープ",
+          "user": "Impact Factor",
+          "time": "2026-06-27T06:01:39.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "捕手交代",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/yoichinagumo/status/2070749311990996997"
+      ],
+      "sampleTexts": [
+        {
+          "text": "広島カープさん、さすがに捕手交代でしょw\n阪神の藤川とかいう人といい足の引っ張り合いしてるよ",
+          "user": "やま",
+          "time": "2026-06-27T06:01:23.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "代打",
+      "topic_label": "懲罰交代",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/ren_fight/status/2070749294181924911"
+      ],
+      "sampleTexts": [
+        {
+          "text": "石原懲罰交代しろや！\n#カープ",
+          "user": "とうもろこし(あさプロ)◜ᴗ◝",
+          "time": "2026-06-27T06:01:19.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "石原活躍",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/nac_konjac/status/2070749275626328484"
+      ],
+      "sampleTexts": [
+        {
+          "text": "石原無双だね\n#カープ",
+          "user": "さんあつ",
+          "time": "2026-06-27T06:01:14.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "失策",
+      "topic_label": "判定ミス",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/SHIMARHI/status/2070749234421440904"
+      ],
+      "sampleTexts": [
+        {
+          "text": "うわ。セーフか。また石原かい #カープ",
+          "user": "シマリス",
+          "time": "2026-06-27T06:01:04.000Z"
+        }
+      ]
+    },
+    {
+      "target": "石原",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "球持ちが良い",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/kai_89_89/status/2070748676339953891"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ石原　球持ち◎\n\n#カープ　#石原",
+          "user": "まい",
+          "time": "2026-06-27T05:58:51.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "これは失礼\nカープ　石原で検索して適当に書いてしまった",
+      "user": "佐藤シャイニング",
+      "time": "2026-06-27T06:03:33.000Z",
+      "url": "https://x.com/tc2qLlzBbY88328/status/2070749856310919527",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "投手のリズムを捕手が崩してどうするだよ\n#カープ",
+      "user": "パピコの左",
+      "time": "2026-06-27T06:03:29.000Z",
+      "url": "https://x.com/papiko_left/status/2070749840943014216",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "これリクエスト成功やけど、それだけで終わらしたらアカンよ。\n余りにも審判のレベルが落ち過ぎてる。\n両チームに失礼や\n選手はプロやけど、審判がアマチュアでは日本のプロ野球のダメになるわ！\n#阪神タイガース #広島カープ",
+      "user": "Nori",
+      "time": "2026-06-27T06:03:28.000Z",
+      "url": "https://x.com/Nori61314110/status/2070749838795542846",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "坂倉のフィルダースチョイスになるんかよw\n#カープ\n#carp",
+      "user": "きりたろう",
+      "time": "2026-06-27T06:03:24.000Z",
+      "url": "https://x.com/KxewKqKi5hUvVE2/status/2070749818864210269",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "判定覆ったのなんで？藤川に気でも使ってんのか\n#阪神タイガース\n#広島カープ",
+      "user": "とも©( ◜ᴗ◝ )",
+      "time": "2026-06-27T06:03:22.000Z",
+      "url": "https://x.com/__2525__2828__/status/2070749812857999773",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "かつて、\nJリーグが出来た時\n「ダラダラボールまわしして、全然点が入らんじゃん」\nと、罵ってた、タチの悪いカープファンであった自分を戒めたい。\nそして、今、あえて言えば\n「カープ、サッカーより点が入らんじゃん」\nと言うのを、かつての謝罪を込めて、あえて言う！",
+      "user": "鯉人( コイジン )28号ʚïɞ",
+      "time": "2026-06-27T06:03:16.000Z",
+      "url": "https://x.com/koijin28/status/2070749787587219619",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープの捕手の守備力はあかんな",
+      "user": "せかいし",
+      "time": "2026-06-27T06:03:08.000Z",
+      "url": "https://x.com/XyUJuFnGsh8972/status/2070749751453368576",
+      "targetType": "選手",
+      "target": null,
+      "topic_broad": "守備",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "床田がかわいそう。こんなに足を引っ張られて。\n#carp #カープ #広島東洋カープ",
+      "user": "ぷにすけ（2026シーズン現地1勝8敗）",
+      "time": "2026-06-27T06:03:01.000Z",
+      "url": "https://x.com/punipuni1969/status/2070749722596593761",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今のリクエストはアカンわな…カープファンが可哀想…",
+      "user": "アフリカンプリンス",
+      "time": "2026-06-27T06:02:51.000Z",
+      "url": "https://x.com/gogojapan1645/status/2070749682062827921",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープさん何してんのさっきから",
+      "user": "球豚",
+      "time": "2026-06-27T06:02:51.000Z",
+      "url": "https://x.com/Kyu_ton89/status/2070749681052008665",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "のんちゃんに注いでもらった！\n#カープ #carp #stu48 #新谷野々花",
+      "user": "かずや",
+      "time": "2026-06-27T06:02:49.000Z",
+      "url": "https://x.com/carpfighter5/status/2070749674764743059",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "どっちのファンでもないけど、\nカープの石原さん。。。。1失点目といい今のと言い酷いプレーだ\n #広島カープ",
+      "user": "ひろきち",
+      "time": "2026-06-27T06:02:48.000Z",
+      "url": "https://x.com/10hirokichi/status/2070749670998233183",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "色んなことが起こりますねぇカープちゃん、、。",
+      "user": "mayu",
+      "time": "2026-06-27T06:02:48.000Z",
+      "url": "https://x.com/mayuoka0304/status/2070749668787830929",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "なんであの映像に覆る根拠があるのか？\nタマジにまた怒られるからかぁ\n#カープ",
+      "user": "ヒサゴロウ",
+      "time": "2026-06-27T06:02:47.000Z",
+      "url": "https://x.com/hss13ya/status/2070749664404738274",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "石原への誹謗中傷はカープファンの義務ですよ #carp",
+      "user": "@333tenka",
+      "time": "2026-06-27T06:02:41.000Z",
+      "url": "https://x.com/333tenka/status/2070749640639811975",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "ひとりひとり アウトにしていけばいい\n#カープ",
+      "user": "つも",
+      "time": "2026-06-27T06:02:35.000Z",
+      "url": "https://x.com/S46MIoBJAC53056/status/2070749613502697615",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "床田投手、７番？で、石原捕手、８番？\n新井さん、ホントに石原さん、好きですね。\nっていうか阪神のビジターユニフォーム、違和感ありまくりなんですけど\n\n#カープ",
+      "user": "アリス",
+      "time": "2026-06-27T06:02:30.000Z",
+      "url": "https://x.com/YMIcWgJJ6wV5n1T/status/2070749594124980693",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "起用",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "もう早速点取られてるし\nカープはほんと元気なくて荒井さん心配です",
+      "user": "SAORIN",
+      "time": "2026-06-27T06:02:28.000Z",
+      "url": "https://x.com/saorinkyabetu/status/2070749583936995673",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "また１点死守しに行ってミスになったなー\nやってる意味無い。\n\n#カープ",
+      "user": "でゅらん",
+      "time": "2026-06-27T06:02:27.000Z",
+      "url": "https://x.com/mikoi_351_/status/2070749582653559267",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "とことん石原がやらかす\n今のも3塁に投げるのが遅すぎた\n#カープ",
+      "user": "つむぎ-TSUMUGI-",
+      "time": "2026-06-27T06:02:26.000Z",
+      "url": "https://x.com/carpnana280219/status/2070749578564174313",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "後で誤審と言われるぐらいならセーフでいいよと思ったら、セーフになった。\n\n#広島カープ",
+      "user": "けでいち",
+      "time": "2026-06-27T06:02:25.000Z",
+      "url": "https://x.com/kedeichi/status/2070749571580657926",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "野球がへたくそですね。申し訳ないが #カープ",
+      "user": "シマリス",
+      "time": "2026-06-27T06:02:20.000Z",
+      "url": "https://x.com/SHIMARHI/status/2070749550839795771",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "プロ野球6/27㊏\n広島カープ vs 阪神タイガース\n\n無料体験で視聴可能\n\n\nhttps://\namzn.to/4vB6msk\n5日間無料\n\n先発投手\n広島：床田寛樹\n阪神：村上頌樹\n\n#carp #tigers\nPR15:02",
+      "user": "ℝ𝟞",
+      "time": "2026-06-27T06:02:16.000Z",
+      "url": "https://x.com/R6ITl9jHz023900/status/2070749536923050059",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "またまたまたピンチ\n送球はアウトとれるようにしっかりしてほしい\n#carp #カープ",
+      "user": "蟻@カープ好き",
+      "time": "2026-06-27T06:02:16.000Z",
+      "url": "https://x.com/RbhoDCe5rS32723/status/2070749536310743345",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "タイミング的に坂倉1塁踏んでからでもホーム間に合ったよね。\n#carp #カープ",
+      "user": "アジャスト(●▲●)マッスルペイン",
+      "time": "2026-06-27T06:02:16.000Z",
+      "url": "https://x.com/aFsYWIfR7ZGuWEM/status/2070749533722808481",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "走塁",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "おいっふざけてんのか！\n#carp #カープ\nホームゲームだぞ",
+      "user": "これでいいのだ！",
+      "time": "2026-06-27T06:02:10.000Z",
+      "url": "https://x.com/di_atom/status/2070749509827908030",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "出かけられないしカープ阪神見始めたらカープありえない守備しててそれうちの時やってくれんか？",
+      "user": "よんよん",
+      "time": "2026-06-27T06:02:07.000Z",
+      "url": "https://x.com/__d_on_/status/2070749498301964422",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "#カープ\nカープだけ野手1人少ないの卑怯だろ",
+      "user": "マルコシアス",
+      "time": "2026-06-27T06:02:06.000Z",
+      "url": "https://x.com/Marcosiashootin/status/2070749494942347627",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "セーフか、うんセーフやった‍\nなんとか抑えてトコちゃん\n応援します\n#carp #カープ",
+      "user": "よしろう|カープ垢|",
+      "time": "2026-06-27T06:02:06.000Z",
+      "url": "https://x.com/carp_yasuda1206/status/2070749492534800850",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "坂倉も石原もiq低くてカープは大変やね",
+      "user": "MakeMahjong",
+      "time": "2026-06-27T06:02:06.000Z",
+      "url": "https://x.com/MakeMahjong/status/2070749491423260726",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "阪神タイガース/広島カープ\nクリーンアップ比較！というより輝1人と比較出来る……\n佐藤輝明打率.358/HR15/打点47\n#佐藤輝明 #阪神タイガース",
+      "user": "やきゅうねこ",
+      "time": "2026-06-27T06:01:57.000Z",
+      "url": "https://x.com/tora_mx13/status/2070749455696195720",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "しかしなぜゲッツー取りに行かなかったかなカープは　#hanshin",
+      "user": "チップinボギー",
+      "time": "2026-06-27T06:01:47.000Z",
+      "url": "https://x.com/vanpetta/status/2070749412096405519",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "やっぱし\n微妙な時はカープに不利な判定",
+      "user": "あなご姫",
+      "time": "2026-06-27T06:01:46.000Z",
+      "url": "https://x.com/Hananachan90005/status/2070749409797935482",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "リプレーセンターって何のためにあるん。カープに対して損しかない組織やん",
+      "user": "かなにな",
+      "time": "2026-06-27T06:01:44.000Z",
+      "url": "https://x.com/carp_carp_carpq/status/2070749401287623057",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "ワンアウト満塁床田頑張れ\n #カープ",
+      "user": "まさひろ鯉党",
+      "time": "2026-06-27T06:01:44.000Z",
+      "url": "https://x.com/waiwai01204328/status/2070749399966441665",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "石原…\n #カープ",
+      "user": "ユースケ",
+      "time": "2026-06-27T06:01:43.000Z",
+      "url": "https://x.com/yusuke19840415/status/2070749395126272356",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "(  ºДº)/ｵｲ\n(  ºДº)/ｵｲ\n(  ºДº)/ｵｲ\nまた石原貴規かよ\nしっかりしてくれよ\nほんと頼むよ\n\n頑張れカープ",
+      "user": "みぎなげりょううち 7/20、22東京ドーム7/26、8/11、13神宮8/23東京ドーム",
+      "time": "2026-06-27T06:01:41.000Z",
+      "url": "https://x.com/boukencarp/status/2070749387652026663",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "うんこ\nリプレーセンター\n\n#carp\n#カープ",
+      "user": "taku25",
+      "time": "2026-06-27T06:01:40.000Z",
+      "url": "https://x.com/taku2503924206/status/2070749384997015565",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "こいし……ホンマに何しよん…。\n追いすぎやろ…。\n#carp\n#カープ",
+      "user": "Impact Factor",
+      "time": "2026-06-27T06:01:39.000Z",
+      "url": "https://x.com/factor_impact/status/2070749379930292665",
+      "targetType": "選手",
+      "target": "小島",
+      "topic_broad": "守備",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "審判やばいな。目の前で見てるのに。\n#カープ",
+      "user": "carpfan",
+      "time": "2026-06-27T06:01:36.000Z",
+      "url": "https://x.com/carp87350802/status/2070749365287936399",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "パーティルームからのカープーとりあえず、限定ユニフォーム買ってみたー\n#阪神の応援カッコイイー",
+      "user": "ゆーや",
+      "time": "2026-06-27T06:01:35.000Z",
+      "url": "https://x.com/pokemonkloop/status/2070749363710873965",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "また石原の送球。なんであんなに貯めるの⁉︎\n#carp #カープ #広島東洋カープ",
+      "user": "ぷにすけ（2026シーズン現地1勝8敗）",
+      "time": "2026-06-27T06:01:31.000Z",
+      "url": "https://x.com/punipuni1969/status/2070749347000832356",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "これ公式はどうなるんか知らんけど、石原のエラーやろ\n#カープ\n#carp",
+      "user": "きりたろう",
+      "time": "2026-06-27T06:01:30.000Z",
+      "url": "https://x.com/KxewKqKi5hUvVE2/status/2070749341070053636",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "失策",
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープさん、さすがに捕手交代でしょw\n阪神の藤川とかいう人といい足の引っ張り合いしてるよ",
+      "user": "やま",
+      "time": "2026-06-27T06:01:23.000Z",
+      "url": "https://x.com/yoichinagumo/status/2070749311990996997",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープちゃんあかんくて草",
+      "user": "Miqn@",
+      "time": "2026-06-27T06:01:22.000Z",
+      "url": "https://x.com/Miqn_perc_swad/status/2070749310506107048",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "石原ひどいな\n#carp #カープ #SHAKARIK1",
+      "user": "まさきち",
+      "time": "2026-06-27T06:01:20.000Z",
+      "url": "https://x.com/ochiziru/status/2070749300070797555",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "#カープ\n石原捕手の投げるのが遅い",
+      "user": "ryuuchan6.25",
+      "time": "2026-06-27T06:01:19.000Z",
+      "url": "https://x.com/Ryuuchan62/status/2070749297659011531",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "石原懲罰交代しろや！\n#カープ",
+      "user": "とうもろこし(あさプロ)◜ᴗ◝",
+      "time": "2026-06-27T06:01:19.000Z",
+      "url": "https://x.com/ren_fight/status/2070749294181924911",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "代打",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "だよねぇ。これは仕方ない\n\n#カープ\n#carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-06-27T06:01:16.000Z",
+      "url": "https://x.com/CARP_DAISKI/status/2070749282953818330",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "石原無双だね\n#カープ",
+      "user": "さんあつ",
+      "time": "2026-06-27T06:01:14.000Z",
+      "url": "https://x.com/nac_konjac/status/2070749275626328484",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "広島のリクエストの時は長考しても覆らないくせにさー\n\n #カープ",
+      "user": "超絶翔平",
+      "time": "2026-06-27T06:01:09.000Z",
+      "url": "https://x.com/tyozetsushohei1/status/2070749252532490558",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "セーフかよ・・・。\n石原追いすぎや・・・。\n#カープ",
+      "user": "いけとも",
+      "time": "2026-06-27T06:01:06.000Z",
+      "url": "https://x.com/iketomo1505/status/2070749239890854211",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "うわ。セーフか。また石原かい #カープ",
+      "user": "シマリス",
+      "time": "2026-06-27T06:01:04.000Z",
+      "url": "https://x.com/SHIMARHI/status/2070749234421440904",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "失策",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "あ……はい\n#カープ",
+      "user": "021 Galette",
+      "time": "2026-06-27T06:01:01.000Z",
+      "url": "https://x.com/Galette021/status/2070749220496355573",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "セーフか…よし、石原チェンジで。\n #カープ",
+      "user": "ひろてつ",
+      "time": "2026-06-27T06:01:01.000Z",
+      "url": "https://x.com/hirosimarailway/status/2070749220349546669",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "代打",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "このパターンで覆るのカープでは見ないなぁ",
+      "user": "ふかさん@FE&パワプロ&プロスピ&ドリオ",
+      "time": "2026-06-27T06:00:54.000Z",
+      "url": "https://x.com/Fukasan0/status/2070749193094975840",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "アホ草カープやな",
+      "user": "muromi3",
+      "time": "2026-06-27T06:00:48.000Z",
+      "url": "https://x.com/vaioshinji/status/2070749167690096833",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "山崎隆造『坂倉迷いなくホームでしたがやっぱダブルプレー狙いですよねぇ、打球強かったですしね』\n#カープ\n#radiko",
+      "user": "酔魔",
+      "time": "2026-06-27T06:00:43.000Z",
+      "url": "https://x.com/HxSW8IJNqM87155/status/2070749146135589210",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "走塁",
+      "sentiment": "中立"
+    },
+    {
+      "text": "石原を代えてください。\n\n今日はダメな日です。\n\n #カープ",
+      "user": "ケンキョ山カンシャの介@6/30新潟対DeNA参戦",
+      "time": "2026-06-27T06:00:41.000Z",
+      "url": "https://x.com/livefutoshi/status/2070749136144777235",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "代打",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープに行っても野球うまくならねーから、楽してレギュラーになりたいとかでなければマジ行く意味ないな",
+      "user": "ともや",
+      "time": "2026-06-27T06:00:33.000Z",
+      "url": "https://x.com/tmy0820/status/2070749104855216421",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "石原悪送球が怖くてもトコトコすんな\n #カープ",
+      "user": "黒狼",
+      "time": "2026-06-27T06:00:25.000Z",
+      "url": "https://x.com/Rf080UGH6i67237/status/2070749069912518736",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ阪神、逆ならアウトのままだろうけど、セーフになりそう\n何でもカープ不利になるもんなぁ",
+      "user": "悠々",
+      "time": "2026-06-27T06:00:14.000Z",
+      "url": "https://x.com/youyou51koi_/status/2070749024236544452",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "セーフっぽいかな？\n石原が三塁に投げるのが少し遅かったね\n#カープ",
+      "user": "カープ応援@東京_今季こそ！",
+      "time": "2026-06-27T06:00:07.000Z",
+      "url": "https://x.com/lcOJwY8oI64GGCi/status/2070748993710420398",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "守備",
+      "sentiment": "中立"
+    },
+    {
+      "text": "長いな\n証拠不十分判定通りこい\n#カープ",
+      "user": "021 Galette",
+      "time": "2026-06-27T06:00:04.000Z",
+      "url": "https://x.com/Galette021/status/2070748980414472408",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "長いな・・・。\n#カープ",
+      "user": "いけとも",
+      "time": "2026-06-27T06:00:02.000Z",
+      "url": "https://x.com/iketomo1505/status/2070748973296742568",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "どうでもいいけど文章が途中で切れてて一瞬カープファンぐらいやねに見えてしまった",
+      "user": "酉恭",
+      "time": "2026-06-27T05:59:58.000Z",
+      "url": "https://x.com/Nishikyo1357/status/2070748957094130001",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今年の審判の誤審は酷すぎるな。\n全然見えてへんやん\n#阪神タイガース #広島カープ",
+      "user": "Nori",
+      "time": "2026-06-27T05:59:48.000Z",
+      "url": "https://x.com/Nori61314110/status/2070748913553072164",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ坊や日焼けすごいな",
+      "user": "Y.H.G",
+      "time": "2026-06-27T05:59:43.000Z",
+      "url": "https://x.com/YHGreen2351/status/2070748893189714085",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "石原ひとりでやらかしてるし\n\n#カープ",
+      "user": "にゃんた★（好物は猫と編み物）",
+      "time": "2026-06-27T05:59:35.000Z",
+      "url": "https://x.com/takupiro22nyan/status/2070748858079134037",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "みゅーさん、きょう現地観戦ですか！\nそれは尚のこと気になりますね(笑)\nカープ勝ちますように*゜\n\n過去にスタジアム見学ツアーでパーティールームも入った事があるので、中継でその方面が映る度にTVをガン見してます",
+      "user": "ユリ",
+      "time": "2026-06-27T05:59:31.000Z",
+      "url": "https://x.com/yuri_himawari/status/2070748841960489086",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "この判定は際どいものやな... もうサイコロ降って奇数ならアウト偶数ならセーフみたいな感じで判定決めてそう（）\n#carp #カープ応援",
+      "user": "カープ応援岡本駿推しの柳沢",
+      "time": "2026-06-27T05:59:27.000Z",
+      "url": "https://x.com/LFg_6Truth/status/2070748826747777409",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "あ！今の角度良かったんじゃない？アウトや！ #カープ",
+      "user": "シマリス",
+      "time": "2026-06-27T05:59:21.000Z",
+      "url": "https://x.com/SHIMARHI/status/2070748799254077538",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ってな訳でカープ",
+      "user": "しきみ@うぺ焼",
+      "time": "2026-06-27T05:59:14.000Z",
+      "url": "https://x.com/sikimi_mikan/status/2070748771101900939",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "セーフだなぁ\n#carp #カープ",
+      "user": "スピカ氏",
+      "time": "2026-06-27T05:59:12.000Z",
+      "url": "https://x.com/hetappispica/status/2070748761895342474",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "逆なら絶対覆ることない判定\n#カープ",
+      "user": "パピコの左",
+      "time": "2026-06-27T05:59:10.000Z",
+      "url": "https://x.com/papiko_left/status/2070748756757365115",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "真ん前で見てるからなあ、塁審。\n#carp #カープ #広島東洋カープ",
+      "user": "ぷにすけ（2026シーズン現地1勝8敗）",
+      "time": "2026-06-27T05:58:52.000Z",
+      "url": "https://x.com/punipuni1969/status/2070748677736714552",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ石原　球持ち◎\n\n#カープ　#石原",
+      "user": "まい",
+      "time": "2026-06-27T05:58:51.000Z",
+      "url": "https://x.com/kai_89_89/status/2070748676339953891",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "セーフっぽい\n\nダメだこいつ\n\n#Carp #カープ是々非々 \n#広島東洋 #カープ",
+      "user": "Final Fun-Boy",
+      "time": "2026-06-27T05:58:46.000Z",
+      "url": "https://x.com/finalfunboy/status/2070748653938217251",
+      "targetType": "選手",
+      "target": "石原",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    }
+  ]
+}
