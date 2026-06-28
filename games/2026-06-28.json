@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "9回表",
+  "current_inning": "9回裏",
   "result_label": "",
   "away_pitcher": "髙橋",
   "home_pitcher": "岡本",
@@ -194,7 +194,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 9,
+    "hiroshima_hits": 12,
     "hiroshima_errors": 0,
     "away": [
       2,
@@ -323,9 +323,9 @@
       "name": "名原",
       "pos": "右",
       "line": 1,
-      "ab": 4,
+      "ab": 5,
       "r": 0,
-      "h": 1,
+      "h": 2,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -333,7 +333,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 1,
+      "single": 2,
       "hbp": 0,
       "sf": 0
     },
@@ -341,9 +341,9 @@
       "name": "大盛",
       "pos": "中",
       "line": 2,
-      "ab": 3,
+      "ab": 4,
       "r": 1,
-      "h": 2,
+      "h": 3,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -351,7 +351,7 @@
       "bb": 0,
       "double": 0,
       "triple": 1,
-      "single": 1,
+      "single": 2,
       "hbp": 0,
       "sf": 0
     },
@@ -372,6 +372,24 @@
       "single": 1,
       "hbp": 0,
       "sf": 1
+    },
+    {
+      "name": "持丸",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     },
     {
       "name": "坂倉",
@@ -446,6 +464,24 @@
       "sf": 0
     },
     {
+      "name": "前川",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
       "name": "矢野",
       "pos": "遊",
       "line": 8,
@@ -460,6 +496,24 @@
       "double": 0,
       "triple": 0,
       "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "佐藤啓",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -570,12 +624,30 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "勝田",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
     {
       "name": "岡本",
-      "result": "",
+      "result": "loss",
       "outs": 19,
       "pitches": 107,
       "hitsAllowed": 7,
@@ -624,8 +696,8 @@
     {
       "name": "鈴木",
       "result": "",
-      "outs": 1,
-      "pitches": 11,
+      "outs": 2,
+      "pitches": 14,
       "hitsAllowed": 2,
       "hrAllowed": 0,
       "walks": 0,
@@ -635,8 +707,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-28T08:04:58.341Z",
-    "generatedAt": "2026-06-28T08:04:58.354Z",
+    "sourceFetchedAt": "2026-06-28T08:25:18.843Z",
+    "generatedAt": "2026-06-28T08:25:18.855Z",
     "sourceUrl": "https://npb.jp/scores/2026/0628/c-t-10/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中村奨,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,岡本,持丸,森浦,矢野,石原,菊池,辻,遠藤,野間,鈴木,髙,黒原"
   }
