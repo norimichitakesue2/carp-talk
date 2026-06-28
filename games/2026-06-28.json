@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "3回裏",
+  "current_inning": "4回表",
   "result_label": "",
   "away_pitcher": "髙橋",
   "home_pitcher": "岡本",
@@ -194,7 +194,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 3,
+    "hiroshima_hits": 4,
     "hiroshima_errors": 0,
     "away": [
       2,
@@ -359,13 +359,13 @@
       "name": "菊池",
       "pos": "二",
       "line": 3,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 1,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -377,7 +377,7 @@
       "name": "坂倉",
       "pos": "一",
       "line": 4,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -486,19 +486,19 @@
     {
       "name": "岡本",
       "result": "",
-      "outs": 9,
-      "pitches": 47,
-      "hitsAllowed": 3,
+      "outs": 11,
+      "pitches": 64,
+      "hitsAllowed": 4,
       "hrAllowed": 1,
       "walks": 0,
-      "strikeouts": 2,
+      "strikeouts": 4,
       "runs": 2,
       "earnedRuns": 2
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-28T05:46:04.065Z",
-    "generatedAt": "2026-06-28T05:46:04.077Z",
+    "sourceFetchedAt": "2026-06-28T06:02:52.780Z",
+    "generatedAt": "2026-06-28T06:02:52.790Z",
     "sourceUrl": "https://npb.jp/scores/2026/0628/c-t-10/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中村奨,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,岡本,持丸,森浦,矢野,石原,菊池,辻,遠藤,野間,鈴木,髙,黒原"
   }
