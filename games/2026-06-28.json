@@ -3,7 +3,7 @@
   "game_date": "2026-06-28",
   "away_team": "阪神",
   "home_team": "広島",
-  "away_score": 9,
+  "away_score": 12,
   "home_score": 3,
   "venue": "マツダスタジアム",
   "start_time": "14:00",
@@ -205,9 +205,9 @@
       1,
       3,
       0,
-      3
+      6
     ],
-    "away_hits": 12,
+    "away_hits": 14,
     "away_errors": 0
   },
   "pitchers": [],
@@ -618,25 +618,25 @@
       "hrAllowed": 0,
       "walks": 1,
       "strikeouts": 1,
-      "runs": 3,
-      "earnedRuns": 3
+      "runs": 4,
+      "earnedRuns": 4
     },
     {
       "name": "鈴木",
       "result": "",
-      "outs": 0,
-      "pitches": 0,
-      "hitsAllowed": 0,
+      "outs": 1,
+      "pitches": 11,
+      "hitsAllowed": 2,
       "hrAllowed": 0,
       "walks": 0,
       "strikeouts": 0,
-      "runs": 0,
-      "earnedRuns": 0
+      "runs": 2,
+      "earnedRuns": 2
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-06-28T07:59:00.198Z",
-    "generatedAt": "2026-06-28T07:59:00.210Z",
+    "sourceFetchedAt": "2026-06-28T08:04:58.341Z",
+    "generatedAt": "2026-06-28T08:04:58.354Z",
     "sourceUrl": "https://npb.jp/scores/2026/0628/c-t-10/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中村奨,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,岡本,持丸,森浦,矢野,石原,菊池,辻,遠藤,野間,鈴木,髙,黒原"
   }
