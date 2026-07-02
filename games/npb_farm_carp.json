@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-01T20:47:22.588Z",
+  "fetchedAt": "2026-07-02T20:16:44.978Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -7,7 +7,28 @@
     "batters": "https://npb.jp/bis/2026/stats/bat_2w.html",
     "pitchers": "https://npb.jp/bis/2026/stats/pit_2w.html"
   },
-  "batters": [],
+  "batters": [
+    {
+      "name": "末包昇大",
+      "avg": ".222",
+      "games": 53,
+      "pa": 187,
+      "ab": 176,
+      "r": 13,
+      "h": 39,
+      "double": 4,
+      "triple": 1,
+      "hr": 4,
+      "tb": 57,
+      "rbi": 19,
+      "sb": 0,
+      "bb": 9,
+      "k": 30,
+      "slg": ".324",
+      "obp": ".262",
+      "ops": ".586"
+    }
+  ],
   "pitchers": [
     {
       "name": "河野佳",
