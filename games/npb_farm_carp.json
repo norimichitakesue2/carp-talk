@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-03T20:12:59.028Z",
+  "fetchedAt": "2026-07-04T20:07:44.175Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -10,10 +10,10 @@
   "batters": [
     {
       "name": "末包昇大",
-      "avg": ".217",
-      "games": 54,
-      "pa": 191,
-      "ab": 180,
+      "avg": ".213",
+      "games": 55,
+      "pa": 194,
+      "ab": 183,
       "r": 13,
       "h": 39,
       "double": 4,
@@ -23,27 +23,27 @@
       "rbi": 19,
       "sb": 1,
       "bb": 9,
-      "k": 30,
-      "slg": ".317",
-      "obp": ".257",
-      "ops": ".574"
+      "k": 32,
+      "slg": ".311",
+      "obp": ".253",
+      "ops": ".564"
     }
   ],
   "pitchers": [
     {
       "name": "河野佳",
-      "era": "2.20",
-      "games": 14,
-      "wins": 3,
+      "era": "2.12",
+      "games": 15,
+      "wins": 4,
       "losses": 2,
       "saves": 1,
-      "ip": "57.1",
-      "hitsAllowed": 45,
+      "ip": "63.2",
+      "hitsAllowed": 51,
       "hrAllowed": 3,
-      "walks": 15,
-      "strikeouts": 34,
-      "runs": 16,
-      "earnedRuns": 14
+      "walks": 18,
+      "strikeouts": 37,
+      "runs": 17,
+      "earnedRuns": 15
     },
     {
       "name": "佐藤柳之介",
@@ -89,6 +89,21 @@
       "strikeouts": 18,
       "runs": 17,
       "earnedRuns": 16
+    },
+    {
+      "name": "杉田健",
+      "era": "1.27",
+      "games": 23,
+      "wins": 0,
+      "losses": 0,
+      "saves": 2,
+      "ip": "35.1",
+      "hitsAllowed": 26,
+      "hrAllowed": 2,
+      "walks": 5,
+      "strikeouts": 22,
+      "runs": 5,
+      "earnedRuns": 5
     },
     {
       "name": "常廣羽也斗",
