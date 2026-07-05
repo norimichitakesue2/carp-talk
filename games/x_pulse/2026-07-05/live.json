@@ -1,60 +1,41 @@
 {
-  "generatedAt": "2026-07-05T11:47:44.335Z",
+  "generatedAt": "2026-07-05T12:14:26.357Z",
   "model": "claude-haiku-4-5-20251001",
-  "inputCount": 40,
-  "classifiedCount": 40,
-  "clusterCount": 8,
-  "bubbleCount": 8,
-  "summary": "野間の後逸や打撃不調など複数選手のプレーに批判の声が集まる中、チーム全体の課題が浮き彫りに。",
+  "inputCount": 51,
+  "classifiedCount": 51,
+  "clusterCount": 13,
+  "bubbleCount": 13,
+  "summary": "新井監督の盗塁指示失敗と走塁判断が批判を集める一方、野間の守備ミスや辰見の盗塁失敗など選手のプレーミスも指摘される。",
   "bubbles": [
     {
-      "target": "野間",
-      "targetType": "選手",
-      "topic_broad": "失策",
-      "topic_label": "後逸",
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "走塁判断",
       "sentiment": "批判弱",
       "sentimentScore": -1,
       "count": 4,
       "tweetUrls": [
-        "https://x.com/tokyo_koibito/status/2073734084283805881",
-        "https://x.com/syuuu_shishisin/status/2073733927400042500",
-        "https://x.com/ankotizu4525/status/2073732925959598587",
-        "https://x.com/LMK_Iris/status/2073732339499516296"
+        "https://x.com/episode_ko/status/2073740057882845198",
+        "https://x.com/uniuniyama54321/status/2073739666923335884",
+        "https://x.com/roman_egoshi/status/2073739370834838008",
+        "https://x.com/Shun12274/status/2073739061668597835"
       ],
       "sampleTexts": [
         {
-          "text": "ほんと野間らしいエラー…\n野間がしっかりしてたら2019、2020年も強いカープでいられたと思うなぁ",
-          "user": "東京の鯉人",
-          "time": "2026-07-05T11:41:48.000Z"
+          "text": "辰見\nブルーライトやろうから\n走るのはokなんやけど\nウェストしてくるん見越して\n打者有利なカウント作るとか\nもっと揺さぶって欲しかったな\nんで最後はファビ勝負でよかった\n #広島カープ",
+          "user": "kousuke",
+          "time": "2026-07-05T12:05:32.000Z"
         },
         {
-          "text": "カープ野間　また清水建設事件みたいなことをしてるのか",
-          "user": "∠驟雨獅子心",
-          "time": "2026-07-05T11:41:11.000Z"
+          "text": "カープ、ここでケガ明けでグラウンド悪い中辰見走らせるかなあ。投手の調子がイマイチな感じなので、ファビアンに打たせた方が良かった気がするが。",
+          "user": "うにうにやま",
+          "time": "2026-07-05T12:03:59.000Z"
         },
         {
-          "text": "点差開いてるやんの時にはすでにカープの試合を見てなかったんですが\n野間選手後逸にあぁ清水建設と脳裏に浮かんだんだよね",
-          "user": "ソンブレロババ",
-          "time": "2026-07-05T11:37:12.000Z"
-        }
-      ]
-    },
-    {
-      "target": "菊池",
-      "targetType": "選手",
-      "topic_broad": "打撃",
-      "topic_label": "打撃不調",
-      "sentiment": "批判弱",
-      "sentimentScore": -1,
-      "count": 1,
-      "tweetUrls": [
-        "https://x.com/ayutaro19901108/status/2073734370159161724"
-      ],
-      "sampleTexts": [
-        {
-          "text": "#carp\n#カープ\n菊池ヒット1本損した",
-          "user": "あゆたろう",
-          "time": "2026-07-05T11:42:56.000Z"
+          "text": "カープくん走らんでも\nファビアンに大きいの期待したら\nよかったのに",
+          "user": "永遠のロマン砲",
+          "time": "2026-07-05T12:02:48.000Z"
         }
       ]
     },
@@ -62,517 +43,759 @@
       "target": "新井",
       "targetType": "首脳陣",
       "topic_broad": "采配",
-      "topic_label": "走塁ミス",
-      "sentiment": "批判弱",
-      "sentimentScore": -1,
-      "count": 1,
+      "topic_label": "盗塁指示の失敗",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 2,
       "tweetUrls": [
-        "https://x.com/tky7912/status/2073733395088351515"
+        "https://x.com/yabasugishin/status/2073740339886891464",
+        "https://x.com/torae_mon/status/2073739373355659371"
       ],
       "sampleTexts": [
         {
-          "text": "阪神としては儲けってなるけど、\nカープは何しとるの…\nサトテルそんなに足遅くないし、\nスリーベースまではしゃあないってなるけど、なんでセカンド辺りでバタつくのよ…\n1点は無駄やろ…",
-          "user": "ハセキセキ",
-          "time": "2026-07-05T11:39:04.000Z"
+          "text": "草野球でもあの場面で走らせないぞ\n野球が下手というレベルじゃない\n野間も新井も床田に土下座じゃ足りないぞ\n野間は今日で現役最後の試合ということで\n新井はこの後辞任会見な\n辛いですだけは言わないように\n",
+          "user": "鯉鯉団カープ党氷河期世代の経営者ウイコレ",
+          "time": "2026-07-05T12:06:39.000Z"
+        },
+        {
+          "text": "一発ある代打やのに、盗塁させて出番を強制終了させる新井。\n俊介が盗塁で金本の連続出場止めたとき新井は阪神におったもんな。\nそれが印象に残ったままなんやろな。\nありがとう。俊介。\n#広島カープ",
+          "user": "虎えもん",
+          "time": "2026-07-05T12:02:49.000Z"
         }
       ]
     },
     {
-      "target": "田村",
+      "target": "佐藤啓",
       "targetType": "選手",
       "topic_broad": "打撃",
-      "topic_label": "起用基準",
+      "topic_label": "タイムリーヒット",
       "sentiment": "応援弱",
       "sentimentScore": 1,
-      "count": 1,
+      "count": 2,
       "tweetUrls": [
-        "https://x.com/puppy_072/status/2073733374536196333"
+        "https://x.com/KOIPIKA_25/status/2073739380989346119",
+        "https://x.com/KdKst2oq2FS8Pdw/status/2073739333815931360"
       ],
       "sampleTexts": [
         {
-          "text": "もう田村が打てんだろうが野間なんかを1軍で見るなら豪快な空振り三振の田村でええ。田村がええ。#carp #カープ  #痛みともなえよ",
-          "user": "うっひー",
-          "time": "2026-07-05T11:38:59.000Z"
+          "text": "8回表 まとめ\nカープ、さらなる反撃！\n7番佐藤啓選手が2死一、二塁のチャンスからタイムリーを放つ！\nこれで2点差へ！\n\n神5ー3広",
+          "user": "コイピカ！＠弱気は最大の敵！",
+          "time": "2026-07-05T12:02:51.000Z"
+        },
+        {
+          "text": "愛ちゃん\nカープ\n佐藤のタイムリーヒットで\n3ー5\n８回表終了\n辰見アウトになっちゃったね！最後まで粘り見せて\nほしいね(^-^)",
+          "user": "石井教洋",
+          "time": "2026-07-05T12:02:40.000Z"
         }
       ]
     },
     {
-      "target": "島内",
+      "target": "辰見",
       "targetType": "選手",
-      "topic_broad": "投球",
-      "topic_label": "球速低下",
-      "sentiment": "批判弱",
-      "sentimentScore": -1,
-      "count": 1,
+      "topic_broad": "走塁",
+      "topic_label": "グラウンドコンディション",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
       "tweetUrls": [
-        "https://x.com/kentabbaska/status/2073733226099884271"
+        "https://x.com/Galette021/status/2073739229021315085",
+        "https://x.com/pon1698/status/2073739150881337727"
       ],
       "sampleTexts": [
         {
-          "text": "島内球速下がった？？\n\n#広島カープ",
-          "user": "ケン",
-          "time": "2026-07-05T11:38:23.000Z"
-        }
-      ]
-    },
-    {
-      "target": "野間",
-      "targetType": "選手",
-      "topic_broad": "起用・スタメン",
-      "topic_label": "早期交代希望",
-      "sentiment": "批判弱",
-      "sentimentScore": -1,
-      "count": 1,
-      "tweetUrls": [
-        "https://x.com/darusaur_carp/status/2073732685047197883"
-      ],
-      "sampleTexts": [
+          "text": "いくら辰見でもグラウンドコンディションが悪い中で足使うのは難しいよな\n#カープ",
+          "user": "021 Galette",
+          "time": "2026-07-05T12:02:15.000Z"
+        },
         {
-          "text": "野間選手まだ出てるの？\nはやく由宇に向かった方が良いのでは？\n\nピッチャーも嫌でしょう\n\n#カープ",
-          "user": "だるサワ",
-          "time": "2026-07-05T11:36:14.000Z"
+          "text": "あぁ…タイミング的にはアウトだったもんなぁ…。\nでも辰見くんが戻ってきてうれしいよ。\n\n#カープ\n#阪神",
+          "user": "ぽん。",
+          "time": "2026-07-05T12:01:56.000Z"
         }
       ]
     },
     {
       "target": "野間",
       "targetType": "選手",
-      "topic_broad": "守備",
-      "topic_label": "悪い見本の示し",
+      "topic_broad": "失策",
+      "topic_label": "守備ミス多発",
       "sentiment": "批判強",
       "sentimentScore": -2,
       "count": 1,
       "tweetUrls": [
-        "https://x.com/junjujuwar/status/2073732388316938551"
+        "https://x.com/feldkatze2/status/2073740031064469827"
       ],
       "sampleTexts": [
         {
-          "text": "野間はベテランだろ。相変わらずそんなプレーしてたら若手に示しがつかんだろ。だからカープは弱いんだよ。",
-          "user": "ポメラニアンFC",
-          "time": "2026-07-05T11:35:04.000Z"
+          "text": "負けとるやないかい。\n野間が１軍にいることがおかしい。\nエラーしたら暴投というのは毎度のこと。\n #カープ",
+          "user": "さゆの@札幌７点差逆転負け観戦　９月２６日神宮参戦惨敗",
+          "time": "2026-07-05T12:05:26.000Z"
         }
       ]
     },
     {
-      "target": "矢野",
+      "target": "辰見",
+      "targetType": "選手",
+      "topic_broad": "走塁",
+      "topic_label": "盗塁失敗",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/puppy_072/status/2073740021979607342"
+      ],
+      "sampleTexts": [
+        {
+          "text": "辰見もアウトだけは絶対ダメな場面で暴走で盗塁失敗という糞みたいな野球脳で泣いた夜。誰か暖かい毛布をください。辰見は信じていたのに。  #カープ #carp",
+          "user": "うっひー",
+          "time": "2026-07-05T12:05:24.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "走塁",
+      "topic_label": "走塁ミス",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/eQ1iQUXrVo75769/status/2073739929948209427"
+      ],
+      "sampleTexts": [
+        {
+          "text": "野間何しょんまじで\n緒方監督なら殴られ案件だろ\n #カープ",
+          "user": "ロックマン",
+          "time": "2026-07-05T12:05:02.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
       "targetType": "首脳陣",
-      "topic_broad": "スタメン",
-      "topic_label": "矢野の打力不足",
+      "topic_broad": "継投",
+      "topic_label": "起用のちぐはぐさ",
       "sentiment": "批判弱",
       "sentimentScore": -1,
       "count": 1,
       "tweetUrls": [
-        "https://x.com/FC8Pa3QyZxSqsQS/status/2073732022263251132"
+        "https://x.com/filSN33jkjsOZoX/status/2073739801346679038"
       ],
       "sampleTexts": [
         {
-          "text": "坂倉ファーストだと矢野ショートにするしかないから今シーズンのカープは打てないんだから佐藤モンテロファースト入れて坂倉サードショート小園にするしかないでしょ！矢野がもう少し打ってくれたら話しは別だけど…",
-          "user": "いもにぃ",
-          "time": "2026-07-05T11:33:36.000Z"
+          "text": "うーんファビアン出しておいてもったいない気はすごくするものの、たつみだから仕方なさもあり。。\nこれがちぐはぐというものなのか。\n#カープ",
+          "user": "じゅん",
+          "time": "2026-07-05T12:04:31.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "失策",
+      "topic_label": "失策被害",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/RyLGwPa6hvpj4JH/status/2073739752394870875"
+      ],
+      "sampleTexts": [
+        {
+          "text": "阪神ファンからしたら野間さまさまだよなぁ\nカープファンは白目だろうけど…（野間ファンさん以外",
+          "user": "んほー@",
+          "time": "2026-07-05T12:04:19.000Z"
+        }
+      ]
+    },
+    {
+      "target": "ザキ",
+      "targetType": "選手",
+      "topic_broad": "離脱・復帰",
+      "topic_label": "怪我心配",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/cacacacacarp/status/2073739674661827013"
+      ],
+      "sampleTexts": [
+        {
+          "text": "ザキさん足大丈夫かな？\n今のは不運\n気にしない\nひとつずつアウトを\n#カープ",
+          "user": "かなこいのぼり",
+          "time": "2026-07-05T12:04:01.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "応援メッセージ",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/CARP_DAISKI/status/2073739303453425882"
+      ],
+      "sampleTexts": [
+        {
+          "text": "野間ちゃん⋯\n\n#カープ\n#carp",
+          "user": "どう最近？＠NO CARP NO LIFE",
+          "time": "2026-07-05T12:02:32.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "継投",
+      "topic_label": "勝ちパ信頼喪失",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/IjfoElxS638dUub/status/2073739278560162267"
+      ],
+      "sampleTexts": [
+        {
+          "text": "投手代わってから着実に1点ずつ取られてるの勝ちパの信頼感失ってるの分かってる？\nこれ接戦やったら糞試合やで\nまだ分からへんけどカープ9回表別人なるから\n#阪神タイガース",
+          "user": "K虎徹",
+          "time": "2026-07-05T12:02:26.000Z"
+        }
+      ]
+    },
+    {
+      "target": "佐藤啓",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "タイムリーヒット",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/KOIPIKA_25/status/2073739087278977441"
+      ],
+      "sampleTexts": [
+        {
+          "text": "( ≧∀≦)ノ はんげき！\n7番佐藤啓選手、ナイスタイムリー！\n\n宮島さんの神主が\nおみくじ引いて申すには\nきょうもカープは\nかーち！かーち！かーち！勝ち！\n\nばんざーい！ばんざーい！\nばんざーい！(",
+          "user": "コイピカ！＠弱気は最大の敵！",
+          "time": "2026-07-05T12:01:41.000Z"
         }
       ]
     }
   ],
   "all": [
     {
-      "text": "#carp\n#カープ\n菊池ヒット1本損した",
-      "user": "あゆたろう",
-      "time": "2026-07-05T11:42:56.000Z",
-      "url": "https://x.com/ayutaro19901108/status/2073734370159161724",
-      "targetType": "選手",
-      "target": "菊池",
-      "topic_broad": "打撃",
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "辻もかっこいいし島内もかっこいい、カープのブルペン陣はみんなかっこいい【定期】",
-      "user": "きな ໒꒱⋆*",
-      "time": "2026-07-05T11:42:49.000Z",
-      "url": "https://x.com/c26kn/status/2073734341390418131",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援強"
-    },
-    {
-      "text": "8表\nかぽんた 5-2 カープ\n\n今日も好調のかぽんた打線でございます\n\n1本だけ凹んでるのは\n何かしら瞬間的な感情が出ただけのモノです。悪しからず……",
-      "user": "かぽんた",
-      "time": "2026-07-05T11:42:49.000Z",
-      "url": "https://x.com/hiroshi_matoyo/status/2073734341029675505",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "中立"
-    },
-    {
-      "text": "カープさん\nあまりにもひどい試合なので\nテレビぶち壊して\n近場にご飯食べに来た\n旨いもん食べて\nストレス軽減する",
-      "user": "HOPPU",
-      "time": "2026-07-05T11:42:47.000Z",
-      "url": "https://x.com/8OOYnj1fiY55698/status/2073734330980110785",
+      "text": "カープは野球が下手くそやわ\n相手をミスで助けてどうするのよ\n #カープ",
+      "user": "ゆうたまん",
+      "time": "2026-07-05T12:06:41.000Z",
+      "url": "https://x.com/OIdc4QRct7prelR/status/2073740348548161538",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "批判強"
     },
     {
-      "text": "#プロ野球 #阪神タイガース #前川右京 5回今季3号ソロ\n5回2死で力のない直球を強振\n打球は放物線を描いて右翼スタンドに突き刺さった\n#野球 #阪神 #タイガース #Tigers #甲子園 #甲子園球場 #NPB #JERA #セ・リーグ #前川 #広島 #カープ",
-      "user": "ゆち虎",
-      "time": "2026-07-05T11:42:23.000Z",
-      "url": "https://x.com/reo_naniwa/status/2073734230463729782",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "中立"
+      "text": "草野球でもあの場面で走らせないぞ\n野球が下手というレベルじゃない\n野間も新井も床田に土下座じゃ足りないぞ\n野間は今日で現役最後の試合ということで\n新井はこの後辞任会見な\n辛いですだけは言わないように\n#カープ",
+      "user": "鯉鯉団カープ党氷河期世代の経営者ウイコレ",
+      "time": "2026-07-05T12:06:39.000Z",
+      "url": "https://x.com/yabasugishin/status/2073740339886891464",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
     },
     {
-      "text": "逆転するぞカープ！！！！！",
-      "user": "じゃむ7/22東京ドーム",
-      "time": "2026-07-05T11:42:22.000Z",
-      "url": "https://x.com/carpjamu814/status/2073734226512650586",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援弱"
-    },
-    {
-      "text": "？？？　レイジくんもカープ応援しよう！",
-      "user": "横浜燃ゆ",
-      "time": "2026-07-05T11:42:12.000Z",
-      "url": "https://x.com/baykeyaki/status/2073734183936258541",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "なし"
-    },
-    {
-      "text": "広島に住んどるけえたまにはカープでも行くか\n火水木のどっかで",
-      "user": "佐谷田",
-      "time": "2026-07-05T11:42:05.000Z",
-      "url": "https://x.com/sayada_bochi/status/2073734156895559905",
+      "text": "カープは新潟の時のように最終回で大逆転しなさい！\nベイスターズは追加点を！",
+      "user": "JAMBURGEY",
+      "time": "2026-07-05T12:06:14.000Z",
+      "url": "https://x.com/95JBURGEY42/status/2073740235058688174",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "応援弱"
     },
     {
-      "text": "#carp\n#カープ\n島内7裏ゼロ",
-      "user": "あゆたろう",
-      "time": "2026-07-05T11:42:01.000Z",
-      "url": "https://x.com/ayutaro19901108/status/2073734137845023164",
-      "targetType": "選手",
-      "target": "島内",
-      "topic_broad": "投球",
-      "sentiment": "中立"
-    },
-    {
-      "text": "これからや！！！！\n逆転のカープ見したれ！！",
-      "user": "かなᵕ̈*",
-      "time": "2026-07-05T11:41:50.000Z",
-      "url": "https://x.com/LP78Kei_gt/status/2073734092714299535",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援強"
-    },
-    {
-      "text": "ほんと野間らしいエラー…\n野間がしっかりしてたら2019、2020年も強いカープでいられたと思うなぁ",
-      "user": "東京の鯉人",
-      "time": "2026-07-05T11:41:48.000Z",
-      "url": "https://x.com/tokyo_koibito/status/2073734084283805881",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "失策",
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "愛ちゃん\nカープ７回に\n１点返したね\n最後まで粘り見せて\nほしいね(^-^)\n７回表終了\n2ー5",
-      "user": "石井教洋",
-      "time": "2026-07-05T11:41:37.000Z",
-      "url": "https://x.com/KdKst2oq2FS8Pdw/status/2073734038008033503",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援弱"
-    },
-    {
-      "text": "ここからリアタイ視聴して行きます\n終盤7回終わって、5-2の3点差なんですね\n#カープ",
-      "user": "涙越ごう＠鯉応援アカ",
-      "time": "2026-07-05T11:41:35.000Z",
-      "url": "https://x.com/carp_ruigoshi/status/2073734030680592472",
+      "text": "カープがしぶとい",
+      "user": "死にかけ自営業(アルジャーノン",
+      "time": "2026-07-05T12:06:04.000Z",
+      "url": "https://x.com/kumaponkotu/status/2073740190309572694",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "中立"
     },
     {
-      "text": "鯉党の皆さまお疲れさまです\n\nライヴで弾け過ぎてしまい\n今から追います\n\nあと2イニングある\n頑張れカープ",
-      "user": "Chiezo_33",
-      "time": "2026-07-05T11:41:34.000Z",
-      "url": "https://x.com/18homerunhitter/status/2073734025018220720",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援弱"
-    },
-    {
-      "text": "島内ナイス4凡（分かってた）\n\n#カープ",
-      "user": "酔魔",
-      "time": "2026-07-05T11:41:18.000Z",
-      "url": "https://x.com/HxSW8IJNqM87155/status/2073733960291721681",
-      "targetType": "選手",
-      "target": "島内",
-      "topic_broad": "投球",
-      "sentiment": "中立"
-    },
-    {
-      "text": "これ…\n\n雨で中止の方がよかった説\n\n見てるこっちのメンタルが先にやられる…\n\nそれでも最後まで応援するしかない\n\n#カープ #carp #広島東洋カープ",
-      "user": "カムイ軍団長",
-      "time": "2026-07-05T11:41:13.000Z",
-      "url": "https://x.com/Ryo_the_18/status/2073733936199749956",
+      "text": "#カープ\nしかし両チームとも勝ちを手放すような事をするなぁ",
+      "user": "よったん",
+      "time": "2026-07-05T12:05:49.000Z",
+      "url": "https://x.com/yottanmanz/status/2073740130167427496",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "批判弱"
     },
     {
-      "text": "カープ野間　また清水建設事件みたいなことをしてるのか",
-      "user": "∠驟雨獅子心",
-      "time": "2026-07-05T11:41:11.000Z",
-      "url": "https://x.com/syuuu_shishisin/status/2073733927400042500",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "失策",
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "カープかとおもたわ",
-      "user": "あなかし",
-      "time": "2026-07-05T11:41:05.000Z",
-      "url": "https://x.com/anakashi1/status/2073733903433793807",
+      "text": "カープの野球が下手くそ過ぎてな。\n\nAIの方が賢いな",
+      "user": "青い閃光",
+      "time": "2026-07-05T12:05:36.000Z",
+      "url": "https://x.com/HumanReading/status/2073740074924363810",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
-      "sentiment": "中立"
+      "sentiment": "批判強"
     },
     {
-      "text": "阪神としては儲けってなるけど、\nカープは何しとるの…\nサトテルそんなに足遅くないし、\nスリーベースまではしゃあないってなるけど、なんでセカンド辺りでバタつくのよ…\n1点は無駄やろ…",
-      "user": "ハセキセキ",
-      "time": "2026-07-05T11:39:04.000Z",
-      "url": "https://x.com/tky7912/status/2073733395088351515",
+      "text": "辰見\nブルーライトやろうから\n走るのはokなんやけど\nウェストしてくるん見越して\n打者有利なカウント作るとか\nもっと揺さぶって欲しかったな\nんで最後はファビ勝負でよかった\n #広島カープ",
+      "user": "kousuke",
+      "time": "2026-07-05T12:05:32.000Z",
+      "url": "https://x.com/episode_ko/status/2073740057882845198",
       "targetType": "首脳陣",
       "target": "新井",
       "topic_broad": "采配",
       "sentiment": "批判弱"
     },
     {
-      "text": "カープが優勝したらその年かその翌年にポルノがみんなのカープをやってくれるかもしれないからはやくカープは優勝しろ",
-      "user": "∠わかさぎ @パンをねだる鳥",
-      "time": "2026-07-05T11:39:02.000Z",
-      "url": "https://x.com/Wakasaginnnu/status/2073733388205519029",
+      "text": "カープは盗塁下手すぎ",
+      "user": "よっち",
+      "time": "2026-07-05T12:05:28.000Z",
+      "url": "https://x.com/ys443517/status/2073740038672925131",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "負けとるやないかい。\n野間が１軍にいることがおかしい。\nエラーしたら暴投というのは毎度のこと。\n #カープ",
+      "user": "さゆの@札幌７点差逆転負け観戦　９月２６日神宮参戦惨敗",
+      "time": "2026-07-05T12:05:26.000Z",
+      "url": "https://x.com/feldkatze2/status/2073740031064469827",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "失策",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "辰見もアウトだけは絶対ダメな場面で暴走で盗塁失敗という糞みたいな野球脳で泣いた夜。誰か暖かい毛布をください。辰見は信じていたのに。  #カープ #carp",
+      "user": "うっひー",
+      "time": "2026-07-05T12:05:24.000Z",
+      "url": "https://x.com/puppy_072/status/2073740021979607342",
+      "targetType": "選手",
+      "target": "辰見",
+      "topic_broad": "走塁",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "野間何しょんまじで\n緒方監督なら殴られ案件だろ\n #カープ",
+      "user": "ロックマン",
+      "time": "2026-07-05T12:05:02.000Z",
+      "url": "https://x.com/eQ1iQUXrVo75769/status/2073739929948209427",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "走塁",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "辰見選手の二塁盗塁アウトの判定を巡り\n広島・新井監督がリクエスト\n\nリプレイ検証の映像がどれもこれも\nタッチの瞬間を捉えていない\nきっとデタラメなカメラ配置なんだろうな\n\n阪神タイガースVS広島カープ",
+      "user": "そらそうよ！",
+      "time": "2026-07-05T12:05:01.000Z",
+      "url": "https://x.com/masayan_1959/status/2073739927557472687",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "中立"
+    },
+    {
+      "text": "ちなみに怖いのは名古屋のポケセンには金のコイキング(金鯱モチーフ)がいるという事\n名古屋の夏=鯱の大祭典=金鯱グランパスくん\n→金のコイキングでええやん\nってなりそう\nただコイキングは去年のプロ野球コラボでカープのメインキャラになってんだよね\nちなみに金コイキングの進化先は赤いギャラドス",
+      "user": "サスケ@しば民®︎",
+      "time": "2026-07-05T12:04:56.000Z",
+      "url": "https://x.com/NGEIsNO1/status/2073739904144843201",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "うーんファビアン出しておいてもったいない気はすごくするものの、たつみだから仕方なさもあり。。\nこれがちぐはぐというものなのか。\n#カープ",
+      "user": "じゅん",
+      "time": "2026-07-05T12:04:31.000Z",
+      "url": "https://x.com/filSN33jkjsOZoX/status/2073739801346679038",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "継投",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ん〜、\nやっぱり守備のミスからの失点が\n痛いの⋯\nプラス、得点圏での加点が、\n頑張れカープ",
+      "user": "久地ファン",
+      "time": "2026-07-05T12:04:24.000Z",
+      "url": "https://x.com/wakkan55Carp/status/2073739772481392861",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "応援弱"
     },
     {
-      "text": "もう田村が打てんだろうが野間なんかを1軍で見るなら豪快な空振り三振の田村でええ。田村がええ。#carp #カープ  #痛みともなえよ",
-      "user": "うっひー",
-      "time": "2026-07-05T11:38:59.000Z",
-      "url": "https://x.com/puppy_072/status/2073733374536196333",
+      "text": "アルパークに、カープのマスコットのスライリーが来ていたよ。#カープ",
+      "user": "田中ゆうじ",
+      "time": "2026-07-05T12:04:20.000Z",
+      "url": "https://x.com/wyujida/status/2073739755427332547",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "阪神ファンからしたら野間さまさまだよなぁ\nカープファンは白目だろうけど…（野間ファンさん以外",
+      "user": "んほー@",
+      "time": "2026-07-05T12:04:19.000Z",
+      "url": "https://x.com/RyLGwPa6hvpj4JH/status/2073739752394870875",
       "targetType": "選手",
-      "target": "田村",
+      "target": "野間",
+      "topic_broad": "失策",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ女子はどこに消えたのか？",
+      "user": "奥森@ベルサミ（ジグ•ベルサミ）",
+      "time": "2026-07-05T12:04:06.000Z",
+      "url": "https://x.com/azel0210/status/2073739696426103131",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "さすがにカープにしたか",
+      "user": "mocha",
+      "time": "2026-07-05T12:04:04.000Z",
+      "url": "https://x.com/bay_4_2_1/status/2073739688452706685",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ザキさん足大丈夫かな？\n今のは不運\n気にしない\nひとつずつアウトを\n#カープ",
+      "user": "かなこいのぼり",
+      "time": "2026-07-05T12:04:01.000Z",
+      "url": "https://x.com/cacacacacarp/status/2073739674661827013",
+      "targetType": "選手",
+      "target": "ザキ",
+      "topic_broad": "離脱・復帰",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ、ここでケガ明けでグラウンド悪い中辰見走らせるかなあ。投手の調子がイマイチな感じなので、ファビアンに打たせた方が良かった気がするが。",
+      "user": "うにうにやま",
+      "time": "2026-07-05T12:03:59.000Z",
+      "url": "https://x.com/uniuniyama54321/status/2073739666923335884",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "お疲れ様でしたー！！\n卓弥くんの腕にカープ坊や",
+      "user": "さとすけ",
+      "time": "2026-07-05T12:03:54.000Z",
+      "url": "https://x.com/skm3579_g6sh/status/2073739646471974920",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "2021 FC限定ヒッコリー半袖。XLで作業着にいい\n\n2021 カープFC限定 ヒッコリー半袖ワークシャツ XL相当",
+      "user": "すぼ",
+      "time": "2026-07-05T12:03:45.000Z",
+      "url": "https://x.com/subocarpfan/status/2073739606814597172",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "渡邊佳明＝野間峻祥\n楽天ファンもカープファンも異論ないな？\n#RakutenEagles\n#カープ",
+      "user": "ピンク",
+      "time": "2026-07-05T12:03:29.000Z",
+      "url": "https://x.com/pawapoke_HERO46/status/2073739541274669512",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ファビアン残した！\n次の先頭頼むで！\nその前に中崎！\nしっかり頼む\n#カープ",
+      "user": "レレレのレ",
+      "time": "2026-07-05T12:03:26.000Z",
+      "url": "https://x.com/DTc3hwGLYJ11672/status/2073739529975210256",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "なんか今年は審判の判定が全部不利になってる気がする\n体感だけど\n\n#カープ",
+      "user": "だるサワ",
+      "time": "2026-07-05T12:03:24.000Z",
+      "url": "https://x.com/darusaur_carp/status/2073739520688931315",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ファビアンレフト入ったんか #がんばろうカープファン #carp",
+      "user": "くわカープ用",
+      "time": "2026-07-05T12:03:20.000Z",
+      "url": "https://x.com/kuwakuwacarp/status/2073739503068692777",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "8回表速報　阪神5-3広島\n7月5日(日)#阪神タイガース 対 #広島東洋カープ  ＠ #甲子園 球場\nカープ打者佐藤啓:ライトタイムリーヒット\n#hanshin #熱覇 #NanoBananaPro #4コマ漫画 #速報 #tigers",
+      "user": "進撃の阪神｜AI４コマ漫画",
+      "time": "2026-07-05T12:03:17.000Z",
+      "url": "https://x.com/Good_hanshin/status/2073739490674503789",
+      "targetType": "選手",
+      "target": "佐藤啓",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ坊やはテルちゃんの後輩勝田くん出てきたな\n圭音くん、泥臭ヒットやー\nがんばれ、タイガース\n#阪神タイガース",
+      "user": "ささねぇー",
+      "time": "2026-07-05T12:03:13.000Z",
+      "url": "https://x.com/yusasakyun7221/status/2073739474744611315",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "よしよし、こっちのザキさん劇場したからカープ側も頼むで",
+      "user": "zaki@大山応援 7/19 9/20",
+      "time": "2026-07-05T12:03:12.000Z",
+      "url": "https://x.com/zaki_hiroshima/status/2073739470843916328",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープのピッチャーむちむち多いな",
+      "user": "coco",
+      "time": "2026-07-05T12:03:04.000Z",
+      "url": "https://x.com/coco_spoooon/status/2073739437335621634",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "レフト右京選手から小野寺選手交代も打順が７番やなくて、６番なんですね\n球児監督の意図が分からん\n\n#阪神タイガース\n#阪神甲子園球場\n#阪神vs広島\n#広島カープ\n#前川右京\n#小野寺暖\n#藤川球児\n#サンテレビ",
+      "user": "ぼちぼち行こか",
+      "time": "2026-07-05T12:02:54.000Z",
+      "url": "https://x.com/1dhA4LzXPB4nHWq/status/2073739395153498618",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "8回表 まとめ\nカープ、さらなる反撃！\n7番佐藤啓選手が2死一、二塁のチャンスからタイムリーを放つ！\nこれで2点差へ！\n\n神5ー3広",
+      "user": "コイピカ！＠弱気は最大の敵！",
+      "time": "2026-07-05T12:02:51.000Z",
+      "url": "https://x.com/KOIPIKA_25/status/2073739380989346119",
+      "targetType": "選手",
+      "target": "佐藤啓",
       "topic_broad": "打撃",
       "sentiment": "応援弱"
     },
     {
-      "text": "そもそもファンタイプがちゃうんやろなって思ってるんですけど、一軍は勝ち試合見にきてるんで体たらくなプレーされるとイラッとするしそれが健全やと思ってるんすけど今のカープファンはちょっとなまぬるすぎますわほんまに",
-      "user": "MOTO",
-      "time": "2026-07-05T11:38:53.000Z",
-      "url": "https://x.com/dauntaun0807/status/2073733351597650295",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "よき鯉党すぎる",
-      "user": "ねこかわ(",
-      "time": "2026-07-05T11:38:37.000Z",
-      "url": "https://x.com/x_xnk_/status/2073733283469549998",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援弱"
-    },
-    {
-      "text": "カープが相手なの？\nこれは、ちと酷いかも",
-      "user": "Yuka 廣田　日本娯楽党",
-      "time": "2026-07-05T11:38:28.000Z",
-      "url": "https://x.com/hakatayuka/status/2073733243971727647",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "島内球速下がった？？\n\n#広島カープ",
-      "user": "ケン",
-      "time": "2026-07-05T11:38:23.000Z",
-      "url": "https://x.com/kentabbaska/status/2073733226099884271",
-      "targetType": "選手",
-      "target": "島内",
-      "topic_broad": "投球",
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "主砲床田、\n5失点も自責点は2点。\n\n野間さんにご飯3回くらい奢ってもらって下さい。\n\n#広島カープ",
-      "user": "やきものがかり◢",
-      "time": "2026-07-05T11:37:40.000Z",
-      "url": "https://x.com/1r8h6jhte4exznz/status/2073733045119799722",
-      "targetType": "選手",
-      "target": "床田",
-      "topic_broad": "投球",
-      "sentiment": "中立"
-    },
-    {
-      "text": "点差開いてるやんの時にはすでにカープの試合を見てなかったんですが\n野間選手後逸にあぁ清水建設と脳裏に浮かんだんだよね",
-      "user": "ソンブレロババ",
-      "time": "2026-07-05T11:37:12.000Z",
-      "url": "https://x.com/ankotizu4525/status/2073732925959598587",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "失策",
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "となれば、残るは広島！仮に来春開催ならカープのホームゲームの無い土日の都合が付く日に開催と予想します。ドラクエウォーク×カープコラボに期待大です",
-      "user": "シン・バハムル",
-      "time": "2026-07-05T11:36:24.000Z",
-      "url": "https://x.com/shinsquaresofti/status/2073732727392932351",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "応援弱"
-    },
-    {
-      "text": "野間選手まだ出てるの？\nはやく由宇に向かった方が良いのでは？\n\nピッチャーも嫌でしょう\n\n#カープ",
-      "user": "だるサワ",
-      "time": "2026-07-05T11:36:14.000Z",
-      "url": "https://x.com/darusaur_carp/status/2073732685047197883",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "起用・スタメン",
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "エラーはまだしも、カープの野手陣って取り返す打撃を見せてくれないのが怒りよ",
-      "user": "トマ戸",
-      "time": "2026-07-05T11:36:07.000Z",
-      "url": "https://x.com/retopoku/status/2073732654009401779",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "桑原さんはこの日、赤いネクタイを締めていらっしゃいました。\nこれは広島カープのネクタイでここぞという時に締める勝負ネクタイ？！だそうです",
-      "user": "ひつじの森文庫",
-      "time": "2026-07-05T11:35:46.000Z",
-      "url": "https://x.com/gindoro33/status/2073732567065628801",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "中立"
-    },
-    {
-      "text": "野間やらかして\nカープ公式Xのコメント欄荒れまくりw",
-      "user": "みっちっち7勝4敗",
-      "time": "2026-07-05T11:35:46.000Z",
-      "url": "https://x.com/akaheru_baka/status/2073732564532273505",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "失策",
-      "sentiment": "中立"
-    },
-    {
-      "text": "カープは世代交代に失敗した感じがしますね…",
-      "user": "メガピクセル",
-      "time": "2026-07-05T11:35:36.000Z",
-      "url": "https://x.com/xrmj10ardj1/status/2073732524090728952",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "批判弱"
-    },
-    {
-      "text": "カープ見ながらスシロー出前( *¯ 口¯*)ﾅｰ( *¯ з¯*)ｳｰ",
-      "user": "Kazuma",
-      "time": "2026-07-05T11:35:34.000Z",
-      "url": "https://x.com/NERV0623/status/2073732515341508934",
-      "targetType": "なし",
-      "target": null,
-      "topic_broad": null,
-      "sentiment": "中立"
-    },
-    {
-      "text": "野間はベテランだろ。相変わらずそんなプレーしてたら若手に示しがつかんだろ。だからカープは弱いんだよ。",
-      "user": "ポメラニアンFC",
-      "time": "2026-07-05T11:35:04.000Z",
-      "url": "https://x.com/junjujuwar/status/2073732388316938551",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "守備",
+      "text": "一発ある代打やのに、盗塁させて出番を強制終了させる新井。\n俊介が盗塁で金本の連続出場止めたとき新井は阪神におったもんな。\nそれが印象に残ったままなんやろな。\nありがとう。俊介。\n#広島カープ",
+      "user": "虎えもん",
+      "time": "2026-07-05T12:02:49.000Z",
+      "url": "https://x.com/torae_mon/status/2073739373355659371",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
       "sentiment": "批判強"
     },
     {
-      "text": "ランニングホームランどういうことだと思ったらサトテルだった\nカープ野間選手の後逸と悪送球でホームまで帰ってきたから実質か…2失策は悪い流れ繋がったな",
-      "user": "ドミニカの怪人　ドミンゴ39",
-      "time": "2026-07-05T11:34:52.000Z",
-      "url": "https://x.com/LMK_Iris/status/2073732339499516296",
-      "targetType": "選手",
-      "target": "野間",
-      "topic_broad": "失策",
+      "text": "カープくん走らんでも\nファビアンに大きいの期待したら\nよかったのに",
+      "user": "永遠のロマン砲",
+      "time": "2026-07-05T12:02:48.000Z",
+      "url": "https://x.com/roman_egoshi/status/2073739370834838008",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
       "sentiment": "批判弱"
     },
     {
-      "text": "火曜から横浜と金曜からはカープとの試合か\n負けられないね",
-      "user": "ココア",
-      "time": "2026-07-05T11:34:41.000Z",
-      "url": "https://x.com/cocoa74430/status/2073732292602904830",
+      "text": "カープくん有能やな",
+      "user": "明石エリア個人店マリｱﾗﾌｫｰオーナーセラピスト",
+      "time": "2026-07-05T12:02:48.000Z",
+      "url": "https://x.com/gohoushi_S_/status/2073739368880324736",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "応援弱"
     },
     {
-      "text": "坂倉ファーストだと矢野ショートにするしかないから今シーズンのカープは打てないんだから佐藤モンテロファースト入れて坂倉サードショート小園にするしかないでしょ！矢野がもう少し打ってくれたら話しは別だけど…",
-      "user": "いもにぃ",
-      "time": "2026-07-05T11:33:36.000Z",
-      "url": "https://x.com/FC8Pa3QyZxSqsQS/status/2073732022263251132",
-      "targetType": "首脳陣",
-      "target": "矢野",
-      "topic_broad": "スタメン",
+      "text": "愛ちゃん\nカープ\n佐藤のタイムリーヒットで\n3ー5\n８回表終了\n辰見アウトになっちゃったね！最後まで粘り見せて\nほしいね(^-^)",
+      "user": "石井教洋",
+      "time": "2026-07-05T12:02:40.000Z",
+      "url": "https://x.com/KdKst2oq2FS8Pdw/status/2073739333815931360",
+      "targetType": "選手",
+      "target": "佐藤啓",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "おっ、岩崎が投げてるやん\n\nかなり降ったから阪神園芸さんも大変ね\n\n8回表\n阪神広島　5-3\n\n#阪神タイガース \n#広島カープ \n#阪神甲子園球場",
+      "user": "セニョリータ",
+      "time": "2026-07-05T12:02:35.000Z",
+      "url": "https://x.com/annann20102/status/2073739313871995286",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "メジャーやサッカー並みにせめて各ベース周りは色々な角度からビデオ撮影した方が良いかと\nちゃんと映ってないから判定通りじゃ、何のためのリクエストなのか？\n#カープ",
+      "user": "カープ応援@東京_今季こそ！",
+      "time": "2026-07-05T12:02:34.000Z",
+      "url": "https://x.com/lcOJwY8oI64GGCi/status/2073739312261476744",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
       "sentiment": "批判弱"
     },
     {
-      "text": "7回表速報　阪神5-2広島\n7月5日(日)#阪神タイガース 対 #広島東洋カープ  ＠ #甲子園 球場\nカープ打者代打モンテロ:左中間にタイムリーツーベースヒット\n#hanshin #熱覇 #NanoBananaPro #4コマ漫画 #速報 #tigers",
-      "user": "進撃の阪神｜AI４コマ漫画",
-      "time": "2026-07-05T11:33:32.000Z",
-      "url": "https://x.com/Good_hanshin/status/2073732002579382331",
+      "text": "野間ちゃん⋯\n\n#カープ\n#carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-07-05T12:02:32.000Z",
+      "url": "https://x.com/CARP_DAISKI/status/2073739303453425882",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "投手代わってから着実に1点ずつ取られてるの勝ちパの信頼感失ってるの分かってる？\nこれ接戦やったら糞試合やで\nまだ分からへんけどカープ9回表別人なるから\n#阪神タイガース",
+      "user": "K虎徹",
+      "time": "2026-07-05T12:02:26.000Z",
+      "url": "https://x.com/IjfoElxS638dUub/status/2073739278560162267",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "継投",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "単独スチールか？\nサインか？\nランナー3塁だから投げないと思ったんだろうね。\nカープ残念！\nタイガースとしてはまた岩崎が打たれたので、これで頼りになるリリーフは工藤、木下、及川、ドリスだけになったね。\n#タイガース\n#カープ",
+      "user": "まーやん",
+      "time": "2026-07-05T12:02:24.000Z",
+      "url": "https://x.com/mayan39sai/status/2073739266925146554",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "中立"
     },
     {
-      "text": "7月の店舗予選とチャレカしか今の環境通用しないなら、難しく考えずに阪神と楽天握っとけばいいかなって結論になった()\n\nカープとホークスは9月の新弾出てからその先の大会に向けてしっかり組みます\n\n前の環境が9ヶ月と長かったから沢山考えたけど、現環境3ヶ月で終わりだしなぁ……",
-      "user": "こんちくわ",
-      "time": "2026-07-05T11:33:32.000Z",
-      "url": "https://x.com/shige_unkcncn/status/2073732002147385678",
+      "text": "いつもカープってなんで後半で守備一気に変えるの",
+      "user": "白南風",
+      "time": "2026-07-05T12:02:23.000Z",
+      "url": "https://x.com/SirahaeTeitoku/status/2073739262382780478",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "いくら辰見でもグラウンドコンディションが悪い中で足使うのは難しいよな\n#カープ",
+      "user": "021 Galette",
+      "time": "2026-07-05T12:02:15.000Z",
+      "url": "https://x.com/Galette021/status/2073739229021315085",
+      "targetType": "選手",
+      "target": "辰見",
+      "topic_broad": "走塁",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "達川さんをCMに起用するイヴァンカ、\n\n逆に商品の効果が嘘っぽくならない？\n球界の詐欺師だけに。\n\n#広島カープ",
+      "user": "やきものがかり◢",
+      "time": "2026-07-05T12:02:09.000Z",
+      "url": "https://x.com/1r8h6jhte4exznz/status/2073739206875336758",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "元広島カープの長内孝さん\n\nhttps://youtu.be/cUlLGK2na8s",
+      "user": "あきちゃんRearDrive",
+      "time": "2026-07-05T12:02:07.000Z",
+      "url": "https://x.com/HOhJCOaqGvSjlFY/status/2073739197358452797",
       "targetType": "なし",
       "target": null,
       "topic_broad": null,
       "sentiment": "中立"
+    },
+    {
+      "text": "スズキのCarplay。車でカープ聴くのに使えそう\n\n【送料無料】スズキ 互換品 ワゴンR Carplay カープレイ HDMI ap",
+      "user": "赤ペン担当 ひろた",
+      "time": "2026-07-05T12:02:00.000Z",
+      "url": "https://x.com/hirotaakapen/status/2073739166941077926",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "あぁ…タイミング的にはアウトだったもんなぁ…。\nでも辰見くんが戻ってきてうれしいよ。\n\n#カープ\n#阪神",
+      "user": "ぽん。",
+      "time": "2026-07-05T12:01:56.000Z",
+      "url": "https://x.com/pon1698/status/2073739150881337727",
+      "targetType": "選手",
+      "target": "辰見",
+      "topic_broad": "走塁",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "( ≧∀≦)ノ はんげき！\n7番佐藤啓選手、ナイスタイムリー！\n\n宮島さんの神主が\nおみくじ引いて申すには\nきょうもカープは\nかーち！かーち！かーち！勝ち！\n\nばんざーい！ばんざーい！\nばんざーい！(*^▽^)/★*☆♪\n\n神5－3広（8回表）",
+      "user": "コイピカ！＠弱気は最大の敵！",
+      "time": "2026-07-05T12:01:41.000Z",
+      "url": "https://x.com/KOIPIKA_25/status/2073739087278977441",
+      "targetType": "選手",
+      "target": "佐藤啓",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "アウト変わらず。反撃ムードにこれは痛い\n\n#カープ\n#carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-07-05T12:01:37.000Z",
+      "url": "https://x.com/CARP_DAISKI/status/2073739070791184576",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "2点取りたいのわかるけど9回ではないんだから焦らなくとも…辰見出すのはいいとして、一塁からでもホーム狙える打球もありえるわけだし。\n\n#カープ",
+      "user": "しゅん弾き語り（Lv18)",
+      "time": "2026-07-05T12:01:35.000Z",
+      "url": "https://x.com/Shun12274/status/2073739061668597835",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
     }
   ]
 }
