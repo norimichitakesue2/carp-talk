@@ -1,0 +1,808 @@
+{
+  "generatedAt": "2026-07-05T13:18:12.617Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 58,
+  "classifiedCount": 58,
+  "clusterCount": 11,
+  "bubbleCount": 11,
+  "summary": "前田のエース級の活躍が評価される一方、野間のエラーや37番の守備ミスに批判が集中している。",
+  "bubbles": [
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "失策",
+      "topic_label": "野間エラー",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/carp_buun/status/2073755525331001439",
+        "https://x.com/ren_fight/status/2073755201442631903"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ野間〝痛恨〟決勝3点Wエラー。ファビ6号！坂倉猛打賞1打点！佐藤啓2安打1打点！床田5回5失点。辰見盗塁死。大盛走塁死。ミス連発で5位転落【広島4-6阪神/試合結果】 carp-matome.b",
+          "user": "かーぷぶーん⊂( ●▲●)⊃",
+          "time": "2026-07-05T13:07:00.000Z"
+        },
+        {
+          "text": "今日のカープ 野間がエラーしなかったら勝ってた #カープ",
+          "user": "とうもろこし(あさプロ)",
+          "time": "2026-07-05T13:05:43.000Z"
+        }
+      ]
+    },
+    {
+      "target": "床田",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "守備ボロボロ",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/koikoi3337/status/2073756296084647936"
+      ],
+      "sampleTexts": [
+        {
+          "text": "雨天カープちゃん守備ボロボロ負け 現場検証再来！？ 身体能力が高いのに野球脳がアレな 選手(推し) 最後まで何度もカメラに抜かれ スコアボードのエラーも映され 床ちゃん(推し)が負け投手… 今季ずーっ",
+          "user": "あい(プロ野球専用垢)",
+          "time": "2026-07-05T13:10:04.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "投手野間の不運",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/hnagayama/status/2073755954802540982"
+      ],
+      "sampleTexts": [
+        {
+          "text": "今日のカープの負け投手は野間です。あれは床ちゃん可哀想だわ... 全般的にカープはアンラッキーだったけど、この2年ぐらいのタイガース相手に点が取れない感じは無くなってたから、それは良かったかも",
+          "user": "H. Nagayama",
+          "time": "2026-07-05T13:08:42.000Z"
+        }
+      ]
+    },
+    {
+      "target": "前田",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "エース級の活躍",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/merkatz42963/status/2073755673108828336"
+      ],
+      "sampleTexts": [
+        {
+          "text": "実際まだ2試合しっかり投げただけだが、今のカープ先発陣に入ってもエース張れそうなマエケンは流石やね。",
+          "user": "bucock",
+          "time": "2026-07-05T13:07:35.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "喝が必要",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/8b5UNz9iBRuhevt/status/2073755553499840787"
+      ],
+      "sampleTexts": [
+        {
+          "text": "まけほ 喝がいくつもありましたね ヤクルト戦3連勝必須でお願いいたします #カープ #広島 #新井",
+          "user": "ひろ",
+          "time": "2026-07-05T13:07:07.000Z"
+        }
+      ]
+    },
+    {
+      "target": "ファビアン",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "走者一掃ホームラン",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/kazemero/status/2073754868272243121"
+      ],
+      "sampleTexts": [
+        {
+          "text": "まあ、普通なら1-6で終わるところ、カープにしてはよく詰め寄った方じゃまいか。。 走者一掃ランニングホームランが痛すぎ。。 #カープ #広島 #ファビアン #反撃も",
+          "user": "かぜめろ☆",
+          "time": "2026-07-05T13:04:23.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "スタメン起用疑問",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/shpb_hallelujah/status/2073754716983759132"
+      ],
+      "sampleTexts": [
+        {
+          "text": "そもそも野間をスタメンで使う理由がよく分からん 今日は野間以外でも守備が酷かった #広島東洋カープ #カープ",
+          "user": "LAND-HO",
+          "time": "2026-07-05T13:03:47.000Z"
+        }
+      ]
+    },
+    {
+      "target": "37番",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "守備ミス",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/kgr8jKEGkugoMMA/status/2073754496707318022"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープファンの皆様、今夜は負けホ〜フォ〜です。負けのせいにするのは、 いいたくないのですが、言わせてください。5回裏、あの守備がなければ、 後ろにこぼさなければ、きっちり返球 していければ。37番は2",
+          "user": "にんじゃりばんばん",
+          "time": "2026-07-05T13:02:55.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "失策",
+      "topic_label": "喫煙と失策",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/arenpav2/status/2073754089222266955"
+      ],
+      "sampleTexts": [
+        {
+          "text": "野間とか大盛だけじゃなく小園とか中心選手もソンビ煙草やってるんじゃねえか エラーや最後の走塁ミスもプロとは思えんな #広島カープ",
+          "user": "ラパンパラ@サカ豚32位敗滅",
+          "time": "2026-07-05T13:01:18.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "戦力外評価",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/HumanReading/status/2073753714243080391"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ野間のファンには悪いけどないわ。 カープファンは、野間のことは無視でええよ。おってもおらんでも今のカープには対して影響ない。 野間らしいとか、イジられ野間とかもうそんな投稿もせんでええと思うで、",
+          "user": "青い閃光",
+          "time": "2026-07-05T12:59:48.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "失策",
+      "topic_label": "ボーンヘッド",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/yaochyo_/status/2073753502384636386"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープファンなら分かるはず 野間はボーンヘッドしすぎ 勝てた試合落とすな",
+          "user": "ヤーマ@ハマらせ屋の鯉党",
+          "time": "2026-07-05T12:58:58.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "user": "もみじうなぎ",
+      "text": "野間さんもミノルも猛省してるはず。 とにかくにヤクルトに３勝を掲げて また応援するぞ！ ガンバレ！カープ！",
+      "time": "2026-07-05T13:10:23.000Z",
+      "url": "https://x.com/kote2neko/status/2073756376732676271",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "かぜめろ☆",
+      "text": "調子の悪い３位ヤクルトの影も、、見えなくなってきたやな。。 #カープ #広島 #Bクラス定着",
+      "time": "2026-07-05T13:10:14.000Z",
+      "url": "https://x.com/kazemero/status/2073756340577792135",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "あい(プロ野球専用垢)",
+      "text": "雨天カープちゃん守備ボロボロ負け 現場検証再来！？ 身体能力が高いのに野球脳がアレな 選手(推し) 最後まで何度もカメラに抜かれ スコアボードのエラーも映され 床ちゃん(推し)が負け投手… 今季ずーっと戦犯として叩かれるだろうなぁはぁ…",
+      "time": "2026-07-05T13:10:04.000Z",
+      "url": "https://x.com/koikoi3337/status/2073756296084647936",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "投球",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "デビューしました",
+      "text": "プロ野球選手なんて言えないプレー お金を頂けるプレーではない 酷すぎる #即二軍 #プロ野球 #プロ野球選手名のるのが恥ずかしい #阪神 #広島 #カープ #タイガース",
+      "time": "2026-07-05T13:09:55.000Z",
+      "url": "https://x.com/9YSis7ti6g63vDE/status/2073756257912315953",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "user": "キンキンちゃんねる",
+      "text": "【MLB THE SHOW26】俺のピンポイントを見てくれ座礁【MLB版プロスピ】【エンゼルス・カープファンです】 youtube.com/live より @YouTube より",
+      "time": "2026-07-05T13:09:53.000Z",
+      "url": "https://x.com/T__KINKIN/status/2073756251495006660",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ICE",
+      "text": "これはマジでそうだと思う 逆に善悪は別として広島県でカープが地元メディアに取り上げられまくるのもDAZN対象外にしてまで地上波に寄せてるから",
+      "time": "2026-07-05T13:09:47.000Z",
+      "url": "https://x.com/ICE8088714/status/2073756226564112727",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "麦愛好家",
+      "text": "もう阪神のミーティングにカープも混ぜて貰ったらええやん",
+      "time": "2026-07-05T13:09:42.000Z",
+      "url": "https://x.com/b3124857719657/status/2073756203495329943",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "パロット@ドラ垢",
+      "text": "いや〜カープファンのひなたさん面白かったわ 先週以上にブチギレる試合になるとか",
+      "time": "2026-07-05T13:09:41.000Z",
+      "url": "https://x.com/uidkS1TDQf63673/status/2073756201616282049",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "CHICHI",
+      "text": "#前川右京 のHRを含む6点を、先発 #村上頌樹 から4人の継投で守り #広島カープ に勝利。それにしても #中野拓夢 の守備は素晴らしかったですね。村上を助けました。村上7勝目、#ドリス 11S目、前川3号ソロが出ています。#阪神タイガース #阪神 #タイガース #hanshin #tigers #タイガースガールズ",
+      "time": "2026-07-05T13:09:31.000Z",
+      "url": "https://x.com/Chichi_0914/status/2073756157198696958",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ニドケイ~ NiDOK ~",
+      "text": "カープ！カープ！カープ広島！",
+      "time": "2026-07-05T13:09:29.000Z",
+      "url": "https://x.com/kiitsu412_K/status/2073756150496215158",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "CHICHI",
+      "text": "#前川右京 のHRを含む6点を、先発 #村上頌樹 から4人の継投で守り #広島カープ に勝利。それにしても #中野拓夢 の守備は素晴らしかったですね。村上を助けました。村上7勝目、#ドリス 11S目、前川3号ソロが出ています。#阪神タイガース #阪神 #タイガース #hanshin #tigers #タイガースガールズ #Naco",
+      "time": "2026-07-05T13:08:57.000Z",
+      "url": "https://x.com/Chichi_0914/status/2073756017125663227",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "H. Nagayama",
+      "text": "今日のカープの負け投手は野間です。あれは床ちゃん可哀想だわ... 全般的にカープはアンラッキーだったけど、この2年ぐらいのタイガース相手に点が取れない感じは無くなってたから、それは良かったかも",
+      "time": "2026-07-05T13:08:42.000Z",
+      "url": "https://x.com/hnagayama/status/2073755954802540982",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "投球",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "Ｊ・ＳＵＧＩ",
+      "text": "バファローズ紅林 ３打数１安打 カープ二俣 出場せず ファイターズ奈良間 守備のみ",
+      "time": "2026-07-05T13:08:41.000Z",
+      "url": "https://x.com/SUGIJ/status/2073755948192272856",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "CHICHI",
+      "text": "#前川右京 のHRを含む6点を、先発 #村上頌樹 から4人の継投で守り #広島カープ に勝利。それにしても #中野拓夢 の守備は素晴らしかったですね。村上を助けました。村上7勝目、#ドリス 11S目、前川3号ソロが出ています。#阪神タイガース #阪神 #タイガース #hanshin #tigers #タイガースガールズ",
+      "time": "2026-07-05T13:08:19.000Z",
+      "url": "https://x.com/Chichi_0914/status/2073755855326269516",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "CHICHI",
+      "text": "#前川右京 のHRを含む6点を、先発 #村上頌樹 から4人の継投で守り #広島カープ に勝利。それにしても #中野拓夢 の守備は素晴らしかったですね。村上を助けました。村上7勝目、#ドリス 11S目、前川3号ソロが出ています。#阪神タイガース #阪神 #タイガース #hanshin #tigers #タイガースガールズ",
+      "time": "2026-07-05T13:07:46.000Z",
+      "url": "https://x.com/Chichi_0914/status/2073755719422370236",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "bucock",
+      "text": "実際まだ2試合しっかり投げただけだが、今のカープ先発陣に入ってもエース張れそうなマエケンは流石やね。",
+      "time": "2026-07-05T13:07:35.000Z",
+      "url": "https://x.com/merkatz42963/status/2073755673108828336",
+      "targetType": "選手",
+      "target": "前田",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "user": "赤ヘルかりん",
+      "text": "あげ太くんのカープキーホルダー ええ酒飲めそうじゃ、笑った おしゃべり唐揚げ あげ太くん カープ ええ酒飲めそうじゃ アクリルキーホルダー",
+      "time": "2026-07-05T13:07:09.000Z",
+      "url": "https://x.com/akarinkarp82/status/2073755565436600593",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "CHICHI",
+      "text": "#前川右京 のHRを含む6点を、先発 #村上頌樹 から4人の継投で守り #広島カープ に勝利。それにしても #中野拓夢 の守備は素晴らしかったですね。村上を助けました。村上7勝目、#ドリス 11S目、前川3号ソロが出ています。#阪神タイガース #阪神 #タイガース #hanshin #tigers #タイガースガールズ #Naco",
+      "time": "2026-07-05T13:07:07.000Z",
+      "url": "https://x.com/Chichi_0914/status/2073755555739607502",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ひろ",
+      "text": "まけほ 喝がいくつもありましたね ヤクルト戦3連勝必須でお願いいたします #カープ #広島 #新井",
+      "time": "2026-07-05T13:07:07.000Z",
+      "url": "https://x.com/8b5UNz9iBRuhevt/status/2073755553499840787",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "ayano",
+      "text": "カープの公式アカウント、開設されたもののスタメンとか試合経過のポストがまったくないしそっちは相変わらず大本営にお任せなんかしら。試行錯誤なんかな。 #carp",
+      "time": "2026-07-05T13:07:04.000Z",
+      "url": "https://x.com/yuzukoikoi/status/2073755544125645301",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "かーぷぶーん⊂( ●▲●)⊃",
+      "text": "カープ野間〝痛恨〟決勝3点Wエラー。ファビ6号！坂倉猛打賞1打点！佐藤啓2安打1打点！床田5回5失点。辰見盗塁死。大盛走塁死。ミス連発で5位転落【広島4-6阪神/試合結果】 carp-matome.blog.jp #カープ #阪神 #試合結果",
+      "time": "2026-07-05T13:07:00.000Z",
+      "url": "https://x.com/carp_buun/status/2073755525331001439",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "失策",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "piyorinkuma",
+      "text": "カープ坊や抱っこちゃん",
+      "time": "2026-07-05T13:06:40.000Z",
+      "url": "https://x.com/piyorinkuma/status/2073755440912199898",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "CHICHI",
+      "text": "#前川右京 のHRを含む6点を、先発 #村上頌樹 から4人の継投で守り #広島カープ に勝利。それにしても #中野拓夢 の守備は素晴らしかったですね。村上を助けました。村上7勝目、#ドリス 11S目、前川3号ソロが出ています。 #阪神タイガース #阪神 #タイガース #hanshin #tigers #とらほー #熱覇",
+      "time": "2026-07-05T13:06:02.000Z",
+      "url": "https://x.com/Chichi_0914/status/2073755283101511747",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "とうもろこし(あさプロ)",
+      "text": "今日のカープ 野間がエラーしなかったら勝ってた #カープ",
+      "time": "2026-07-05T13:05:43.000Z",
+      "url": "https://x.com/ren_fight/status/2073755201442631903",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "失策",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "HR",
+      "text": "悪天候にしても両チームとも ミスが多かったですね カープは失点に繋がってしまったのが もったいなかったです",
+      "time": "2026-07-05T13:05:39.000Z",
+      "url": "https://x.com/manrui14hr/status/2073755187160957429",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "∠ポッシ",
+      "text": "本命 ヒメグマorリングマorガチグマ 対抗 マメパト族、ポッポ族 大穴 ヒスイジュナイパー（3本の矢） ギャラドス（カープだからないか） ベトベトン（色だけ） パールル（牡蠣）",
+      "time": "2026-07-05T13:05:39.000Z",
+      "url": "https://x.com/sigumahiroshima/status/2073755185437122569",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "yui大阪ニューハーフ競馬タイガース（趣味垢）",
+      "text": "5日 続き↓甲子園 広島カープ戦、サトテルがプロ初１０度目猛打賞 #阪神タイガース #佐藤輝明",
+      "time": "2026-07-05T13:05:08.000Z",
+      "url": "https://x.com/pakapaka_k/status/2073755054096765147",
+      "targetType": "選手",
+      "target": "佐藤",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "user": "ふぃふす",
+      "text": "三宮まで戻ったらタイガースファンとカープファンに挟まれるオリファン（）",
+      "time": "2026-07-05T13:05:00.000Z",
+      "url": "https://x.com/sinkaisoku2000/status/2073755023151141211",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "てんごくno胡桃",
+      "text": "文春のせいで人生狂った人どのくらいいるのかしら？ カープの羽月の話 芸能人や政治家の不倫の話 こういうのはまあダメなことだから出されても仕方ないとはおもう でも佐藤二朗さんのはなんだかなぁ そもそも、文春は社会に対して必要なの？",
+      "time": "2026-07-05T13:04:47.000Z",
+      "url": "https://x.com/tengokunokurumi/status/2073754967488569743",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "独我",
+      "text": "サンフレッチェ新スタジアム収支が初公開…！カープと「差」がありすぎた。 youtu.be @YouTube より",
+      "time": "2026-07-05T13:04:34.000Z",
+      "url": "https://x.com/z5wtroMsPt9540/status/2073754914497626391",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "長追暇",
+      "text": "今日のカープの試合軽く見たけど、この状態の相手にヤクルト負け越したらまじでえぐいぞ。",
+      "time": "2026-07-05T13:04:31.000Z",
+      "url": "https://x.com/nagaoka_ys7/status/2073754901667258856",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "かぜめろ☆",
+      "text": "まあ、普通なら1-6で終わるところ、カープにしてはよく詰め寄った方じゃまいか。。 走者一掃ランニングホームランが痛すぎ。。 #カープ #広島 #ファビアン #反撃も",
+      "time": "2026-07-05T13:04:23.000Z",
+      "url": "https://x.com/kazemero/status/2073754868272243121",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "ホームラン",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "米重和臣",
+      "text": "カープ、負けた…。けど、今までと違う。きちんと最後まで抵抗出来ていた。これから反撃開始じゃ〜！ #カープ",
+      "time": "2026-07-05T13:04:23.000Z",
+      "url": "https://x.com/VLekJ6zZCc76201/status/2073754865294332069",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "Hideki@無駄に〇〇",
+      "text": "野球もやるよ 「ポケモンベースボールフェスタ2026 30年の想いをボールに込めて」 shop.carp.co.jp カープはサンリオのユニもあったよ",
+      "time": "2026-07-05T13:04:13.000Z",
+      "url": "https://x.com/mika_hyde12/status/2073754826220212344",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "としMåね",
+      "text": "今日の神宮の感想としては、燕と星と鯉で3位争いになりそうだなと思いました エンカーナシオンがかなり良さそうなので、カープは栗林の復帰とかでどれくらいいけるかかな",
+      "time": "2026-07-05T13:04:13.000Z",
+      "url": "https://x.com/toshi_cmj/status/2073754824240435214",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "離脱・復帰",
+      "sentiment": "中立"
+    },
+    {
+      "user": "Dark Night",
+      "text": "二軍に行って頭冷やしてこいや フッ #Carp #カープ",
+      "time": "2026-07-05T13:03:50.000Z",
+      "url": "https://x.com/PVCM5100/status/2073754729965052008",
+      "targetType": "選手",
+      "target": null,
+      "topic_broad": "起用・スタメン",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "LAND-HO",
+      "text": "そもそも野間をスタメンで使う理由がよく分からん 今日は野間以外でも守備が酷かった #広島東洋カープ #カープ",
+      "time": "2026-07-05T13:03:47.000Z",
+      "url": "https://x.com/shpb_hallelujah/status/2073754716983759132",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "さーさん",
+      "text": "ベイスターズのスイープは、4月17〜19日のカープ戦(マツダスタジアム)(5-1、7-2、2-0)以来です。",
+      "time": "2026-07-05T13:03:41.000Z",
+      "url": "https://x.com/Birdy_Saasan/status/2073754693092958312",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ぽいふる",
+      "text": "わぁお！まけほじゃ まあでも去年まで手も足も出ん！ 完敗！って感じだったけど、今年は試合になっとる #カープ",
+      "time": "2026-07-05T13:03:32.000Z",
+      "url": "https://x.com/poifull097/status/2073754655063249049",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "高木燕一郎二世",
+      "text": "明後日からカープ戦ですが、七夕のカープ戦はあの悪夢以来です この流れでこのシチュエーションは嫌な予感しかしない",
+      "time": "2026-07-05T13:03:30.000Z",
+      "url": "https://x.com/Miyabi2896__2/status/2073754645374358010",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "にんじゃりばんばん",
+      "text": "カープファンの皆様、今夜は負けホ〜フォ〜です。負けのせいにするのは、 いいたくないのですが、言わせてください。5回裏、あの守備がなければ、 後ろにこぼさなければ、きっちり返球 していければ。37番は2軍に練習して。 ではでは。",
+      "time": "2026-07-05T13:02:55.000Z",
+      "url": "https://x.com/kgr8jKEGkugoMMA/status/2073754496707318022",
+      "targetType": "選手",
+      "target": "37番",
+      "topic_broad": "守備",
+      "sentiment": "批判強"
+    },
+    {
+      "user": "ryokucha＠からっぽ",
+      "text": "清水建設事件の後に カープファンが自主的に グラウンドで 調査開始してたからなw セルフ野間みんな真似してた （たまたまグラウンド解放の日）",
+      "time": "2026-07-05T13:02:23.000Z",
+      "url": "https://x.com/ryokucha33/status/2073754363999531331",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "tsubasa",
+      "text": "カープはん… 攻守でありえないミス連発やないか…",
+      "time": "2026-07-05T13:01:53.000Z",
+      "url": "https://x.com/fi234dr792/status/2073754239571276135",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "球場前/坂本可自間",
+      "text": "雨に振り回されたカープ 2点差に追い上げるも、ミスも目立ち またもや3連勝ならず… （雨のエフェクト選ぶの時間かかった…） #carp #ｽﾋﾟｷ",
+      "time": "2026-07-05T13:01:35.000Z",
+      "url": "https://x.com/front_of_bp/status/2073754163474018406",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ラパンパラ@サカ豚32位敗滅",
+      "text": "野間とか大盛だけじゃなく小園とか中心選手もソンビ煙草やってるんじゃねえか エラーや最後の走塁ミスもプロとは思えんな #広島カープ",
+      "time": "2026-07-05T13:01:18.000Z",
+      "url": "https://x.com/arenpav2/status/2073754089222266955",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "失策",
+      "sentiment": "批判強"
+    },
+    {
+      "user": "麦わらたまたん@豆味噌",
+      "text": "広島カープは武闘派だなあ（震え声）",
+      "time": "2026-07-05T13:01:16.000Z",
+      "url": "https://x.com/misotram/status/2073754081034956826",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ニドケイ~ NiDOK ~",
+      "text": "広島カープ",
+      "time": "2026-07-05T13:01:00.000Z",
+      "url": "https://x.com/kiitsu412_K/status/2073754014303539476",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "はーぶ",
+      "text": "カープのファンクラブ先行で、バンテリンドームの最終戦チケットゲット これで、なにわブルースフェスティバルからのバンテリンのコースが決定",
+      "time": "2026-07-05T13:00:28.000Z",
+      "url": "https://x.com/hurve/status/2073753883067986138",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "さくすけ",
+      "text": "まけほ 野間 のま ノマ 現地で応援して下さった鯉党の皆さん気を付けてお帰り下さい。",
+      "time": "2026-07-05T13:00:25.000Z",
+      "url": "https://x.com/2CK3fzKzooYm4w8/status/2073753868320821320",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "その他",
+      "sentiment": "中立"
+    },
+    {
+      "user": "ichikawa5963",
+      "text": "そうかあ、カープさん負けか プロ野球ニュースで概要知るわ。 現地民お疲れ様でした！",
+      "time": "2026-07-05T13:00:23.000Z",
+      "url": "https://x.com/ichikawa5963/status/2073753860431319121",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "恵海",
+      "text": "とらほー＼(^o^)／ カープ戦勝利！ 前川選手、2試合連続ホームラン素晴らしいわ〜!! #阪神タイガース",
+      "time": "2026-07-05T13:00:16.000Z",
+      "url": "https://x.com/takumihatake/status/2073753831083765886",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "ぼの",
+      "text": "カープってチアいないの？！",
+      "time": "2026-07-05T13:00:12.000Z",
+      "url": "https://x.com/sankoto0820/status/2073753812784050451",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "九州大学野球情報",
+      "text": "長崎商業打線が深沢さん、カープの岡本さんを攻略した令和3年夏の甲子園が懐かしいですね 深沢さんおめでとうございます",
+      "time": "2026-07-05T12:59:58.000Z",
+      "url": "https://x.com/yakyu20170515dk/status/2073753754512625754",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "青い閃光",
+      "text": "カープ野間のファンには悪いけどないわ。 カープファンは、野間のことは無視でええよ。おってもおらんでも今のカープには対して影響ない。 野間らしいとか、イジられ野間とかもうそんな投稿もせんでええと思うで、さすがに。 1番騒がれなくなる方が人間精神的にまいるからね。野間はもうええよ。",
+      "time": "2026-07-05T12:59:48.000Z",
+      "url": "https://x.com/HumanReading/status/2073753714243080391",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "user": "キャスバル",
+      "text": "とらほー ほんま選手お疲れ様 雨で守備も難しかったやろに 阪神の野手は凄い カープは可哀想なくらい ジャイアン、ツバメと上位週間 うん",
+      "time": "2026-07-05T12:59:45.000Z",
+      "url": "https://x.com/casval326/status/2073753703253991435",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "user": "yui大阪ニューハーフ競馬タイガース（趣味垢）",
+      "text": "5日 甲子園 広島カープ戦、阪神タイガース逃げ切り6-4で勝ち 強いが降る悪コンディションの中 、1-1で5回、3連打と相手の失策、前川右京君のソロで一挙4点を勝ち越しなどなど。反撃された後の8回に1点を奪った。村上は6回1失点で7勝目連敗2で止め、久々にトラホ〜",
+      "time": "2026-07-05T12:59:29.000Z",
+      "url": "https://x.com/pakapaka_k/status/2073753635859915010",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "user": "かおり",
+      "text": "腕にカープぼうや！メガホン嬉しいですお疲れさまでした！",
+      "time": "2026-07-05T12:59:02.000Z",
+      "url": "https://x.com/_kao48/status/2073753521531621551",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "user": "ヤーマ@ハマらせ屋の鯉党",
+      "text": "カープファンなら分かるはず 野間はボーンヘッドしすぎ 勝てた試合落とすな",
+      "time": "2026-07-05T12:58:58.000Z",
+      "url": "https://x.com/yaochyo_/status/2073753502384636386",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "失策",
+      "sentiment": "批判強"
+    }
+  ]
+}
