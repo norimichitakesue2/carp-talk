@@ -1,0 +1,475 @@
+{
+  "generatedAt": "2026-07-09T13:05:47.329Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 26,
+  "classifiedCount": 26,
+  "clusterCount": 10,
+  "bubbleCount": 10,
+  "summary": "新井監督の継投失敗と采配判断に批判が集中する一方で、栗林の復帰登板やバント作戦にも議論が広がっている。",
+  "bubbles": [
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "継投失敗",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/yappa_akagasuki/status/2075192321499652518",
+        "https://x.com/WjUUYH3XOVeAMSF/status/2075192088191447461"
+      ],
+      "sampleTexts": [
+        {
+          "text": "継投でノーヒットノーランをやられた残念なカープ\nんで、誰を使わず終わったんだろねと見てみたら……別に見る意味もなかったけどさ\n\nけど、まだマシにはならない新井采配\n\n楽天よりもかなり致命的なダメ政権だ",
+          "user": "れっどさん",
+          "time": "2026-07-09T12:16:19.000Z"
+        },
+        {
+          "text": "よっしゃーノーノー継投\nこれで勘違いした腐れカープの勘違いを少しは正す事が出来ただろうか\nウォルターズとリランソはようやっとる\n赤羽長岡キハダはようやっとらん",
+          "user": "ハーツクライ",
+          "time": "2026-07-09T12:15:23.000Z"
+        }
+      ]
+    },
+    {
+      "target": "栗林",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "復帰登板",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/F3mg6BRILje0ocg/status/2075192187416129785",
+        "https://x.com/u_n_omen/status/2075191717431800036"
+      ],
+      "sampleTexts": [
+        {
+          "text": "いゃー悔しい〜。。。\n\n栗林の復帰登板を勝利で飾りたかったですよね！\n\nしかし、9回ノーヒットながらも逆転のカタチまで持って行けたのは良かったと思います。\n\n明日から中日戦、スワローズ同様カード勝ち越",
+          "user": "ホントはまったり大好きな怠け者",
+          "time": "2026-07-09T12:15:47.000Z"
+        },
+        {
+          "text": "まけほ\n\nノーヒット\n\n栗林6回1失点ナイスピッチング\nリリーフ陣も無失点\n\n切り替えて明日からまた頑張ろう\n\n#カープ",
+          "user": "answer ",
+          "time": "2026-07-09T12:13:55.000Z"
+        }
+      ]
+    },
+    {
+      "target": "栗林",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "バント作戦批判",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/seiko_amoyume/status/2075192344220230044"
+      ],
+      "sampleTexts": [
+        {
+          "text": "まけほー\nノーヒット。勢いなくなった。せっかく辰見くん出たのに走らせずにバント！？勿体ないよ…明日からまた勝っていこう栗林くん誕生日おめでとうまた次も頑張って下さい！\n#carp #カープ #広島",
+          "user": "聖子",
+          "time": "2026-07-09T12:16:24.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "辰見バント起用",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/taku2503924206/status/2075192204688343120"
+      ],
+      "sampleTexts": [
+        {
+          "text": "まぁ辰見出してバントも気に食わない人いるとは思うけど確実にランナーを残して\n（しかも成功すれば得点圏）\n坂倉に回すなら仕方ないかな…と思うけどね\n\n大盛や石原にバントさせたわけでもないし\n（石原はもう",
+          "user": "taku25",
+          "time": "2026-07-09T12:15:51.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "離脱・復帰",
+      "topic_label": "腰の状態確認",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/Zred3pRYOV1L07X/status/2075191973259161793"
+      ],
+      "sampleTexts": [
+        {
+          "text": "負けたー\nノーノーくらったようなもんです\n\n栗林くんにバースデー勝利をさせて\nあげたかったけど…\n\n小園は腰の状態は大丈夫なのかな？\n小園の離脱は本当に困るので\n無理はさせない感じかな\n\n勝ちたかった",
+          "user": "あんこ",
+          "time": "2026-07-09T12:14:56.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "継投",
+      "topic_label": "継投の判断",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/hamarits55/status/2075191845731307697"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープがノーヒットで負けてる\n継投だけど、、、",
+          "user": "ハマドラ",
+          "time": "2026-07-09T12:14:25.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "小園依存",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/SATORABAND/status/2075191825166680179"
+      ],
+      "sampleTexts": [
+        {
+          "text": "小園大丈夫そうでホッとした。\n今日の試合見るとやっぱりカープは小園と坂倉のチームですね。",
+          "user": "記事猫",
+          "time": "2026-07-09T12:14:20.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "采配能力不足",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/dainakamu/status/2075191744141156625"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープの首脳陣がドジャースの首脳陣になったら3位にはなれるよ\n#carp",
+          "user": "なかむら大輔",
+          "time": "2026-07-09T12:14:01.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "継投",
+      "topic_label": "ノーノー負け",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/HumanReading/status/2075191706467885500"
+      ],
+      "sampleTexts": [
+        {
+          "text": "外国人継投で、ノーノーで負けるのは日本プロ野球界でも初めてらしいね。\n\nカープ。マジ汚点作ったじゃん。\n\nその時の指揮官コーチ陣も汚点として記録に残るのは不名誉。\n\nカープといういまだに伝統を重んじる",
+          "user": "青い閃光",
+          "time": "2026-07-09T12:13:52.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "継投",
+      "topic_label": "継投失敗",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/dameyodamedame/status/2075191547889684730"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ、継投でノーノー食らってて草",
+          "user": "ダメ人間",
+          "time": "2026-07-09T12:13:14.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "1点も取れないのは悔しいー\n\nさすがに3日連続のサヨナラとはいかず\n\nあー悔しい\n明日勝つしかねえ\n\n暢仁頼むよ\n\n#カープ",
+      "user": "カープと甲子園好き女子",
+      "time": "2026-07-09T12:16:31.000Z",
+      "url": "https://x.com/carpwomen08/status/2075192371126640864",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "まけほー\nノーヒット。勢いなくなった。せっかく辰見くん出たのに走らせずにバント！？勿体ないよ…明日からまた勝っていこう栗林くん誕生日おめでとうまた次も頑張って下さい！\n#carp #カープ #広島",
+      "user": "聖子",
+      "time": "2026-07-09T12:16:24.000Z",
+      "url": "https://x.com/seiko_amoyume/status/2075192344220230044",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "あれ？\nカープ、ノーノーされたん？",
+      "user": "のぶりん@赤ヘルたまゆら～提督",
+      "time": "2026-07-09T12:16:21.000Z",
+      "url": "https://x.com/noburin563/status/2075192329665921182",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "継投でノーヒットノーランをやられた残念なカープ\nんで、誰を使わず終わったんだろねと見てみたら……別に見る意味もなかったけどさ\n\nけど、まだマシにはならない新井采配\n\n楽天よりもかなり致命的なダメ政権だと思うんだけど、これがお荷物慣れっこ広島東洋カープと思えばいたし方なしなんだなぁ",
+      "user": "れっどさん",
+      "time": "2026-07-09T12:16:19.000Z",
+      "url": "https://x.com/yappa_akagasuki/status/2075192321499652518",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープはノーノーされたのか",
+      "user": "はやし えいじ",
+      "time": "2026-07-09T12:16:09.000Z",
+      "url": "https://x.com/eijiha/status/2075192281901179385",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープ→継投ノーノー献上\nチュニドラ→シーズン4度の1安打完封負け\n\nどっちがヤバい？",
+      "user": "ちょめ",
+      "time": "2026-07-09T12:16:02.000Z",
+      "url": "https://x.com/isowashi3akita/status/2075192250729189490",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "まぁ辰見出してバントも気に食わない人いるとは思うけど確実にランナーを残して\n（しかも成功すれば得点圏）\n坂倉に回すなら仕方ないかな…と思うけどね\n\n大盛や石原にバントさせたわけでもないし\n（石原はもう…）\n\nでも辰見が盗塁成功してたら…とも考えちゃうよな\n\nキハダが凄かった\n\n#carp\n#カープ",
+      "user": "taku25",
+      "time": "2026-07-09T12:15:51.000Z",
+      "url": "https://x.com/taku2503924206/status/2075192204688343120",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "いゃー悔しい〜。。。\n\n栗林の復帰登板を勝利で飾りたかったですよね！\n\nしかし、9回ノーヒットながらも逆転のカタチまで持って行けたのは良かったと思います。\n\n明日から中日戦、スワローズ同様カード勝ち越しを期待しましょうー！！\n\nがんばれカープ\n\n#carp",
+      "user": "ホントはまったり大好きな怠け者",
+      "time": "2026-07-09T12:15:47.000Z",
+      "url": "https://x.com/F3mg6BRILje0ocg/status/2075192187416129785",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "すわほー\nうぉーうぉー\nうぉるちゃん\nすばらしい\nえっ、カープノーヒット⁇\nすばらしい",
+      "user": "たな九郎 パペ九郎",
+      "time": "2026-07-09T12:15:47.000Z",
+      "url": "https://x.com/tanaumakunpape/status/2075192186380116166",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "継投でノーヒットノーランされてしまってくやしい…\n惜しかったね……カープ最後まで諦めない姿をありがとう",
+      "user": "mirai_saku53",
+      "time": "2026-07-09T12:15:28.000Z",
+      "url": "https://x.com/onsi_yataro_san/status/2075192110182232546",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "よっしゃーノーノー継投\nこれで勘違いした腐れカープの勘違いを少しは正す事が出来ただろうか\nウォルターズとリランソはようやっとる\n赤羽長岡キハダはようやっとらん",
+      "user": "ハーツクライ",
+      "time": "2026-07-09T12:15:23.000Z",
+      "url": "https://x.com/WjUUYH3XOVeAMSF/status/2075192088191447461",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "ヤクルト3タテやろなぁと思ったらカープノーヒットて何してんねん",
+      "user": "Azumari",
+      "time": "2026-07-09T12:15:16.000Z",
+      "url": "https://x.com/azumari_gaming/status/2075192056897753529",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "前田の復刻ビジターユニフォーム新品未使用。2002-2006モデルいいな。\n\n広島カープ  Lサイズ 前田 復刻ユニフォーム",
+      "user": "すぼ",
+      "time": "2026-07-09T12:15:06.000Z",
+      "url": "https://x.com/subocarpfan/status/2075192017869520971",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "負けたー\nノーノーくらったようなもんです\n\n栗林くんにバースデー勝利をさせて\nあげたかったけど…\n\n小園は腰の状態は大丈夫なのかな？\n小園の離脱は本当に困るので\n無理はさせない感じかな\n\n勝ちたかったけど\nカード勝ち越せたのは良き\n#カープ",
+      "user": "あんこ",
+      "time": "2026-07-09T12:14:56.000Z",
+      "url": "https://x.com/Zred3pRYOV1L07X/status/2075191973259161793",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "離脱・復帰",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープがノーヒットで惜負しベイスターズへ\n出塁しろ佐野、そして松尾ホームランや",
+      "user": "たぬきsOBa。",
+      "time": "2026-07-09T12:14:50.000Z",
+      "url": "https://x.com/dYSRLyqstj1878/status/2075191948902850899",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "何のんびり歌っとるねん\n\nとりあえず勝てカープ戦で負けて",
+      "user": "朝は玉子かけご飯@春が待ち遠しい",
+      "time": "2026-07-09T12:14:32.000Z",
+      "url": "https://x.com/asahips/status/2075191873703117274",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープがノーヒットで負けてる\n継投だけど、、、",
+      "user": "ハマドラ",
+      "time": "2026-07-09T12:14:25.000Z",
+      "url": "https://x.com/hamarits55/status/2075191845731307697",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "継投",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "小園大丈夫そうでホッとした。\n今日の試合見るとやっぱりカープは小園と坂倉のチームですね。",
+      "user": "記事猫",
+      "time": "2026-07-09T12:14:20.000Z",
+      "url": "https://x.com/SATORABAND/status/2075191825166680179",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープファンはウォルターズのこと舐めすぎや。去年まで中日にいたからウエスタン見てた人なら先発転向してから良くなったこと分かるやろ。今年序盤制球難で良くなかったけどそのまま一軍再昇格するはずないやんか。",
+      "user": "プロ野球ファン",
+      "time": "2026-07-09T12:14:19.000Z",
+      "url": "https://x.com/BcujDc4wni/status/2075191817382023382",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "[生配信]良いことあれば悪いこともあるさ \nhttps://\nyoutube.com/live/ECdY4y0FJ\nuU?si=APYw3DxJcJbPavRu\n… \n@YouTube\nより\n\n#カープ",
+      "user": "今村猛/広島パーソナルジム『R-GYM』",
+      "time": "2026-07-09T12:14:14.000Z",
+      "url": "https://x.com/imamura_takeru/status/2075191798155374771",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープの首脳陣がドジャースの首脳陣になったら3位にはなれるよ\n#carp",
+      "user": "なかむら大輔",
+      "time": "2026-07-09T12:14:01.000Z",
+      "url": "https://x.com/dainakamu/status/2075191744141156625",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "森下のアイスホッケー風TシャツL。完売品か。デザイン変わってて描きたくなってきた。\n\nアイスホッケー風Tシャツ L サイズ 森下暢仁 完売品 広島カープ",
+      "user": "すぼ",
+      "time": "2026-07-09T12:14:00.000Z",
+      "url": "https://x.com/subocarpfan/status/2075191740844089403",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "まけほ\n\nノーヒット\n\n栗林6回1失点ナイスピッチング\nリリーフ陣も無失点\n\n切り替えて明日からまた頑張ろう\n\n#カープ",
+      "user": "answer ",
+      "time": "2026-07-09T12:13:55.000Z",
+      "url": "https://x.com/u_n_omen/status/2075191717431800036",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "外国人継投で、ノーノーで負けるのは日本プロ野球界でも初めてらしいね。\n\nカープ。マジ汚点作ったじゃん。\n\nその時の指揮官コーチ陣も汚点として記録に残るのは不名誉。\n\nカープといういまだに伝統を重んじる球団がそういう記録を作ってしまうのも皮肉よな。",
+      "user": "青い閃光",
+      "time": "2026-07-09T12:13:52.000Z",
+      "url": "https://x.com/HumanReading/status/2075191706467885500",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "継投",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "盛岡の試合の時もそうだったけど、\n実況は中立であってくれ。\nカープ主催だし、解説も元カープだからカープ寄りになるのはわかるけどなんで実況が1番カープ寄りのことばかり話す？\nずっと我慢してたけど、何度も何度も貶めるようなこと言うのは、野球ファンとして不快。",
+      "user": "みらげ@ちなヤク",
+      "time": "2026-07-09T12:13:20.000Z",
+      "url": "https://x.com/XFKjx2oliSAhWpH/status/2075191573500059713",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ、継投でノーノー食らってて草",
+      "user": "ダメ人間",
+      "time": "2026-07-09T12:13:14.000Z",
+      "url": "https://x.com/dameyodamedame/status/2075191547889684730",
+      "targetType": "首脳陣",
+      "target": null,
+      "topic_broad": "継投",
+      "sentiment": "批判弱"
+    }
+  ]
+}
