@@ -4,11 +4,11 @@
   "away_team": "広島",
   "home_team": "中日",
   "away_score": 1,
-  "home_score": 4,
+  "home_score": 6,
   "venue": "バンテリンドームナゴヤ",
   "start_time": "14:00",
   "status": "live",
-  "current_inning": "5回表",
+  "current_inning": "6回表",
   "result_label": "",
   "away_pitcher": "森",
   "home_pitcher": "涌井",
@@ -196,13 +196,13 @@
       0,
       0,
       0,
-      0,
+      2,
       0,
       0,
       0,
       0
     ],
-    "away_hits": 4,
+    "away_hits": 8,
     "away_errors": 0
   },
   "pitchers": [],
@@ -336,7 +336,7 @@
       "name": "菊池",
       "pos": "二",
       "line": 2,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 2,
       "rbi": 0,
@@ -354,7 +354,7 @@
       "name": "ファビアン",
       "pos": "左",
       "line": 3,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -372,7 +372,7 @@
       "name": "坂倉",
       "pos": "三",
       "line": 4,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -511,6 +511,24 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "島内",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -529,6 +547,18 @@
     {
       "name": "菊地",
       "result": "",
+      "outs": 3,
+      "pitches": 29,
+      "hitsAllowed": 4,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 2,
+      "earnedRuns": 2
+    },
+    {
+      "name": "島内",
+      "result": "",
       "outs": 0,
       "pitches": 0,
       "hitsAllowed": 0,
@@ -540,8 +570,8 @@
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-07-11T06:28:17.144Z",
-    "generatedAt": "2026-07-11T06:28:17.155Z",
+    "sourceFetchedAt": "2026-07-11T06:58:37.497Z",
+    "generatedAt": "2026-07-11T06:58:37.508Z",
     "sourceUrl": "https://npb.jp/scores/2026/0711/d-c-12/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大盛,小園,島内,常廣,持丸,森,森浦,矢野,石原,秋山,菊地,菊池,辰見,辻,遠藤,髙"
   }
