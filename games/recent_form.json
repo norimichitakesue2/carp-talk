@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T05:48:00.531Z",
+  "generatedAt": "2026-07-11T06:02:10.720Z",
   "baseDate": "2026-07-12",
   "games": 6,
   "rangeStart": "2026-07-05",
@@ -37,8 +37,8 @@
     }
   },
   "pitcherWorst": {
-    "name": "森下",
-    "summary": "直近1登板 5回 防御率9.00 自責5 被安6 奪三振6 1敗",
+    "name": "森",
+    "summary": "直近1登板 3回 防御率12.00 自責4 被安4 奪三振3",
     "form": {
       "icon": "↓",
       "label": "不調",
@@ -76,36 +76,6 @@
         "cls": "form-hot2"
       },
       "summary": "直近6試合 16打数5安打 .313 OPS.950 1本 3打点 2四球 2三振"
-    },
-    {
-      "name": "ファビアン",
-      "games": 6,
-      "ab": 18,
-      "r": 3,
-      "h": 4,
-      "rbi": 4,
-      "sb": 0,
-      "hr": 3,
-      "k": 5,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 1,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".222",
-      "avg_num": 0.222,
-      "obp": ".222",
-      "slg": ".722",
-      "ops": ".944",
-      "ops_num": 0.944,
-      "form": {
-        "icon": "↑↑",
-        "label": "絶好調",
-        "level": 2,
-        "cls": "form-hot2"
-      },
-      "summary": "直近6試合 18打数4安打 .222 OPS.944 3本 4打点 5三振"
     },
     {
       "name": "佐々木",
@@ -166,6 +136,36 @@
         "cls": "form-hot1"
       },
       "summary": "直近6試合 8打数2安打 .250 OPS.775 2打点 2四球 2三振"
+    },
+    {
+      "name": "ファビアン",
+      "games": 6,
+      "ab": 19,
+      "r": 3,
+      "h": 4,
+      "rbi": 4,
+      "sb": 0,
+      "hr": 3,
+      "k": 5,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".211",
+      "avg_num": 0.211,
+      "obp": ".211",
+      "slg": ".684",
+      "ops": ".895",
+      "ops_num": 0.895,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近6試合 19打数4安打 .211 OPS.895 3本 4打点 5三振"
     },
     {
       "name": "野間",
@@ -470,32 +470,32 @@
     {
       "name": "菊池",
       "games": 6,
-      "ab": 17,
+      "ab": 18,
       "r": 0,
-      "h": 3,
+      "h": 4,
       "rbi": 1,
       "sb": 0,
       "hr": 0,
       "k": 3,
       "bb": 0,
-      "double": 1,
+      "double": 2,
       "triple": 0,
       "single": 2,
       "hbp": 0,
       "sf": 0,
-      "avg": ".176",
-      "avg_num": 0.176,
-      "obp": ".176",
-      "slg": ".235",
-      "ops": ".412",
-      "ops_num": 0.412,
+      "avg": ".222",
+      "avg_num": 0.222,
+      "obp": ".222",
+      "slg": ".333",
+      "ops": ".556",
+      "ops_num": 0.556,
       "form": {
-        "icon": "↓↓",
-        "label": "絶不調",
-        "level": -2,
-        "cls": "form-cold2"
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
       },
-      "summary": "直近6試合 17打数3安打 .176 OPS.412 1打点 3三振"
+      "summary": "直近6試合 18打数4安打 .222 OPS.556 1打点 3三振"
     },
     {
       "name": "大盛",
@@ -915,31 +915,6 @@
       "summary": "直近1登板 2回 防御率18.00 自責4 被安4 奪三振0"
     },
     {
-      "name": "森",
-      "games": 1,
-      "outs": 6,
-      "ip": "2回",
-      "er": 4,
-      "r": 4,
-      "h": 4,
-      "hr": 2,
-      "bb": 2,
-      "k": 1,
-      "pitches": 39,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 18,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近1登板 2回 防御率18.00 自責4 被安4 奪三振1"
-    },
-    {
       "name": "岡本",
       "games": 1,
       "outs": 15,
@@ -988,6 +963,31 @@
         "cls": "form-cold1"
       },
       "summary": "直近1登板 5回 防御率9.00 自責5 被安6 奪三振6 1敗"
+    },
+    {
+      "name": "森",
+      "games": 1,
+      "outs": 9,
+      "ip": "3回",
+      "er": 4,
+      "r": 4,
+      "h": 4,
+      "hr": 2,
+      "bb": 2,
+      "k": 3,
+      "pitches": 54,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 12,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近1登板 3回 防御率12.00 自責4 被安4 奪三振3"
     }
   ]
 }
