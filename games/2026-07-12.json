@@ -8,7 +8,7 @@
   "venue": "バンテリンドームナゴヤ",
   "start_time": "13:30",
   "status": "live",
-  "current_inning": "6回表",
+  "current_inning": "6回裏",
   "result_label": "",
   "away_pitcher": "床田",
   "home_pitcher": "金丸",
@@ -189,7 +189,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 3,
+    "hiroshima_hits": 4,
     "hiroshima_errors": 0,
     "away": [
       1,
@@ -426,7 +426,7 @@
       "name": "佐々木",
       "pos": "右",
       "line": 7,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -481,19 +481,19 @@
     {
       "name": "床田",
       "result": "",
-      "outs": 15,
-      "pitches": 65,
+      "outs": 17,
+      "pitches": 82,
       "hitsAllowed": 2,
       "hrAllowed": 1,
-      "walks": 1,
+      "walks": 2,
       "strikeouts": 4,
       "runs": 1,
       "earnedRuns": 1
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-07-12T06:11:43.517Z",
-    "generatedAt": "2026-07-12T06:11:43.530Z",
+    "sourceFetchedAt": "2026-07-12T06:20:08.112Z",
+    "generatedAt": "2026-07-12T06:20:08.124Z",
     "sourceUrl": "https://npb.jp/scores/2026/0712/d-c-13/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大盛,小園,島内,床田,持丸,森浦,益田,矢野,石原,秋山,菊池,辰見,辻,遠藤,鈴木,髙"
   }
