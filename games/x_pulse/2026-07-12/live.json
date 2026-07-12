@@ -1,0 +1,636 @@
+{
+  "generatedAt": "2026-07-12T05:15:49.494Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 44,
+  "classifiedCount": 44,
+  "clusterCount": 9,
+  "bubbleCount": 9,
+  "summary": "名原の好守備で応援の声が上がる一方、成績低迷への批判も混在し、評価が分かれている。",
+  "bubbles": [
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "ナイスキャッチ",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 4,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "名原ナイス！！ 守備から攻撃に繋げてほしいけど、、、 #carp #カープ",
+          "user": "ひー",
+          "time": "2026-07-12T05:09:17.000Z"
+        },
+        {
+          "text": "ナイス名原 よく取った #名原典彦 #カープ",
+          "user": "さあすん",
+          "time": "2026-07-12T05:09:07.000Z"
+        },
+        {
+          "text": "名原ナイスキャッチ！ そうそうこういうプレー大事 #carp #カープ",
+          "user": "これでいいのだ！",
+          "time": "2026-07-12T05:08:52.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "成績低迷",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 4,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "育成するのと酷使するのは違うと思う 名原らしくないよここ最近 打撃が著しく悪くなってる #カープ",
+          "user": "レレレのレ",
+          "time": "2026-07-12T05:08:53.000Z"
+        },
+        {
+          "text": "この前、100打席以上で３割は本物！言われてたのにー .250切りそうだー #カープ #名原頑張れ",
+          "user": "2 5 8",
+          "time": "2026-07-12T05:07:15.000Z"
+        },
+        {
+          "text": "ポンコツ揃いのカープで唯一の楽しみだった名原の打席もだんだん期待薄になってきたな。お疲れなのかねえ（笑）#carp",
+          "user": "my",
+          "time": "2026-07-12T05:07:04.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "成績低迷",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 2,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "今日こそ一人の投手にノーノ―食らうかも知れんね。名原君も終わったね。魔法が解けた。本当の力が無かったと言う事だ。カープにはこんな選手ばっかりじゃん。つまらん。#carp",
+          "user": "らっきょ",
+          "time": "2026-07-12T05:06:33.000Z"
+        },
+        {
+          "text": "終わったのか？名原？ お前の根性はそんなもんか？ #カープ",
+          "user": "ケンキョ山カンシャの介@7/21・22東京ドーム参戦",
+          "time": "2026-07-12T05:05:36.000Z"
+        }
+      ]
+    },
+    {
+      "target": "床田",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "打線援護不足",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "床田の方が球数が少ないのが唯一の救いだ三回は下位打線から始まるカープ頑張れ床田がホームラン打たないかな",
+          "user": "しげる",
+          "time": "2026-07-12T05:02:38.000Z"
+        },
+        {
+          "text": "ホームラン1本のみですがチュニドラさんの打者たちが気持ちよくバットを振っている。 カープさんは金丸投手なので守備だったりのミスをつけるか？ですね。 床田投手には5回まではなんとか1点で耐えて欲しい。 ",
+          "user": "CASEY AT40 80's FAN",
+          "time": "2026-07-12T05:02:22.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "応援メッセージ",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "名原くーんヽ(´∀`｡)ﾉ ありがとーうヽ(´∀`｡)ﾉ #カープ",
+          "user": "めっちゃゆ",
+          "time": "2026-07-12T05:09:29.000Z"
+        }
+      ]
+    },
+    {
+      "target": "床田",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "フライアウト多い",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "床ちゃん、フライアウト多いから、あと1、2発持っていかれそうな気がする #carp #カープ",
+          "user": "きりたろう",
+          "time": "2026-07-12T05:08:56.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "好守備",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "名原よう取った！！！！！！！！！！！！！！！！ #カープ",
+          "user": "シマリス",
+          "time": "2026-07-12T05:07:54.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "気合い不足",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "#カープ 名原もそろそろ気合いと根性を入れ直さないとまずいかも",
+          "user": "ひらり",
+          "time": "2026-07-12T05:07:31.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "好投期待",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "ナイス小園 カープに流れ来い #カープ #小園海斗",
+          "user": "さあすん",
+          "time": "2026-07-12T05:02:45.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "名原くーんヽ(´∀`｡)ﾉ ありがとーうヽ(´∀`｡)ﾉ #カープ",
+      "user": "めっちゃゆ",
+      "time": "2026-07-12T05:09:29.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "名原ナイス！！ 守備から攻撃に繋げてほしいけど、、、 #carp #カープ",
+      "user": "ひー",
+      "time": "2026-07-12T05:09:17.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "守備",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ナイス名原 よく取った #名原典彦 #カープ",
+      "user": "さあすん",
+      "time": "2026-07-12T05:09:07.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "守備",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープじゃなくて俺のチームですよ",
+      "user": "iron(ここぞの海斗、lunar_mizu）",
+      "time": "2026-07-12T05:08:59.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープ新井監督 #carp #カープ",
+      "user": "シロクマ",
+      "time": "2026-07-12T05:08:59.000Z",
+      "url": "",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "その他",
+      "sentiment": "中立"
+    },
+    {
+      "text": "床ちゃん、フライアウト多いから、あと1、2発持っていかれそうな気がする #carp #カープ",
+      "user": "きりたろう",
+      "time": "2026-07-12T05:08:56.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "育成するのと酷使するのは違うと思う 名原らしくないよここ最近 打撃が著しく悪くなってる #カープ",
+      "user": "レレレのレ",
+      "time": "2026-07-12T05:08:53.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "名原ナイスキャッチ！ そうそうこういうプレー大事 #carp #カープ",
+      "user": "これでいいのだ！",
+      "time": "2026-07-12T05:08:52.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "守備",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "おぉ〜名原選手よぉ〜取ったなぁ #carp #カープ",
+      "user": "Impact Factor",
+      "time": "2026-07-12T05:08:47.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "守備",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "絶対カープ以外にもあるだろうになんで集中攻撃やねん",
+      "user": "鯉男",
+      "time": "2026-07-12T05:08:20.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "Early Saturday evening jaunt to Carp Dori. No one was at the counter so I had my usual seat. Ordered potato salad along with happy hour kimchee. The Sapporo draft pitcher made for even happier times. #土曜日 #居酒屋 #カープ鳥",
+      "user": "Greg",
+      "time": "2026-07-12T05:08:18.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープちゃん、今日勝つよね？？ 先制されてるけど、大丈夫よね…？？ #カープ",
+      "user": "やっちん@カープ",
+      "time": "2026-07-12T05:08:02.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "Veryカープ！RCC カープデーゲーム RCCラジオ #実況中継 #プロ野球 #カープ #広島 おそらく言葉では伝わらない場所で中継を聞いています",
+      "user": "かいらく (Ecstasyではありません) 海洛",
+      "time": "2026-07-12T05:08:00.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "名原よう取った！！！！！！！！！！！！！！！！ #カープ",
+      "user": "シマリス",
+      "time": "2026-07-12T05:07:54.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "守備",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープさん守備良すぎる",
+      "user": "あおねこ",
+      "time": "2026-07-12T05:07:53.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープの守備固い",
+      "user": "包子",
+      "time": "2026-07-12T05:07:42.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "マジでCMの方がカープの攻撃より長かったわw #carp #カープ",
+      "user": "きりたろう",
+      "time": "2026-07-12T05:07:38.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "#カープ 名原もそろそろ気合いと根性を入れ直さないとまずいかも",
+      "user": "ひらり",
+      "time": "2026-07-12T05:07:31.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "現地ではカープの攻撃中はドラファンのトイレタイムなんだけど短すぎてドラゴンズの攻撃までに帰ってこれない #carp",
+      "user": "もりさん",
+      "time": "2026-07-12T05:07:30.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "この前、100打席以上で３割は本物！言われてたのにー .250切りそうだー #カープ #名原頑張れ",
+      "user": "2 5 8",
+      "time": "2026-07-12T05:07:15.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ポンコツ揃いのカープで唯一の楽しみだった名原の打席もだんだん期待薄になってきたな。お疲れなのかねえ（笑）#carp",
+      "user": "my",
+      "time": "2026-07-12T05:07:04.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "金丸夢斗、本当に完封しません？ 好調のバンテリン+今のカープ相手ならできる気がする",
+      "user": "ナガー",
+      "time": "2026-07-12T05:07:02.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "なぜにカープ、こんなに打てないんだろ？？？",
+      "user": "コバ",
+      "time": "2026-07-12T05:06:52.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ ファーム C 5-9 SBで敗戦 1回 前川がゴロの間にランナー生還で先制 さらに田村と林の連打で3点目 同点にされ7回 清水の2点タイムリーで5点目 先発 赤木は5回3失点 継投 河野は逆転満塁被弾と味方の守備ミスが絡み 3回6失点と大炎上 #carp",
+      "user": "鯉党男",
+      "time": "2026-07-12T05:06:44.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "なんかカープの時だけ飛ばないボールでも使われてる？ってレベルでひどい",
+      "user": "のっち　どん底",
+      "time": "2026-07-12T05:06:36.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "今日こそ一人の投手にノーノ―食らうかも知れんね。名原君も終わったね。魔法が解けた。本当の力が無かったと言う事だ。カープにはこんな選手ばっかりじゃん。つまらん。#carp",
+      "user": "らっきょ",
+      "time": "2026-07-12T05:06:33.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "正直、今日は打てる気がしない…。 でも諦めるのはまだ早い とにかく粘って球数を投げさせて、早めに降板させるしかない 流れは一瞬で変わる。 チャンスは必ず来るはずだ #carp #広島カープ",
+      "user": "カムイ軍団長",
+      "time": "2026-07-12T05:06:19.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ザコ打線、今日もノーノー献上の滑り出し #カープ #carp",
+      "user": "テンテン",
+      "time": "2026-07-12T05:06:08.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "今日もノーヒットノーランですか？カープさん",
+      "user": "jun",
+      "time": "2026-07-12T05:05:58.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "終わったのか？名原？ お前の根性はそんなもんか？ #カープ",
+      "user": "ケンキョ山カンシャの介@7/21・22東京ドーム参戦",
+      "time": "2026-07-12T05:05:36.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープの投手陣は特に暑さに弱いな",
+      "user": "マキダ",
+      "time": "2026-07-12T05:05:26.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ホームランが重たい試合になりそうだな #カープ",
+      "user": "シマリス",
+      "time": "2026-07-12T05:05:17.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島東洋カープ VS 中日ドラゴンズ 野球くじ 賭け市場の 最新のオッズを紹介",
+      "user": "ポリスピード",
+      "time": "2026-07-12T05:05:17.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "さぁ、カープ3タテしてくれ",
+      "user": "とおる",
+      "time": "2026-07-12T05:03:58.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今のところ大学野球ににわかすぎるから、カープじゃなくて大学日本代表見るか真剣に悩んでる",
+      "user": "あか",
+      "time": "2026-07-12T05:03:56.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "また先制されてるの… #カープ",
+      "user": "かなこいのぼり",
+      "time": "2026-07-12T05:03:38.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "名原とともに成績が落ち込んでいくカープ",
+      "user": "あらあら@鯉　遮二無二",
+      "time": "2026-07-12T05:03:34.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "しかし毎試合先制されるのって何なん？ #カープ",
+      "user": "ぐんま【軍馬】",
+      "time": "2026-07-12T05:03:10.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "広島東洋低迷ヤク漬けカープさん",
+      "user": "木魚",
+      "time": "2026-07-12T05:03:08.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "北村匠海・吉沢亮・山田裕貴・高橋文哉、大自然のミステリー、北村の家がコイを飼っていたこと、山田の父親がカープにいたことにちなみコイの産卵シーンですね。もちろんM!LKを継ぎ足して9人に出てほしいですね。",
+      "user": "播磨国の鉄道・音楽ファン",
+      "time": "2026-07-12T05:02:55.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#ドベゴンズ と #ばカープ の試合ってペナントに全く関係ない戦いよな #バンテリン",
+      "user": "ともひろ@自転車大好き！",
+      "time": "2026-07-12T05:02:48.000Z",
+      "url": "",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ナイス小園 カープに流れ来い #カープ #小園海斗",
+      "user": "さあすん",
+      "time": "2026-07-12T05:02:45.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "床田の方が球数が少ないのが唯一の救いだ三回は下位打線から始まるカープ頑張れ床田がホームラン打たないかな",
+      "user": "しげる",
+      "time": "2026-07-12T05:02:38.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ホームラン1本のみですがチュニドラさんの打者たちが気持ちよくバットを振っている。 カープさんは金丸投手なので守備だったりのミスをつけるか？ですね。 床田投手には5回まではなんとか1点で耐えて欲しい。 #dragons #carp #バンテリンドーム",
+      "user": "CASEY AT40 80's FAN",
+      "time": "2026-07-12T05:02:22.000Z",
+      "url": "",
+      "targetType": "選手",
+      "target": "床田",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    }
+  ]
+}
