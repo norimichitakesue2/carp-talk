@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-11T20:04:28.433Z",
+  "fetchedAt": "2026-07-12T20:05:08.965Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -10,41 +10,26 @@
   "batters": [
     {
       "name": "末包昇大",
-      "avg": ".204",
-      "games": 58,
-      "pa": 205,
-      "ab": 191,
+      "avg": ".209",
+      "games": 59,
+      "pa": 210,
+      "ab": 196,
       "r": 14,
-      "h": 39,
+      "h": 41,
       "double": 4,
       "triple": 1,
       "hr": 4,
-      "tb": 57,
+      "tb": 59,
       "rbi": 20,
       "sb": 1,
       "bb": 11,
-      "k": 34,
-      "slg": ".298",
-      "obp": ".254",
-      "ops": ".552"
+      "k": 35,
+      "slg": ".301",
+      "obp": ".257",
+      "ops": ".558"
     }
   ],
   "pitchers": [
-    {
-      "name": "河野佳",
-      "era": "2.12",
-      "games": 15,
-      "wins": 4,
-      "losses": 2,
-      "saves": 1,
-      "ip": "63.2",
-      "hitsAllowed": 51,
-      "hrAllowed": 3,
-      "walks": 18,
-      "strikeouts": 37,
-      "runs": 17,
-      "earnedRuns": 15
-    },
     {
       "name": "佐藤柳之介",
       "era": "2.45",
@@ -59,6 +44,21 @@
       "strikeouts": 66,
       "runs": 30,
       "earnedRuns": 21
+    },
+    {
+      "name": "河野佳",
+      "era": "2.53",
+      "games": 16,
+      "wins": 4,
+      "losses": 3,
+      "saves": 1,
+      "ip": "67.2",
+      "hitsAllowed": 57,
+      "hrAllowed": 4,
+      "walks": 21,
+      "strikeouts": 40,
+      "runs": 23,
+      "earnedRuns": 19
     },
     {
       "name": "菊地ハルン",

@@ -1,8 +1,8 @@
 {
-  "fetchedAt": "2026-07-11T20:04:30.266Z",
+  "fetchedAt": "2026-07-12T20:05:10.797Z",
   "sourceUrl": "https://npb.jp/announcement/roster/",
   "note": "NPB公式公示の「広島東洋カープ 出場選手一覧」を直接スクレイプ。試合直前まで更新されないNPB box の roster.html より鮮度高い。",
-  "expectedCount": 30,
+  "expectedCount": 31,
   "players": [
     {
       "pos": "投",
@@ -39,6 +39,12 @@
       "number": "22",
       "fullName": "髙",
       "name": "髙"
+    },
+    {
+      "pos": "投",
+      "number": "26",
+      "fullName": "益田",
+      "name": "益田"
     },
     {
       "pos": "投",
