@@ -3,7 +3,7 @@
   "game_date": "2026-07-12",
   "away_team": "広島",
   "home_team": "中日",
-  "away_score": 3,
+  "away_score": 5,
   "home_score": 1,
   "venue": "バンテリンドームナゴヤ",
   "start_time": "13:30",
@@ -187,9 +187,9 @@
       3,
       0,
       0,
-      0
+      2
     ],
-    "hiroshima_hits": 5,
+    "hiroshima_hits": 8,
     "hiroshima_errors": 0,
     "away": [
       1,
@@ -316,9 +316,9 @@
   "carp_batting": [
     {
       "name": "名原",
-      "pos": "中",
+      "pos": "中右",
       "line": 1,
-      "ab": 3,
+      "ab": 4,
       "r": 1,
       "h": 0,
       "rbi": 0,
@@ -336,7 +336,7 @@
       "name": "菊池",
       "pos": "二",
       "line": 2,
-      "ab": 4,
+      "ab": 5,
       "r": 1,
       "h": 1,
       "rbi": 0,
@@ -370,7 +370,7 @@
     },
     {
       "name": "坂倉",
-      "pos": "三",
+      "pos": "三一",
       "line": 4,
       "ab": 3,
       "r": 0,
@@ -388,10 +388,10 @@
     },
     {
       "name": "小園",
-      "pos": "遊",
+      "pos": "遊三",
       "line": 5,
       "ab": 4,
-      "r": 0,
+      "r": 1,
       "h": 2,
       "rbi": 0,
       "sb": 0,
@@ -423,6 +423,24 @@
       "sf": 0
     },
     {
+      "name": "森浦",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
       "name": "佐々木",
       "pos": "右",
       "line": 7,
@@ -442,10 +460,10 @@
     },
     {
       "name": "大盛",
-      "pos": "走",
+      "pos": "走中",
       "line": null,
       "ab": 0,
-      "r": 0,
+      "r": 1,
       "h": 0,
       "rbi": 0,
       "sb": 0,
@@ -469,7 +487,7 @@
       "sb": 0,
       "hr": 0,
       "k": 1,
-      "bb": 0,
+      "bb": 1,
       "double": 1,
       "triple": 0,
       "single": 0,
@@ -565,6 +583,42 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "秋山",
+      "pos": "打",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 2,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 1,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "矢野",
+      "pos": "走遊",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -603,11 +657,23 @@
       "strikeouts": 0,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "森浦",
+      "result": "",
+      "outs": 0,
+      "pitches": 0,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 0,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-07-12T07:16:15.555Z",
-    "generatedAt": "2026-07-12T07:16:15.569Z",
+    "sourceFetchedAt": "2026-07-12T07:30:44.527Z",
+    "generatedAt": "2026-07-12T07:30:44.540Z",
     "sourceUrl": "https://npb.jp/scores/2026/0712/d-c-13/",
     "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大盛,小園,島内,床田,持丸,森浦,益田,矢野,石原,秋山,菊池,辰見,辻,遠藤,鈴木,髙"
   }
