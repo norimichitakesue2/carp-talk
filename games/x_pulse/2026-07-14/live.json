@@ -1,0 +1,657 @@
+{
+  "generatedAt": "2026-07-14T10:39:35.812Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 46,
+  "classifiedCount": 46,
+  "clusterCount": 8,
+  "bubbleCount": 8,
+  "summary": "ファビアンの犠飛での得点が話題の中心で、菊池の活躍も評価される一方、新井の先発不安定さに批判の声が上がっている。",
+  "bubbles": [
+    {
+      "target": "ファビアン",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "犠飛で得点",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 8,
+      "tweetUrls": [
+        "https://x.com/CARP02969802/status/2076977071134490658",
+        "https://x.com/factor_impact/status/2076976904465502630",
+        "https://x.com/tenten_2012/status/2076976823947464898",
+        "https://x.com/EvZYNsks9N64427/status/2076976734130565207",
+        "https://x.com/Q96DAuu6EOt91Tc/status/2076976682892964155"
+      ],
+      "sampleTexts": [
+        {
+          "text": "ファビアンナイス犠飛で本日3打点\nいい仕事してますね〜\n#carp #カープ",
+          "user": "𝐂𝐀𝐑𝐏応援部会",
+          "time": "2026-07-14T10:28:16.000Z"
+        },
+        {
+          "text": "ファビちゃん打撃に守備に大活躍嬉し\n#ファビアン 選手\n#carp\n#カープ",
+          "user": "Impact Factor",
+          "time": "2026-07-14T10:27:37.000Z"
+        },
+        {
+          "text": "ナイス最低限、ファビちゃん\n4点目\nファビちゃんが当たってくると希望が持てますねー\n #カープ　#carp",
+          "user": "テンテン",
+          "time": "2026-07-14T10:27:17.000Z"
+        }
+      ]
+    },
+    {
+      "target": "ファビアン",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "犠飛で得点",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/Sasuncarp2/status/2076976805165371882",
+        "https://x.com/rimi_baseball/status/2076976758809887047",
+        "https://x.com/Microsoft202011/status/2076976627221950918"
+      ],
+      "sampleTexts": [
+        {
+          "text": "ファビちゃんの犠飛で4点目\n愛してるぜファビちゃん\n#ファビアン #カープ",
+          "user": "さあすん",
+          "time": "2026-07-14T10:27:13.000Z"
+        },
+        {
+          "text": "すごいエンドラン！！\n菊池さんさすがの技術だし\n名原くん早い！\nそしてファビちゃんの犠牲フライ\n理想的な攻撃だよ〜\n\n#カープ\n#carp",
+          "user": "りみ",
+          "time": "2026-07-14T10:27:02.000Z"
+        },
+        {
+          "text": "ファビアン\n最高な最低限\n#カープ",
+          "user": "マイク",
+          "time": "2026-07-14T10:26:30.000Z"
+        }
+      ]
+    },
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "エンドラン成功",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/hihihidakasan/status/2076976913500000429",
+        "https://x.com/di_atom/status/2076976900745138256"
+      ],
+      "sampleTexts": [
+        {
+          "text": "菊池のエンドランとかいう確率激熱の作戦\n意地でもバットに当てて転がすよね\n\nそして名原3塁に行ってのファビアン犠牲フライで4点目\n\nお見事\n#carp　#カープ",
+          "user": "日髙",
+          "time": "2026-07-14T10:27:39.000Z"
+        },
+        {
+          "text": "お菊ーーエンドラン成功－－\nいいぞーいいぞー菊池ー\n若手はほんとこのお手本がおるの\n見習え\n#carp #カープ\nよーしファビアン！犠牲フライきたー四点めーお帰り名原ー\nいいぞーいいぞーカープー！\n7",
+          "user": "これでいいのだ！",
+          "time": "2026-07-14T10:27:36.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "先発不安定",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/shirasagi_gomo/status/2076977048745349459"
+      ],
+      "sampleTexts": [
+        {
+          "text": "上位打線にいいようにやられすぎだな。\n今のカープにここまで完璧にやられたらもう終わりでしょ。\n先発が試合作れなさすぎや。",
+          "user": "かとう",
+          "time": "2026-07-14T10:28:11.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "延命の鬼",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/b3124857719657/status/2076976949638177050"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープの延命の鬼2トップ\n名原大盛",
+          "user": "麦愛好家",
+          "time": "2026-07-14T10:27:47.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "出場喜び",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/yukipi_clover/status/2076976737985180092"
+      ],
+      "sampleTexts": [
+        {
+          "text": "だね。。。\n今日のカープ勝ってる…\n小園出てるし",
+          "user": "ゆきぴぃ",
+          "time": "2026-07-14T10:26:57.000Z"
+        }
+      ]
+    },
+    {
+      "target": "名原",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "好調復帰",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/Nishifuna199106/status/2076976719706386523"
+      ],
+      "sampleTexts": [
+        {
+          "text": "最近当たりが止まってた名原が今日は既に3安打か^_^\n\n#カープ",
+          "user": "西船橋→三入のヒバゴン",
+          "time": "2026-07-14T10:26:52.000Z"
+        }
+      ]
+    },
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "活躍称賛",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/factor_impact/status/2076976587518689742"
+      ],
+      "sampleTexts": [
+        {
+          "text": "いやぁ〜菊池選手凄いなぁ〜\n#菊池涼介 選手\n#carp\n#カープ",
+          "user": "Impact Factor",
+          "time": "2026-07-14T10:26:21.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "09カープファンです！",
+      "user": "ピンク色との後輩ゆーーーーた‎‎",
+      "time": "2026-07-14T10:28:18.000Z",
+      "url": "https://x.com/yuta_candy_/status/2076977077136543919",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファビアンナイス犠飛で本日3打点\nいい仕事してますね〜\n#carp #カープ",
+      "user": "𝐂𝐀𝐑𝐏応援部会",
+      "time": "2026-07-14T10:28:16.000Z",
+      "url": "https://x.com/CARP02969802/status/2076977071134490658",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "上位打線にいいようにやられすぎだな。\n今のカープにここまで完璧にやられたらもう終わりでしょ。\n先発が試合作れなさすぎや。",
+      "user": "かとう",
+      "time": "2026-07-14T10:28:11.000Z",
+      "url": "https://x.com/shirasagi_gomo/status/2076977048745349459",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "#もっと野球好き\n\nベイのプレーにも課題はあるだろうけれど、カープ優位の流れ。\n厳しいけれど、試合を途中でやめるわけにはいかないし、やるしかないでしょう。",
+      "user": "軟式トレーニー",
+      "time": "2026-07-14T10:28:10.000Z",
+      "url": "https://x.com/koshino_bayfan/status/2076977046354608601",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "プロ野球7/10㊎~12㊐\n\nJSPORTS3日間無料\n\nhttps://\namzn.to/4mdGoY9\nFOD\n\nhttps://\namzn.to/4a7lXqE\n\n広島カープ vs 横浜DeNA\n中日ドラゴンズ vs 阪神タイガース\n東京ヤクルト vs 巨人\n\n#carp #giants #dragons #tigers #baystars #swallows\nPR19:28",
+      "user": "ℝ𝟞",
+      "time": "2026-07-14T10:28:09.000Z",
+      "url": "https://x.com/R6ITl9jHz023900/status/2076977040188920265",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ファビアン犠牲フライ！\nカープ追加点！",
+      "user": "赤ドRed(アカドレッド)",
+      "time": "2026-07-14T10:28:00.000Z",
+      "url": "https://x.com/a941028a/status/2076977004008878111",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "みんな気合い入ってる\n #カープ #carp",
+      "user": "ぽ",
+      "time": "2026-07-14T10:27:54.000Z",
+      "url": "https://x.com/hn_bzx/status/2076976977865760884",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープの延命の鬼2トップ\n名原大盛",
+      "user": "麦愛好家",
+      "time": "2026-07-14T10:27:47.000Z",
+      "url": "https://x.com/b3124857719657/status/2076976949638177050",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ坊やの顔色が悪いのはゾンタバ副流煙のせいじゃね？",
+      "user": "抹茶っ茶マン",
+      "time": "2026-07-14T10:27:45.000Z",
+      "url": "https://x.com/kemkemthefinal/status/2076976938560974921",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "なんかカープが活気付いてきたよーに感じるやで\n\n吹っ切れた感ぱないw\n\n#ぼくらのカープ\n#ゾンタバとかどーでもええし",
+      "user": "カープじゃろやっぱ！",
+      "time": "2026-07-14T10:27:42.000Z",
+      "url": "https://x.com/GqNLV7vlgX462mg/status/2076976926674317806",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "菊池のエンドランとかいう確率激熱の作戦\n意地でもバットに当てて転がすよね\n\nそして名原3塁に行ってのファビアン犠牲フライで4点目\n\nお見事\n#carp　#カープ",
+      "user": "日髙",
+      "time": "2026-07-14T10:27:39.000Z",
+      "url": "https://x.com/hihihidakasan/status/2076976913500000429",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "ファビちゃん打撃に守備に大活躍嬉し\n#ファビアン 選手\n#carp\n#カープ",
+      "user": "Impact Factor",
+      "time": "2026-07-14T10:27:37.000Z",
+      "url": "https://x.com/factor_impact/status/2076976904465502630",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "お菊ーーエンドラン成功－－\nいいぞーいいぞー菊池ー\n若手はほんとこのお手本がおるの\n見習え\n#carp #カープ\nよーしファビアン！犠牲フライきたー四点めーお帰り名原ー\nいいぞーいいぞーカープー！\n7月14日はファビアンデー",
+      "user": "これでいいのだ！",
+      "time": "2026-07-14T10:27:36.000Z",
+      "url": "https://x.com/di_atom/status/2076976900745138256",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープめちゃめちゃ強い",
+      "user": "もいじー",
+      "time": "2026-07-14T10:27:29.000Z",
+      "url": "https://x.com/red_2_ss/status/2076976874383892673",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "名原くん猛打賞\n菊池が上手く打って\nファビちゃん犠牲フライ\n#カープ",
+      "user": "あんこ",
+      "time": "2026-07-14T10:27:26.000Z",
+      "url": "https://x.com/Zred3pRYOV1L07X/status/2076976859393540385",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "クロなら警察動くっしょ精神みたいですね。\n\n無敵すぎる我らがカープw",
+      "user": "【FX・株休業中】特攻隊長ぺそろんぐの子✌︎︎︎⸜(*˙꒳˙*)⸝✌︎︎︎",
+      "time": "2026-07-14T10:27:24.000Z",
+      "url": "https://x.com/janis0123321/status/2076976849771790485",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープいい野球してるのに勿体無いわ",
+      "user": "演歌梨音",
+      "time": "2026-07-14T10:27:23.000Z",
+      "url": "https://x.com/takutaku690813/status/2076976849415249931",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ファビアン　ライト犠牲フライで１点追加\n4-0に\n#カープ",
+      "user": "いまちゃん",
+      "time": "2026-07-14T10:27:23.000Z",
+      "url": "https://x.com/NJtsMSWBlEkjuI8/status/2076976846420447464",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "ナイス最低限、ファビちゃん\n4点目\nファビちゃんが当たってくると希望が持てますねー\n #カープ　#carp",
+      "user": "テンテン",
+      "time": "2026-07-14T10:27:17.000Z",
+      "url": "https://x.com/tenten_2012/status/2076976823947464898",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "(*^〇^*)＜カープ君！ずっと一緒にBクラスに居ようと言ったじゃないか！話が違う！",
+      "user": "Bellzerica",
+      "time": "2026-07-14T10:27:14.000Z",
+      "url": "https://x.com/Bellzerica/status/2076976808315207933",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ファビちゃんの犠飛で4点目\n愛してるぜファビちゃん\n#ファビアン #カープ",
+      "user": "さあすん",
+      "time": "2026-07-14T10:27:13.000Z",
+      "url": "https://x.com/Sasuncarp2/status/2076976805165371882",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "菊池を二進させたのはマズいよねDeNA\n名原じゃけホーム間に合わんのんよ\n\n#カープ",
+      "user": "2 5 8",
+      "time": "2026-07-14T10:27:08.000Z",
+      "url": "https://x.com/GoForItCarp/status/2076976785682846152",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "走塁",
+      "sentiment": "中立"
+    },
+    {
+      "text": "すごいエンドラン！！\n菊池さんさすがの技術だし\n名原くん早い！\nそしてファビちゃんの犠牲フライ\n理想的な攻撃だよ〜\n\n#カープ\n#carp",
+      "user": "りみ",
+      "time": "2026-07-14T10:27:02.000Z",
+      "url": "https://x.com/rimi_baseball/status/2076976758809887047",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "お、なんか勝ってるねぇ\n\n#カープ\n#carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-07-14T10:27:01.000Z",
+      "url": "https://x.com/CARP_DAISKI/status/2076976755710292122",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "だね。。。\n今日のカープ勝ってる…\n小園出てるし",
+      "user": "ゆきぴぃ",
+      "time": "2026-07-14T10:26:57.000Z",
+      "url": "https://x.com/yukipi_clover/status/2076976737985180092",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファビアンの犠牲フライで1点追加！４対０　#カープ",
+      "user": "りーさや",
+      "time": "2026-07-14T10:26:57.000Z",
+      "url": "https://x.com/risaya/status/2076976737418985748",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "ファビアン3打点目！\n #カープ",
+      "user": "Carp_No4",
+      "time": "2026-07-14T10:26:56.000Z",
+      "url": "https://x.com/EvZYNsks9N64427/status/2076976734130565207",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "最近当たりが止まってた名原が今日は既に3安打か^_^\n\n#カープ",
+      "user": "西船橋→三入のヒバゴン",
+      "time": "2026-07-14T10:26:52.000Z",
+      "url": "https://x.com/Nishifuna199106/status/2076976719706386523",
+      "targetType": "選手",
+      "target": "名原",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "２回のチャンスで点入らなかっただけに次の１点をカープが取れたのはデカい\n大竹ぶりの先発４得点以上か",
+      "user": "massa@カープ垢 Next→７/22東京ドーム、31,８/６",
+      "time": "2026-07-14T10:26:52.000Z",
+      "url": "https://x.com/carp186223863/status/2076976715545579698",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今のカープに負けてるのマ！？！？",
+      "user": "さん",
+      "time": "2026-07-14T10:26:47.000Z",
+      "url": "https://x.com/asan8345/status/2076976695589138846",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "ファビアンの犠牲フライで\n4点目じゃー！\n\n#カープ",
+      "user": "ファジR(⁠アール)",
+      "time": "2026-07-14T10:26:44.000Z",
+      "url": "https://x.com/Q96DAuu6EOt91Tc/status/2076976682892964155",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "よしよし！追加点！\n #カープ",
+      "user": "ひ",
+      "time": "2026-07-14T10:26:42.000Z",
+      "url": "https://x.com/hime081993/status/2076976674684698743",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今日カープ見に行けばよかった、、、",
+      "user": "おおさんしょう猫",
+      "time": "2026-07-14T10:26:41.000Z",
+      "url": "https://x.com/harahetta2323/status/2076976672075837768",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ナイス中押し点！\n#carp #カープ",
+      "user": "こゆきチーズ",
+      "time": "2026-07-14T10:26:38.000Z",
+      "url": "https://x.com/cheesanzi/status/2076976658373124297",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファビアン良き！\n#カープ #carp",
+      "user": "かずや",
+      "time": "2026-07-14T10:26:38.000Z",
+      "url": "https://x.com/carpfighter5/status/2076976657118941625",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファビアン、ライトへの犠牲フライ!!カープ追加点!!1塁ランナー菊地も送球間に2塁へ",
+      "user": "ナツナッキー",
+      "time": "2026-07-14T10:26:31.000Z",
+      "url": "https://x.com/singcarpnatsuki/status/2076976627880431861",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "ファビアン\n最高な最低限\n#カープ",
+      "user": "マイク",
+      "time": "2026-07-14T10:26:30.000Z",
+      "url": "https://x.com/Microsoft202011/status/2076976627221950918",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "いい攻撃出来てるじゃんカープ",
+      "user": "チュパカブラ田辺",
+      "time": "2026-07-14T10:26:27.000Z",
+      "url": "https://x.com/chupacabraTANA/status/2076976612252483955",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "もじこさんこんばんは！\n全盛期まではいかないですが、カープ側は埋まってきました、しかし土日とは比じゃないですね。我々ベイ側はやはり少人数なので負けないよう頑張ります",
+      "user": "TSUBASA@7/14マツダ",
+      "time": "2026-07-14T10:26:23.000Z",
+      "url": "https://x.com/bayfan283/status/2076976594351165787",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "いやぁ〜菊池選手凄いなぁ〜\n#菊池涼介 選手\n#carp\n#カープ",
+      "user": "Impact Factor",
+      "time": "2026-07-14T10:26:21.000Z",
+      "url": "https://x.com/factor_impact/status/2076976587518689742",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "ファビアン3打点目\n #カープ",
+      "user": "まさひろ鯉党",
+      "time": "2026-07-14T10:26:20.000Z",
+      "url": "https://x.com/waiwai01204328/status/2076976584658178142",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "ファビやんの犠牲フライで追加点！\n今日のカープは効率が良い！",
+      "user": "山田太郎冠者",
+      "time": "2026-07-14T10:26:15.000Z",
+      "url": "https://x.com/yamyamV3/status/2076976562092876203",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファビアンさんの犠牲フライ！カープ追加点",
+      "user": "ゆち",
+      "time": "2026-07-14T10:26:13.000Z",
+      "url": "https://x.com/pk_bluebird/status/2076976554132082971",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ、いい攻撃してるよ！",
+      "user": "鯉愛",
+      "time": "2026-07-14T10:26:12.000Z",
+      "url": "https://x.com/14_aikaohsera/status/2076976548297793664",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "よっしゃ追加点\n\nナイスファビアン\n\n #カープ",
+      "user": "赤太郎丸",
+      "time": "2026-07-14T10:26:12.000Z",
+      "url": "https://x.com/U4JbyFn5MIB2Bnq/status/2076976547987337632",
+      "targetType": "選手",
+      "target": "ファビアン",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "よしよし最低限　#カープ",
+      "user": "えんだぁ",
+      "time": "2026-07-14T10:26:08.000Z",
+      "url": "https://x.com/endsan1226/status/2076976531906392398",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    }
+  ]
+}
