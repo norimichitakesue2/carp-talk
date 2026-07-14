@@ -1,8 +1,8 @@
 {
-  "fetchedAt": "2026-07-13T20:10:48.249Z",
+  "fetchedAt": "2026-07-14T20:07:49.149Z",
   "sourceUrl": "https://npb.jp/announcement/roster/",
   "note": "NPB公式公示の「広島東洋カープ 出場選手一覧」を直接スクレイプ。試合直前まで更新されないNPB box の roster.html より鮮度高い。",
-  "expectedCount": 31,
+  "expectedCount": 30,
   "players": [
     {
       "pos": "投",
@@ -15,12 +15,6 @@
       "number": "16",
       "fullName": "森",
       "name": "森"
-    },
-    {
-      "pos": "投",
-      "number": "17",
-      "fullName": "常廣",
-      "name": "常廣"
     },
     {
       "pos": "投",
