@@ -1,8 +1,8 @@
 {
-  "fetchedAt": "2026-07-16T20:00:06.381Z",
+  "fetchedAt": "2026-07-17T20:03:04.657Z",
   "sourceUrl": "https://npb.jp/announcement/roster/",
   "note": "NPB公式公示の「広島東洋カープ 出場選手一覧」を直接スクレイプ。試合直前まで更新されないNPB box の roster.html より鮮度高い。",
-  "expectedCount": 30,
+  "expectedCount": 31,
   "players": [
     {
       "pos": "投",
@@ -60,6 +60,12 @@
     },
     {
       "pos": "投",
+      "number": "48",
+      "fullName": "アドゥワ",
+      "name": "アドゥワ"
+    },
+    {
+      "pos": "投",
       "number": "53",
       "fullName": "岡本",
       "name": "岡本"
@@ -114,12 +120,6 @@
     },
     {
       "pos": "内",
-      "number": "4",
-      "fullName": "矢野",
-      "name": "矢野"
-    },
-    {
-      "pos": "内",
       "number": "5",
       "fullName": "小園",
       "name": "小園"
@@ -141,6 +141,12 @@
       "number": "69",
       "fullName": "辰見",
       "name": "辰見"
+    },
+    {
+      "pos": "内",
+      "number": "93",
+      "fullName": "前川",
+      "name": "前川"
     },
     {
       "pos": "内",
