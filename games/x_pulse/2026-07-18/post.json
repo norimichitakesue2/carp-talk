@@ -1,0 +1,615 @@
+{
+  "generatedAt": "2026-07-18T16:48:43.687Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 47,
+  "classifiedCount": 47,
+  "clusterCount": 6,
+  "bubbleCount": 6,
+  "summary": "新井監督の采配に批判が集中する中、死球多発への指摘が最多で、栗林の好投が数少ない応援の声",
+  "bubbles": [
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "死球多発",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/GrapeSpiral/status/2078519807646024130",
+        "https://x.com/b6Dw1LDk3n79447/status/2078517813753618641",
+        "https://x.com/zazaza785/status/2078516575221751846"
+      ],
+      "sampleTexts": [
+        {
+          "text": "ほんと広島球団ごと潰れねぇかな 地獄でしょ新井さんも カープファンも案外望んでたりして",
+          "user": "ごっつドリ",
+          "time": "2026-07-18T16:38:33.000Z"
+        },
+        {
+          "text": "イングランド代表監督トゥヘルにイライラしてる最中 広島カープがやらかしイライラ頂点 今シーズン近本に死球あて骨折 金曜日前川に死球2回当て骨折 ほんで佐藤輝明にあの球かよ… これわざとちゃうん？と思う",
+          "user": "Himawari",
+          "time": "2026-07-18T16:30:38.000Z"
+        },
+        {
+          "text": "新井に話し合いは無理よなそりゃ 朝鮮人だもの いくら朝鮮人とかベトチャイに苦言呈した所で話が通じるわけないもんな カープほんまにええ加減にして欲しい 解体しろよ説明責任から逃れるんなら",
+          "user": "ほに",
+          "time": "2026-07-18T16:25:43.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "感情的対応",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/kking__g/status/2078517326216085653",
+        "https://x.com/QmwpFlF0gcNcJq3/status/2078515412325781673"
+      ],
+      "sampleTexts": [
+        {
+          "text": "たたでさえデッドボールに敏感やのにヒートアップさせる元凶を作ったのはカープね。",
+          "user": "あほ",
+          "time": "2026-07-18T16:28:42.000Z"
+        },
+        {
+          "text": "後輩にキレられたの腹立ったかもだが これは大人気なかった 現場責任者はあなたなんだから 球団代表して頭下げる必要がある時はある そこで先輩後輩持ち出したらあかん 阪神監督として怒ったんだから カープ監",
+          "user": "虎チカ",
+          "time": "2026-07-18T16:21:05.000Z"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "危険球疑惑",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/VZs0eTHhQn83133/status/2078517915482300439"
+      ],
+      "sampleTexts": [
+        {
+          "text": "広島カープ雑魚球団が小園当てられたどうのこうのわざとやろ？とか抜かしてんちゃうぞ。お前らが先に喧嘩打ってきたんやろ。 ノーコン球団雑魚間抜け投手陣。 全員やめちまえ",
+          "user": "かいざー",
+          "time": "2026-07-18T16:31:02.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "継投",
+      "topic_label": "投手起用の質低下",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/hyxpQiWIzA65515/status/2078515997766824065"
+      ],
+      "sampleTexts": [
+        {
+          "text": "新井監督からしたらハーンはナイスピッチングだったんだと。 昨日の今日で試合前に申し訳ないって謝罪したらしいけど口先だけじゃん。 やっぱり新井監督になってからカープの投手陣は変になったわ。 てか、北別府",
+          "user": "モモンガモンガ",
+          "time": "2026-07-18T16:23:25.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "起用",
+      "topic_label": "選手起用の一貫性",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/ghq5g/status/2078514479965646949"
+      ],
+      "sampleTexts": [
+        {
+          "text": "割と本気で何で矢野は出場出来てないのに、小園は普通に出て来れてんのか意味不明すぎる カープに自浄作用の意識とかないんか？",
+          "user": "ヤマタニウミ",
+          "time": "2026-07-18T16:17:23.000Z"
+        }
+      ]
+    },
+    {
+      "target": "栗林",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "投球内容充実",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/jin9081104/status/2078513392676184298"
+      ],
+      "sampleTexts": [
+        {
+          "text": "こいほー 栗林がいいわー 犠打もうましっ ずっと打ててなかった坂倉の決勝本塁打 森浦の三者連続三振もすげーわー 最後吠えてたね！ #広島カープ #カープ #carp",
+          "user": "じん",
+          "time": "2026-07-18T16:13:04.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "ほんと広島球団ごと潰れねぇかな 地獄でしょ新井さんも カープファンも案外望んでたりして",
+      "user": "ごっつドリ",
+      "time": "2026-07-18T16:38:33.000Z",
+      "url": "https://x.com/GrapeSpiral/status/2078519807646024130",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープはマジで一回球団単位で考え直してほしい プロ野球全体に関わる",
+      "user": "とらず",
+      "time": "2026-07-18T16:36:49.000Z",
+      "url": "https://x.com/tora_inoch/status/2078519371593564221",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープのピッチャーは球が荒ぶるのしかおらんのか…。ファンとしてあまり言いたくないけど…流石にヤバい今回のは",
+      "user": "ゆーたまんもす",
+      "time": "2026-07-18T16:36:41.000Z",
+      "url": "https://x.com/yayayuta1121/status/2078519336831184945",
+      "targetType": "選手",
+      "target": null,
+      "topic_broad": "投球",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "不謹慎な例え、お詫び申し上げます。 カープ球団の如く、当事者意識の欠如からなる軽率な発言でした 昔のバティスタ騒動の対応を見ても、この球団は・・・ さて日曜も期待しております",
+      "user": "むらさき＠跳び吉",
+      "time": "2026-07-18T16:36:02.000Z",
+      "url": "https://x.com/yjzn6/status/2078519171118411867",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープはあまりにも可哀想な球団だから馬鹿にしないって決めてたんだけど、それはお前らが大人しくしてる前提があっての事だからな。お前らの魅力どこなん？ 弱くて不人気で時代遅れで華もない上に反社とつるんで薬物キメて他球団の選手破壊するオワコン球団に何の魅力があんの？ シーズン途中離脱して",
+      "user": "ゆら",
+      "time": "2026-07-18T16:35:19.000Z",
+      "url": "https://x.com/q34i11/status/2078518991975506197",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "もうカープを応援してるだけで悪者になるような状況、正直しんどい。 カープファンをやる事がしんどい。",
+      "user": "みやぱぱ@next→標ツアーファイナルDAY1",
+      "time": "2026-07-18T16:35:13.000Z",
+      "url": "https://x.com/miyapapa44/status/2078518968609120600",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "あかん。カープ嫌いになりそうな自分が怖い。",
+      "user": "ウパーー",
+      "time": "2026-07-18T16:33:50.000Z",
+      "url": "https://x.com/UPER_5723/status/2078518617625473353",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープは1975～1991年（平成3年）の17年間に6度のリーグ優勝、3度の日本一を果たした。「赤ヘル軍団」と呼ばれ、全国で赤ヘル旋風を巻き起こした輝かしい時代である。",
+      "user": "電磁配信者の憂鬱",
+      "time": "2026-07-18T16:32:35.000Z",
+      "url": "https://x.com/live_is_mylife/status/2078518305040880012",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#カープ黄金時代の幕開けの日 の幕開けです。 1975年（昭和50年）7月19日に阪神甲子園球場で行われたオールスターゲームで、山本浩二選手と衣笠祥雄選手が二打席連続アベックホームランを放ち、これを機にカープは初優勝へと突き進んでいった。 まさに「カープ黄金時代」の幕開けとなった。",
+      "user": "電磁配信者の憂鬱",
+      "time": "2026-07-18T16:32:35.000Z",
+      "url": "https://x.com/live_is_mylife/status/2078518302784279029",
+      "targetType": "選手",
+      "target": "山本浩二",
+      "topic_broad": "ホームラン",
+      "sentiment": "中立"
+    },
+    {
+      "text": "私はカープファンなので、カープを護るような発言ですが、全てを擁護するわけではなく、あなたのような、全肯定するような、視野の狭いファンでは無いので安心してください。",
+      "user": "Mr.チンベイ［白銀聖騎士団の野球狂］",
+      "time": "2026-07-18T16:32:26.000Z",
+      "url": "https://x.com/Mr194060/status/2078518266721603668",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "阪神ファン目線になったら昨日は昨日。今日は今日とか言えんやろ。 カープファンでもしゃーないって言ってる人がおるレベルやし",
+      "user": "あほ",
+      "time": "2026-07-18T16:32:02.000Z",
+      "url": "https://x.com/kking__g/status/2078518165257220255",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "黒田博樹の直筆サインボール。カープ時代のだな。 黒田博樹 直筆サインボール ★ 広島東洋カープ〜①",
+      "user": "ひろっキー",
+      "time": "2026-07-18T16:31:30.000Z",
+      "url": "https://x.com/hirokeyphoto/status/2078518031118938208",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープ雑魚球団が小園当てられたどうのこうのわざとやろ？とか抜かしてんちゃうぞ。お前らが先に喧嘩打ってきたんやろ。 ノーコン球団雑魚間抜け投手陣。 全員やめちまえ",
+      "user": "かいざー",
+      "time": "2026-07-18T16:31:02.000Z",
+      "url": "https://x.com/VZs0eTHhQn83133/status/2078517915482300439",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "投球",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "イングランド代表監督トゥヘルにイライラしてる最中 広島カープがやらかしイライラ頂点 今シーズン近本に死球あて骨折 金曜日前川に死球2回当て骨折 ほんで佐藤輝明にあの球かよ… これわざとちゃうん？と思うぐらい死球多すぎやし 新井アホやし… ほんまカスな球団だわ",
+      "user": "Himawari",
+      "time": "2026-07-18T16:30:38.000Z",
+      "url": "https://x.com/b6Dw1LDk3n79447/status/2078517813753618641",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "ほんま今回の件で吠えてるカープファンどう転んでも負け戦やのにアホすぎる",
+      "user": "Glucosamine",
+      "time": "2026-07-18T16:30:09.000Z",
+      "url": "https://x.com/gooshiesone/status/2078517694190739475",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カプケシ(カープ選手坊や消しゴム)を入手できたので、ダッシュ１号を組み立てた。こういったコラボ商品いいな。",
+      "user": "野球狂 (donnamo)",
+      "time": "2026-07-18T16:30:09.000Z",
+      "url": "https://x.com/kousoku_shimura/status/2078517693112828084",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファンスターズリーグ2026のセリーグ3BOX。カープ選手たくさん入ってるはず。 プロ野球ファンスターズリーグ2026 vol2 未開封 3 BOX セ・リーグ",
+      "user": "華丸アキ",
+      "time": "2026-07-18T16:29:50.000Z",
+      "url": "https://x.com/akihirobasv3la/status/2078517614125760818",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "あり君からお誘いされて自分の身内と3人でカープの観戦行ってきた！！！ 野球ミリしらだけど、球場の雰囲気良くて、試合にも勝ってくれて、気持ちよく最後まで観れた！！！",
+      "user": "ゆーくん",
+      "time": "2026-07-18T16:29:40.000Z",
+      "url": "https://x.com/yuuuukun5050/status/2078517569540247743",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "レイジングハートの声がカープ緒方の娘 →カープといえばゾンビたばこ →魔人狩り：薬の根絶 全て繋がってるやんけ！！！！！ #なのはEXGV #nanoha",
+      "user": "福路太一(本隊)",
+      "time": "2026-07-18T16:29:22.000Z",
+      "url": "https://x.com/hukujitaichi_/status/2078517493912752245",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "たたでさえデッドボールに敏感やのにヒートアップさせる元凶を作ったのはカープね。",
+      "user": "あほ",
+      "time": "2026-07-18T16:28:42.000Z",
+      "url": "https://x.com/kking__g/status/2078517326216085653",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "なでなでヾ(･ω･`*)︎ 毒を吐いちゃうのは、お互い様じゃ だって、カープ&amp;カープの選手が好きなんじゃもん 愛ある毒＝カンフル剤 じゃと思うよ",
+      "user": "しばわんこ",
+      "time": "2026-07-18T16:28:40.000Z",
+      "url": "https://x.com/sickness519/status/2078517317546496426",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "レイジングハートの新しい声優がカープの緒方の娘だと知ってから平常心で聞けない",
+      "user": "竹",
+      "time": "2026-07-18T16:27:41.000Z",
+      "url": "https://x.com/take_aot/status/2078517070187377123",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日は何の日 #pohiina 2026/07/19 日曜日 7月19日の記念日・出来事 2026年7月19日（日）の記念日・年中行事 •女性大臣の日 •マッターホルン北壁登頂の日 •戦後民主主義到来の日 •サイボーグ009の日 •やまなし桃の日 •カープ黄金時代の幕開けの日 •おいしいラーメン 神座の日",
+      "user": "ぽちいな",
+      "time": "2026-07-18T16:27:32.000Z",
+      "url": "https://x.com/pochiina/status/2078517032933552363",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日よかったこと 頂いたお花が超豪華で お店の中が パッと華やかになった 採れたて野菜を頂くミニトマト 胡瓜 ピーマン じゃがいも♫ 友達にクラフトビールを貰った シャッターを閉める前に カープ列車が見れた カープ勝利バンザーイ #今日よかったこと",
+      "user": "気まま水星人",
+      "time": "2026-07-18T16:26:34.000Z",
+      "url": "https://x.com/kmm_mercury/status/2078516789424894407",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "新井に話し合いは無理よなそりゃ 朝鮮人だもの いくら朝鮮人とかベトチャイに苦言呈した所で話が通じるわけないもんな カープほんまにええ加減にして欲しい 解体しろよ説明責任から逃れるんなら",
+      "user": "ほに",
+      "time": "2026-07-18T16:25:43.000Z",
+      "url": "https://x.com/zazaza785/status/2078516575221751846",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "新井監督からしたらハーンはナイスピッチングだったんだと。 昨日の今日で試合前に申し訳ないって謝罪したらしいけど口先だけじゃん。 やっぱり新井監督になってからカープの投手陣は変になったわ。 てか、北別府氏とか大野氏とか佐々岡氏とか良い投手ばっかりの頃が懐かしい。 ツネゴンも泣いてるよ…",
+      "user": "モモンガモンガ",
+      "time": "2026-07-18T16:23:25.000Z",
+      "url": "https://x.com/hyxpQiWIzA65515/status/2078515997766824065",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "継投",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "一部のカープファンも落ち着きましょう。自分達に文句を言う資格はないです。100こっち側（カープ）が悪いですから2選手も壊してるんですからねしかも主力の",
+      "user": "ゆーたまんもす",
+      "time": "2026-07-18T16:21:08.000Z",
+      "url": "https://x.com/yayayuta1121/status/2078515423050645663",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "後輩にキレられたの腹立ったかもだが これは大人気なかった 現場責任者はあなたなんだから 球団代表して頭下げる必要がある時はある そこで先輩後輩持ち出したらあかん 阪神監督として怒ったんだから カープ監督として接しないと",
+      "user": "虎チカ",
+      "time": "2026-07-18T16:21:05.000Z",
+      "url": "https://x.com/QmwpFlF0gcNcJq3/status/2078515412325781673",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "DAZNにも入らんしよ もうカープはセリーグ球団の座をくふうハヤテと交代してくれ",
+      "user": "カビゴンガチ勢Lnaさん",
+      "time": "2026-07-18T16:21:01.000Z",
+      "url": "https://x.com/Lna_0143/status/2078515394621628630",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "広島カープ、いい加減にしてくれ。 デッドボールでけが人出すなや。 昨日のテルも明らかにデッドボール狙ってるやろ。 近本に続き右京に怪我させて、今度はテルか",
+      "user": "ピカ♪(**^o^**)♪",
+      "time": "2026-07-18T16:20:19.000Z",
+      "url": "https://x.com/Kobeafternoon/status/2078515215835214273",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープは宗教ですからね 信仰心は他の球団より特に強いことでしょう",
+      "user": "りょうぷま3号",
+      "time": "2026-07-18T16:20:03.000Z",
+      "url": "https://x.com/ckBuXuzMbB91490/status/2078515150777409727",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "そしたら、昨季は5対10だったから5個は相殺って事でって言ってもいのかな？ あれだけオラついていたのに、カープの倍死球当ててるし その内6個は村上、大竹が3個ずつだし",
+      "user": "女神の加護",
+      "time": "2026-07-18T16:19:57.000Z",
+      "url": "https://x.com/megaminokago/status/2078515124181287300",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "昨日のカープの応援で「こぞーのかいとー」って言ってたのが「ゾンービたばこー」にしか聞こえんかったし「モンティ」は「ゾンビ」にしか聞こえくてめっちゃおもろかった",
+      "user": "柊碧(とあ)",
+      "time": "2026-07-18T16:17:27.000Z",
+      "url": "https://x.com/toatoatoa_von/status/2078514497049034998",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ガイルで新井さんをKOしようとすなw #carp #カープ",
+      "user": "アフロ最前線",
+      "time": "2026-07-18T16:17:25.000Z",
+      "url": "https://x.com/aflo_saizensen/status/2078514488370950156",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "割と本気で何で矢野は出場出来てないのに、小園は普通に出て来れてんのか意味不明すぎる カープに自浄作用の意識とかないんか？",
+      "user": "ヤマタニウミ",
+      "time": "2026-07-18T16:17:23.000Z",
+      "url": "https://x.com/ghq5g/status/2078514479965646949",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "起用",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "新たな隠れ家の発見と カープの勝利に乾杯。 和牛のコウネが美味すぎるな、、 最高の贅沢と幸せだね",
+      "user": "ずー",
+      "time": "2026-07-18T16:17:15.000Z",
+      "url": "https://x.com/kazfrontale/status/2078514444347515020",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "詳しく調べた。 カープは死球数7で、セリーグ3位。 巨人と中日が9。",
+      "user": "青華",
+      "time": "2026-07-18T16:17:02.000Z",
+      "url": "https://x.com/ginkaaaadatte/status/2078514390014546348",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "あと…広島カープに対してゾンビゾンビ言ってる他球団のファンの人はカープ以外にもゾンビタバコやってる人がいる球団がいるのを忘れないでほしい。40人でしょ下手したら全球団…。 全球団仲良くしたい…当てて選手壊してるから色々言われるのは承知なんだけど原◯とゾンビは言わないでください…",
+      "user": "ゆーたまんもす",
+      "time": "2026-07-18T16:16:38.000Z",
+      "url": "https://x.com/yayayuta1121/status/2078514288927580544",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "阪神とカープの試合、昔だったら普通に乱闘が妥当な展開だ。正直、羽月選手は1年謹慎ぐらいかと思ってたけど、実質永久追放されたので矢野や小園に対する世間の目は、違法化された時期の前後に関わらず相当厳しい。もう彼らを見たくないと思っている人は、かなり多いんだろう",
+      "user": "taka (´･ᴥ･｀)/777.88",
+      "time": "2026-07-18T16:15:40.000Z",
+      "url": "https://x.com/starmine2020/status/2078514046442353122",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ2026 33-45 栗林良吏 5-3 先発22 6岡本駿 5森下暢仁 5栗林良吏 4床田寛樹 1玉村昇悟 1森翔平 中継ぎ11 4森浦大輔 2ハーン 2辻大雅 1中﨑翔太 1塹江敦哉 1遠藤淳志",
+      "user": "carp291(福井からカープを応援！！！)",
+      "time": "2026-07-18T16:15:15.000Z",
+      "url": "https://x.com/carp291/status/2078513943803547793",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ホントに カープ素晴らしいね",
+      "user": "キャベツりこ",
+      "time": "2026-07-18T16:13:34.000Z",
+      "url": "https://x.com/rkhrkg/status/2078513519277031588",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こいほー 栗林がいいわー 犠打もうましっ ずっと打ててなかった坂倉の決勝本塁打 森浦の三者連続三振もすげーわー 最後吠えてたね！ #広島カープ #カープ #carp",
+      "user": "じん",
+      "time": "2026-07-18T16:13:04.000Z",
+      "url": "https://x.com/jin9081104/status/2078513392676184298",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "ゾンビたばこ吸ってたりする奴らに 死球とか骨折とかの概念ないやろ！ ゾンビやねんから！ #広島カープ #ゾンビたばこ",
+      "user": "No.7Lady",
+      "time": "2026-07-18T16:13:02.000Z",
+      "url": "https://x.com/lostman198300/status/2078513386586079410",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープにもこのくらいストレートのコントロールがいいセットアッパーが出てきてくれんかねえ #carp #カープ",
+      "user": "アフロ最前線",
+      "time": "2026-07-18T16:12:49.000Z",
+      "url": "https://x.com/aflo_saizensen/status/2078513330730521085",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ、ゾンビ達が抜けたらしばらく暗黒期突入だよな。 まあだから詳しく調査しないんだろうけど。",
+      "user": "チペピジンヒベンズ酸塩",
+      "time": "2026-07-18T16:12:37.000Z",
+      "url": "https://x.com/shisou1031/status/2078513280277233751",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "それ行けカープを歌おうとしてくれた理をご覧下さい #KingGnuCENTRALTour2026",
+      "user": "林檎",
+      "time": "2026-07-18T16:11:37.000Z",
+      "url": "https://x.com/king_ringo0461/status/2078513027771736137",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープの応援で笛の音が鳴る度に試合で何かあったんか？と思ってしまった 応援だと気づくまで時間かかった",
+      "user": "minoru",
+      "time": "2026-07-18T16:10:11.000Z",
+      "url": "https://x.com/koma39ynwa/status/2078512669540372726",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    }
+  ]
+}
