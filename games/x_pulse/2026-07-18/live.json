@@ -1,0 +1,743 @@
+{
+  "generatedAt": "2026-07-18T11:15:16.136Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 58,
+  "classifiedCount": 58,
+  "clusterCount": 12,
+  "bubbleCount": 12,
+  "summary": "坂倉の勝ち越しホームランが話題の中心で、劇的な一打への応援の声が圧倒的多数を占めている。",
+  "bubbles": [
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "勝ち越しホームラン",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 15,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "仕事終わった カープはリードしてる〜 坂倉くん ありがとうございます",
+          "user": "おかやん"
+        },
+        {
+          "text": "#カープ 坂倉選手 ホームラン！ ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!!!! 2-1逆転",
+          "user": "Tomo⊿ α"
+        },
+        {
+          "text": "こら、カープ！申し訳無いゆうたのにホームラン打つんか！ #阪神タイガース",
+          "user": "しおた23"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "勝ち越し弾",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 9,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "ファビアンに続き坂倉も二桁に増やしてきたねHRを… #carp #カープ",
+          "user": "𝐂𝐀𝐑𝐏応援部会"
+        },
+        {
+          "text": "坂倉にホームランが出ても嬉しい カープ勝ち越し",
+          "user": "いなこ"
+        },
+        {
+          "text": "坂倉勝ち越しHR レフトへホームランうまい #カープ",
+          "user": "ずー"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "頭冷却",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "さくさま 何を被っとるん？頭を冷やしてるんかな #カープ",
+          "user": "カープ艸) dmt"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "起用への疑問",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "なんで小園は試合出てるん？疑念のある人が1軍でプレーするのは抵抗あるんじゃないの？？ 後々、選手本人が苦しむことになるのに… #広島カープ",
+          "user": "有冨 義浩"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "継投",
+      "topic_label": "交代タイミング",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "空気読まないカープ。 流石、悪の軍団。 てか、打たれてる場合か。 ほんと代え時間違えるよなぁ。前の回あっぷあっぷやったやん。 #阪神タイガース",
+          "user": "む た っ ち"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "スタメン起用批判",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "#カープ 坂倉さん、ごめん、引っ込めとか言って。",
+          "user": "ひらり"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "守備",
+      "topic_label": "捕手の献身",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "坂倉！！！ キャッチャーを女房役というのであれば今日の坂倉は栗林の第二夫人の様なもの ピッチャーを助けたい想いは人一倍と思っています #坂倉復活 #坂倉将吾 #カープ",
+          "user": "さあすん"
+        }
+      ]
+    },
+    {
+      "target": "小園",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "結果期待",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "小園も結果出せ #がんばろうカープファン #carp",
+          "user": "くわカープ用"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "起用・スタメン",
+      "topic_label": "復帰喜び",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "坂倉将吾がかえってまいりました！！ #カープ",
+          "user": "めっちゃゆ"
+        }
+      ]
+    },
+    {
+      "target": "栗林",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "先発予定確認",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "あれもしかして、来週見に行く神宮の試合は先発栗林の順番か。あまりカープ戦は意識せずにチケット取ったから、特にユニフォーム着ていくつもりもなかったけど、栗林なら熱い。久々にカープのユニフォーム出してくる",
+          "user": "れ"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "坂倉評価",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "#サクはカープの宝",
+          "user": "マナ"
+        }
+      ]
+    },
+    {
+      "target": "坂倉",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "好調維持",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [],
+      "sampleTexts": [
+        {
+          "text": "坂倉ナイスー #カープ",
+          "user": "くろうさぎ"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "id": 0,
+      "text": "さくさま 何を被っとるん？頭を冷やしてるんかな #カープ",
+      "user": "カープ艸) dmt",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "id": 1,
+      "text": "勝ち越し #カープ",
+      "user": "赤太郎丸",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 2,
+      "text": "なんで小園は試合出てるん？疑念のある人が1軍でプレーするのは抵抗あるんじゃないの？？ 後々、選手本人が苦しむことになるのに… #広島カープ",
+      "user": "有冨 義浩",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "批判弱"
+    },
+    {
+      "id": 3,
+      "text": "よし、まさし攻略（とは言えない） #カープ",
+      "user": "2 5 8",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 4,
+      "text": "カープからmlbに乗り換え(",
+      "user": "t",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 5,
+      "text": "カープ、頑張ってください",
+      "user": "Lupo( ｰ̀εｰ́ )",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 6,
+      "text": "ファビアンに続き坂倉も二桁に増やしてきたねHRを… #carp #カープ",
+      "user": "𝐂𝐀𝐑𝐏応援部会",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 7,
+      "text": "カープがんばれ",
+      "user": "めんとま",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 8,
+      "text": "カープ今日勝つのはいかんぞ 昨日何したか忘れたんか 負けなさい #阪神タイガース",
+      "user": "なっちゃんを監視する垢",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 9,
+      "text": "カープうどん美味すぎてワロタやけどクソ汗だく",
+      "user": "ふーたそ",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 10,
+      "text": "うわ、逆転されてるやん… カープには負けんといてって言ってるやん… #阪神タイガース",
+      "user": "Y",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 11,
+      "text": "ひさびさのカープ実況ですね。 復活のtactや！",
+      "user": "キノの天国未遂",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 12,
+      "text": "仕事終わった カープはリードしてる〜 坂倉くん ありがとうございます",
+      "user": "おかやん",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 13,
+      "text": "今日のプロ野球 18:00 広島 vs 阪神 生中継はココ PR 無料体験でライブ配信が見れます DAZNは見れない 配信なし 地上波テレビは一部地域のみ放送 先発投手： カープ 栗林 タイガース 伊藤将司 #阪神タイガース #carp",
+      "user": "チョココ",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "id": 14,
+      "text": "坂倉にホームランが出ても嬉しい カープ勝ち越し",
+      "user": "いなこ",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 15,
+      "text": "そして、頑張ってくださいカープさん",
+      "user": "ひー",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 16,
+      "text": "空気読まないカープ。 流石、悪の軍団。 てか、打たれてる場合か。 ほんと代え時間違えるよなぁ。前の回あっぷあっぷやったやん。 #阪神タイガース",
+      "user": "む た っ ち",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "継投",
+      "sentiment": "批判弱"
+    },
+    {
+      "id": 17,
+      "text": "#カープ 坂倉選手 ホームラン！ ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!!!! 2-1逆転",
+      "user": "Tomo⊿ α",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 18,
+      "text": "こら、カープ！申し訳無いゆうたのにホームラン打つんか！ #阪神タイガース",
+      "user": "しおた23",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 19,
+      "text": "坂倉くん〜 ナイスホームラン〜 サイコーで〜す きょ〜もカープはか〜ちか〜ちかっち勝ち〜",
+      "user": "AKAZUKIN",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 20,
+      "text": "#カープ 坂倉さん、ごめん、引っ込めとか言って。",
+      "user": "ひらり",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "批判弱"
+    },
+    {
+      "id": 21,
+      "text": "G-SHOCKのカープ警察自衛隊コラボ。20気圧防水で丈夫そうだ。 カープ 警察 自衛隊 G-SHOCK 20気圧防水 アナデジ プラベルトウォッチ",
+      "user": "陸自情報マニアの京平",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 22,
+      "text": "坂倉！！！ キャッチャーを女房役というのであれば今日の坂倉は栗林の第二夫人の様なもの ピッチャーを助けたい想いは人一倍と思っています #坂倉復活 #坂倉将吾 #カープ",
+      "user": "さあすん",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "守備",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 23,
+      "text": "坂倉選手、勝ち越しソロホームラン！！ カーチカーチカッチカチーー ばんざーい ばんざーい ばんざーい 今日は坂倉選手、かなり調子良いですね #カープ",
+      "user": "涙越ごう＠鯉応援アカ",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 24,
+      "text": "カープファンの皆様、やりました〜 坂倉選手が逆転のホームランを打ちましたありがとう、坂倉選手 やっぱり坂倉選手はカープに必要です。",
+      "user": "にんじゃりばんばん",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 25,
+      "text": "坂倉勝ち越しHR レフトへホームランうまい #カープ",
+      "user": "ずー",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 26,
+      "text": "坂倉選手よう打った、勝ち越し！ ナイスHR! #carp #カープ",
+      "user": "𝐂𝐀𝐑𝐏応援部会",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 27,
+      "text": "「良き社会人であれ」と、カープの選手たちにも言いたいですね。",
+      "user": "FUKE",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 28,
+      "text": "→ 坂倉選手、ナイス勝ち越しホームラン。 マジで笑顔で爆走してほしい。 #carp #カープ",
+      "user": "美桜@雑多垢",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 29,
+      "text": "さかくら！！ 2桁本塁打！ 勝ち越し弾！ #CARP #カープ",
+      "user": "FAL",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 30,
+      "text": "小園も結果出せ #がんばろうカープファン #carp",
+      "user": "くわカープ用",
+      "targetType": "選手",
+      "target": "小園",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 31,
+      "text": "坂倉のホームランで勝ち越し やっぱりホームランが出んと盛り上がらんし勝てんのよ #カープ",
+      "user": "sippy",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "中立"
+    },
+    {
+      "id": 32,
+      "text": "しゃ！！ さすが坂倉くん ボームラーーーン 呟くまいと思ってたけど、 やっぱり、試合は気になるし、 推しは推しだし、 カープを応援したいんよ。 #carp",
+      "user": "chie",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 33,
+      "text": "キターーーーー！坂倉将吾ーーー！逆転ソロホームランっっーー！ オーワッショイワッショイ！ 今日－もーカープーはーかーちかーちー勝ち勝ちー バンザーいバンザーいバンザーい！ #carp #カープ",
+      "user": "これでいいのだ！",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 34,
+      "text": "サクちゃーーーーん カープ勝ち越し！ ありがとう、サクちゃん",
+      "user": "mocchan",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 35,
+      "text": "絶対勝つぞ！カープ！！",
+      "user": "広島江東カープ",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 36,
+      "text": "坂倉インコース強すぎるて、、、 #carp #カープ",
+      "user": "ふみきゅん",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "打撃",
+      "sentiment": "中立"
+    },
+    {
+      "id": 37,
+      "text": "#カープ",
+      "user": "ろいず (roize)",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 38,
+      "text": "ナイスじゃ坂倉勝ち越し弾 ヒットにホームラン 復調してきた #カープ #CARP",
+      "user": "HTC",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 39,
+      "text": "いぇーーーーーーーーい サクHR 素晴らしすぎ かっこよすぎ 良きよ #カープ #坂倉将吾",
+      "user": "カープと甲子園好き女子",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 40,
+      "text": "さーかーくーらー #カープ #坂倉将吾",
+      "user": "アナ○",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "その他",
+      "sentiment": "中立"
+    },
+    {
+      "id": 41,
+      "text": "坂倉将吾がかえってまいりました！！ #カープ",
+      "user": "めっちゃゆ",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 42,
+      "text": "坂倉くんキター！！ やっぱりヒット１本、その１本が出るのが苦しかったな。 ナイスホームラン！ ホームランは正義！！ #カープ #阪神",
+      "user": "ぽん。",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 43,
+      "text": "坂倉の会心の一撃で カープ勝ち越し!! #carp",
+      "user": "球場前/坂本可自間",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 44,
+      "text": "今日だけはカープに負けられへんでなほんま",
+      "user": "ユウノﾋﾟｰﾔa.k.a骨格",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 45,
+      "text": "カープ勝ち越し #carp 観戦 #エガビアー",
+      "user": "jun3life",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 46,
+      "text": "カープ坂倉くん 阪神伊藤から勝ち越しホームラン！！！ ウェイ ウェイ ウェーーーーーーイ",
+      "user": "RaptorzCARPしゃかりき",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 47,
+      "text": "坂倉勝ち越し弾 よく打球が伸びたな #カープ",
+      "user": "いまちゃん",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 48,
+      "text": "あれもしかして、来週見に行く神宮の試合は先発栗林の順番か。あまりカープ戦は意識せずにチケット取ったから、特にユニフォーム着ていくつもりもなかったけど、栗林なら熱い。久々にカープのユニフォーム出してくるかな。",
+      "user": "れ",
+      "targetType": "選手",
+      "target": "栗林",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 49,
+      "text": "昨日の前川破壊もあるし、カープ戦は実況が鬱陶しくて余計に苛立つんよなあ",
+      "user": "みなみ",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "id": 50,
+      "text": "#サクはカープの宝",
+      "user": "マナ",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 51,
+      "text": "キタデーーーーうぉおおおおーー坂倉ーーーーーー（復活）勝ち越しホーーーームラーーーーン 第10号 #カープ",
+      "user": "酔魔",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "id": 52,
+      "text": "さくーー 素晴らしいホームラン #カープ",
+      "user": "あんこ",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 53,
+      "text": "坂倉選手勝ち越し 本塁打 小園海斗選手も続け #カープ",
+      "user": "ryuuchan6.25",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 54,
+      "text": "【一軍】阪神1-2広島 6回裏 カープが一発で勝ち越し 投手:伊藤将 打者:坂倉 結果:レフトスタンドへの勝ち越しソロホームラン 【公式モバイルサイトで実況速報中!】 #hanshin #tigers #阪神タイガース #熱覇",
+      "user": "阪神タイガース公式サイト実況速報担当",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "ホームラン",
+      "sentiment": "中立"
+    },
+    {
+      "id": 55,
+      "text": "逆転ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!! #カープ",
+      "user": "emipon@黒猫れおたその日常カープ垢",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "id": 56,
+      "text": "名前の雰囲気はカープ お色の雰囲気はジャイアンツ 私の場合は、「モンテルみたいな薬」と言いそうw 情報量多め",
+      "user": "地下8階",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "id": 57,
+      "text": "坂倉ナイスー #カープ",
+      "user": "くろうさぎ",
+      "targetType": "選手",
+      "target": "坂倉",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    }
+  ]
+}
