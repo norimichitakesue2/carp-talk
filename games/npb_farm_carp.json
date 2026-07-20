@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-19T20:06:12.959Z",
+  "fetchedAt": "2026-07-20T20:18:17.300Z",
   "year": 2026,
   "league": "western",
   "note": "カープ2軍（ウエスタン）の個人成績。規定打席/規定投球回以上の選手のみNPB公式に掲載される。",
@@ -10,11 +10,11 @@
   "batters": [
     {
       "name": "末包昇大",
-      "avg": ".205",
-      "games": 60,
-      "pa": 214,
-      "ab": 200,
-      "r": 14,
+      "avg": ".202",
+      "games": 61,
+      "pa": 218,
+      "ab": 203,
+      "r": 15,
       "h": 41,
       "double": 4,
       "triple": 1,
@@ -22,14 +22,29 @@
       "tb": 59,
       "rbi": 20,
       "sb": 1,
-      "bb": 11,
+      "bb": 12,
       "k": 35,
-      "slg": ".295",
+      "slg": ".291",
       "obp": ".252",
-      "ops": ".547"
+      "ops": ".543"
     }
   ],
   "pitchers": [
+    {
+      "name": "河野佳",
+      "era": "2.41",
+      "games": 17,
+      "wins": 5,
+      "losses": 3,
+      "saves": 1,
+      "ip": "74.2",
+      "hitsAllowed": 63,
+      "hrAllowed": 4,
+      "walks": 21,
+      "strikeouts": 44,
+      "runs": 24,
+      "earnedRuns": 20
+    },
     {
       "name": "佐藤柳之介",
       "era": "2.41",
@@ -46,19 +61,19 @@
       "earnedRuns": 22
     },
     {
-      "name": "河野佳",
-      "era": "2.53",
-      "games": 16,
-      "wins": 4,
-      "losses": 3,
-      "saves": 1,
-      "ip": "67.2",
-      "hitsAllowed": 57,
-      "hrAllowed": 4,
-      "walks": 21,
-      "strikeouts": 40,
-      "runs": 23,
-      "earnedRuns": 19
+      "name": "高橋昂也",
+      "era": "5.27",
+      "games": 23,
+      "wins": 0,
+      "losses": 2,
+      "saves": 4,
+      "ip": "27.1",
+      "hitsAllowed": 23,
+      "hrAllowed": 0,
+      "walks": 20,
+      "strikeouts": 19,
+      "runs": 17,
+      "earnedRuns": 16
     },
     {
       "name": "菊地ハルン",
@@ -89,21 +104,6 @@
       "strikeouts": 14,
       "runs": 6,
       "earnedRuns": 3
-    },
-    {
-      "name": "高橋昂也",
-      "era": "5.47",
-      "games": 22,
-      "wins": 0,
-      "losses": 2,
-      "saves": 3,
-      "ip": "26.1",
-      "hitsAllowed": 23,
-      "hrAllowed": 0,
-      "walks": 20,
-      "strikeouts": 18,
-      "runs": 17,
-      "earnedRuns": 16
     },
     {
       "name": "杉田健",
