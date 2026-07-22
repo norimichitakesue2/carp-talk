@@ -170,7 +170,28 @@ async function getRecentLineups(beforeDate, n = 3) {
   return out;
 }
 
-function assembleGameJson(date, factsRoot, generated, prev) {
+// games/ ディレクトリをスキャンして、指定日の前後にあるカープ試合日を返す。
+// narrative の prev_question / next_question のリンク先に使う。
+async function findAdjacentGameDates(date) {
+  let prevGameDate = null, nextGameDate = null;
+  try {
+    const files = await fs.readdir(GAMES_DIR);
+    const dates = files
+      .filter((fn) => /^\d{4}-\d{2}-\d{2}\.json$/.test(fn))
+      .map((fn) => fn.replace('.json', ''))
+      .sort();
+    for (const d of dates) {
+      if (d < date) prevGameDate = d;       // 昇順なので最後に代入された「date未満の最大」が前回
+      else if (d > date && !nextGameDate) nextGameDate = d;  // 「dateより大の最小」が次回
+    }
+  } catch (e) {
+    console.error(`[build_game] findAdjacentGameDates error (non-fatal): ${e.message}`);
+  }
+  return { prevGameDate, nextGameDate };
+}
+
+function assembleGameJson(date, factsRoot, generated, prev, adjacentDates = {}) {
+  const { prevGameDate = null, nextGameDate = null } = adjacentDates;
   const f = factsRoot.facts;
   const ls = f.lineScore || {};
   const carpIsHome = !!f.carpIsHome;
@@ -272,6 +293,37 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     ? generated.preview
     : (prev?.preview || null);
 
+  // narrative: 試合前(scheduled/live)は watch_themes/prev_question、試合後(final)は story/next_question。
+  // final 時は scheduled 時に作った watch_themes/prev_question を prev から維持し、story/next_question を上書き追加する。
+  // （試合前の観戦テーマを「答え合わせ」として残すため）
+  const genNar = generated?.narrative || null;
+  const prevNar = prev?.narrative || null;
+  let narrative = null;
+  if (isFinal) {
+    // 試合後: 前の narrative(観戦テーマ等) を土台に story/next_question を足す
+    narrative = { ...(prevNar || {}) };
+    if (genNar?.story) narrative.story = genNar.story;
+    if (genNar?.next_question !== undefined) {
+      narrative.next_question = typeof genNar.next_question === 'string'
+        ? { text: genNar.next_question, date: nextGameDate || null }
+        : genNar.next_question;
+    }
+  } else {
+    // 試合前/中: 観戦テーマと前回の問いを生成
+    if (genNar) {
+      narrative = { ...(prevNar || {}) };
+      if (Array.isArray(genNar.watch_themes)) narrative.watch_themes = genNar.watch_themes.filter(Boolean).slice(0, 3);
+      if (genNar.prev_question !== undefined) {
+        const pqText = typeof genNar.prev_question === 'string' ? genNar.prev_question : (genNar.prev_question?.text || '');
+        narrative.prev_question = pqText ? { text: pqText, date: prevGameDate || null } : null;
+      }
+    } else {
+      narrative = prevNar;
+    }
+  }
+  // 空オブジェクトなら null に
+  if (narrative && Object.keys(narrative).length === 0) narrative = null;
+
   let resultLabel = '';
   if (isFinal && homeScore != null && awayScore != null) {
     if (homeScore !== awayScore) {
@@ -309,6 +361,7 @@ function assembleGameJson(date, factsRoot, generated, prev) {
     debates,
     team_analysis: teamAnalysis,
     preview,
+    narrative,
     innings: inningsObj,
     pitchers,
     moments,
@@ -685,7 +738,8 @@ async function main() {
   }
 
   // STEP4: 統合
-  const gameJson = assembleGameJson(date, facts, generated, prev);
+  const adjacentDates = await findAdjacentGameDates(date);
+  const gameJson = assembleGameJson(date, facts, generated, prev, adjacentDates);
 
   if (dry) {
     console.log(JSON.stringify(gameJson, null, 2));
