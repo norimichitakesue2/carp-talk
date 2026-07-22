@@ -1190,6 +1190,105 @@ body::before{
 .xp-detail-sample-meta a:hover{text-decoration:underline}
 
 /* ============================================================ */
+/* 🧭 ナラティブ（今日のストーリー等）                          */
+/* ============================================================ */
+.nar-top{margin-bottom:1rem}
+.nar-ico{margin-right:5px;opacity:.85}
+.nar-prevq{
+  background:rgba(136,134,128,.1);
+  border-left:3px solid rgba(136,134,128,.7);
+  border-radius:0 var(--rs) var(--rs) 0;
+  padding:9px 12px;margin-bottom:10px;
+}
+.nar-prevq-lbl{font-size:10.5px;color:#b4b2a9;letter-spacing:.05em;margin-bottom:4px;font-weight:500}
+.nar-prevq-text{font-size:13px;line-height:1.55;color:var(--text)}
+.nar-link{display:inline-block;font-size:10.5px;color:var(--blue);margin-top:5px;text-decoration:none}
+.nar-link:hover{text-decoration:underline}
+.nar-themes{
+  background:linear-gradient(180deg,#141824,#0c0d18);
+  border:1px solid rgba(74,158,255,.25);
+  border-radius:var(--r);padding:11px 12px;
+}
+.nar-themes-lbl{font-size:13px;font-weight:500;color:#5badff;margin-bottom:9px}
+.nar-theme-item{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  border-radius:7px;padding:8px 10px;margin-bottom:7px;
+  font-size:12.5px;line-height:1.5;display:flex;gap:7px;
+}
+.nar-theme-item:last-child{margin-bottom:0}
+.nar-theme-num{color:var(--accent);font-weight:500;flex-shrink:0}
+/* 観戦テーマ内の根拠折りたたみ */
+.nar-evidence{margin-top:10px;border-top:1px solid rgba(255,255,255,.08);padding-top:9px}
+.nar-evidence-toggle{
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;font-size:11px;color:var(--muted);user-select:none;padding:2px 0;
+}
+.nar-evidence-toggle:hover{color:var(--text)}
+.nar-ev-arrow,.nar-an-arrow{font-size:10px;transition:transform .2s}
+.nar-evidence-body{margin-top:8px}
+.nar-evidence-body .pv-flow{margin-bottom:12px}
+/* ストーリー内の課題折りたたみ */
+.nar-analysis{margin-top:11px;border-top:1px solid rgba(255,255,255,.08);padding-top:9px}
+.nar-analysis-toggle{
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;font-size:11px;color:var(--muted);user-select:none;padding:2px 0;
+}
+.nar-analysis-toggle:hover{color:var(--text)}
+.nar-analysis-body{margin-top:8px}
+.nar-an-lbl{font-size:10px;font-weight:700;letter-spacing:.06em;margin:8px 0 4px}
+.nar-an-lbl.issue{color:#ff8090}
+.nar-an-lbl.improve{color:var(--gold,#f0c040)}
+.nar-an-lbl.fan{color:var(--blue)}
+.nar-an-list{font-size:12.5px;color:#c5c8ce;line-height:1.6;margin:0 0 4px 1rem;padding:0}
+.nar-an-list li{margin-bottom:3px}
+.nar-an-fanvoice{font-size:12.5px;color:#c5c8ce;line-height:1.6;margin:0;font-style:italic;border-left:2px solid var(--blue);padding-left:.6rem}
+/* 今日のストーリー */
+.nar-story-section{
+  background:
+    radial-gradient(ellipse at top, rgba(200,16,46,.1), transparent 60%),
+    linear-gradient(180deg,#181820,#0f0c12);
+  border:1px solid rgba(200,16,46,.3);
+  border-radius:var(--r);padding:1.1rem 1rem;margin-bottom:1rem;
+  position:relative;overflow:hidden;
+}
+.nar-story-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--carp),#ff4060,var(--accent));
+}
+.nar-story-head{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.nar-story-icon{font-size:18px}
+.nar-story-title{
+  font-family:'Bebas Neue','Noto Sans JP',sans-serif;
+  font-size:19px;letter-spacing:.08em;color:var(--accent);
+}
+.nar-story-sub{font-size:11px;color:var(--muted);margin-bottom:14px;margin-left:26px}
+.nar-story-body{display:flex;flex-direction:column;gap:11px}
+.nar-part-lbl{font-size:10px;font-weight:700;letter-spacing:.06em;margin-bottom:3px}
+.nar-part-lbl.aim{color:var(--carp)}
+.nar-part-lbl.pivot{color:var(--carp)}
+.nar-part-lbl.answer{color:var(--carp)}
+.nar-part-lbl.issue{color:var(--orange)}
+.nar-part-text{font-size:13px;line-height:1.6;color:#d5d8de}
+.nar-story-react{display:flex;gap:7px;margin-top:14px}
+.nar-react-btn{
+  flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  color:var(--muted);border-radius:7px;padding:7px;font-size:12px;
+  font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .15s;
+}
+.nar-react-btn:hover{color:var(--text)}
+.nar-react-btn.active[data-react="agree"]{background:rgba(62,207,142,.14);border-color:rgba(62,207,142,.4);color:var(--green)}
+.nar-react-btn.active[data-react="other"]{background:rgba(74,158,255,.12);border-color:rgba(74,158,255,.4);color:var(--blue)}
+.nar-nextq{
+  background:rgba(74,158,255,.06);
+  border-left:3px solid rgba(91,173,255,.6);
+  border-radius:0 var(--rs) var(--rs) 0;
+  padding:9px 12px;margin-top:14px;
+}
+.nar-nextq-lbl{font-size:10.5px;color:#5badff;letter-spacing:.05em;margin-bottom:4px;font-weight:500}
+.nar-nextq-text{font-size:13px;line-height:1.55;color:var(--text)}
+.nar-disclaimer{font-size:10px;color:var(--faint);margin-top:12px;text-align:right}
+
+/* ============================================================ */
 /* ⚔️ 議論エンジン（debates）                                   */
 /* ============================================================ */
 .debate-section{
@@ -1398,7 +1497,7 @@ async function loadGame(date){
     return;
   }
   var g=await r.json();
-  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[],team_analysis:g.team_analysis||null,preview:g.preview||null};
+  GAME_ID=g.id;GAME={home:g.home_team,away:g.away_team,homeScore:g.home_score,awayScore:g.away_score,date:dateLabel(g.game_date),venue:g.venue,innings:g.innings||{},startTime:g.start_time||'',awayPitcher:g.away_pitcher||'',homePitcher:g.home_pitcher||'',status:g.status||'final',title_candidates:g.title_candidates||[],pitchers:g.pitchers||[],result_label:g.result_label||'',moments:g.moments||[],positives:g.positives||[],debates:g.debates||[],team_analysis:g.team_analysis||null,preview:g.preview||null,narrative:g.narrative||null};
   isScheduled=g.status==='scheduled';
   isCancelled=g.status==='cancelled';
   MOMENTS=g.moments||[];PLAYERS=g.players||[];
@@ -1597,6 +1696,23 @@ function renderMain(g){
     innHtml+pitHtml+
     '</div>'+
 
+    // 🧭 ナラティブ上部（前回から続く問い ＋ 今日の観戦テーマ）
+    '<div class="nar-top fi" id="nar-top" style="display:none">'+
+    '<div class="nar-prevq" id="nar-prevq" style="display:none">'+
+      '<div class="nar-prevq-lbl"><span class="nar-ico">↩</span>前回から続く問い</div>'+
+      '<div class="nar-prevq-text" id="nar-prevq-text"></div>'+
+      '<a class="nar-link" id="nar-prevq-link"></a>'+
+    '</div>'+
+    '<div class="nar-themes" id="nar-themes" style="display:none">'+
+      '<div class="nar-themes-lbl"><span class="nar-ico">👁</span><span id="nar-themes-title">今日、確かめたいこと</span></div>'+
+      '<div id="nar-themes-list"></div>'+
+      '<div class="nar-evidence" id="nar-evidence" style="display:none">'+
+        '<div class="nar-evidence-toggle" id="nar-evidence-toggle" onclick="toggleNarEvidence()"><span>📊 根拠データ・注目選手</span><span class="nar-ev-arrow" id="nar-ev-arrow">▼</span></div>'+
+        '<div class="nar-evidence-body" id="pv-body"></div>'+
+      '</div>'+
+    '</div>'+
+    '</div>'+
+
     // 📡 X ファン速報（X Pulse）— スコアカード直下に配置
     '<div class="xpulse-section fi" id="xpulse-section" style="display:none">'+
     '<div class="xp-head">'+
@@ -1614,14 +1730,6 @@ function renderMain(g){
     '<div class="xp-stats" id="xp-stats"></div>'+
     '<div class="xp-detail" id="xp-detail"></div>'+
     '<div class="xp-disclaimer">※ Xから直近サンプル取得、Haikuで分類。バブルクリックで詳細表示</div>'+
-    '</div>'+
-
-    // 🔮 試合前プレビュー（preview生成された日のみ表示、内容は renderPreview で）
-    '<div class="preview-section fi" id="preview-section" style="display:none">'+
-    '<div class="pv-head"><span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span></div>'+
-    '<div class="pv-sub">直近の試合データから AI が予想する注目ポイント</div>'+
-    '<div id="pv-body"></div>'+
-    '<div class="pv-disclaimer">※ 予想は直近の試合データを元にした参考情報です</div>'+
     '</div>'+
 
     // ✨ 今日の光（ポジティブ・3レイヤー）
@@ -1646,14 +1754,6 @@ function renderMain(g){
     '</div>'+
     '</div>'+
     '</div>'+
-    '</div>'+
-
-    // AI分析セクション
-    '<div class="ai-analysis-section fi" id="ai-section">'+
-    '<div style="font-size:11px;color:rgba(74,158,255,.8);font-weight:700;margin-bottom:8px;letter-spacing:.05em">🤖 AIが導く現状の課題と改善案</div>'+
-    '<div style="font-size:11px;color:var(--muted);margin-bottom:10px">ファンの投票データをAIが分析し、チームへの提言を生成します</div>'+
-    '<button class="ai-analysis-btn" id="ai-btn" onclick="runAIAnalysis()">▶ 分析を実行する</button>'+
-    '<div id="ai-result"></div>'+
     '</div>'+
 
     // 😤 気分チェックイン（スコアカード直後に配置）
@@ -1794,6 +1894,27 @@ function renderMain(g){
     '<div class="cinput-row"><input class="cinput" id="cinp" placeholder="コメントを入力..." maxlength="200"><button class="csend" id="csend" onclick="sendComment()">送信</button></div>'+
     '</div></div>'+
 
+    // 📖 今日のストーリー ＋ 次の試合への問い
+    '<div class="nar-story-section fi" id="nar-story-section" style="display:none">'+
+    '<div class="nar-story-head"><span class="nar-story-icon">📖</span><span class="nar-story-title">今日のストーリー</span></div>'+
+    '<div class="nar-story-sub">試合の狙いから残った課題までを、事実の流れでつなぎます</div>'+
+    '<div class="nar-story-body" id="nar-story-body"></div>'+
+    '<div class="nar-analysis" id="nar-analysis" style="display:none">'+
+      '<div class="nar-analysis-toggle" id="nar-analysis-toggle" onclick="toggleNarAnalysis()"><span>📋 課題と改善案・ファンの声</span><span class="nar-an-arrow" id="nar-an-arrow">▼</span></div>'+
+      '<div class="nar-analysis-body" id="nar-analysis-body" style="display:none"></div>'+
+    '</div>'+
+    '<div class="nar-story-react" id="nar-story-react">'+
+      '<button class="nar-react-btn" data-react="agree" onclick="reactNarStory(\'agree\')">🤝 納得 <span id="nar-react-agree">0</span></button>'+
+      '<button class="nar-react-btn" data-react="other" onclick="reactNarStory(\'other\')">🤔 別の見方 <span id="nar-react-other">0</span></button>'+
+    '</div>'+
+    '<div class="nar-nextq" id="nar-nextq" style="display:none">'+
+      '<div class="nar-nextq-lbl"><span class="nar-ico">↪</span>次の試合への問い</div>'+
+      '<div class="nar-nextq-text" id="nar-nextq-text"></div>'+
+      '<a class="nar-link" id="nar-nextq-link"></a>'+
+    '</div>'+
+    '<div class="nar-disclaimer">※ 事実に基づく整理です。首脳陣の意図は断定せず、複数の可能性を示しています</div>'+
+    '</div>'+
+
     // 🎫 マイカード（観戦サマリー）
     '<div class="mycard-section fi" id="mycard-section">'+
     '<div class="mc-head"><span class="mc-icon">🎫</span><span class="mc-title">あなたの観戦カード</span></div>'+
@@ -1813,12 +1934,8 @@ function renderMain(g){
   renderStory();
   renderPositives();
   renderDebates();
-  renderPreview();
+  renderNarrative();
   renderRecentForm();
-  // team_analysis が JSON にあれば自動的に AI 分析を表示（ボタン押し不要）
-  if(GAME.team_analysis && (GAME.team_analysis.issues || GAME.team_analysis.fan_voice)){
-    setTimeout(runAIAnalysis, 50);
-  }
 }
 
 // ===== 📊 選手の調子（直近7日成績）=====
@@ -2122,6 +2239,151 @@ function openXShare(text){
   window.open(shareUrl,'_blank','noopener,noreferrer,width=600,height=500');
 }
 
+// ===== 🧭 ナラティブ（今日のストーリー等）=====
+var narReacts={agree:0, other:0};
+var myNarReact=null;
+
+function renderNarrative(){
+  var n=(GAME && GAME.narrative) || {};
+  var top=document.getElementById('nar-top');
+  var storySec=document.getElementById('nar-story-section');
+  var themes=document.getElementById('nar-themes');
+  var prevq=document.getElementById('nar-prevq');
+
+  // 中止時は全て非表示
+  if(isCancelled){
+    [top,storySec].forEach(function(el){if(el)el.style.display='none';});
+    return;
+  }
+
+  // --- 上部: 前回から続く問い ---
+  if(prevq){
+    if(n.prev_question && n.prev_question.text){
+      document.getElementById('nar-prevq-text').textContent=n.prev_question.text;
+      var pl=document.getElementById('nar-prevq-link');
+      if(n.prev_question.date){
+        pl.textContent='← '+dateLabel(n.prev_question.date)+'の試合を見る';
+        pl.href='/?date='+n.prev_question.date;
+        pl.style.display='inline-block';
+      }else{ pl.style.display='none'; }
+      prevq.style.display='block';
+    }else{ prevq.style.display='none'; }
+  }
+
+  // --- 上部: 今日の観戦テーマ ＋ 根拠(旧preview) ---
+  var hasThemes=Array.isArray(n.watch_themes) && n.watch_themes.length;
+  if(hasThemes){
+    var html=n.watch_themes.slice(0,3).map(function(t,i){
+      return '<div class="nar-theme-item"><span class="nar-theme-num">'+(i+1)+'</span><span>'+escapeHtml(t)+'</span></div>';
+    }).join('');
+    document.getElementById('nar-themes-list').innerHTML=html;
+  }else{
+    document.getElementById('nar-themes-list').innerHTML='';
+  }
+  // 根拠データ（旧preview）を #pv-body に描画
+  var hasEvidence=renderPreview();
+  var evWrap=document.getElementById('nar-evidence');
+  var titleEl=document.getElementById('nar-themes-title');
+  if(evWrap){
+    if(hasEvidence){
+      evWrap.style.display='block';
+      var pvBody=document.getElementById('pv-body');
+      var arrow=document.getElementById('nar-ev-arrow');
+      // 試合前は根拠を開いて、試合後は畳む
+      var openByDefault=(GAME.status==='scheduled'||GAME.status==='live');
+      if(pvBody)pvBody.style.display=openByDefault?'block':'none';
+      if(arrow)arrow.style.transform=openByDefault?'':'rotate(-90deg)';
+    }else{ evWrap.style.display='none'; }
+  }
+  // テーマもroot根拠も無ければテーマブロック非表示。テーマ無し・根拠ありなら見出しを切替
+  if(themes){
+    if(hasThemes){
+      if(titleEl)titleEl.textContent='今日、確かめたいこと';
+      themes.style.display='block';
+    }else if(hasEvidence){
+      if(titleEl)titleEl.textContent=(GAME.status==='final'?'試合前の見どころ（答え合わせ）':'今日の見どころ');
+      themes.style.display='block';
+    }else{ themes.style.display='none'; }
+  }
+
+  // 上部コンテナの表示可否
+  var topHasContent=(n.prev_question&&n.prev_question.text)||hasThemes||hasEvidence;
+  if(top)top.style.display=topHasContent?'block':'none';
+
+  // --- 下部: 今日のストーリー（狙い/分岐/答え/課題）---
+  var s=n.story||{};
+  var hasStory=s.aim||s.pivot||s.answer||s.issue;
+  if(hasStory && storySec){
+    var parts=[
+      {k:'aim', lbl:'今日の狙い', v:s.aim},
+      {k:'pivot', lbl:'試合を動かした分岐', v:s.pivot},
+      {k:'answer', lbl:'得られた答え', v:s.answer},
+      {k:'issue', lbl:'残った課題', v:s.issue}
+    ];
+    var bodyHtml=parts.filter(function(p){return p.v;}).map(function(p){
+      return '<div><div class="nar-part-lbl '+p.k+'">'+p.lbl+'</div><div class="nar-part-text">'+escapeHtml(p.v)+'</div></div>';
+    }).join('');
+    document.getElementById('nar-story-body').innerHTML=bodyHtml;
+
+    // 次の試合への問い
+    var nextq=document.getElementById('nar-nextq');
+    if(n.next_question && n.next_question.text){
+      document.getElementById('nar-nextq-text').textContent=n.next_question.text;
+      var nl=document.getElementById('nar-nextq-link');
+      if(n.next_question.date){
+        nl.textContent=dateLabel(n.next_question.date)+'の試合へ →';
+        nl.href='/?date='+n.next_question.date;
+        nl.style.display='inline-block';
+      }else{ nl.style.display='none'; }
+      nextq.style.display='block';
+    }else if(nextq){ nextq.style.display='none'; }
+
+    // 残った課題の下に team_analysis(課題/改善案/ファンの声)を折りたたみ表示
+    renderNarAnalysis();
+
+    loadNarReacts();
+    storySec.style.display='block';
+  }else if(storySec){
+    storySec.style.display='none';
+  }
+}
+
+async function loadNarReacts(){
+  // Supabase の narrative_reacts テーブルから集計（無ければ0表示のまま）
+  try{
+    var r=await sb.from('narrative_reacts').select('react_type').eq('game_id',GAME_ID);
+    if(r.data){
+      narReacts={agree:0, other:0};
+      r.data.forEach(function(row){ if(narReacts[row.react_type]!==undefined)narReacts[row.react_type]++; });
+    }
+    var mine=await sb.from('narrative_reacts').select('react_type').eq('game_id',GAME_ID).eq('user_id',userId).maybeSingle();
+    myNarReact=mine.data?mine.data.react_type:null;
+  }catch(e){ /* テーブル未作成でも表示は続行 */ }
+  updateNarReactUI();
+}
+
+function updateNarReactUI(){
+  var a=document.getElementById('nar-react-agree'), o=document.getElementById('nar-react-other');
+  if(a)a.textContent=narReacts.agree;
+  if(o)o.textContent=narReacts.other;
+  document.querySelectorAll('.nar-react-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-react')===myNarReact);
+  });
+}
+
+async function reactNarStory(type){
+  if(myNarReact===type)return;
+  var prev=myNarReact;
+  myNarReact=type;
+  // 楽観的更新
+  if(prev && narReacts[prev]!==undefined)narReacts[prev]--;
+  if(narReacts[type]!==undefined)narReacts[type]++;
+  updateNarReactUI();
+  try{
+    await sb.from('narrative_reacts').upsert({game_id:GAME_ID, user_id:userId, react_type:type},{onConflict:'game_id,user_id'});
+  }catch(e){ /* 失敗しても表示は維持 */ }
+}
+
 // ===== 📡 X ファン速報（X Pulse）=====
 var XPULSE = {pre:null, live:null, post:null, phase:'pre', selectedBubble:null};
 
@@ -2385,51 +2647,21 @@ function escapeHtml(s){
 
 // ===== ⚔️ 議論エンジン（debates）=====
 // ===== 🔮 試合前プレビュー =====
+// 観戦テーマの「根拠データ・注目選手」を #pv-body に描画。中身があれば true を返す。
+// （旧: 独立「今日の見どころ」セクション → 観戦テーマ内の折りたたみに統合）
 function renderPreview(){
-  var sec = document.getElementById('preview-section');
-  if(!sec) return;
+  var body = document.getElementById('pv-body');
+  if(!body) return false;
   var p = GAME && GAME.preview;
   var hasContent = p && (
     (Array.isArray(p.watchpoints) && p.watchpoints.length) ||
     (Array.isArray(p.key_players) && p.key_players.length) ||
     p.predicted_flow
   );
-  // 中止時 or 中身なしは非表示。試合終了後は「答え合わせ」として折りたたみ表示。
   if(!hasContent || GAME.status === 'cancelled'){
-    sec.style.display = 'none';
-    return;
+    body.innerHTML = '';
+    return false;
   }
-  sec.style.display = '';
-  var isFinalReview = (GAME.status === 'final');
-
-  // ヘッダー/サブ/折りたたみ状態を状況で切り替え
-  var headEl = sec.querySelector('.pv-head');
-  var subEl = sec.querySelector('.pv-sub');
-  if(isFinalReview){
-    sec.classList.add('pv-review');
-    // 試合後はデフォルト折りたたみ。クリックで開閉
-    if(!sec.dataset.pvInit){
-      sec.classList.add('pv-collapsed');
-      sec.dataset.pvInit = '1';
-    }
-    if(headEl){
-      headEl.classList.add('pv-head-toggle');
-      headEl.onclick = function(){ sec.classList.toggle('pv-collapsed'); };
-      headEl.innerHTML = '<span class="pv-icon">🔮</span><span class="pv-title-t">試合前の見どころ（答え合わせ）</span><span class="pv-toggle-arrow">▼</span>';
-    }
-    if(subEl) subEl.textContent = '試合前のAI予想。実際の結果と見比べてみよう';
-  } else {
-    sec.classList.remove('pv-review','pv-collapsed');
-    if(headEl){
-      headEl.classList.remove('pv-head-toggle');
-      headEl.onclick = null;
-      headEl.innerHTML = '<span class="pv-icon">🔮</span><span class="pv-title-t">今日の見どころ</span>';
-    }
-    if(subEl) subEl.textContent = '直近の試合データから AI が予想する注目ポイント';
-  }
-
-  var body = document.getElementById('pv-body');
-  if(!body) return;
   var html = '';
 
   // 試合展開予想
@@ -2581,6 +2813,53 @@ function renderPreview(){
   }
 
   body.innerHTML = html;
+  return true;
+}
+
+function toggleNarEvidence(){
+  var body=document.getElementById('pv-body');
+  var arrow=document.getElementById('nar-ev-arrow');
+  if(!body)return;
+  var open=body.style.display!=='none';
+  body.style.display=open?'none':'block';
+  if(arrow)arrow.style.transform=open?'rotate(-90deg)':'';
+}
+
+function toggleNarAnalysis(){
+  var body=document.getElementById('nar-analysis-body');
+  var arrow=document.getElementById('nar-an-arrow');
+  if(!body)return;
+  var open=body.style.display!=='none';
+  body.style.display=open?'none':'block';
+  if(arrow)arrow.style.transform=open?'rotate(-90deg)':'';
+}
+
+// team_analysis(課題/改善案/ファンの声) を #nar-analysis-body に描画
+function renderNarAnalysis(){
+  var wrap=document.getElementById('nar-analysis');
+  var body=document.getElementById('nar-analysis-body');
+  if(!wrap||!body)return false;
+  var ta=GAME&&GAME.team_analysis;
+  if(!ta||!(ta.issues||ta.improvements||ta.fan_voice)){
+    wrap.style.display='none';
+    return false;
+  }
+  var html='';
+  if(ta.issues&&ta.issues.length){
+    html+='<div class="nar-an-lbl issue">現状の課題</div>';
+    html+='<ul class="nar-an-list">'+ta.issues.map(function(s){return '<li>'+escapeHtml(typeof s==='string'?s:(s.title||''))+'</li>';}).join('')+'</ul>';
+  }
+  if(ta.improvements&&ta.improvements.length){
+    html+='<div class="nar-an-lbl improve">改善案</div>';
+    html+='<ul class="nar-an-list">'+ta.improvements.map(function(s){return '<li>'+escapeHtml(typeof s==='string'?s:(s.title||''))+'</li>';}).join('')+'</ul>';
+  }
+  if(ta.fan_voice){
+    html+='<div class="nar-an-lbl fan">ファンの声</div>';
+    html+='<p class="nar-an-fanvoice">「'+escapeHtml(ta.fan_voice)+'」</p>';
+  }
+  body.innerHTML=html;
+  wrap.style.display='block';
+  return true;
 }
 
 function renderDebates(){
@@ -4105,7 +4384,7 @@ async function initApp(g){
   renderTitles();renderStory();drawWave();renderPlayerGrid();loadPlayerRatings();
   if(isCancelled){
     // 中止時は評価系・予想系・スタメン予想まで全て非表示にする（試合自体が無いため）
-    ['player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','ai-section','positive-section','debate-section','mood-section','mycard-section','preview-section','lineup-section','xpulse-section'].forEach(function(id){
+    ['player-section','minna-section','comment-section','title-section','wave-svg','wg','conn-svg','story-root','tp-track','tp-hint','tp-add-toggle','wave-inn-labels','wave-markers','wave-fill','wave-line','wave-box','positive-section','debate-section','mood-section','mycard-section','lineup-section','xpulse-section','nar-top','nar-story-section'].forEach(function(id){
       var el=document.getElementById(id);
       if(el)el.style.display='none';
     });
