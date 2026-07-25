@@ -1696,6 +1696,27 @@ function renderMain(g){
     innHtml+pitHtml+
     '</div>'+
 
+    // 📖 今日のストーリー ＋ 次の試合への問い（スコア直下）
+    '<div class="nar-story-section fi" id="nar-story-section" style="display:none">'+
+    '<div class="nar-story-head"><span class="nar-story-icon">📖</span><span class="nar-story-title">今日のストーリー</span></div>'+
+    '<div class="nar-story-sub">試合の狙いから残った課題までを、事実の流れでつなぎます</div>'+
+    '<div class="nar-story-body" id="nar-story-body"></div>'+
+    '<div class="nar-analysis" id="nar-analysis" style="display:none">'+
+      '<div class="nar-analysis-toggle" id="nar-analysis-toggle" onclick="toggleNarAnalysis()"><span>📋 課題と改善案・ファンの声</span><span class="nar-an-arrow" id="nar-an-arrow">▼</span></div>'+
+      '<div class="nar-analysis-body" id="nar-analysis-body" style="display:none"></div>'+
+    '</div>'+
+    '<div class="nar-story-react" id="nar-story-react">'+
+      '<button class="nar-react-btn" data-react="agree" onclick="reactNarStory(\'agree\')">🤝 納得 <span id="nar-react-agree">0</span></button>'+
+      '<button class="nar-react-btn" data-react="other" onclick="reactNarStory(\'other\')">🤔 別の見方 <span id="nar-react-other">0</span></button>'+
+    '</div>'+
+    '<div class="nar-nextq" id="nar-nextq" style="display:none">'+
+      '<div class="nar-nextq-lbl"><span class="nar-ico">↪</span>次の試合への問い</div>'+
+      '<div class="nar-nextq-text" id="nar-nextq-text"></div>'+
+      '<a class="nar-link" id="nar-nextq-link"></a>'+
+    '</div>'+
+    '<div class="nar-disclaimer">※ 事実に基づく整理です。首脳陣の意図は断定せず、複数の可能性を示しています</div>'+
+    '</div>'+
+
     // 🧭 ナラティブ上部（前回から続く問い ＋ 今日の観戦テーマ）
     '<div class="nar-top fi" id="nar-top" style="display:none">'+
     '<div class="nar-prevq" id="nar-prevq" style="display:none">'+
@@ -1894,26 +1915,6 @@ function renderMain(g){
     '<div class="cinput-row"><input class="cinput" id="cinp" placeholder="コメントを入力..." maxlength="200"><button class="csend" id="csend" onclick="sendComment()">送信</button></div>'+
     '</div></div>'+
 
-    // 📖 今日のストーリー ＋ 次の試合への問い
-    '<div class="nar-story-section fi" id="nar-story-section" style="display:none">'+
-    '<div class="nar-story-head"><span class="nar-story-icon">📖</span><span class="nar-story-title">今日のストーリー</span></div>'+
-    '<div class="nar-story-sub">試合の狙いから残った課題までを、事実の流れでつなぎます</div>'+
-    '<div class="nar-story-body" id="nar-story-body"></div>'+
-    '<div class="nar-analysis" id="nar-analysis" style="display:none">'+
-      '<div class="nar-analysis-toggle" id="nar-analysis-toggle" onclick="toggleNarAnalysis()"><span>📋 課題と改善案・ファンの声</span><span class="nar-an-arrow" id="nar-an-arrow">▼</span></div>'+
-      '<div class="nar-analysis-body" id="nar-analysis-body" style="display:none"></div>'+
-    '</div>'+
-    '<div class="nar-story-react" id="nar-story-react">'+
-      '<button class="nar-react-btn" data-react="agree" onclick="reactNarStory(\'agree\')">🤝 納得 <span id="nar-react-agree">0</span></button>'+
-      '<button class="nar-react-btn" data-react="other" onclick="reactNarStory(\'other\')">🤔 別の見方 <span id="nar-react-other">0</span></button>'+
-    '</div>'+
-    '<div class="nar-nextq" id="nar-nextq" style="display:none">'+
-      '<div class="nar-nextq-lbl"><span class="nar-ico">↪</span>次の試合への問い</div>'+
-      '<div class="nar-nextq-text" id="nar-nextq-text"></div>'+
-      '<a class="nar-link" id="nar-nextq-link"></a>'+
-    '</div>'+
-    '<div class="nar-disclaimer">※ 事実に基づく整理です。首脳陣の意図は断定せず、複数の可能性を示しています</div>'+
-    '</div>'+
 
     // 🎫 マイカード（観戦サマリー）
     '<div class="mycard-section fi" id="mycard-section">'+
