@@ -80,6 +80,21 @@ else
   else
     log "ERROR: push failed after retries"
   fi
+
+  # --- Vercel 本番デプロイ ---
+  # GitHubアカウントフラグでVercelのGit自動デプロイが切れているため、CLIで直接デプロイする。
+  # （復権してGit連携が戻ったら、この節は不要になる）
+  NPX_BIN="$(command -v npx || echo /opt/homebrew/bin/npx)"
+  if [ -x "$NPX_BIN" ]; then
+    log "vercel deploy..."
+    if "$NPX_BIN" vercel --prod --yes >>"$LOG" 2>&1; then
+      log "vercel deploy OK"
+    else
+      log "WARN: vercel deploy 失敗（gitには反映済み）"
+    fi
+  else
+    log "WARN: npx not found — vercel deploy skip"
+  fi
 fi
 
 log "=== local_update done ==="
