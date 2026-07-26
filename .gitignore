@@ -6,3 +6,9 @@ node_modules/
 
 # nf3 デバッグ用サンプルHTML（コミット不要）
 scripts/_nf3_sample_*.html
+
+# ローカル自動更新（launchd）のログ・一時ファイル
+.local_update.log
+.launchd.out.log
+.launchd.err.log
+.tmp_x_pulse_*.json
