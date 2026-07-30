@@ -31,11 +31,17 @@ else
 fi
 
 # --- node のパス解決（launchd は PATH が最小限）---
-NODE_BIN="$(command -v node || echo /opt/homebrew/bin/node)"
-if [ ! -x "$NODE_BIN" ]; then
-  log "ERROR: node not found at $NODE_BIN"
+# plist で PATH を明示しているが、フォールバックも複数候補を試す
+NODE_BIN="$(command -v node || true)"
+for cand in /usr/local/bin/node /opt/homebrew/bin/node; do
+  [ -n "$NODE_BIN" ] && break
+  [ -x "$cand" ] && NODE_BIN="$cand"
+done
+if [ -z "$NODE_BIN" ] || [ ! -x "$NODE_BIN" ]; then
+  log "ERROR: node not found (PATH=$PATH)"
   exit 1
 fi
+log "node: $NODE_BIN ($("$NODE_BIN" --version 2>/dev/null))"
 GIT_BIN="$(command -v git || echo /usr/bin/git)"
 
 # --- 最新を取り込む（他所からの push と衝突回避）---

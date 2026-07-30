@@ -11,6 +11,13 @@
         <string>/Users/takesue/carp-talk/scripts/local_update.sh</string>
     </array>
 
+    <!-- launchd は最小PATHで動くので、node/npx/git のある場所を明示する -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
     <!-- JST 8:00〜23:59 の毎時 :05 / :25 / :45 に実行（20分間隔） -->
     <!-- launchd はローカルタイム（Mac のTZ）で解釈。日本のMacなら JST。 -->
     <key>StartCalendarInterval</key>
