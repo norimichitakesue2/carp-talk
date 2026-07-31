@@ -1,0 +1,131 @@
+{
+  "generatedAt": "2026-07-31T16:41:31.385Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 8,
+  "classifiedCount": 8,
+  "clusterCount": 2,
+  "bubbleCount": 2,
+  "summary": "菊池の打撃が話題、パンチ力の健在さと決勝弾での活躍に応援の声が集まる",
+  "bubbles": [
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "パンチ力健在",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/AKA_koinobori/status/2083194875059777808"
+      ],
+      "sampleTexts": [
+        {
+          "text": "菊池去年のホームラン数抜いてて神。謎のパンチ力は健在。カープのレジェンド。",
+          "user": "こいのぼり",
+          "time": "2026-07-31T14:15:36.000Z"
+        }
+      ]
+    },
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "決勝弾",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/tom19752018/status/2083194862569181263"
+      ],
+      "sampleTexts": [
+        {
+          "text": "菊池さん\n\n8回3-1から橋本さんの甘いフォークをフルスイング。見事な決勝弾！この意外性が魅力ですよね！ありがとうございます！\n\n二遊間できる選手が3人も例の件で離脱する中、本当に支えられています。暑",
+          "user": "ナゴヤのカープおじさん",
+          "time": "2026-07-31T14:15:33.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "匿名質問を募集しています！ \n\n最近回答した質問例\n・はいさい    \n・広島カープのオーナーになりたいですか\n・中高の部活なんでしたか？ どのくらい…\n・可愛いです♪♪♪",
+      "user": "ナックル使い(元いちごパフェ)",
+      "time": "2026-07-31T14:17:06.000Z",
+      "url": "https://x.com/knucklebeller/status/2083195250521354241",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "羽月が黙っとけばみたいな風潮の一部のカープファンさすがにあかんやろ",
+      "user": "かおですよ",
+      "time": "2026-07-31T14:16:13.000Z",
+      "url": "https://x.com/Kaodesuyo/status/2083195029569548746",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "広島サンリオカープ\n\n非常にしっくりくるネーミングなので、サンリオ経営陣の皆様におかれましてはぜひご検討ください。",
+      "user": "ヨシヒコ@島根の熱狂的鯉党(辛口)",
+      "time": "2026-07-31T14:16:11.000Z",
+      "url": "https://x.com/NAGA0914SOYOGI/status/2083195022275747933",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "隙あらばすぐレスバオナニー始めちゃうんだからぁꉂꉂ ( ˆᴗˆ  )",
+      "user": "鯉城レン鯉党広島ご当地VTuber",
+      "time": "2026-07-31T14:16:08.000Z",
+      "url": "https://x.com/ren_rijyo/status/2083195007604007156",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "菊池去年のホームラン数抜いてて神。謎のパンチ力は健在。カープのレジェンド。",
+      "user": "こいのぼり",
+      "time": "2026-07-31T14:15:36.000Z",
+      "url": "https://x.com/AKA_koinobori/status/2083194875059777808",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "菊池さん\n\n8回3-1から橋本さんの甘いフォークをフルスイング。見事な決勝弾！この意外性が魅力ですよね！ありがとうございます！\n\n二遊間できる選手が3人も例の件で離脱する中、本当に支えられています。暑い中大変ですがチームを支えて下さいね！\n#菊池涼介\n#カープ",
+      "user": "ナゴヤのカープおじさん",
+      "time": "2026-07-31T14:15:33.000Z",
+      "url": "https://x.com/tom19752018/status/2083194862569181263",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "でもおれの涙腺はシナモンに破壊されているからそれ行けカープでも泣いた",
+      "user": "あかねが超仲良し",
+      "time": "2026-07-31T14:15:28.000Z",
+      "url": "https://x.com/akane_out/status/2083194838338666684",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "やるならカープやろ",
+      "user": "りょたを。",
+      "time": "2026-07-31T14:15:24.000Z",
+      "url": "https://x.com/ryota_ricecandy/status/2083194821691494697",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    }
+  ]
+}
