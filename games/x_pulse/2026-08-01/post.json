@@ -1,0 +1,476 @@
+{
+  "generatedAt": "2026-08-01T13:17:09.381Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 40,
+  "classifiedCount": 40,
+  "clusterCount": 3,
+  "bubbleCount": 3,
+  "summary": "羽月の薬物問題が話題の中心で、モンテロの犠牲フライやマラーの好投も注目されるも、全体的に応援の盛り上がりに欠ける状況。",
+  "bubbles": [
+    {
+      "target": "羽月",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "薬物問題",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/Shiichan_game/status/2083538769534484944",
+        "https://x.com/Sab_toarucarp_/status/2083538375924130228"
+      ],
+      "sampleTexts": [
+        {
+          "text": "私はTikToker羽月隆太郎じゃなくて野球をやってる羽月隆太郎を応援したいんよ。 本当はプロ野球選手(カープ)の羽月くんが1番見たかったんだけど… もう絶対薬物には手を出さないでね！！！",
+          "user": "しぃちゃん",
+          "time": "2026-08-01T13:02:07.000Z"
+        },
+        {
+          "text": "ふぁ？！まじか。まぁ、頑張れよ羽月 #羽月 #隆太郎",
+          "user": "とあるCARPfanの呟き/鯉党",
+          "time": "2026-08-01T13:00:33.000Z"
+        }
+      ]
+    },
+    {
+      "target": "モンテロ",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "犠牲フライ",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/mmm0852/status/2083539656776552917"
+      ],
+      "sampleTexts": [
+        {
+          "text": "ふゆちゃんと野球観戦inマツダスタジアム♡ 2戦目どらほー カープもモンテロ選手ナイス犠牲フライ 今日も野球たのしい！♡マツダ好きすぎてまた早く行きたーいってなった そして今日もドローン見れて最高かわ",
+          "user": "みな",
+          "time": "2026-08-01T13:05:39.000Z"
+        }
+      ]
+    },
+    {
+      "target": "マラー",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "マラー好投",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/pisces_CD/status/2083539317742542861"
+      ],
+      "sampleTexts": [
+        {
+          "text": "今日のカープ戦の試合結果を確認。 先発のマラー投手が再来日後の初登板で5回1失点で試合を作り、後を継いだアブレウ投手が開幕戦の借りを返す投球でリベンジを果たし、打線は長打に足も絡めた攻撃で効果的に得点",
+          "user": "Pisces（ぴすけす）",
+          "time": "2026-08-01T13:04:18.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "カープうどんありましたね",
+      "user": "base-K",
+      "time": "2026-08-01T13:09:42.000Z",
+      "url": "https://x.com/yusukeexpress12/status/2083540676751597892",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープチケットをお譲りします。 8/6木 カープパフォーマンスB2枚 球場東駐車場(コストコ屋上)1枚 のセットです。 定価6300円(2100円×3)でお譲りします。電子チケットです。 PayPayやd払い支払い後、チケットを送信します。メッセージをください。 #広島東洋カープ",
+      "user": "けむこ@NS",
+      "time": "2026-08-01T13:09:41.000Z",
+      "url": "https://x.com/kemco765/status/2083540674079863016",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープの刺繍エンブレム長袖ポロ。Mサイズ新品いい感じ。 ◎広島と共に。想いを装いに変えて。ディテールに宿る高級感。刺繍エンブレム。",
+      "user": "すぼ",
+      "time": "2026-08-01T13:09:38.000Z",
+      "url": "https://x.com/subocarpfan/status/2083540662331314364",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日も現地だったんですね完敗です カープはランナー出ながらも得点に結びつきませんでした明日もよろしくお願いします",
+      "user": "sayu7/31現地",
+      "time": "2026-08-01T13:09:03.000Z",
+      "url": "https://x.com/sayu_carp/status/2083540516013244913",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "送り迎えお疲れ様やで 浴衣はぽっちゃりくらいが貫禄あるんやで カープ負けたなぁ(´-ω-`) 明日はなんとか粘ってカード勝ち越ししてほしいな 広島駅に居たカープユニ着た外国人の人が『bad game』言うてた笑",
+      "user": "シュウ",
+      "time": "2026-08-01T13:08:02.000Z",
+      "url": "https://x.com/syu080203/status/2083540257430204728",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ジャッカルさんカープ坊やって名前なんだ～知らなかったです、前からかわいいなあと気になってました普段からあるわけじゃないのかな？レアなもの見れてうれしいかえるのピクルス聞いたことある～かえるって部屋にかざると幸運があるんじゃなかったかなあ？今日もたのしいやりとりに感謝",
+      "user": "kurumiん",
+      "time": "2026-08-01T13:07:43.000Z",
+      "url": "https://x.com/candy_krmn/status/2083540177583288457",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "8月1日㈯カープちゃん1-7 斉藤優汰4回67球3被安打2被本塁打 1死球2奪三振5失点 6球種の6割以上がストレート 菊地ハ(防7.71)1被本塁打3凡1失点 黒原(防13.50)2被安打2凡1奪三振1失点 遠藤(防2.80)三者凡退 益田(防5.87)1被安打1奪三振1併殺打",
+      "user": "あい(プロ野球専用垢)",
+      "time": "2026-08-01T13:07:23.000Z",
+      "url": "https://x.com/koikoi3337/status/2083540093076402573",
+      "targetType": "選手",
+      "target": "斉藤優汰",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ斉藤優4回2被弾5失点KO。ハルン黒原1失点。泰マルチ！秋山代打ヒット！モン犠飛で反撃も1得点。名原5タコ。3連勝チャレンジ失敗で最下位中日と1G差【広島1-7中日/試合結果】",
+      "user": "かーぷぶーん⊂( ●▲●)⊃",
+      "time": "2026-08-01T13:07:22.000Z",
+      "url": "https://x.com/carp_buun/status/2083540091151188148",
+      "targetType": "選手",
+      "target": "斉藤優",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "帰りでぶち急いどったけんブレブレやけど納めれた笑笑笑笑笑 #カープ",
+      "user": "ちゃんりの",
+      "time": "2026-08-01T13:07:14.000Z",
+      "url": "https://x.com/KmvmIgKnBL24941/status/2083540055122174002",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "AIは岡山の次に広島を提示してました。 カープ女子がバックアップ？(笑)",
+      "user": "やすいくん 頑張れDragons!",
+      "time": "2026-08-01T13:06:56.000Z",
+      "url": "https://x.com/DragonsYokohama/status/2083539980333552009",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ロングで疲れたのに、帰りカープと鉢合わせるとか電車乗れるか問題",
+      "user": "たなみちゃんだよ。",
+      "time": "2026-08-01T13:06:27.000Z",
+      "url": "https://x.com/tanamichan0906/status/2083539861508874545",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "かわいいカープ、ドローンショーやるんだ",
+      "user": "森の白猫",
+      "time": "2026-08-01T13:06:26.000Z",
+      "url": "https://x.com/morinoshironeko/status/2083539855389442221",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ速報ポストは曜日決めてやりたかったんですが、不定期になりそうです。",
+      "user": "とあるCARPfanの呟き/鯉党",
+      "time": "2026-08-01T13:06:17.000Z",
+      "url": "https://x.com/Sab_toarucarp_/status/2083539817691004940",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ曲がりきれなかった対向車が突っ込んできた… 俺が避けなかったら大事故になってたはず…相手めちゃくちゃスピード出してた。 ◯ぬかと思った… 今の出来事",
+      "user": "なお",
+      "time": "2026-08-01T13:06:15.000Z",
+      "url": "https://x.com/2235910Nao/status/2083539810397089947",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ドラゴンズ 7-1 カープ 今日は打線が上手く機能し、マラーも試合を作るピッチング 良い勝利だったと思います！ これを明日も続けていくことが大事 継続性がなければ上にはいけないので、明日も頼むぞ！ #中日ドラゴンズ",
+      "user": "隆之 (たかゆき)推しマはプロフへ移動",
+      "time": "2026-08-01T13:06:08.000Z",
+      "url": "https://x.com/foq0YbGr5bIOggK/status/2083539779946463452",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島遠征帰宅オタク 暑すぎ熱中症、深夜まで下ネタで騒げる飲み会最高、カープ勝ててハッピー 明日からポコモン頑張る",
+      "user": "ゴロー",
+      "time": "2026-08-01T13:06:00.000Z",
+      "url": "https://x.com/gorogoro29/status/2083539746333352243",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ふゆちゃんと野球観戦inマツダスタジアム♡ 2戦目どらほー カープもモンテロ選手ナイス犠牲フライ 今日も野球たのしい！♡マツダ好きすぎてまた早く行きたーいってなった そして今日もドローン見れて最高かわちいしすごすぎてやばかったあああ #藤本冬香",
+      "user": "みな",
+      "time": "2026-08-01T13:05:39.000Z",
+      "url": "https://x.com/mmm0852/status/2083539656776552917",
+      "targetType": "選手",
+      "target": "モンテロ",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ最後のドローン綺麗だった 終わり頃のピアノの曲は何て言うんだろう",
+      "user": "ヒロ",
+      "time": "2026-08-01T13:04:57.000Z",
+      "url": "https://x.com/hirohiro_0248/status/2083539480506662988",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープは負けたけど、 ドローン楽しかった #カープ #ドローン",
+      "user": "さぁーたん",
+      "time": "2026-08-01T13:04:39.000Z",
+      "url": "https://x.com/merukyar/status/2083539406557003827",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今日のカープ戦の試合結果を確認。 先発のマラー投手が再来日後の初登板で5回1失点で試合を作り、後を継いだアブレウ投手が開幕戦の借りを返す投球でリベンジを果たし、打線は長打に足も絡めた攻撃で効果的に得点を重ねて、ASに登板した松山晋也 投手を休ませる形で勝てたのは大きいですね。",
+      "user": "Pisces（ぴすけす）",
+      "time": "2026-08-01T13:04:18.000Z",
+      "url": "https://x.com/pisces_CD/status/2083539317742542861",
+      "targetType": "選手",
+      "target": "マラー",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "俺あげ太好きやねん ZIPのときにやってるアニメも毎回見て笑わせてもらってる あれが学校に行くモチベにもなる ただカープには2度と関わってくんな",
+      "user": "平川蓮ニキ(あさプロ)8/18マツダスタジアム",
+      "time": "2026-08-01T13:04:04.000Z",
+      "url": "https://x.com/ren_fight/status/2083539261824082308",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "【広島カープ】矢野・前川選手に逮捕の可能性…球団の後手後手の対応に広島県警がブチギレか【かなえ先生の雑談】",
+      "user": "さやぞう！@だいたいラーメン食べてる",
+      "time": "2026-08-01T13:03:33.000Z",
+      "url": "https://x.com/sonic417/status/2083539131448332679",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#カープ #Carp 石伊君一人にめちゃくちゃやられた試合で。 全てがうまくいかない試合でした カープよ、カープよ、明日こそ勝利を決めとくれ♪ ※1-7でカープ敗戦",
+      "user": "アニメの精@作品ロスたくさんの2代目垢",
+      "time": "2026-08-01T13:03:20.000Z",
+      "url": "https://x.com/asanshun_2/status/2083539076943331360",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープドローンショーまじですごかった！！！！！！！エグい試合を一瞬で塗り替えてくれた！！！キティちゃんさんありがとう！！！！！！！",
+      "user": "むらたつ",
+      "time": "2026-08-01T13:02:42.000Z",
+      "url": "https://x.com/MSuigun/status/2083538917949944094",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "近縁のハイランドカープですが、ちなみにこれで120匹ほど。 300匹以上がどれほどの数か、分かります？？。",
+      "user": "カダヤシ",
+      "time": "2026-08-01T13:02:36.000Z",
+      "url": "https://x.com/PF1T4LFTvQYax3N/status/2083538892549206490",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "アニメキャラがカープに干渉するな！",
+      "user": "平川蓮ニキ(あさプロ)8/18マツダスタジアム",
+      "time": "2026-08-01T13:02:13.000Z",
+      "url": "https://x.com/ren_fight/status/2083538794121429202",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "私はTikToker羽月隆太郎じゃなくて野球をやってる羽月隆太郎を応援したいんよ。 本当はプロ野球選手(カープ)の羽月くんが1番見たかったんだけど… もう絶対薬物には手を出さないでね！！！",
+      "user": "しぃちゃん",
+      "time": "2026-08-01T13:02:07.000Z",
+      "url": "https://x.com/Shiichan_game/status/2083538769534484944",
+      "targetType": "選手",
+      "target": "羽月",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "【おまけ】ある意味カープよりも広島を感じさせたドローン演出",
+      "user": "takashin",
+      "time": "2026-08-01T13:02:07.000Z",
+      "url": "https://x.com/takashin_k2/status/2083538767219163426",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日もドローンショー楽しかったカープちゃんがんばってるありがとう",
+      "user": "あるいむ",
+      "time": "2026-08-01T13:01:51.000Z",
+      "url": "https://x.com/zurichi/status/2083538701167313184",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "つば九郎とカープ坊やのコラボタオル。レアだなこれ。 東京ヤクルトスワローズ フェイスタオル(コラボ・限定品) [新品・未使用]",
+      "user": "すぼ",
+      "time": "2026-08-01T13:01:34.000Z",
+      "url": "https://x.com/subocarpfan/status/2083538629826138417",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープめっちゃボロ負けだったけど楽しかった♪",
+      "user": "ぱんたろう",
+      "time": "2026-08-01T13:01:13.000Z",
+      "url": "https://x.com/panther_24k/status/2083538543063060877",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "08/01(土)●「伸びない期待値」(カープ2026)",
+      "user": "あれん",
+      "time": "2026-08-01T13:01:12.000Z",
+      "url": "https://x.com/allen199109/status/2083538537463562502",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ふぁ？！まじか。まぁ、頑張れよ羽月 #羽月 #隆太郎",
+      "user": "とあるCARPfanの呟き/鯉党",
+      "time": "2026-08-01T13:00:33.000Z",
+      "url": "https://x.com/Sab_toarucarp_/status/2083538375924130228",
+      "targetType": "選手",
+      "target": "羽月",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "現地まけほ 今日はカープ全くいいとこ無し フォロワーの皆様、サンリオのドローン画像でご勘弁を お疲れした MAZDAの目の前のビルにがいっぱいおるのは何で？",
+      "user": "CARP33",
+      "time": "2026-08-01T13:00:25.000Z",
+      "url": "https://x.com/carp1189kiku33/status/2083538341052776463",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープのゾンビたばこ問題が影響しているのかしら？",
+      "user": "TELくん",
+      "time": "2026-08-01T12:59:29.000Z",
+      "url": "https://x.com/tachiharasika/status/2083538107299922333",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープもやればできる",
+      "user": "bobup イケダリョータ",
+      "time": "2026-08-01T12:59:21.000Z",
+      "url": "https://x.com/bobup_ikechaaan/status/2083538072051020131",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ戦あってたら、さすがにカープファンに占領されそうですね カープはなかったですがサンフレッチェがいますから油断できません",
+      "user": "猫田係長",
+      "time": "2026-08-01T12:58:57.000Z",
+      "url": "https://x.com/NekotaUnitHead/status/2083537971949805965",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "また随分と投打ともドラゴンズに制圧されまくったやんけ。。 #カープ #広島 #マツダ #ドラゴンズに完敗",
+      "user": "かぜめろ☆",
+      "time": "2026-08-01T12:58:31.000Z",
+      "url": "https://x.com/kazemero/status/2083537863988457670",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "現地からまけほー 誕生日勝ちたかった #カープ #Carp",
+      "user": "あー",
+      "time": "2026-08-01T12:58:24.000Z",
+      "url": "https://x.com/hca_71633/status/2083537835165118785",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープよわ",
+      "user": "えーすけ",
+      "time": "2026-08-01T12:58:24.000Z",
+      "url": "https://x.com/eisk_mt_334/status/2083537831994204545",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    }
+  ]
+}
