@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "18:01",
   "status": "live",
-  "current_inning": "7回裏",
+  "current_inning": "8回裏",
   "result_label": "",
   "away_pitcher": "柳",
   "home_pitcher": "アドゥワ",
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 8,
+    "away_hits": 9,
     "away_errors": 0
   },
   "pitchers": [],
@@ -347,7 +347,7 @@
       "name": "小園",
       "pos": "遊",
       "line": 2,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -365,13 +365,13 @@
       "name": "ファビアン",
       "pos": "左",
       "line": 3,
-      "ab": 3,
+      "ab": 4,
       "r": 1,
       "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 1,
       "triple": 0,
@@ -576,6 +576,24 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "遠藤",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -614,11 +632,23 @@
       "strikeouts": 0,
       "runs": 1,
       "earnedRuns": 1
+    },
+    {
+      "name": "遠藤",
+      "result": "",
+      "outs": 3,
+      "pitches": 17,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 2,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-02T11:25:07.279Z",
-    "generatedAt": "2026-08-02T11:25:07.304Z",
+    "sourceFetchedAt": "2026-08-02T11:45:09.774Z",
+    "generatedAt": "2026-08-02T11:45:09.943Z",
     "sourceUrl": "https://npb.jp/scores/2026/0802/c-d-16/",
     "previewRosterFingerprint": "アドゥワ,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大盛,小園,持丸,森浦,益田,石原,秋山,菊地,菊池,赤木,辰見,辻,遠藤,鈴木,髙,黒原"
   }
