@@ -1,0 +1,709 @@
+{
+  "generatedAt": "2026-08-02T13:20:14.976Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 47,
+  "classifiedCount": 47,
+  "clusterCount": 10,
+  "bubbleCount": 10,
+  "summary": "秋山の2000本安打達成と逆転2ランの活躍が話題の中心で、感謝と応援の声が集中している。",
+  "bubbles": [
+    {
+      "target": "秋山",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "2000本安打",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/katomacalon/status/2083902971583058118",
+        "https://x.com/manrui14hr/status/2083902715969859793",
+        "https://x.com/akaringo84/status/2083901466121789717"
+      ],
+      "sampleTexts": [
+        {
+          "text": "こいほー 秋山の活躍は嬉しい 2000本までカープで 頑張って欲しいな!! うなぎ犬のぬいぐるみ どこに売ってるんだろう #carp",
+          "user": "加藤マカロン",
+          "time": "2026-08-02T13:09:20.000Z"
+        },
+        {
+          "text": "同感です アキがカープに与える影響は大きい カープでの2000本安打を 皆んなで応援しましょう",
+          "user": "HR",
+          "time": "2026-08-02T13:08:19.000Z"
+        },
+        {
+          "text": "先週の神宮でとっても悔しそうな顔をして球場から帰っていった健矢さんとアキさんが印象的だったから今日はにこにこのふたりをみれてうれしかった いい流れで火曜日からもがんばれカープ！",
+          "user": "あかり",
+          "time": "2026-08-02T13:03:21.000Z"
+        }
+      ]
+    },
+    {
+      "target": "秋山",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "逆転2ラン",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/carp_buun/status/2083902720159932655",
+        "https://x.com/Jonsonrqdx/status/2083902692427272314",
+        "https://x.com/modeo7803/status/2083901748268429495"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ秋山〝劇的〟逆転2ラン！大盛5号！坂倉同点打！アドゥワ3回2失点も鈴木健3回跨ぎ0封！逆転のカープで5位死守！【広島4-3中日/試合結果】 ※今季は一人親家庭の計46組110人を招待した秋山翔吾",
+          "user": "かーぷぶーん",
+          "time": "2026-08-02T13:08:20.000Z"
+        },
+        {
+          "text": "カープ見に行ってきた！ 秋山のホームランで逆転勝ちは気持ち良すぎる！ ドローンショーも見れた！ #カープ #野球 #こいほー",
+          "user": "はるっきー",
+          "time": "2026-08-02T13:08:13.000Z"
+        },
+        {
+          "text": "秋山のホームランで逆転！ 勝った！！ #今日試合 #カープ勝った #カープ女子 #AI生成画像",
+          "user": "瀬戸内色",
+          "time": "2026-08-02T13:04:28.000Z"
+        }
+      ]
+    },
+    {
+      "target": "秋山",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "秋山への感謝",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/kagura_sakana/status/2083902394543538657",
+        "https://x.com/hos_hg/status/2083902220471546090",
+        "https://x.com/manrui14hr/status/2083901755050672201"
+      ],
+      "sampleTexts": [
+        {
+          "text": "こいほー 秋山さんほー&大大大感謝ほー #カープ",
+          "user": "さかな@神楽坂",
+          "time": "2026-08-02T13:07:02.000Z"
+        },
+        {
+          "text": "秋山翔吾がいてくれる限り何があってもワイはカープを応援するで",
+          "user": "ほす",
+          "time": "2026-08-02T13:06:21.000Z"
+        },
+        {
+          "text": "アキがカープにいて良かった 本当に素晴らしい選手ですね",
+          "user": "HR",
+          "time": "2026-08-02T13:04:30.000Z"
+        }
+      ]
+    },
+    {
+      "target": "田中雅彦",
+      "targetType": "選手",
+      "topic_broad": "失策",
+      "topic_label": "マートン当たり",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/RionPawaler/status/2083903297866584127"
+      ],
+      "sampleTexts": [
+        {
+          "text": "あえて比較した意味も分からないしマートンの殺人タックルで田中雅彦骨折してるんですけど",
+          "user": "リオン@鯉党/パワプロ勢",
+          "time": "2026-08-02T13:10:37.000Z"
+        }
+      ]
+    },
+    {
+      "target": "田中",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "守備ミス",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/tukimito/status/2083902606733443474"
+      ],
+      "sampleTexts": [
+        {
+          "text": "俺はこのプレイ知ってるから田中はずっと嫌いだったな。カープ女子とかはやってメディアは叩かなかったけど",
+          "user": "ツキミ",
+          "time": "2026-08-02T13:07:53.000Z"
+        }
+      ]
+    },
+    {
+      "target": "矢野",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "ドーピング疑惑",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/zindouleo/status/2083902446217408603"
+      ],
+      "sampleTexts": [
+        {
+          "text": "バティスタの時に言われてたお薬投与うカープがまた言われ始めてるのヤバすぎ、矢野くんさぁ",
+          "user": "零央",
+          "time": "2026-08-02T13:07:14.000Z"
+        }
+      ]
+    },
+    {
+      "target": "菊池",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "ベテラン活躍",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/Galette021/status/2083902435471552698"
+      ],
+      "sampleTexts": [
+        {
+          "text": "今日の秋山さんに一昨日の菊池と、このチームのおじさん達はほんと頼もしいわ #カープ",
+          "user": "021 Galette",
+          "time": "2026-08-02T13:07:12.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "Aクラス残留",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/yochi9441/status/2083901992859312435"
+      ],
+      "sampleTexts": [
+        {
+          "text": "秋さん「なんとか、Aクラス入りに残れるよう頑張っていきます」 そうそう、ファンもその意気だよ！ この先何が起こるかまだまだわからないよ！頑張れ新井カープ とにかく今日は勝てて嬉しいのだ ふたりで仲良く",
+          "user": "松村きい",
+          "time": "2026-08-02T13:05:26.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野間",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "ファンサ対応",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/soredemoCarpgam/status/2083901296709627926"
+      ],
+      "sampleTexts": [
+        {
+          "text": "遅くなりましたが、１軍２軍カープ逆転勝利３連戦最終日を勝利で締める事が出来てホント嬉しい 今夜はスタジアム裏口でカープ選手をお見送りしました！野間選手はタクシーが来るまでずっとファンサしていました、い",
+          "user": "ゆみ",
+          "time": "2026-08-02T13:02:40.000Z"
+        }
+      ]
+    },
+    {
+      "target": "秋山",
+      "targetType": "選手",
+      "topic_broad": "ホームラン",
+      "topic_label": "ホームラン期待",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/tama_chan_1967/status/2083901197078188211"
+      ],
+      "sampleTexts": [
+        {
+          "text": "おやすみ 今日は、トラブル連発でモチベダダ下がりなので、#フタツメ さんで #排骨カレータンメン + #焼めし を食べてきました 満腹です #カープは、秋山のHRで #こいほーでした",
+          "user": "たまちゃん",
+          "time": "2026-08-02T13:02:17.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "あえて比較した意味も分からないしマートンの殺人タックルで田中雅彦骨折してるんですけど",
+      "user": "リオン@鯉党/パワプロ勢",
+      "time": "2026-08-02T13:10:37.000Z",
+      "url": "https://x.com/RionPawaler/status/2083903297866584127",
+      "targetType": "選手",
+      "target": "田中雅彦",
+      "topic_broad": "失策",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "もう広島カープは矢野の薬物問題と真っ向から戦い続けたバウアー様を招聘した方がいいんじゃないの？ どうせもう違法薬物隠蔽ゴキブリ球団のイメージは覆らないんだから嫌われものを1人獲ってもノーダメージでしょ。",
+      "user": "とみぃ",
+      "time": "2026-08-02T13:10:13.000Z",
+      "url": "https://x.com/T_M_kuroobi/status/2083903195571741070",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "近々、カープを応援しに広島行くので、英気を養わねばなりませぬ！！！",
+      "user": "山田哲人",
+      "time": "2026-08-02T13:10:01.000Z",
+      "url": "https://x.com/35aabfSUN2lQ5AC/status/2083903145512759546",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ドローンショー初めて見たー #azuretravelers #マツダスタジアム #広島カープ",
+      "user": "ago",
+      "time": "2026-08-02T13:09:44.000Z",
+      "url": "https://x.com/ag0u3/status/2083903073274187873",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー 秋山の活躍は嬉しい 2000本までカープで 頑張って欲しいな!! うなぎ犬のぬいぐるみ どこに売ってるんだろう #carp",
+      "user": "加藤マカロン",
+      "time": "2026-08-02T13:09:20.000Z",
+      "url": "https://x.com/katomacalon/status/2083902971583058118",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "「危ないなあ〜前足で」 「お手々や！」 #誰がカープのよしもと新喜劇やねん",
+      "user": "おとーさん",
+      "time": "2026-08-02T13:09:08.000Z",
+      "url": "https://x.com/akitomokuboi/status/2083902921201078634",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "【2026年カープ観戦成績】 1軍公式戦：11勝6敗2分 2軍公式戦：3勝3敗 1軍オープン戦：2敗 ドラゴンズ戦の結果を加えました。",
+      "user": "かきフライ定食",
+      "time": "2026-08-02T13:09:01.000Z",
+      "url": "https://x.com/the_oysterfry/status/2083902892805943448",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ええええ 別班なのーーーー",
+      "user": "ちはる@ 横浜の鯉党",
+      "time": "2026-08-02T13:08:59.000Z",
+      "url": "https://x.com/chr_love_carp/status/2083902883184173393",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ秋山〝劇的〟逆転2ラン！大盛5号！坂倉同点打！アドゥワ3回2失点も鈴木健3回跨ぎ0封！逆転のカープで5位死守！【広島4-3中日/試合結果】 ※今季は一人親家庭の計46組110人を招待した秋山翔吾さん、見事逆転2ランHRでヒーロー",
+      "user": "かーぷぶーん",
+      "time": "2026-08-02T13:08:20.000Z",
+      "url": "https://x.com/carp_buun/status/2083902720159932655",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "同感です アキがカープに与える影響は大きい カープでの2000本安打を 皆んなで応援しましょう",
+      "user": "HR",
+      "time": "2026-08-02T13:08:19.000Z",
+      "url": "https://x.com/manrui14hr/status/2083902715969859793",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "お盆にカープ連続で見に行く予定など立てなければ、もう少し、余裕が、あったのに……",
+      "user": "幸乃@うた春C39",
+      "time": "2026-08-02T13:08:13.000Z",
+      "url": "https://x.com/snowno_pi/status/2083902692632715601",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープ見に行ってきた！ 秋山のホームランで逆転勝ちは気持ち良すぎる！ ドローンショーも見れた！ #カープ #野球 #こいほー",
+      "user": "はるっきー",
+      "time": "2026-08-02T13:08:13.000Z",
+      "url": "https://x.com/Jonsonrqdx/status/2083902692427272314",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "俺はこのプレイ知ってるから田中はずっと嫌いだったな。カープ女子とかはやってメディアは叩かなかったけど",
+      "user": "ツキミ",
+      "time": "2026-08-02T13:07:53.000Z",
+      "url": "https://x.com/tukimito/status/2083902606733443474",
+      "targetType": "選手",
+      "target": "田中",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "8/3～8/9の配信スケジュールだよ カープ戦同時視聴と合わせて 夏休み期間限定 不定期朝枠プロスピa配信あるよ",
+      "user": "兎月カルテ",
+      "time": "2026-08-02T13:07:48.000Z",
+      "url": "https://x.com/uzuki_karte_zp/status/2083902585866739755",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ありがとうございました カープも勝ったし、良き",
+      "user": "kuromame4.",
+      "time": "2026-08-02T13:07:44.000Z",
+      "url": "https://x.com/4Kuromame/status/2083902569857024259",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ファーム T 3-4 Cで勝利 先発 工藤は5回途中3失点 継投 杉原、塹江、杉田、常廣が無失点リレー 打線は4回 林の一時逆転タイムリー さらに清水のタイムリーで3点目 6回 中村奨が決勝ソロアーチ 今日は仲田と林が3安打猛打賞を記録 #carp",
+      "user": "鯉党男",
+      "time": "2026-08-02T13:07:40.000Z",
+      "url": "https://x.com/carpfan_boy/status/2083902552261951715",
+      "targetType": "選手",
+      "target": "工藤",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "そりゃハエが寄ってきたら叩き潰すだろ",
+      "user": "リオン@鯉党/パワプロ勢",
+      "time": "2026-08-02T13:07:31.000Z",
+      "url": "https://x.com/RionPawaler/status/2083902516555886935",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "やはり長野専務！ #VIVANT",
+      "user": "こうどゆる鯉党",
+      "time": "2026-08-02T13:07:30.000Z",
+      "url": "https://x.com/mika_nandeyanen/status/2083902512822943774",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "はい、ハニトラー これAVプロダクション管理してるやつなのかな？もしハニトラで仕掛けてたら、流石にカープ女子が黙ってないぞ！！！笑 ってかもうカープ女子なんていなかい！ ゾンビタバコご愁傷様です",
+      "user": "まる",
+      "time": "2026-08-02T13:07:15.000Z",
+      "url": "https://x.com/maru_620903/status/2083902450273226969",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "バティスタの時に言われてたお薬投与うカープがまた言われ始めてるのヤバすぎ、矢野くんさぁ",
+      "user": "零央",
+      "time": "2026-08-02T13:07:14.000Z",
+      "url": "https://x.com/zindouleo/status/2083902446217408603",
+      "targetType": "首脳陣",
+      "target": "矢野",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "今日の秋山さんに一昨日の菊池と、このチームのおじさん達はほんと頼もしいわ #カープ",
+      "user": "021 Galette",
+      "time": "2026-08-02T13:07:12.000Z",
+      "url": "https://x.com/Galette021/status/2083902435471552698",
+      "targetType": "選手",
+      "target": "菊池",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "【売れてます！】 テクノロジカル・リパブリック 国家、軍事力、テクノロジーの未来 著者：アレクサンダー・Ｃ・カープ 出版社：日経BP 発売日：2026年03月27日",
+      "user": "コンピュータ・IT新刊",
+      "time": "2026-08-02T13:07:07.000Z",
+      "url": "https://x.com/computer_rev5/status/2083902416026738826",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー 秋山さんほー&大大大感謝ほー #カープ",
+      "user": "さかな@神楽坂",
+      "time": "2026-08-02T13:07:02.000Z",
+      "url": "https://x.com/kagura_sakana/status/2083902394543538657",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "我々カープファン一同はひろぎんホールディングスを応援しています",
+      "user": "ﾄﾑ",
+      "time": "2026-08-02T13:06:37.000Z",
+      "url": "https://x.com/Tomu8010/status/2083902289933394315",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "秋山翔吾がいてくれる限り何があってもワイはカープを応援するで",
+      "user": "ほす",
+      "time": "2026-08-02T13:06:21.000Z",
+      "url": "https://x.com/hos_hg/status/2083902220471546090",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "秋さん「なんとか、Aクラス入りに残れるよう頑張っていきます」 そうそう、ファンもその意気だよ！ この先何が起こるかまだまだわからないよ！頑張れ新井カープ とにかく今日は勝てて嬉しいのだ ふたりで仲良くこいほー",
+      "user": "松村きい",
+      "time": "2026-08-02T13:05:26.000Z",
+      "url": "https://x.com/yochi9441/status/2083901992859312435",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "国際センター近くの【じゃけん】はどうでしょうか？カープファンが集まる鉄板焼き屋さんです。名古屋に来てあえてのカープ",
+      "user": "りょん",
+      "time": "2026-08-02T13:04:39.000Z",
+      "url": "https://x.com/mynameisryon/status/2083901793072005609",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "アキがカープにいて良かった 本当に素晴らしい選手ですね",
+      "user": "HR",
+      "time": "2026-08-02T13:04:30.000Z",
+      "url": "https://x.com/manrui14hr/status/2083901755050672201",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "秋山のホームランで逆転！ 勝った！！ #今日試合 #カープ勝った #カープ女子 #AI生成画像",
+      "user": "瀬戸内色",
+      "time": "2026-08-02T13:04:28.000Z",
+      "url": "https://x.com/modeo7803/status/2083901748268429495",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "まぁ他球団の場合は全力で隠蔽・隠滅しようとするだろうけど、カープの場合は暴露・流出させようと思えばいくらでもできる当事者が1人いるからなぁ… 実際既にしてるのかもしれないが…",
+      "user": "サガミのつ〜さん",
+      "time": "2026-08-02T13:04:05.000Z",
+      "url": "https://x.com/beniza72/status/2083901653720482042",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "祭り行ってる間に逆転のカープしてて幸 #カープcarp",
+      "user": "ぽ",
+      "time": "2026-08-02T13:03:55.000Z",
+      "url": "https://x.com/hn_bzx/status/2083901608484835582",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "この中日との3連戦で思ったこと カープ3連勝と最下位転落はことごとく拒否してるの草 勝ち越しは嬉しいけど、3連勝の壁がなかなか越えられないの複雑な心境すぎる",
+      "user": "カズミ",
+      "time": "2026-08-02T13:03:52.000Z",
+      "url": "https://x.com/peaceocean_carp/status/2083901598221418573",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カムイ軍団長さん こんばんはっ 今日も熱い試合でカープが勝ちをおさめたみたいですね",
+      "user": "癒月沙羅ゆゆんが",
+      "time": "2026-08-02T13:03:37.000Z",
+      "url": "https://x.com/YuyungaX/status/2083901535474643251",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "先週の神宮でとっても悔しそうな顔をして球場から帰っていった健矢さんとアキさんが印象的だったから今日はにこにこのふたりをみれてうれしかった いい流れで火曜日からもがんばれカープ！",
+      "user": "あかり",
+      "time": "2026-08-02T13:03:21.000Z",
+      "url": "https://x.com/akaringo84/status/2083901466121789717",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "神宮球場のチケット、カープ戦しか買ってないからな。まあ、カープにしか勝てる未来がないからな",
+      "user": "ホーナー旋風@ヤクルト垢",
+      "time": "2026-08-02T13:03:15.000Z",
+      "url": "https://x.com/bobhonner50/status/2083901442486899004",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープに来てから１回もヒロイン見たことない気がします。今日はアキさんの日、ということで譲ったのかもしれませんが、スズケンのナイスピッチングあってこその勝利でしたね。",
+      "user": "青柴",
+      "time": "2026-08-02T13:03:08.000Z",
+      "url": "https://x.com/a0i_shiba/status/2083901410954138110",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "その他",
+      "sentiment": "中立"
+    },
+    {
+      "text": "ドラゴンズさん、得失点差でいうと-10しかないんです。 ヤクルトさんが-66、カープさんが-52ですよ（昨日まで） いかに僅差負けが多いか。 大敗ってあまりない。",
+      "user": "ねこにゃ",
+      "time": "2026-08-02T13:02:55.000Z",
+      "url": "https://x.com/ayikimsnogard/status/2083901359179661722",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今のチーム状況のカープに負け越すのエグい",
+      "user": "Ｋ",
+      "time": "2026-08-02T13:02:53.000Z",
+      "url": "https://x.com/baka__sun/status/2083901348320608702",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "2026年0802カープ 最下位脱落阻止！ 高橋直彦のブログ #Amebaブログ #アメブロ #かんたん投稿",
+      "user": "高橋直彦",
+      "time": "2026-08-02T13:02:50.000Z",
+      "url": "https://x.com/aunchoku/status/2083901335502807224",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープに負け越したけどヤクルトが弱すぎて耐えてる 絶対Aクラス行くぞ",
+      "user": "罔",
+      "time": "2026-08-02T13:02:46.000Z",
+      "url": "https://x.com/hsminr7/status/2083901321741209628",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "野球どころやないカープの裏ローテに負けてんのがまたヤバイねんな",
+      "user": "@tzmn03bb",
+      "time": "2026-08-02T13:02:46.000Z",
+      "url": "https://x.com/tzmn03bb/status/2083901320726261802",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "遅くなりましたが、１軍２軍カープ逆転勝利３連戦最終日を勝利で締める事が出来てホント嬉しい 今夜はスタジアム裏口でカープ選手をお見送りしました！野間選手はタクシーが来るまでずっとファンサしていました、いい人だ",
+      "user": "ゆみ",
+      "time": "2026-08-02T13:02:40.000Z",
+      "url": "https://x.com/soredemoCarpgam/status/2083901296709627926",
+      "targetType": "選手",
+      "target": "野間",
+      "topic_broad": "その他",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープに負け越しはしないで欲しかったけどあと終わったことはしょうがない。8月これ以降負けないでね〜",
+      "user": "a.",
+      "time": "2026-08-02T13:02:38.000Z",
+      "url": "https://x.com/gya___s2/status/2083901285368242242",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "#佐藤杯 ありがとうございました！ 初のベスト7 今回はうっちーさんのデッキを参考に構築してみました！ カープはいいぞ",
+      "user": "める",
+      "time": "2026-08-02T13:02:34.000Z",
+      "url": "https://x.com/MELUckyball/status/2083901269757006061",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "おやすみ 今日は、トラブル連発でモチベダダ下がりなので、#フタツメ さんで #排骨カレータンメン + #焼めし を食べてきました 満腹です #カープは、秋山のHRで #こいほーでした",
+      "user": "たまちゃん",
+      "time": "2026-08-02T13:02:17.000Z",
+      "url": "https://x.com/tama_chan_1967/status/2083901197078188211",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "ホームラン",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "まさちゃんさん、こいほー 正に執念これがあるから何があってもカープファンはやめられません",
+      "user": "Mr. T",
+      "time": "2026-08-02T13:01:54.000Z",
+      "url": "https://x.com/MrHERO_muscle/status/2083901104019140655",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープファンの星詠み スペ開いたら大体来てくれる ちょっと前まで旅行行ってたらしくて羨ましい",
+      "user": "りょう",
+      "time": "2026-08-02T13:01:28.000Z",
+      "url": "https://x.com/ryou_holorisu/status/2083900995395060009",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    }
+  ]
+}
