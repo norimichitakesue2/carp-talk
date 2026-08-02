@@ -3,12 +3,12 @@
   "game_date": "2026-08-02",
   "away_team": "中日",
   "home_team": "広島",
-  "away_score": 0,
+  "away_score": 2,
   "home_score": 0,
   "venue": "マツダスタジアム",
   "start_time": "18:01",
   "status": "live",
-  "current_inning": "2回裏",
+  "current_inning": "3回表",
   "result_label": "",
   "away_pitcher": "柳",
   "home_pitcher": "アドゥワ",
@@ -205,7 +205,7 @@
     "away": [
       0,
       0,
-      0,
+      2,
       0,
       0,
       0,
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 1,
+    "away_hits": 5,
     "away_errors": 0
   },
   "pitchers": [],
@@ -492,19 +492,19 @@
     {
       "name": "アドゥワ",
       "result": "",
-      "outs": 6,
-      "pitches": 33,
-      "hitsAllowed": 1,
+      "outs": 9,
+      "pitches": 59,
+      "hitsAllowed": 5,
       "hrAllowed": 0,
       "walks": 0,
       "strikeouts": 2,
-      "runs": 0,
-      "earnedRuns": 0
+      "runs": 2,
+      "earnedRuns": 2
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-02T09:39:14.169Z",
-    "generatedAt": "2026-08-02T09:39:14.213Z",
+    "sourceFetchedAt": "2026-08-02T09:57:23.980Z",
+    "generatedAt": "2026-08-02T09:57:24.019Z",
     "sourceUrl": "https://npb.jp/scores/2026/0802/c-d-16/",
     "previewRosterFingerprint": "アドゥワ,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大盛,小園,持丸,森浦,益田,石原,秋山,菊地,菊池,赤木,辰見,辻,遠藤,鈴木,髙,黒原"
   }
