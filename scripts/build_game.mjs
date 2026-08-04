@@ -592,6 +592,37 @@ async function main() {
     } catch { /* npb_farm_carp.json がまだ無い場合はスキップ */ }
   }
 
+  // STEP3.46: final のストーリーで「打順の変化とその意図」「相手先発との相性」「選手の左右」を
+  // 書けるよう、直近打順・打者の左右/対左右成績・当該試合のkey_matchups を注入。
+  if (shouldRunAi && status === 'final') {
+    // (a) 直近打順（打順変化の意図を書くため）
+    try {
+      const recentLineups = await getRecentLineups(date, 3);
+      if (recentLineups.length) {
+        facts.facts.recentLineups = recentLineups;
+        console.error(`[build_game] (final) recent lineups for story: ${recentLineups.map(l => l.date).join(', ')}`);
+      }
+    } catch (e) {
+      console.error(`[build_game] (final) getRecentLineups error: ${e.message}`);
+    }
+    // (b) 打者の左右（hand）— nf3キャッシュから。左右を根拠にした打順意図を書けるように
+    try {
+      const nf3 = JSON.parse(await fs.readFile(path.join(GAMES_DIR, 'nf3_carp_batters.json'), 'utf8'));
+      const arr = Array.isArray(nf3) ? nf3 : (nf3.batters || []);
+      if (arr.length) {
+        facts.facts.carpBatterHands = arr
+          .filter(b => b.name && b.hand)
+          .map(b => ({ name: b.name, hand: b.hand }));
+        console.error(`[build_game] (final) batter hands loaded: ${facts.facts.carpBatterHands.length}名`);
+      }
+    } catch { /* nf3キャッシュが無ければスキップ */ }
+    // (c) 当該試合の相手先発との相性（preview.key_matchups を story 用に流用）
+    if (prev?.preview?.key_matchups?.length) {
+      facts.facts.keyMatchups = prev.preview.key_matchups;
+      console.error(`[build_game] (final) key_matchups for story: ${prev.preview.key_matchups.length}件`);
+    }
+  }
+
   // STEP3.5: nf3 から相手先発の詳細統計を取得（preview生成時のみ・取得失敗しても継続）
   // Phase 2: 相手投手の通算/今季成績 (防御率/WHIP/QS率/被本塁打/直近登板など)
   if (shouldRunAi && (status === 'scheduled' || status === 'live') && hasStarter) {
