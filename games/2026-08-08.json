@@ -8,7 +8,7 @@
   "venue": "横浜スタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "11回裏",
+  "current_inning": "12回表",
   "result_label": "",
   "away_pitcher": "斉藤優",
   "home_pitcher": "篠木",
@@ -163,9 +163,10 @@
       0,
       0,
       0,
+      0,
       0
     ],
-    "hiroshima_hits": 6,
+    "hiroshima_hits": 7,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -178,9 +179,10 @@
       1,
       0,
       0,
+      0,
       0
     ],
-    "away_hits": 8,
+    "away_hits": 10,
     "away_errors": 1
   },
   "pitchers": [],
@@ -368,7 +370,7 @@
       "name": "ファビアン",
       "pos": "左",
       "line": 3,
-      "ab": 5,
+      "ab": 6,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -386,9 +388,9 @@
       "name": "坂倉",
       "pos": "三一",
       "line": 4,
-      "ab": 3,
+      "ab": 4,
       "r": 2,
-      "h": 2,
+      "h": 3,
       "rbi": 1,
       "sb": 0,
       "hr": 1,
@@ -458,7 +460,7 @@
       "name": "佐々木",
       "pos": "右三",
       "line": 7,
-      "ab": 4,
+      "ab": 5,
       "r": 0,
       "h": 2,
       "rbi": 0,
@@ -777,19 +779,19 @@
     {
       "name": "アドゥワ",
       "result": "",
-      "outs": 1,
-      "pitches": 10,
-      "hitsAllowed": 0,
+      "outs": 2,
+      "pitches": 18,
+      "hitsAllowed": 1,
       "hrAllowed": 0,
       "walks": 1,
-      "strikeouts": 0,
+      "strikeouts": 1,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-08T13:25:12.625Z",
-    "generatedAt": "2026-08-08T13:25:12.645Z",
+    "sourceFetchedAt": "2026-08-08T13:45:11.579Z",
+    "generatedAt": "2026-08-08T13:45:11.593Z",
     "sourceUrl": "https://npb.jp/scores/2026/0808/db-c-17/",
     "previewRosterFingerprint": "アドゥワ,ファビアン,モンテロ,久保,佐々木,佐藤啓,勝田,名原,坂倉,大盛,小園,持丸,斉藤優,森浦,益田,石原,秋山,菊地,菊池,赤木,辰見,辻,遠藤,野間,髙,黒原"
   }
