@@ -1,0 +1,652 @@
+{
+  "generatedAt": "2026-08-09T12:23:06.084Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 50,
+  "classifiedCount": 50,
+  "clusterCount": 6,
+  "bubbleCount": 6,
+  "summary": "新井の人事・起用に批判が集中する一方、打線不調で森下への応援も弱まり、首脳陣交代を求める声が上がっている。",
+  "bubbles": [
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "人事・起用の狭さ",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 4,
+      "tweetUrls": [
+        "https://x.com/kapaluamalaysia/status/2086426020052422759",
+        "https://x.com/kapaluamalaysia/status/2086425526391148890",
+        "https://x.com/googb777/status/2086425202658025502",
+        "https://x.com/Express_Chokai/status/2086424724452815018"
+      ],
+      "sampleTexts": [
+        {
+          "text": "新井や松田元のいう「カープは家族」なんて、自分のお気に入りだけの範囲の家族だからめちゃ範囲が狭いし馴れ合いだし、クソみたいなレベル！\n腐るほど優秀なOBがいるのに「家族」以外呼ばない。こんな醜いことし",
+          "user": "kapaluamalaysia",
+          "time": "2026-08-09T12:15:01.000Z"
+        },
+        {
+          "text": "新井や松田元のいう「カープは家族」なんて、自分のお気に入りだけの範囲の家族だからめちゃ範囲が狭いし馴れ合いだし、クソみたいなレベル！\n腐るほど優秀なOBがいるのに「家族」以外呼ばない。こんな醜いことし",
+          "user": "kapaluamalaysia",
+          "time": "2026-08-09T12:13:04.000Z"
+        },
+        {
+          "text": "カープが着々と最下位固め\nもう無理だよなぁ\n経営陣の高齢化で\n世の中の流れに付いて行けてない\n野村克也監督率いるヤクルトが\n『ID野球』をしていた頃より\nデータを生かしきれて無いんだと思う\nその上、選",
+          "user": "カーナビ・いちろう",
+          "time": "2026-08-09T12:11:46.000Z"
+        }
+      ]
+    },
+    {
+      "target": "健矢",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "健矢の先発起用",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/FRK6ctPoQCeIsmA/status/2086425449459253314",
+        "https://x.com/carpwomen08/status/2086425184878444675"
+      ],
+      "sampleTexts": [
+        {
+          "text": "なつめさんとの連勝ジンクスも今のカープではダメでしたね\n健矢くんが好投してくれただけに残念です\n神宮は行かれないのですか？\n今日は暑い中、応援お疲れ様でした",
+          "user": "TKG",
+          "time": "2026-08-09T12:12:45.000Z"
+        },
+        {
+          "text": "健矢くん\nふっつうに\n先発ローテいけませんか？\n\n日曜日とか\n非常にありがたいです。\n\n負けたけど…\n健矢くんカッコよかったし\n明日仕事頑張れそうです。\n※めっちゃ悔しくて泣いてるけど\n\n#カープ",
+          "user": "カープと甲子園好き女子",
+          "time": "2026-08-09T12:11:42.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "打線不調",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 2,
+      "tweetUrls": [
+        "https://x.com/carp_gyro7/status/2086425124996325859",
+        "https://x.com/aqi7_l/status/2086424636057923930"
+      ],
+      "sampleTexts": [
+        {
+          "text": "3連戦全部負けました。\n森下の時もそうだけど、好投した投手が負け投手になるのが意味が分かりません。\n本当に打線頑張ってください。\nすずけん、DeNA打線に対してテンポよく打ち取ってナイスピッチングでし",
+          "user": "ふみきゅん",
+          "time": "2026-08-09T12:11:28.000Z"
+        },
+        {
+          "text": "あれ、気づいたら5連敗だ。今週は4日の巨人戦に全精力を注いじゃったからね。この1勝を取るために5連敗したようなもの。中継ぎ陣はがんばったよねえ、ゆっくり休んでほしい。森下くんの好投が光り。勝たせてあげ",
+          "user": "きなこ",
+          "time": "2026-08-09T12:09:31.000Z"
+        }
+      ]
+    },
+    {
+      "target": "奨成",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "奨成の重要性",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/utsui6123/status/2086425896584724859"
+      ],
+      "sampleTexts": [
+        {
+          "text": "奨成のいないカープは皿しかない寿司でしかない",
+          "user": "うづい",
+          "time": "2026-08-09T12:14:32.000Z"
+        }
+      ]
+    },
+    {
+      "target": "首脳陣",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "首脳陣交代",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/kapaluamalaysia/status/2086424114236182914"
+      ],
+      "sampleTexts": [
+        {
+          "text": "なんか高校野球見てると、あれカープまだ野球やってんのか(生きてるのか) というレベル。\nみんな殆ど意識ないからこれから全部不戦敗にしてもかまわんぞ(試合やってもどうせ今年からあと3回も勝てないだろ)\n",
+          "user": "kapaluamalaysia",
+          "time": "2026-08-09T12:07:27.000Z"
+        }
+      ]
+    },
+    {
+      "target": "鈴木",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "被3タテ",
+      "sentiment": "批判弱",
+      "sentimentScore": -1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/IWATA_c14h3/status/2086424087271022785"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープはまけほ…。\n\n実は6月のライオンズ戦以来の被3タテ。\n今日もなす術なしか。\n\nスズケンはようやってたよ。\n何か打開策はないんかの…。\n\n#carp",
+          "user": "IWATA 次戦8.6",
+          "time": "2026-08-09T12:07:20.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "引用先に気軽に反応して下さい︎\n#ファイターズファンと繋がりたい #カープファンと繋がりたい #プロ野球ファンと繋がりたい #lovefighters #carp",
+      "user": "ウェユル",
+      "time": "2026-08-09T12:15:13.000Z",
+      "url": "https://x.com/weyul_021431/status/2086426069771735193",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "新井や松田元のいう「カープは家族」なんて、自分のお気に入りだけの範囲の家族だからめちゃ範囲が狭いし馴れ合いだし、クソみたいなレベル！\n腐るほど優秀なOBがいるのに「家族」以外呼ばない。こんな醜いことしててほんとにこいつら野球してんの？\n\n#カープ　#解散　#身売りしろ　#何もかも非プロ",
+      "user": "kapaluamalaysia",
+      "time": "2026-08-09T12:15:01.000Z",
+      "url": "https://x.com/kapaluamalaysia/status/2086426020052422759",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープのメタルマグネット出てきた。当時物やな\n\n広島東洋カープ メタルマグネット 超希少品 当時物",
+      "user": "すぼ",
+      "time": "2026-08-09T12:14:59.000Z",
+      "url": "https://x.com/subocarpfan/status/2086426011680362822",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "神宮へはスラィリーを観に行くとします\n\n#carp #カープ",
+      "user": "ふみきゅん",
+      "time": "2026-08-09T12:14:58.000Z",
+      "url": "https://x.com/carp_gyro7/status/2086426006643253591",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ブログ更新「ベテランの奮闘がより所 | 生涯カープファンのブログ」　#carp \n \nhttps://\nameblo.jp/carpfan01/entr\ny-12975270312.html\n… #Amebaブログ #アメブロ",
+      "user": "carpfan01",
+      "time": "2026-08-09T12:14:44.000Z",
+      "url": "https://x.com/carpfan01/status/2086425947524448466",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープもこういうイベントして欲しいけど、今のオーナーだと難しいかもな……",
+      "user": "ひしろくら",
+      "time": "2026-08-09T12:14:36.000Z",
+      "url": "https://x.com/AquanAquan/status/2086425912216899688",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "奨成のいないカープは皿しかない寿司でしかない",
+      "user": "うづい",
+      "time": "2026-08-09T12:14:32.000Z",
+      "url": "https://x.com/utsui6123/status/2086425896584724859",
+      "targetType": "選手",
+      "target": "奨成",
+      "topic_broad": "その他",
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "カープのユニフォームマグネットか。セリーグのやつやな。\n\nNPB プロ野球 セリーグ ユニフォーム マグネット 広島東洋カープ",
+      "user": "華丸アキ",
+      "time": "2026-08-09T12:14:08.000Z",
+      "url": "https://x.com/akihirobasv3la/status/2086425794633744605",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ベイスターズは8月になってまた調子上がってきたなぁ\nカープに3連勝スイープで今月7勝1敗！\n\n\nビドの所さえ勝ててれば8連勝だったかも\n#baystars",
+      "user": "くろねこ",
+      "time": "2026-08-09T12:14:06.000Z",
+      "url": "https://x.com/kuroneko_bay21/status/2086425787276927414",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "次はカープか。ヤクルト投手陣と打線を蘇らせて勝たせてくれ　#swallows",
+      "user": "ソウイチロー＠広島の超熱狂的鴎&燕ファン",
+      "time": "2026-08-09T12:13:36.000Z",
+      "url": "https://x.com/popee_x/status/2086425663897206959",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "#カープ\n健矢は中6日でいけるんか？",
+      "user": "マルコシアス",
+      "time": "2026-08-09T12:13:28.000Z",
+      "url": "https://x.com/Marcosiashootin/status/2086425626928615686",
+      "targetType": "選手",
+      "target": "健矢",
+      "topic_broad": "起用・スタメン",
+      "sentiment": "中立"
+    },
+    {
+      "text": "本当にカスみたいなチームだな。\nピースナイターで負けて最下位転落。\n当然のように毎日負け続けて5連敗。\n開幕以来3連勝無し。\nこんなチームに金払って応援行くわけねえわ。\n時間の無駄なので今シーズンは見るのやめます。\n甲子園の方が100倍面白い。\n坂倉もさっさと他行った方がいい。",
+      "user": "シロクマ",
+      "time": "2026-08-09T12:13:08.000Z",
+      "url": "https://x.com/shirokuma_TW888/status/2086425544355434551",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "新井や松田元のいう「カープは家族」なんて、自分のお気に入りだけの範囲の家族だからめちゃ範囲が狭いし馴れ合いだし、クソみたいなレベル！\n腐るほど優秀なOBがいるのに「家族」以外呼ばない。こんな醜いことしててほんとにこいつら野球してんの？？\n\n#カープ　#解散　#身売りしろ　#何もかも非プロ",
+      "user": "kapaluamalaysia",
+      "time": "2026-08-09T12:13:04.000Z",
+      "url": "https://x.com/kapaluamalaysia/status/2086425526391148890",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "ありがとうございます♡\nカープを応援できるように頑張ります",
+      "user": "カープと甲子園好き女子",
+      "time": "2026-08-09T12:13:00.000Z",
+      "url": "https://x.com/carpwomen08/status/2086425510251462819",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ういたんがメガホン\nひいろがタオマフ\nちーたんがスラィリー持ってこのみんが手を握ってる\nれいながサンチェ被り\nぞのがカープ坊や\nゆーづとまりの様があげ太くん\nももみんがミニスラィリー\nそして地元いとはがサンチェの手？にあげ太\n\n推しが推しのグッズ身につけて写真\n幸せが渋滞だぁ〜",
+      "user": "はすpart2",
+      "time": "2026-08-09T12:12:47.000Z",
+      "url": "https://x.com/yt7JLsAfTwnwJTB/status/2086425458816737691",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "なつめさんとの連勝ジンクスも今のカープではダメでしたね\n健矢くんが好投してくれただけに残念です\n神宮は行かれないのですか？\n今日は暑い中、応援お疲れ様でした",
+      "user": "TKG",
+      "time": "2026-08-09T12:12:45.000Z",
+      "url": "https://x.com/FRK6ctPoQCeIsmA/status/2086425449459253314",
+      "targetType": "選手",
+      "target": "健矢",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "電波を使いカープの話だけをしていい貴重なお時間をくださっていつもありがとうございますカープの話をしにいきます",
+      "user": "塩入冬湖",
+      "time": "2026-08-09T12:12:25.000Z",
+      "url": "https://x.com/fuyukofinlands/status/2086425363610247555",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "赤の愛可哀想\nいい加減カープ勝てよ\nこんな可哀想にしたカープ\nあやまれ！",
+      "user": "りょう",
+      "time": "2026-08-09T12:12:12.000Z",
+      "url": "https://x.com/XxwITA5L4YGSKmF/status/2086425310325850123",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "広島からのパワーも少なかったかなぁ\n\nお気をつけて\nカープ泊まりで火曜日から神宮",
+      "user": "ゆうじ8月18日25日30日",
+      "time": "2026-08-09T12:12:10.000Z",
+      "url": "https://x.com/Yuji64439019/status/2086425303702995381",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープファン息してる？？\n\nおでは瀕死です...",
+      "user": "mikutomi(´◿-◺｀)",
+      "time": "2026-08-09T12:12:02.000Z",
+      "url": "https://x.com/mikutomi/status/2086425269058093522",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "向こうのファンの人には申し訳ないけど、平良篠木片山を誰一人まともに攻略できずに3連敗はプロとして情けなさすぎるでしょ。このローテ相手に3連敗するのカープだけだろ。\n#carp",
+      "user": "さてょ",
+      "time": "2026-08-09T12:12:00.000Z",
+      "url": "https://x.com/tuotenghui/status/2086425258270310420",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープが着々と最下位固め\nもう無理だよなぁ\n経営陣の高齢化で\n世の中の流れに付いて行けてない\n野村克也監督率いるヤクルトが\n『ID野球』をしていた頃より\nデータを生かしきれて無いんだと思う\nその上、選手たちの不祥事も重なり\n目も当てられない\nこのままでは本当にこの球団は消滅する",
+      "user": "カーナビ・いちろう",
+      "time": "2026-08-09T12:11:46.000Z",
+      "url": "https://x.com/googb777/status/2086425202658025502",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "健矢くん\nふっつうに\n先発ローテいけませんか？\n\n日曜日とか\n非常にありがたいです。\n\n負けたけど…\n健矢くんカッコよかったし\n明日仕事頑張れそうです。\n※めっちゃ悔しくて泣いてるけど\n\n#カープ",
+      "user": "カープと甲子園好き女子",
+      "time": "2026-08-09T12:11:42.000Z",
+      "url": "https://x.com/carpwomen08/status/2086425184878444675",
+      "targetType": "選手",
+      "target": "健矢",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "見ようと思ったらカープ終わってて、高校野球に切り替えた。中京がこの１球でゲームセットと言う時に霞ヶ浦の守備にハプニングがあって出塁となったけどその後に終了。すぐにタイガースに切り替えたら終わってた野球求めて彷徨ったけど今夜は終了ね、寂しいな、カープ負けたし。",
+      "user": "ゆみ",
+      "time": "2026-08-09T12:11:41.000Z",
+      "url": "https://x.com/soredemoCarpgam/status/2086425181791363446",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "3連戦全部負けました。\n森下の時もそうだけど、好投した投手が負け投手になるのが意味が分かりません。\n本当に打線頑張ってください。\nすずけん、DeNA打線に対してテンポよく打ち取ってナイスピッチングでした。\n\n#carp #カープ",
+      "user": "ふみきゅん",
+      "time": "2026-08-09T12:11:28.000Z",
+      "url": "https://x.com/carp_gyro7/status/2086425124996325859",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "桃とぶどうで浮かれてたらカープが5連敗してたし、都内に戻って来たら超豪雨でした",
+      "user": "ウエチリーヌ / ウエハラアズサ",
+      "time": "2026-08-09T12:11:19.000Z",
+      "url": "https://x.com/Uechiline/status/2086425088606560323",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "今週のカープよりVIVAN10分の方がおもろいぞ\n\n #VIVANTep13",
+      "user": "さぁ",
+      "time": "2026-08-09T12:10:51.000Z",
+      "url": "https://x.com/_s_carp_/status/2086424971417645436",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "まけほー5連敗…… #カープ",
+      "user": "くろうさぎ",
+      "time": "2026-08-09T12:10:51.000Z",
+      "url": "https://x.com/osoranomukou315/status/2086424969198854426",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープが負けたニャー_:(´ཀ`」 ∠):",
+      "user": "帰ってきた回胴遊技",
+      "time": "2026-08-09T12:10:35.000Z",
+      "url": "https://x.com/yuugikaido777/status/2086424902748496157",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "あと忘れちゃ駄目なのは８回の汐恩が辰見を刺した場面ね。あれでカープの流れを切ったから本当大きいプレイだった。 #baystars",
+      "user": "Heaven ver.2026",
+      "time": "2026-08-09T12:10:12.000Z",
+      "url": "https://x.com/1128heaven/status/2086424808267583806",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "まけほー\n横浜3連戦、結局3連敗しちゃったなあ\n\nチームは勝てなくても関東の鯉党は\nまだまだ熱いよ！",
+      "user": "ともッチ",
+      "time": "2026-08-09T12:09:58.000Z",
+      "url": "https://x.com/tomoyuty/status/2086424746271605161",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "新井監督の4年間、はっきり言って無駄な4年間だったと思う。家族云々でチームは緩んでしまうし、若手は全く育っていないし、成績は右肩下がりだし。おまけに重大な問題も起こすし。これがカープ消滅のきっかけになるのではなかろうか。#carp",
+      "user": "らっきょ",
+      "time": "2026-08-09T12:09:52.000Z",
+      "url": "https://x.com/Express_Chokai/status/2086424724452815018",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープ　Aクラスまで6ゲーム差",
+      "user": "@♪ふじやん公式",
+      "time": "2026-08-09T12:09:48.000Z",
+      "url": "https://x.com/fujiyannnnn/status/2086424704961950158",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "RCCカープナイターを聴いた後は　#らじらーサンデー　ベイスターズ勝ったよー(⁠≧⁠▽⁠≦⁠)",
+      "user": "チームM推し(ゆきまさ2号)⊿",
+      "time": "2026-08-09T12:09:43.000Z",
+      "url": "https://x.com/3774_yuki/status/2086424685965885866",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ベイスターズ、完封リレーでカープに3連勝！上位とのゲーム差はともかく借金は６まで減らしました！この調子で行きましょう！＼横浜優勝／＼(^o^)／",
+      "user": "+さかい周＠無農薬・無化学肥料の酒井農園＠日本共産党大島町議会議員",
+      "time": "2026-08-09T12:09:39.000Z",
+      "url": "https://x.com/kuroshiokeroker/status/2086424667125162001",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "あれ、気づいたら5連敗だ。今週は4日の巨人戦に全精力を注いじゃったからね。この1勝を取るために5連敗したようなもの。中継ぎ陣はがんばったよねえ、ゆっくり休んでほしい。森下くんの好投が光り。勝たせてあげたかったね。カープ今週もお疲れ様でした！",
+      "user": "きなこ",
+      "time": "2026-08-09T12:09:31.000Z",
+      "url": "https://x.com/aqi7_l/status/2086424636057923930",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "仕事帰りの電車、ハマスタ終わりとバッティングしたが、上手く言語化できないけどカープファンって独特の雰囲気持ってるな。",
+      "user": "末端",
+      "time": "2026-08-09T12:09:22.000Z",
+      "url": "https://x.com/ma2take5me/status/2086424595180179709",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "＼横浜優勝／\n\n3-0でカープに勝ち\n筒香がきょうも\n\n#筒香嘉智\n#baystars",
+      "user": "よしりん",
+      "time": "2026-08-09T12:08:41.000Z",
+      "url": "https://x.com/fulieyoshirin/status/2086424424480424420",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープのニューエラキャップ出てきた。紺やな\n\n広島カープ×ニューエラ 5950 H ロゴ刺繍 キャップ 60.6cm 紺色 白",
+      "user": "すぼ",
+      "time": "2026-08-09T12:08:36.000Z",
+      "url": "https://x.com/subocarpfan/status/2086424404750221327",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "岐阜の中京負けた～\nカープはいつも負けとる\nこの３連敗はかなり終戦を予感させるね\nファン歴29年\n今年が最悪最低です",
+      "user": "武",
+      "time": "2026-08-09T12:08:30.000Z",
+      "url": "https://x.com/hitRHn9MdPxJLC0/status/2086424377915011428",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "玲ちゃんってカープ坊や気に入ってる？(笑)",
+      "user": "キャロ",
+      "time": "2026-08-09T12:08:23.000Z",
+      "url": "https://x.com/sqNMsfhx9i79218/status/2086424348349604198",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "８月９日・日曜日\n横浜関内\n占い出来るスポーツ＆カラオケバー\nＢフレンズ営業中です\n\n＼横浜優勝／\nベイスターズ ３－０ カープ\n勝：片山　Ｓ：レイノルズ　敗：鈴木\n\n２回１死満塁からの連続三振\nここがポイントでしたね\n\n片山はここから波にのり、６回無失点＼(^o^)／",
+      "user": "Bフレンズめぐみずひろき",
+      "time": "2026-08-09T12:08:20.000Z",
+      "url": "https://x.com/bfriends169m/status/2086424335938654352",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "玲ちゃんまたカープ坊や持ってる",
+      "user": "シャイニングウィザード",
+      "time": "2026-08-09T12:08:15.000Z",
+      "url": "https://x.com/syasyasyasya_/status/2086424314816209116",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "来週\nカープ絶対勝てよ\n\nドラゴンズも勝つから",
+      "user": "Mik",
+      "time": "2026-08-09T12:07:50.000Z",
+      "url": "https://x.com/mi_hiroto_19/status/2086424210222858308",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "こんばんわ。昨日カープの試合観に行ってスッキリしなかったんで今日ホークスの勝ち見れて良かったです。",
+      "user": "グッチ→",
+      "time": "2026-08-09T12:07:49.000Z",
+      "url": "https://x.com/GUKICHI/status/2086424207035187680",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "【今日の順位表】カープ、5連敗。借金は今季ワースト更新「18」（2026年8月9日）\n\nhttps://\nakinomono.jp/e/carp-2026-st\nandings-29987\n…\n｜\n｜\n#carp #カープ",
+      "user": "安芸の者がゆく＠カープ情報ブログ",
+      "time": "2026-08-09T12:07:32.000Z",
+      "url": "https://x.com/carp_akinomono/status/2086424136176611641",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "りょうま\n愛ちゃん\nなぐさめてる\n優しいね！\n愛ちゃん\nそんなに落ち込まないで\n元気出して\n火曜日から笑顔で\n一緒にカープ応援しようね",
+      "user": "石井教洋",
+      "time": "2026-08-09T12:07:32.000Z",
+      "url": "https://x.com/KdKst2oq2FS8Pdw/status/2086424134935040204",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "このチーム見に行くのにウチからじゃと、交通宿泊費で一人4,5万円かかるんじゃが、、、\n今更嫌いにはならんが、今は行く気力が沸かんね。\n#カープ",
+      "user": "まめだのち 0勝2敗 今年の観戦終了",
+      "time": "2026-08-09T12:07:32.000Z",
+      "url": "https://x.com/uG3RuBjtcudxNp9/status/2086424133995569371",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "なんか高校野球見てると、あれカープまだ野球やってんのか(生きてるのか) というレベル。\nみんな殆ど意識ないからこれから全部不戦敗にしてもかまわんぞ(試合やってもどうせ今年からあと3回も勝てないだろ)\n\nもう試合やめてキャッチボールと素振りすれば？もちろん今の首脳陣は明日退陣",
+      "user": "kapaluamalaysia",
+      "time": "2026-08-09T12:07:27.000Z",
+      "url": "https://x.com/kapaluamalaysia/status/2086424114236182914",
+      "targetType": "首脳陣",
+      "target": "首脳陣",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープはまけほ…。\n\n実は6月のライオンズ戦以来の被3タテ。\n今日もなす術なしか。\n\nスズケンはようやってたよ。\n何か打開策はないんかの…。\n\n#carp",
+      "user": "IWATA 次戦8.6",
+      "time": "2026-08-09T12:07:20.000Z",
+      "url": "https://x.com/IWATA_c14h3/status/2086424087271022785",
+      "targetType": "選手",
+      "target": "鈴木",
+      "topic_broad": "投球",
+      "sentiment": "批判弱"
+    }
+  ]
+}
