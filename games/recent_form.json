@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T11:34:41.079Z",
+  "generatedAt": "2026-08-12T11:48:07.187Z",
   "baseDate": "2026-08-13",
   "games": 6,
   "rangeStart": "2026-08-05",
@@ -259,7 +259,7 @@
     },
     {
       "name": "勝田",
-      "games": 3,
+      "games": 4,
       "ab": 4,
       "r": 0,
       "h": 0,
@@ -285,7 +285,7 @@
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近3試合 4打数0安打 .000 OPS.000"
+      "summary": "直近4試合 4打数0安打 .000 OPS.000"
     },
     {
       "name": "野間",
@@ -410,32 +410,32 @@
     {
       "name": "ファビアン",
       "games": 6,
-      "ab": 26,
+      "ab": 27,
       "r": 1,
       "h": 6,
       "rbi": 1,
       "sb": 0,
       "hr": 0,
-      "k": 3,
+      "k": 4,
       "bb": 0,
       "double": 1,
       "triple": 0,
       "single": 5,
       "hbp": 0,
       "sf": 0,
-      "avg": ".231",
-      "avg_num": 0.231,
-      "obp": ".231",
-      "slg": ".269",
-      "ops": ".500",
-      "ops_num": 0.5,
+      "avg": ".222",
+      "avg_num": 0.222,
+      "obp": ".222",
+      "slg": ".259",
+      "ops": ".481",
+      "ops_num": 0.481,
       "form": {
         "icon": "↓",
         "label": "不調",
         "level": -1,
         "cls": "form-cold1"
       },
-      "summary": "直近6試合 26打数6安打 .231 OPS.500 1打点 3三振"
+      "summary": "直近6試合 27打数6安打 .222 OPS.481 1打点 4三振"
     },
     {
       "name": "石原",
@@ -678,6 +678,31 @@
         "cls": "form-none"
       },
       "summary": "直近1登板 1回 防御率0.00 自責0 被安1 奪三振0 1H"
+    },
+    {
+      "name": "塹江",
+      "games": 1,
+      "outs": 3,
+      "ip": "1回",
+      "er": 0,
+      "r": 0,
+      "h": 0,
+      "hr": 0,
+      "bb": 0,
+      "k": 2,
+      "pitches": 18,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 1回 防御率0.00 自責0 被安0 奪三振2"
     },
     {
       "name": "森下",
