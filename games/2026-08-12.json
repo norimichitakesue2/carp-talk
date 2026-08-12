@@ -4,11 +4,11 @@
   "away_team": "広島",
   "home_team": "ヤクルト",
   "away_score": 0,
-  "home_score": 2,
+  "home_score": 6,
   "venue": "神宮球場",
   "start_time": "18:01",
   "status": "live",
-  "current_inning": "4回表",
+  "current_inning": "4回裏",
   "result_label": "",
   "away_pitcher": "栗林",
   "home_pitcher": "山野",
@@ -200,20 +200,20 @@
       0,
       0
     ],
-    "hiroshima_hits": 2,
+    "hiroshima_hits": 3,
     "hiroshima_errors": 0,
     "away": [
       2,
       0,
       0,
-      0,
+      4,
       0,
       0,
       0,
       0,
       0
     ],
-    "away_hits": 5,
+    "away_hits": 9,
     "away_errors": 0
   },
   "pitchers": [],
@@ -437,7 +437,7 @@
       "name": "小園",
       "pos": "遊",
       "line": 7,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -492,19 +492,19 @@
     {
       "name": "栗林",
       "result": "",
-      "outs": 9,
-      "pitches": 52,
-      "hitsAllowed": 5,
+      "outs": 10,
+      "pitches": 74,
+      "hitsAllowed": 9,
       "hrAllowed": 0,
-      "walks": 1,
+      "walks": 2,
       "strikeouts": 1,
-      "runs": 2,
-      "earnedRuns": 2
+      "runs": 6,
+      "earnedRuns": 6
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-12T10:05:11.785Z",
-    "generatedAt": "2026-08-12T10:05:11.829Z",
+    "sourceFetchedAt": "2026-08-12T10:25:11.354Z",
+    "generatedAt": "2026-08-12T10:25:11.387Z",
     "sourceUrl": "https://npb.jp/scores/2026/0812/s-c-18/",
     "previewRosterFingerprint": "アドゥワ,ファビアン,モンテロ,久保,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大盛,小園,岡本,持丸,栗林,森浦,石原,秋山,菊地,菊池,西川,辰見,辻,遠藤,野間,髙"
   }
