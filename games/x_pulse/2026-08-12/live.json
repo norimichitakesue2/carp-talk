@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-08-12T12:20:58.158Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 20,
+  "classifiedCount": 20,
+  "clusterCount": 3,
+  "bubbleCount": 3,
+  "summary": "秋山の1800本達成は話題も限定的で、西川の選球眼不足や新井への批判など課題指摘が散見される状況。",
+  "bubbles": [
+    {
+      "target": "西川",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "選球眼不足",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/KAZI_59/status/2087512008593907789"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープ さん 西川篤夢 選手\n最後の最後で登場\n\n低めのボール球に引っかり、ピッチャーゴロで終了\nカープの若手らしい、どんな球でもスイングしてしまう\n\n配給を学習したり、データーが蓄積されていけば、ボ",
+          "user": "KAZI",
+          "time": "2026-08-12T12:10:21.000Z"
+        }
+      ]
+    },
+    {
+      "target": "新井",
+      "targetType": "首脳陣",
+      "topic_broad": "采配",
+      "topic_label": "選手のやる気不足",
+      "sentiment": "批判強",
+      "sentimentScore": -2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/tomohiro_1991/status/2087511896740241437"
+      ],
+      "sampleTexts": [
+        {
+          "text": "選手は負けても何とも思ってないんだろうね。\n新井監督とカープファンだけがストレス溜まってるわ。\n現地のファンに金返してあげなよ？",
+          "user": "とも@広島",
+          "time": "2026-08-12T12:09:54.000Z"
+        }
+      ]
+    },
+    {
+      "target": "秋山",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "1800本達成",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/a_for_kindness/status/2087511871855427815"
+      ],
+      "sampleTexts": [
+        {
+          "text": "AKI-METER\n\nNPB　1800本\nMLB　71本\n\n計　1871本\n\n#秋山翔吾\nカープは苦境ながらNPB通算1800安打達成！自身の大記録への道と共にカープの暗雲も切り裂いていきたい！",
+          "user": "エー氏の食卓",
+          "time": "2026-08-12T12:09:49.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "カープ、大負け6連敗\nもー手が付けられません\n何より問題なのは、ヒット7本で\n無得点なところが",
+      "user": "みすたあ",
+      "time": "2026-08-12T12:10:30.000Z",
+      "url": "https://x.com/XwcTAAyKpLc6uvT/status/2087512045486997709",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "神宮球場だからヤジ飛び交いそう\n\n#carp",
+      "user": "鯉党男",
+      "time": "2026-08-12T12:10:29.000Z",
+      "url": "https://x.com/carpfan_boy/status/2087512041695404521",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "个すわほー个\n\n台風一過？だが天候不安な神宮球場で行われたカープ戦第18回戦は、\n12-0と圧勝！\n連敗を2で止めました。\n\nこれまでの鬱憤を晴らすような一方的な試合だった。\nここまでやってとは言わずとも今後も勢い継続してほしい。\n#swallows\n#スワローズ\n#燕心全開",
+      "user": "ツバメのkei",
+      "time": "2026-08-12T12:10:25.000Z",
+      "url": "https://x.com/keixd001/status/2087512026814038451",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープ さん 西川篤夢 選手\n最後の最後で登場\n\n低めのボール球に引っかり、ピッチャーゴロで終了\nカープの若手らしい、どんな球でもスイングしてしまう\n\n配給を学習したり、データーが蓄積されていけば、ボールを見極められるようになると思うので、その改善は頑張って\n\n出来なければ、次が来る世界",
+      "user": "KAZI",
+      "time": "2026-08-12T12:10:21.000Z",
+      "url": "https://x.com/KAZI_59/status/2087512008593907789",
+      "targetType": "選手",
+      "target": "西川",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープもう見てられない \n(と言いつつ明日もスコアを気にする)",
+      "user": "赤磁",
+      "time": "2026-08-12T12:10:19.000Z",
+      "url": "https://x.com/seki_c19/status/2087511998049480847",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "こういう試合も最後までしっかり見届ける。\n\n昔は勝てなくてどうしようもなくなると、意を決して球場に駆け付けた。\nそろそろ私が行っちゃらんといけん！と言いながら。\n私が行って、それで勝てたという記憶も無いのだけど。\n苦しいカープちゃん。\n私も苦しい。\n行こうかな、球場に。",
+      "user": "mayu",
+      "time": "2026-08-12T12:10:14.000Z",
+      "url": "https://x.com/mayuoka0304/status/2087511976956325892",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "泣けてくるぜ\n\n#carp\n#カープ",
+      "user": "きち鯉爺",
+      "time": "2026-08-12T12:10:10.000Z",
+      "url": "https://x.com/akaheruchanman/status/2087511963098341728",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "バイトから帰ってきたらナニコレww\n#carp #カープ",
+      "user": "はいオゲs",
+      "time": "2026-08-12T12:10:06.000Z",
+      "url": "https://x.com/s24142737/status/2087511945348059459",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ終わったな。\nもう最近試合さえ気にしてないもんな",
+      "user": "さかま",
+      "time": "2026-08-12T12:10:05.000Z",
+      "url": "https://x.com/minamioni/status/2087511942223302773",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "点を取られすぎなのは当然ですが\n7安打で0点と言うのはどうなの？\n3〜4点くらいは取ってよ\n#カープ",
+      "user": "nana",
+      "time": "2026-08-12T12:09:59.000Z",
+      "url": "https://x.com/92nana/status/2087511916063477836",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "神宮球場に来ていたカープファンが気の毒です…",
+      "user": "メガピクセル",
+      "time": "2026-08-12T12:09:58.000Z",
+      "url": "https://x.com/xrmj10ardj1/status/2087511910568927504",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "選手は負けても何とも思ってないんだろうね。\n新井監督とカープファンだけがストレス溜まってるわ。\n現地のファンに金返してあげなよ？",
+      "user": "とも@広島",
+      "time": "2026-08-12T12:09:54.000Z",
+      "url": "https://x.com/tomohiro_1991/status/2087511896740241437",
+      "targetType": "首脳陣",
+      "target": "新井",
+      "topic_broad": "采配",
+      "sentiment": "批判強"
+    },
+    {
+      "text": "カープ女子なんだね",
+      "user": "Blue moon",
+      "time": "2026-08-12T12:09:53.000Z",
+      "url": "https://x.com/a1PKDUgEC14204/status/2087511888997540092",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "AKI-METER\n\nNPB　1800本\nMLB　71本\n\n計　1871本\n\n#秋山翔吾\nカープは苦境ながらNPB通算1800安打達成！自身の大記録への道と共にカープの暗雲も切り裂いていきたい！",
+      "user": "エー氏の食卓",
+      "time": "2026-08-12T12:09:49.000Z",
+      "url": "https://x.com/a_for_kindness/status/2087511871855427815",
+      "targetType": "選手",
+      "target": "秋山",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "遠く及びませんでした。\nやはり過去のカープはある意味偉大でした",
+      "user": "赤い電光石火",
+      "time": "2026-08-12T12:09:48.000Z",
+      "url": "https://x.com/captainsolidgu/status/2087511867682148372",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "被安打18、0-12でカープ敗戦",
+      "user": "けんいちろー",
+      "time": "2026-08-12T12:09:47.000Z",
+      "url": "https://x.com/carp_25/status/2087511864075047028",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "まけほ\n今のカープにはお金どころか時間を使うのすらもったいないよ\n#カープ",
+      "user": "021 Galette",
+      "time": "2026-08-12T12:09:44.000Z",
+      "url": "https://x.com/Galette021/status/2087511854646202856",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判強"
+    },
+    {
+      "text": "撃沈…\n\nうーん…\n切り替えて、また明日！！\n\n頑張ってカープ\nカープファン",
+      "user": "さきお",
+      "time": "2026-08-12T12:09:41.000Z",
+      "url": "https://x.com/minilet73/status/2087511842050674708",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープファン、大丈夫？？",
+      "user": "マる@クロスカブ(JA10)ライダー",
+      "time": "2026-08-12T12:09:36.000Z",
+      "url": "https://x.com/ryochin_77/status/2087511820034859328",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "推しの好投見てニマニマしつつタマスタに変えたら目が覚めたわ(￣▽￣)\n\n一軍二軍揃って12点差て何なん\n\n#カープ",
+      "user": "flute-yuta-C67-L-58 低浮上",
+      "time": "2026-08-12T12:09:24.000Z",
+      "url": "https://x.com/yuta6758yuta/status/2087511769174753666",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    }
+  ]
+}
