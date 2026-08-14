@@ -1,0 +1,751 @@
+{
+  "generatedAt": "2026-08-14T12:16:39.623Z",
+  "model": "claude-haiku-4-5-20251001",
+  "inputCount": 56,
+  "classifiedCount": 56,
+  "clusterCount": 8,
+  "bubbleCount": 8,
+  "summary": "森下の好投と復活ぶりが話題の中心で、カープファンから応援の声が集中している。",
+  "bubbles": [
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "森下好投",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 5,
+      "tweetUrls": [
+        "https://x.com/kaejirou/status/2088236705925210611",
+        "https://x.com/hashiyuki0909/status/2088236679325000107",
+        "https://x.com/Dr4Ju/status/2088235811582144934",
+        "https://x.com/matuyama44/status/2088235767340691665",
+        "https://x.com/typeK96_anoboke/status/2088235693558616293"
+      ],
+      "sampleTexts": [
+        {
+          "text": "おっカープちゃん勝っとるやないかい！勝ち投手森下くんやないかい！！",
+          "user": "かえじろう",
+          "time": "2026-08-14T12:10:02.000Z"
+        },
+        {
+          "text": "今日はカープ快勝でした！　森下も調子を戻してきて、良い時の内容だった　野手陣も勝負強く打っていて、全員野球をしていて良かった　佐々木はやっと自分のスタイルを見つけたかな",
+          "user": "Yasuyuki Hashiguchi",
+          "time": "2026-08-14T12:09:56.000Z"
+        },
+        {
+          "text": "連敗ストップこいほー\n森下くん6勝目おめでとう\n菊さん、泰くんのホームラン嬉しい辰見くん20盗塁素晴らしい\n明日も勝つぞカープ頑張れ\n#carp",
+          "user": "よよよよんコロ",
+          "time": "2026-08-14T12:06:29.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "その他",
+      "topic_label": "森下復活",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 3,
+      "tweetUrls": [
+        "https://x.com/m_carp27/status/2088236096484417798",
+        "https://x.com/YUKI_Nijisuki/status/2088236034299687092",
+        "https://x.com/gokabouren/status/2088235917429596558"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープが虎に勝って！？\n連敗ストップして！？\n森下が復活して？\nお菊も泰もホームラン打って！？\n明日甲子園！？\n最高のお盆最終戦やん\n\nこんなんウキウキワクワクで明日の準備\nしちゃうやん",
+          "user": "nodechan",
+          "time": "2026-08-14T12:07:37.000Z"
+        },
+        {
+          "text": "現地からこいほー\nズムスタに森下が帰ってきて長かった連敗をストップしてくれた\n\n♫今日もカープは勝ち勝ち勝ち♫",
+          "user": "ユウキ /♫///",
+          "time": "2026-08-14T12:07:22.000Z"
+        },
+        {
+          "text": "こいほー！\nこんなカープさん見るのはいつ以来だろう\nらしからぬ(？)長打攻勢ここで終わることなくコツコツ追加点素晴らしっ\n泰くんその調子で一歩ずつね\n\n森下くん投打に華やかにこれぞ僕らの知ってる森下く",
+          "user": "高柳秀次郎",
+          "time": "2026-08-14T12:06:54.000Z"
+        }
+      ]
+    },
+    {
+      "target": "斉藤優汰",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "援護不足",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/1r8h6jhte4exznz/status/2088236769439563780"
+      ],
+      "sampleTexts": [
+        {
+          "text": "野手の皆様、\n\n明日の斉藤優汰くんにも、\n今日と同じくらいの援護を、\n絶対にお願いします\n\n#広島カープ \n#斉藤優汰",
+          "user": "やきものがかり◢11/3hitaru",
+          "time": "2026-08-14T12:10:18.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "緩急の使い分け",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/harunakogiku/status/2088236682097447007"
+      ],
+      "sampleTexts": [
+        {
+          "text": "カープよくやった！ちょいちょい試合観てたけど森下サトテルには内角ストレートとカーブを使った緩急が有効でしたね。",
+          "user": "あさの推し@まさぺ7/31東京ドーム",
+          "time": "2026-08-14T12:09:57.000Z"
+        }
+      ]
+    },
+    {
+      "target": "野村",
+      "targetType": "首脳陣",
+      "topic_broad": "その他",
+      "topic_label": "投手育成手腕",
+      "sentiment": "応援強",
+      "sentimentScore": 2,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/a_for_kindness/status/2088236466388525253"
+      ],
+      "sampleTexts": [
+        {
+          "text": "あんな短期間で森下を理想的な形に修正する野村コーチ本当に何者なの？この2年で何人の投手の修正や覚醒に尽力した？カープ球団は野村コーチの年俸5000万くらいあげたほうがいい。",
+          "user": "エー氏の食卓",
+          "time": "2026-08-14T12:09:05.000Z"
+        }
+      ]
+    },
+    {
+      "target": "斉藤",
+      "targetType": "選手",
+      "topic_broad": "投球",
+      "topic_label": "斉藤頼頼",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/9kjvV5bE2A88962/status/2088236309785784506"
+      ],
+      "sampleTexts": [
+        {
+          "text": "#ラジポス\n明日は斉藤さんだから押さえてあとはカープ打線が必ず絶対打って勝って欲しいなあ。",
+          "user": "カープラブ",
+          "time": "2026-08-14T12:08:28.000Z"
+        }
+      ]
+    },
+    {
+      "target": "佐々木",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "長打増加",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/CARP_DAISKI/status/2088236219474088229"
+      ],
+      "sampleTexts": [
+        {
+          "text": "今日は特に佐々木くんに長打２本出たのが嬉しかったな。現在の好調さに長打も出てきたら四番打者一直線やんな\n\n#カープ\n#carp",
+          "user": "どう最近？＠NO CARP NO LIFE",
+          "time": "2026-08-14T12:08:06.000Z"
+        }
+      ]
+    },
+    {
+      "target": "森下",
+      "targetType": "選手",
+      "topic_broad": "打撃",
+      "topic_label": "DH制導入惜しい",
+      "sentiment": "応援弱",
+      "sentimentScore": 1,
+      "count": 1,
+      "tweetUrls": [
+        "https://x.com/kusu_hfo/status/2088236080059523082"
+      ],
+      "sampleTexts": [
+        {
+          "text": "森下の輝き\nDH制になるのが惜しいのよカープは！！\n打撃強いピッチャーいるのやっぱり面白い",
+          "user": "kusunoki",
+          "time": "2026-08-14T12:07:33.000Z"
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "text": "野手の皆様、\n\n明日の斉藤優汰くんにも、\n今日と同じくらいの援護を、\n絶対にお願いします\n\n#広島カープ \n#斉藤優汰",
+      "user": "やきものがかり◢11/3hitaru",
+      "time": "2026-08-14T12:10:18.000Z",
+      "url": "https://x.com/1r8h6jhte4exznz/status/2088236769439563780",
+      "targetType": "選手",
+      "target": "斉藤優汰",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "何とかドラゴンズに勝てて、何故か阪神がカープにあっさり負けて2ゲーム差になるのウケるな。絶対抜ける気しないけど楽しませてくれるな",
+      "user": "まつ",
+      "time": "2026-08-14T12:10:17.000Z",
+      "url": "https://x.com/matsuuu1227/status/2088236765085856078",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "そのつもりがカープにボコられた",
+      "user": "んさ",
+      "time": "2026-08-14T12:10:08.000Z",
+      "url": "https://x.com/tnb00t/status/2088236728729616390",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "おっカープちゃん勝っとるやないかい！勝ち投手森下くんやないかい！！",
+      "user": "かえじろう",
+      "time": "2026-08-14T12:10:02.000Z",
+      "url": "https://x.com/kaejirou/status/2088236705925210611",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープ投法こだわるしょっぴー\n#江戸川会",
+      "user": "しっぽ",
+      "time": "2026-08-14T12:09:58.000Z",
+      "url": "https://x.com/YMJnED8rQ3pX9p9/status/2088236687130513727",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープよくやった！ちょいちょい試合観てたけど森下サトテルには内角ストレートとカーブを使った緩急が有効でしたね。",
+      "user": "あさの推し@まさぺ7/31東京ドーム",
+      "time": "2026-08-14T12:09:57.000Z",
+      "url": "https://x.com/harunakogiku/status/2088236682097447007",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今日はカープ快勝でした！　森下も調子を戻してきて、良い時の内容だった　野手陣も勝負強く打っていて、全員野球をしていて良かった　佐々木はやっと自分のスタイルを見つけたかな",
+      "user": "Yasuyuki Hashiguchi",
+      "time": "2026-08-14T12:09:56.000Z",
+      "url": "https://x.com/hashiyuki0909/status/2088236679325000107",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "今日タイガース１ー６カープ、５連勝ならず今日みたいな\n日もあるで　切り替えていこう",
+      "user": "まこりん",
+      "time": "2026-08-14T12:09:40.000Z",
+      "url": "https://x.com/ME2IMVygxX72203/status/2088236612820021331",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "勝てるんじゃんカープさん\n　　　笑　　こいほー",
+      "user": "＊メイプル＊",
+      "time": "2026-08-14T12:09:29.000Z",
+      "url": "https://x.com/8maple4/status/2088236565630005481",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "野村さん！“ひさしぶり”で合ってますよ\n怒るカープファンいないんじゃないかな",
+      "user": "すけたろう",
+      "time": "2026-08-14T12:09:21.000Z",
+      "url": "https://x.com/G4_HS273840/status/2088236533719708135",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "私もどんだけ負けてもカープファンです！一緒に応援し続けましょう( ･᷅-･᷄ )！",
+      "user": "ﾄﾞｺｶﾉｶｰﾌﾟお姫様。",
+      "time": "2026-08-14T12:09:18.000Z",
+      "url": "https://x.com/N0a_carp/status/2088236520897704082",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "あんな短期間で森下を理想的な形に修正する野村コーチ本当に何者なの？この2年で何人の投手の修正や覚醒に尽力した？カープ球団は野村コーチの年俸5000万くらいあげたほうがいい。",
+      "user": "エー氏の食卓",
+      "time": "2026-08-14T12:09:05.000Z",
+      "url": "https://x.com/a_for_kindness/status/2088236466388525253",
+      "targetType": "首脳陣",
+      "target": "野村",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "変化球浮くわストレートピッチャーに痛打されるわ、対カープ打率2割前半が3番と5番に座る打線だわで残念ながら当然の負けだし、対カープに対しては今後も起こりうる負け。",
+      "user": "takaton",
+      "time": "2026-08-14T12:09:03.000Z",
+      "url": "https://x.com/takatonkeisuke/status/2088236456448061892",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー\n愛ちゃん\nナイススマイル\nハイタッチ\nパチ～ン\n昨日の雨の中止で\n休めたことで\nカープに流れがきたね！\nここからカープの逆襲\n明日も絶対勝つぞ",
+      "user": "石井教洋",
+      "time": "2026-08-14T12:08:56.000Z",
+      "url": "https://x.com/KdKst2oq2FS8Pdw/status/2088236429306745199",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "明日カープ先発初物で頭痛くなってきた",
+      "user": "ゆう",
+      "time": "2026-08-14T12:08:56.000Z",
+      "url": "https://x.com/yuu_gris/status/2088236428425904253",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "今日のようなナイスゲーム見せてくれたらズムスタいきたくなる〜\n\n#カープ",
+      "user": "カープ艸) dmt",
+      "time": "2026-08-14T12:08:53.000Z",
+      "url": "https://x.com/as550130/status/2088236415759126762",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "ヤクルト戦まではそんなに打線良くなかったので\n今日は珍しく投手が噛み合った試合が出来ました\n明日はカープ戦得意の阪神・大竹耕太郎投手が先発です\n今日のような試合展開にはならないと思います\n明日、明後日まで対戦宜しくお願いします",
+      "user": "たつや 【NEXT→8/15,16,9/5】",
+      "time": "2026-08-14T12:08:47.000Z",
+      "url": "https://x.com/SVictory82/status/2088236390345830445",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広島カープ強すぎだろ",
+      "user": "はくまい",
+      "time": "2026-08-14T12:08:30.000Z",
+      "url": "https://x.com/1229Sphere/status/2088236318577086846",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "#ラジポス\n明日は斉藤さんだから押さえてあとはカープ打線が必ず絶対打って勝って欲しいなあ。",
+      "user": "カープラブ",
+      "time": "2026-08-14T12:08:28.000Z",
+      "url": "https://x.com/9kjvV5bE2A88962/status/2088236309785784506",
+      "targetType": "選手",
+      "target": "斉藤",
+      "topic_broad": "投球",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "5月に東京ドームで3連勝した後は甲子園でハムに3連敗しましたね。\nまあ、これはジンクスというか実力差か。\n今夜は移動日なしで広島まで行く日程が効いたかな。\nカープは火木が雨で移動なしですし",
+      "user": "(J新開幕)テツヤ・ジェラール",
+      "time": "2026-08-14T12:08:15.000Z",
+      "url": "https://x.com/Tetsuya_Gerard/status/2088236254706163963",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ。なんで首位の阪神に勝ってんだよ。",
+      "user": "Koji",
+      "time": "2026-08-14T12:08:14.000Z",
+      "url": "https://x.com/KojiOtouchan/status/2088236252558757912",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープには簡単にマイナス付けたくないんだろうけど厳しいね…",
+      "user": "Gai【やおおじ】",
+      "time": "2026-08-14T12:08:14.000Z",
+      "url": "https://x.com/GGai1909/status/2088236249949880703",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "阪神って前のカードで気合い入れ過ぎると、必ず次のカードで負けるんよな\n決まってDeNAには弱いしバンデリンドームでも勝たれへんし\n今日はカープに負けとるし\n\n※一応長く純粋にファンです",
+      "user": "ゆきうさ✩.*@8/22～8/23 京セラ",
+      "time": "2026-08-14T12:08:10.000Z",
+      "url": "https://x.com/yukiusa0909/status/2088236233914982578",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "／\n#JERAセ・リーグ 速報\n＼\n \n本日の #月間JERAセ・リーグAWARD ノミネート選手はこちら\n8回1失点勝利投手 #森下暢仁 選手です。\n\n#JERA 　#灯セ　#シャカリキ\n#カープ",
+      "user": "広島東洋カープ",
+      "time": "2026-08-14T12:08:07.000Z",
+      "url": "https://x.com/Carpofficial_pr/status/2088236221344755992",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "今日は特に佐々木くんに長打２本出たのが嬉しかったな。現在の好調さに長打も出てきたら四番打者一直線やんな\n\n#カープ\n#carp",
+      "user": "どう最近？＠NO CARP NO LIFE",
+      "time": "2026-08-14T12:08:06.000Z",
+      "url": "https://x.com/CARP_DAISKI/status/2088236219474088229",
+      "targetType": "選手",
+      "target": "佐々木",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "長い連敗脱出\n広島６連敗脱出！森下暢仁が先制Ｖ打＆８回１失点の好投で６２日ぶり６勝目　首位・阪神に快勝/広島カープ/デイリースポーツ online",
+      "user": "kozo5 現地1勝3敗(T_T)",
+      "time": "2026-08-14T12:07:59.000Z",
+      "url": "https://x.com/kozonokaito5/status/2088236188112986575",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "中立"
+    },
+    {
+      "text": "C 6-1 T ＼まけほー／ 才木が4回3失点で早々に降板。カープの先発森下を打ち崩せず連勝は4でストップ #hanshin #tigers #熱覇",
+      "user": "ko-ma@人生リハビリ中",
+      "time": "2026-08-14T12:07:57.000Z",
+      "url": "https://x.com/kaminoaraki_485/status/2088236178076229670",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "コメント失礼します！むっちゃ嬉しいこと書いてあってついつい\nカープファンの民度暖かくて、私もカープファンで良かったて思うくらいファンの皆さん大好きなんです\nヤクルトの声援もいつも聴いてて圧倒されるくらい大好きな応援ですよ！",
+      "user": "ﾄﾞｺｶﾉｶｰﾌﾟお姫様。",
+      "time": "2026-08-14T12:07:49.000Z",
+      "url": "https://x.com/N0a_carp/status/2088236144626676167",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "カープかからないwwwwww",
+      "user": "ロサ",
+      "time": "2026-08-14T12:07:47.000Z",
+      "url": "https://x.com/rosamame/status/2088236139023045010",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープライム",
+      "user": "KYO-3(InstagramとThreadsが復活)",
+      "time": "2026-08-14T12:07:40.000Z",
+      "url": "https://x.com/KYO341612229/status/2088236109352542362",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープが虎に勝って！？\n連敗ストップして！？\n森下が復活して？\nお菊も泰もホームラン打って！？\n明日甲子園！？\n最高のお盆最終戦やん\n\nこんなんウキウキワクワクで明日の準備\nしちゃうやん",
+      "user": "nodechan",
+      "time": "2026-08-14T12:07:37.000Z",
+      "url": "https://x.com/m_carp27/status/2088236096484417798",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "昨日行ったカープファンが集まるお好み焼き屋さんのポスターふと見たらさすがに草を禁じえなかった。\n4番という選手がいたんですけどね。",
+      "user": "むむむ",
+      "time": "2026-08-14T12:07:37.000Z",
+      "url": "https://x.com/Mumumu___1120/status/2088236094655705315",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ勝ったからいつものバーで大人の嗜み",
+      "user": "まるつ",
+      "time": "2026-08-14T12:07:35.000Z",
+      "url": "https://x.com/MarutsuC/status/2088236087730896947",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "森下の輝き\nDH制になるのが惜しいのよカープは！！\n打撃強いピッチャーいるのやっぱり面白い",
+      "user": "kusunoki",
+      "time": "2026-08-14T12:07:33.000Z",
+      "url": "https://x.com/kusu_hfo/status/2088236080059523082",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "打撃",
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "応援お疲れさまでした\n\nカープ打線を抑えられず、1得点では勝てませんわ\n明日に期待しましょう",
+      "user": "bigboy t2y",
+      "time": "2026-08-14T12:07:28.000Z",
+      "url": "https://x.com/BigboyT2y/status/2088236059524248007",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "はい！！カープ応援しています",
+      "user": "のら",
+      "time": "2026-08-14T12:07:25.000Z",
+      "url": "https://x.com/noranoneko999/status/2088236044093440275",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "現地からこいほー\nズムスタに森下が帰ってきて長かった連敗をストップしてくれた\n\n♫今日もカープは勝ち勝ち勝ち♫",
+      "user": "ユウキ /♫///",
+      "time": "2026-08-14T12:07:22.000Z",
+      "url": "https://x.com/YUKI_Nijisuki/status/2088236034299687092",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープタクシー完成！！\nトイズキャビンのJPNTAXIにledを6個埋め込み、行灯を追加してリペイント！！\n最近のガチャは出来が良いという事を改めて知れました。分解が少し大変ですが手軽にできるのでオススメです！\n#トイズキャビン #カープタクシー #トヨタ\n#JPNTAXI  #ガチャガチャ",
+      "user": "Koba自動車",
+      "time": "2026-08-14T12:07:09.000Z",
+      "url": "https://x.com/koba2/status/2088235980381966425",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー！\nこんなカープさん見るのはいつ以来だろう\nらしからぬ(？)長打攻勢ここで終わることなくコツコツ追加点素晴らしっ\n泰くんその調子で一歩ずつね\n\n森下くん投打に華やかにこれぞ僕らの知ってる森下くんです\n\nみんなの笑顔が嬉しいな\n明日もこの笑顔に会えますように",
+      "user": "高柳秀次郎",
+      "time": "2026-08-14T12:06:54.000Z",
+      "url": "https://x.com/gokabouren/status/2088235917429596558",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "その他",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "うさほーー\n\n中山よくやったー\nもう少し点取れるように頑張ろう\n\nあっカープ勝った\n\n巨人ファンの皆さんお疲れ様でした♪\n\nおやすみ前の癒やしだよ",
+      "user": "湯けむりよっちゃん",
+      "time": "2026-08-14T12:06:54.000Z",
+      "url": "https://x.com/xd31524/status/2088235914204205266",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "プロスピ交換会ミニ1回目はこの3選手で！\n特に欲しい選手ないから3回のうちカープの選手が来たらええなくらいで\n #プロスピA    #プロスピ交換会",
+      "user": "でいりー",
+      "time": "2026-08-14T12:06:48.000Z",
+      "url": "https://x.com/daily_65536/status/2088235889394844011",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "カープ勝利",
+      "user": "ASAKAZE",
+      "time": "2026-08-14T12:06:46.000Z",
+      "url": "https://x.com/Carp_ShowTime7/status/2088235882105143643",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "今年は本当にチーム状況が厳しくて、何度も何度も文句を言いたくなるし試合なんて見たくないって思うことも多いんだけど、今日のように良い試合をして少しずつでも勝ちを重ねて選手たちの笑顔だけを見てたいなって思ったカープファンなのでした…",
+      "user": "さゆ",
+      "time": "2026-08-14T12:06:41.000Z",
+      "url": "https://x.com/myui31103/status/2088235861301444860",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    },
+    {
+      "text": "優勝するんだったら　広島ヤクルトは最低4勝2敗な。って思ってたら初戦負けたので、残り5試合4勝1敗。",
+      "user": "［虎党｜鯉応援企画］TANK GAMES",
+      "time": "2026-08-14T12:06:40.000Z",
+      "url": "https://x.com/8lnfzDNRsdZgOPW/status/2088235858860404928",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "巨人負けたらあれこれ言うのに、カープにあっさり負けた日は静かですね",
+      "user": "びあじぇろ",
+      "time": "2026-08-14T12:06:34.000Z",
+      "url": "https://x.com/viajero15jp/status/2088235831589048378",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "あの年は、髙橋光成の日全部と、\n翌日の高濱、淺間の試合含めた全部観た！\n\n北海道出身だから、北照応援してたけど常総に呆気なく負けてしまって常総応援してた\n\nすずしょーは2年の選抜からエースで投げてたよね！\nカープに居た宇草とかが一個上だったかなー\n2015年も強かったよー\n夏出れなかったけど",
+      "user": "こーすけ",
+      "time": "2026-08-14T12:06:31.000Z",
+      "url": "https://x.com/fighterskosuke2/status/2088235821078077451",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "連敗ストップこいほー\n森下くん6勝目おめでとう\n菊さん、泰くんのホームラン嬉しい辰見くん20盗塁素晴らしい\n明日も勝つぞカープ頑張れ\n#carp",
+      "user": "よよよよんコロ",
+      "time": "2026-08-14T12:06:29.000Z",
+      "url": "https://x.com/Dr4Ju/status/2088235811582144934",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "まけほ。序盤の4失点が重かったな。また明日。",
+      "user": "野球好き@鷹鯉党DMエロ副業投資",
+      "time": "2026-08-14T12:06:25.000Z",
+      "url": "https://x.com/0528_has/status/2088235793039196498",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "批判弱"
+    },
+    {
+      "text": "才木から3得点とか、凄いなカープどうやったんだ？",
+      "user": "たやしゅん(舞キャップ)@舞ちゃんさくらここちゃんななっぷる推し",
+      "time": "2026-08-14T12:06:25.000Z",
+      "url": "https://x.com/shuncek99tayaya/status/2088235792091230679",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほ〜\n森下君、強打の阪神打線を8回1失点\n素晴らしいピッチングでした\nヒロインでもこれから\n頑張ってチームを引っ張っていきたいと力強い言葉は嬉しいです\nまだまだ諦めへん\n頑張れ森下！頑張れカープ\nそれにしても森下君肌、綺麗な\nわしもこのパック買おうかな\n\nおっさんはもうええやろ〜",
+      "user": "誠也はおっさんのヒーローメジャー！",
+      "time": "2026-08-14T12:06:19.000Z",
+      "url": "https://x.com/matuyama44/status/2088235767340691665",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープに1勝でもすれば\n4勝２敗だから全然おっけーよ",
+      "user": "Ruck Sackつぶやき",
+      "time": "2026-08-14T12:06:14.000Z",
+      "url": "https://x.com/real_himoman/status/2088235749380682090",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "ガチで広島カープ愛してるわ\n巨人の選手はどうやったら阪神に勝てるのか広島の選手全員に頭下げて聞いてきてほしいわ",
+      "user": "ネキネキ㉛",
+      "time": "2026-08-14T12:06:06.000Z",
+      "url": "https://x.com/P4XBV3M9h321037/status/2088235714442043695",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援強"
+    },
+    {
+      "text": "カープ勝ちましたね\n昨日、広島に行ってましたよ",
+      "user": "しんどん",
+      "time": "2026-08-14T12:06:03.000Z",
+      "url": "https://x.com/3Sa9vF01vU48225/status/2088235701523591520",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "広6-1神。最下位に堕ちても反転攻勢の気配も感じられぬままどん底の底を掘り続けてきたぼくらのカープが森下くんの熱投&自援護と打線の先制中押しダメ押しの効果的な攻撃が噛み合って首位激走中のタイガースさんに快勝するなんて夢じゃなかろか夢なら醒めないでと願う街のカープファン。",
+      "user": "K96あのぼけ",
+      "time": "2026-08-14T12:06:01.000Z",
+      "url": "https://x.com/typeK96_anoboke/status/2088235693558616293",
+      "targetType": "選手",
+      "target": "森下",
+      "topic_broad": "投球",
+      "sentiment": "応援強"
+    },
+    {
+      "text": "高校野球は広島(市立福山)が負けたからどこを応援するわけでもなく甲子園に行っているけれど、心の中でどちらかと言うとこっち、と私が思っている高校が全て負けてる申し訳ない気がする今日はカープは勝ったね、録画見ます",
+      "user": "ゆみ",
+      "time": "2026-08-14T12:05:27.000Z",
+      "url": "https://x.com/soredemoCarpgam/status/2088235549794644463",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "中立"
+    },
+    {
+      "text": "こいほー\n仕事が忙しすぎて全然カープが見れてない",
+      "user": "Hana",
+      "time": "2026-08-14T12:05:27.000Z",
+      "url": "https://x.com/Hana75690740/status/2088235549517893835",
+      "targetType": "なし",
+      "target": null,
+      "topic_broad": null,
+      "sentiment": "応援弱"
+    }
+  ]
+}
