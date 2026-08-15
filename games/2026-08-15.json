@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "8回裏",
+  "current_inning": "9回表",
   "result_label": "",
   "away_pitcher": "大竹",
   "home_pitcher": "斉藤優",
@@ -200,7 +200,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 9,
+    "hiroshima_hits": 10,
     "hiroshima_errors": 1,
     "away": [
       2,
@@ -365,7 +365,7 @@
       "name": "勝田",
       "pos": "遊",
       "line": null,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -417,6 +417,24 @@
     },
     {
       "name": "髙",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "森浦",
       "pos": "投",
       "line": null,
       "ab": 0,
@@ -617,13 +635,13 @@
       "name": "大盛",
       "pos": "打中",
       "line": null,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 0,
+      "k": 1,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -635,7 +653,7 @@
   "carp_pitching": [
     {
       "name": "斉藤優",
-      "result": "",
+      "result": "win",
       "outs": 15,
       "pitches": 76,
       "hitsAllowed": 3,
@@ -647,7 +665,7 @@
     },
     {
       "name": "岡本",
-      "result": "",
+      "result": "hold",
       "outs": 3,
       "pitches": 17,
       "hitsAllowed": 1,
@@ -659,7 +677,7 @@
     },
     {
       "name": "遠藤",
-      "result": "",
+      "result": "hold",
       "outs": 3,
       "pitches": 16,
       "hitsAllowed": 0,
@@ -671,7 +689,7 @@
     },
     {
       "name": "髙",
-      "result": "",
+      "result": "hold",
       "outs": 3,
       "pitches": 26,
       "hitsAllowed": 2,
@@ -680,11 +698,23 @@
       "strikeouts": 0,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "森浦",
+      "result": "save",
+      "outs": 3,
+      "pitches": 11,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-15T11:53:31.574Z",
-    "generatedAt": "2026-08-15T11:53:31.594Z",
+    "sourceFetchedAt": "2026-08-15T12:09:48.051Z",
+    "generatedAt": "2026-08-15T12:09:48.062Z",
     "sourceUrl": "https://npb.jp/scores/2026/0815/c-t-17/",
     "previewRosterFingerprint": "ファビアン,モンテロ,久保,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大盛,小園,岡本,持丸,斉藤優,森浦,石原,秋山,菊地,菊池,西川,辰見,辻,遠藤,野間,髙,黒原"
   }
