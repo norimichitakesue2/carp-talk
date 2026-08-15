@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "8回表",
+  "current_inning": "8回裏",
   "result_label": "",
   "away_pitcher": "大竹",
   "home_pitcher": "斉藤優",
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 4,
+    "away_hits": 6,
     "away_errors": 0
   },
   "pitchers": [],
@@ -534,7 +534,7 @@
       "sb": 0,
       "hr": 1,
       "k": 0,
-      "bb": 0,
+      "bb": 1,
       "double": 0,
       "triple": 0,
       "single": 0,
@@ -545,9 +545,9 @@
       "name": "佐々木",
       "pos": "右三",
       "line": 7,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
-      "h": 0,
+      "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -555,7 +555,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -672,19 +672,19 @@
     {
       "name": "髙",
       "result": "",
-      "outs": 2,
-      "pitches": 16,
+      "outs": 3,
+      "pitches": 26,
       "hitsAllowed": 2,
       "hrAllowed": 0,
-      "walks": 0,
+      "walks": 1,
       "strikeouts": 0,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-15T11:35:42.777Z",
-    "generatedAt": "2026-08-15T11:35:42.795Z",
+    "sourceFetchedAt": "2026-08-15T11:53:31.574Z",
+    "generatedAt": "2026-08-15T11:53:31.594Z",
     "sourceUrl": "https://npb.jp/scores/2026/0815/c-t-17/",
     "previewRosterFingerprint": "ファビアン,モンテロ,久保,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大盛,小園,岡本,持丸,斉藤優,森浦,石原,秋山,菊地,菊池,西川,辰見,辻,遠藤,野間,髙,黒原"
   }
