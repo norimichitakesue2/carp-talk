@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T09:25:12.340Z",
+  "generatedAt": "2026-08-15T09:45:12.023Z",
   "baseDate": "2026-08-16",
   "games": 6,
   "rangeStart": "2026-08-07",
@@ -17,13 +17,13 @@
     }
   },
   "worst": {
-    "name": "モンテロ",
-    "summary": "直近6試合 13打数2安打 .154 OPS.584 1打点 4四球 5三振",
+    "name": "石原",
+    "summary": "直近5試合 12打数2安打 .167 OPS.333 1打点 2三振",
     "form": {
-      "icon": "↓",
-      "label": "不調",
-      "level": -1,
-      "cls": "form-cold1"
+      "icon": "↓↓",
+      "label": "絶不調",
+      "level": -2,
+      "cls": "form-cold2"
     }
   },
   "pitcherMvp": {
@@ -37,13 +37,13 @@
     }
   },
   "pitcherWorst": {
-    "name": "斉藤優",
-    "summary": "直近2登板 6回 防御率6.00 自責4 被安7 奪三振4",
+    "name": "栗林",
+    "summary": "直近1登板 4回 防御率15.75 自責7 被安11 奪三振3 1敗",
     "form": {
-      "icon": "↓↓",
-      "label": "絶不調",
-      "level": -2,
-      "cls": "form-cold2"
+      "icon": "↓",
+      "label": "不調",
+      "level": -1,
+      "cls": "form-cold1"
     }
   },
   "players": [
@@ -108,36 +108,6 @@
       "summary": "直近6試合 21打数7安打 .333 OPS.745 1四球 3三振 1盗塁"
     },
     {
-      "name": "佐々木",
-      "games": 6,
-      "ab": 20,
-      "r": 1,
-      "h": 6,
-      "rbi": 1,
-      "sb": 0,
-      "hr": 1,
-      "k": 2,
-      "bb": 1,
-      "double": 1,
-      "triple": 0,
-      "single": 3,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".300",
-      "avg_num": 0.3,
-      "obp": ".333",
-      "slg": ".450",
-      "ops": ".783",
-      "ops_num": 0.783,
-      "form": {
-        "icon": "↑",
-        "label": "好調",
-        "level": 1,
-        "cls": "form-hot1"
-      },
-      "summary": "直近6試合 20打数6安打 .300 OPS.783 1本 1打点 1四球 2三振"
-    },
-    {
       "name": "菊池",
       "games": 6,
       "ab": 17,
@@ -166,6 +136,36 @@
         "cls": "form-hot1"
       },
       "summary": "直近6試合 17打数5安打 .294 OPS.863 1本 1打点 1四球 3三振"
+    },
+    {
+      "name": "佐々木",
+      "games": 6,
+      "ab": 21,
+      "r": 1,
+      "h": 6,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 1,
+      "k": 2,
+      "bb": 1,
+      "double": 1,
+      "triple": 0,
+      "single": 3,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".286",
+      "avg_num": 0.286,
+      "obp": ".318",
+      "slg": ".429",
+      "ops": ".747",
+      "ops_num": 0.747,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近6試合 21打数6安打 .286 OPS.747 1本 1打点 1四球 2三振"
     },
     {
       "name": "名原",
@@ -470,7 +470,7 @@
     {
       "name": "ファビアン",
       "games": 6,
-      "ab": 22,
+      "ab": 23,
       "r": 1,
       "h": 4,
       "rbi": 1,
@@ -483,49 +483,19 @@
       "single": 2,
       "hbp": 0,
       "sf": 0,
-      "avg": ".182",
-      "avg_num": 0.182,
-      "obp": ".182",
-      "slg": ".318",
-      "ops": ".500",
-      "ops_num": 0.5,
+      "avg": ".174",
+      "avg_num": 0.174,
+      "obp": ".174",
+      "slg": ".304",
+      "ops": ".478",
+      "ops_num": 0.478,
       "form": {
         "icon": "↓",
         "label": "不調",
         "level": -1,
         "cls": "form-cold1"
       },
-      "summary": "直近6試合 22打数4安打 .182 OPS.500 1打点 2三振"
-    },
-    {
-      "name": "石原",
-      "games": 5,
-      "ab": 11,
-      "r": 0,
-      "h": 2,
-      "rbi": 1,
-      "sb": 0,
-      "hr": 0,
-      "k": 2,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 2,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".182",
-      "avg_num": 0.182,
-      "obp": ".182",
-      "slg": ".182",
-      "ops": ".364",
-      "ops_num": 0.364,
-      "form": {
-        "icon": "↓",
-        "label": "不調",
-        "level": -1,
-        "cls": "form-cold1"
-      },
-      "summary": "直近5試合 11打数2安打 .182 OPS.364 1打点 2三振"
+      "summary": "直近6試合 23打数4安打 .174 OPS.478 1打点 2三振"
     },
     {
       "name": "モンテロ",
@@ -556,6 +526,36 @@
         "cls": "form-cold1"
       },
       "summary": "直近6試合 13打数2安打 .154 OPS.584 1打点 4四球 5三振"
+    },
+    {
+      "name": "石原",
+      "games": 5,
+      "ab": 12,
+      "r": 0,
+      "h": 2,
+      "rbi": 1,
+      "sb": 0,
+      "hr": 0,
+      "k": 2,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 2,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".167",
+      "avg_num": 0.167,
+      "obp": ".167",
+      "slg": ".167",
+      "ops": ".333",
+      "ops_num": 0.333,
+      "form": {
+        "icon": "↓↓",
+        "label": "絶不調",
+        "level": -2,
+        "cls": "form-cold2"
+      },
+      "summary": "直近5試合 12打数2安打 .167 OPS.333 1打点 2三振"
     }
   ],
   "pitchers": [
@@ -810,6 +810,31 @@
       "summary": "直近2登板 2回2/3 防御率20.25 自責6 被安9 奪三振3 1敗"
     },
     {
+      "name": "斉藤優",
+      "games": 2,
+      "outs": 24,
+      "ip": "8回",
+      "er": 4,
+      "r": 4,
+      "h": 7,
+      "hr": 1,
+      "bb": 2,
+      "k": 8,
+      "pitches": 129,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 4.5,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近2登板 8回 防御率4.50 自責4 被安7 奪三振8"
+    },
+    {
       "name": "栗林",
       "games": 1,
       "outs": 12,
@@ -833,31 +858,6 @@
         "cls": "form-cold1"
       },
       "summary": "直近1登板 4回 防御率15.75 自責7 被安11 奪三振3 1敗"
-    },
-    {
-      "name": "斉藤優",
-      "games": 2,
-      "outs": 18,
-      "ip": "6回",
-      "er": 4,
-      "r": 4,
-      "h": 7,
-      "hr": 1,
-      "bb": 2,
-      "k": 4,
-      "pitches": 97,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 6,
-      "form": {
-        "icon": "↓↓",
-        "label": "絶不調",
-        "level": -2,
-        "cls": "form-cold2"
-      },
-      "summary": "直近2登板 6回 防御率6.00 自責4 被安7 奪三振4"
     }
   ]
 }
