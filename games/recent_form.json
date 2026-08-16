@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T10:45:08.019Z",
+  "generatedAt": "2026-08-16T11:05:11.730Z",
   "baseDate": "2026-08-16",
   "games": 6,
   "rangeStart": "2026-08-08",
@@ -37,13 +37,13 @@
     }
   },
   "pitcherWorst": {
-    "name": "栗林",
-    "summary": "直近1登板 4回 防御率15.75 自責7 被安11 奪三振3 1敗",
+    "name": "森",
+    "summary": "直近1登板 6回 防御率6.00 自責4 被安7 奪三振4",
     "form": {
-      "icon": "↓",
-      "label": "不調",
-      "level": -1,
-      "cls": "form-cold1"
+      "icon": "↓↓",
+      "label": "絶不調",
+      "level": -2,
+      "cls": "form-cold2"
     }
   },
   "players": [
@@ -785,31 +785,6 @@
       "summary": "直近3登板 3回 防御率3.00 自責1 被安4 奪三振1 1H"
     },
     {
-      "name": "森",
-      "games": 1,
-      "outs": 18,
-      "ip": "6回",
-      "er": 2,
-      "r": 2,
-      "h": 4,
-      "hr": 1,
-      "bb": 2,
-      "k": 4,
-      "pitches": 84,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 3,
-      "form": {
-        "icon": "→",
-        "label": "普通",
-        "level": 0,
-        "cls": "form-even"
-      },
-      "summary": "直近1登板 6回 防御率3.00 自責2 被安4 奪三振4"
-    },
-    {
       "name": "斉藤優",
       "games": 2,
       "outs": 30,
@@ -836,28 +811,28 @@
     },
     {
       "name": "辻",
-      "games": 2,
-      "outs": 5,
-      "ip": "1回2/3",
+      "games": 3,
+      "outs": 6,
+      "ip": "2回",
       "er": 2,
       "r": 2,
-      "h": 2,
+      "h": 3,
       "hr": 0,
-      "bb": 1,
+      "bb": 2,
       "k": 1,
-      "pitches": 27,
+      "pitches": 31,
       "win": 0,
       "loss": 0,
       "save": 0,
       "hold": 1,
-      "era": 10.8,
+      "era": 9,
       "form": {
         "icon": "－",
         "label": "様子見",
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近2登板 1回2/3 防御率10.80 自責2 被安2 奪三振1 1H"
+      "summary": "直近3登板 2回 防御率9.00 自責2 被安3 奪三振1 1H"
     },
     {
       "name": "アドゥワ",
@@ -908,6 +883,31 @@
         "cls": "form-cold1"
       },
       "summary": "直近1登板 4回 防御率15.75 自責7 被安11 奪三振3 1敗"
+    },
+    {
+      "name": "森",
+      "games": 1,
+      "outs": 18,
+      "ip": "6回",
+      "er": 4,
+      "r": 4,
+      "h": 7,
+      "hr": 1,
+      "bb": 2,
+      "k": 4,
+      "pitches": 101,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 6,
+      "form": {
+        "icon": "↓↓",
+        "label": "絶不調",
+        "level": -2,
+        "cls": "form-cold2"
+      },
+      "summary": "直近1登板 6回 防御率6.00 自責4 被安7 奪三振4"
     }
   ]
 }
