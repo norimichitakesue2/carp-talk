@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "5回表",
+  "current_inning": "6回表",
   "result_label": "",
   "away_pitcher": "櫻井",
   "home_pitcher": "鈴木",
@@ -200,7 +200,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 5,
+    "hiroshima_hits": 6,
     "hiroshima_errors": 0,
     "away": [
       1,
@@ -365,7 +365,7 @@
       "name": "ファビアン",
       "pos": "左",
       "line": 3,
-      "ab": 1,
+      "ab": 2,
       "r": 1,
       "h": 1,
       "rbi": 2,
@@ -383,9 +383,9 @@
       "name": "坂倉",
       "pos": "一",
       "line": 4,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
-      "h": 0,
+      "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
@@ -393,7 +393,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -401,7 +401,7 @@
       "name": "秋山",
       "pos": "右",
       "line": 5,
-      "ab": 2,
+      "ab": 3,
       "r": 1,
       "h": 1,
       "rbi": 0,
@@ -419,7 +419,7 @@
       "name": "佐々木",
       "pos": "三",
       "line": 6,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 1,
       "rbi": 1,
@@ -486,6 +486,24 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "遠藤",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
@@ -500,11 +518,23 @@
       "strikeouts": 3,
       "runs": 1,
       "earnedRuns": 1
+    },
+    {
+      "name": "遠藤",
+      "result": "",
+      "outs": 1,
+      "pitches": 10,
+      "hitsAllowed": 1,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-08-19T10:25:11.749Z",
-    "generatedAt": "2026-08-19T10:25:11.777Z",
+    "sourceFetchedAt": "2026-08-19T10:46:42.131Z",
+    "generatedAt": "2026-08-19T10:46:42.157Z",
     "sourceUrl": "https://npb.jp/scores/2026/0819/c-d-18/",
     "previewRosterFingerprint": "ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大盛,岡本,持丸,森浦,石原,秋山,菊地,菊池,西川,辰見,辻,遠藤,野間,鈴木,髙,黒原"
   }
