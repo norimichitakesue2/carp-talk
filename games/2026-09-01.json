@@ -8,7 +8,7 @@
   "venue": "バンテリンドームナゴヤ",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "9回表",
+  "current_inning": "9回裏",
   "result_label": "",
   "away_pitcher": "床田",
   "home_pitcher": "大野",
@@ -423,6 +423,24 @@
       "r": 0,
       "h": 0,
       "rbi": 0,
+      "sb": 1,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
+      "name": "ターノック",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
       "sb": 0,
       "hr": 0,
       "k": 0,
@@ -437,7 +455,7 @@
       "name": "菊池",
       "pos": "二",
       "line": 5,
-      "ab": 4,
+      "ab": 5,
       "r": 1,
       "h": 2,
       "rbi": 3,
@@ -453,9 +471,9 @@
     },
     {
       "name": "佐々木",
-      "pos": "三",
+      "pos": "三一",
       "line": 6,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 2,
       "rbi": 1,
@@ -522,12 +540,30 @@
       "single": 1,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "二俣",
+      "pos": "三",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
     {
       "name": "床田",
-      "result": "",
+      "result": "win",
       "outs": 24,
       "pitches": 105,
       "hitsAllowed": 4,
@@ -536,11 +572,23 @@
       "strikeouts": 2,
       "runs": 1,
       "earnedRuns": 1
+    },
+    {
+      "name": "ターノック",
+      "result": "",
+      "outs": 3,
+      "pitches": 14,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 2,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-01T11:45:11.519Z",
-    "generatedAt": "2026-09-01T11:45:11.537Z",
+    "sourceFetchedAt": "2026-09-01T12:05:11.008Z",
+    "generatedAt": "2026-09-01T12:05:11.034Z",
     "sourceUrl": "https://npb.jp/scores/2026/0901/d-c-20/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大瀬良,大盛,岡本,工藤,床田,持丸,森浦,石原,秋山,菊池,西川,辰見,遠藤,野間,髙"
   }
