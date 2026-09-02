@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T09:54:14.746Z",
+  "generatedAt": "2026-09-02T10:05:13.099Z",
   "baseDate": "2026-09-03",
   "games": 6,
   "rangeStart": "2026-08-27",
@@ -8,7 +8,7 @@
   "foundPitchingGames": 6,
   "mvp": {
     "name": "坂倉",
-    "summary": "直近6試合 17打数5安打 .294 OPS.958 1本 2打点 4四球 5三振",
+    "summary": "直近6試合 18打数5安打 .278 OPS.909 1本 2打点 4四球 5三振",
     "form": {
       "icon": "↑↑",
       "label": "絶好調",
@@ -50,7 +50,7 @@
     {
       "name": "坂倉",
       "games": 6,
-      "ab": 17,
+      "ab": 18,
       "r": 3,
       "h": 5,
       "rbi": 2,
@@ -63,19 +63,19 @@
       "single": 3,
       "hbp": 0,
       "sf": 0,
-      "avg": ".294",
-      "avg_num": 0.294,
-      "obp": ".429",
-      "slg": ".529",
-      "ops": ".958",
-      "ops_num": 0.958,
+      "avg": ".278",
+      "avg_num": 0.278,
+      "obp": ".409",
+      "slg": ".500",
+      "ops": ".909",
+      "ops_num": 0.909,
       "form": {
         "icon": "↑↑",
         "label": "絶好調",
         "level": 2,
         "cls": "form-hot2"
       },
-      "summary": "直近6試合 17打数5安打 .294 OPS.958 1本 2打点 4四球 5三振"
+      "summary": "直近6試合 18打数5安打 .278 OPS.909 1本 2打点 4四球 5三振"
     },
     {
       "name": "名原",
@@ -757,27 +757,27 @@
     {
       "name": "鈴木",
       "games": 1,
-      "outs": 7,
-      "ip": "2回1/3",
+      "outs": 9,
+      "ip": "3回",
       "er": 1,
       "r": 1,
       "h": 5,
       "hr": 1,
       "bb": 0,
-      "k": 1,
-      "pitches": 38,
+      "k": 2,
+      "pitches": 51,
       "win": 0,
       "loss": 0,
       "save": 0,
       "hold": 0,
-      "era": 3.86,
+      "era": 3,
       "form": {
-        "icon": "－",
-        "label": "様子見",
+        "icon": "→",
+        "label": "普通",
         "level": 0,
-        "cls": "form-none"
+        "cls": "form-even"
       },
-      "summary": "直近1登板 2回1/3 防御率3.86 自責1 被安5 奪三振1"
+      "summary": "直近1登板 3回 防御率3.00 自責1 被安5 奪三振2"
     },
     {
       "name": "岡本",

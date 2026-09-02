@@ -8,7 +8,7 @@
   "venue": "バンテリンドームナゴヤ",
   "start_time": "18:01",
   "status": "live",
-  "current_inning": "3回裏",
+  "current_inning": "4回表",
   "result_label": "",
   "away_pitcher": "鈴木",
   "home_pitcher": "涌井",
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 4,
+    "away_hits": 5,
     "away_errors": 0
   },
   "pitchers": [],
@@ -383,7 +383,7 @@
       "name": "坂倉",
       "pos": "三",
       "line": 4,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 1,
       "rbi": 1,
@@ -492,19 +492,19 @@
     {
       "name": "鈴木",
       "result": "",
-      "outs": 7,
-      "pitches": 38,
+      "outs": 9,
+      "pitches": 51,
       "hitsAllowed": 5,
       "hrAllowed": 1,
       "walks": 0,
-      "strikeouts": 1,
+      "strikeouts": 2,
       "runs": 1,
       "earnedRuns": 1
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-02T09:54:12.858Z",
-    "generatedAt": "2026-09-02T09:54:12.900Z",
+    "sourceFetchedAt": "2026-09-02T10:05:12.542Z",
+    "generatedAt": "2026-09-02T10:05:12.589Z",
     "sourceUrl": "https://npb.jp/scores/2026/0902/d-c-21/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大瀬良,大盛,岡本,工藤,持丸,森浦,石原,秋山,菊池,西川,辰見,遠藤,野間,鈴木,髙"
   }
