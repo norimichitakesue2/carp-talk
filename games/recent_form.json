@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T11:12:39.893Z",
+  "generatedAt": "2026-09-05T11:25:12.183Z",
   "baseDate": "2026-09-06",
   "games": 6,
   "rangeStart": "2026-08-30",
@@ -37,13 +37,13 @@
     }
   },
   "pitcherWorst": {
-    "name": "鈴木",
-    "summary": "直近1登板 5回 防御率3.60 自責2 被安7 奪三振3",
+    "name": "ターノック",
+    "summary": "直近4登板 3回 防御率6.00 自責2 被安4 奪三振5 1敗",
     "form": {
-      "icon": "→",
-      "label": "普通",
-      "level": 0,
-      "cls": "form-even"
+      "icon": "↓",
+      "label": "不調",
+      "level": -1,
+      "cls": "form-cold1"
     }
   },
   "players": [
@@ -837,27 +837,27 @@
     {
       "name": "ターノック",
       "games": 4,
-      "outs": 7,
-      "ip": "2回1/3",
+      "outs": 9,
+      "ip": "3回",
       "er": 2,
       "r": 2,
       "h": 4,
       "hr": 0,
-      "bb": 1,
-      "k": 3,
-      "pitches": 56,
+      "bb": 2,
+      "k": 5,
+      "pitches": 74,
       "win": 0,
       "loss": 1,
       "save": 0,
       "hold": 0,
-      "era": 7.71,
+      "era": 6,
       "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
       },
-      "summary": "直近4登板 2回1/3 防御率7.71 自責2 被安4 奪三振3 1敗"
+      "summary": "直近4登板 3回 防御率6.00 自責2 被安4 奪三振5 1敗"
     }
   ]
 }
