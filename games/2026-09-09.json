@@ -8,7 +8,7 @@
   "venue": "阪神甲子園球場",
   "start_time": "18:31",
   "status": "live",
-  "current_inning": "4回裏",
+  "current_inning": "5回裏",
   "result_label": "",
   "away_pitcher": "床田",
   "home_pitcher": "髙橋",
@@ -219,7 +219,7 @@
       0,
       0
     ],
-    "away_hits": 2,
+    "away_hits": 3,
     "away_errors": 1
   },
   "pitchers": [],
@@ -335,7 +335,7 @@
       "name": "大盛",
       "pos": "中",
       "line": 1,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 1,
       "rbi": 0,
@@ -353,7 +353,7 @@
       "name": "菊池",
       "pos": "二",
       "line": 2,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -371,7 +371,7 @@
       "name": "中村奨",
       "pos": "左",
       "line": 3,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 2,
       "rbi": 0,
@@ -498,19 +498,19 @@
     {
       "name": "床田",
       "result": "",
-      "outs": 12,
-      "pitches": 49,
-      "hitsAllowed": 2,
+      "outs": 15,
+      "pitches": 63,
+      "hitsAllowed": 3,
       "hrAllowed": 0,
-      "walks": 0,
+      "walks": 1,
       "strikeouts": 2,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-09T10:45:27.447Z",
-    "generatedAt": "2026-09-09T10:45:27.471Z",
+    "sourceFetchedAt": "2026-09-09T11:05:11.360Z",
+    "generatedAt": "2026-09-09T11:05:11.407Z",
     "sourceUrl": "https://npb.jp/scores/2026/0909/t-c-19/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大瀬良,大盛,工藤,床田,持丸,森浦,石原,秋山,菊池,西川,辰見,遠藤,野間,鈴木,髙"
   }

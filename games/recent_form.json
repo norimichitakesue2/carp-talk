@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T10:45:28.760Z",
+  "generatedAt": "2026-09-09T11:05:12.261Z",
   "baseDate": "2026-09-10",
   "games": 6,
   "rangeStart": "2026-09-02",
@@ -7,8 +7,8 @@
   "foundGames": 6,
   "foundPitchingGames": 6,
   "mvp": {
-    "name": "中村奨",
-    "summary": "直近4試合 14打数5安打 .357 OPS.971 1四球 1三振",
+    "name": "佐藤啓",
+    "summary": "直近5試合 18打数6安打 .333 OPS1.000 2本 4打点 3三振",
     "form": {
       "icon": "↑↑",
       "label": "絶好調",
@@ -28,7 +28,7 @@
   },
   "pitcherMvp": {
     "name": "床田",
-    "summary": "直近1登板 4回 防御率0.00 自責0 被安2 奪三振2",
+    "summary": "直近1登板 5回 防御率0.00 自責0 被安3 奪三振2",
     "form": {
       "icon": "↑",
       "label": "好調",
@@ -47,36 +47,6 @@
     }
   },
   "players": [
-    {
-      "name": "中村奨",
-      "games": 4,
-      "ab": 14,
-      "r": 0,
-      "h": 5,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 1,
-      "bb": 1,
-      "double": 1,
-      "triple": 1,
-      "single": 3,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".357",
-      "avg_num": 0.357,
-      "obp": ".400",
-      "slg": ".571",
-      "ops": ".971",
-      "ops_num": 0.971,
-      "form": {
-        "icon": "↑↑",
-        "label": "絶好調",
-        "level": 2,
-        "cls": "form-hot2"
-      },
-      "summary": "直近4試合 14打数5安打 .357 OPS.971 1四球 1三振"
-    },
     {
       "name": "佐藤啓",
       "games": 5,
@@ -108,9 +78,39 @@
       "summary": "直近5試合 18打数6安打 .333 OPS1.000 2本 4打点 3三振"
     },
     {
+      "name": "中村奨",
+      "games": 4,
+      "ab": 15,
+      "r": 0,
+      "h": 5,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 1,
+      "double": 1,
+      "triple": 1,
+      "single": 3,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".333",
+      "avg_num": 0.333,
+      "obp": ".375",
+      "slg": ".533",
+      "ops": ".908",
+      "ops_num": 0.908,
+      "form": {
+        "icon": "↑↑",
+        "label": "絶好調",
+        "level": 2,
+        "cls": "form-hot2"
+      },
+      "summary": "直近4試合 15打数5安打 .333 OPS.908 1四球 1三振"
+    },
+    {
       "name": "大盛",
       "games": 5,
-      "ab": 17,
+      "ab": 18,
       "r": 1,
       "h": 5,
       "rbi": 2,
@@ -123,49 +123,19 @@
       "single": 4,
       "hbp": 0,
       "sf": 0,
-      "avg": ".294",
-      "avg_num": 0.294,
-      "obp": ".294",
-      "slg": ".353",
-      "ops": ".647",
-      "ops_num": 0.647,
+      "avg": ".278",
+      "avg_num": 0.278,
+      "obp": ".278",
+      "slg": ".333",
+      "ops": ".611",
+      "ops_num": 0.611,
       "form": {
         "icon": "→",
         "label": "普通",
         "level": 0,
         "cls": "form-even"
       },
-      "summary": "直近5試合 17打数5安打 .294 OPS.647 2打点 4三振"
-    },
-    {
-      "name": "菊池",
-      "games": 6,
-      "ab": 20,
-      "r": 1,
-      "h": 5,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 5,
-      "bb": 2,
-      "double": 0,
-      "triple": 0,
-      "single": 5,
-      "hbp": 1,
-      "sf": 0,
-      "avg": ".250",
-      "avg_num": 0.25,
-      "obp": ".348",
-      "slg": ".250",
-      "ops": ".598",
-      "ops_num": 0.598,
-      "form": {
-        "icon": "→",
-        "label": "普通",
-        "level": 0,
-        "cls": "form-even"
-      },
-      "summary": "直近6試合 20打数5安打 .250 OPS.598 2四球 5三振"
+      "summary": "直近5試合 18打数5安打 .278 OPS.611 2打点 4三振"
     },
     {
       "name": "佐々木",
@@ -498,6 +468,36 @@
       "summary": "直近1試合 0打数0安打 .000 OPS.000"
     },
     {
+      "name": "菊池",
+      "games": 6,
+      "ab": 21,
+      "r": 1,
+      "h": 5,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 5,
+      "bb": 2,
+      "double": 0,
+      "triple": 0,
+      "single": 5,
+      "hbp": 1,
+      "sf": 0,
+      "avg": ".238",
+      "avg_num": 0.238,
+      "obp": ".333",
+      "slg": ".238",
+      "ops": ".571",
+      "ops_num": 0.571,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近6試合 21打数5安打 .238 OPS.571 2四球 5三振"
+    },
+    {
       "name": "ファビアン",
       "games": 4,
       "ab": 13,
@@ -592,15 +592,15 @@
     {
       "name": "床田",
       "games": 1,
-      "outs": 12,
-      "ip": "4回",
+      "outs": 15,
+      "ip": "5回",
       "er": 0,
       "r": 0,
-      "h": 2,
+      "h": 3,
       "hr": 0,
-      "bb": 0,
+      "bb": 1,
       "k": 2,
-      "pitches": 49,
+      "pitches": 63,
       "win": 0,
       "loss": 0,
       "save": 0,
@@ -612,7 +612,7 @@
         "level": 1,
         "cls": "form-hot1"
       },
-      "summary": "直近1登板 4回 防御率0.00 自責0 被安2 奪三振2"
+      "summary": "直近1登板 5回 防御率0.00 自責0 被安3 奪三振2"
     },
     {
       "name": "玉村",
