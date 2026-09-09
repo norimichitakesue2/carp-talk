@@ -219,7 +219,7 @@
       0,
       1
     ],
-    "away_hits": 5,
+    "away_hits": 6,
     "away_errors": 1
   },
   "pitchers": [],
@@ -533,7 +533,7 @@
   "carp_pitching": [
     {
       "name": "床田",
-      "result": "",
+      "result": "win",
       "outs": 24,
       "pitches": 106,
       "hitsAllowed": 4,
@@ -545,20 +545,20 @@
     },
     {
       "name": "森浦",
-      "result": "",
-      "outs": 1,
-      "pitches": 10,
+      "result": "save",
+      "outs": 3,
+      "pitches": 18,
       "hitsAllowed": 2,
       "hrAllowed": 1,
       "walks": 0,
-      "strikeouts": 1,
+      "strikeouts": 3,
       "runs": 1,
       "earnedRuns": 1
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-09T12:25:13.096Z",
-    "generatedAt": "2026-09-09T12:25:13.119Z",
+    "sourceFetchedAt": "2026-09-09T12:37:16.649Z",
+    "generatedAt": "2026-09-09T12:37:16.665Z",
     "sourceUrl": "https://npb.jp/scores/2026/0909/t-c-19/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大瀬良,大盛,工藤,床田,持丸,森浦,石原,秋山,菊池,西川,辰見,遠藤,野間,鈴木,髙"
   }
