@@ -8,7 +8,7 @@
   "venue": "神宮球場",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "1回表",
+  "current_inning": "2回表",
   "result_label": "",
   "away_pitcher": "森",
   "home_pitcher": "高橋",
@@ -200,7 +200,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 0,
+    "hiroshima_hits": 1,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 0,
+    "away_hits": 2,
     "away_errors": 0
   },
   "pitchers": [],
@@ -383,7 +383,7 @@
       "name": "菊池",
       "pos": "二",
       "line": 4,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -401,7 +401,7 @@
       "name": "佐々木",
       "pos": "三",
       "line": 5,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -419,7 +419,7 @@
       "name": "大盛",
       "pos": "中",
       "line": 6,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -492,19 +492,19 @@
     {
       "name": "森",
       "result": "",
-      "outs": 0,
-      "pitches": 0,
-      "hitsAllowed": 0,
+      "outs": 3,
+      "pitches": 17,
+      "hitsAllowed": 2,
       "hrAllowed": 0,
       "walks": 0,
-      "strikeouts": 0,
+      "strikeouts": 1,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-13T09:05:13.534Z",
-    "generatedAt": "2026-09-13T09:05:13.566Z",
+    "sourceFetchedAt": "2026-09-13T09:25:12.987Z",
+    "generatedAt": "2026-09-13T09:25:13.023Z",
     "sourceUrl": "https://npb.jp/scores/2026/0913/s-c-22/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大瀬良,大盛,持丸,杉田,森,森浦,石原,秋山,菊池,西川,赤木,辰見,遠藤,野間,鈴木,髙"
   }
