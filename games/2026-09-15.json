@@ -3,12 +3,12 @@
   "game_date": "2026-09-15",
   "away_team": "広島",
   "home_team": "ヤクルト",
-  "away_score": 7,
+  "away_score": 9,
   "home_score": 4,
   "venue": "神宮球場",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "9回表",
+  "current_inning": "9回裏",
   "result_label": "",
   "away_pitcher": "鈴木",
   "home_pitcher": "吉村",
@@ -198,9 +198,9 @@
       0,
       0,
       0,
-      1
+      3
     ],
-    "hiroshima_hits": 9,
+    "hiroshima_hits": 10,
     "hiroshima_errors": 2,
     "away": [
       0,
@@ -358,6 +358,24 @@
       "sf": 0
     },
     {
+      "name": "森浦",
+      "pos": "投",
+      "line": null,
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
+    },
+    {
       "name": "菊池",
       "pos": "二",
       "line": 2,
@@ -380,7 +398,7 @@
       "pos": "中左",
       "line": 3,
       "ab": 5,
-      "r": 1,
+      "r": 2,
       "h": 2,
       "rbi": 3,
       "sb": 0,
@@ -395,10 +413,10 @@
     },
     {
       "name": "坂倉",
-      "pos": "三",
+      "pos": "三一",
       "line": 4,
       "ab": 4,
-      "r": 0,
+      "r": 1,
       "h": 1,
       "rbi": 1,
       "sb": 0,
@@ -413,7 +431,7 @@
     },
     {
       "name": "佐々木",
-      "pos": "右",
+      "pos": "右三",
       "line": 5,
       "ab": 3,
       "r": 1,
@@ -469,17 +487,17 @@
       "name": "石原",
       "pos": "捕",
       "line": 7,
-      "ab": 4,
+      "ab": 5,
       "r": 0,
-      "h": 1,
-      "rbi": 0,
+      "h": 2,
+      "rbi": 2,
       "sb": 0,
       "hr": 0,
       "k": 2,
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 1,
+      "single": 2,
       "hbp": 0,
       "sf": 0
     },
@@ -512,7 +530,7 @@
       "sb": 0,
       "hr": 0,
       "k": 0,
-      "bb": 0,
+      "bb": 1,
       "double": 0,
       "triple": 0,
       "single": 0,
@@ -626,12 +644,30 @@
       "single": 0,
       "hbp": 0,
       "sf": 0
+    },
+    {
+      "name": "名原",
+      "pos": "打右",
+      "line": null,
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 0,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0
     }
   ],
   "carp_pitching": [
     {
       "name": "鈴木",
-      "result": "",
+      "result": "win",
       "outs": 15,
       "pitches": 68,
       "hitsAllowed": 6,
@@ -643,7 +679,7 @@
     },
     {
       "name": "遠藤",
-      "result": "",
+      "result": "hold",
       "outs": 3,
       "pitches": 30,
       "hitsAllowed": 1,
@@ -655,7 +691,7 @@
     },
     {
       "name": "ターノック",
-      "result": "",
+      "result": "hold",
       "outs": 3,
       "pitches": 12,
       "hitsAllowed": 0,
@@ -667,7 +703,7 @@
     },
     {
       "name": "髙",
-      "result": "",
+      "result": "hold",
       "outs": 3,
       "pitches": 17,
       "hitsAllowed": 1,
@@ -676,11 +712,23 @@
       "strikeouts": 3,
       "runs": 0,
       "earnedRuns": 0
+    },
+    {
+      "name": "森浦",
+      "result": "",
+      "outs": 3,
+      "pitches": 9,
+      "hitsAllowed": 0,
+      "hrAllowed": 0,
+      "walks": 0,
+      "strikeouts": 1,
+      "runs": 0,
+      "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-15T12:05:17.446Z",
-    "generatedAt": "2026-09-15T12:05:17.468Z",
+    "sourceFetchedAt": "2026-09-15T12:25:11.910Z",
+    "generatedAt": "2026-09-15T12:25:11.936Z",
     "sourceUrl": "https://npb.jp/scores/2026/0915/s-c-24/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大盛,持丸,杉田,森浦,石原,秋山,菊池,西川,赤木,辰見,遠藤,野間,鈴木,髙"
   }
