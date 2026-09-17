@@ -4,11 +4,11 @@
   "away_team": "広島",
   "home_team": "阪神",
   "away_score": 0,
-  "home_score": 0,
+  "home_score": 3,
   "venue": "阪神甲子園球場",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "1回表",
+  "current_inning": "2回表",
   "result_label": "",
   "away_pitcher": "床田",
   "home_pitcher": "髙橋",
@@ -201,9 +201,9 @@
       0
     ],
     "hiroshima_hits": 0,
-    "hiroshima_errors": 0,
+    "hiroshima_errors": 1,
     "away": [
-      0,
+      3,
       0,
       0,
       0,
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 0,
+    "away_hits": 2,
     "away_errors": 0
   },
   "pitchers": [],
@@ -383,7 +383,7 @@
       "name": "坂倉",
       "pos": "三",
       "line": 4,
-      "ab": 0,
+      "ab": 1,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -492,19 +492,19 @@
     {
       "name": "床田",
       "result": "",
-      "outs": 0,
-      "pitches": 0,
-      "hitsAllowed": 0,
+      "outs": 3,
+      "pitches": 22,
+      "hitsAllowed": 2,
       "hrAllowed": 0,
-      "walks": 0,
+      "walks": 1,
       "strikeouts": 0,
-      "runs": 0,
-      "earnedRuns": 0
+      "runs": 3,
+      "earnedRuns": 2
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-17T09:07:54.261Z",
-    "generatedAt": "2026-09-17T09:07:54.300Z",
+    "sourceFetchedAt": "2026-09-17T09:25:11.913Z",
+    "generatedAt": "2026-09-17T09:25:11.954Z",
     "sourceUrl": "https://npb.jp/scores/2026/0917/t-c-20/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大瀬良,大盛,床田,持丸,杉田,森浦,石原,秋山,菊池,西川,赤木,辰見,遠藤,野間,髙"
   }
