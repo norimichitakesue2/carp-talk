@@ -849,14 +849,32 @@ STEP 5. 残った全選手は基準打順の位置のまま。1〜8番を埋め�
   let farmBlock = '';
   const farm = f.farmStats;
   if (farm && (farm.batters?.length || farm.pitchers?.length)) {
-    const batText = (farm.batters || []).map(b =>
+    // シーズン途中で1軍昇格した選手は2軍累計成績が残るため、
+    // 現1軍公示(carpRoster)に居る選手はコールアップ候補から除外する。
+    // farm はフルネーム(末包昇大)、roster は短縮名(末包)なので前方一致で突合。
+    const activeRosterFarm = Array.isArray(f.carpRoster) && f.carpRoster.length > 0
+      ? f.carpRoster.map(p => p.name).filter(Boolean)
+      : null;
+    const isPromotedToFirst = (farmName) => {
+      if (!activeRosterFarm || !farmName) return false;
+      return activeRosterFarm.some(rn => rn === farmName || farmName.startsWith(rn) || rn.startsWith(farmName));
+    };
+    const farmBatters = (farm.batters || []).filter(b => !isPromotedToFirst(b.name));
+    const farmPitchers = (farm.pitchers || []).filter(p => !isPromotedToFirst(p.name));
+    const excludedFarm = (farm.batters || []).length + (farm.pitchers || []).length - farmBatters.length - farmPitchers.length;
+    if (excludedFarm > 0) {
+      console.error(`[ai] farm_callup: filtered out ${excludedFarm} players already promoted to 1軍`);
+    }
+    const batText = farmBatters.map(b =>
       `  ${b.name}: 打率${b.avg || '?'} OPS${b.ops || '?'}（出塁${b.obp || '?'}/長打${b.slg || '?'}） ` +
       `${b.games || 0}試合 ${b.hr || 0}本 ${b.double || 0}二塁打 ${b.rbi || 0}打点 ${b.sb || 0}盗塁 ${b.bb || 0}四球 ${b.k || 0}三振`
     ).join('\n') || '  （該当なし）';
-    const pitText = (farm.pitchers || []).map(p =>
+    const pitText = farmPitchers.map(p =>
       `  ${p.name}: 防御率${p.era || '?'} ${p.games || 0}登板 ${p.ip || '?'}回 ` +
       `${p.wins || 0}勝${p.losses || 0}敗${p.saves || 0}S 奪三振${p.strikeouts || 0} 与四球${p.walks || 0} 被本${p.hrAllowed || 0}`
     ).join('\n') || '  （該当なし）';
+    // 除外後に候補が全く無ければ farmBlock は空のまま（farm_callup を出させない）
+    if (farmBatters.length || farmPitchers.length) {
     farmBlock = `
 
 【カープ2軍（ファーム）の主な選手成績（NPB公式・規定到達者）】
@@ -881,6 +899,7 @@ farm_callup フィールドを次の方針で組み立てること:
   4) 該当する選手が居ない、または2軍データが乏しい場合は farm_callup を null にする。
   5) これは「ファン目線のIF提案」。現実の起用を断定しない。
      「2軍で○○な××を試してみては」というトーン。`;
+    }
   }
 
   return `あなたは広島東洋カープを30年見続けてる、戦術にも詳しいベテランファンです。
