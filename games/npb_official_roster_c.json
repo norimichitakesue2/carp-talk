@@ -1,8 +1,8 @@
 {
-  "fetchedAt": "2026-07-23T20:10:30.418Z",
+  "fetchedAt": "2026-09-18T22:50:08.090Z",
   "sourceUrl": "https://npb.jp/announcement/roster/",
   "note": "NPB公式公示の「広島東洋カープ 出場選手一覧」を直接スクレイプ。試合直前まで更新されないNPB box の roster.html より鮮度高い。",
-  "expectedCount": 29,
+  "expectedCount": 31,
   "players": [
     {
       "pos": "投",
@@ -12,9 +12,27 @@
     },
     {
       "pos": "投",
+      "number": "14",
+      "fullName": "大瀬良",
+      "name": "大瀬良"
+    },
+    {
+      "pos": "投",
       "number": "16",
       "fullName": "森",
       "name": "森"
+    },
+    {
+      "pos": "投",
+      "number": "18",
+      "fullName": "森下",
+      "name": "森下"
+    },
+    {
+      "pos": "投",
+      "number": "19",
+      "fullName": "床田",
+      "name": "床田"
     },
     {
       "pos": "投",
@@ -30,15 +48,15 @@
     },
     {
       "pos": "投",
-      "number": "24",
-      "fullName": "黒原",
-      "name": "黒原"
+      "number": "36",
+      "fullName": "塹江",
+      "name": "塹江"
     },
     {
       "pos": "投",
-      "number": "26",
-      "fullName": "益田",
-      "name": "益田"
+      "number": "38",
+      "fullName": "赤木",
+      "name": "赤木"
     },
     {
       "pos": "投",
@@ -48,39 +66,27 @@
     },
     {
       "pos": "投",
-      "number": "47",
-      "fullName": "斉藤",
-      "name": "斉藤"
+      "number": "42",
+      "fullName": "Ｆ．ターノック",
+      "name": "ターノック"
     },
     {
       "pos": "投",
-      "number": "48",
-      "fullName": "アドゥワ",
-      "name": "アドゥワ"
+      "number": "50",
+      "fullName": "杉田",
+      "name": "杉田"
+    },
+    {
+      "pos": "投",
+      "number": "65",
+      "fullName": "玉村",
+      "name": "玉村"
     },
     {
       "pos": "投",
       "number": "66",
       "fullName": "遠藤",
       "name": "遠藤"
-    },
-    {
-      "pos": "投",
-      "number": "67",
-      "fullName": "菊地",
-      "name": "菊地"
-    },
-    {
-      "pos": "投",
-      "number": "68",
-      "fullName": "Ｔ．ハーン",
-      "name": "ハーン"
-    },
-    {
-      "pos": "投",
-      "number": "98",
-      "fullName": "辻",
-      "name": "辻"
     },
     {
       "pos": "捕",
@@ -108,12 +114,6 @@
     },
     {
       "pos": "内",
-      "number": "5",
-      "fullName": "小園",
-      "name": "小園"
-    },
-    {
-      "pos": "内",
       "number": "10",
       "fullName": "佐々木",
       "name": "佐々木"
@@ -129,12 +129,6 @@
       "number": "69",
       "fullName": "辰見",
       "name": "辰見"
-    },
-    {
-      "pos": "内",
-      "number": "93",
-      "fullName": "前川",
-      "name": "前川"
     },
     {
       "pos": "内",
@@ -162,6 +156,18 @@
     },
     {
       "pos": "外",
+      "number": "37",
+      "fullName": "野間",
+      "name": "野間"
+    },
+    {
+      "pos": "外",
+      "number": "52",
+      "fullName": "末包",
+      "name": "末包"
+    },
+    {
+      "pos": "外",
       "number": "59",
       "fullName": "大盛",
       "name": "大盛"
@@ -177,6 +183,12 @@
       "number": "92",
       "fullName": "名原",
       "name": "名原"
+    },
+    {
+      "pos": "外",
+      "number": "96",
+      "fullName": "中村",
+      "name": "中村"
     }
   ]
 }
