@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T09:45:15.540Z",
+  "generatedAt": "2026-09-20T10:05:14.974Z",
   "baseDate": "2026-09-20",
   "games": 6,
   "rangeStart": "2026-09-14",
@@ -17,13 +17,13 @@
     }
   },
   "worst": {
-    "name": "勝田",
-    "summary": "直近6試合 14打数3安打 .214 OPS.552 3三振",
+    "name": "石原",
+    "summary": "直近5試合 13打数3安打 .231 OPS.516 2打点 5三振",
     "form": {
-      "icon": "↓",
-      "label": "不調",
-      "level": -1,
-      "cls": "form-cold1"
+      "icon": "↓↓",
+      "label": "絶不調",
+      "level": -2,
+      "cls": "form-cold2"
     }
   },
   "pitcherMvp": {
@@ -260,7 +260,7 @@
     {
       "name": "末包",
       "games": 3,
-      "ab": 6,
+      "ab": 7,
       "r": 1,
       "h": 1,
       "rbi": 1,
@@ -273,19 +273,19 @@
       "single": 0,
       "hbp": 0,
       "sf": 0,
-      "avg": ".167",
-      "avg_num": 0.167,
-      "obp": ".167",
-      "slg": ".667",
-      "ops": ".833",
-      "ops_num": 0.833,
+      "avg": ".143",
+      "avg_num": 0.143,
+      "obp": ".143",
+      "slg": ".571",
+      "ops": ".714",
+      "ops_num": 0.714,
       "form": {
         "icon": "－",
         "label": "様子見",
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近3試合 6打数1安打 .167 OPS.833 1本 1打点"
+      "summary": "直近3試合 7打数1安打 .143 OPS.714 1本 1打点"
     },
     {
       "name": "名原",
@@ -528,39 +528,9 @@
       "summary": "直近1試合 0打数0安打 .000 OPS1.000 1四球"
     },
     {
-      "name": "石原",
-      "games": 5,
-      "ab": 12,
-      "r": 0,
-      "h": 3,
-      "rbi": 2,
-      "sb": 0,
-      "hr": 0,
-      "k": 5,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 3,
-      "hbp": 1,
-      "sf": 0,
-      "avg": ".250",
-      "avg_num": 0.25,
-      "obp": ".308",
-      "slg": ".250",
-      "ops": ".558",
-      "ops_num": 0.558,
-      "form": {
-        "icon": "↓",
-        "label": "不調",
-        "level": -1,
-        "cls": "form-cold1"
-      },
-      "summary": "直近5試合 12打数3安打 .250 OPS.558 2打点 5三振"
-    },
-    {
       "name": "勝田",
       "games": 6,
-      "ab": 14,
+      "ab": 15,
       "r": 1,
       "h": 3,
       "rbi": 0,
@@ -573,19 +543,49 @@
       "single": 2,
       "hbp": 1,
       "sf": 0,
-      "avg": ".214",
-      "avg_num": 0.214,
-      "obp": ".267",
-      "slg": ".286",
-      "ops": ".552",
-      "ops_num": 0.552,
+      "avg": ".200",
+      "avg_num": 0.2,
+      "obp": ".250",
+      "slg": ".267",
+      "ops": ".517",
+      "ops_num": 0.517,
       "form": {
         "icon": "↓",
         "label": "不調",
         "level": -1,
         "cls": "form-cold1"
       },
-      "summary": "直近6試合 14打数3安打 .214 OPS.552 3三振"
+      "summary": "直近6試合 15打数3安打 .200 OPS.517 3三振"
+    },
+    {
+      "name": "石原",
+      "games": 5,
+      "ab": 13,
+      "r": 0,
+      "h": 3,
+      "rbi": 2,
+      "sb": 0,
+      "hr": 0,
+      "k": 5,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 3,
+      "hbp": 1,
+      "sf": 0,
+      "avg": ".231",
+      "avg_num": 0.231,
+      "obp": ".286",
+      "slg": ".231",
+      "ops": ".516",
+      "ops_num": 0.516,
+      "form": {
+        "icon": "↓↓",
+        "label": "絶不調",
+        "level": -2,
+        "cls": "form-cold2"
+      },
+      "summary": "直近5試合 13打数3安打 .231 OPS.516 2打点 5三振"
     }
   ],
   "pitchers": [
@@ -865,31 +865,6 @@
       "summary": "直近1登板 7回 防御率2.57 自責2 被安4 奪三振8 1敗"
     },
     {
-      "name": "森",
-      "games": 1,
-      "outs": 6,
-      "ip": "2回",
-      "er": 1,
-      "r": 1,
-      "h": 2,
-      "hr": 1,
-      "bb": 0,
-      "k": 1,
-      "pitches": 28,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 4.5,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近1登板 2回 防御率4.50 自責1 被安2 奪三振1"
-    },
-    {
       "name": "鈴木",
       "games": 1,
       "outs": 15,
@@ -913,6 +888,31 @@
         "cls": "form-cold1"
       },
       "summary": "直近1登板 5回 防御率7.20 自責4 被安6 奪三振2 1勝"
+    },
+    {
+      "name": "森",
+      "games": 1,
+      "outs": 9,
+      "ip": "3回",
+      "er": 4,
+      "r": 4,
+      "h": 5,
+      "hr": 2,
+      "bb": 0,
+      "k": 3,
+      "pitches": 53,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 12,
+      "form": {
+        "icon": "↓",
+        "label": "不調",
+        "level": -1,
+        "cls": "form-cold1"
+      },
+      "summary": "直近1登板 3回 防御率12.00 自責4 被安5 奪三振3"
     },
     {
       "name": "床田",

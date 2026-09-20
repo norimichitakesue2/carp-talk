@@ -4,11 +4,11 @@
   "away_team": "広島",
   "home_team": "中日",
   "away_score": 2,
-  "home_score": 1,
+  "home_score": 4,
   "venue": "バンテリンドームナゴヤ",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "3回表",
+  "current_inning": "4回表",
   "result_label": "",
   "away_pitcher": "森",
   "home_pitcher": "大野",
@@ -205,7 +205,7 @@
     "away": [
       0,
       1,
-      0,
+      3,
       0,
       0,
       0,
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 2,
+    "away_hits": 5,
     "away_errors": 0
   },
   "pitchers": [],
@@ -419,7 +419,7 @@
       "name": "末包",
       "pos": "右",
       "line": 6,
-      "ab": 1,
+      "ab": 2,
       "r": 1,
       "h": 1,
       "rbi": 1,
@@ -437,7 +437,7 @@
       "name": "石原",
       "pos": "捕",
       "line": 7,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -455,7 +455,7 @@
       "name": "勝田",
       "pos": "遊",
       "line": 8,
-      "ab": 1,
+      "ab": 2,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -492,19 +492,19 @@
     {
       "name": "森",
       "result": "",
-      "outs": 6,
-      "pitches": 28,
-      "hitsAllowed": 2,
-      "hrAllowed": 1,
+      "outs": 9,
+      "pitches": 53,
+      "hitsAllowed": 5,
+      "hrAllowed": 2,
       "walks": 0,
-      "strikeouts": 1,
-      "runs": 1,
-      "earnedRuns": 1
+      "strikeouts": 3,
+      "runs": 4,
+      "earnedRuns": 4
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-20T09:45:15.270Z",
-    "generatedAt": "2026-09-20T09:45:15.343Z",
+    "sourceFetchedAt": "2026-09-20T10:05:14.884Z",
+    "generatedAt": "2026-09-20T10:05:14.918Z",
     "sourceUrl": "https://npb.jp/scores/2026/0920/d-c-23/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,勝田,名原,坂倉,大瀬良,大盛,持丸,末包,杉田,森,森浦,石原,秋山,菊池,赤木,辰見,遠藤,野間,鈴木,髙"
   }
