@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "8回表",
+  "current_inning": "8回裏",
   "result_label": "",
   "away_pitcher": "西舘",
   "home_pitcher": "森下",
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 5,
+    "away_hits": 6,
     "away_errors": 0
   },
   "pitchers": [],
@@ -401,7 +401,7 @@
       "name": "中村奨",
       "pos": "中左",
       "line": 3,
-      "ab": 2,
+      "ab": 3,
       "r": 2,
       "h": 1,
       "rbi": 0,
@@ -419,9 +419,9 @@
       "name": "坂倉",
       "pos": "一",
       "line": 4,
-      "ab": 3,
+      "ab": 4,
       "r": 1,
-      "h": 1,
+      "h": 2,
       "rbi": 2,
       "sb": 0,
       "hr": 1,
@@ -429,7 +429,7 @@
       "bb": 0,
       "double": 0,
       "triple": 0,
-      "single": 0,
+      "single": 1,
       "hbp": 0,
       "sf": 0
     },
@@ -437,7 +437,7 @@
       "name": "佐々木",
       "pos": "三",
       "line": 5,
-      "ab": 2,
+      "ab": 3,
       "r": 0,
       "h": 0,
       "rbi": 0,
@@ -606,19 +606,19 @@
     {
       "name": "大瀬良",
       "result": "",
-      "outs": 1,
-      "pitches": 4,
-      "hitsAllowed": 0,
+      "outs": 3,
+      "pitches": 24,
+      "hitsAllowed": 1,
       "hrAllowed": 0,
       "walks": 0,
-      "strikeouts": 1,
+      "strikeouts": 3,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-24T11:25:12.127Z",
-    "generatedAt": "2026-09-24T11:25:12.150Z",
+    "sourceFetchedAt": "2026-09-24T11:45:11.937Z",
+    "generatedAt": "2026-09-24T11:45:11.958Z",
     "sourceUrl": "https://npb.jp/scores/2026/0924/c-g-23/",
     "previewRosterFingerprint": "ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,佐藤柳,勝田,名原,坂倉,大瀬良,大盛,持丸,末包,杉田,森,森下,森浦,清水,石原,秋山,菊池,辰見,遠藤,野間,鈴木"
   }
