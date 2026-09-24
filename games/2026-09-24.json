@@ -8,7 +8,7 @@
   "venue": "マツダスタジアム",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "3回裏",
+  "current_inning": "4回表",
   "result_label": "",
   "away_pitcher": "西舘",
   "home_pitcher": "森下",
@@ -200,7 +200,7 @@
       0,
       0
     ],
-    "hiroshima_hits": 0,
+    "hiroshima_hits": 1,
     "hiroshima_errors": 0,
     "away": [
       0,
@@ -213,7 +213,7 @@
       0,
       0
     ],
-    "away_hits": 1,
+    "away_hits": 3,
     "away_errors": 0
   },
   "pitchers": [],
@@ -492,19 +492,19 @@
     {
       "name": "森下",
       "result": "",
-      "outs": 9,
-      "pitches": 49,
-      "hitsAllowed": 1,
+      "outs": 12,
+      "pitches": 70,
+      "hitsAllowed": 3,
       "hrAllowed": 0,
       "walks": 0,
-      "strikeouts": 3,
+      "strikeouts": 4,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-09-24T09:47:13.319Z",
-    "generatedAt": "2026-09-24T09:47:13.357Z",
+    "sourceFetchedAt": "2026-09-24T10:05:11.307Z",
+    "generatedAt": "2026-09-24T10:05:11.340Z",
     "sourceUrl": "https://npb.jp/scores/2026/0924/c-g-23/",
     "previewRosterFingerprint": "ファビアン,モンテロ,中村奨,二俣,佐々木,佐藤啓,佐藤柳,勝田,名原,坂倉,大瀬良,大盛,持丸,末包,杉田,森,森下,森浦,清水,石原,秋山,菊池,辰見,遠藤,野間,鈴木"
   }
