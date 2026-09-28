@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T09:25:12.676Z",
+  "generatedAt": "2026-09-28T09:45:12.254Z",
   "baseDate": "2026-09-29",
   "games": 6,
   "rangeStart": "2026-09-22",
@@ -815,31 +815,6 @@
       "summary": "直近2登板 2回 防御率0.00 自責0 被安1 奪三振0 1勝"
     },
     {
-      "name": "工藤",
-      "games": 1,
-      "outs": 3,
-      "ip": "1回",
-      "er": 0,
-      "r": 0,
-      "h": 0,
-      "hr": 0,
-      "bb": 0,
-      "k": 1,
-      "pitches": 13,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 0,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近1登板 1回 防御率0.00 自責0 被安0 奪三振1"
-    },
-    {
       "name": "森",
       "games": 1,
       "outs": 6,
@@ -863,6 +838,31 @@
         "cls": "form-none"
       },
       "summary": "直近1登板 2回 防御率4.50 自責1 被安3 奪三振2 1勝"
+    },
+    {
+      "name": "工藤",
+      "games": 1,
+      "outs": 6,
+      "ip": "2回",
+      "er": 1,
+      "r": 1,
+      "h": 1,
+      "hr": 0,
+      "bb": 2,
+      "k": 1,
+      "pitches": 43,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 4.5,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近1登板 2回 防御率4.50 自責1 被安1 奪三振1"
     },
     {
       "name": "栗林",
