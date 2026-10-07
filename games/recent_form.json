@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T12:05:11.753Z",
+  "generatedAt": "2026-10-07T12:25:10.526Z",
   "baseDate": "2026-10-07",
   "games": 6,
   "rangeStart": "2026-09-29",
@@ -349,7 +349,37 @@
     },
     {
       "name": "名原",
-      "games": 3,
+      "games": 4,
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "sb": 0,
+      "hr": 0,
+      "k": 1,
+      "bb": 0,
+      "double": 0,
+      "triple": 0,
+      "single": 0,
+      "hbp": 0,
+      "sf": 0,
+      "avg": ".000",
+      "avg_num": 0,
+      "obp": ".000",
+      "slg": ".000",
+      "ops": ".000",
+      "ops_num": 0,
+      "form": {
+        "icon": "－",
+        "label": "様子見",
+        "level": 0,
+        "cls": "form-none"
+      },
+      "summary": "直近4試合 3打数0安打 .000 OPS.000 1三振"
+    },
+    {
+      "name": "久保",
+      "games": 4,
       "ab": 2,
       "r": 0,
       "h": 0,
@@ -375,37 +405,7 @@
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近3試合 2打数0安打 .000 OPS.000 1三振"
-    },
-    {
-      "name": "久保",
-      "games": 4,
-      "ab": 1,
-      "r": 0,
-      "h": 0,
-      "rbi": 0,
-      "sb": 0,
-      "hr": 0,
-      "k": 1,
-      "bb": 0,
-      "double": 0,
-      "triple": 0,
-      "single": 0,
-      "hbp": 0,
-      "sf": 0,
-      "avg": ".000",
-      "avg_num": 0,
-      "obp": ".000",
-      "slg": ".000",
-      "ops": ".000",
-      "ops_num": 0,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近4試合 1打数0安打 .000 OPS.000 1三振"
+      "summary": "直近4試合 2打数0安打 .000 OPS.000 1三振"
     },
     {
       "name": "野間",
@@ -440,7 +440,7 @@
     {
       "name": "持丸",
       "games": 2,
-      "ab": 0,
+      "ab": 1,
       "r": 1,
       "h": 0,
       "rbi": 0,
@@ -455,17 +455,17 @@
       "sf": 0,
       "avg": ".000",
       "avg_num": 0,
-      "obp": "1.000",
+      "obp": ".500",
       "slg": ".000",
-      "ops": "1.000",
-      "ops_num": 1,
+      "ops": ".500",
+      "ops_num": 0.5,
       "form": {
         "icon": "－",
         "label": "様子見",
         "level": 0,
         "cls": "form-none"
       },
-      "summary": "直近2試合 0打数0安打 .000 OPS1.000 1四球"
+      "summary": "直近2試合 1打数0安打 .000 OPS.500 1四球"
     },
     {
       "name": "勝田",
@@ -665,6 +665,31 @@
       "summary": "直近3登板 3回 防御率0.00 自責0 被安1 奪三振1 2勝"
     },
     {
+      "name": "髙",
+      "games": 3,
+      "outs": 9,
+      "ip": "3回",
+      "er": 0,
+      "r": 0,
+      "h": 0,
+      "hr": 0,
+      "bb": 1,
+      "k": 3,
+      "pitches": 46,
+      "win": 0,
+      "loss": 0,
+      "save": 0,
+      "hold": 0,
+      "era": 0,
+      "form": {
+        "icon": "↑",
+        "label": "好調",
+        "level": 1,
+        "cls": "form-hot1"
+      },
+      "summary": "直近3登板 3回 防御率0.00 自責0 被安0 奪三振3"
+    },
+    {
       "name": "赤木",
       "games": 1,
       "outs": 9,
@@ -813,31 +838,6 @@
         "cls": "form-none"
       },
       "summary": "直近1登板 2回 防御率0.00 自責0 被安1 奪三振0"
-    },
-    {
-      "name": "髙",
-      "games": 2,
-      "outs": 6,
-      "ip": "2回",
-      "er": 0,
-      "r": 0,
-      "h": 0,
-      "hr": 0,
-      "bb": 0,
-      "k": 3,
-      "pitches": 29,
-      "win": 0,
-      "loss": 0,
-      "save": 0,
-      "hold": 0,
-      "era": 0,
-      "form": {
-        "icon": "－",
-        "label": "様子見",
-        "level": 0,
-        "cls": "form-none"
-      },
-      "summary": "直近2登板 2回 防御率0.00 自責0 被安0 奪三振3"
     },
     {
       "name": "菊地",
