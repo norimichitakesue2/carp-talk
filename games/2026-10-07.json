@@ -8,7 +8,7 @@
   "venue": "阪神甲子園球場",
   "start_time": "18:00",
   "status": "live",
-  "current_inning": "8回表",
+  "current_inning": "9回表",
   "result_label": "",
   "away_pitcher": "玉村",
   "home_pitcher": "西勇",
@@ -176,7 +176,7 @@
       0,
       0
     ],
-    "away_hits": 5,
+    "away_hits": 7,
     "away_errors": 0
   },
   "pitchers": [],
@@ -364,13 +364,13 @@
       "name": "坂倉",
       "pos": "一",
       "line": 4,
-      "ab": 3,
+      "ab": 4,
       "r": 0,
       "h": 1,
       "rbi": 0,
       "sb": 0,
       "hr": 0,
-      "k": 2,
+      "k": 3,
       "bb": 0,
       "double": 0,
       "triple": 0,
@@ -593,19 +593,19 @@
     {
       "name": "遠藤",
       "result": "",
-      "outs": 0,
-      "pitches": 0,
-      "hitsAllowed": 0,
+      "outs": 3,
+      "pitches": 22,
+      "hitsAllowed": 2,
       "hrAllowed": 0,
-      "walks": 0,
+      "walks": 1,
       "strikeouts": 0,
       "runs": 0,
       "earnedRuns": 0
     }
   ],
   "_meta": {
-    "sourceFetchedAt": "2026-10-07T11:25:19.776Z",
-    "generatedAt": "2026-10-07T11:25:19.798Z",
+    "sourceFetchedAt": "2026-10-07T11:45:12.589Z",
+    "generatedAt": "2026-10-07T11:45:12.614Z",
     "sourceUrl": "https://npb.jp/scores/2026/1007/t-c-25/",
     "previewRosterFingerprint": "ターノック,ファビアン,モンテロ,中村奨,久保,二俣,佐々木,佐藤啓,勝田,名原,坂倉,塹江,大瀬良,持丸,末包,林,森,玉村,石原,菊地,菊池,辰見,遠藤,野間,鈴木,髙"
   }
