@@ -1,0 +1,1390 @@
+{
+  "year": 2026,
+  "generatedAt": "2026-10-13T12:00:06.240Z",
+  "period": {
+    "first": "2026-03-27",
+    "last": "2026-10-07"
+  },
+  "record": {
+    "w": 60,
+    "l": 76,
+    "d": 4,
+    "games": 140,
+    "pct": 0.4411764705882353
+  },
+  "runs": {
+    "scored": 417,
+    "allowed": 505,
+    "diff": -88
+  },
+  "streaks": {
+    "longestWin": 4,
+    "longestLose": 6
+  },
+  "monthly": [
+    {
+      "month": "03",
+      "w": 3,
+      "l": 1,
+      "d": 0
+    },
+    {
+      "month": "04",
+      "w": 6,
+      "l": 14,
+      "d": 1
+    },
+    {
+      "month": "05",
+      "w": 9,
+      "l": 15,
+      "d": 1
+    },
+    {
+      "month": "06",
+      "w": 8,
+      "l": 8,
+      "d": 1
+    },
+    {
+      "month": "07",
+      "w": 9,
+      "l": 10,
+      "d": 1
+    },
+    {
+      "month": "08",
+      "w": 11,
+      "l": 13,
+      "d": 0
+    },
+    {
+      "month": "09",
+      "w": 11,
+      "l": 13,
+      "d": 0
+    },
+    {
+      "month": "10",
+      "w": 3,
+      "l": 2,
+      "d": 0
+    }
+  ],
+  "highlights": {
+    "biggestWin": {
+      "date": "2026-04-28",
+      "cs": 11,
+      "os": 1,
+      "opp": "巨人",
+      "margin": 10
+    },
+    "highestScoring": {
+      "date": "2026-04-28",
+      "cs": 11,
+      "os": 1,
+      "opp": "巨人"
+    },
+    "worstLoss": {
+      "date": "2026-08-12",
+      "cs": 0,
+      "os": 12,
+      "opp": "ヤクルト",
+      "margin": 12
+    }
+  },
+  "topBatters": [
+    {
+      "name": "秋山",
+      "avg": "0.275",
+      "hr": 3,
+      "rbi": 16,
+      "h": 50,
+      "sb": 0,
+      "ab": 182
+    },
+    {
+      "name": "佐々木",
+      "avg": "0.255",
+      "hr": 6,
+      "rbi": 26,
+      "h": 99,
+      "sb": 3,
+      "ab": 388
+    },
+    {
+      "name": "坂倉",
+      "avg": "0.253",
+      "hr": 15,
+      "rbi": 74,
+      "h": 125,
+      "sb": 3,
+      "ab": 494
+    },
+    {
+      "name": "小園",
+      "avg": "0.251",
+      "hr": 0,
+      "rbi": 21,
+      "h": 90,
+      "sb": 4,
+      "ab": 359
+    },
+    {
+      "name": "名原",
+      "avg": "0.247",
+      "hr": 2,
+      "rbi": 14,
+      "h": 63,
+      "sb": 5,
+      "ab": 255
+    },
+    {
+      "name": "中村奨",
+      "avg": "0.241",
+      "hr": 4,
+      "rbi": 13,
+      "h": 42,
+      "sb": 0,
+      "ab": 174
+    },
+    {
+      "name": "菊池",
+      "avg": "0.236",
+      "hr": 7,
+      "rbi": 37,
+      "h": 107,
+      "sb": 3,
+      "ab": 453
+    },
+    {
+      "name": "モンテロ",
+      "avg": "0.225",
+      "hr": 11,
+      "rbi": 39,
+      "h": 65,
+      "sb": 0,
+      "ab": 289
+    }
+  ],
+  "topPitchers": [
+    {
+      "name": "ハーン",
+      "era": "1.07",
+      "ip": "33.7",
+      "k": 42,
+      "wins": 2,
+      "losses": 1,
+      "saves": 1
+    },
+    {
+      "name": "髙",
+      "era": "1.75",
+      "ip": "51.3",
+      "k": 53,
+      "wins": 3,
+      "losses": 1,
+      "saves": 0
+    },
+    {
+      "name": "遠藤",
+      "era": "1.87",
+      "ip": "57.7",
+      "k": 60,
+      "wins": 5,
+      "losses": 2,
+      "saves": 0
+    },
+    {
+      "name": "森浦",
+      "era": "2.37",
+      "ip": "60.7",
+      "k": 84,
+      "wins": 5,
+      "losses": 2,
+      "saves": 27
+    },
+    {
+      "name": "鈴木",
+      "era": "2.58",
+      "ip": "66.3",
+      "k": 30,
+      "wins": 3,
+      "losses": 2,
+      "saves": 0
+    },
+    {
+      "name": "玉村",
+      "era": "2.64",
+      "ip": "85.3",
+      "k": 61,
+      "wins": 2,
+      "losses": 6,
+      "saves": 0
+    },
+    {
+      "name": "床田",
+      "era": "2.76",
+      "ip": "143.3",
+      "k": 84,
+      "wins": 8,
+      "losses": 6,
+      "saves": 0
+    },
+    {
+      "name": "栗林",
+      "era": "2.89",
+      "ip": "121.3",
+      "k": 101,
+      "wins": 7,
+      "losses": 6,
+      "saves": 0
+    }
+  ],
+  "allGames": [
+    {
+      "date": "2026-03-27",
+      "result": "W",
+      "carpScore": 6,
+      "oppScore": 5,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-03-28",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-03-29",
+      "result": "W",
+      "carpScore": 1,
+      "oppScore": 0,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-03-31",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 8,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-04-02",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-04-03",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 4,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-04-04",
+      "result": "L",
+      "carpScore": 5,
+      "oppScore": 7,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-04-05",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-04-07",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-04-08",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-04-11",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 4,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-04-12",
+      "result": "L",
+      "carpScore": 5,
+      "oppScore": 6,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-04-14",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 6,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-04-15",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 2,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-04-17",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 5,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-04-18",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 7,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-04-19",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 2,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-04-21",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-04-22",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 2,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-04-23",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 2,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-04-25",
+      "result": "D",
+      "carpScore": 2,
+      "oppScore": 2,
+      "opponent": "阪神",
+      "resultLabel": "引き分け"
+    },
+    {
+      "date": "2026-04-26",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-04-28",
+      "result": "W",
+      "carpScore": 11,
+      "oppScore": 1,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-04-29",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 4,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-04-30",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-01",
+      "result": "W",
+      "carpScore": 7,
+      "oppScore": 3,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-02",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 4,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-05-04",
+      "result": "L",
+      "carpScore": 8,
+      "oppScore": 11,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-05-05",
+      "result": "D",
+      "carpScore": 5,
+      "oppScore": 5,
+      "opponent": "DeNA",
+      "resultLabel": "引き分け"
+    },
+    {
+      "date": "2026-05-06",
+      "result": "W",
+      "carpScore": 10,
+      "oppScore": 0,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-08",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 4,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-05-09",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 4,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-05-10",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 0,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-12",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 5,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-05-13",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 4,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-05-15",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 0,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-16",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-05-17",
+      "result": "W",
+      "carpScore": 1,
+      "oppScore": 0,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-19",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 1,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-20",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 4,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-05-21",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 1,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-22",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 6,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-05-23",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 3,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-24",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 3,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-05-26",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "ロッテ",
+      "resultLabel": "ロッテ勝利"
+    },
+    {
+      "date": "2026-05-27",
+      "result": "L",
+      "carpScore": 4,
+      "oppScore": 5,
+      "opponent": "ロッテ",
+      "resultLabel": "ロッテ勝利"
+    },
+    {
+      "date": "2026-05-28",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 6,
+      "opponent": "ロッテ",
+      "resultLabel": "ロッテ勝利"
+    },
+    {
+      "date": "2026-05-29",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 2,
+      "opponent": "ソフトバンク",
+      "resultLabel": "ソフトバンク勝利"
+    },
+    {
+      "date": "2026-05-30",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 4,
+      "opponent": "ソフトバンク",
+      "resultLabel": "ソフトバンク勝利"
+    },
+    {
+      "date": "2026-05-31",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "ソフトバンク",
+      "resultLabel": "ソフトバンク勝利"
+    },
+    {
+      "date": "2026-06-03",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 1,
+      "opponent": "日本ハム",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-04",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 5,
+      "opponent": "日本ハム",
+      "resultLabel": "日本ハム勝利"
+    },
+    {
+      "date": "2026-06-05",
+      "result": "D",
+      "carpScore": 2,
+      "oppScore": 2,
+      "opponent": "オリックス",
+      "resultLabel": "引き分け"
+    },
+    {
+      "date": "2026-06-06",
+      "result": "W",
+      "carpScore": 7,
+      "oppScore": 4,
+      "opponent": "オリックス",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-07",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 2,
+      "opponent": "オリックス",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-09",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 4,
+      "opponent": "西武",
+      "resultLabel": "西武勝利"
+    },
+    {
+      "date": "2026-06-11",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 4,
+      "opponent": "西武",
+      "resultLabel": "西武勝利"
+    },
+    {
+      "date": "2026-06-12",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "楽天",
+      "resultLabel": "楽天勝利"
+    },
+    {
+      "date": "2026-06-13",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 0,
+      "opponent": "楽天",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-14",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 0,
+      "opponent": "楽天",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-16",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 2,
+      "opponent": "日本ハム",
+      "resultLabel": "日本ハム勝利"
+    },
+    {
+      "date": "2026-06-19",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 9,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-06-21",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-23",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 7,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-06-27",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 2,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-06-28",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 12,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-06-30",
+      "result": "W",
+      "carpScore": 7,
+      "oppScore": 4,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-02",
+      "result": "D",
+      "carpScore": 3,
+      "oppScore": 3,
+      "opponent": "DeNA",
+      "resultLabel": "引き分け"
+    },
+    {
+      "date": "2026-07-03",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-05",
+      "result": "L",
+      "carpScore": 4,
+      "oppScore": 6,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-07-07",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 3,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-08",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 3,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-09",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 1,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-07-10",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 10,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-07-11",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 8,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-07-12",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-14",
+      "result": "L",
+      "carpScore": 4,
+      "oppScore": 5,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-07-15",
+      "result": "W",
+      "carpScore": 6,
+      "oppScore": 4,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-17",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 4,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-07-18",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-20",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-07-21",
+      "result": "L",
+      "carpScore": 5,
+      "oppScore": 11,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-07-22",
+      "result": "W",
+      "carpScore": 6,
+      "oppScore": 1,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-24",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 5,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-07-25",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-07-26",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 3,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-07-31",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-01",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 7,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-08-02",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 3,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-04",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 3,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-05",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 4,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-08-06",
+      "result": "L",
+      "carpScore": 7,
+      "oppScore": 11,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-08-07",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-08-08",
+      "result": "L",
+      "carpScore": 3,
+      "oppScore": 4,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-08-09",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 3,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-08-12",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 12,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-08-14",
+      "result": "W",
+      "carpScore": 6,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-15",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 2,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-16",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 8,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-08-18",
+      "result": "W",
+      "carpScore": 11,
+      "oppScore": 4,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-19",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-20",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-21",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-08-22",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 5,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-08-23",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-25",
+      "result": "W",
+      "carpScore": 8,
+      "oppScore": 7,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-26",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 2,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-08-27",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 6,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-08-28",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-08-29",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 9,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-08-30",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 1,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-01",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-02",
+      "result": "L",
+      "carpScore": 4,
+      "oppScore": 5,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-09-03",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 2,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-04",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-09-05",
+      "result": "L",
+      "carpScore": 5,
+      "oppScore": 10,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-09-06",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 4,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-09-09",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-11",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 6,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-09-12",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 7,
+      "opponent": "DeNA",
+      "resultLabel": "DeNA勝利"
+    },
+    {
+      "date": "2026-09-13",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "ヤクルト",
+      "resultLabel": "ヤクルト勝利"
+    },
+    {
+      "date": "2026-09-14",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 0,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-15",
+      "result": "W",
+      "carpScore": 9,
+      "oppScore": 4,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-17",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 7,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-09-18",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-09-19",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 1,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-20",
+      "result": "L",
+      "carpScore": 5,
+      "oppScore": 8,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-09-21",
+      "result": "L",
+      "carpScore": 0,
+      "oppScore": 10,
+      "opponent": "中日",
+      "resultLabel": "中日勝利"
+    },
+    {
+      "date": "2026-09-22",
+      "result": "W",
+      "carpScore": 2,
+      "oppScore": 1,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-23",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-09-24",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 1,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-25",
+      "result": "W",
+      "carpScore": 3,
+      "oppScore": 2,
+      "opponent": "巨人",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-27",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 3,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-28",
+      "result": "W",
+      "carpScore": 4,
+      "oppScore": 3,
+      "opponent": "DeNA",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-09-29",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 3,
+      "opponent": "巨人",
+      "resultLabel": "巨人勝利"
+    },
+    {
+      "date": "2026-10-01",
+      "result": "W",
+      "carpScore": 5,
+      "oppScore": 1,
+      "opponent": "中日",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-10-03",
+      "result": "W",
+      "carpScore": 6,
+      "oppScore": 4,
+      "opponent": "阪神",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-10-04",
+      "result": "W",
+      "carpScore": 7,
+      "oppScore": 4,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利"
+    },
+    {
+      "date": "2026-10-06",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    },
+    {
+      "date": "2026-10-07",
+      "result": "L",
+      "carpScore": 1,
+      "oppScore": 2,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利"
+    }
+  ],
+  "narrative": {
+    "title": "得点圏に刻まれた、88点分の宿題",
+    "overview": "60勝76敗4分、勝率.441。得失点差マイナス88が示すとおり、投打のアンバランスが最後まで解消されなかった1年だった。3月の3勝1敗で滑り出したものの、4月に6勝14敗と大きく沈んで早々に上位争いから離脱。6月以降は五分前後の戦いを続けたが、貯金を作るには至らず。床田・遠藤ら先発陣が踏ん張る試合でも打線が得点圏で沈黙するパターンが繰り返され、勝ち星を積み上げられなかった。",
+    "themes": [
+      {
+        "theme": "得点圏での決定力",
+        "detail": "4月から10月まで月をまたいで「無死満塁で無得点」「13安打3得点」といった記録が積み重なった。得点圏打率の低さは単発の不振ではなく、チーム全体の構造的な課題として1年間浮かび上がり続けた。"
+      },
+      {
+        "theme": "上位打線の機能不全",
+        "detail": "小園・佐藤啓ら上位を担う選手が月ごとに4打数無安打を繰り返し、出塁が大盛ら特定の選手に偏る場面が目立った。3番・小園の機能不全は6月に明確に記録され、打線のつながりを断ち切る一因となった。"
+      },
+      {
+        "theme": "先発ローテの安定確立",
+        "detail": "床田が8勝、遠藤が5勝と軸は機能した一方、大瀬良が2回1/3でKOされる場面や、10月に森下・栗林が相次いで早期降板するなど、ローテ全体を安定させるには至らなかった。中継ぎへの負担軽減は来季への積み残しとなった。"
+      },
+      {
+        "theme": "救援陣の整備と継投判断",
+        "detail": "ハーン・髙・遠藤・森浦らが防御率2点台以下で奮闘し、リリーフの質は一定水準を保った。ただ9月にはターノックの継投タイミングの遅れが逆転を招くなど、試合終盤の判断精度には改善の余地が残った。"
+      }
+    ],
+    "turning_point": "4月の6勝14敗が最大の分岐点だった。開幕直後の貯金を一気に吐き出し、以降は借金を抱えたまま戦う展開が続いた。6月以降に五分近い戦いを取り戻したことは評価できるが、4月の失速が最終順位に与えた影響は小さくなかったとみられる。",
+    "next_season": "得点圏に走者を置きながら点を取れない打線の体質は、来季こそ変えられるか。"
+  }
+}
