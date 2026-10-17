@@ -1399,6 +1399,10 @@ body::before{
 </header>
 
 <div class="wrap">
+  <div id="breadcrumb" style="display:flex;gap:10px;font-size:12px;padding:.8rem 0 .1rem">
+    <a href="/season.html" style="color:var(--blue);text-decoration:none">‹ シーズン総括</a>
+    <a id="bc-month" href="/season.html" style="color:var(--blue);text-decoration:none"></a>
+  </div>
   <div class="date-nav">
     <button class="date-nav-btn" id="btn-prev" onclick="goDate(-1)">← 前日</button>
     <span id="date-nav-label" style="font-size:14px;font-weight:500">読み込み中...</span>
@@ -1478,6 +1482,9 @@ function updateDateNav(date){
   document.getElementById('date-nav-label').textContent=dateLabel(date)+(date===today?' (今日)':'');
   // 翌日まで選択可能（試合前プレビューを見られるように）
   document.getElementById('btn-next').disabled=(date>=tomorrow);
+  // パンくず：その月の月別ページへ
+  var bm=document.getElementById('bc-month');
+  if(bm&&/^\d{4}-\d{2}/.test(date)){bm.href='/season.html?month='+date.slice(0,7);bm.textContent='‹ '+parseInt(date.slice(5,7))+'月';}
 }
 
 // ===== ゲーム読み込み =====
@@ -5208,7 +5215,12 @@ function initFI(){}
 // ===== 起動 =====
 window.addEventListener('DOMContentLoaded',function(){
   var params=new URLSearchParams(location.search);
-  var date=params.get('date')||todayStr();
+  var date=params.get('date');
+  // シーズン終了：日付指定が無い場合は総括ページへ
+  if(!date){
+    location.replace('/season.html'+(location.search||''));
+    return;
+  }
   loadGame(date);
 });
 </script>

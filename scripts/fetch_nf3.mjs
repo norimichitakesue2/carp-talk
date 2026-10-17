@@ -303,6 +303,26 @@ export async function fetchCarpBatterList() {
 }
 
 // 個別打者ページから 通算 + 対右/対左 成績を抜く
+// カープ投手一覧（背番号, 氏名）を取得。fp=1 が投手。href は /Central/C/p/{num}_stat.htm。
+export async function fetchCarpPitcherList() {
+  const url = `${NF3_BASE}/php/stat_disp/stat_disp.php?y=0&leg=0&tm=C&fp=1&dn=1&dk=0`;
+  const html = await fetchUA(url);
+  const $ = cheerio.load(html);
+  const out = [];
+  const seen = new Set();
+  $('a[href*="/Central/C/p/"][href$="_stat.htm"]').each((_, a) => {
+    const href = $(a).attr('href') || '';
+    const m = href.match(/\/p\/(\d+)_stat\.htm/);
+    if (!m) return;
+    const num = m[1];
+    const name = $(a).text().trim();
+    if (!name || seen.has(num)) return;
+    seen.add(num);
+    out.push({ number: num, name });
+  });
+  return out;
+}
+
 export async function fetchBatterStats(num) {
   const url = `${NF3_BASE}/Central/C/f/${num}_stat.htm`;
   const html = await fetchUA(url);

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シーズン総括 - カープトーク</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0c0f;--surface:#111318;--surface2:#181c23;--surface3:#1e2330;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--text:#eef0f4;--muted:#7a8090;--faint:#2e3340;--accent:#f0c040;--blue:#4a9eff;--green:#3ecf8e;--red:#f46060;--orange:#f07840;--carp:#c8102e;--r:12px;--rs:8px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
+header{border-bottom:1px solid var(--border);padding:0 1.25rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(10,12,15,0.96);backdrop-filter:blur(14px);z-index:100}
+.site-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.1em;color:var(--carp);line-height:1}
+.site-sub{font-size:10px;color:var(--muted)}
+.wrap{max-width:680px;margin:0 auto;padding:0 1rem 5rem}
+a{color:inherit;text-decoration:none}
+.bc{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--blue);margin:1rem 0 .25rem}
+.bc:hover{text-decoration:underline}
+/* Hero */
+.hero{background:radial-gradient(ellipse at top,rgba(200,16,46,.14),transparent 60%),linear-gradient(180deg,var(--surface),#0c0d12);border:1px solid rgba(200,16,46,.3);border-radius:var(--r);padding:1.5rem 1.25rem;margin:1rem 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--carp),#ff4060,var(--accent))}
+.hero-yr{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.2em;color:var(--accent)}
+.hero-title{font-size:21px;font-weight:700;margin:.3rem 0 .6rem;line-height:1.4}
+.hero-rec{display:flex;align-items:baseline;gap:12px;margin:.5rem 0}
+.hero-rec .big{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--text);line-height:1}
+.hero-rec .pct{font-size:15px;color:var(--muted)}
+.hero-ov{font-size:13.5px;line-height:1.75;color:#d5d8de;margin-top:.6rem}
+.hero-period{font-size:11px;color:var(--muted);margin-top:.5rem}
+/* section */
+.sec{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.1rem;margin-bottom:1rem}
+.sec-t{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--carp);text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:6px}
+/* monthly bars */
+.mon-row{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:var(--rs);cursor:pointer;transition:background .15s}
+.mon-row:hover{background:var(--surface2)}
+.mon-lbl{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text);width:34px;flex-shrink:0}
+.mon-bar{flex:1;height:18px;background:var(--faint);border-radius:4px;overflow:hidden;display:flex}
+.mon-bar .wseg{background:var(--carp)}
+.mon-bar .lseg{background:var(--surface3)}
+.mon-rec{font-size:12px;color:var(--muted);width:72px;text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums}
+.mon-arrow{color:var(--faint);font-size:12px}
+/* themes */
+.theme{border-left:3px solid var(--accent);background:rgba(240,192,64,.05);border-radius:0 var(--rs) var(--rs) 0;padding:.6rem .8rem;margin-bottom:.6rem}
+.theme-t{font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:.2rem}
+.theme-d{font-size:12.5px;line-height:1.6;color:#c5c8ce}
+/* leaders */
+.ldr-grp{margin-bottom:.9rem}
+.ldr-h{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:.4rem}
+.ldr-row{display:flex;align-items:baseline;gap:8px;font-size:13px;padding:3px 0;border-bottom:1px solid var(--border)}
+.ldr-row:last-child{border-bottom:none}
+.ldr-rank{color:var(--faint);font-family:'Bebas Neue',sans-serif;width:16px}
+.ldr-name{flex:1;font-weight:500}
+.ldr-val{font-variant-numeric:tabular-nums;color:var(--text)}
+.ldr-sub{font-size:11px;color:var(--muted)}
+.qmark{font-size:9px;color:var(--green);border:1px solid rgba(62,207,142,.4);border-radius:3px;padding:0 3px;margin-left:4px}
+.ldr-tabs{display:flex;gap:6px;margin-bottom:.8rem}
+.ldr-tab{flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:5px;font-size:12px;color:var(--muted);cursor:pointer;font-family:inherit}
+.ldr-tab.active{background:rgba(200,16,46,.15);border-color:rgba(200,16,46,.4);color:#ff7090}
+/* highlights */
+.hl{display:flex;gap:10px;align-items:center;padding:.5rem .3rem;border-bottom:1px solid var(--border)}
+.hl:last-child{border-bottom:none}
+.hl-ico{font-size:18px}
+.hl-body{flex:1}
+.hl-t{font-size:12px;color:var(--muted)}
+.hl-d{font-size:13.5px;font-weight:500}
+.hl a{color:var(--blue)}
+/* next question */
+.nextq{background:rgba(74,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--rs) var(--rs) 0;padding:.8rem 1rem;margin-bottom:1rem}
+.nextq-l{font-size:10.5px;color:var(--blue);letter-spacing:.05em;margin-bottom:.3rem}
+.nextq-t{font-size:14px;line-height:1.6}
+/* daily list (Lv2) */
+.day-row{display:flex;align-items:center;gap:10px;padding:.7rem .6rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.day-row:hover{background:var(--surface2)}
+.day-date{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--muted);width:42px;flex-shrink:0}
+.day-res{font-weight:700;width:20px;text-align:center;flex-shrink:0}
+.day-res.W{color:var(--carp)}.day-res.L{color:var(--muted)}.day-res.D{color:var(--accent)}
+.day-score{font-variant-numeric:tabular-nums;font-size:13px;width:58px;flex-shrink:0}
+.day-body{flex:1;min-width:0}
+.day-opp{font-size:12px;color:var(--muted)}
+.day-title{font-size:12.5px;color:#d5d8de;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.day-arrow{color:var(--faint);font-size:12px}
+.month-nav{display:flex;gap:6px;flex-wrap:wrap;margin:.5rem 0 1rem}
+.month-chip{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:4px 11px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Bebas Neue',sans-serif;letter-spacing:.05em}
+.month-chip.active{background:rgba(200,16,46,.15);border-color:rgba(200,16,46,.4);color:#ff7090}
+.loading{text-align:center;padding:4rem 0;color:var(--muted)}
+.spin{display:inline-block;width:20px;height:20px;border:2px solid var(--faint);border-top-color:var(--carp);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="site-title">本日のカープトーク</div><div class="site-sub">2026シーズン総括</div></div>
+  <a class="bc" href="/season.html" style="margin:0">⚾ 総括トップ</a>
+</header>
+<div class="wrap" id="main"><div class="loading"><span class="spin"></span></div></div>
+
+<script>
+var DATA=null;
+var MONTH_NAMES={'03':'3月','04':'4月','05':'5月','06':'6月','07':'7月','08':'8月','09':'9月','10':'10月'};
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function qs(k){return new URLSearchParams(location.search).get(k);}
+
+async function init(){
+  try{
+    var r=await fetch('/games/season_summary_2026.json?t='+Date.now());
+    DATA=await r.json();
+  }catch(e){
+    document.getElementById('main').innerHTML='<div class="loading">総括データを読み込めませんでした</div>';
+    return;
+  }
+  var month=qs('month');
+  if(month) renderMonth(month);
+  else renderSeason();
+}
+
+function renderSeason(){
+  var d=DATA, rec=d.record, n=d.narrative||{}, L=d.leaders||{};
+  var h='';
+  // Hero
+  h+='<div class="hero">';
+  h+='<div class="hero-yr">CARP '+d.year+' SEASON</div>';
+  h+='<div class="hero-title">'+esc(n.title||'シーズン総括')+'</div>';
+  h+='<div class="hero-rec"><span class="big">'+rec.w+'<span style="font-size:22px;color:var(--muted)">勝</span> '+rec.l+'<span style="font-size:22px;color:var(--muted)">敗</span> '+rec.d+'<span style="font-size:22px;color:var(--muted)">分</span></span><span class="pct">勝率 '+rec.pct.toFixed(3)+'</span></div>';
+  if(n.overview)h+='<div class="hero-ov">'+esc(n.overview)+'</div>';
+  h+='<div class="hero-period">'+d.period.first+' 〜 '+d.period.last+' ／ 得失点差 '+(d.runs.diff>0?'+':'')+d.runs.diff+'（'+d.runs.scored+'得点 '+d.runs.allowed+'失点）</div>';
+  h+='</div>';
+
+  // 月別成績
+  h+='<div class="sec"><div class="sec-t">📅 月別成績（タップで日別へ）</div>';
+  d.monthly.forEach(function(m){
+    var tot=m.w+m.l+m.d||1;
+    var wp=Math.round(m.w/tot*100), lp=Math.round(m.l/tot*100);
+    h+='<div class="mon-row" onclick="location.href=\'?month='+d.year+'-'+m.month+'\'">';
+    h+='<span class="mon-lbl">'+parseInt(m.month)+'月</span>';
+    h+='<div class="mon-bar"><div class="wseg" style="width:'+wp+'%"></div><div class="lseg" style="width:'+lp+'%"></div></div>';
+    h+='<span class="mon-rec">'+m.w+'-'+m.l+(m.d?'-'+m.d:'')+'</span><span class="mon-arrow">›</span></div>';
+  });
+  h+='</div>';
+
+  // 今季のテーマ
+  if(n.themes&&n.themes.length){
+    h+='<div class="sec"><div class="sec-t">🎯 今季のテーマ</div>';
+    n.themes.forEach(function(t){
+      h+='<div class="theme"><div class="theme-t">'+esc(t.theme)+'</div><div class="theme-d">'+esc(t.detail)+'</div></div>';
+    });
+    h+='</div>';
+  }
+
+  // シーズンの分岐点
+  if(n.turning_point){
+    h+='<div class="sec"><div class="sec-t">🔀 シーズンの分岐点</div><div style="font-size:13.5px;line-height:1.75;color:#d5d8de">'+esc(n.turning_point)+'</div></div>';
+  }
+
+  // 成績リーダー
+  if(L.batting||L.pitching){
+    h+='<div class="sec"><div class="sec-t">🏆 今季の成績</div>';
+    h+='<div class="ldr-tabs"><button class="ldr-tab active" id="lt-bat" onclick="swLdr(\'bat\')">打撃</button><button class="ldr-tab" id="lt-pit" onclick="swLdr(\'pit\')">投手</button></div>';
+    h+='<div id="ldr-bat">'+renderBatLeaders(L.batting||{})+'</div>';
+    h+='<div id="ldr-pit" style="display:none">'+renderPitLeaders(L.pitching||{})+'</div>';
+    if(L.kiteiPA)h+='<div style="font-size:10px;color:var(--faint);margin-top:.6rem">※ 打率は規定打席（'+L.kiteiPA+'）到達者のみ。<span class="qmark">規</span>＝規定到達</div>';
+    h+='</div>';
+  }
+
+  // ハイライト
+  if(d.highlights){
+    var hl=d.highlights;
+    h+='<div class="sec"><div class="sec-t">✨ 今季のハイライト</div>';
+    if(hl.biggestWin)h+=hlRow('🔥','最大差の勝利',hl.biggestWin.date,'vs'+hl.biggestWin.opp+' '+hl.biggestWin.cs+'-'+hl.biggestWin.os);
+    if(hl.highestScoring&&hl.highestScoring.date!==(hl.biggestWin||{}).date)h+=hlRow('💥','最多得点',hl.highestScoring.date,'vs'+hl.highestScoring.opp+' '+hl.highestScoring.cs+'得点');
+    h+=hlRow('📈','最長連勝','', d.streaks.longestWin+'連勝');
+    h+=hlRow('📉','最長連敗','', d.streaks.longestLose+'連敗');
+    if(hl.worstLoss)h+=hlRow('🧊','最大差の敗戦',hl.worstLoss.date,'vs'+hl.worstLoss.opp+' '+hl.worstLoss.cs+'-'+hl.worstLoss.os);
+    h+='</div>';
+  }
+
+  // 来季への問い
+  if(n.next_season){
+    h+='<div class="nextq"><div class="nextq-l">↪ 来季への問い</div><div class="nextq-t">'+esc(n.next_season)+'</div></div>';
+  }
+
+  document.getElementById('main').innerHTML=h;
+}
+
+function hlRow(ico,t,date,desc){
+  var link=date?('<a href="/?date='+date+'">'+desc+' ›</a>'):desc;
+  return '<div class="hl"><span class="hl-ico">'+ico+'</span><div class="hl-body"><div class="hl-t">'+t+(date?' ('+date.slice(5)+')':'')+'</div><div class="hl-d">'+link+'</div></div></div>';
+}
+
+function renderBatLeaders(b){
+  var h='';
+  h+='<div class="ldr-grp"><div class="ldr-h">打率（規定到達）</div>';
+  (b.avg||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+esc(x.avg)+'</span><span class="ldr-sub">'+x.hr+'本 '+x.rbi+'点</span></div>';});
+  if(!(b.avg||[]).length)h+='<div class="ldr-sub" style="padding:4px 0">規定到達者なし</div>';
+  h+='</div>';
+  h+='<div class="ldr-grp"><div class="ldr-h">本塁打</div>';
+  (b.hr||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+x.hr+'本</span></div>';});
+  h+='</div>';
+  h+='<div class="ldr-grp"><div class="ldr-h">打点</div>';
+  (b.rbi||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+x.rbi+'点</span></div>';});
+  h+='</div>';
+  return h;
+}
+
+function renderPitLeaders(p){
+  var h='';
+  h+='<div class="ldr-grp"><div class="ldr-h">先発（防御率順）</div>';
+  (p.starters||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+(x.qualified?'<span class="qmark">規</span>':'')+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+esc(x.ip)+'回 '+x.wins+'勝'+x.losses+'敗</span></div>';});
+  h+='</div>';
+  h+='<div class="ldr-grp"><div class="ldr-h">救援</div>';
+  (p.relievers||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+x.games+'登板 '+(x.holds||0)+'H'+(x.saves||0)+'S</span></div>';});
+  h+='</div>';
+  return h;
+}
+
+function swLdr(w){
+  document.getElementById('ldr-bat').style.display=w==='bat'?'block':'none';
+  document.getElementById('ldr-pit').style.display=w==='pit'?'block':'none';
+  document.getElementById('lt-bat').classList.toggle('active',w==='bat');
+  document.getElementById('lt-pit').classList.toggle('active',w==='pit');
+}
+
+function renderMonth(month){
+  var d=DATA;
+  var mm=month.slice(5,7);
+  var games=d.allGames.filter(function(g){return g.date.slice(0,7)===month;});
+  var w=games.filter(function(g){return g.result==='W';}).length;
+  var l=games.filter(function(g){return g.result==='L';}).length;
+  var dr=games.filter(function(g){return g.result==='D';}).length;
+  var h='';
+  h+='<a class="bc" href="/season.html">‹ シーズン総括へ戻る</a>';
+  // 月ナビ
+  h+='<div class="month-nav">';
+  d.monthly.forEach(function(m){
+    h+='<span class="month-chip'+(m.month===mm?' active':'')+'" onclick="location.href=\'?month='+d.year+'-'+m.month+'\'">'+parseInt(m.month)+'月</span>';
+  });
+  h+='</div>';
+  h+='<div class="hero" style="padding:1.1rem 1.25rem"><div class="hero-yr">'+d.year+'年 '+parseInt(mm)+'月</div><div class="hero-rec"><span class="big">'+w+'<span style="font-size:20px;color:var(--muted)">勝</span> '+l+'<span style="font-size:20px;color:var(--muted)">敗</span>'+(dr?' '+dr+'<span style="font-size:20px;color:var(--muted)">分</span>':'')+'</span></div></div>';
+  // 日別一覧
+  h+='<div class="sec" style="padding:.3rem .6rem">';
+  if(!games.length)h+='<div class="loading">この月の試合データがありません</div>';
+  games.forEach(function(g){
+    var md=g.date.slice(5).replace('-','/');
+    var sym=g.result==='W'?'○':g.result==='L'?'●':'△';
+    h+='<div class="day-row" onclick="location.href=\'/?date='+g.date+'\'">';
+    h+='<span class="day-date">'+md+'</span>';
+    h+='<span class="day-res '+g.result+'">'+sym+'</span>';
+    h+='<span class="day-score">'+g.carpScore+'-'+g.oppScore+'</span>';
+    h+='<div class="day-body"><div class="day-opp">vs '+esc(g.opponent)+'</div>'+(g.title?'<div class="day-title">'+esc(g.title)+'</div>':'')+'</div>';
+    h+='<span class="day-arrow">›</span></div>';
+  });
+  h+='</div>';
+  document.getElementById('main').innerHTML=h;
+}
+
+init();
+</script>
+</body>
+</html>
