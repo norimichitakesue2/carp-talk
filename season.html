@@ -32,7 +32,7 @@ a{color:inherit;text-decoration:none}
 /* monthly bars */
 .mon-row{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:var(--rs);cursor:pointer;transition:background .15s}
 .mon-row:hover{background:var(--surface2)}
-.mon-lbl{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text);width:34px;flex-shrink:0}
+.mon-lbl{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text);width:40px;flex-shrink:0;white-space:nowrap}
 .mon-bar{flex:1;height:18px;background:var(--faint);border-radius:4px;overflow:hidden;display:flex}
 .mon-bar .wseg{background:var(--carp)}
 .mon-bar .lseg{background:var(--surface3)}
@@ -81,6 +81,85 @@ a{color:inherit;text-decoration:none}
 .month-nav{display:flex;gap:6px;flex-wrap:wrap;margin:.5rem 0 1rem}
 .month-chip{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:4px 11px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Bebas Neue',sans-serif;letter-spacing:.05em}
 .month-chip.active{background:rgba(200,16,46,.15);border-color:rgba(200,16,46,.4);color:#ff7090}
+/* league metrics */
+.hero-standing{display:inline-flex;align-items:center;gap:6px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.3);color:var(--accent);border-radius:6px;padding:2px 10px;font-size:12.5px;font-weight:700;margin-top:.2rem}
+.mgrp-h{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin:.9rem 0 .45rem}
+.mgrp-h:first-of-type{margin-top:0}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+@media(max-width:420px){.mgrid{grid-template-columns:repeat(2,1fr)}}
+.mcard{background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:.55rem .6rem;position:relative}
+.mcard-l{font-size:10.5px;color:var(--muted)}
+.mcard-v{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1.1;letter-spacing:.02em}
+.mcard-r{position:absolute;top:.5rem;right:.5rem;font-size:10.5px;font-weight:700;border-radius:4px;padding:0 5px}
+.r1{background:rgba(62,207,142,.15);color:var(--green)}.r2,.r3{background:rgba(74,158,255,.12);color:var(--blue)}
+.r4{background:var(--faint);color:var(--muted)}.r5,.r6{background:rgba(244,96,96,.12);color:var(--red)}
+.mdots{display:flex;gap:3px;margin-top:4px}
+.mdots i{flex:1;height:3px;border-radius:2px;background:var(--faint)}
+.mdots i.on{background:var(--carp)}
+.mcard-b{font-size:9.5px;color:var(--faint);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.std-t{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+.std-t td,.std-t th{padding:5px 4px;border-bottom:1px solid var(--border);text-align:right}
+.std-t th{font-size:10.5px;color:var(--muted);font-weight:500}
+.std-t td:nth-child(2),.std-t th:nth-child(2){text-align:left}
+.std-t tr.me td{color:#ff7090;font-weight:700}
+.vs-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:.7rem}
+.vs-chip{font-size:11.5px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 8px;color:var(--muted)}
+.vs-chip b{color:var(--text);font-weight:500}
+/* players */
+.pl{border:1px solid var(--border);border-radius:var(--rs);margin-bottom:6px;background:var(--surface2);overflow:hidden}
+.pl-h{display:flex;align-items:center;gap:8px;padding:.6rem .7rem;cursor:pointer}
+.pl-name{font-weight:700;font-size:14px;white-space:nowrap}
+.pl-tag{font-size:11px;color:var(--accent);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl-stat{font-size:11px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pl-arrow{color:var(--faint);font-size:11px;transition:transform .2s}
+.pl.open .pl-arrow{transform:rotate(90deg)}
+.pl-b{display:none;padding:0 .8rem .8rem;border-top:1px solid var(--border)}
+.pl.open .pl-b{display:block}
+.pl-line{font-size:11.5px;color:var(--muted);margin:.6rem 0 .4rem;line-height:1.6;font-variant-numeric:tabular-nums}
+.pl-badges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.4rem}
+.pl-badge{font-size:10.5px;background:rgba(240,192,64,.1);color:var(--accent);border-radius:4px;padding:1px 6px}
+.pl-rev{font-size:13px;line-height:1.75;color:#d5d8de}
+.pl-next{font-size:12px;color:var(--blue);margin-top:.5rem;line-height:1.6}
+.spark{display:flex;align-items:flex-end;gap:4px;margin:.5rem 0 .6rem}
+.spark div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0}
+.spark b{font-weight:400;font-size:9px;color:var(--muted);margin-bottom:2px;font-variant-numeric:tabular-nums}
+.spark span{display:block;width:100%;background:var(--carp);border-radius:2px 2px 0 0;min-height:2px;opacity:.85}
+.spark em{font-style:normal;font-size:9px;color:var(--muted);margin-top:2px}
+.spark-l{font-size:9.5px;color:var(--faint)}
+.tps-h{font-size:11px;font-weight:700;color:var(--carp);letter-spacing:.05em;margin:.8rem 0 .4rem}
+.tpi{display:block;border-left:3px solid var(--orange);background:rgba(240,120,64,.05);border-radius:0 6px 6px 0;padding:.5rem .65rem;margin-bottom:6px;text-decoration:none;color:inherit;transition:background .15s}
+.tpi.strong{border-left-color:var(--carp);background:rgba(200,16,46,.06)}
+.tpi:hover{background:rgba(255,255,255,.04)}
+.tpi-top{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-bottom:2px;font-variant-numeric:tabular-nums}
+.tpi-res{font-weight:700;font-size:10.5px;border-radius:3px;padding:0 5px}
+.tpi-res.W{background:rgba(200,16,46,.18);color:#ff7090}.tpi-res.L{background:var(--faint);color:var(--muted)}.tpi-res.D{background:rgba(240,192,64,.12);color:var(--accent)}
+.tpi-d{font-size:12.5px;line-height:1.55;color:#e2e4e8}
+.tpi-w{font-size:11.5px;color:var(--accent);margin-top:3px;line-height:1.5}
+.tpi-go{margin-left:auto;color:var(--blue);font-size:11px;white-space:nowrap}
+.pl-sc{font-size:10.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pl-sc .p{color:var(--green)}.pl-sc .m{color:var(--red)}
+.scb{margin:.8rem 0 .3rem}
+.scb-nums{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.scb-nums .p{color:var(--green);font-weight:700}.scb-nums .m{color:var(--red);font-weight:700}
+.scb-nums small{font-weight:400;color:var(--muted);font-size:10.5px}
+.scb-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--faint)}
+.scb-bar .p{background:var(--green)}.scb-bar .m{background:var(--red)}
+.scl-h{font-size:11px;font-weight:700;margin:.7rem 0 .3rem}
+.scl-h.p{color:var(--green)}.scl-h.m{color:var(--red)}
+.sci{display:flex;gap:6px;align-items:baseline;font-size:12px;padding:4px 2px;border-bottom:1px solid var(--border);text-decoration:none;color:inherit}
+.sci:hover{background:rgba(255,255,255,.03)}
+.sci-d{color:var(--muted);font-size:10.5px;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:74px}
+.sci-t{flex:1;color:#dfe1e5}
+.sci-big{font-size:9.5px;border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap}
+.sci-big.p{background:rgba(62,207,142,.15);color:var(--green)}.sci-big.m{background:rgba(244,96,96,.15);color:var(--red)}
+.sci-go{color:var(--blue);font-size:10.5px}
+.sc-more{background:none;border:none;color:var(--blue);font-size:11px;cursor:pointer;padding:4px 0;font-family:inherit}
+.hero-rank{background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:.6rem .7rem;margin-bottom:.8rem}
+.hero-rank-h{font-size:11px;font-weight:700;color:var(--green);margin-bottom:.35rem}
+.hr-row{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:3px 0}
+.hr-row .n{flex:1}.hr-row .v{color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
+.hr-row .s{font-size:10.5px;color:var(--muted)}
+.src{font-size:10px;color:var(--faint);margin-top:.6rem}
 .loading{text-align:center;padding:4rem 0;color:var(--muted)}
 .spin{display:inline-block;width:20px;height:20px;border:2px solid var(--faint);border-top-color:var(--carp);border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -119,7 +198,8 @@ function renderSeason(){
   h+='<div class="hero">';
   h+='<div class="hero-yr">CARP '+d.year+' SEASON</div>';
   h+='<div class="hero-title">'+esc(n.title||'シーズン総括')+'</div>';
-  h+='<div class="hero-rec"><span class="big">'+rec.w+'<span style="font-size:22px;color:var(--muted)">勝</span> '+rec.l+'<span style="font-size:22px;color:var(--muted)">敗</span> '+rec.d+'<span style="font-size:22px;color:var(--muted)">分</span></span><span class="pct">勝率 '+rec.pct.toFixed(3)+'</span></div>';
+  h+='<div class="hero-rec"><span class="big">'+rec.w+'<span style="font-size:22px;color:var(--muted)">勝</span> '+rec.l+'<span style="font-size:22px;color:var(--muted)">敗</span> '+rec.d+'<span style="font-size:22px;color:var(--muted)">分</span></span><span class="pct">勝率 '+rec.pct.toFixed(3).replace(/^0/,'')+'</span></div>';
+  if(d.league)h+='<div class="hero-standing">セ・リーグ '+d.league.standing+'位 <span style="font-weight:400;opacity:.8">首位と'+esc(d.league.gb)+'差</span></div>';
   if(n.overview)h+='<div class="hero-ov">'+esc(n.overview)+'</div>';
   h+='<div class="hero-period">'+d.period.first+' 〜 '+d.period.last+' ／ 得失点差 '+(d.runs.diff>0?'+':'')+d.runs.diff+'（'+d.runs.scored+'得点 '+d.runs.allowed+'失点）</div>';
   h+='</div>';
@@ -135,6 +215,9 @@ function renderSeason(){
     h+='<span class="mon-rec">'+m.w+'-'+m.l+(m.d?'-'+m.d:'')+'</span><span class="mon-arrow">›</span></div>';
   });
   h+='</div>';
+
+  // チーム主要指標（セ・リーグ内順位）
+  if(d.league)h+=renderLeague(d.league);
 
   // 今季のテーマ
   if(n.themes&&n.themes.length){
@@ -159,6 +242,9 @@ function renderSeason(){
     if(L.kiteiPA)h+='<div style="font-size:10px;color:var(--faint);margin-top:.6rem">※ 打率は規定打席（'+L.kiteiPA+'）到達者のみ。<span class="qmark">規</span>＝規定到達</div>';
     h+='</div>';
   }
+
+  // 選手個人の振り返り
+  if(d.players&&d.players.length)h+=renderPlayers(d.players);
 
   // ハイライト
   if(d.highlights){
@@ -206,9 +292,136 @@ function renderPitLeaders(p){
   (p.starters||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+(x.qualified?'<span class="qmark">規</span>':'')+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+esc(x.ip)+'回 '+x.wins+'勝'+x.losses+'敗</span></div>';});
   h+='</div>';
   h+='<div class="ldr-grp"><div class="ldr-h">救援</div>';
-  (p.relievers||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+x.games+'登板 '+(x.holds||0)+'H'+(x.saves||0)+'S</span></div>';});
+  (p.relievers||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+x.games+'登板 '+(x.saves||0)+'S '+(x.hp!=null?x.hp+'HP':(x.holds||0)+'H')+'</span></div>';});
   h+='</div>';
   return h;
+}
+
+var CAT_LABEL={batting:'打撃',pitching:'投手',fielding:'守備'};
+function renderLeague(L){
+  var h='<div class="sec"><div class="sec-t">📊 チーム主要指標（セ・リーグ6球団中の順位）</div>';
+  ['batting','pitching','fielding'].forEach(function(cat){
+    var ms=L.metrics.filter(function(m){return m.cat===cat;});
+    if(!ms.length)return;
+    h+='<div class="mgrp-h">'+CAT_LABEL[cat]+'</div><div class="mgrid">';
+    ms.forEach(function(m){
+      var dots='';for(var i=6;i>=1;i--)dots+='<i class="'+(i>=m.rank?'on':'')+'"></i>';
+      var best=m.rank===1?'リーグ1位':('1位 '+esc(m.best.team)+' '+esc(m.best.value));
+      h+='<div class="mcard"><div class="mcard-l">'+esc(m.label)+(m.higherIsBetter?'':'<span style="font-size:9px;opacity:.7">（少ない順）</span>')+'</div><div class="mcard-v">'+esc(m.value)+'</div>'
+        +'<span class="mcard-r r'+m.rank+'">'+m.rank+'位</span><div class="mdots">'+dots+'</div><div class="mcard-b">'+best+'</div></div>';
+    });
+    h+='</div>';
+  });
+  // 順位表
+  h+='<div class="mgrp-h">順位表</div><table class="std-t"><tr><th></th><th>チーム</th><th>勝</th><th>敗</th><th>分</th><th>勝率</th><th>差</th></tr>';
+  L.standings.forEach(function(t){
+    h+='<tr class="'+(t.team==='広島'?'me':'')+'"><td>'+t.standing+'</td><td>'+esc(t.team)+'</td><td>'+t.w+'</td><td>'+t.l+'</td><td>'+t.d+'</td><td>'+esc(t.pct)+'</td><td>'+esc(t.gb)+'</td></tr>';
+  });
+  h+='</table>';
+  if(L.vs){
+    h+='<div class="vs-row">';
+    Object.keys(L.vs).forEach(function(k){
+      var p=String(L.vs[k]).split('-');
+      h+='<span class="vs-chip">'+(/ホーム|ロード|交流戦/.test(k)?'':'対')+esc(k)+' <b>'+p[0]+'勝'+p[1]+'敗'+(p[2]&&p[2]!=='0'?p[2]+'分':'')+'</b></span>';
+    });
+    h+='</div>';
+  }
+  h+='<div class="src">出典：'+esc(L.source||'NPB公式')+'（全日程終了後の確定値）</div></div>';
+  return h;
+}
+
+function plStatShort(p){
+  var s=p.stat;
+  if(p.type==='batter')return s.avg+' '+s.hr+'本 '+s.rbi+'点';
+  if((s.starts||0)>=7)return s.w+'勝'+s.l+'敗 防'+s.era;
+  return s.g+'登板 防'+s.era+(s.sv?' '+s.sv+'S':'')+(s.hp?' '+s.hp+'HP':'');
+}
+function plStatLine(p){
+  var s=p.stat;
+  if(p.type==='batter')return s.bats+'打｜'+s.g+'試合 '+s.pa+'打席 打率'+s.avg+' '+s.hr+'本塁打 '+s.rbi+'打点 '+s.sb+'盗塁<br>出塁率'+s.obp+' 長打率'+s.slg+' OPS'+s.ops+' 四球'+s.bb+' 三振'+s.so;
+  var role=(s.starts||0)>=7?('先発'+s.starts+(s.relief?'・救援'+s.relief:'')):('救援'+(s.relief||s.g));
+  return s.throws+'投・'+role+'｜'+s.g+'登板 '+s.w+'勝'+s.l+'敗'+s.sv+'S'+s.hld+'H 防御率'+s.era+'<br>'+s.ip+'回 奪三振'+s.so+' 与四球'+s.bb+' 被本塁打'+s.hr+' WHIP'+s.whip;
+}
+function plSpark(p){
+  var m=p.monthly||[];if(m.length<2)return '';
+  var isB=p.type==='batter';
+  var vals=m.map(function(x){return isB?parseFloat(x.avg)||0:(x.era==='-'?0:parseFloat(x.era));});
+  var max=Math.max.apply(null,vals)||1, min=Math.min.apply(null,vals);
+  var h='<div class="spark-l">月別'+(isB?'打率':'防御率（低いほど良い）')+'・試合データ集計（参考）</div><div class="spark">';
+  m.forEach(function(x,i){
+    var px=max===min?20:Math.round(8+(vals[i]-min)/(max-min)*30);
+    var lab=isB?x.avg:x.era;
+    h+='<div title="'+parseInt(x.month)+'月 '+(isB?x.avg+'（'+x.ab+'打数）':x.era+'（'+x.g+'登板 '+x.ip+'回）')+'"><b>'+esc(lab)+'</b><span style="height:'+px+'px'+(isB?'':';background:var(--blue)')+'"></span><em>'+parseInt(x.month)+'月</em></div>';
+  });
+  return h+'</div>';
+}
+function sceneItem(x){
+  var inn=parseInt(x.inning,10)||'';
+  var rl=x.result==='W'?'○':x.result==='L'?'●':'△';
+  return '<a class="sci" href="/?date='+x.date+(inn?'&tp='+inn:'')+'"><span class="sci-d">'+x.date.slice(5).replace('-','/')+' '+rl+esc(x.score)+'</span>'
+    +'<span class="sci-t">'+(x.inning?'<span style="color:var(--muted)">'+esc(x.inning)+'</span> ':'')+esc(x.summary)+(x.impact==='big'?'<span class="sci-big '+(x.sign==='+'?'p':'m')+'">勝敗直結</span>':'')+'</span><span class="sci-go">›</span></a>';
+}
+function plScenes(p,id){
+  var sc=p.scenes;if(!sc||(!sc.saved&&!sc.hurt))return '';
+  var tot=sc.saved+sc.hurt||1;
+  var h='<div class="scb"><div class="scb-nums"><span class="p">チームを救った場面 '+sc.saved+' <small>（勝敗直結 '+sc.bigSaved+'）</small></span><span class="m"><small>（勝敗直結 '+sc.bigHurt+'）</small> 痛かった場面 '+sc.hurt+'</span></div>'
+    +'<div class="scb-bar"><div class="p" style="width:'+(sc.saved/tot*100)+'%"></div><div class="m" style="width:'+(sc.hurt/tot*100)+'%"></div></div></div>';
+  ['+','-'].forEach(function(sg){
+    var list=(sc.list||[]).filter(function(x){return x.sign===sg;});
+    if(!list.length)return;
+    var cls=sg==='+'?'p':'m';
+    h+='<div class="scl-h '+cls+'">'+(sg==='+'?'🦸 救ったシーン':'💧 痛かったシーン')+'</div>';
+    list.slice(0,3).forEach(function(x){h+=sceneItem(x);});
+    if(list.length>3){
+      h+='<div id="scm-'+id+cls+'" style="display:none">';list.slice(3).forEach(function(x){h+=sceneItem(x);});h+='</div>';
+      h+='<button class="sc-more" onclick="var e=document.getElementById(\'scm-'+id+cls+'\');var o=e.style.display===\'none\';e.style.display=o?\'block\':\'none\';this.textContent=o?\'閉じる\':\'すべて見る（'+list.length+'件）\'">すべて見る（'+list.length+'件）</button>';
+    }
+  });
+  return h;
+}
+function heroRanking(P){
+  var r=P.filter(function(p){return p.scenes&&p.scenes.saved;}).sort(function(a,b){return b.scenes.saved-a.scenes.saved||b.scenes.bigSaved-a.scenes.bigSaved;}).slice(0,5);
+  if(!r.length)return '';
+  var h='<div class="hero-rank"><div class="hero-rank-h">🦸 チームを救った場面が多かった選手</div>';
+  r.forEach(function(p,i){h+='<div class="hr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="n">'+esc(p.name)+'</span><span class="s">勝敗直結 '+p.scenes.bigSaved+'</span><span class="v">'+p.scenes.saved+'</span></div>';});
+  return h+'</div>';
+}
+function plTurnings(p){
+  var t=p.turningPoints||[];if(!t.length)return '';
+  var h='<div class="tps-h">⚡ 分岐点になった場面</div>';
+  t.forEach(function(x){
+    var inn=parseInt(x.inning,10)||'';
+    var md=x.date.slice(5).replace('-','/');
+    var rl=x.result==='W'?'勝':x.result==='L'?'敗':'分';
+    h+='<a class="tpi'+(x.intensity==='strong'?' strong':'')+'" href="/?date='+x.date+(inn?'&tp='+inn:'')+'">'
+      +'<div class="tpi-top"><span>'+md+'</span><span class="tpi-res '+x.result+'">'+rl+' '+esc(x.score)+'</span><span>'+esc(x.inning)+'</span><span class="tpi-go">試合を見る ›</span></div>'
+      +'<div class="tpi-d">'+esc(x.description)+'</div>'+(x.why?'<div class="tpi-w">'+esc(x.why)+'</div>':'')+'</a>';
+  });
+  return h;
+}
+function renderPlayers(P){
+  var h='<div class="sec"><div class="sec-t">👤 選手個人の振り返り</div>'+heroRanking(P);
+  h+='<div class="ldr-tabs"><button class="ldr-tab active" id="pt-batter" onclick="swPl(\'batter\')">打者</button><button class="ldr-tab" id="pt-pitcher" onclick="swPl(\'pitcher\')">投手</button></div>';
+  ['batter','pitcher'].forEach(function(t){
+    h+='<div id="pl-'+t+'"'+(t==='pitcher'?' style="display:none"':'')+'>';
+    P.filter(function(p){return p.type===t;}).forEach(function(p,i){
+      var badges=(p.leagueRanks||[]).map(function(r){return '<span class="pl-badge">'+esc(r.item)+' リーグ'+r.rank+'位</span>';}).join('');
+      if(p.type==='batter'&&p.stat.pa>=443)badges='<span class="pl-badge">規定打席到達</span>'+badges;
+      h+='<div class="pl" id="pl-'+t+'-'+i+'"><div class="pl-h" onclick="this.parentNode.classList.toggle(\'open\')">'
+        +'<span class="pl-name">'+esc(p.name)+'</span><span class="pl-tag">'+esc(p.tag||'')+'</span>'+(p.scenes?'<span class="pl-sc"><span class="p">救'+p.scenes.saved+'</span> <span class="m">痛'+p.scenes.hurt+'</span></span>':'')+'<span class="pl-stat">'+esc(plStatShort(p))+'</span><span class="pl-arrow">▶</span></div>'
+        +'<div class="pl-b"><div class="pl-line">'+plStatLine(p)+'</div>'+(badges?'<div class="pl-badges">'+badges+'</div>':'')
+        +plSpark(p)+'<div class="pl-rev">'+esc(p.review||'')+'</div>'+plScenes(p,t+'-'+i)+(p.next?'<div class="pl-next">↪ 来季へ：'+esc(p.next)+'</div>':'')+'</div></div>';
+    });
+    h+='</div>';
+  });
+  h+='<div class="src">成績：NPB公式確定値／月別推移：各試合のボックススコアから集計（参考）／救った・痛かった場面：各試合の記事をAIが仕分けて集計（参考）／振り返り文：AI生成</div></div>';
+  return h;
+}
+function swPl(w){
+  ['batter','pitcher'].forEach(function(t){
+    document.getElementById('pl-'+t).style.display=t===w?'block':'none';
+    document.getElementById('pt-'+t).classList.toggle('active',t===w);
+  });
 }
 
 function swLdr(w){

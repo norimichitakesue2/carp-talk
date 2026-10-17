@@ -5222,6 +5222,20 @@ window.addEventListener('DOMContentLoaded',function(){
     return;
   }
   loadGame(date);
+  // 総括ページの「分岐点になった場面」からのリンク：?tp=7 で該当イニングの分岐点を開く
+  var tp=parseInt(params.get('tp'),10);
+  if(tp){
+    var tries=0;
+    var timer=setInterval(function(){
+      tries++;
+      var box=document.getElementById('wave-box');
+      if(box&&typeof drawWave==='function'&&turnings&&turnings.length){
+        clearInterval(timer);
+        SEL_INN=tp;drawWave();
+        box.scrollIntoView({behavior:'smooth',block:'start'});
+      }else if(tries>40){clearInterval(timer);if(box)box.scrollIntoView({behavior:'smooth',block:'start'});}
+    },250);
+  }
 });
 </script>
 </body>
