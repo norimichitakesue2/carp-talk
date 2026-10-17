@@ -1,21 +1,21 @@
 {
   "year": 2026,
-  "generatedAt": "2026-10-15T16:13:43.202Z",
+  "generatedAt": "2026-10-17T06:53:50.243Z",
   "period": {
     "first": "2026-03-27",
     "last": "2026-10-07"
   },
   "record": {
-    "w": 60,
-    "l": 76,
+    "w": 61,
+    "l": 78,
     "d": 4,
-    "games": 140,
-    "pct": 0.4411764705882353
+    "games": 143,
+    "pct": 0.43884892086330934
   },
   "runs": {
-    "scored": 417,
-    "allowed": 505,
-    "diff": -88
+    "scored": 431,
+    "allowed": 520,
+    "diff": -89
   },
   "streaks": {
     "longestWin": 4,
@@ -42,14 +42,14 @@
     },
     {
       "month": "06",
-      "w": 8,
-      "l": 8,
+      "w": 9,
+      "l": 9,
       "d": 1
     },
     {
       "month": "07",
       "w": 9,
-      "l": 10,
+      "l": 11,
       "d": 1
     },
     {
@@ -599,6 +599,15 @@
       "title": "9回裏に泣いた…中﨑が満塁で沈む"
     },
     {
+      "date": "2026-06-10",
+      "result": "L",
+      "carpScore": 4,
+      "oppScore": 5,
+      "opponent": "西武",
+      "resultLabel": "西武勝利",
+      "title": ""
+    },
+    {
       "date": "2026-06-11",
       "result": "L",
       "carpScore": 1,
@@ -651,6 +660,15 @@
       "opponent": "ヤクルト",
       "resultLabel": "ヤクルト勝利",
       "title": "4回裏の5失点が全て…神宮で完敗"
+    },
+    {
+      "date": "2026-06-20",
+      "result": "W",
+      "carpScore": 8,
+      "oppScore": 6,
+      "opponent": "ヤクルト",
+      "resultLabel": "広島勝利",
+      "title": ""
     },
     {
       "date": "2026-06-21",
@@ -813,6 +831,15 @@
       "opponent": "阪神",
       "resultLabel": "広島勝利",
       "title": "栗林7回1失点！坂倉の一発でタイガースを撃破"
+    },
+    {
+      "date": "2026-07-19",
+      "result": "L",
+      "carpScore": 2,
+      "oppScore": 4,
+      "opponent": "阪神",
+      "resultLabel": "阪神勝利",
+      "title": ""
     },
     {
       "date": "2026-07-20",
@@ -1356,27 +1383,29 @@
     }
   ],
   "leaders": {
-    "kiteiPA": 434,
-    "kiteiIP": 140,
+    "kiteiPA": 443,
+    "kiteiIP": 143,
     "batting": {
       "avg": [
         {
-          "name": "菊池涼介",
-          "avg": ".246",
-          "hr": 7,
-          "rbi": 34,
-          "ops": ".668",
-          "pa": 481,
-          "qualified": true
+          "name": "坂倉将吾",
+          "avg": ".251",
+          "hr": 15,
+          "rbi": 74,
+          "ops": ".725",
+          "pa": 576,
+          "qualified": true,
+          "leagueRank": 15
         },
         {
-          "name": "坂倉将吾",
-          "avg": ".244",
-          "hr": 13,
-          "rbi": 63,
-          "ops": ".712",
-          "pa": 512,
-          "qualified": true
+          "name": "菊池涼介",
+          "avg": ".234",
+          "hr": 7,
+          "rbi": 39,
+          "ops": ".634",
+          "pa": 540,
+          "qualified": true,
+          "leagueRank": 18
         }
       ],
       "hr": [
@@ -1384,63 +1413,63 @@
           "name": "ファビアン",
           "hr": 16,
           "rbi": 37,
-          "avg": ".219"
+          "avg": ".223"
         },
         {
           "name": "坂倉将吾",
-          "hr": 13,
-          "rbi": 63,
-          "avg": ".244"
+          "hr": 15,
+          "rbi": 74,
+          "avg": ".251"
         },
         {
           "name": "モンテロ",
-          "hr": 12,
-          "rbi": 40,
-          "avg": ".238"
+          "hr": 13,
+          "rbi": 42,
+          "avg": ".232"
         },
         {
           "name": "菊池涼介",
           "hr": 7,
-          "rbi": 34,
-          "avg": ".246"
+          "rbi": 39,
+          "avg": ".234"
         },
         {
-          "name": "持丸泰輝",
+          "name": "大盛穂",
           "hr": 6,
-          "rbi": 18,
-          "avg": ".191"
+          "rbi": 23,
+          "avg": ".222"
         }
       ],
       "rbi": [
         {
           "name": "坂倉将吾",
-          "rbi": 63,
-          "hr": 13,
-          "avg": ".244"
+          "rbi": 74,
+          "hr": 15,
+          "avg": ".251"
         },
         {
           "name": "モンテロ",
-          "rbi": 40,
-          "hr": 12,
-          "avg": ".238"
+          "rbi": 42,
+          "hr": 13,
+          "avg": ".232"
+        },
+        {
+          "name": "菊池涼介",
+          "rbi": 39,
+          "hr": 7,
+          "avg": ".234"
         },
         {
           "name": "ファビアン",
           "rbi": 37,
           "hr": 16,
-          "avg": ".219"
+          "avg": ".223"
         },
         {
-          "name": "菊池涼介",
-          "rbi": 34,
-          "hr": 7,
-          "avg": ".246"
-        },
-        {
-          "name": "小園海斗",
-          "rbi": 23,
-          "hr": 1,
-          "avg": ".257"
+          "name": "佐々木泰",
+          "rbi": 26,
+          "hr": 6,
+          "avg": ".254"
         }
       ]
     },
@@ -1453,7 +1482,8 @@
           "wins": 2,
           "losses": 6,
           "starts": 16,
-          "qualified": false
+          "qualified": false,
+          "leagueRank": null
         },
         {
           "name": "床田寛樹",
@@ -1462,7 +1492,8 @@
           "wins": 8,
           "losses": 6,
           "starts": 23,
-          "qualified": true
+          "qualified": true,
+          "leagueRank": 9
         },
         {
           "name": "栗林良吏",
@@ -1471,16 +1502,18 @@
           "wins": 7,
           "losses": 6,
           "starts": 19,
-          "qualified": false
+          "qualified": false,
+          "leagueRank": null
         },
         {
           "name": "森翔平",
           "era": "3.54",
-          "ip": "94.0",
+          "ip": "94",
           "wins": 3,
           "losses": 6,
           "starts": 16,
-          "qualified": false
+          "qualified": false,
+          "leagueRank": null
         },
         {
           "name": "森下暢仁",
@@ -1489,7 +1522,18 @@
           "wins": 7,
           "losses": 11,
           "starts": 23,
-          "qualified": false
+          "qualified": false,
+          "leagueRank": null
+        },
+        {
+          "name": "ターノック",
+          "era": "3.81",
+          "ip": "56.2",
+          "wins": 0,
+          "losses": 7,
+          "starts": 8,
+          "qualified": false,
+          "leagueRank": null
         },
         {
           "name": "岡本駿",
@@ -1498,7 +1542,8 @@
           "wins": 7,
           "losses": 7,
           "starts": 16,
-          "qualified": false
+          "qualified": false,
+          "leagueRank": null
         }
       ],
       "relievers": [
@@ -1508,7 +1553,8 @@
           "ip": "60.2",
           "games": 62,
           "holds": 12,
-          "saves": 27
+          "saves": 27,
+          "hp": 17
         },
         {
           "name": "ハーン",
@@ -1516,15 +1562,8 @@
           "ip": "35.1",
           "games": 37,
           "holds": 26,
-          "saves": 1
-        },
-        {
-          "name": "髙太一",
-          "era": "1.90",
-          "ip": "52.0",
-          "games": 56,
-          "holds": 24,
-          "saves": 0
+          "saves": 1,
+          "hp": 28
         },
         {
           "name": "遠藤淳志",
@@ -1532,7 +1571,17 @@
           "ip": "59.2",
           "games": 60,
           "holds": 23,
-          "saves": 0
+          "saves": 0,
+          "hp": 28
+        },
+        {
+          "name": "髙太一",
+          "era": "1.90",
+          "ip": "52",
+          "games": 56,
+          "holds": 24,
+          "saves": 0,
+          "hp": 27
         },
         {
           "name": "中﨑翔太",
@@ -1540,19 +1589,355 @@
           "ip": "25.1",
           "games": 27,
           "holds": 6,
-          "saves": 6
+          "saves": 6,
+          "hp": 7
         },
         {
-          "name": "ターノック",
-          "era": "3.81",
-          "ip": "56.2",
-          "games": 16,
-          "holds": 8,
-          "saves": 0
+          "name": "辻大雅",
+          "era": "4.68",
+          "ip": "32.2",
+          "games": 36,
+          "holds": 6,
+          "saves": 0,
+          "hp": 8
+        },
+        {
+          "name": "鈴木健矢",
+          "era": "2.50",
+          "ip": "68.1",
+          "games": 29,
+          "holds": 2,
+          "saves": 0,
+          "hp": 3
         }
       ]
     },
-    "source": "nf3"
+    "source": "npb"
+  },
+  "league": {
+    "standing": 4,
+    "gb": "17.0",
+    "standings": [
+      {
+        "team": "阪神",
+        "w": 79,
+        "l": 62,
+        "d": 2,
+        "pct": ".560",
+        "gb": "--",
+        "standing": 1
+      },
+      {
+        "team": "巨人",
+        "w": 76,
+        "l": 64,
+        "d": 3,
+        "pct": ".543",
+        "gb": "2.5",
+        "standing": 2
+      },
+      {
+        "team": "DeNA",
+        "w": 71,
+        "l": 69,
+        "d": 3,
+        "pct": ".507",
+        "gb": "7.5",
+        "standing": 3
+      },
+      {
+        "team": "広島",
+        "w": 61,
+        "l": 78,
+        "d": 4,
+        "pct": ".439",
+        "gb": "17.0",
+        "standing": 4
+      },
+      {
+        "team": "ヤクルト",
+        "w": 61,
+        "l": 80,
+        "d": 2,
+        "pct": ".433",
+        "gb": "18.0",
+        "standing": 5
+      },
+      {
+        "team": "中日",
+        "w": 60,
+        "l": 81,
+        "d": 2,
+        "pct": ".426",
+        "gb": "19.0",
+        "standing": 6
+      }
+    ],
+    "metrics": [
+      {
+        "key": "avg",
+        "label": "打率",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": ".223",
+        "rank": 6,
+        "best": {
+          "team": "阪神",
+          "value": ".246"
+        }
+      },
+      {
+        "key": "runs",
+        "label": "得点",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": 431,
+        "rank": 6,
+        "best": {
+          "team": "DeNA",
+          "value": 557
+        }
+      },
+      {
+        "key": "hr",
+        "label": "本塁打",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": 91,
+        "rank": 5,
+        "best": {
+          "team": "阪神",
+          "value": 125
+        }
+      },
+      {
+        "key": "ops",
+        "label": "OPS",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": ".610",
+        "rank": 6,
+        "best": {
+          "team": "阪神",
+          "value": ".686"
+        }
+      },
+      {
+        "key": "obp",
+        "label": "出塁率",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": ".288",
+        "rank": 6,
+        "best": {
+          "team": "阪神",
+          "value": ".317"
+        }
+      },
+      {
+        "key": "slg",
+        "label": "長打率",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": ".322",
+        "rank": 6,
+        "best": {
+          "team": "DeNA",
+          "value": ".374"
+        }
+      },
+      {
+        "key": "sb",
+        "label": "盗塁",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": 73,
+        "rank": 4,
+        "best": {
+          "team": "巨人",
+          "value": 99
+        }
+      },
+      {
+        "key": "bb",
+        "label": "四球",
+        "cat": "batting",
+        "higherIsBetter": true,
+        "value": 397,
+        "rank": 3,
+        "best": {
+          "team": "阪神",
+          "value": 447
+        }
+      },
+      {
+        "key": "so",
+        "label": "三振",
+        "cat": "batting",
+        "higherIsBetter": false,
+        "value": 1083,
+        "rank": 2,
+        "best": {
+          "team": "DeNA",
+          "value": 1082
+        }
+      },
+      {
+        "key": "gidp",
+        "label": "併殺打",
+        "cat": "batting",
+        "higherIsBetter": false,
+        "value": 64,
+        "rank": 1,
+        "best": {
+          "team": "広島",
+          "value": 64
+        }
+      },
+      {
+        "key": "era",
+        "label": "防御率",
+        "cat": "pitching",
+        "higherIsBetter": false,
+        "value": "3.39",
+        "rank": 5,
+        "best": {
+          "team": "阪神",
+          "value": "2.79"
+        }
+      },
+      {
+        "key": "runsAllowed",
+        "label": "失点",
+        "cat": "pitching",
+        "higherIsBetter": false,
+        "value": 520,
+        "rank": 5,
+        "best": {
+          "team": "阪神",
+          "value": 439
+        }
+      },
+      {
+        "key": "whip",
+        "label": "WHIP",
+        "cat": "pitching",
+        "higherIsBetter": false,
+        "value": "1.23",
+        "rank": 3,
+        "best": {
+          "team": "阪神",
+          "value": "1.13"
+        }
+      },
+      {
+        "key": "strikeouts",
+        "label": "奪三振",
+        "cat": "pitching",
+        "higherIsBetter": true,
+        "value": 1083,
+        "rank": 6,
+        "best": {
+          "team": "阪神",
+          "value": 1182
+        }
+      },
+      {
+        "key": "bbAllowed",
+        "label": "与四球",
+        "cat": "pitching",
+        "higherIsBetter": false,
+        "value": 410,
+        "rank": 3,
+        "best": {
+          "team": "阪神",
+          "value": 328
+        }
+      },
+      {
+        "key": "hrAllowed",
+        "label": "被本塁打",
+        "cat": "pitching",
+        "higherIsBetter": false,
+        "value": 102,
+        "rank": 2,
+        "best": {
+          "team": "巨人",
+          "value": 98
+        }
+      },
+      {
+        "key": "saves",
+        "label": "セーブ",
+        "cat": "pitching",
+        "higherIsBetter": true,
+        "value": 34,
+        "rank": 3,
+        "best": {
+          "team": "巨人",
+          "value": 47
+        }
+      },
+      {
+        "key": "hp",
+        "label": "ホールドポイント",
+        "cat": "pitching",
+        "higherIsBetter": true,
+        "value": 148,
+        "rank": 3,
+        "best": {
+          "team": "巨人",
+          "value": 185
+        }
+      },
+      {
+        "key": "sho",
+        "label": "完封勝",
+        "cat": "pitching",
+        "higherIsBetter": true,
+        "value": 8,
+        "rank": 6,
+        "best": {
+          "team": "阪神",
+          "value": 16
+        }
+      },
+      {
+        "key": "fpct",
+        "label": "守備率",
+        "cat": "fielding",
+        "higherIsBetter": true,
+        "value": ".989",
+        "rank": 1,
+        "best": {
+          "team": "広島",
+          "value": ".989"
+        }
+      },
+      {
+        "key": "errors",
+        "label": "失策",
+        "cat": "fielding",
+        "higherIsBetter": false,
+        "value": 61,
+        "rank": 2,
+        "best": {
+          "team": "中日",
+          "value": 60
+        }
+      }
+    ],
+    "vs": {
+      "阪神": "11-13-1",
+      "巨人": "9-16-0",
+      "DeNA": "9-14-2",
+      "ヤクルト": "11-14-0",
+      "中日": "16-9-0",
+      "交流戦": "5-12-1",
+      "ホーム": "34-36-1",
+      "ロード": "27-42-3"
+    },
+    "source": "NPB公式（npb.jp/bis/2026/stats/）"
   },
   "narrative": {
     "title": "得点圏に沈んだ夏、それでも投手陣は立っていた",
@@ -1577,5 +1962,6 @@
     ],
     "turning_point": "4月の6勝14敗が最大の分岐点だった。開幕の勢いを失ったこの月に刻まれた借金8は、6月以降に月間5割前後で戦い続けても最後まで解消されず、シーズンの天井を事実上決定づけた。",
     "next_season": "得点圏で沈黙し続けた打線に、来季こそ『あと一本』を打てる打者が育つか。"
-  }
+  },
+  "players": []
 }

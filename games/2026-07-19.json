@@ -7,9 +7,9 @@
   "home_score": 2,
   "venue": "マツダスタジアム",
   "start_time": "18:00",
-  "status": "live",
-  "current_inning": "8回裏",
-  "result_label": "",
+  "status": "final",
+  "current_inning": "試合終了",
+  "result_label": "阪神勝利",
   "away_pitcher": "村上",
   "home_pitcher": "森",
   "title_candidates": [],
@@ -647,6 +647,8 @@
     "sourceFetchedAt": "2026-07-19T12:01:46.563Z",
     "generatedAt": "2026-07-19T12:01:46.574Z",
     "sourceUrl": "https://npb.jp/scores/2026/0719/c-t-15/",
-    "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,持丸,森,森浦,益田,石原,秋山,菊池,辰見,辻,遠藤,鈴木,髙,黒原"
+    "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,持丸,森,森浦,益田,石原,秋山,菊池,辰見,辻,遠藤,鈴木,髙,黒原",
+    "finalPatchedAt": "2026-10-17T06:51:04.925Z",
+    "finalPatchSource": "NPB公式/スポーツナビ（試合途中で取得停止していたため最終スコアのみ補正）"
   }
 }

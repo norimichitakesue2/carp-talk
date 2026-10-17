@@ -7,9 +7,9 @@
   "home_score": 6,
   "venue": "神宮球場",
   "start_time": "14:00",
-  "status": "live",
-  "current_inning": "6回裏",
-  "result_label": "",
+  "status": "final",
+  "current_inning": "試合終了",
+  "result_label": "広島勝利",
   "away_pitcher": "森下",
   "home_pitcher": "松本健",
   "title_candidates": [],
@@ -609,6 +609,8 @@
     "sourceFetchedAt": "2026-06-20T08:23:26.635Z",
     "generatedAt": "2026-06-20T08:23:26.645Z",
     "sourceUrl": "https://npb.jp/scores/2026/0620/s-c-10/",
-    "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,常廣,持丸,森下,森浦,矢野,石原,菊池,辰見,辻,遠藤,野間,鈴木,黒原"
+    "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,中﨑,二俣,佐々木,佐藤啓,前川,勝田,名原,坂倉,大盛,小園,常廣,持丸,森下,森浦,矢野,石原,菊池,辰見,辻,遠藤,野間,鈴木,黒原",
+    "finalPatchedAt": "2026-10-17T06:51:04.924Z",
+    "finalPatchSource": "NPB公式/スポーツナビ（試合途中で取得停止していたため最終スコアのみ補正）"
   }
 }

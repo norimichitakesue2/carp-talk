@@ -4,12 +4,12 @@
   "away_team": "広島",
   "home_team": "西武",
   "away_score": 4,
-  "home_score": 4,
+  "home_score": 5,
   "venue": "ベルーナドーム",
   "start_time": "18:00",
-  "status": "live",
-  "current_inning": "10回表",
-  "result_label": "",
+  "status": "final",
+  "current_inning": "試合終了",
+  "result_label": "西武勝利",
   "away_pitcher": "森",
   "home_pitcher": "渡邉",
   "title_candidates": [],
@@ -623,6 +623,8 @@
     "sourceFetchedAt": "2026-06-10T12:27:40.121Z",
     "generatedAt": "2026-06-10T12:27:40.134Z",
     "sourceUrl": "https://npb.jp/scores/2026/0610/l-c-02/",
-    "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,佐々木,前川,勝田,名原,坂倉,塹江,大盛,小園,平川,持丸,林,森,森浦,益田,矢野,石原,菊池,辰見,辻,遠藤,野間,鈴木,髙"
+    "previewRosterFingerprint": "ハーン,ファビアン,モンテロ,佐々木,前川,勝田,名原,坂倉,塹江,大盛,小園,平川,持丸,林,森,森浦,益田,矢野,石原,菊池,辰見,辻,遠藤,野間,鈴木,髙",
+    "finalPatchedAt": "2026-10-17T06:51:04.920Z",
+    "finalPatchSource": "NPB公式/スポーツナビ（試合途中で取得停止していたため最終スコアのみ補正）"
   }
 }
