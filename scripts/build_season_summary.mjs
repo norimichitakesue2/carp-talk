@@ -379,26 +379,47 @@ function pickTurningCands(turnings) {
   return pickMoments(pool.slice().sort((a, b) => a.date.localeCompare(b.date)), 8);
 }
 
+// 「N月以降は出場がない」系の記述が月別の出場実績と矛盾していないか
+function checkPresence(r, monthly = []) {
+  const months = (monthly || []).map(x => parseInt(x.month, 10));
+  if (!months.length) return [];
+  const last = Math.max(...months);
+  const text = `${r.tag || ''}。${r.review || ''}。${r.next || ''}`;
+  const issues = [];
+  for (const m of text.matchAll(/(\d{1,2})月(?:以降|から)([^。]{0,16})/g)) {
+    const n = parseInt(m[1], 10), w = m[2];
+    const absent = /(出場|登板|記録|姿|戦列|一軍|1軍)/.test(w) && /(ない|なく|無く|姿を消|姿消|消え|離脱|不在|途絶)/.test(w);
+    if (absent && n <= last) issues.push(m[0].replace(/[、，].*$/, ''));
+  }
+  for (const m of text.matchAll(/(\d{1,2})月(?:の|に)?(?:出場|登板)(?:記録)?が?な/g)) {
+    if (months.includes(parseInt(m[1], 10))) issues.push(m[0]);
+  }
+  return issues;
+}
+
 async function generatePlayerReviews(off, timeline, league, scenesMap = {}) {
   const B = off.carp.batters.filter(b => b.pa >= 150).sort((a, b) => b.pa - a.pa);
   const P = off.carp.pitchers.filter(p => (p.starts || 0) >= 7 || (p.relief || 0) >= 25).sort((a, b) => ipToOuts(b.ip) - ipToOuts(a.ip));
   const lr = name => (off.carp.leagueRanks || []).filter(r => r.name === name).map(r => `${r.item}リーグ${r.rank}位`).join('・');
   const mlabel = m => `${parseInt(m)}月`;
   const sceneText = n => { const r = scenesMap[n]; return r ? `\n  チームを救った場面${r.saved}（うち勝敗直結${r.bigSaved}）/ 痛かった場面${r.hurt}（うち勝敗直結${r.bigHurt}）※試合記事からの集計` : ''; };
-  const candMap = {}; // name -> [cand]
-  const candText = t => {
-    const cands = pickTurningCands(t.turnings || []);
-    if (!cands.length) return ' なし';
-    return '\n' + cands.map((c, i) => `    T${i + 1} ${c.date.slice(5)} ${c.inning}［${c.result === 'W' ? '勝' : c.result === 'L' ? '敗' : '分'} ${c.score}］${c.description}（${c.reason.slice(0, 70)}）`).join('\n');
+  // 出場月の事実（AIの読み違い防止用に明示する）
+  const SEASON_MONTHS = ['03', '04', '05', '06', '07', '08', '09', '10'];
+  const presence = monthly => {
+    const months = monthly.map(x => x.month);
+    if (!months.length) return '';
+    const last = months[months.length - 1], first = months[0];
+    const missing = SEASON_MONTHS.filter(m => m > first && m < last && !months.includes(m));
+    const after = SEASON_MONTHS.filter(m => m > last);
+    return `\n  出場状況: 最初の出場${mlabel(first)}・最後の出場${mlabel(last)}${missing.length ? `・途中で出場がなかった月: ${missing.map(mlabel).join('、')}` : ''}${after.length ? `（${mlabel(after[0])}以降は出場なし）` : '（シーズン最後まで出場）'}`;
   };
-  for (const p of [...off.carp.batters, ...off.carp.pitchers]) candMap[p.name] = pickTurningCands(timeline[p.name]?.turnings || []);
 
   const batLines = B.map(b => {
     const t = timeline[b.name] || {};
     const mon = (t.monthlyBat || []).map(x => `${mlabel(x.month)} ${x.avg}(${x.ab}打数)${x.hr ? ` ${x.hr}本` : ''}`).join(' / ');
     const mom = pickMoments(t.moments || [], 5).map(x => `${x.date.slice(5)} ${x.title}`).join(' / ');
     return `■${b.name}（${b.bats}打）${b.g}試合 ${b.pa}打席 打率${b.avg} ${b.hr}本 ${b.rbi}打点 ${b.sb}盗塁 OPS${b.ops} 出塁率${b.obp} 四球${b.bb} 三振${b.so}${b.pa >= off.kiteiPA ? '（規定到達）' : ''}${lr(b.name) ? ' ' + lr(b.name) : ''}
-  月別(試合データ集計・参考): ${mon || 'なし'}
+  月別(試合データ集計・参考): ${mon || 'なし'}${presence(t.monthlyBat || [])}
   印象的な場面: ${mom || 'なし'}${sceneText(b.name)}`;
   }).join('\n');
   const pitLines = P.map(p => {
@@ -407,13 +428,15 @@ async function generatePlayerReviews(off, timeline, league, scenesMap = {}) {
     const mom = pickMoments(t.moments || [], 5).map(x => `${x.date.slice(5)} ${x.title}`).join(' / ');
     const role = (p.starts || 0) >= 7 ? `先発${p.starts}${p.relief ? `・救援${p.relief}` : ''}` : `救援${p.relief}`;
     return `■${p.name}（${p.throws}投・${role}）${p.g}登板 ${p.w}勝${p.l}敗${p.sv}S${p.hld}H 防御率${p.era} ${p.ip}回 奪三振${p.so} 与四球${p.bb} 被本塁打${p.hr} WHIP${p.whip}${ipToOuts(p.ip) >= off.kiteiIP * 3 ? '（規定到達）' : ''}${lr(p.name) ? ' ' + lr(p.name) : ''}
-  月別(試合データ集計・参考): ${mon || 'なし'}
+  月別(試合データ集計・参考): ${mon || 'なし'}${presence(t.monthlyPit || [])}
   印象的な場面: ${mom || 'なし'}${sceneText(p.name)}`;
   }).join('\n');
 
   const rules = `【ルール】
 - 数値は上の成績からのみ引用し、計算・推測で新しい数値を作らない。月別は「参考」なので傾向として触れる程度に
-- 怪我・故障・不調の理由など、データにない事情は書かない。月別の出場が途切れている場合は「◯月以降は出場がない」など事実のみ
+- 怪我・故障・不調の理由など、データにない事情は書かない
+- 出場が途切れたことに触れるときは「出場状況」の記載をそのまま使う（例：最後の出場が7月なら「8月以降は出場がない」「7月を最後に登板がない」。月を1つずらさない）
+- 守備位置・ポジション・打順の役割はデータにないので書かない
 - 首脳陣の意図は断定せず可能性として書く
 - 褒めるだけ・叩くだけにせず、良かった点と課題を両方書く
 - チームは${league.standing}位（打率・得点・OPSはリーグ最下位）。チーム状況との関係にも触れてよい`;
@@ -433,6 +456,20 @@ async function generatePlayerReviews(off, timeline, league, scenesMap = {}) {
       } catch (err) { console.error(`[season] ${label} review attempt ${attempt} failed: ${err.message}`); }
     }
     if (!arr) throw new Error(`${label} のレビュー生成に失敗`);
+    // 出場月との矛盾チェック → 該当選手だけ作り直し（最大2回）
+    for (let fix = 1; fix <= 2; fix++) {
+      const bad = arr.map(r => ({ r, issues: checkPresence(r, label === '打者' ? timeline[r.name]?.monthlyBat : timeline[r.name]?.monthlyPit) })).filter(x => x.issues.length);
+      if (!bad.length) break;
+      console.error(`[season] ${label} 出場月の矛盾を修正 (${fix}回目): ${bad.map(x => x.r.name + '「' + x.issues.join('/') + '」').join(' ')}`);
+      const names = new Set(bad.map(x => x.r.name));
+      const sub = lines.split('\n■').map((blk, i) => (i ? '■' : '') + blk).filter(blk => names.has((blk.match(/^■(\S+?)（/) || [])[1]));
+      const fixPrompt = `${head}\n\n【${label}の今季成績】\n${sub.join('\n')}\n\n${rules}\n\n【前回の誤り】\n${bad.map(x => `${x.r.name}: 「${x.issues.join('」「')}」は出場状況と矛盾`).join('\n')}\n\n${fmt}`;
+      try {
+        const raw = await callClaude(fixPrompt, 4096);
+        const fixed = JSON.parse(raw.slice(raw.indexOf('['), raw.lastIndexOf(']') + 1));
+        for (const f of fixed) { const i = arr.findIndex(r => r.name === f.name); if (i >= 0) arr[i] = f; }
+      } catch (err) { console.error(`[season] fix failed: ${err.message}`); }
+    }
     results.push(...arr.map(x => ({ ...x, type: label === '打者' ? 'batter' : 'pitcher' })));
     console.error(`[season] player reviews (${label}): ${arr.length}`);
   }
