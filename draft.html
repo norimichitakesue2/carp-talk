@@ -95,6 +95,28 @@ a{color:inherit;text-decoration:none}
 .ad-bar div{display:flex;align-items:center;justify-content:center;font-size:9.5px;color:rgba(0,0,0,.75);font-weight:700}
 .a1{background:#3ecf8e}.a2{background:#7fd4b0}.a3{background:#e8b04a}.a4{background:#f46060}
 .src{font-size:10px;color:var(--faint);margin-top:.6rem;line-height:1.6}
+.fl{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.7rem}
+.fl button{background:var(--surface2);border:1px solid var(--border2);border-radius:14px;padding:3px 11px;font-size:11.5px;color:var(--muted);cursor:pointer;font-family:inherit}
+.fl button.on{background:rgba(200,16,46,.15);border-color:rgba(200,16,46,.45);color:#ff7090}
+.cd{border:1px solid var(--border);background:var(--surface2);border-radius:var(--rs);padding:.65rem .75rem;margin-bottom:7px}
+.cd-h{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.cd-n{font-size:14.5px;font-weight:700}
+.cd-t{font-size:11.5px;color:var(--muted)}
+.tier{font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px}
+.tier.t1{background:rgba(200,16,46,.2);color:#ff7090}.tier.t2{background:rgba(240,120,64,.15);color:var(--orange)}.tier.t3{background:var(--faint);color:var(--muted)}
+.cd-p{font-size:11.5px;color:#cfd2d8;margin:.25rem 0 .35rem}
+.cd-f{display:flex;gap:4px;flex-wrap:wrap}
+.cd-f span{font-size:10.5px;background:var(--surface3);color:#cfd2d8;border-radius:4px;padding:1px 6px}
+.cd-m{display:flex;gap:4px;flex-wrap:wrap;margin-top:.4rem}
+.cd-m span{font-size:10.5px;background:rgba(62,207,142,.12);color:var(--green);border-radius:4px;padding:1px 6px}
+.cd-c{font-size:11px;color:var(--accent);margin-top:.35rem}
+.cd-s{font-size:10px;color:var(--faint);margin-top:.3rem}
+.cd-s a{color:var(--blue);margin-right:6px}
+.crp{font-size:12px;line-height:1.65;color:#d5d8de;padding:.35rem 0;border-bottom:1px solid var(--border)}
+.crp:last-child{border-bottom:none}
+.crp a{color:var(--blue);font-size:10.5px;margin-left:4px}
+.need-cands{font-size:11px;color:var(--muted);margin-top:.4rem}
+.need-cands b{color:var(--green);font-weight:500}
 .loading{text-align:center;padding:4rem 0;color:var(--muted)}
 .score-row{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
 .score-row .n{width:72px}.score-row .b{flex:1;height:8px;border-radius:3px;background:var(--faint);overflow:hidden}.score-row .b i{display:block;height:100%;background:var(--orange)}
@@ -115,16 +137,85 @@ function n(v){var x=parseFloat(v);return isNaN(x)?0:x;}
 function ageCls(a){return a==null?'mid':a>=33?'old':a<=25?'young':'mid';}
 function ageTag(a){return a==null?'':'<span class="age '+ageCls(a)+'">'+a+'歳</span>';}
 
+var CANDS=null,NEEDS=[],CF='all';
+// 候補が「必要な選手タイプ」に当てはまるか（守備位置・高校生/即戦力・投手の左右で判定）
+function matchNeed(need,p){
+  var pos=need.pos||'',prof=need.profile||'',txt=(need.type||'')+(need.traits||[]).join('');
+  var det=(p.posDetail||'');
+  var ok=false;
+  if(/捕手/.test(pos))ok=p.pos==='捕手';
+  else if(/二塁|遊撃/.test(pos))ok=p.pos==='内野手'&&(/二塁|遊撃/.test(det)||!det);
+  else if(/三塁|一塁/.test(pos))ok=p.pos==='内野手'&&(/三塁|一塁/.test(det)||!det);
+  else if(/外野/.test(pos))ok=p.pos==='外野手';
+  else if(/先発|投手|救援/.test(pos)){ok=p.pos==='投手';if(ok&&/右腕/.test(txt))ok=p.throws==='右';if(ok&&/左腕/.test(txt)&&!/右腕/.test(txt))ok=p.throws==='左';}
+  if(!ok)return false;
+  if(/高校生/.test(prof))return p.category==='高校';
+  if(/即戦力/.test(prof))return p.category==='大学'||p.category==='社会人'||p.category==='独立';
+  return true;
+}
+function needsOf(p){return NEEDS.filter(function(n){return matchNeed(n,p);});}
+function needCands(n){
+  if(!CANDS)return '';
+  var m=CANDS.players.filter(function(p){return matchNeed(n,p);});
+  if(!m.length)return '<div class="need-cands">この枠（守備位置・区分）に合う有力候補：一覧には見当たらず</div>';
+  return '<div class="need-cands">この枠（守備位置・区分）に合う有力候補：<b>'+m.map(function(p){return esc(p.name)+'（'+esc(p.team)+'）';}).join('、')+'</b></div>';
+}
+var TIER={'1位候補':'t1','上位候補':'t2','注目':'t3'};
+function candCard(p){
+  var ns=needsOf(p);
+  var hand=(p.throws?p.throws+'投':'')+(p.bats?p.bats+'打':'');
+  return '<div class="cd"><div class="cd-h"><span class="tier '+(TIER[p.tier]||'t3')+'">'+esc(p.tier)+'</span><span class="cd-n">'+esc(p.name)+'</span><span class="cd-t">'+esc(p.team)+'・'+esc(p.category)+(p.grade?' '+esc(p.grade):'')+'</span></div>'
+    +'<div class="cd-p">'+esc(p.posDetail||p.pos)+(hand?'｜'+hand:'')+'</div>'
+    +'<div class="cd-f">'+(p.features||[]).map(function(f){return '<span>'+esc(f)+'</span>';}).join('')+'</div>'
+    +(ns.length?'<div class="cd-m">'+ns.map(function(n){return '<span>必要タイプ'+n.priority+'の枠に合致（'+esc(n.pos)+'・'+esc(String(n.profile).replace(/（.*）/,''))+'）</span>';}).join('')+'</div>':'')
+    +(p.carpLink?'<div class="cd-c">🎏 '+esc(p.carpLink)+'</div>':'')
+    +'<div class="cd-s">出典 '+(p.sources||[]).slice(0,3).map(function(u,i){return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+(i+1)+'</a>';}).join('')+'</div></div>';
+}
+function renderCandList(){
+  var L=CANDS.players.filter(function(p){
+    if(CF==='all')return true;if(CF==='fit')return needsOf(p).length>0;if(CF==='carp')return !!p.carpLink;
+    return p.pos===CF;
+  });
+  var order={'1位候補':0,'上位候補':1,'注目':2};
+  L.sort(function(a,b){return (order[a.tier]-order[b.tier])||(needsOf(b).length-needsOf(a).length);});
+  document.getElementById('cand-list').innerHTML=L.map(candCard).join('')||'<div class="sec-d">該当なし</div>';
+  document.querySelectorAll('.fl button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-f')===CF);});
+}
+function setCF(f){CF=f;renderCandList();}
+function renderCands(){
+  if(!CANDS)return '';
+  var C=CANDS,h='<div class="sec"><div class="sec-t">📋 有力ドラフト候補（2026年）</div>';
+  h+='<div class="sec-d">ドラフト会議：'+esc(String(C.draftDate).split('。')[0])+'。複数の報道・NPBのプロ志望届情報で上位候補とされる選手（'+esc(C.asOf)+'時点）。緑のバッジは、上の「必要な選手タイプ」と守備位置・区分（高校生／即戦力）・投手の左右が合う候補（能力の特徴までは判定していません）。</div>';
+  if(C.carpReports&&C.carpReports.length){
+    h+='<div class="mgrp-h" style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem">🎏 カープの動きに関する報道</div>';
+    C.carpReports.forEach(function(r){h+='<div class="crp">'+esc(r.summary)+'<a href="'+esc(r.source)+'" target="_blank" rel="noopener">出典</a></div>';});
+    h+='<div style="height:.8rem"></div>';
+  }
+  var cnt=function(f){return C.players.filter(function(p){return f(p);}).length;};
+  var F=[['all','すべて',cnt(function(){return true;})],['fit','必要タイプの枠に合致',cnt(function(p){return needsOf(p).length>0;})],['carp','カープ関連',cnt(function(p){return !!p.carpLink;})],['投手','投手',cnt(function(p){return p.pos==='投手';})],['捕手','捕手',cnt(function(p){return p.pos==='捕手';})],['内野手','内野手',cnt(function(p){return p.pos==='内野手';})],['外野手','外野手',cnt(function(p){return p.pos==='外野手';})]];
+  h+='<div class="fl">'+F.map(function(f){return '<button data-f="'+f[0]+'" onclick="setCF(\''+f[0]+'\')">'+f[1]+' '+f[2]+'</button>';}).join('')+'</div><div id="cand-list"></div>';
+  if(C.excluded&&C.excluded.length){
+    h+='<details style="margin-top:.6rem"><summary style="font-size:11.5px;color:var(--muted);cursor:pointer">一覧から外した選手（'+C.excluded.length+'人）</summary>';
+    C.excluded.forEach(function(e){h+='<div class="crp">'+esc(e.name)+'：'+esc(e.reason)+(e.source?'<a href="'+esc(e.source)+'" target="_blank" rel="noopener">出典</a>':'')+'</div>';});
+    h+='</details>';
+  }
+  h+='<div class="src">候補の特徴は各報道の記載に基づく要約です。評価や順位は媒体により異なります。「カープ関連」には球団の正式発表ではない報道・予想も含みます。</div></div>';
+  return h;
+}
+
 async function init(){
   var d;
   try{d=await (await fetch('/games/draft_analysis_2026.json?t='+Date.now())).json();}
   catch(e){document.getElementById('main').innerHTML='<div class="loading">データを読み込めませんでした</div>';return;}
+  try{CANDS=await (await fetch('/games/draft_candidates_2026.json?t='+Date.now())).json();}catch(e){CANDS=null;}
   var h='';
   var S=d.strategy;
   h+='<div class="hero"><div class="hero-yr">CARP 2026 DRAFT STRATEGY</div><div class="hero-title">今オフ、カープに必要な選手像</div>';
   h+='<div class="hero-ov">'+(S&&S.summary?esc(S.summary):'今季のデータ（守備位置別の打力・打順別の打力・投手陣の指標・年齢構成）から、補強が必要なポジションと選手タイプを整理します。')+'</div></div>';
 
+  NEEDS=(d.strategy&&d.strategy.needs)||[];
   h+=renderNeeds(d);
+  h+=renderCands();
   h+=renderPositions(d);
   h+=renderLineup(d);
   h+=renderPitching(d);
@@ -132,6 +223,7 @@ async function init(){
   h+=renderFarm(d);
   h+='<div class="src">出典：'+d.sources.map(esc).join('／')+'。年齢は2027年4月1日時点。「必要な選手タイプ」はAIがこれらの数値をもとに作成したもので、球団の方針ではありません。</div>';
   document.getElementById('main').innerHTML=h;
+  if(CANDS)renderCandList();
 }
 
 function renderNeeds(d){
@@ -142,7 +234,7 @@ function renderNeeds(d){
     S.needs.forEach(function(x){
       h+='<div class="need p'+x.priority+'"><span class="need-p">'+x.priority+'</span><div class="need-type">'+esc(x.type)+'</div>'
         +'<div class="need-meta"><span class="chip pos">'+esc(x.pos)+'</span><span class="chip prof">'+esc(x.profile)+'</span>'+(x.traits||[]).map(function(t){return '<span class="chip tr">'+esc(t)+'</span>';}).join('')+'</div>'
-        +'<div class="need-why">'+esc(x.why)+'</div></div>';
+        +'<div class="need-why">'+esc(x.why)+'</div>'+needCands(x)+'</div>';
     });
     if(S.lineupIdeal)h+='<div class="note"><b>打順の観点</b>'+esc(S.lineupIdeal)+'</div>';
     if(S.caution)h+='<div class="note" style="border-left-color:var(--accent);background:rgba(240,192,64,.06)"><b style="color:var(--accent)">注意点</b>'+esc(S.caution)+'</div>';
