@@ -225,6 +225,46 @@ body{font-size:16px;line-height:1.7}
 .mcard,.pl,.need,.cd,.pk,.kpi,.hero-rank{border-color:rgba(255,255,255,.05)}
 header{height:52px}
 .jnav{top:52px}
+
+/* ===== テーマ：カープの赤を基調にした温かみのある見た目 ===== */
+:root{--carp2:#e8364f;--gold:#f0c040}
+body{background:radial-gradient(900px 420px at 50% -160px,rgba(200,16,46,.22),transparent 70%),radial-gradient(700px 500px at 110% 30%,rgba(240,192,64,.05),transparent 70%),#0a0c0f;background-attachment:fixed}
+header{background:rgba(12,10,12,.9);border-bottom:1px solid rgba(200,16,46,.25)}
+.site-title{font-size:21px;background:linear-gradient(90deg,#ff3b55,#c8102e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec{background:linear-gradient(180deg,rgba(24,20,26,.92),rgba(15,16,21,.92));box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 10px 30px rgba(0,0,0,.25)}
+.sec-t::before{width:5px;height:18px;background:linear-gradient(180deg,#ff3b55,#c8102e)}
+.hero,.rs-hero{background:radial-gradient(600px 260px at 85% 0%,rgba(200,16,46,.35),transparent 65%),linear-gradient(160deg,#1d0d12 0%,#12131a 55%,#0d0e13 100%);border:1px solid rgba(200,16,46,.35);box-shadow:0 14px 40px rgba(120,0,20,.25)}
+.rs-hero{background:radial-gradient(600px 260px at 85% 0%,rgba(240,192,64,.25),transparent 65%),linear-gradient(160deg,#1e1708 0%,#12131a 55%,#0d0e13 100%);border-color:rgba(240,192,64,.4)}
+.hero::after,.rs-hero::after{content:attr(data-wm);position:absolute;right:-6px;bottom:-26px;font-family:'Bebas Neue',sans-serif;font-size:130px;line-height:1;color:rgba(255,255,255,.035);letter-spacing:.02em;pointer-events:none}
+.hero>*,.rs-hero>*{position:relative;z-index:1}
+.tab{background:rgba(24,26,33,.8)}
+.tab.active{background:linear-gradient(135deg,rgba(200,16,46,.35),rgba(200,16,46,.15));border-color:rgba(232,54,79,.6);color:#fff;box-shadow:0 4px 16px rgba(200,16,46,.25)}
+.jnav a.on{background:linear-gradient(135deg,rgba(200,16,46,.4),rgba(200,16,46,.2));color:#fff}
+/* 背番号バッジ */
+.uni{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 4px;border-radius:8px;background:linear-gradient(160deg,#e8364f,#a50d26);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.02em;flex-shrink:0;box-shadow:0 2px 8px rgba(200,16,46,.35)}
+.uni.sm{min-width:24px;height:24px;font-size:14px;border-radius:6px}
+/* 球団カラーのドット */
+.tdot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px;box-shadow:0 0 0 2px rgba(255,255,255,.06)}
+
+.hero{padding-right:150px}
+@media(max-width:520px){.hero{padding-right:1.35rem}.ring{position:static!important;margin:.2rem 0 .6rem}}
+.ring{position:absolute;top:1.4rem;right:1.3rem;width:118px;height:118px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .rv{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .rv b{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:#fff}
+.ring .rv small{font-size:11px;color:var(--muted)}
+.mon-bar .wseg{background:linear-gradient(90deg,#a50d26,#e8364f)}
+.mon-row.good .mon-lbl{color:var(--gold)}
+.mon-pct{font-size:11.5px;color:var(--muted);width:44px;text-align:right;flex-shrink:0}
+.mon-row.good .mon-pct{color:var(--gold)}
+.theme{border-left:4px solid var(--gold);background:linear-gradient(90deg,rgba(240,192,64,.09),rgba(240,192,64,.02))}
+.nextq{background:linear-gradient(90deg,rgba(74,158,255,.12),rgba(74,158,255,.03))}
+.hero-rank{background:linear-gradient(135deg,rgba(62,207,142,.1),rgba(62,207,142,.02));border:1px solid rgba(62,207,142,.25)}
+.hr-row .n{display:flex;align-items:center;gap:8px}
+.pl{background:linear-gradient(180deg,rgba(30,32,40,.9),rgba(22,24,30,.9))}
+.pl.open{border-color:rgba(200,16,46,.35)}
+.ldr-name{display:flex;align-items:center;gap:7px}
+.std-t tr.me td{background:rgba(200,16,46,.1)}
 </style>
 </head>
 <body>
@@ -238,12 +278,12 @@ header{height:52px}
 function buildJumpNav(){
   var main=document.getElementById('main');if(!main)return;
   var old=document.getElementById('jnav');if(old)old.remove();
-  var secs=[].slice.call(main.querySelectorAll('.rs-hero,.hero,.sec'));
+  var secs=[].slice.call(main.querySelectorAll('.rs-hero,.hero,.sec')).filter(function(el){return el.offsetParent!==null;});
   var items=[];
   secs.forEach(function(s,i){
     var t=s.querySelector('.sec-t,.hero-title');if(!t)return;
     var label=t.textContent.replace(/^[^\u3040-\u30ff\u4e00-\u9fffA-Za-z0-9]+/,'').replace(/[（(].*$/,'').trim();
-    if(s.classList.contains('hero'))label=s.querySelector('.hero-yr')&&/DRAFT/.test(s.querySelector('.hero-yr').textContent)?'ドラフト前の分析':'総括';
+    if(s.classList.contains('hero'))label=s.querySelector('.hero-yr')&&/DRAFT/.test(s.querySelector('.hero-yr').textContent)?'概要':'総括';
     if(s.classList.contains('rs-hero'))label='ドラフト結果';
     if(label.length>10)label=label.slice(0,10);
     s.id='sec-'+i;items.push({id:s.id,label:label});
@@ -262,7 +302,11 @@ function buildJumpNav(){
   window.__jnavScroll=onScroll;window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 }
 
-var DATA=null;
+var DATA=null,NUM={};
+var TEAMC={'阪神':'#f6d200','巨人':'#f97709','DeNA':'#1f6fd1','広島':'#e8364f','ヤクルト':'#2fa84f','中日':'#1e4fa8'};
+function tdot(t){return '<span class="tdot" style="background:'+(TEAMC[t]||'#888')+'"></span>';}
+function uni(n,sm){var k=String(n||'');var v=NUM[k];if(v==null){for(var key in NUM){if(key.indexOf(k)===0||k.indexOf(key)===0){v=NUM[key];break;}}}return v!=null?'<span class="uni'+(sm?' sm':'')+'">'+esc(v)+'</span>':'';}
+
 var MONTH_NAMES={'03':'3月','04':'4月','05':'5月','06':'6月','07':'7月','08':'8月','09':'9月','10':'10月'};
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function qs(k){return new URLSearchParams(location.search).get(k);}
@@ -271,6 +315,7 @@ async function init(){
   try{
     var r=await fetch('/games/season_summary_2026.json?t='+Date.now());
     DATA=await r.json();
+    try{var pos=await (await fetch('/games/npb_positions_2026.json')).json();((pos.carpRoster||{}).players||[]).forEach(function(x){NUM[x.name]=x.number;});}catch(e2){}
   }catch(e){
     document.getElementById('main').innerHTML='<div class="loading">総括データを読み込めませんでした</div>';
     return;
@@ -284,7 +329,9 @@ function renderSeason(){
   var d=DATA, rec=d.record, n=d.narrative||{}, L=d.leaders||{};
   var h='';
   // Hero
-  h+='<div class="hero">';
+  var pctv=rec.pct, C=2*Math.PI*48;
+  h+='<div class="hero" data-wm="2026">';
+  h+='<div class="ring"><svg viewBox="0 0 110 110"><circle cx="55" cy="55" r="48" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="9"/><circle cx="55" cy="55" r="48" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round" stroke-dasharray="'+(C*pctv).toFixed(1)+' '+C.toFixed(1)+'"/><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ff3b55"/><stop offset="1" stop-color="#f0c040"/></linearGradient></defs></svg><div class="rv"><b>'+rec.pct.toFixed(3).replace(/^0/,'')+'</b><small>勝率</small></div></div>';
   h+='<div class="hero-yr">CARP '+d.year+' SEASON</div>';
   h+='<div class="hero-title">'+esc(n.title||'シーズン総括')+'</div>';
   h+='<div class="hero-rec"><span class="big">'+rec.w+'<span style="font-size:22px;color:var(--muted)">勝</span> '+rec.l+'<span style="font-size:22px;color:var(--muted)">敗</span> '+rec.d+'<span style="font-size:22px;color:var(--muted)">分</span></span><span class="pct">勝率 '+rec.pct.toFixed(3).replace(/^0/,'')+'</span></div>';
@@ -298,10 +345,11 @@ function renderSeason(){
   d.monthly.forEach(function(m){
     var tot=m.w+m.l+m.d||1;
     var wp=Math.round(m.w/tot*100), lp=Math.round(m.l/tot*100);
-    h+='<div class="mon-row" onclick="location.href=\'?month='+d.year+'-'+m.month+'\'">';
+    var mp=(m.w+m.l)?m.w/(m.w+m.l):0;
+    h+='<div class="mon-row'+(m.w>m.l?' good':'')+'" onclick="location.href=\'?month='+d.year+'-'+m.month+'\'">';
     h+='<span class="mon-lbl">'+parseInt(m.month)+'月</span>';
     h+='<div class="mon-bar"><div class="wseg" style="width:'+wp+'%"></div><div class="lseg" style="width:'+lp+'%"></div></div>';
-    h+='<span class="mon-rec">'+m.w+'-'+m.l+(m.d?'-'+m.d:'')+'</span><span class="mon-arrow">›</span></div>';
+    h+='<span class="mon-pct">'+mp.toFixed(3).replace(/^0/,'')+'</span><span class="mon-rec">'+m.w+'-'+m.l+(m.d?'-'+m.d:'')+'</span><span class="mon-arrow">›</span></div>';
   });
   h+='</div>';
 
@@ -363,14 +411,14 @@ function hlRow(ico,t,date,desc){
 function renderBatLeaders(b){
   var h='';
   h+='<div class="ldr-grp"><div class="ldr-h">打率（規定到達）</div>';
-  (b.avg||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+esc(x.avg)+'</span><span class="ldr-sub">'+x.hr+'本 '+x.rbi+'点</span></div>';});
+  (b.avg||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+uni(x.name,true)+esc(x.name)+'</span><span class="ldr-val">'+esc(x.avg)+'</span><span class="ldr-sub">'+x.hr+'本 '+x.rbi+'点</span></div>';});
   if(!(b.avg||[]).length)h+='<div class="ldr-sub" style="padding:4px 0">規定到達者なし</div>';
   h+='</div>';
   h+='<div class="ldr-grp"><div class="ldr-h">本塁打</div>';
-  (b.hr||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+x.hr+'本</span></div>';});
+  (b.hr||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+uni(x.name,true)+esc(x.name)+'</span><span class="ldr-val">'+x.hr+'本</span></div>';});
   h+='</div>';
   h+='<div class="ldr-grp"><div class="ldr-h">打点</div>';
-  (b.rbi||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+x.rbi+'点</span></div>';});
+  (b.rbi||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+uni(x.name,true)+esc(x.name)+'</span><span class="ldr-val">'+x.rbi+'点</span></div>';});
   h+='</div>';
   return h;
 }
@@ -378,10 +426,10 @@ function renderBatLeaders(b){
 function renderPitLeaders(p){
   var h='';
   h+='<div class="ldr-grp"><div class="ldr-h">先発（防御率順）</div>';
-  (p.starters||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+(x.qualified?'<span class="qmark">規</span>':'')+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+esc(x.ip)+'回 '+x.wins+'勝'+x.losses+'敗</span></div>';});
+  (p.starters||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+uni(x.name,true)+esc(x.name)+(x.qualified?'<span class="qmark">規</span>':'')+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+esc(x.ip)+'回 '+x.wins+'勝'+x.losses+'敗</span></div>';});
   h+='</div>';
   h+='<div class="ldr-grp"><div class="ldr-h">救援</div>';
-  (p.relievers||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+esc(x.name)+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+x.games+'登板 '+(x.saves||0)+'S '+(x.hp!=null?x.hp+'HP':(x.holds||0)+'H')+'</span></div>';});
+  (p.relievers||[]).forEach(function(x,i){h+='<div class="ldr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="ldr-name">'+uni(x.name,true)+esc(x.name)+'</span><span class="ldr-val">'+esc(x.era)+'</span><span class="ldr-sub">'+x.games+'登板 '+(x.saves||0)+'S '+(x.hp!=null?x.hp+'HP':(x.holds||0)+'H')+'</span></div>';});
   h+='</div>';
   return h;
 }
@@ -404,14 +452,14 @@ function renderLeague(L){
   // 順位表
   h+='<div class="mgrp-h">順位表</div><table class="std-t"><tr><th></th><th>チーム</th><th>勝</th><th>敗</th><th>分</th><th>勝率</th><th>差</th></tr>';
   L.standings.forEach(function(t){
-    h+='<tr class="'+(t.team==='広島'?'me':'')+'"><td>'+t.standing+'</td><td>'+esc(t.team)+'</td><td>'+t.w+'</td><td>'+t.l+'</td><td>'+t.d+'</td><td>'+esc(t.pct)+'</td><td>'+esc(t.gb)+'</td></tr>';
+    h+='<tr class="'+(t.team==='広島'?'me':'')+'"><td>'+t.standing+'</td><td>'+tdot(t.team)+esc(t.team)+'</td><td>'+t.w+'</td><td>'+t.l+'</td><td>'+t.d+'</td><td>'+esc(t.pct)+'</td><td>'+esc(t.gb)+'</td></tr>';
   });
   h+='</table>';
   if(L.vs){
     h+='<div class="vs-row">';
     Object.keys(L.vs).forEach(function(k){
       var p=String(L.vs[k]).split('-');
-      h+='<span class="vs-chip">'+(/ホーム|ロード|交流戦/.test(k)?'':'対')+esc(k)+' <b>'+p[0]+'勝'+p[1]+'敗'+(p[2]&&p[2]!=='0'?p[2]+'分':'')+'</b></span>';
+      h+='<span class="vs-chip">'+(TEAMC[k]?tdot(k):'')+(/ホーム|ロード|交流戦/.test(k)?'':'対')+esc(k)+' <b>'+p[0]+'勝'+p[1]+'敗'+(p[2]&&p[2]!=='0'?p[2]+'分':'')+'</b></span>';
     });
     h+='</div>';
   }
@@ -472,7 +520,7 @@ function heroRanking(P){
   var r=P.filter(function(p){return p.scenes&&p.scenes.saved;}).sort(function(a,b){return b.scenes.saved-a.scenes.saved||b.scenes.bigSaved-a.scenes.bigSaved;}).slice(0,5);
   if(!r.length)return '';
   var h='<div class="hero-rank"><div class="hero-rank-h">チームを救った場面が多かった選手</div>';
-  r.forEach(function(p,i){h+='<div class="hr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="n">'+esc(p.name)+'</span><span class="s">勝敗直結 '+p.scenes.bigSaved+'</span><span class="v">'+p.scenes.saved+'</span></div>';});
+  r.forEach(function(p,i){h+='<div class="hr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="n">'+uni(p.name,true)+esc(p.name)+'</span><span class="s">勝敗直結 '+p.scenes.bigSaved+'</span><span class="v">'+p.scenes.saved+'</span></div>';});
   return h+'</div>';
 }
 function plTurnings(p){
@@ -497,7 +545,7 @@ function renderPlayers(P){
       var badges=(p.leagueRanks||[]).map(function(r){return '<span class="pl-badge">'+esc(r.item)+' リーグ'+r.rank+'位</span>';}).join('');
       if(p.type==='batter'&&p.stat.pa>=443)badges='<span class="pl-badge">規定打席到達</span>'+badges;
       h+='<div class="pl" id="pl-'+t+'-'+i+'"><div class="pl-h" onclick="this.parentNode.classList.toggle(\'open\')">'
-        +'<span class="pl-name">'+esc(p.name)+'</span><span class="pl-tag">'+esc(p.tag||'')+'</span>'+(p.scenes?'<span class="pl-sc"><span class="p">救'+p.scenes.saved+'</span> <span class="m">痛'+p.scenes.hurt+'</span></span>':'')+'<span class="pl-stat">'+esc(plStatShort(p))+'</span><span class="pl-arrow">▶</span></div>'
+        +uni(p.name)+'<span class="pl-name">'+esc(p.name)+'</span><span class="pl-tag">'+esc(p.tag||'')+'</span>'+(p.scenes?'<span class="pl-sc"><span class="p">救'+p.scenes.saved+'</span> <span class="m">痛'+p.scenes.hurt+'</span></span>':'')+'<span class="pl-stat">'+esc(plStatShort(p))+'</span><span class="pl-arrow">▶</span></div>'
         +'<div class="pl-b"><div class="pl-line">'+plStatLine(p)+'</div>'+(badges?'<div class="pl-badges">'+badges+'</div>':'')
         +plSpark(p)+'<div class="pl-rev">'+esc(p.review||'')+'</div>'+plScenes(p,t+'-'+i)+(p.next?'<div class="pl-next">↪ 来季へ：'+esc(p.next)+'</div>':'')+'</div></div>';
     });
@@ -535,7 +583,7 @@ function renderMonth(month){
     h+='<span class="month-chip'+(m.month===mm?' active':'')+'" onclick="location.href=\'?month='+d.year+'-'+m.month+'\'">'+parseInt(m.month)+'月</span>';
   });
   h+='</div>';
-  h+='<div class="hero" style="padding:1.1rem 1.25rem"><div class="hero-yr">'+d.year+'年 '+parseInt(mm)+'月</div><div class="hero-rec"><span class="big">'+w+'<span style="font-size:20px;color:var(--muted)">勝</span> '+l+'<span style="font-size:20px;color:var(--muted)">敗</span>'+(dr?' '+dr+'<span style="font-size:20px;color:var(--muted)">分</span>':'')+'</span></div></div>';
+  h+='<div class="hero" data-wm="'+parseInt(mm)+'月" style="padding:1.1rem 1.25rem"><div class="hero-yr">'+d.year+'年 '+parseInt(mm)+'月</div><div class="hero-rec"><span class="big">'+w+'<span style="font-size:20px;color:var(--muted)">勝</span> '+l+'<span style="font-size:20px;color:var(--muted)">敗</span>'+(dr?' '+dr+'<span style="font-size:20px;color:var(--muted)">分</span>':'')+'</span></div></div>';
   // 日別一覧
   h+='<div class="sec" style="padding:.3rem .6rem">';
   if(!games.length)h+='<div class="loading">この月の試合データがありません</div>';
