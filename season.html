@@ -166,16 +166,102 @@ a{color:inherit;text-decoration:none}
 .loading{text-align:center;padding:4rem 0;color:var(--muted)}
 .spin{display:inline-block;width:20px;height:20px;border:2px solid var(--faint);border-top-color:var(--carp);border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
+
+/* ===== 読みやすさ調整（文字サイズ・コントラスト・余白） ===== */
+:root{--muted:#959cab;--dim:#6b7281}
+body{font-size:16px;line-height:1.7}
+.wrap{max-width:720px;padding:0 1.1rem 5rem}
+.sec{padding:1.3rem 1.25rem;margin-bottom:1.15rem}
+.sec-t{font-size:13.5px;letter-spacing:.06em;margin-bottom:.9rem}
+.sec-d{font-size:13.5px;line-height:1.75;color:var(--muted)}
+.hero{padding:1.6rem 1.35rem}
+.hero-yr{font-size:15px}
+.hero-title{font-size:24px;line-height:1.45}
+.hero-ov{font-size:15.5px;line-height:1.9}
+.tabs{gap:8px;margin:1.1rem 0 .3rem}
+.tab{font-size:14.5px;padding:10px}
+.src{font-size:12px;color:var(--dim);line-height:1.7}
+.site-sub{font-size:11px}
+/* セクションへのジャンプナビ */
+.jnav{position:sticky;top:56px;z-index:90;background:rgba(10,12,15,.95);backdrop-filter:blur(10px);margin:0 -1.1rem .6rem;padding:.5rem 1.1rem;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border)}
+.jnav::-webkit-scrollbar{display:none}
+.jnav a{flex-shrink:0;font-size:13px;color:var(--muted);background:var(--surface2);border:1px solid var(--border2);border-radius:16px;padding:4px 12px;white-space:nowrap}
+.jnav a.on{color:#ff7090;border-color:rgba(200,16,46,.45);background:rgba(200,16,46,.12)}
+.sec,.rs-hero,.hero{scroll-margin-top:118px}
+
+.bc{font-size:14px}
+.hero-rec .big{font-size:44px}.hero-rec .pct{font-size:16px}
+.hero-standing{font-size:14px;padding:3px 12px}
+.hero-period{font-size:12.5px;color:var(--muted)}
+.mon-row{padding:9px 8px}.mon-lbl{font-size:18px;width:46px}.mon-bar{height:20px}.mon-rec{font-size:14px;width:80px}
+.theme{padding:.75rem .95rem;margin-bottom:.7rem}.theme-t{font-size:15.5px}.theme-d{font-size:14px;line-height:1.75}
+.ldr-tab{font-size:14px;padding:8px}
+.ldr-h{font-size:13px}.ldr-row{font-size:15px;padding:6px 0}.ldr-sub{font-size:12.5px}.ldr-rank{color:var(--dim)}
+.qmark{font-size:10.5px}
+.hl{padding:.65rem .3rem}.hl-t{font-size:13px}.hl-d{font-size:15.5px}
+.nextq{padding:1rem 1.15rem}.nextq-l{font-size:12.5px}.nextq-t{font-size:16px;line-height:1.75}
+.month-chip{font-size:15px;padding:5px 13px}
+.day-row{padding:.85rem .6rem}.day-date{font-size:17px;width:50px}.day-res{font-size:16px}.day-score{font-size:15px;width:64px}.day-opp{font-size:13px}.day-title{font-size:14px}
+.mcard{padding:.7rem .75rem}.mcard-l{font-size:12.5px}.mcard-v{font-size:27px}.mcard-r{font-size:12px;padding:1px 6px}.mcard-b{font-size:11.5px;color:var(--dim)}
+.mgrp-h{font-size:13px;margin:1.1rem 0 .5rem}
+.std-t{font-size:14px}.std-t th{font-size:12px}
+.vs-chip{font-size:13px;padding:3px 10px}
+.pl-h{padding:.8rem .85rem;gap:10px}.pl-name{font-size:16px}.pl-tag{font-size:13px}.pl-stat,.pl-sc{font-size:13px}
+.pl-b{padding:0 .95rem 1rem}
+.pl-line{font-size:13.5px;line-height:1.75}.pl-badge{font-size:12px;padding:2px 8px}
+.pl-rev{font-size:15px;line-height:1.9}.pl-next{font-size:14px}
+.spark b{font-size:10.5px}.spark em{font-size:11px}.spark-l{font-size:11.5px;color:var(--dim)}
+.scb-nums{font-size:14px}.scb-nums small{font-size:12px}.scb-bar{height:8px}
+.scl-h{font-size:13px;margin:.9rem 0 .35rem}
+.sci{font-size:14px;padding:7px 2px}.sci-d{font-size:12.5px;min-width:84px}.sci-big{font-size:11px}.sc-more{font-size:13px;padding:6px 0}
+.hero-rank{padding:.8rem .9rem}.hero-rank-h{font-size:13px}.hr-row{font-size:15px;padding:4px 0}.hr-row .s{font-size:12px}
+
+/* ===== スマートな見た目（見出し・枠線・余白） ===== */
+.sec{background:var(--surface);border:1px solid rgba(255,255,255,.05);border-radius:14px}
+.sec-t{display:flex;align-items:center;gap:9px;color:var(--text);font-size:16px;font-weight:700;letter-spacing:.02em;text-transform:none;margin-bottom:.8rem}
+.sec-t::before{content:'';width:4px;height:17px;border-radius:2px;background:var(--carp);flex-shrink:0}
+.hero,.rs-hero{border-radius:14px}
+.tab{border-radius:10px}
+.mcard,.pl,.need,.cd,.pk,.kpi,.hero-rank{border-color:rgba(255,255,255,.05)}
+header{height:52px}
+.jnav{top:52px}
 </style>
 </head>
 <body>
 <header>
   <div><div class="site-title">本日のカープトーク</div><div class="site-sub">2026シーズン総括</div></div>
-  <a class="bc" href="/season.html" style="margin:0">⚾ 総括トップ</a>
 </header>
-<div class="wrap"><div class="tabs"><a class="tab active" href="/season.html">📘 シーズン総括</a><a class="tab" href="/draft.html">🎯 ドラフト戦略</a></div><div id="main"><div class="loading"><span class="spin"></span></div></div></div>
+<div class="wrap"><div class="tabs"><a class="tab active" href="/season.html">シーズン総括</a><a class="tab" href="/draft.html">ドラフト戦略</a></div><div id="main"><div class="loading"><span class="spin"></span></div></div></div>
 
 <script>
+// ===== セクションへのジャンプナビ（描画後に自動生成） =====
+function buildJumpNav(){
+  var main=document.getElementById('main');if(!main)return;
+  var old=document.getElementById('jnav');if(old)old.remove();
+  var secs=[].slice.call(main.querySelectorAll('.rs-hero,.hero,.sec'));
+  var items=[];
+  secs.forEach(function(s,i){
+    var t=s.querySelector('.sec-t,.hero-title');if(!t)return;
+    var label=t.textContent.replace(/^[^\u3040-\u30ff\u4e00-\u9fffA-Za-z0-9]+/,'').replace(/[（(].*$/,'').trim();
+    if(s.classList.contains('hero'))label=s.querySelector('.hero-yr')&&/DRAFT/.test(s.querySelector('.hero-yr').textContent)?'ドラフト前の分析':'総括';
+    if(s.classList.contains('rs-hero'))label='ドラフト結果';
+    if(label.length>10)label=label.slice(0,10);
+    s.id='sec-'+i;items.push({id:s.id,label:label});
+  });
+  if(items.length<3)return;
+  var nav=document.createElement('nav');nav.id='jnav';nav.className='jnav';
+  nav.innerHTML=items.map(function(x){return '<a href="#'+x.id+'">'+x.label+'</a>';}).join('');
+  main.parentNode.insertBefore(nav,main);
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  function onScroll(){
+    var cur=items[0].id;
+    items.forEach(function(x){var el=document.getElementById(x.id);if(el&&el.getBoundingClientRect().top<140)cur=x.id;});
+    links.forEach(function(a){var on=a.getAttribute('href')==='#'+cur;if(on&&!a.classList.contains('on')){a.classList.add('on');a.scrollIntoView({block:'nearest',inline:'center'});}else if(!on)a.classList.remove('on');});
+  }
+  window.removeEventListener('scroll',window.__jnavScroll||function(){});
+  window.__jnavScroll=onScroll;window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+}
+
 var DATA=null;
 var MONTH_NAMES={'03':'3月','04':'4月','05':'5月','06':'6月','07':'7月','08':'8月','09':'9月','10':'10月'};
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -208,7 +294,7 @@ function renderSeason(){
   h+='</div>';
 
   // 月別成績
-  h+='<div class="sec"><div class="sec-t">📅 月別成績（タップで日別へ）</div>';
+  h+='<div class="sec"><div class="sec-t">月別成績（タップで日別へ）</div>';
   d.monthly.forEach(function(m){
     var tot=m.w+m.l+m.d||1;
     var wp=Math.round(m.w/tot*100), lp=Math.round(m.l/tot*100);
@@ -224,7 +310,7 @@ function renderSeason(){
 
   // 今季のテーマ
   if(n.themes&&n.themes.length){
-    h+='<div class="sec"><div class="sec-t">🎯 今季のテーマ</div>';
+    h+='<div class="sec"><div class="sec-t">今季のテーマ</div>';
     n.themes.forEach(function(t){
       h+='<div class="theme"><div class="theme-t">'+esc(t.theme)+'</div><div class="theme-d">'+esc(t.detail)+'</div></div>';
     });
@@ -233,12 +319,12 @@ function renderSeason(){
 
   // シーズンの分岐点
   if(n.turning_point){
-    h+='<div class="sec"><div class="sec-t">🔀 シーズンの分岐点</div><div style="font-size:13.5px;line-height:1.75;color:#d5d8de">'+esc(n.turning_point)+'</div></div>';
+    h+='<div class="sec"><div class="sec-t">シーズンの分岐点</div><div style="font-size:13.5px;line-height:1.75;color:#d5d8de">'+esc(n.turning_point)+'</div></div>';
   }
 
   // 成績リーダー
   if(L.batting||L.pitching){
-    h+='<div class="sec"><div class="sec-t">🏆 今季の成績</div>';
+    h+='<div class="sec"><div class="sec-t">今季の成績</div>';
     h+='<div class="ldr-tabs"><button class="ldr-tab active" id="lt-bat" onclick="swLdr(\'bat\')">打撃</button><button class="ldr-tab" id="lt-pit" onclick="swLdr(\'pit\')">投手</button></div>';
     h+='<div id="ldr-bat">'+renderBatLeaders(L.batting||{})+'</div>';
     h+='<div id="ldr-pit" style="display:none">'+renderPitLeaders(L.pitching||{})+'</div>';
@@ -252,7 +338,7 @@ function renderSeason(){
   // ハイライト
   if(d.highlights){
     var hl=d.highlights;
-    h+='<div class="sec"><div class="sec-t">✨ 今季のハイライト</div>';
+    h+='<div class="sec"><div class="sec-t">今季のハイライト</div>';
     if(hl.biggestWin)h+=hlRow('🔥','最大差の勝利',hl.biggestWin.date,'vs'+hl.biggestWin.opp+' '+hl.biggestWin.cs+'-'+hl.biggestWin.os);
     if(hl.highestScoring&&hl.highestScoring.date!==(hl.biggestWin||{}).date)h+=hlRow('💥','最多得点',hl.highestScoring.date,'vs'+hl.highestScoring.opp+' '+hl.highestScoring.cs+'得点');
     h+=hlRow('📈','最長連勝','', d.streaks.longestWin+'連勝');
@@ -266,7 +352,7 @@ function renderSeason(){
     h+='<div class="nextq"><div class="nextq-l">↪ 来季への問い</div><div class="nextq-t">'+esc(n.next_season)+'</div></div>';
   }
 
-  document.getElementById('main').innerHTML=h;
+  document.getElementById('main').innerHTML=h;buildJumpNav();
 }
 
 function hlRow(ico,t,date,desc){
@@ -302,7 +388,7 @@ function renderPitLeaders(p){
 
 var CAT_LABEL={batting:'打撃',pitching:'投手',fielding:'守備'};
 function renderLeague(L){
-  var h='<div class="sec"><div class="sec-t">📊 チーム主要指標（セ・リーグ6球団中の順位）</div>';
+  var h='<div class="sec"><div class="sec-t">チーム主要指標（セ・リーグ6球団中の順位）</div>';
   ['batting','pitching','fielding'].forEach(function(cat){
     var ms=L.metrics.filter(function(m){return m.cat===cat;});
     if(!ms.length)return;
@@ -373,7 +459,7 @@ function plScenes(p,id){
     var list=(sc.list||[]).filter(function(x){return x.sign===sg;});
     if(!list.length)return;
     var cls=sg==='+'?'p':'m';
-    h+='<div class="scl-h '+cls+'">'+(sg==='+'?'🦸 救ったシーン':'💧 痛かったシーン')+'</div>';
+    h+='<div class="scl-h '+cls+'">'+(sg==='+'?'救ったシーン':'痛かったシーン')+'</div>';
     list.slice(0,3).forEach(function(x){h+=sceneItem(x);});
     if(list.length>3){
       h+='<div id="scm-'+id+cls+'" style="display:none">';list.slice(3).forEach(function(x){h+=sceneItem(x);});h+='</div>';
@@ -385,7 +471,7 @@ function plScenes(p,id){
 function heroRanking(P){
   var r=P.filter(function(p){return p.scenes&&p.scenes.saved;}).sort(function(a,b){return b.scenes.saved-a.scenes.saved||b.scenes.bigSaved-a.scenes.bigSaved;}).slice(0,5);
   if(!r.length)return '';
-  var h='<div class="hero-rank"><div class="hero-rank-h">🦸 チームを救った場面が多かった選手</div>';
+  var h='<div class="hero-rank"><div class="hero-rank-h">チームを救った場面が多かった選手</div>';
   r.forEach(function(p,i){h+='<div class="hr-row"><span class="ldr-rank">'+(i+1)+'</span><span class="n">'+esc(p.name)+'</span><span class="s">勝敗直結 '+p.scenes.bigSaved+'</span><span class="v">'+p.scenes.saved+'</span></div>';});
   return h+'</div>';
 }
@@ -403,7 +489,7 @@ function plTurnings(p){
   return h;
 }
 function renderPlayers(P){
-  var h='<div class="sec"><div class="sec-t">👤 選手個人の振り返り</div>'+heroRanking(P);
+  var h='<div class="sec"><div class="sec-t">選手個人の振り返り</div>'+heroRanking(P);
   h+='<div class="ldr-tabs"><button class="ldr-tab active" id="pt-batter" onclick="swPl(\'batter\')">打者</button><button class="ldr-tab" id="pt-pitcher" onclick="swPl(\'pitcher\')">投手</button></div>';
   ['batter','pitcher'].forEach(function(t){
     h+='<div id="pl-'+t+'"'+(t==='pitcher'?' style="display:none"':'')+'>';
@@ -464,7 +550,7 @@ function renderMonth(month){
     h+='<span class="day-arrow">›</span></div>';
   });
   h+='</div>';
-  document.getElementById('main').innerHTML=h;
+  document.getElementById('main').innerHTML=h;buildJumpNav();
 }
 
 init();
