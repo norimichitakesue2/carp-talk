@@ -117,6 +117,30 @@ a{color:inherit;text-decoration:none}
 .crp a{color:var(--blue);font-size:10.5px;margin-left:4px}
 .need-cands{font-size:11px;color:var(--muted);margin-top:.4rem}
 .need-cands b{color:var(--green);font-weight:500}
+.rs-hero{background:radial-gradient(ellipse at top,rgba(240,192,64,.12),transparent 60%),linear-gradient(180deg,var(--surface),#0c0d12);border:1px solid rgba(240,192,64,.35);border-radius:var(--r);padding:1.3rem 1.2rem;margin:1rem 0;position:relative;overflow:hidden}
+.rs-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#ff4060,var(--carp))}
+.rs-sum{display:flex;gap:6px;flex-wrap:wrap;margin:.5rem 0 .7rem}
+.rs-sum span{font-size:11.5px;background:var(--surface2);border:1px solid var(--border2);border-radius:5px;padding:2px 8px;color:#d5d8de}
+.r1box{border-left:3px solid var(--accent);background:rgba(240,192,64,.06);border-radius:0 6px 6px 0;padding:.55rem .75rem;font-size:12.5px;line-height:1.7;color:#d5d8de;margin-top:.4rem}
+.pk{border:1px solid var(--border);background:var(--surface2);border-radius:var(--rs);margin-bottom:8px;overflow:hidden}
+.pk.top{border-color:rgba(240,192,64,.45)}
+.pk-h{display:flex;align-items:center;gap:8px;padding:.65rem .75rem;cursor:pointer}
+.pk-r{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.04em;border-radius:4px;padding:1px 7px;background:var(--carp);color:#fff;white-space:nowrap}
+.pk-r.dev{background:var(--surface3);color:var(--muted)}
+.pk-n{font-size:15px;font-weight:700;white-space:nowrap}
+.pk-t{font-size:11.5px;color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pk-a{color:var(--faint);font-size:11px;transition:transform .2s}
+.pk.open .pk-a{transform:rotate(90deg)}
+.pk-b{display:none;padding:0 .8rem .8rem;border-top:1px solid var(--border)}
+.pk.open .pk-b{display:block}
+.pk-p{font-size:11.5px;color:#cfd2d8;margin:.55rem 0 .4rem}
+.pk-l{font-size:10.5px;font-weight:700;margin:.6rem 0 .2rem;letter-spacing:.04em}
+.pk-l.e{color:var(--blue)}.pk-l.i{color:var(--accent)}
+.pk-x{font-size:12.5px;line-height:1.7;color:#d5d8de}
+.pk-x.none{color:var(--faint);font-size:11.5px}
+.divider{display:flex;align-items:center;gap:10px;margin:1.6rem 0 .2rem;font-size:11.5px;color:var(--muted)}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border2)}
+.cd-dr{font-size:10.5px;font-weight:700;background:var(--carp);color:#fff;border-radius:4px;padding:1px 6px}
 .loading{text-align:center;padding:4rem 0;color:var(--muted)}
 .score-row{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
 .score-row .n{width:72px}.score-row .b{flex:1;height:8px;border-radius:3px;background:var(--faint);overflow:hidden}.score-row .b i{display:block;height:100%;background:var(--orange)}
@@ -137,7 +161,40 @@ function n(v){var x=parseFloat(v);return isNaN(x)?0:x;}
 function ageCls(a){return a==null?'mid':a>=33?'old':a<=25?'young':'mid';}
 function ageTag(a){return a==null?'':'<span class="age '+ageCls(a)+'">'+a+'歳</span>';}
 
-var CANDS=null,NEEDS=[],CF='all';
+var CANDS=null,NEEDS=[],CF='all',RES=null;
+function pickOf(name){if(!RES)return null;return RES.picks.find(function(p){return p.name.replace(/^𠮷/,'吉')===name.replace(/^𠮷/,'吉');})||null;}
+function renderResults(R){
+  var sh=R.picks.filter(function(p){return p.type==='支配下';}),dv=R.picks.filter(function(p){return p.type==='育成';});
+  var cat={};R.picks.forEach(function(p){cat[p.category]=(cat[p.category]||0)+1;});
+  var h='<div class="rs-hero"><div class="hero-yr" style="color:var(--accent)">2026 DRAFT RESULT · '+esc(R.draftDate)+'</div><div class="hero-title">カープの指名選手と、その狙い</div>';
+  h+='<div class="rs-sum"><span>支配下 '+sh.length+'人</span><span>育成 '+dv.length+'人</span>'+Object.keys(cat).map(function(k){return '<span>'+esc(k)+' '+cat[k]+'</span>';}).join('')+'</div>';
+  if(R.round1)h+='<div class="r1box"><b style="color:var(--accent)">1位指名</b>　'+esc(R.round1.result)+'<br><span style="color:var(--muted);font-size:11.5px">'+esc(R.round1.lottery)+'</span></div>';
+  h+='</div>';
+  h+='<div class="sec"><div class="sec-t">📝 指名選手（タップで特徴と狙い）</div><div class="sec-d">特徴・評価は各報道の要約。「球団の狙い」は監督・スカウト部長・担当スカウトの発言として報じられた内容の要約です。緑のバッジは、ドラフト前に整理した「必要な選手タイプ」の枠との対応。</div>';
+  R.picks.forEach(function(p,i){
+    var ns=NEEDS.filter(function(n){return matchNeed(n,p);});
+    var hand=(p.throws?p.throws+'投':'')+(p.bats?p.bats+'打':'');
+    var body=[esc(p.posDetail||p.pos),hand,p.height?esc(p.height)+(p.weight?'・'+esc(p.weight):''):'',p.age?esc(p.age)+'歳':'',p.highSchool?esc(p.highSchool)+'出身':''].filter(Boolean).join('｜');
+    h+='<div class="pk'+(i===0?' top open':'')+'" id="pk'+i+'"><div class="pk-h" onclick="document.getElementById(\'pk'+i+'\').classList.toggle(\'open\')">'
+      +'<span class="pk-r'+(p.type==='育成'?' dev':'')+'">'+(p.type==='育成'?'':'')+esc(p.round)+'</span><span class="pk-n">'+esc(p.name)+'</span><span class="pk-t">'+esc(p.team)+'・'+esc(p.pos)+'</span><span class="pk-a">▶</span></div>'
+      +'<div class="pk-b"><div class="pk-p">'+body+'</div>'
+      +(p.hiroshimaConnection?'<div class="cd-c">🎏 '+esc(p.hiroshimaConnection)+'</div>':'')
+      +'<div class="cd-f" style="margin-top:.4rem">'+(p.features||[]).map(function(f){return '<span>'+esc(f)+'</span>';}).join('')+'</div>'
+      +(ns.length?'<div class="cd-m">'+ns.map(function(n){return '<span>必要タイプ'+n.priority+'の枠（'+esc(n.pos)+'・'+esc(String(n.profile).replace(/（.*）/,''))+'）</span>';}).join('')+'</div>':'')
+      +'<div class="pk-l e">評価</div><div class="pk-x'+(p.evaluation?'':' none')+'">'+(p.evaluation?esc(p.evaluation):'詳しい評価の報道は見つかっていません')+'</div>'
+      +'<div class="pk-l i">球団の狙い</div><div class="pk-x'+(p.teamIntent?'':' none')+'">'+(p.teamIntent?esc(p.teamIntent):'この選手についての球団の個別コメントは見つかっていません')+'</div>'
+      +(p.verificationNote?'<div class="pk-x none" style="margin-top:.3rem">※'+esc(p.verificationNote)+'</div>':'')
+      +'<div class="cd-s">出典 '+(p.sources||[]).slice(0,4).map(function(u,k){return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+(k+1)+'</a>';}).join('')+'</div></div></div>';
+  });
+  h+='</div>';
+  if((R.overall||[]).length||(R.media||[]).length){
+    h+='<div class="sec"><div class="sec-t">🎯 ドラフト全体の狙い</div>';
+    (R.overall||[]).forEach(function(o){h+='<div class="crp">'+esc(o.point)+'<a href="'+esc(o.source)+'" target="_blank" rel="noopener">出典</a></div>';});
+    if((R.media||[]).length){h+='<div class="pk-l e" style="margin-top:.8rem">メディアの評価</div>';(R.media||[]).forEach(function(o){h+='<div class="crp">'+esc(o.point)+'<a href="'+esc(o.source)+'" target="_blank" rel="noopener">出典</a></div>';});}
+    h+='<div class="src">'+esc(R.note||'')+'。情報は'+esc(R.asOf)+'時点の報道に基づきます。</div></div>';
+  }
+  return h;
+}
 // 候補が「必要な選手タイプ」に当てはまるか（守備位置・高校生/即戦力・投手の左右で判定）
 function matchNeed(need,p){
   var pos=need.pos||'',prof=need.profile||'',txt=(need.type||'')+(need.traits||[]).join('');
@@ -147,7 +204,7 @@ function matchNeed(need,p){
   else if(/二塁|遊撃/.test(pos))ok=p.pos==='内野手'&&(/二塁|遊撃/.test(det)||!det);
   else if(/三塁|一塁/.test(pos))ok=p.pos==='内野手'&&(/三塁|一塁/.test(det)||!det);
   else if(/外野/.test(pos))ok=p.pos==='外野手';
-  else if(/先発|投手|救援/.test(pos)){ok=p.pos==='投手';if(ok&&/右腕/.test(txt))ok=p.throws==='右';if(ok&&/左腕/.test(txt)&&!/右腕/.test(txt))ok=p.throws==='左';}
+  else if(/先発|投手|救援/.test(pos)){ok=p.pos==='投手';if(ok&&/右腕/.test(txt))ok=p.throws==='右';if(ok&&/左腕/.test(txt)&&!/右腕/.test(txt))ok=p.throws==='左';if(ok&&/先発/.test(pos)&&/リリーフ|救援|抑え/.test(det))ok=false;if(ok&&/救援/.test(pos)&&/先発/.test(det))ok=false;}
   if(!ok)return false;
   if(/高校生/.test(prof))return p.category==='高校';
   if(/即戦力/.test(prof))return p.category==='大学'||p.category==='社会人'||p.category==='独立';
@@ -164,7 +221,8 @@ var TIER={'1位候補':'t1','上位候補':'t2','注目':'t3'};
 function candCard(p){
   var ns=needsOf(p);
   var hand=(p.throws?p.throws+'投':'')+(p.bats?p.bats+'打':'');
-  return '<div class="cd"><div class="cd-h"><span class="tier '+(TIER[p.tier]||'t3')+'">'+esc(p.tier)+'</span><span class="cd-n">'+esc(p.name)+'</span><span class="cd-t">'+esc(p.team)+'・'+esc(p.category)+(p.grade?' '+esc(p.grade):'')+'</span></div>'
+  var dr=pickOf(p.name);
+  return '<div class="cd"'+(dr?' style="border-color:rgba(200,16,46,.5)"':'')+'><div class="cd-h"><span class="tier '+(TIER[p.tier]||'t3')+'">'+esc(p.tier)+'</span><span class="cd-n">'+esc(p.name)+'</span>'+(dr?'<span class="cd-dr">広島 '+esc(dr.type==='育成'?'育成'+dr.round.replace('育成',''):dr.round)+'指名</span>':'')+'<span class="cd-t">'+esc(p.team)+'・'+esc(p.category)+(p.grade?' '+esc(p.grade):'')+'</span></div>'
     +'<div class="cd-p">'+esc(p.posDetail||p.pos)+(hand?'｜'+hand:'')+'</div>'
     +'<div class="cd-f">'+(p.features||[]).map(function(f){return '<span>'+esc(f)+'</span>';}).join('')+'</div>'
     +(ns.length?'<div class="cd-m">'+ns.map(function(n){return '<span>必要タイプ'+n.priority+'の枠に合致（'+esc(n.pos)+'・'+esc(String(n.profile).replace(/（.*）/,''))+'）</span>';}).join('')+'</div>':'')
@@ -208,12 +266,14 @@ async function init(){
   try{d=await (await fetch('/games/draft_analysis_2026.json?t='+Date.now())).json();}
   catch(e){document.getElementById('main').innerHTML='<div class="loading">データを読み込めませんでした</div>';return;}
   try{CANDS=await (await fetch('/games/draft_candidates_2026.json?t='+Date.now())).json();}catch(e){CANDS=null;}
+  try{RES=await (await fetch('/games/draft_results_2026.json?t='+Date.now())).json();}catch(e){RES=null;}
   var h='';
   var S=d.strategy;
+  NEEDS=(d.strategy&&d.strategy.needs)||[];
+  if(RES){h+=renderResults(RES);h+='<div class="divider">ここから下はドラフト前（10/17時点）の分析</div>';}
   h+='<div class="hero"><div class="hero-yr">CARP 2026 DRAFT STRATEGY</div><div class="hero-title">今オフ、カープに必要な選手像</div>';
   h+='<div class="hero-ov">'+(S&&S.summary?esc(S.summary):'今季のデータ（守備位置別の打力・打順別の打力・投手陣の指標・年齢構成）から、補強が必要なポジションと選手タイプを整理します。')+'</div></div>';
 
-  NEEDS=(d.strategy&&d.strategy.needs)||[];
   h+=renderNeeds(d);
   h+=renderCands();
   h+=renderPositions(d);
